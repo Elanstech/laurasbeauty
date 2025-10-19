@@ -11,7 +11,7 @@ class PreloaderManager {
         window.addEventListener('load', () => {
             setTimeout(() => {
                 this.hidePreloader();
-            }, 2800);
+            }, 2700);
         });
     }
 
@@ -20,7 +20,7 @@ class PreloaderManager {
         setTimeout(() => {
             this.preloader.style.display = 'none';
             document.body.style.overflow = 'auto';
-        }, 800);
+        }, 600);
     }
 }
 
