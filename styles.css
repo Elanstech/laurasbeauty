@@ -72,13 +72,13 @@ body {
 .panel-left {
     left: 0;
     animation: panelSlideInLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards,
-               panelSlideOutLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) 1.6s forwards;
+               panelSlideOutDiagonalLeft 0.7s cubic-bezier(0.6, 0, 0.2, 1) 1.4s forwards;
 }
 
 .panel-right {
     right: 0;
     animation: panelSlideInRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards,
-               panelSlideOutRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) 1.6s forwards;
+               panelSlideOutDiagonalRight 0.7s cubic-bezier(0.6, 0, 0.2, 1) 1.4s forwards;
 }
 
 .preloader-logo {
@@ -89,7 +89,7 @@ body {
     z-index: 10002;
     opacity: 0;
     animation: logoFadeIn 0.4s ease 0.7s forwards,
-               logoFadeOut 0.4s ease 1.8s forwards;
+               logoDisappear 0.6s ease 1.5s forwards;
 }
 
 .logo-image {
@@ -116,21 +116,25 @@ body {
     }
 }
 
-@keyframes panelSlideOutLeft {
+@keyframes panelSlideOutDiagonalLeft {
     0% {
-        transform: translateX(0);
+        transform: translate(0, 0);
+        opacity: 1;
     }
     100% {
-        transform: translateX(-100%);
+        transform: translate(-120%, -120%);
+        opacity: 0;
     }
 }
 
-@keyframes panelSlideOutRight {
+@keyframes panelSlideOutDiagonalRight {
     0% {
-        transform: translateX(0);
+        transform: translate(0, 0);
+        opacity: 1;
     }
     100% {
-        transform: translateX(100%);
+        transform: translate(120%, 120%);
+        opacity: 0;
     }
 }
 
@@ -143,12 +147,14 @@ body {
     }
 }
 
-@keyframes logoFadeOut {
+@keyframes logoDisappear {
     0% {
         opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
     }
     100% {
         opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9);
     }
 }
 
