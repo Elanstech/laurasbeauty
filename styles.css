@@ -50,14 +50,14 @@ body {
     height: 100%;
     z-index: 10000;
     overflow: hidden;
-    background: var(--deep-forest);
-    transition: opacity 0.6s ease, visibility 0.6s ease;
+    background: var(--forest-green);
 }
 
 .preloader.hidden {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
 .preloader-panel {
@@ -65,21 +65,20 @@ body {
     top: 0;
     width: 50%;
     height: 100%;
-    background: linear-gradient(135deg, var(--forest-green) 0%, var(--deep-forest) 50%, var(--mint-green) 100%);
+    background: var(--forest-green);
     z-index: 10001;
-    box-shadow: 0 0 100px rgba(169, 200, 156, 0.3);
 }
 
 .panel-left {
     left: 0;
-    animation: panelSlideInLeft 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards,
-               panelSlideOutDiagonalLeft 0.9s cubic-bezier(0.6, 0, 0.2, 1) 1.8s forwards;
+    animation: panelSlideInLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+               panelSlideOutLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) 1.6s forwards;
 }
 
 .panel-right {
     right: 0;
-    animation: panelSlideInRight 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards,
-               panelSlideOutDiagonalRight 0.9s cubic-bezier(0.6, 0, 0.2, 1) 1.8s forwards;
+    animation: panelSlideInRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+               panelSlideOutRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) 1.6s forwards;
 }
 
 .preloader-logo {
@@ -89,48 +88,14 @@ body {
     transform: translate(-50%, -50%);
     z-index: 10002;
     opacity: 0;
-    animation: logoReveal 0.7s ease 0.7s forwards,
-               logoFadeOut 0.6s ease 2.1s forwards;
+    animation: logoFadeIn 0.4s ease 0.7s forwards,
+               logoFadeOut 0.4s ease 1.8s forwards;
 }
 
 .logo-image {
-    width: 320px;
+    width: 280px;
     height: auto;
     display: block;
-    position: relative;
-    z-index: 3;
-    filter: drop-shadow(0 15px 60px rgba(169, 200, 156, 0.5))
-            drop-shadow(0 5px 20px rgba(255, 255, 255, 0.3));
-}
-
-.logo-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 450px;
-    height: 450px;
-    background: radial-gradient(circle, rgba(169, 200, 156, 0.4) 0%, rgba(212, 175, 55, 0.2) 40%, transparent 70%);
-    border-radius: 50%;
-    z-index: 1;
-    animation: glowPulse 2.5s ease-in-out infinite;
-}
-
-.logo-shine {
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, 
-        transparent 0%, 
-        transparent 40%, 
-        rgba(255, 255, 255, 0.3) 50%, 
-        transparent 60%, 
-        transparent 100%);
-    z-index: 4;
-    animation: shineEffect 2s ease-in-out 0.9s forwards;
-    pointer-events: none;
 }
 
 @keyframes panelSlideInLeft {
@@ -151,100 +116,57 @@ body {
     }
 }
 
-@keyframes panelSlideOutDiagonalLeft {
+@keyframes panelSlideOutLeft {
     0% {
-        transform: translate(0, 0);
-        opacity: 1;
+        transform: translateX(0);
     }
     100% {
-        transform: translate(-100%, -100%);
-        opacity: 0;
+        transform: translateX(-100%);
     }
 }
 
-@keyframes panelSlideOutDiagonalRight {
+@keyframes panelSlideOutRight {
     0% {
-        transform: translate(0, 0);
-        opacity: 1;
+        transform: translateX(0);
     }
     100% {
-        transform: translate(100%, 100%);
-        opacity: 0;
+        transform: translateX(100%);
     }
 }
 
-@keyframes logoReveal {
+@keyframes logoFadeIn {
     0% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.7);
     }
     100% {
         opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
     }
 }
 
 @keyframes logoFadeOut {
     0% {
         opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
     }
     100% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(1.1);
-    }
-}
-
-@keyframes glowPulse {
-    0%, 100% {
-        opacity: 0.5;
-        transform: translate(-50%, -50%) scale(1);
-    }
-    50% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1.15);
-    }
-}
-
-@keyframes shineEffect {
-    0% {
-        transform: translateX(-100%) translateY(-100%) rotate(45deg);
-    }
-    100% {
-        transform: translateX(100%) translateY(100%) rotate(45deg);
     }
 }
 
 @media (max-width: 1024px) {
     .logo-image {
-        width: 260px;
-    }
-    
-    .logo-glow {
-        width: 380px;
-        height: 380px;
+        width: 240px;
     }
 }
 
 @media (max-width: 768px) {
     .logo-image {
-        width: 220px;
-    }
-    
-    .logo-glow {
-        width: 320px;
-        height: 320px;
+        width: 200px;
     }
 }
 
 @media (max-width: 480px) {
     .logo-image {
-        width: 180px;
-    }
-    
-    .logo-glow {
-        width: 260px;
-        height: 260px;
+        width: 160px;
     }
 }
 
