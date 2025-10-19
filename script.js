@@ -11,7 +11,7 @@ class PreloaderManager {
         window.addEventListener('load', () => {
             setTimeout(() => {
                 this.hidePreloader();
-            }, 2300);
+            }, 2200);
         });
     }
 
