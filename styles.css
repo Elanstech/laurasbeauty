@@ -48,195 +48,177 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--ivory-white) 0%, var(--cream) 50%, var(--soft-sage) 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     z-index: 10000;
-    transition: opacity 0.8s ease, visibility 0.8s ease;
+    overflow: hidden;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
 }
 
 .preloader.hidden {
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
 }
 
-.preloader-content {
-    text-align: center;
-    position: relative;
-}
-
-.lotus-wrapper {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 30px;
-    position: relative;
-    animation: lotusRotate 4s ease-in-out infinite;
-}
-
-.lotus-petal {
+.preloader-panel {
     position: absolute;
-    width: 40px;
-    height: 60px;
-    background: linear-gradient(135deg, var(--mint-green) 0%, var(--forest-green) 100%);
-    border-radius: 50% 50% 50% 0;
-    transform-origin: 20px 30px;
-    opacity: 0.8;
-    animation: petalPulse 3s ease-in-out infinite;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--forest-green) 0%, var(--deep-forest) 40%, var(--mint-green) 100%);
+    z-index: 10001;
 }
 
-.lotus-petal.petal-1 {
-    transform: rotate(0deg) translateY(-25px);
-    animation-delay: 0s;
+.panel-left {
+    left: 0;
+    border-radius: 0 60px 60px 0;
+    animation: panelSlideInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+               panelSlideOutLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) 1.8s forwards;
 }
 
-.lotus-petal.petal-2 {
-    transform: rotate(60deg) translateY(-25px);
-    animation-delay: 0.5s;
+.panel-right {
+    right: 0;
+    border-radius: 60px 0 0 60px;
+    animation: panelSlideInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+               panelSlideOutRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) 1.8s forwards;
 }
 
-.lotus-petal.petal-3 {
-    transform: rotate(120deg) translateY(-25px);
-    animation-delay: 1s;
-}
-
-.lotus-petal.petal-4 {
-    transform: rotate(180deg) translateY(-25px);
-    animation-delay: 1.5s;
-}
-
-.lotus-petal.petal-5 {
-    transform: rotate(240deg) translateY(-25px);
-    animation-delay: 2s;
-}
-
-.lotus-petal.petal-6 {
-    transform: rotate(300deg) translateY(-25px);
-    animation-delay: 2.5s;
-}
-
-.lotus-center {
+.preloader-logo {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 35px;
-    height: 35px;
-    background: radial-gradient(circle, var(--gold-accent) 0%, var(--warm-taupe) 100%);
-    border-radius: 50%;
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-    animation: centerGlow 2s ease-in-out infinite;
+    z-index: 10002;
+    opacity: 0;
+    animation: logoReveal 0.6s ease 0.8s forwards,
+               logoFadeOut 0.5s ease 2.2s forwards;
 }
 
-.preloader-text {
-    font-family: 'Cinzel', serif;
-    font-size: 48px;
-    font-weight: 500;
-    color: var(--forest-green);
-    letter-spacing: 8px;
-    margin-bottom: 10px;
+.logo-image {
+    width: 180px;
+    height: auto;
+    display: block;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 10px 40px rgba(169, 200, 156, 0.4));
 }
 
-.preloader-text .letter {
-    display: inline-block;
-    animation: letterFloat 2s ease-in-out infinite;
-}
-
-.preloader-text .letter:nth-child(1) { animation-delay: 0s; }
-.preloader-text .letter:nth-child(2) { animation-delay: 0.1s; }
-.preloader-text .letter:nth-child(3) { animation-delay: 0.2s; }
-.preloader-text .letter:nth-child(4) { animation-delay: 0.3s; }
-.preloader-text .letter:nth-child(5) { animation-delay: 0.4s; }
-.preloader-text .letter:nth-child(6) { animation-delay: 0.5s; }
-.preloader-text .letter:nth-child(7) { animation-delay: 0.6s; }
-
-.preloader-subtitle {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 4px;
-    color: var(--warm-taupe);
-    margin-bottom: 40px;
-    opacity: 0.8;
-}
-
-.loading-bar {
+.logo-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 250px;
-    height: 3px;
-    background: rgba(59, 74, 47, 0.1);
-    border-radius: 50px;
-    margin: 0 auto;
-    overflow: hidden;
+    height: 250px;
+    background: radial-gradient(circle, rgba(169, 200, 156, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 1;
+    animation: glowPulse 2s ease-in-out infinite;
 }
 
-.loading-progress {
-    height: 100%;
-    background: linear-gradient(90deg, var(--mint-green) 0%, var(--forest-green) 100%);
-    border-radius: 50px;
-    animation: loadingProgress 2.5s ease-in-out infinite;
+@keyframes panelSlideInLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 
-@keyframes lotusRotate {
-    0%, 100% { transform: rotate(0deg) scale(1); }
-    50% { transform: rotate(180deg) scale(1.05); }
+@keyframes panelSlideInRight {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 
-@keyframes petalPulse {
-    0%, 100% { opacity: 0.6; transform: scale(1); }
-    50% { opacity: 0.9; transform: scale(1.1); }
+@keyframes panelSlideOutLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 }
 
-@keyframes centerGlow {
-    0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
-    50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.8); }
+@keyframes panelSlideOutRight {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+    }
 }
 
-@keyframes letterFloat {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); }
+@keyframes logoReveal {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
 }
 
-@keyframes loadingProgress {
-    0% { width: 0%; }
-    100% { width: 100%; }
+@keyframes logoFadeOut {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
 }
 
 @media (max-width: 768px) {
-    .lotus-wrapper {
-        width: 90px;
-        height: 90px;
+    .panel-left {
+        border-radius: 0 40px 40px 0;
     }
     
-    .lotus-petal {
-        width: 30px;
-        height: 45px;
-        transform-origin: 15px 22.5px;
+    .panel-right {
+        border-radius: 40px 0 0 40px;
     }
     
-    .lotus-petal.petal-1 { transform: rotate(0deg) translateY(-18px); }
-    .lotus-petal.petal-2 { transform: rotate(60deg) translateY(-18px); }
-    .lotus-petal.petal-3 { transform: rotate(120deg) translateY(-18px); }
-    .lotus-petal.petal-4 { transform: rotate(180deg) translateY(-18px); }
-    .lotus-petal.petal-5 { transform: rotate(240deg) translateY(-18px); }
-    .lotus-petal.petal-6 { transform: rotate(300deg) translateY(-18px); }
-    
-    .lotus-center {
-        width: 25px;
-        height: 25px;
+    .logo-image {
+        width: 140px;
     }
     
-    .preloader-text {
-        font-size: 36px;
-        letter-spacing: 6px;
-    }
-    
-    .preloader-subtitle {
-        font-size: 11px;
-        letter-spacing: 3px;
-    }
-    
-    .loading-bar {
+    .logo-glow {
         width: 200px;
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .panel-left {
+        border-radius: 0 30px 30px 0;
+    }
+    
+    .panel-right {
+        border-radius: 30px 0 0 30px;
+    }
+    
+    .logo-image {
+        width: 120px;
+    }
+    
+    .logo-glow {
+        width: 160px;
+        height: 160px;
     }
 }
 
