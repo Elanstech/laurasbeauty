@@ -1,5 +1,5 @@
 // ============================================
-// PRELOADER SEC
+// PRELOADER SECTION
 // ============================================
 class PreloaderManager {
     constructor() {
@@ -11,7 +11,7 @@ class PreloaderManager {
         window.addEventListener('load', () => {
             setTimeout(() => {
                 this.hidePreloader();
-            }, 2700);
+            }, 2800);
         });
     }
 
