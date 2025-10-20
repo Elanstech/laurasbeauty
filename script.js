@@ -36,7 +36,9 @@ class SpaHeaderManager {
         this.mobileOverlay = document.querySelector('.mobile-overlay');
         this.accordionTriggers = document.querySelectorAll('.accordion-trigger');
         this.logo = document.querySelector('.header-logo');
-        this.allNavLinks = document.querySelectorAll('.nav-link, .mobile-nav-link, .mega-links a, .accordion-links a');
+        this.allNavLinks = document.querySelectorAll('.nav-link, .mobile-nav-link, .mega-service-card, .accordion-links a');
+        this.megaMenuItems = document.querySelectorAll('.has-mega-menu');
+        this.megaMenuTimeout = null;
         
         this.init();
     }
@@ -47,6 +49,7 @@ class SpaHeaderManager {
         this.handleAccordion();
         this.handleLogoClick();
         this.handleSmoothScroll();
+        this.handleMegaMenuHover();
     }
 
     handleScroll() {
@@ -62,6 +65,39 @@ class SpaHeaderManager {
             }
             
             lastScrollTop = scrollTop;
+        });
+    }
+
+    handleMegaMenuHover() {
+        this.megaMenuItems.forEach(item => {
+            const megaMenu = item.querySelector('.mega-menu');
+            
+            if (!megaMenu) return;
+
+            // Mouse enter on nav item or mega menu
+            const handleMouseEnter = () => {
+                clearTimeout(this.megaMenuTimeout);
+                megaMenu.style.opacity = '1';
+                megaMenu.style.visibility = 'visible';
+                megaMenu.style.pointerEvents = 'all';
+            };
+
+            // Mouse leave with delay
+            const handleMouseLeave = () => {
+                this.megaMenuTimeout = setTimeout(() => {
+                    megaMenu.style.opacity = '0';
+                    megaMenu.style.visibility = 'hidden';
+                    megaMenu.style.pointerEvents = 'none';
+                }, 200);
+            };
+
+            // Attach events to nav item
+            item.addEventListener('mouseenter', handleMouseEnter);
+            item.addEventListener('mouseleave', handleMouseLeave);
+
+            // Attach events to mega menu itself
+            megaMenu.addEventListener('mouseenter', handleMouseEnter);
+            megaMenu.addEventListener('mouseleave', handleMouseLeave);
         });
     }
 
@@ -191,8 +227,8 @@ class SpaHeaderManager {
     }
 }
 
+// Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize the header functionality
     const spaHeaderManager = new SpaHeaderManager();
     
     // Add performance optimization for floating animation
@@ -202,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // Log initialization (remove in production)
-    console.log('🌿 Spa Header initialized successfully');
+    console.log('🌿 Spa Header with Refined Mega Menu initialized successfully');
 });
 
 // ============================================
