@@ -16,18 +16,19 @@ class PreloaderManager {
     }
 
     hidePreloader() {
-        this.preloader.classList.add('hidden');
-        setTimeout(() => {
-            this.preloader.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }, 500);
+        if (this.preloader) {
+            this.preloader.classList.add('hidden');
+            setTimeout(() => {
+                this.preloader.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 500);
+        }
     }
 }
 
 // ============================================
 // HEADER SECTION
 // ============================================
-
 class SpaHeaderManager {
     constructor() {
         this.header = document.querySelector('.spa-header');
@@ -102,6 +103,8 @@ class SpaHeaderManager {
     }
 
     handleMobileMenu() {
+        if (!this.mobileToggle || !this.mobileDrawer || !this.mobileOverlay) return;
+
         // Open/close drawer on toggle click
         this.mobileToggle.addEventListener('click', () => {
             this.toggleMobileMenu();
@@ -227,27 +230,14 @@ class SpaHeaderManager {
     }
 }
 
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    const spaHeaderManager = new SpaHeaderManager();
-    
-    // Add performance optimization for floating animation
-    const floatingElements = document.querySelectorAll('.header-logo, .header-logo-image');
-    floatingElements.forEach(element => {
-        element.style.willChange = 'transform';
-    });
-    
-    // Log initialization (remove in production)
-    console.log('🌿 Spa Header Refined Mega Menu initialized successfully');
-});
-
 // ============================================
 // HERO SECTION
 // ============================================
-
 class AdvancedHeroManager {
     constructor() {
         this.hero = document.querySelector('.hero');
+        if (!this.hero) return;
+
         this.videoContainers = document.querySelectorAll('.video-container');
         this.videos = document.querySelectorAll('.hero-video');
         this.mobileVideos = document.querySelectorAll('.mobile-hero-video');
@@ -279,6 +269,10 @@ class AdvancedHeroManager {
         this.setupIntersectionObserver();
         this.setupResponsiveHandling();
     }
+
+    // ============================================
+    // VIDEO PLAYBACK MANAGEMENT
+    // ============================================
     
     setupVideoPlayback() {
         const allVideos = [...this.videos, ...this.mobileVideos];
@@ -326,6 +320,10 @@ class AdvancedHeroManager {
             });
         }
     }
+
+    // ============================================
+    // GSAP ANIMATIONS
+    // ============================================
     
     initializeGSAP() {
         // Register GSAP plugins
@@ -423,8 +421,14 @@ class AdvancedHeroManager {
             });
         }
     }
+
+    // ============================================
+    // BACKGROUND LAYER ROTATION
+    // ============================================
     
     setupBackgroundRotation() {
+        if (this.bgLayers.length === 0) return;
+
         setInterval(() => {
             this.bgLayers.forEach(layer => layer.classList.remove('active'));
             
@@ -432,6 +436,10 @@ class AdvancedHeroManager {
             this.bgLayers[this.currentLayerIndex].classList.add('active');
         }, 6000);
     }
+
+    // ============================================
+    // PARALLAX SCROLLING
+    // ============================================
     
     setupParallax() {
         let rafId = null;
@@ -468,6 +476,10 @@ class AdvancedHeroManager {
             }
         }, { passive: true });
     }
+
+    // ============================================
+    // FLOATING ELEMENTS
+    // ============================================
     
     setupFloatingElements() {
         this.floatingElements.forEach((element, index) => {
@@ -480,6 +492,10 @@ class AdvancedHeroManager {
             element.style.setProperty('--random-x', `${randomX}px`);
         });
     }
+
+    // ============================================
+    // CTA BUTTON INTERACTIONS
+    // ============================================
     
     setupCTAButton() {
         if (!this.ctaButton) return;
@@ -541,6 +557,10 @@ class AdvancedHeroManager {
             });
         }
     }
+
+    // ============================================
+    // SCROLL INDICATOR
+    // ============================================
     
     setupScrollIndicator() {
         if (!this.scrollIndicator) return;
@@ -563,9 +583,16 @@ class AdvancedHeroManager {
             }
         }, { passive: true });
     }
+
+    // ============================================
+    // MOBILE SWIPER
+    // ============================================
     
     initializeMobileSwiper() {
         if (typeof Swiper === 'undefined' || this.isDesktop) return;
+
+        const swiperElement = document.querySelector('.hero-swiper');
+        if (!swiperElement) return;
 
         this.swiper = new Swiper('.hero-swiper', {
             effect: 'fade',
@@ -599,8 +626,14 @@ class AdvancedHeroManager {
             }
         });
     }
+
+    // ============================================
+    // DYNAMIC CONTENT SYSTEM
+    // ============================================
     
     setupDynamicContent() {
+        if (!this.heroHeadline || !this.heroSubtitle) return;
+
         const contentOptions = [
             {
                 headline: 'Relax. Restore. Reveal Your Glow.',
@@ -617,7 +650,10 @@ class AdvancedHeroManager {
         ];
 
         let currentIndex = 0;
-    
+
+        // Optional: Rotate content every 10 seconds
+        // Uncomment to enable dynamic text rotation
+        /*
         setInterval(() => {
             currentIndex = (currentIndex + 1) % contentOptions.length;
             const content = contentOptions[currentIndex];
@@ -643,8 +679,12 @@ class AdvancedHeroManager {
                 });
             }
         }, 10000);
-        
+        */
     }
+
+    // ============================================
+    // INTERSECTION OBSERVER
+    // ============================================
     
     setupIntersectionObserver() {
         const observerOptions = {
@@ -667,6 +707,10 @@ class AdvancedHeroManager {
         
         elementsToObserve.forEach(el => observer.observe(el));
     }
+
+    // ============================================
+    // RESPONSIVE HANDLING
+    // ============================================
     
     setupResponsiveHandling() {
         let resizeTimer;
@@ -697,7 +741,17 @@ class AdvancedHeroManager {
     }
 }
 
+// ============================================
+// INITIALIZE ALL COMPONENTS
+// ============================================
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Preloader
+    const preloaderManager = new PreloaderManager();
+    
+    // Initialize Header
+    const headerManager = new SpaHeaderManager();
+    
+    // Initialize Hero
     const heroManager = new AdvancedHeroManager();
 
     // Add ripple animation CSS dynamically
@@ -716,17 +770,31 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.head.appendChild(style);
 
-    // Performance optimization
+    // Performance optimization for header
+    const floatingElements = document.querySelectorAll('.header-logo, .header-logo-image');
+    floatingElements.forEach(element => {
+        element.style.willChange = 'transform';
+    });
+
+    // Performance optimization for hero
     const heroVideos = document.querySelectorAll('.hero-video, .mobile-hero-video');
     heroVideos.forEach(video => {
         video.style.willChange = 'transform';
     });
 
+    // Detect touch device
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if (isTouchDevice) {
+        document.body.classList.add('touch-device');
+    }
+
     // Log initialization
-    console.log('🌿 Advanced Hero Section initialized successfully');
+    console.log('🌿 Laura\'s Beauty Touch initialized successfully');
 });
 
-// Preload first video for faster load
+// ============================================
+// PRELOAD CRITICAL ASSETS
+// ============================================
 const preloadVideo = () => {
     const firstVideo = document.querySelector('.video-container.video-2 video');
     if (firstVideo) {
