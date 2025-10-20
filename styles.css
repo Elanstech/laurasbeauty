@@ -222,13 +222,13 @@ body {
 }
 
 .header-logo-image {
-    height: 200px;
+    height: 50px;
     width: auto;
     transition: all 0.6s ease;
 }
 
 .spa-header.scrolled .header-logo-image {
-    height: 150px;
+    height: 40px;
 }
 
 @keyframes logoFloat {
@@ -266,9 +266,24 @@ body {
     text-decoration: none;
     text-transform: uppercase;
     padding: 10px 0;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     position: relative;
     transition: color 0.4s ease;
+}
+
+/* Dropdown indicator for Services */
+.nav-dropdown-icon {
+    font-size: 10px;
+    color: var(--mint-green);
+    transition: all 0.4s ease;
+    display: inline-block;
+}
+
+.has-mega-menu:hover .nav-dropdown-icon {
+    transform: translateY(2px);
+    color: var(--forest-green);
 }
 
 /* Mint underline effect */
@@ -340,33 +355,30 @@ body {
     position: relative;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 50px;
+    gap: 40px;
 }
 
-.mega-column-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--forest-green);
-    margin-bottom: 20px;
-    letter-spacing: 0.5px;
+.mega-column {
+    display: flex;
+    flex-direction: column;
 }
 
 .mega-links {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
 }
 
 .mega-links a {
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
     color: var(--charcoal);
     text-decoration: none;
-    padding: 8px 12px;
-    border-radius: 12px;
+    padding: 12px 16px;
+    border-radius: 15px;
     display: block;
     transition: all 0.3s ease;
 }
@@ -575,31 +587,14 @@ body {
 
 .mobile-accordion.active {
     max-height: 1000px;
-    padding: 20px;
-}
-
-.accordion-section {
-    margin-bottom: 24px;
-}
-
-.accordion-section:last-child {
-    margin-bottom: 0;
-}
-
-.accordion-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--forest-green);
-    margin-bottom: 12px;
-    letter-spacing: 0.5px;
+    padding: 16px 12px;
 }
 
 .accordion-links {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
 }
 
 .accordion-links a {
@@ -608,8 +603,8 @@ body {
     font-weight: 400;
     color: var(--charcoal);
     text-decoration: none;
-    padding: 8px 12px;
-    border-radius: 10px;
+    padding: 10px 14px;
+    border-radius: 12px;
     display: block;
     transition: all 0.3s ease;
 }
@@ -654,12 +649,17 @@ body {
     }
 
     .mega-menu {
-        width: 700px;
-        padding: 40px;
+        width: 600px;
+        padding: 35px;
     }
 
     .mega-menu-content {
-        gap: 35px;
+        gap: 30px;
+    }
+
+    .mega-links a {
+        font-size: 14px;
+        padding: 10px 14px;
     }
 }
 
