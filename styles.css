@@ -227,7 +227,7 @@ body {
 }
 
 .header-logo-image {
-    height: 55px;
+    height: 200px;
     width: auto;
     display: block;
     transition: all 0.6s ease;
