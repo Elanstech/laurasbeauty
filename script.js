@@ -27,113 +27,183 @@ class PreloaderManager {
 // ============================================
 // HEADER SECTION
 // ============================================
-class HeaderManager {
+
+class SpaHeaderManager {
     constructor() {
-        this.header = document.querySelector('.header');
-        this.mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        this.mobileMenu = document.querySelector('.mobile-menu');
-        this.navLinks = document.querySelectorAll('.nav-link');
-        this.mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-        this.lastScrollTop = 0;
+        this.header = document.querySelector('.spa-header');
+        this.mobileToggle = document.querySelector('.mobile-menu-toggle');
+        this.mobileDrawer = document.querySelector('.mobile-drawer');
+        this.mobileOverlay = document.querySelector('.mobile-overlay');
+        this.accordionTriggers = document.querySelectorAll('.accordion-trigger');
+        this.logo = document.querySelector('.header-logo');
+        this.allNavLinks = document.querySelectorAll('.nav-link, .mobile-nav-link, .mega-links a, .accordion-links a');
+        
         this.init();
     }
 
     init() {
         this.handleScroll();
         this.handleMobileMenu();
-        this.handleNavigation();
+        this.handleAccordion();
+        this.handleLogoClick();
+        this.handleSmoothScroll();
     }
 
     handleScroll() {
+        let lastScrollTop = 0;
+        
         window.addEventListener('scroll', () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
-            if (scrollTop > 100) {
+            if (scrollTop > 50) {
                 this.header.classList.add('scrolled');
             } else {
                 this.header.classList.remove('scrolled');
             }
-
-            this.lastScrollTop = scrollTop;
+            
+            lastScrollTop = scrollTop;
         });
     }
 
     handleMobileMenu() {
-        this.mobileMenuToggle.addEventListener('click', () => {
-            this.mobileMenuToggle.classList.toggle('active');
-            this.mobileMenu.classList.toggle('active');
-            
-            if (this.mobileMenu.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'auto';
-            }
+        // Open/close drawer on toggle click
+        this.mobileToggle.addEventListener('click', () => {
+            this.toggleMobileMenu();
         });
 
-        this.mobileNavLinks.forEach(link => {
+        // Close drawer when overlay is clicked
+        this.mobileOverlay.addEventListener('click', () => {
+            this.closeMobileMenu();
+        });
+
+        // Close drawer when any nav link is clicked (except accordion trigger)
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link:not(.accordion-trigger), .accordion-links a');
+        mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
-                this.mobileMenuToggle.classList.remove('active');
-                this.mobileMenu.classList.remove('active');
-                document.body.style.overflow = 'auto';
+                this.closeMobileMenu();
+            });
+        });
+
+        // Close drawer on Escape key press
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.mobileDrawer.classList.contains('active')) {
+                this.closeMobileMenu();
+            }
+        });
+    }
+
+    toggleMobileMenu() {
+        this.mobileToggle.classList.toggle('active');
+        this.mobileDrawer.classList.toggle('active');
+        this.mobileOverlay.classList.toggle('active');
+        
+        // Prevent body scroll when menu is open
+        if (this.mobileDrawer.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    }
+
+    closeMobileMenu() {
+        this.mobileToggle.classList.remove('active');
+        this.mobileDrawer.classList.remove('active');
+        this.mobileOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // Close all accordions when menu closes
+        this.accordionTriggers.forEach(trigger => {
+            trigger.classList.remove('active');
+            const accordion = trigger.nextElementSibling;
+            if (accordion) {
+                accordion.classList.remove('active');
+            }
+        });
+    }
+
+    handleAccordion() {
+        this.accordionTriggers.forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                const accordion = trigger.nextElementSibling;
+                const isActive = trigger.classList.contains('active');
+                
+                // Close all other accordions first
+                this.accordionTriggers.forEach(otherTrigger => {
+                    if (otherTrigger !== trigger) {
+                        otherTrigger.classList.remove('active');
+                        const otherAccordion = otherTrigger.nextElementSibling;
+                        if (otherAccordion) {
+                            otherAccordion.classList.remove('active');
+                        }
+                    }
+                });
+                
+                // Toggle current accordion
+                if (isActive) {
+                    trigger.classList.remove('active');
+                    accordion.classList.remove('active');
+                } else {
+                    trigger.classList.add('active');
+                    accordion.classList.add('active');
+                }
             });
         });
     }
 
-    handleNavigation() {
-        const sections = document.querySelectorAll('section[id]');
-        
-        window.addEventListener('scroll', () => {
-            const scrollY = window.pageYOffset;
-
-            sections.forEach(section => {
-                const sectionHeight = section.offsetHeight;
-                const sectionTop = section.offsetTop - 100;
-                const sectionId = section.getAttribute('id');
-                
-                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                    this.navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === `#${sectionId}`) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
+    handleLogoClick() {
+        if (this.logo) {
+            this.logo.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
-        });
-
-        this.navLinks.forEach(link => {
+        }
+    }
+    
+    handleSmoothScroll() {
+        this.allNavLinks.forEach(link => {
             link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
+                const href = link.getAttribute('href');
                 
-                if (targetSection) {
-                    const offsetTop = targetSection.offsetTop - 80;
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        this.mobileNavLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                
-                if (targetSection) {
-                    const offsetTop = targetSection.offsetTop - 80;
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
+                // Only handle hash links (internal anchor links)
+                if (href && href.startsWith('#')) {
+                    const targetId = href.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        e.preventDefault();
+                        
+                        // Calculate offset accounting for fixed header
+                        const headerHeight = this.header.offsetHeight;
+                        const targetPosition = targetElement.offsetTop - headerHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
                 }
             });
         });
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize the header functionality
+    const spaHeaderManager = new SpaHeaderManager();
+    
+    // Add performance optimization for floating animation
+    const floatingElements = document.querySelectorAll('.header-logo, .header-logo-image');
+    floatingElements.forEach(element => {
+        element.style.willChange = 'transform';
+    });
+    
+    // Log initialization (remove in production)
+    console.log('🌿 Spa Header initialized successfully');
+});
 
 // ============================================
 // HERO SECTION
