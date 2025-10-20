@@ -179,6 +179,10 @@ body {
 /* ============================================
    HEADER SECTION
    ============================================ */
+
+/* ============================================
+   HEADER SECTION - REFINED
+   ============================================ */
 .spa-header {
     position: fixed;
     top: 0;
@@ -310,9 +314,10 @@ body {
     width: 100%;
 }
 
+/* MEGA MENU - REFINED */
 .mega-menu {
     position: absolute;
-    top: calc(100% + 20px);
+    top: 100%;
     left: 50%;
     transform: translateX(-50%);
     width: 720px;
@@ -324,9 +329,22 @@ body {
     pointer-events: none;
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 20px 60px rgba(59, 74, 47, 0.12);
+    margin-top: 8px; /* Small gap bridged by expanded hover area */
 }
 
-.has-mega-menu:hover .mega-menu {
+/* Extended hover area to bridge the gap */
+.has-mega-menu::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: -20px;
+    right: -20px;
+    height: 20px;
+    background: transparent;
+}
+
+.has-mega-menu:hover .mega-menu,
+.mega-menu:hover {
     opacity: 1;
     visibility: visible;
     pointer-events: all;
@@ -392,7 +410,7 @@ body {
     gap: 12px;
 }
 
-/* Service Cards */
+/* Service Cards - REFINED */
 .mega-service-card {
     display: flex;
     align-items: center;
@@ -440,14 +458,30 @@ body {
     box-shadow: 0 10px 30px rgba(59, 74, 47, 0.12);
 }
 
+/* Refined Icon Styles */
 .service-icon {
-    font-size: 22px;
     flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: transform 0.3s ease;
+}
+
+.service-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: var(--forest-green);
+    transition: stroke 0.3s ease;
 }
 
 .mega-service-card:hover .service-icon {
     transform: scale(1.15);
+}
+
+.mega-service-card:hover .service-icon svg {
+    stroke: var(--mint-green);
 }
 
 .service-name {
@@ -496,6 +530,7 @@ body {
     }
 }
 
+/* Mobile Menu Toggle */
 .mobile-menu-toggle {
     display: none;
     flex-direction: column;
@@ -524,7 +559,6 @@ body {
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Curved leaf-like lines */
 .leaf-line-1 {
     transform-origin: center;
 }
@@ -538,7 +572,6 @@ body {
     transform-origin: center;
 }
 
-/* Active state - morph to X */
 .mobile-menu-toggle.active .leaf-line {
     background: var(--mint-green);
 }
@@ -589,7 +622,6 @@ body {
     gap: 50px;
 }
 
-/* Drawer Logo */
 .drawer-logo {
     display: flex;
     justify-content: center;
@@ -602,7 +634,6 @@ body {
     width: auto;
 }
 
-/* Mobile Navigation */
 .mobile-nav-list {
     list-style: none;
     display: flex;
@@ -632,7 +663,6 @@ body {
     transform: translateX(30px);
 }
 
-/* Staggered animation for menu items */
 .mobile-drawer.active .mobile-nav-link {
     animation: slideInLeft 0.5s ease forwards;
 }
@@ -670,7 +700,6 @@ body {
     transform: translateX(8px);
 }
 
-/* Accordion Icon */
 .accordion-icon {
     font-size: 24px;
     font-weight: 300;
@@ -682,7 +711,6 @@ body {
     transform: rotate(45deg);
 }
 
-/* Mobile Accordion */
 .mobile-accordion {
     max-height: 0;
     overflow: hidden;
@@ -742,6 +770,7 @@ body {
     visibility: visible;
 }
 
+/* Responsive Design */
 @media (max-width: 1024px) {
     .header-inner {
         padding: 0 40px;
