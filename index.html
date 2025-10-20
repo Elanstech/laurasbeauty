@@ -29,59 +29,158 @@
         </div>
     </div>
 
-    <!-- HEADER -->
-    <header class="header">
-        <div class="header-container">
-            <div class="logo">
-                <div class="logo-icon">
-                    <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="25" cy="25" r="20" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M25 10 C20 15, 15 20, 15 25 C15 30, 20 35, 25 40 C30 35, 35 30, 35 25 C35 20, 30 15, 25 10" fill="currentColor" opacity="0.3"/>
-                        <circle cx="25" cy="25" r="5" fill="currentColor"/>
-                    </svg>
-                </div>
-                <div class="logo-text">
-                    <span class="logo-name">Laura's</span>
-                    <span class="logo-tagline">Beauty Touch</span>
-                </div>
-            </div>
-
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
-                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
-                    <li class="nav-item"><a href="#gallery" class="nav-link">Gallery</a></li>
-                    <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonials</a></li>
-                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
-
-            <div class="header-cta">
-                <button class="btn-book">Book Now</button>
-            </div>
-
-            <button class="mobile-menu-toggle">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
+<!-- HEADER SECTION -->
+<header class="spa-header">
+    <div class="header-inner">
+        
+        <!-- Logo -->
+        <div class="header-logo">
+            <img src="images/logo1.png" alt="Laura's Beauty Touch Logo" class="header-logo-image">
         </div>
 
-        <!-- Mobile Menu -->
-        <div class="mobile-menu">
-            <ul class="mobile-nav-list">
-                <li class="mobile-nav-item"><a href="#home" class="mobile-nav-link">Home</a></li>
-                <li class="mobile-nav-item"><a href="#about" class="mobile-nav-link">About</a></li>
-                <li class="mobile-nav-item"><a href="#services" class="mobile-nav-link">Services</a></li>
-                <li class="mobile-nav-item"><a href="#gallery" class="mobile-nav-link">Gallery</a></li>
-                <li class="mobile-nav-item"><a href="#testimonials" class="mobile-nav-link">Testimonials</a></li>
-                <li class="mobile-nav-item"><a href="#contact" class="mobile-nav-link">Contact</a></li>
+        <!-- Desktop Navigation -->
+        <nav class="header-nav">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item has-mega-menu">
+                    <a href="#services" class="nav-link">Services</a>
+                    
+                    <!-- Mega Menu -->
+                    <div class="mega-menu">
+                        <div class="mega-menu-inner">
+                            <div class="mega-menu-bg"></div>
+                            
+                            <div class="mega-menu-content">
+                                <!-- Column 1: Skin & Face -->
+                                <div class="mega-column">
+                                    <h3 class="mega-column-title">Skin & Face</h3>
+                                    <ul class="mega-links">
+                                        <li><a href="#hydrafacial">HydraFacial</a></li>
+                                        <li><a href="#chemical-peel">Chemical Peels</a></li>
+                                        <li><a href="#microdermabrasion">Microdermabrasion</a></li>
+                                        <li><a href="#led-therapy">LED Light Therapy</a></li>
+                                        <li><a href="#facial-massage">Facial Massage</a></li>
+                                    </ul>
+                                </div>
+
+                                <!-- Column 2: Permanent Makeup -->
+                                <div class="mega-column">
+                                    <h3 class="mega-column-title">Permanent Makeup</h3>
+                                    <ul class="mega-links">
+                                        <li><a href="#microblading">Microblading</a></li>
+                                        <li><a href="#powder-brows">Powder Brows</a></li>
+                                        <li><a href="#lip-blush">Lip Blush</a></li>
+                                        <li><a href="#eyeliner">Permanent Eyeliner</a></li>
+                                        <li><a href="#touch-up">Touch-Up Sessions</a></li>
+                                    </ul>
+                                </div>
+
+                                <!-- Column 3: Spa & Body -->
+                                <div class="mega-column">
+                                    <h3 class="mega-column-title">Spa & Body</h3>
+                                    <ul class="mega-links">
+                                        <li><a href="#massage">Therapeutic Massage</a></li>
+                                        <li><a href="#body-wrap">Body Wraps</a></li>
+                                        <li><a href="#aromatherapy">Aromatherapy</a></li>
+                                        <li><a href="#hot-stone">Hot Stone Therapy</a></li>
+                                        <li><a href="#reflexology">Reflexology</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#gallery" class="nav-link">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#testimonials" class="nav-link">Testimonials</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
             </ul>
-            <button class="mobile-btn-book">Book Appointment</button>
-        </div>
-    </header>
+        </nav>
 
+        <!-- Mobile Menu Toggle (Leaf Hamburger) -->
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span class="leaf-line leaf-line-1"></span>
+            <span class="leaf-line leaf-line-2"></span>
+            <span class="leaf-line leaf-line-3"></span>
+        </button>
+
+    </div>
+</header>
+
+<!-- Mobile Menu Drawer -->
+<div class="mobile-drawer">
+    <div class="mobile-drawer-inner">
+        
+        <!-- Logo in Drawer -->
+        <div class="drawer-logo">
+            <img src="images/logo1.png" alt="Laura's Beauty Touch Logo" class="drawer-logo-image">
+        </div>
+
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav">
+            <ul class="mobile-nav-list">
+                <li class="mobile-nav-item">
+                    <a href="#about" class="mobile-nav-link">About</a>
+                </li>
+                <li class="mobile-nav-item has-accordion">
+                    <button class="mobile-nav-link accordion-trigger">
+                        Services
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="mobile-accordion">
+                        <div class="accordion-section">
+                            <h4 class="accordion-title">Skin & Face</h4>
+                            <ul class="accordion-links">
+                                <li><a href="#hydrafacial">HydraFacial</a></li>
+                                <li><a href="#chemical-peel">Chemical Peels</a></li>
+                                <li><a href="#microdermabrasion">Microdermabrasion</a></li>
+                                <li><a href="#led-therapy">LED Light Therapy</a></li>
+                            </ul>
+                        </div>
+                        <div class="accordion-section">
+                            <h4 class="accordion-title">Permanent Makeup</h4>
+                            <ul class="accordion-links">
+                                <li><a href="#microblading">Microblading</a></li>
+                                <li><a href="#powder-brows">Powder Brows</a></li>
+                                <li><a href="#lip-blush">Lip Blush</a></li>
+                                <li><a href="#eyeliner">Permanent Eyeliner</a></li>
+                            </ul>
+                        </div>
+                        <div class="accordion-section">
+                            <h4 class="accordion-title">Spa & Body</h4>
+                            <ul class="accordion-links">
+                                <li><a href="#massage">Therapeutic Massage</a></li>
+                                <li><a href="#body-wrap">Body Wraps</a></li>
+                                <li><a href="#aromatherapy">Aromatherapy</a></li>
+                                <li><a href="#hot-stone">Hot Stone Therapy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#gallery" class="mobile-nav-link">Gallery</a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#testimonials" class="mobile-nav-link">Testimonials</a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#contact" class="mobile-nav-link">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<!-- Overlay for mobile menu -->
+<div class="mobile-overlay"></div>
+    
     <!-- HERO SECTION -->
     <section class="hero">
         <!-- Video Collage Background -->
