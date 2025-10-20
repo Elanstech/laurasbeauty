@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // Log initialization (remove in production)
-    console.log('🌿 Spa Header with Refined Mega Menu initialized successfully');
+    console.log('🌿 Spa Header Refined Mega Menu initialized successfully');
 });
 
 // ============================================
