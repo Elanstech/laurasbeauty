@@ -8,7 +8,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Montserrat:wght@400;500;600&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
     
     <!-- Swiper CSS for Mobile -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
@@ -32,402 +32,403 @@
         </div>
     </div>
 
-<!-- HEADER SECTION -->
-<header class="spa-header">
-    <div class="header-inner">
-        
-        <!-- Logo -->
-        <div class="header-logo">
-            <img src="images/logo1.png" alt="Laura's Beauty Touch Logo" class="header-logo-image">
-        </div>
+    <!-- HEADER SECTION -->
+    <header class="spa-header">
+        <div class="header-inner">
+            
+            <!-- Logo -->
+            <div class="header-logo">
+                <img src="images/logo1.png" alt="Laura's Beauty Touch Logo" class="header-logo-image">
+            </div>
 
-        <!-- Desktop Navigation -->
-        <nav class="header-nav">
-            <ul class="nav-list">
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">About</a>
-                </li>
-                <li class="nav-item has-mega-menu">
-                    <a href="#services" class="nav-link">
-                        Services
-                        <span class="nav-dropdown-icon">▼</span>
-                    </a>
-                    
-                    <!-- Mega Menu -->
-                    <div class="mega-menu">
-                        <div class="mega-menu-inner">
-                            <div class="mega-menu-bg"></div>
-                            
-                            <div class="mega-menu-header">
-                                <h3 class="mega-menu-title">Our Services</h3>
-                                <p class="mega-menu-subtitle">Discover the perfect treatment for you</p>
-                            </div>
-                            
-                            <div class="mega-menu-content">
-                                <!-- Column 1 -->
-                                <div class="mega-column">
-                                    <a href="#face-treatments" class="mega-service-card">
-                                        <span class="service-icon">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                                <path d="M12 2C12 2 8 4 8 8C8 10 9 11 9 13C9 15 7 16 7 18C7 20 9 22 12 22C15 22 17 20 17 18C17 16 15 15 15 13C15 11 16 10 16 8C16 4 12 2 12 2Z"/>
-                                            </svg>
-                                        </span>
-                                        <span class="service-name">Face Treatments</span>
-                                        <span class="service-arrow">→</span>
-                                    </a>
-                                    
-                                    <a href="#permanent-makeup" class="mega-service-card">
-                                        <span class="service-icon">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                                <path d="M20 6L9 17L4 12"/>
-                                                <circle cx="18" cy="5" r="3"/>
-                                            </svg>
-                                        </span>
-                                        <span class="service-name">Permanent Make Up</span>
-                                        <span class="service-arrow">→</span>
-                                    </a>
-                                    
-                                    <a href="#makeup" class="mega-service-card">
-                                        <span class="service-icon">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                                <circle cx="12" cy="12" r="3"/>
-                                                <path d="M12 1v6m0 6v6m8.66-9H15m-6 0H2.34"/>
-                                            </svg>
-                                        </span>
-                                        <span class="service-name">Make Up</span>
-                                        <span class="service-arrow">→</span>
-                                    </a>
-                                    
-                                    <a href="#addons" class="mega-service-card">
-                                        <span class="service-icon">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                                            </svg>
-                                        </span>
-                                        <span class="service-name">Add On's</span>
-                                        <span class="service-arrow">→</span>
-                                    </a>
-                                    
-                                    <a href="#body-treatments" class="mega-service-card">
-                                        <span class="service-icon">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                                <path d="M12 2C10.3431 2 9 3.34315 9 5V7C9 8.65685 10.3431 10 12 10C13.6569 10 15 8.65685 15 7V5C15 3.34315 13.6569 2 12 2Z"/>
-                                                <path d="M5 9C5 9 6 10 6 12V19C6 20.1046 6.89543 21 8 21H16C17.1046 21 18 20.1046 18 19V12C18 10 19 9 19 9"/>
-                                            </svg>
-                                        </span>
-                                        <span class="service-name">Body Treatments</span>
-                                        <span class="service-arrow">→</span>
-                                    </a>
-                                    
-                                    <a href="#laser" class="mega-service-card">
-                                        <span class="service-icon">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                                <path d="M12 2L14 8L20 10L14 12L12 18L10 12L4 10L10 8L12 2Z"/>
-                                                <circle cx="12" cy="12" r="2"/>
-                                            </svg>
-                                        </span>
-                                        <span class="service-name">Laser</span>
-                                        <span class="service-arrow">→</span>
-                                    </a>
+            <!-- Desktop Navigation -->
+            <nav class="header-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item has-mega-menu">
+                        <a href="#services" class="nav-link">
+                            Services
+                            <span class="nav-dropdown-icon">▼</span>
+                        </a>
+                        
+                        <!-- Mega Menu -->
+                        <div class="mega-menu">
+                            <div class="mega-menu-inner">
+                                <div class="mega-menu-bg"></div>
+                                
+                                <div class="mega-menu-header">
+                                    <h3 class="mega-menu-title">Our Services</h3>
+                                    <p class="mega-menu-subtitle">Discover the perfect treatment for you</p>
                                 </div>
+                                
+                                <div class="mega-menu-content">
+                                    <!-- Column 1 -->
+                                    <div class="mega-column">
+                                        <a href="#face-treatments" class="mega-service-card">
+                                            <span class="service-icon">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                                    <path d="M12 2C12 2 8 4 8 8C8 10 9 11 9 13C9 15 7 16 7 18C7 20 9 22 12 22C15 22 17 20 17 18C17 16 15 15 15 13C15 11 16 10 16 8C16 4 12 2 12 2Z"/>
+                                                </svg>
+                                            </span>
+                                            <span class="service-name">Face Treatments</span>
+                                            <span class="service-arrow">→</span>
+                                        </a>
+                                        
+                                        <a href="#permanent-makeup" class="mega-service-card">
+                                            <span class="service-icon">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                                    <path d="M20 6L9 17L4 12"/>
+                                                    <circle cx="18" cy="5" r="3"/>
+                                                </svg>
+                                            </span>
+                                            <span class="service-name">Permanent Make Up</span>
+                                            <span class="service-arrow">→</span>
+                                        </a>
+                                        
+                                        <a href="#makeup" class="mega-service-card">
+                                            <span class="service-icon">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                                    <circle cx="12" cy="12" r="3"/>
+                                                    <path d="M12 1v6m0 6v6m8.66-9H15m-6 0H2.34"/>
+                                                </svg>
+                                            </span>
+                                            <span class="service-name">Make Up</span>
+                                            <span class="service-arrow">→</span>
+                                        </a>
+                                        
+                                        <a href="#addons" class="mega-service-card">
+                                            <span class="service-icon">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                                </svg>
+                                            </span>
+                                            <span class="service-name">Add On's</span>
+                                            <span class="service-arrow">→</span>
+                                        </a>
+                                        
+                                        <a href="#body-treatments" class="mega-service-card">
+                                            <span class="service-icon">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                                    <path d="M12 2C10.3431 2 9 3.34315 9 5V7C9 8.65685 10.3431 10 12 10C13.6569 10 15 8.65685 15 7V5C15 3.34315 13.6569 2 12 2Z"/>
+                                                    <path d="M5 9C5 9 6 10 6 12V19C6 20.1046 6.89543 21 8 21H16C17.1046 21 18 20.1046 18 19V12C18 10 19 9 19 9"/>
+                                                </svg>
+                                            </span>
+                                            <span class="service-name">Body Treatments</span>
+                                            <span class="service-arrow">→</span>
+                                        </a>
+                                        
+                                        <a href="#laser" class="mega-service-card">
+                                            <span class="service-icon">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                                    <path d="M12 2L14 8L20 10L14 12L12 18L10 12L4 10L10 8L12 2Z"/>
+                                                    <circle cx="12" cy="12" r="2"/>
+                                                </svg>
+                                            </span>
+                                            <span class="service-name">Laser</span>
+                                            <span class="service-arrow">→</span>
+                                        </a>
+                                    </div>
 
-                                <!-- Column 2 -->
-                                <div class="mega-column">
-                                    <a href="#wax" class="mega-service-card">
-                                        <span class="service-icon">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                                <path d="M12 2L2 7L12 12L22 7L12 2Z"/>
-                                                <path d="M2 17L12 22L22 17"/>
-                                                <path d="M2 12L12 17L22 12"/>
-                                            </svg>
-                                        </span>
-                                        <span class="service-name">Wax</span>
-                                        <span class="service-arrow">→</span>
-                                    </a>
-                                    
-                                    <a href="#lashes" class="mega-service-card">
-                                        <span class="service-icon">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                                <circle cx="12" cy="12" r="3"/>
-                                                <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-                                            </svg>
-                                        </span>
-                                        <span class="service-name">Lashes</span>
-                                        <span class="service-arrow">→</span>
-                                    </a>
-                                    
-                                    <a href="#nails" class="mega-service-card">
-                                        <span class="service-icon">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                                <path d="M12 2L15.5 8.5L22 9.5L17 14.5L18 21L12 18L6 21L7 14.5L2 9.5L8.5 8.5L12 2Z"/>
-                                            </svg>
-                                        </span>
-                                        <span class="service-name">Nails</span>
-                                        <span class="service-arrow">→</span>
-                                    </a>
-                                    
-                                    <a href="#packages" class="mega-service-card highlighted">
-                                        <span class="service-icon">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                                <path d="M20 7H4C2.89543 7 2 7.89543 2 9V19C2 20.1046 2.89543 21 4 21H20C21.1046 21 22 20.1046 22 19V9C22 7.89543 21.1046 7 20 7Z"/>
-                                                <path d="M16 7V5C16 3.89543 15.1046 3 14 3H10C8.89543 3 8 3.89543 8 5V7"/>
-                                                <path d="M12 11V17"/>
-                                                <path d="M9 14H15"/>
-                                            </svg>
-                                        </span>
-                                        <span class="service-name">Packages</span>
-                                        <span class="service-arrow">→</span>
-                                    </a>
-                                    
-                                    <a href="#specials" class="mega-service-card highlighted">
-                                        <span class="service-icon">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                                            </svg>
-                                        </span>
-                                        <span class="service-name">Specials</span>
-                                        <span class="service-badge">New</span>
-                                        <span class="service-arrow">→</span>
-                                    </a>
+                                    <!-- Column 2 -->
+                                    <div class="mega-column">
+                                        <a href="#wax" class="mega-service-card">
+                                            <span class="service-icon">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                                    <path d="M12 2L2 7L12 12L22 7L12 2Z"/>
+                                                    <path d="M2 17L12 22L22 17"/>
+                                                    <path d="M2 12L12 17L22 12"/>
+                                                </svg>
+                                            </span>
+                                            <span class="service-name">Wax</span>
+                                            <span class="service-arrow">→</span>
+                                        </a>
+                                        
+                                        <a href="#lashes" class="mega-service-card">
+                                            <span class="service-icon">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                                    <circle cx="12" cy="12" r="3"/>
+                                                    <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                                                </svg>
+                                            </span>
+                                            <span class="service-name">Lashes</span>
+                                            <span class="service-arrow">→</span>
+                                        </a>
+                                        
+                                        <a href="#nails" class="mega-service-card">
+                                            <span class="service-icon">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                                    <path d="M12 2L15.5 8.5L22 9.5L17 14.5L18 21L12 18L6 21L7 14.5L2 9.5L8.5 8.5L12 2Z"/>
+                                                </svg>
+                                            </span>
+                                            <span class="service-name">Nails</span>
+                                            <span class="service-arrow">→</span>
+                                        </a>
+                                        
+                                        <a href="#packages" class="mega-service-card highlighted">
+                                            <span class="service-icon">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                                    <path d="M20 7H4C2.89543 7 2 7.89543 2 9V19C2 20.1046 2.89543 21 4 21H20C21.1046 21 22 20.1046 22 19V9C22 7.89543 21.1046 7 20 7Z"/>
+                                                    <path d="M16 7V5C16 3.89543 15.1046 3 14 3H10C8.89543 3 8 3.89543 8 5V7"/>
+                                                    <path d="M12 11V17"/>
+                                                    <path d="M9 14H15"/>
+                                                </svg>
+                                            </span>
+                                            <span class="service-name">Packages</span>
+                                            <span class="service-arrow">→</span>
+                                        </a>
+                                        
+                                        <a href="#specials" class="mega-service-card highlighted">
+                                            <span class="service-icon">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                                </svg>
+                                            </span>
+                                            <span class="service-name">Specials</span>
+                                            <span class="service-badge">New</span>
+                                            <span class="service-arrow">→</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a href="#gallery" class="nav-link">Gallery</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#testimonials" class="nav-link">Testimonials</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
-                </li>
-            </ul>
-        </nav>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#gallery" class="nav-link">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#testimonials" class="nav-link">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+            </nav>
 
-        <!-- Mobile Menu Toggle (Leaf Hamburger) -->
-        <button class="mobile-menu-toggle" aria-label="Toggle menu">
-            <span class="leaf-line leaf-line-1"></span>
-            <span class="leaf-line leaf-line-2"></span>
-            <span class="leaf-line leaf-line-3"></span>
-        </button>
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span class="leaf-line leaf-line-1"></span>
+                <span class="leaf-line leaf-line-2"></span>
+                <span class="leaf-line leaf-line-3"></span>
+            </button>
 
-    </div>
-</header>
-
-<!-- Mobile Menu Drawer -->
-<div class="mobile-drawer">
-    <div class="mobile-drawer-inner">
-        
-        <!-- Logo in Drawer -->
-        <div class="drawer-logo">
-            <img src="images/logo1.png" alt="Laura's Beauty Touch Logo" class="drawer-logo-image">
         </div>
+    </header>
 
-        <!-- Mobile Navigation -->
-        <nav class="mobile-nav">
-            <ul class="mobile-nav-list">
-                <li class="mobile-nav-item">
-                    <a href="#about" class="mobile-nav-link">About</a>
-                </li>
-                <li class="mobile-nav-item has-accordion">
-                    <button class="mobile-nav-link accordion-trigger">
-                        Services
-                        <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="mobile-accordion">
-                        <ul class="accordion-links">
-                            <li><a href="#face-treatments">Face Treatments</a></li>
-                            <li><a href="#permanent-makeup">Permanent Make Up</a></li>
-                            <li><a href="#makeup">Make Up</a></li>
-                            <li><a href="#addons">Add On's</a></li>
-                            <li><a href="#body-treatments">Body Treatments</a></li>
-                            <li><a href="#laser">Laser</a></li>
-                            <li><a href="#wax">Wax</a></li>
-                            <li><a href="#lashes">Lashes</a></li>
-                            <li><a href="#nails">Nails</a></li>
-                            <li><a href="#packages">Packages</a></li>
-                            <li><a href="#specials">Specials</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="mobile-nav-item">
-                    <a href="#gallery" class="mobile-nav-link">Gallery</a>
-                </li>
-                <li class="mobile-nav-item">
-                    <a href="#testimonials" class="nav-link">Testimonials</a>
-                </li>
-                <li class="mobile-nav-item">
-                    <a href="#contact" class="mobile-nav-link">Contact</a>
-                </li>
-            </ul>
-        </nav>
+    <!-- Mobile Menu Drawer -->
+    <div class="mobile-drawer">
+        <div class="mobile-drawer-inner">
+            
+            <!-- Logo in Drawer -->
+            <div class="drawer-logo">
+                <img src="images/logo1.png" alt="Laura's Beauty Touch Logo" class="drawer-logo-image">
+            </div>
 
+            <!-- Mobile Navigation -->
+            <nav class="mobile-nav">
+                <ul class="mobile-nav-list">
+                    <li class="mobile-nav-item">
+                        <a href="#about" class="mobile-nav-link">About</a>
+                    </li>
+                    <li class="mobile-nav-item has-accordion">
+                        <button class="mobile-nav-link accordion-trigger">
+                            Services
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="mobile-accordion">
+                            <ul class="accordion-links">
+                                <li><a href="#face-treatments">Face Treatments</a></li>
+                                <li><a href="#permanent-makeup">Permanent Make Up</a></li>
+                                <li><a href="#makeup">Make Up</a></li>
+                                <li><a href="#addons">Add On's</a></li>
+                                <li><a href="#body-treatments">Body Treatments</a></li>
+                                <li><a href="#laser">Laser</a></li>
+                                <li><a href="#wax">Wax</a></li>
+                                <li><a href="#lashes">Lashes</a></li>
+                                <li><a href="#nails">Nails</a></li>
+                                <li><a href="#packages">Packages</a></li>
+                                <li><a href="#specials">Specials</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="#gallery" class="mobile-nav-link">Gallery</a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="#testimonials" class="mobile-nav-link">Testimonials</a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="#contact" class="mobile-nav-link">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
     </div>
-</div>
 
-<!-- Overlay for mobile menu -->
-<div class="mobile-overlay"></div>
+    <!-- Overlay for mobile menu -->
+    <div class="mobile-overlay"></div>
     
-<!-- HERO SECTION -->
-<section class="hero" id="hero">
-    
-    <!-- Desktop Video Collage -->
-    <div class="video-collage">
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
         
-        <!-- Left Panel - Body Scrub -->
-        <div class="video-container video-1" data-panel="left">
-            <video class="hero-video" autoplay muted loop playsinline poster="images/poster-scrub.jpg">
-                <source src="https://cdn.coverr.co/videos/coverr-spa-stones-and-candles-5462/1080p.mp4" type="video/mp4">
-                Your browser does not support video playback.
-            </video>
-            <div class="video-overlay"></div>
+        <!-- Desktop Video Collage -->
+        <div class="video-collage">
+            
+            <!-- Left Panel - Body Scrub -->
+            <div class="video-container video-1" data-panel="left">
+                <video class="hero-video" autoplay muted loop playsinline poster="images/poster-scrub.jpg">
+                    <source src="https://cdn.coverr.co/videos/coverr-spa-stones-and-candles-5462/1080p.mp4" type="video/mp4">
+                    Your browser does not support video playback.
+                </video>
+                <div class="video-overlay"></div>
+            </div>
+
+            <!-- Center Panel - Facial (Main Focus) -->
+            <div class="video-container video-2" data-panel="center">
+                <video class="hero-video" autoplay muted loop playsinline poster="images/poster-facial.jpg">
+                    <source src="https://cdn.coverr.co/videos/coverr-woman-relaxing-at-spa-4521/1080p.mp4" type="video/mp4">
+                    Your browser does not support video playback.
+                </video>
+                <div class="video-overlay"></div>
+            </div>
+
+            <!-- Bottom-Right Panel - Massage -->
+            <div class="video-container video-3" data-panel="right">
+                <video class="hero-video" autoplay muted loop playsinline poster="images/poster-massage.jpg">
+                    <source src="https://cdn.coverr.co/videos/coverr-relaxing-massage-7896/1080p.mp4" type="video/mp4">
+                    Your browser does not support video playback.
+                </video>
+                <div class="video-overlay"></div>
+            </div>
+
         </div>
 
-        <!-- Center Panel - Facial (Main Focus) -->
-        <div class="video-container video-2" data-panel="center">
-            <video class="hero-video" autoplay muted loop playsinline poster="images/poster-facial.jpg">
-                <source src="https://cdn.coverr.co/videos/coverr-woman-relaxing-at-spa-4521/1080p.mp4" type="video/mp4">
-                Your browser does not support video playback.
-            </video>
-            <div class="video-overlay"></div>
-        </div>
+        <!-- Mobile Video Swiper -->
+        <div class="mobile-video-swiper">
+            <div class="swiper hero-swiper">
+                <div class="swiper-wrapper">
+                    
+                    <!-- Slide 1 - Facial -->
+                    <div class="swiper-slide">
+                        <video class="mobile-hero-video" autoplay muted loop playsinline poster="images/poster-facial.jpg">
+                            <source src="https://cdn.coverr.co/videos/coverr-woman-relaxing-at-spa-4521/1080p.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay"></div>
+                    </div>
 
-        <!-- Bottom-Right Panel - Massage -->
-        <div class="video-container video-3" data-panel="right">
-            <video class="hero-video" autoplay muted loop playsinline poster="images/poster-massage.jpg">
-                <source src="https://cdn.coverr.co/videos/coverr-relaxing-massage-7896/1080p.mp4" type="video/mp4">
-                Your browser does not support video playback.
-            </video>
-            <div class="video-overlay"></div>
-        </div>
+                    <!-- Slide 2 - Body Scrub -->
+                    <div class="swiper-slide">
+                        <video class="mobile-hero-video" autoplay muted loop playsinline poster="images/poster-scrub.jpg">
+                            <source src="https://cdn.coverr.co/videos/coverr-spa-stones-and-candles-5462/1080p.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay"></div>
+                    </div>
 
-    </div>
+                    <!-- Slide 3 - Massage -->
+                    <div class="swiper-slide">
+                        <video class="mobile-hero-video" autoplay muted loop playsinline poster="images/poster-massage.jpg">
+                            <source src="https://cdn.coverr.co/videos/coverr-relaxing-massage-7896/1080p.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay"></div>
+                    </div>
 
-    <!-- Mobile Video Swiper -->
-    <div class="mobile-video-swiper">
-        <div class="swiper hero-swiper">
-            <div class="swiper-wrapper">
+                </div>
                 
-                <!-- Slide 1 - Facial -->
-                <div class="swiper-slide">
-                    <video class="mobile-hero-video" autoplay muted loop playsinline poster="images/poster-facial.jpg">
-                        <source src="https://cdn.coverr.co/videos/coverr-woman-relaxing-at-spa-4521/1080p.mp4" type="video/mp4">
-                    </video>
-                    <div class="video-overlay"></div>
+                <!-- Swiper Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+        <!-- Background Gradient Layers -->
+        <div class="background-layers">
+            <div class="bg-layer layer-1 active"></div>
+            <div class="bg-layer layer-2"></div>
+            <div class="bg-layer layer-3"></div>
+        </div>
+
+        <!-- Frosted Glass Overlay Panel -->
+        <div class="glass-overlay">
+            <div class="glass-panel">
+                
+                <!-- Brand Logo -->
+                <div class="brand-logo">
+                    <img src="images/logo1.png" alt="Laura's Beauty Touch" class="logo-image">
                 </div>
 
-                <!-- Slide 2 - Body Scrub -->
-                <div class="swiper-slide">
-                    <video class="mobile-hero-video" autoplay muted loop playsinline poster="images/poster-scrub.jpg">
-                        <source src="https://cdn.coverr.co/videos/coverr-spa-stones-and-candles-5462/1080p.mp4" type="video/mp4">
-                    </video>
-                    <div class="video-overlay"></div>
+                <!-- Decorative Leaf Divider -->
+                <div class="leaf-divider">
+                    <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 10 Q 20 5, 30 10 T 50 10 T 70 10 T 90 10" 
+                              stroke="currentColor" 
+                              fill="none" 
+                              stroke-width="1.5" 
+                              opacity="0.5"/>
+                    </svg>
                 </div>
 
-                <!-- Slide 3 - Massage -->
-                <div class="swiper-slide">
-                    <video class="mobile-hero-video" autoplay muted loop playsinline poster="images/poster-massage.jpg">
-                        <source src="https://cdn.coverr.co/videos/coverr-relaxing-massage-7896/1080p.mp4" type="video/mp4">
-                    </video>
-                    <div class="video-overlay"></div>
+                <!-- Dynamic Hero Content -->
+                <div class="hero-content-wrapper">
+                    <h1 class="hero-headline" id="heroHeadline">
+                        Relax. Restore. Reveal Your Glow.
+                    </h1>
+                    <p class="hero-subtitle" id="heroSubtitle">
+                        Experience natural luxury in every treatment
+                    </p>
                 </div>
 
+                <!-- Rotating Service Tags -->
+                <div class="service-tags">
+                    <span class="tag">Facials</span>
+                    <span class="tag-separator">·</span>
+                    <span class="tag">Body Scrubs</span>
+                    <span class="tag-separator">·</span>
+                    <span class="tag">Massages</span>
+                    <span class="tag-separator">·</span>
+                    <span class="tag">Permanent Makeup</span>
+                </div>
+
+                <!-- Primary CTA Button -->
+                <div class="cta-container">
+                    <button class="cta-button" id="heroCTA">
+                        <span class="cta-text">Book Your Appointment</span>
+                        <span class="cta-icon">→</span>
+                        <span class="cta-glow"></span>
+                    </button>
+                </div>
+
+                <!-- Secondary Explore Link -->
+                <a href="#services" class="explore-link">
+                    <span>Explore Our Services</span>
+                    <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+
             </div>
-            
-            <!-- Swiper Pagination -->
-            <div class="swiper-pagination"></div>
         </div>
-    </div>
 
-    <!-- Background Gradient Layers (Subtle Animation) -->
-    <div class="background-layers">
-        <div class="bg-layer layer-1 active"></div>
-        <div class="bg-layer layer-2"></div>
-        <div class="bg-layer layer-3"></div>
-    </div>
-
-    <!-- Frosted Glass Overlay Panel -->
-    <div class="glass-overlay">
-        <div class="glass-panel">
-            
-            <!-- Brand Logo -->
-            <div class="brand-logo">
-                <img src="images/logo1.png" alt="Laura's Beauty Touch" class="logo-image">
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator" id="scrollIndicator">
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
             </div>
-
-            <!-- Decorative Leaf Divider -->
-            <div class="leaf-divider">
-                <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 10 Q 20 5, 30 10 T 50 10 T 70 10 T 90 10" 
-                          stroke="currentColor" 
-                          fill="none" 
-                          stroke-width="1.5" 
-                          opacity="0.5"/>
-                </svg>
-            </div>
-
-            <!-- Dynamic Hero Content -->
-            <div class="hero-content-wrapper">
-                <h1 class="hero-headline" id="heroHeadline">
-                    Relax. Restore. Reveal Your Glow.
-                </h1>
-                <p class="hero-subtitle" id="heroSubtitle">
-                    Experience natural luxury in every treatment
-                </p>
-            </div>
-
-            <!-- Rotating Service Tags -->
-            <div class="service-tags">
-                <span class="tag">Facials</span>
-                <span class="tag-separator">·</span>
-                <span class="tag">Body Scrubs</span>
-                <span class="tag-separator">·</span>
-                <span class="tag">Massages</span>
-                <span class="tag-separator">·</span>
-                <span class="tag">Permanent Makeup</span>
-            </div>
-
-            <!-- Primary CTA Button -->
-            <div class="cta-container">
-                <button class="cta-button" id="heroCTA">
-                    <span class="cta-text">Book Your Appointment</span>
-                    <span class="cta-icon">→</span>
-                    <span class="cta-glow"></span>
-                </button>
-            </div>
-
-            <!-- Secondary Explore Link -->
-            <a href="#services" class="explore-link">
-                <span>Explore Our Services</span>
-                <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </a>
-
+            <span class="scroll-text">Scroll to Discover</span>
         </div>
-    </div>
 
-    <!-- Scroll Indicator -->
-    <div class="scroll-indicator" id="scrollIndicator">
-        <div class="scroll-mouse">
-            <div class="scroll-wheel"></div>
+        <!-- Floating Organic Elements -->
+        <div class="floating-elements">
+            <div class="float-element element-1">🌿</div>
+            <div class="float-element element-2">✨</div>
+            <div class="float-element element-3">🍃</div>
+            <div class="float-element element-4">🌸</div>
+            <div class="float-element element-5">🌺</div>
         </div>
-        <span class="scroll-text">Scroll to Discover</span>
-    </div>
 
-    <!-- Floating Organic Elements -->
-    <div class="floating-elements">
-        <div class="float-element element-1">🌿</div>
-        <div class="float-element element-2">✨</div>
-        <div class="float-element element-3">🍃</div>
-        <div class="float-element element-4">🌸</div>
-        <div class="float-element element-5">🌺</div>
-    </div>
-</section>
+    </section>
 
-
+    <!-- Add more sections here (About, Services, Gallery, etc.) -->
     
     <!-- GSAP Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
