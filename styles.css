@@ -222,13 +222,13 @@ body {
 }
 
 .header-logo-image {
-    height: 280px;
+    height: 200px;
     width: auto;
     transition: all 0.6s ease;
 }
 
 .spa-header.scrolled .header-logo-image {
-    height: 250px;
+    height: 150px;
 }
 
 @keyframes logoFloat {
