@@ -1,4 +1,9 @@
 // ============================================
+// LAURA'S BEAUTY TOUCH - MAIN JAVASCRIPT
+// Natural Luxury Spa Experience
+// ============================================
+
+// ============================================
 // PRELOADER SECTION
 // ============================================
 class PreloaderManager {
@@ -8,11 +13,24 @@ class PreloaderManager {
     }
 
     init() {
+        // Hide preloader on window load
         window.addEventListener('load', () => {
-            setTimeout(() => {
-                this.hidePreloader();
-            }, 2200);
+            this.startHideSequence();
         });
+
+        // Failsafe: hide preloader after 4 seconds regardless
+        setTimeout(() => {
+            if (this.preloader && !this.preloader.classList.contains('hidden')) {
+                console.log('⏱️ Failsafe triggered: Hiding preloader');
+                this.startHideSequence();
+            }
+        }, 4000);
+    }
+
+    startHideSequence() {
+        setTimeout(() => {
+            this.hidePreloader();
+        }, 2200);
     }
 
     hidePreloader() {
@@ -21,6 +39,7 @@ class PreloaderManager {
             setTimeout(() => {
                 this.preloader.style.display = 'none';
                 document.body.style.overflow = 'auto';
+                console.log('✅ Preloader hidden successfully');
             }, 500);
         }
     }
@@ -75,7 +94,6 @@ class SpaHeaderManager {
             
             if (!megaMenu) return;
 
-            // Mouse enter on nav item or mega menu
             const handleMouseEnter = () => {
                 clearTimeout(this.megaMenuTimeout);
                 megaMenu.style.opacity = '1';
@@ -83,7 +101,6 @@ class SpaHeaderManager {
                 megaMenu.style.pointerEvents = 'all';
             };
 
-            // Mouse leave with delay
             const handleMouseLeave = () => {
                 this.megaMenuTimeout = setTimeout(() => {
                     megaMenu.style.opacity = '0';
@@ -92,11 +109,8 @@ class SpaHeaderManager {
                 }, 200);
             };
 
-            // Attach events to nav item
             item.addEventListener('mouseenter', handleMouseEnter);
             item.addEventListener('mouseleave', handleMouseLeave);
-
-            // Attach events to mega menu itself
             megaMenu.addEventListener('mouseenter', handleMouseEnter);
             megaMenu.addEventListener('mouseleave', handleMouseLeave);
         });
@@ -105,17 +119,14 @@ class SpaHeaderManager {
     handleMobileMenu() {
         if (!this.mobileToggle || !this.mobileDrawer || !this.mobileOverlay) return;
 
-        // Open/close drawer on toggle click
         this.mobileToggle.addEventListener('click', () => {
             this.toggleMobileMenu();
         });
 
-        // Close drawer when overlay is clicked
         this.mobileOverlay.addEventListener('click', () => {
             this.closeMobileMenu();
         });
 
-        // Close drawer when any nav link is clicked (except accordion trigger)
         const mobileLinks = document.querySelectorAll('.mobile-nav-link:not(.accordion-trigger), .accordion-links a');
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -123,7 +134,6 @@ class SpaHeaderManager {
             });
         });
 
-        // Close drawer on Escape key press
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.mobileDrawer.classList.contains('active')) {
                 this.closeMobileMenu();
@@ -136,7 +146,6 @@ class SpaHeaderManager {
         this.mobileDrawer.classList.toggle('active');
         this.mobileOverlay.classList.toggle('active');
         
-        // Prevent body scroll when menu is open
         if (this.mobileDrawer.classList.contains('active')) {
             document.body.style.overflow = 'hidden';
         } else {
@@ -150,7 +159,6 @@ class SpaHeaderManager {
         this.mobileOverlay.classList.remove('active');
         document.body.style.overflow = '';
         
-        // Close all accordions when menu closes
         this.accordionTriggers.forEach(trigger => {
             trigger.classList.remove('active');
             const accordion = trigger.nextElementSibling;
@@ -168,7 +176,6 @@ class SpaHeaderManager {
                 const accordion = trigger.nextElementSibling;
                 const isActive = trigger.classList.contains('active');
                 
-                // Close all other accordions first
                 this.accordionTriggers.forEach(otherTrigger => {
                     if (otherTrigger !== trigger) {
                         otherTrigger.classList.remove('active');
@@ -179,7 +186,6 @@ class SpaHeaderManager {
                     }
                 });
                 
-                // Toggle current accordion
                 if (isActive) {
                     trigger.classList.remove('active');
                     accordion.classList.remove('active');
@@ -207,7 +213,6 @@ class SpaHeaderManager {
             link.addEventListener('click', (e) => {
                 const href = link.getAttribute('href');
                 
-                // Only handle hash links (internal anchor links)
                 if (href && href.startsWith('#')) {
                     const targetId = href.substring(1);
                     const targetElement = document.getElementById(targetId);
@@ -215,7 +220,6 @@ class SpaHeaderManager {
                     if (targetElement) {
                         e.preventDefault();
                         
-                        // Calculate offset accounting for fixed header
                         const headerHeight = this.header.offsetHeight;
                         const targetPosition = targetElement.offsetTop - headerHeight - 20;
                         
@@ -265,40 +269,34 @@ class AdvancedHeroManager {
         this.setupCTAButton();
         this.setupScrollIndicator();
         this.initializeMobileSwiper();
-        this.setupDynamicContent();
         this.setupIntersectionObserver();
         this.setupResponsiveHandling();
     }
 
     // ============================================
-    // VIDEO PLAYBACK MANAGEMENT
+    // VIDEO PLAYBACK
     // ============================================
     
     setupVideoPlayback() {
         const allVideos = [...this.videos, ...this.mobileVideos];
         
         allVideos.forEach((video, index) => {
-            // Optimize video loading
             video.preload = index === 0 ? 'auto' : 'metadata';
             
-            // Handle video load and play
             video.addEventListener('loadedmetadata', () => {
                 video.play().catch(err => {
                     console.log('Video autoplay prevented:', err);
-                    // Retry on user interaction
                     document.addEventListener('click', () => {
                         video.play().catch(() => {});
                     }, { once: true });
                 });
             });
 
-            // Loop videos smoothly
             video.addEventListener('ended', () => {
                 video.currentTime = 0;
                 video.play();
             });
 
-            // Pause videos when out of view
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -312,7 +310,6 @@ class AdvancedHeroManager {
             observer.observe(video);
         });
 
-        // Reduce motion preference support
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             allVideos.forEach(video => {
                 video.pause();
@@ -326,11 +323,9 @@ class AdvancedHeroManager {
     // ============================================
     
     initializeGSAP() {
-        // Register GSAP plugins
         if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
             gsap.registerPlugin(ScrollTrigger);
 
-            // Hero entrance animation
             const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
             tl.from(this.videoContainers, {
@@ -380,7 +375,6 @@ class AdvancedHeroManager {
                 duration: 0.6
             }, '-=0.3');
 
-            // Parallax scroll animations
             gsap.to(this.videoContainers, {
                 yPercent: 15,
                 ease: 'none',
@@ -392,7 +386,6 @@ class AdvancedHeroManager {
                 }
             });
 
-            // Glass panel subtle movement
             gsap.to(this.glassPanel, {
                 y: -50,
                 ease: 'none',
@@ -404,7 +397,6 @@ class AdvancedHeroManager {
                 }
             });
 
-            // Floating elements parallax
             this.floatingElements.forEach((element, index) => {
                 const speed = 0.5 + (index * 0.2);
                 gsap.to(element, {
@@ -419,11 +411,13 @@ class AdvancedHeroManager {
                     }
                 });
             });
+        } else {
+            console.warn('⚠️ GSAP not loaded - animations disabled');
         }
     }
 
     // ============================================
-    // BACKGROUND LAYER ROTATION
+    // BACKGROUND ROTATION
     // ============================================
     
     setupBackgroundRotation() {
@@ -448,16 +442,13 @@ class AdvancedHeroManager {
             const scrolled = window.pageYOffset;
             const heroHeight = this.hero.offsetHeight;
             
-            // Only apply parallax when hero is in view
             if (scrolled < heroHeight) {
-                // Video containers parallax
                 this.videoContainers.forEach((container, index) => {
                     const speed = 0.3 + (index * 0.1);
                     const yPos = scrolled * speed;
                     container.style.transform = `translateY(${yPos}px)`;
                 });
 
-                // Floating elements parallax with rotation
                 this.floatingElements.forEach((element, index) => {
                     const speed = 0.15 + (index * 0.08);
                     const yPos = scrolled * speed;
@@ -485,22 +476,19 @@ class AdvancedHeroManager {
         this.floatingElements.forEach((element, index) => {
             const randomDelay = Math.random() * 3;
             const randomDuration = 6 + Math.random() * 4;
-            const randomX = (Math.random() - 0.5) * 40;
             
             element.style.animationDelay = `${randomDelay}s`;
             element.style.animationDuration = `${randomDuration}s`;
-            element.style.setProperty('--random-x', `${randomX}px`);
         });
     }
 
     // ============================================
-    // CTA BUTTON INTERACTIONS
+    // CTA BUTTON
     // ============================================
     
     setupCTAButton() {
         if (!this.ctaButton) return;
 
-        // Ripple effect
         this.ctaButton.addEventListener('click', (e) => {
             const ripple = document.createElement('span');
             ripple.classList.add('ripple-effect');
@@ -523,17 +511,14 @@ class AdvancedHeroManager {
             `;
             
             this.ctaButton.appendChild(ripple);
-            
             setTimeout(() => ripple.remove(), 800);
 
-            // Scroll to contact section
             const contactSection = document.querySelector('#contact');
             if (contactSection) {
                 contactSection.scrollIntoView({ behavior: 'smooth' });
             }
         });
 
-        // Magnetic button effect (desktop only)
         if (this.isDesktop) {
             const magnetic = (e) => {
                 const rect = this.ctaButton.getBoundingClientRect();
@@ -572,7 +557,6 @@ class AdvancedHeroManager {
             });
         });
 
-        // Hide on scroll
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
                 this.scrollIndicator.style.opacity = '0';
@@ -614,7 +598,6 @@ class AdvancedHeroManager {
             },
             on: {
                 slideChange: (swiper) => {
-                    // Play current video, pause others
                     this.mobileVideos.forEach((video, index) => {
                         if (index === swiper.realIndex) {
                             video.play().catch(() => {});
@@ -625,61 +608,8 @@ class AdvancedHeroManager {
                 }
             }
         });
-    }
 
-    // ============================================
-    // DYNAMIC CONTENT SYSTEM
-    // ============================================
-    
-    setupDynamicContent() {
-        if (!this.heroHeadline || !this.heroSubtitle) return;
-
-        const contentOptions = [
-            {
-                headline: 'Relax. Restore. Reveal Your Glow.',
-                subtitle: 'Experience natural luxury in every treatment'
-            },
-            {
-                headline: 'Your Journey to Radiance Begins Here.',
-                subtitle: 'Personalized treatments for your unique beauty'
-            },
-            {
-                headline: 'Embrace Nature\'s Touch.',
-                subtitle: 'Organic skincare meets modern luxury'
-            }
-        ];
-
-        let currentIndex = 0;
-
-        // Optional: Rotate content every 10 seconds
-        // Uncomment to enable dynamic text rotation
-        /*
-        setInterval(() => {
-            currentIndex = (currentIndex + 1) % contentOptions.length;
-            const content = contentOptions[currentIndex];
-            
-            // Fade out
-            if (typeof gsap !== 'undefined') {
-                gsap.to([this.heroHeadline, this.heroSubtitle], {
-                    opacity: 0,
-                    y: -20,
-                    duration: 0.6,
-                    stagger: 0.1,
-                    onComplete: () => {
-                        // Update text
-                        this.heroHeadline.textContent = content.headline;
-                        this.heroSubtitle.textContent = content.subtitle;
-                        
-                        // Fade in
-                        gsap.fromTo([this.heroHeadline, this.heroSubtitle], 
-                            { opacity: 0, y: 20 },
-                            { opacity: 1, y: 0, duration: 0.6, stagger: 0.1 }
-                        );
-                    }
-                });
-            }
-        }, 10000);
-        */
+        console.log('📱 Mobile Swiper initialized');
     }
 
     // ============================================
@@ -700,7 +630,6 @@ class AdvancedHeroManager {
             });
         }, observerOptions);
 
-        // Observe all hero elements
         const elementsToObserve = this.hero.querySelectorAll(
             '.glass-panel, .floating-elements, .scroll-indicator'
         );
@@ -722,20 +651,17 @@ class AdvancedHeroManager {
                 const wasDesktop = this.isDesktop;
                 this.isDesktop = window.innerWidth > 768;
                 
-                // Reinitialize if device type changed
                 if (wasDesktop !== this.isDesktop) {
                     if (!this.isDesktop && !this.swiper) {
                         this.initializeMobileSwiper();
                     }
                 }
 
-                // Update viewport height for mobile
                 const vh = window.innerHeight * 0.01;
                 document.documentElement.style.setProperty('--vh', `${vh}px`);
             }, 250);
         });
 
-        // Initial viewport height
         const vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}px`);
     }
@@ -745,6 +671,8 @@ class AdvancedHeroManager {
 // INITIALIZE ALL COMPONENTS
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('🌿 Laura\'s Beauty Touch - Initializing...');
+
     // Initialize Preloader
     const preloaderManager = new PreloaderManager();
     
@@ -754,7 +682,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize Hero
     const heroManager = new AdvancedHeroManager();
 
-    // Add ripple animation CSS dynamically
+    // Add ripple animation CSS
     const style = document.createElement('style');
     style.textContent = `
         @keyframes ripple {
@@ -770,13 +698,12 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.head.appendChild(style);
 
-    // Performance optimization for header
+    // Performance optimization
     const floatingElements = document.querySelectorAll('.header-logo, .header-logo-image');
     floatingElements.forEach(element => {
         element.style.willChange = 'transform';
     });
 
-    // Performance optimization for hero
     const heroVideos = document.querySelectorAll('.hero-video, .mobile-hero-video');
     heroVideos.forEach(video => {
         video.style.willChange = 'transform';
@@ -788,8 +715,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('touch-device');
     }
 
-    // Log initialization
-    console.log('🌿 Laura\'s Beauty Touch initialized successfully');
+    console.log('✅ All components initialized successfully');
 });
 
 // ============================================
