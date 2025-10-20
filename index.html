@@ -271,153 +271,161 @@
 <div class="mobile-overlay"></div>
     
 <!-- HERO SECTION -->
-    <section class="hero-section" id="hero">
+<section class="hero" id="hero">
+    
+    <!-- Desktop Video Collage -->
+    <div class="video-collage">
         
-        <!-- Video Collage Background (Desktop) -->
-        <div class="video-collage desktop-only">
+        <!-- Left Panel - Body Scrub -->
+        <div class="video-container video-1" data-panel="left">
+            <video class="hero-video" autoplay muted loop playsinline poster="images/poster-scrub.jpg">
+                <source src="https://cdn.coverr.co/videos/coverr-spa-stones-and-candles-5462/1080p.mp4" type="video/mp4">
+                Your browser does not support video playback.
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+
+        <!-- Center Panel - Facial (Main Focus) -->
+        <div class="video-container video-2" data-panel="center">
+            <video class="hero-video" autoplay muted loop playsinline poster="images/poster-facial.jpg">
+                <source src="https://cdn.coverr.co/videos/coverr-woman-relaxing-at-spa-4521/1080p.mp4" type="video/mp4">
+                Your browser does not support video playback.
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+
+        <!-- Bottom-Right Panel - Massage -->
+        <div class="video-container video-3" data-panel="right">
+            <video class="hero-video" autoplay muted loop playsinline poster="images/poster-massage.jpg">
+                <source src="https://cdn.coverr.co/videos/coverr-relaxing-massage-7896/1080p.mp4" type="video/mp4">
+                Your browser does not support video playback.
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+
+    </div>
+
+    <!-- Mobile Video Swiper -->
+    <div class="mobile-video-swiper">
+        <div class="swiper hero-swiper">
+            <div class="swiper-wrapper">
+                
+                <!-- Slide 1 - Facial -->
+                <div class="swiper-slide">
+                    <video class="mobile-hero-video" autoplay muted loop playsinline poster="images/poster-facial.jpg">
+                        <source src="https://cdn.coverr.co/videos/coverr-woman-relaxing-at-spa-4521/1080p.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay"></div>
+                </div>
+
+                <!-- Slide 2 - Body Scrub -->
+                <div class="swiper-slide">
+                    <video class="mobile-hero-video" autoplay muted loop playsinline poster="images/poster-scrub.jpg">
+                        <source src="https://cdn.coverr.co/videos/coverr-spa-stones-and-candles-5462/1080p.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay"></div>
+                </div>
+
+                <!-- Slide 3 - Massage -->
+                <div class="swiper-slide">
+                    <video class="mobile-hero-video" autoplay muted loop playsinline poster="images/poster-massage.jpg">
+                        <source src="https://cdn.coverr.co/videos/coverr-relaxing-massage-7896/1080p.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay"></div>
+                </div>
+
+            </div>
             
-            <!-- Left Panel - Body Scrub -->
-            <div class="video-panel panel-left" data-panel="left">
-                <video class="hero-video" autoplay muted loop playsinline poster="images/poster-scrub.jpg">
-                    <source src="https://cdn.coverr.co/videos/coverr-spa-stones-and-candles-5462/1080p.mp4" type="video/mp4">
-                    Your browser does not support video playback.
-                </video>
-                <div class="video-tint"></div>
+            <!-- Swiper Pagination -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+    <!-- Background Gradient Layers (Subtle Animation) -->
+    <div class="background-layers">
+        <div class="bg-layer layer-1 active"></div>
+        <div class="bg-layer layer-2"></div>
+        <div class="bg-layer layer-3"></div>
+    </div>
+
+    <!-- Frosted Glass Overlay Panel -->
+    <div class="glass-overlay">
+        <div class="glass-panel">
+            
+            <!-- Brand Logo -->
+            <div class="brand-logo">
+                <img src="images/logo1.png" alt="Laura's Beauty Touch" class="logo-image">
             </div>
 
-            <!-- Center Panel - Facial (Main Focus) -->
-            <div class="video-panel panel-center" data-panel="center">
-                <video class="hero-video" autoplay muted loop playsinline poster="images/poster-facial.jpg">
-                    <source src="https://cdn.coverr.co/videos/coverr-woman-relaxing-at-spa-4521/1080p.mp4" type="video/mp4">
-                    Your browser does not support video playback.
-                </video>
-                <div class="video-tint"></div>
+            <!-- Decorative Leaf Divider -->
+            <div class="leaf-divider">
+                <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 10 Q 20 5, 30 10 T 50 10 T 70 10 T 90 10" 
+                          stroke="currentColor" 
+                          fill="none" 
+                          stroke-width="1.5" 
+                          opacity="0.5"/>
+                </svg>
             </div>
 
-            <!-- Bottom-Right Panel - Massage -->
-            <div class="video-panel panel-right" data-panel="right">
-                <video class="hero-video" autoplay muted loop playsinline poster="images/poster-massage.jpg">
-                    <source src="https://cdn.coverr.co/videos/coverr-relaxing-massage-7896/1080p.mp4" type="video/mp4">
-                    Your browser does not support video playback.
-                </video>
-                <div class="video-tint"></div>
+            <!-- Dynamic Hero Content -->
+            <div class="hero-content-wrapper">
+                <h1 class="hero-headline" id="heroHeadline">
+                    Relax. Restore. Reveal Your Glow.
+                </h1>
+                <p class="hero-subtitle" id="heroSubtitle">
+                    Experience natural luxury in every treatment
+                </p>
             </div>
+
+            <!-- Rotating Service Tags -->
+            <div class="service-tags">
+                <span class="tag">Facials</span>
+                <span class="tag-separator">·</span>
+                <span class="tag">Body Scrubs</span>
+                <span class="tag-separator">·</span>
+                <span class="tag">Massages</span>
+                <span class="tag-separator">·</span>
+                <span class="tag">Permanent Makeup</span>
+            </div>
+
+            <!-- Primary CTA Button -->
+            <div class="cta-container">
+                <button class="cta-button" id="heroCTA">
+                    <span class="cta-text">Book Your Appointment</span>
+                    <span class="cta-icon">→</span>
+                    <span class="cta-glow"></span>
+                </button>
+            </div>
+
+            <!-- Secondary Explore Link -->
+            <a href="#services" class="explore-link">
+                <span>Explore Our Services</span>
+                <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
 
         </div>
+    </div>
 
-        <!-- Mobile Video Swiper -->
-        <div class="mobile-video-swiper mobile-only">
-            <div class="swiper">
-                <div class="swiper-wrapper">
-                    
-                    <!-- Slide 1 - Facial -->
-                    <div class="swiper-slide">
-                        <video class="mobile-hero-video" autoplay muted loop playsinline poster="images/poster-facial.jpg">
-                            <source src="https://cdn.coverr.co/videos/coverr-woman-relaxing-at-spa-4521/1080p.mp4" type="video/mp4">
-                        </video>
-                        <div class="video-tint"></div>
-                    </div>
-
-                    <!-- Slide 2 - Body Scrub -->
-                    <div class="swiper-slide">
-                        <video class="mobile-hero-video" autoplay muted loop playsinline poster="images/poster-scrub.jpg">
-                            <source src="https://cdn.coverr.co/videos/coverr-spa-stones-and-candles-5462/1080p.mp4" type="video/mp4">
-                        </video>
-                        <div class="video-tint"></div>
-                    </div>
-
-                    <!-- Slide 3 - Massage -->
-                    <div class="swiper-slide">
-                        <video class="mobile-hero-video" autoplay muted loop playsinline poster="images/poster-massage.jpg">
-                            <source src="https://cdn.coverr.co/videos/coverr-relaxing-massage-7896/1080p.mp4" type="video/mp4">
-                        </video>
-                        <div class="video-tint"></div>
-                    </div>
-
-                </div>
-                
-                <!-- Swiper Pagination -->
-                <div class="swiper-pagination"></div>
-            </div>
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator" id="scrollIndicator">
+        <div class="scroll-mouse">
+            <div class="scroll-wheel"></div>
         </div>
+        <span class="scroll-text">Scroll to Discover</span>
+    </div>
 
-        <!-- Frosted Glass Overlay -->
-        <div class="glass-overlay">
-            <div class="glass-panel">
-                
-                <!-- Logo / Brand -->
-                <div class="brand-logo">
-                    <img src="images/logo1.png" alt="Laura's Beauty Touch" class="logo-image">
-                </div>
-
-                <!-- Decorative Leaf Divider -->
-                <div class="leaf-divider">
-                    <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 10 Q 20 5, 30 10 T 50 10 T 70 10 T 90 10" 
-                              stroke="currentColor" 
-                              fill="none" 
-                              stroke-width="1.5" 
-                              opacity="0.4"/>
-                    </svg>
-                </div>
-
-                <!-- Dynamic Headline Content -->
-                <div class="hero-content" id="heroContent">
-                    <h1 class="hero-headline" id="heroHeadline">
-                        Relax. Restore. Reveal Your Glow.
-                    </h1>
-                    <p class="hero-subtitle" id="heroSubtitle">
-                        Experience natural luxury in every treatment
-                    </p>
-                </div>
-
-                <!-- Rotating Service Tags (Optional) -->
-                <div class="service-tags">
-                    <span class="tag">Facials</span>
-                    <span class="tag-separator">·</span>
-                    <span class="tag">Body Scrubs</span>
-                    <span class="tag-separator">·</span>
-                    <span class="tag">Massages</span>
-                    <span class="tag-separator">·</span>
-                    <span class="tag">Permanent Makeup</span>
-                </div>
-
-                <!-- Primary CTA Button -->
-                <div class="cta-container">
-                    <button class="cta-button" id="heroCTA">
-                        <span class="cta-text">Book Your Appointment</span>
-                        <span class="cta-glow"></span>
-                    </button>
-                </div>
-
-                <!-- Secondary Link -->
-                <a href="#services" class="explore-link">
-                    Explore Our Services
-                    <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
-
-            </div>
-        </div>
-
-        <!-- Scroll Indicator -->
-        <div class="scroll-indicator" id="scrollIndicator">
-            <div class="scroll-mouse">
-                <div class="scroll-wheel"></div>
-            </div>
-            <span class="scroll-text">Scroll to Discover</span>
-        </div>
-
-        <!-- Floating Organic Elements -->
-        <div class="floating-elements">
-            <div class="float-element element-1">🌿</div>
-            <div class="float-element element-2">✨</div>
-            <div class="float-element element-3">🍃</div>
-            <div class="float-element element-4">🌸</div>
-        </div>
-
-    </section>
+    <!-- Floating Organic Elements -->
+    <div class="floating-elements">
+        <div class="float-element element-1">🌿</div>
+        <div class="float-element element-2">✨</div>
+        <div class="float-element element-3">🍃</div>
+        <div class="float-element element-4">🌸</div>
+        <div class="float-element element-5">🌺</div>
+    </div>
+</section>
 
 
     
