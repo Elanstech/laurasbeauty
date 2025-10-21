@@ -687,6 +687,7 @@ body {
     margin: 0 auto;
     line-height: 1.8;
 }
+
 /* ============================================
    SPECIALS SECTION - COMPLETE CAROUSEL
    ============================================ */
@@ -727,9 +728,6 @@ body {
     z-index: 1;
 }
 
-/* ============================================
-   SECTION HEADER
-   ============================================ */
 .specials-section .section-header {
     text-align: center;
     margin-bottom: 80px;
@@ -771,17 +769,11 @@ body {
     line-height: 1.8;
 }
 
-/* ============================================
-   CAROUSEL WRAPPER
-   ============================================ */
 .specials-carousel-wrapper {
     position: relative;
     padding: 0 80px;
 }
 
-/* ============================================
-   CAROUSEL CONTAINER - HORIZONTAL SCROLL
-   ============================================ */
 .specials-carousel {
     display: flex;
     gap: 35px;
@@ -791,22 +783,18 @@ body {
     scroll-snap-type: x mandatory;
     padding: 20px 0 40px;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .specials-carousel::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
+    display: none;
 }
 
 .specials-carousel.hidden {
-    opacity: 0;
-    pointer-events: none;
+    display: none !important;
 }
 
-/* ============================================
-   SPECIAL CARD
-   ============================================ */
 .special-card {
     position: relative;
     background: linear-gradient(135deg, var(--cream) 0%, var(--soft-sand) 100%);
@@ -845,9 +833,6 @@ body {
     padding: 45px 40px;
 }
 
-/* ============================================
-   SAVE BADGE
-   ============================================ */
 .save-badge {
     position: absolute;
     top: 20px;
@@ -879,9 +864,6 @@ body {
     line-height: 1;
 }
 
-/* ============================================
-   SPECIAL IMAGE
-   ============================================ */
 .special-image {
     position: relative;
     width: 100%;
@@ -901,7 +883,6 @@ body {
     transform: scale(1.08);
 }
 
-/* Image overlay for better contrast */
 .special-image::after {
     content: '';
     position: absolute;
@@ -917,9 +898,6 @@ body {
     pointer-events: none;
 }
 
-/* ============================================
-   SPECIAL CONTENT
-   ============================================ */
 .special-content {
     padding: 35px 30px;
     text-align: center;
@@ -942,9 +920,6 @@ body {
     font-style: italic;
 }
 
-/* ============================================
-   PRICING
-   ============================================ */
 .special-price {
     display: flex;
     align-items: center;
@@ -978,9 +953,6 @@ body {
     margin-bottom: 25px;
 }
 
-/* ============================================
-   BOOK BUTTON
-   ============================================ */
 .special-book-btn,
 .view-details-btn {
     display: inline-flex;
@@ -1018,9 +990,6 @@ body {
     transform: translateX(5px);
 }
 
-/* ============================================
-   NO SPECIALS MESSAGE
-   ============================================ */
 .no-specials-message {
     display: none;
     text-align: center;
@@ -1106,9 +1075,6 @@ body {
     transform: translateX(5px);
 }
 
-/* ============================================
-   CAROUSEL NAVIGATION ARROWS
-   ============================================ */
 .carousel-nav {
     position: absolute;
     top: 50%;
@@ -1145,13 +1111,9 @@ body {
 }
 
 .carousel-nav.hidden {
-    opacity: 0;
-    pointer-events: none;
+    display: none !important;
 }
 
-/* ============================================
-   CAROUSEL INDICATORS (DOTS)
-   ============================================ */
 .carousel-indicators {
     display: flex;
     align-items: center;
@@ -1185,12 +1147,9 @@ body {
 }
 
 .carousel-indicators.hidden {
-    display: none;
+    display: none !important;
 }
 
-/* ============================================
-   PACKAGE DETAILS MODAL
-   ============================================ */
 .package-modal {
     position: fixed;
     top: 0;
@@ -1252,7 +1211,6 @@ body {
     opacity: 1;
 }
 
-/* Modal Close Button */
 .modal-close {
     position: absolute;
     top: 20px;
@@ -1280,7 +1238,6 @@ body {
     box-shadow: 0 8px 25px rgba(169, 200, 156, 0.4);
 }
 
-/* Modal Image Container */
 .modal-image-container {
     position: relative;
     width: 100%;
@@ -1326,7 +1283,6 @@ body {
     line-height: 1;
 }
 
-/* Modal Body */
 .modal-body {
     padding: 40px 45px 45px;
     overflow-y: auto;
@@ -1335,7 +1291,6 @@ body {
     -webkit-overflow-scrolling: touch;
 }
 
-/* Custom Scrollbar for Modal Body */
 .modal-body::-webkit-scrollbar {
     width: 8px;
 }
@@ -1382,7 +1337,6 @@ body {
     font-style: italic;
 }
 
-/* Modal Price Section */
 .modal-price-section {
     padding: 25px 30px;
     background: rgba(169, 200, 156, 0.08);
@@ -1413,7 +1367,6 @@ body {
     opacity: 0.7;
 }
 
-/* What's Included Section */
 .modal-includes {
     background: rgba(255, 255, 255, 0.7);
     border: 2px solid rgba(169, 200, 156, 0.25);
@@ -1463,7 +1416,6 @@ body {
     font-size: 1.3rem;
 }
 
-/* Modal Actions */
 .modal-actions {
     display: flex;
     justify-content: center;
@@ -1501,10 +1453,6 @@ body {
 .modal-book-btn:hover i {
     transform: translateX(5px);
 }
-
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
 
 @media (max-width: 1200px) {
     .special-card {
@@ -1573,7 +1521,7 @@ body {
     }
     
     .carousel-nav {
-        display: none;
+        display: none !important;
     }
     
     .special-card {
@@ -1611,7 +1559,6 @@ body {
         font-size: 1.05rem;
     }
     
-    /* Modal Responsive */
     .package-modal {
         padding: 15px;
     }
@@ -1715,7 +1662,6 @@ body {
         margin-top: 40px;
     }
     
-    /* Modal Mobile */
     .package-modal {
         padding: 10px;
     }
