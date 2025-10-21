@@ -3583,6 +3583,7 @@ body {
     transform: translateY(-2px);
 }
 
+/* Widget Loading State */
 .widget-loading {
     position: relative;
     min-height: 400px;
@@ -3610,7 +3611,7 @@ body {
     animation: fadeInUp 0.6s ease-out;
 }
 
-/* Section visibility animation */
+/* Section Visibility Animation */
 .google-reviews-section,
 .instagram-section {
     opacity: 0;
@@ -3623,7 +3624,7 @@ body {
     transform: translateY(0);
 }
 
-/* Ripple effect for buttons */
+/* Ripple Effect for Buttons */
 .ripple-effect {
     position: absolute;
     width: 20px;
@@ -3641,6 +3642,10 @@ body {
         opacity: 0;
     }
 }
+
+/* ============================================
+   RESPONSIVE STYLES
+   ============================================ */
 
 @media (max-width: 1024px) {
     .google-reviews-section,
