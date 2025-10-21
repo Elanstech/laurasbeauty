@@ -1,9 +1,4 @@
 /* ============================================
-   LAURA'S BEAUTY TOUCH - MAIN STYLESHEET
-   Natural Luxury Experience
-   ============================================ */
-
-/* ============================================
    GLOBAL STYLES & RESET
    ============================================ */
 * {
@@ -104,33 +99,81 @@ body {
 }
 
 @keyframes panelSlideInLeft {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(0); }
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 
 @keyframes panelSlideInRight {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(0); }
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 
 @keyframes panelSlideOutDiagonalLeft {
-    0% { transform: translate(0, 0); opacity: 1; }
-    100% { transform: translate(-120%, -120%); opacity: 0; }
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-120%, -120%);
+        opacity: 0;
+    }
 }
 
 @keyframes panelSlideOutDiagonalRight {
-    0% { transform: translate(0, 0); opacity: 1; }
-    100% { transform: translate(120%, 120%); opacity: 0; }
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(120%, 120%);
+        opacity: 0;
+    }
 }
 
 @keyframes logoFadeInPreloader {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes logoDisappear {
-    0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    100% { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+}
+
+@media (max-width: 1024px) {
+    .preloader .logo-image {
+        width: 240px;
+    }
+}
+
+@media (max-width: 768px) {
+    .preloader .logo-image {
+        width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .preloader .logo-image {
+        width: 160px;
+    }
 }
 
 /* ============================================
@@ -191,8 +234,12 @@ body {
 }
 
 @keyframes logoFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
 }
 
 .header-nav {
@@ -261,7 +308,7 @@ body {
     width: 100%;
 }
 
-/* Mega Menu */
+/* MEGA MENU */
 .mega-menu {
     position: absolute;
     top: 100%;
@@ -471,7 +518,7 @@ body {
     }
 }
 
-/* Mobile Menu */
+/* Mobile Menu Toggle */
 .mobile-menu-toggle {
     display: none;
     flex-direction: column;
@@ -726,7 +773,7 @@ body {
     background: var(--ivory-white);
 }
 
-/* Video Collage */
+/* Desktop Video Collage */
 .video-collage {
     position: absolute;
     top: 0;
@@ -801,7 +848,7 @@ body {
     pointer-events: none;
 }
 
-/* Mobile Swiper */
+/* Mobile Video Swiper */
 .mobile-video-swiper {
     display: none;
     position: absolute;
@@ -842,7 +889,7 @@ body {
     background: var(--mint-green);
 }
 
-/* Background Layers */
+/* Background Gradient Layers */
 .background-layers {
     position: absolute;
     top: 0;
@@ -864,22 +911,34 @@ body {
 }
 
 .bg-layer.layer-1 {
-    background: linear-gradient(135deg, rgba(169, 200, 156, 0.12) 0%, rgba(59, 74, 47, 0.12) 100%);
+    background: linear-gradient(
+        135deg,
+        rgba(169, 200, 156, 0.12) 0%,
+        rgba(59, 74, 47, 0.12) 100%
+    );
 }
 
 .bg-layer.layer-2 {
-    background: linear-gradient(135deg, rgba(182, 169, 140, 0.10) 0%, rgba(168, 200, 156, 0.10) 100%);
+    background: linear-gradient(
+        135deg,
+        rgba(182, 169, 140, 0.10) 0%,
+        rgba(168, 200, 156, 0.10) 100%
+    );
 }
 
 .bg-layer.layer-3 {
-    background: linear-gradient(135deg, rgba(200, 213, 185, 0.15) 0%, rgba(59, 74, 47, 0.15) 100%);
+    background: linear-gradient(
+        135deg,
+        rgba(200, 213, 185, 0.15) 0%,
+        rgba(59, 74, 47, 0.15) 100%
+    );
 }
 
 .bg-layer.active {
     opacity: 1;
 }
 
-/* Glass Panel */
+/* Frosted Glass Overlay Panel */
 .glass-overlay {
     position: relative;
     z-index: 10;
@@ -897,7 +956,11 @@ body {
 .glass-panel {
     position: relative;
     width: 100%;
-    background: linear-gradient(180deg, rgba(250, 250, 247, 0.35) 0%, rgba(255, 255, 255, 0.25) 100%);
+    background: linear-gradient(
+        180deg,
+        rgba(250, 250, 247, 0.35) 0%,
+        rgba(255, 255, 255, 0.25) 100%
+    );
     backdrop-filter: blur(30px) saturate(180%);
     -webkit-backdrop-filter: blur(30px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.4);
@@ -918,7 +981,11 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 30% 20%, rgba(169, 200, 156, 0.15) 0%, transparent 60%);
+    background: radial-gradient(
+        circle at 30% 20%,
+        rgba(169, 200, 156, 0.15) 0%,
+        transparent 60%
+    );
     pointer-events: none;
     animation: ambientGlow 8s ease-in-out infinite;
 }
@@ -1189,7 +1256,7 @@ body {
     opacity: 0.7;
 }
 
-/* Floating Elements */
+/* Floating Organic Elements */
 .floating-elements {
     position: absolute;
     top: 0;
@@ -1248,50 +1315,89 @@ body {
    ============================================ */
 
 @keyframes videoFadeIn {
-    to { opacity: 1; transform: scale(1); }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 @keyframes glassSlideUp {
-    to { opacity: 1; transform: translateY(0); }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes logoFadeIn {
-    to { opacity: 1; }
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes textSlideUp {
-    to { opacity: 1; transform: translateY(0); }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes breathe {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
 }
 
 @keyframes breathingGlow {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 1; }
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
 }
 
 @keyframes ambientGlow {
-    0%, 100% { opacity: 0.8; transform: translate(0, 0); }
-    50% { opacity: 1; transform: translate(10px, 10px); }
+    0%, 100% {
+        opacity: 0.8;
+        transform: translate(0, 0);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(10px, 10px);
+    }
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    25% { transform: translateY(-25px) rotate(5deg); }
-    50% { transform: translateY(-15px) rotate(-5deg); }
-    75% { transform: translateY(-30px) rotate(3deg); }
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-25px) rotate(5deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(-5deg);
+    }
+    75% {
+        transform: translateY(-30px) rotate(3deg);
+    }
 }
 
 @keyframes scrollWheel {
-    0% { top: 8px; opacity: 1; }
-    100% { top: 26px; opacity: 0; }
+    0% {
+        top: 8px;
+        opacity: 1;
+    }
+    100% {
+        top: 26px;
+        opacity: 0;
+    }
 }
 
 /* ============================================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN - HEADER
    ============================================ */
 
 @media (max-width: 1024px) {
@@ -1311,7 +1417,77 @@ body {
     .mobile-menu-toggle {
         display: flex;
     }
+}
 
+@media (max-width: 768px) {
+    .header-inner {
+        padding: 0 30px;
+        height: 75px;
+    }
+
+    .spa-header.scrolled .header-inner {
+        height: 65px;
+    }
+
+    .header-logo-image {
+        height: 45px;
+    }
+
+    .mobile-drawer {
+        width: 90%;
+        border-radius: 30px 0 0 30px;
+    }
+
+    .drawer-logo-image {
+        height: 55px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-inner {
+        padding: 0 20px;
+        gap: 30px;
+        height: 70px;
+    }
+
+    .spa-header.scrolled .header-inner {
+        height: 60px;
+    }
+
+    .header-logo-image {
+        height: 40px;
+    }
+
+    .mobile-menu-toggle {
+        width: 42px;
+        height: 42px;
+    }
+
+    .leaf-line {
+        width: 24px;
+    }
+
+    .mobile-drawer {
+        width: 100%;
+        border-radius: 0;
+        padding: 30px 20px;
+    }
+
+    .drawer-logo-image {
+        height: 50px;
+    }
+
+    .mobile-nav-link {
+        font-size: 18px;
+        padding: 14px 16px;
+    }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - HERO
+   ============================================ */
+
+@media (max-width: 1024px) {
     .video-collage {
         grid-template-columns: 40% 1fr;
     }
@@ -1338,28 +1514,6 @@ body {
 }
 
 @media (max-width: 768px) {
-    .header-inner {
-        padding: 0 30px;
-        height: 75px;
-    }
-
-    .spa-header.scrolled .header-inner {
-        height: 65px;
-    }
-
-    .header-logo-image {
-        height: 45px;
-    }
-
-    .mobile-drawer {
-        width: 90%;
-        border-radius: 30px 0 0 30px;
-    }
-
-    .drawer-logo-image {
-        height: 55px;
-    }
-
     .video-collage {
         display: none;
     }
@@ -1414,44 +1568,6 @@ body {
 }
 
 @media (max-width: 480px) {
-    .header-inner {
-        padding: 0 20px;
-        gap: 30px;
-        height: 70px;
-    }
-
-    .spa-header.scrolled .header-inner {
-        height: 60px;
-    }
-
-    .header-logo-image {
-        height: 40px;
-    }
-
-    .mobile-menu-toggle {
-        width: 42px;
-        height: 42px;
-    }
-
-    .leaf-line {
-        width: 24px;
-    }
-
-    .mobile-drawer {
-        width: 100%;
-        border-radius: 0;
-        padding: 30px 20px;
-    }
-
-    .drawer-logo-image {
-        height: 50px;
-    }
-
-    .mobile-nav-link {
-        font-size: 18px;
-        padding: 14px 16px;
-    }
-
     .glass-panel {
         padding: 35px 25px;
         border-radius: 25px;
@@ -1500,24 +1616,5 @@ body {
     .scroll-mouse {
         width: 24px;
         height: 40px;
-    }
-}
-
-/* Preloader Responsive */
-@media (max-width: 1024px) {
-    .preloader .logo-image {
-        width: 240px;
-    }
-}
-
-@media (max-width: 768px) {
-    .preloader .logo-image {
-        width: 200px;
-    }
-}
-
-@media (max-width: 480px) {
-    .preloader .logo-image {
-        width: 160px;
     }
 }
