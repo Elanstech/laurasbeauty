@@ -244,8 +244,9 @@ class SpaHeaderManager {
 }
 
 // ============================================
-// HERO SECTION
+// HERO SECTION - JavaScript
 // ============================================
+
 class HeroSection {
     constructor() {
         this.swiper = null;
@@ -366,7 +367,8 @@ class HeroSection {
             video.addEventListener('loadedmetadata', () => {
                 console.log(`Video ${index} loaded`);
                 if (index === 0) {
-                    this.playVideo(video);
+                    // Try to play first video immediately
+                    setTimeout(() => this.playVideo(video), 100);
                 }
             });
 
@@ -379,7 +381,7 @@ class HeroSection {
             // Loop
             video.addEventListener('ended', () => {
                 video.currentTime = 0;
-                this.playVideo(video);
+                video.play().catch(e => console.log('Loop play prevented'));
             });
 
             // Intersection Observer for performance
@@ -390,40 +392,56 @@ class HeroSection {
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             this.videos.forEach(video => video.pause());
         }
+
+        // Enable play on first user interaction
+        this.enablePlayOnFirstInteraction();
     }
 
     playVideo(video) {
+        if (!video) return;
+        
         const playPromise = video.play();
         
         if (playPromise !== undefined) {
             playPromise
                 .then(() => {
-                    console.log('Video playing');
+                    console.log('✅ Video playing successfully');
                 })
                 .catch((error) => {
-                    console.warn('Autoplay prevented:', error);
-                    // Enable play on user interaction
-                    this.enablePlayOnInteraction(video);
+                    console.log('ℹ️ Video autoplay prevented (normal browser behavior)');
+                    // This is expected - will play on user interaction
                 });
         }
     }
 
-    enablePlayOnInteraction(video) {
-        const playOnClick = () => {
-            this.playVideo(video);
-            document.removeEventListener('click', playOnClick);
-            document.removeEventListener('touchstart', playOnClick);
+    enablePlayOnFirstInteraction() {
+        const playAllVideos = () => {
+            console.log('🎬 User interacted - enabling videos');
+            this.videos.forEach(video => {
+                video.muted = true; // Ensure muted for autoplay
+                video.play().catch(e => console.log('Video play failed'));
+            });
+            
+            // Remove listeners after first interaction
+            document.removeEventListener('click', playAllVideos);
+            document.removeEventListener('touchstart', playAllVideos);
+            document.removeEventListener('keydown', playAllVideos);
         };
         
-        document.addEventListener('click', playOnClick, { once: true });
-        document.addEventListener('touchstart', playOnClick, { once: true });
+        document.addEventListener('click', playAllVideos, { once: true });
+        document.addEventListener('touchstart', playAllVideos, { once: true });
+        document.addEventListener('keydown', playAllVideos, { once: true });
     }
 
     playActiveVideo() {
         if (this.swiper) {
             const activeIndex = this.swiper.realIndex;
             if (this.videos[activeIndex]) {
-                this.playVideo(this.videos[activeIndex]);
+                const video = this.videos[activeIndex];
+                video.muted = true; // Ensure muted
+                video.play().catch(e => {
+                    console.log('Active video play prevented - will play on interaction');
+                });
             }
         }
     }
@@ -432,7 +450,7 @@ class HeroSection {
         if (this.swiper) {
             const activeIndex = this.swiper.realIndex;
             this.videos.forEach((video, index) => {
-                if (index !== activeIndex) {
+                if (index !== activeIndex && !video.paused) {
                     video.pause();
                 }
             });
@@ -451,9 +469,14 @@ class HeroSection {
             (entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        this.playVideo(video);
+                        video.muted = true;
+                        video.play().catch(e => {
+                            // Silent catch - normal behavior
+                        });
                     } else {
-                        video.pause();
+                        if (!video.paused) {
+                            video.pause();
+                        }
                     }
                 });
             },
