@@ -140,14 +140,14 @@ body {
 }
 
 .header-logo {
-    height: 70px;
+    height: 200px;
     width: auto;
     transition: height 0.4s ease;
     filter: drop-shadow(0 4px 12px rgba(59, 74, 47, 0.15));
 }
 
 .premium-header.scrolled .header-logo {
-    height: 55px;
+    height: 180px;
 }
 
 .desktop-navigation {
