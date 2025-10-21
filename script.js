@@ -260,7 +260,7 @@ class HeroVideoCollage {
         if (!this.scrollIndicator) return;
 
         this.scrollIndicator.addEventListener('click', () => {
-            const aboutSection = document.querySelector('#about-owner');
+            const aboutSection = document.querySelector('#about');
             if (aboutSection) {
                 aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
@@ -908,21 +908,8 @@ class ServicesCarousel {
         console.log('🎨 Starting Services Carousel Initialization...');
         
         if (!this.carousel) {
-            console.error('❌ Services carousel track not found! ID: servicesCarouselTrack');
+            console.error('❌ Services carousel track not found!');
             return;
-        }
-        console.log('✅ Carousel track found');
-
-        if (!this.prevBtn) {
-            console.error('❌ Previous button not found! ID: servicesPrevBtn');
-        } else {
-            console.log('✅ Previous button found');
-        }
-
-        if (!this.nextBtn) {
-            console.error('❌ Next button not found! ID: servicesNextBtn');
-        } else {
-            console.log('✅ Next button found');
         }
         
         this.cards = Array.from(this.carousel.querySelectorAll('.service-category-card'));
@@ -940,14 +927,12 @@ class ServicesCarousel {
         this.setupScrollHandler();
         this.startAutoScroll();
 
-        console.log(`✅ Services Carousel fully initialized with ${this.cards.length} cards`);
+        console.log(`✅ Services Carousel fully initialized`);
     }
 
     setupCarousel() {
         this.itemsPerPage = this.getItemsPerPage();
         this.totalPages = Math.ceil(this.cards.length / this.itemsPerPage);
-        
-        console.log(`📊 Carousel Setup: ${this.cards.length} cards, ${this.itemsPerPage} per page, ${this.totalPages} total pages`);
         
         this.createIndicators();
         this.updateNavigationVisibility();
@@ -967,16 +952,12 @@ class ServicesCarousel {
     }
 
     createIndicators() {
-        if (!this.indicatorsContainer) {
-            console.warn('⚠️ Indicators container not found');
-            return;
-        }
+        if (!this.indicatorsContainer) return;
         
         this.indicatorsContainer.innerHTML = '';
         
         if (this.totalPages <= 1) {
             this.indicatorsContainer.classList.add('hidden');
-            console.log('ℹ️ Only 1 page, hiding indicators');
             return;
         }
         
@@ -993,22 +974,16 @@ class ServicesCarousel {
             }
             
             indicator.addEventListener('click', () => {
-                console.log(`📍 Indicator ${i + 1} clicked`);
                 this.goToPage(i);
                 this.resetAutoScroll();
             });
             
             this.indicatorsContainer.appendChild(indicator);
         }
-        
-        console.log(`✅ Created ${this.totalPages} indicators`);
     }
 
     setupNavigation() {
-        if (!this.prevBtn || !this.nextBtn) {
-            console.warn('⚠️ Navigation buttons not available');
-            return;
-        }
+        if (!this.prevBtn || !this.nextBtn) return;
         
         const newPrevBtn = this.prevBtn.cloneNode(true);
         const newNextBtn = this.nextBtn.cloneNode(true);
@@ -1020,7 +995,6 @@ class ServicesCarousel {
         this.prevBtn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            console.log('⬅️ PREVIOUS BUTTON CLICKED - Current page:', this.currentPage + 1);
             this.previousPage();
             this.resetAutoScroll();
         });
@@ -1028,7 +1002,6 @@ class ServicesCarousel {
         this.nextBtn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            console.log('➡️ NEXT BUTTON CLICKED - Current page:', this.currentPage + 1);
             this.nextPage();
             this.resetAutoScroll();
         });
@@ -1041,12 +1014,10 @@ class ServicesCarousel {
             if (this.carousel && !this.carousel.classList.contains('hidden')) {
                 if (e.key === 'ArrowLeft') {
                     e.preventDefault();
-                    console.log('⬅️ Left arrow key pressed');
                     this.previousPage();
                     this.resetAutoScroll();
                 } else if (e.key === 'ArrowRight') {
                     e.preventDefault();
-                    console.log('➡️ Right arrow key pressed');
                     this.nextPage();
                     this.resetAutoScroll();
                 }
@@ -1054,8 +1025,6 @@ class ServicesCarousel {
         };
         
         document.addEventListener('keydown', this.keyboardHandler);
-        
-        console.log('✅ Navigation configured with event listeners');
     }
 
     updateNavigationVisibility() {
@@ -1064,66 +1033,44 @@ class ServicesCarousel {
         const isMobile = window.innerWidth < 768;
         const shouldHide = this.totalPages <= 1 || isMobile;
         
-        console.log(`🔍 Navigation visibility - Mobile: ${isMobile}, Total pages: ${this.totalPages}, Should hide: ${shouldHide}`);
-        
         if (shouldHide) {
             this.prevBtn.classList.add('hidden');
             this.nextBtn.classList.add('hidden');
-            console.log('👻 Navigation buttons hidden');
         } else {
             this.prevBtn.classList.remove('hidden');
             this.nextBtn.classList.remove('hidden');
-            console.log('👁️ Navigation buttons visible');
         }
     }
 
     goToPage(pageIndex) {
-        if (pageIndex < 0 || pageIndex >= this.totalPages) {
-            console.warn(`⚠️ Invalid page index: ${pageIndex}`);
-            return;
-        }
-        
-        console.log(`📄 Navigating from page ${this.currentPage + 1} to page ${pageIndex + 1}`);
+        if (pageIndex < 0 || pageIndex >= this.totalPages) return;
         
         this.currentPage = pageIndex;
         this.updateIndicators();
         
         const startIndex = pageIndex * this.itemsPerPage;
-        console.log(`📍 Scrolling to card index: ${startIndex}`);
         
         if (this.cards[startIndex]) {
             const cardRect = this.cards[startIndex].getBoundingClientRect();
             const carouselRect = this.carousel.getBoundingClientRect();
             const scrollAmount = cardRect.left - carouselRect.left + this.carousel.scrollLeft;
             
-            console.log(`📏 Scroll amount: ${scrollAmount}px`);
-            
             this.carousel.scrollTo({
                 left: scrollAmount,
                 behavior: 'smooth'
             });
-        } else {
-            console.error(`❌ Card at index ${startIndex} not found`);
         }
     }
 
     nextPage() {
-        if (this.totalPages <= 1) {
-            console.log('ℹ️ Only 1 page, cannot go to next');
-            return;
-        }
+        if (this.totalPages <= 1) return;
         const nextPage = (this.currentPage + 1) % this.totalPages;
-        console.log(`➡️ Next page calculation: (${this.currentPage} + 1) % ${this.totalPages} = ${nextPage}`);
         this.goToPage(nextPage);
     }
 
     previousPage() {
-        if (this.totalPages <= 1) {
-            console.log('ℹ️ Only 1 page, cannot go to previous');
-            return;
-        }
+        if (this.totalPages <= 1) return;
         const prevPage = (this.currentPage - 1 + this.totalPages) % this.totalPages;
-        console.log(`⬅️ Previous page calculation: (${this.currentPage} - 1 + ${this.totalPages}) % ${this.totalPages} = ${prevPage}`);
         this.goToPage(prevPage);
     }
 
@@ -1158,7 +1105,6 @@ class ServicesCarousel {
         };
         
         this.carousel.addEventListener('scroll', this.scrollHandler, { passive: true });
-        console.log('✅ Scroll handler configured');
     }
 
     updateCurrentPageFromScroll() {
@@ -1201,8 +1147,6 @@ class ServicesCarousel {
             this.touchEndX = e.changedTouches[0].screenX;
             this.handleSwipe();
         }, { passive: true });
-        
-        console.log('✅ Touch support configured');
     }
 
     handleSwipe() {
@@ -1213,8 +1157,6 @@ class ServicesCarousel {
             this.startAutoScroll();
             return;
         }
-        
-        console.log(`👆 Swipe detected: ${swipeDistance > 0 ? 'Left' : 'Right'}`);
         
         if (swipeDistance > 0) {
             this.nextPage();
@@ -1239,7 +1181,6 @@ class ServicesCarousel {
                 const newItemsPerPage = this.getItemsPerPage();
                 
                 if (newItemsPerPage !== this.itemsPerPage) {
-                    console.log(`🔄 Resize detected - Items per page changed from ${this.itemsPerPage} to ${newItemsPerPage}`);
                     this.itemsPerPage = newItemsPerPage;
                     this.setupCarousel();
                     this.goToPage(0);
@@ -1250,7 +1191,6 @@ class ServicesCarousel {
         };
         
         window.addEventListener('resize', this.resizeHandler);
-        console.log('✅ Resize handler configured');
     }
 
     startAutoScroll() {
@@ -1259,11 +1199,8 @@ class ServicesCarousel {
         this.stopAutoScroll();
         
         this.autoScrollInterval = setInterval(() => {
-            console.log('⏰ Auto-scroll triggered');
             this.nextPage();
         }, this.autoScrollDelay);
-        
-        console.log(`✅ Auto-scroll started (${this.autoScrollDelay}ms interval)`);
     }
 
     stopAutoScroll() {
@@ -1296,167 +1233,8 @@ class ServicesCarousel {
 }
 
 // ============================================
-// OTHER COMPONENTS
+// CONTACT FORM
 // ============================================
-class OwnerPhotoCarousel {
-    constructor() {
-        this.carousel = document.querySelector('.owner-carousel');
-        if (!this.carousel) return;
-
-        this.slides = this.carousel.querySelectorAll('.carousel-slide');
-        this.dots = this.carousel.querySelectorAll('.carousel-dot');
-        this.currentIndex = 0;
-        this.autoplayInterval = null;
-        this.autoplayDelay = 4000;
-
-        this.init();
-    }
-
-    init() {
-        if (this.slides.length === 0) return;
-
-        this.setupDots();
-        this.startAutoplay();
-        this.setupHoverPause();
-    }
-
-    setupDots() {
-        this.dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                this.goToSlide(index);
-                this.resetAutoplay();
-            });
-        });
-    }
-
-    goToSlide(index) {
-        this.slides.forEach(slide => slide.classList.remove('active'));
-        this.dots.forEach(dot => dot.classList.remove('active'));
-
-        this.slides[index].classList.add('active');
-        this.dots[index].classList.add('active');
-
-        this.currentIndex = index;
-
-        if (typeof gsap !== 'undefined') {
-            gsap.fromTo(this.slides[index],
-                { opacity: 0, scale: 1.05 },
-                { opacity: 1, scale: 1, duration: 1, ease: 'power2.out' }
-            );
-        }
-    }
-
-    goToNext() {
-        const nextIndex = (this.currentIndex + 1) % this.slides.length;
-        this.goToSlide(nextIndex);
-    }
-
-    startAutoplay() {
-        this.autoplayInterval = setInterval(() => {
-            this.goToNext();
-        }, this.autoplayDelay);
-    }
-
-    stopAutoplay() {
-        if (this.autoplayInterval) {
-            clearInterval(this.autoplayInterval);
-            this.autoplayInterval = null;
-        }
-    }
-
-    resetAutoplay() {
-        this.stopAutoplay();
-        this.startAutoplay();
-    }
-
-    setupHoverPause() {
-        this.carousel.addEventListener('mouseenter', () => {
-            this.stopAutoplay();
-        });
-
-        this.carousel.addEventListener('mouseleave', () => {
-            this.startAutoplay();
-        });
-    }
-}
-
-class TestimonialsSlider {
-    constructor() {
-        this.testimonials = document.querySelectorAll('.testimonial-card');
-        this.dots = document.querySelectorAll('.testimonial-dots .dot');
-        this.prevBtn = document.querySelector('.testimonial-prev');
-        this.nextBtn = document.querySelector('.testimonial-next');
-        this.currentIndex = 0;
-        this.autoplayInterval = null;
-        
-        this.init();
-    }
-
-    init() {
-        if (this.testimonials.length === 0) return;
-        
-        this.setupNavigation();
-        this.startAutoplay();
-    }
-
-    setupNavigation() {
-        this.prevBtn.addEventListener('click', () => {
-            this.goToPrev();
-            this.resetAutoplay();
-        });
-
-        this.nextBtn.addEventListener('click', () => {
-            this.goToNext();
-            this.resetAutoplay();
-        });
-
-        this.dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                this.goToSlide(index);
-                this.resetAutoplay();
-            });
-        });
-    }
-
-    goToSlide(index) {
-        this.testimonials.forEach(t => t.classList.remove('active'));
-        this.dots.forEach(d => d.classList.remove('active'));
-        
-        this.testimonials[index].classList.add('active');
-        this.dots[index].classList.add('active');
-        
-        this.currentIndex = index;
-        
-        if (typeof gsap !== 'undefined') {
-            gsap.fromTo(this.testimonials[index],
-                { opacity: 0, y: 30 },
-                { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
-            );
-        }
-    }
-
-    goToNext() {
-        const nextIndex = (this.currentIndex + 1) % this.testimonials.length;
-        this.goToSlide(nextIndex);
-    }
-
-    goToPrev() {
-        const prevIndex = (this.currentIndex - 1 + this.testimonials.length) % this.testimonials.length;
-        this.goToSlide(prevIndex);
-    }
-
-    startAutoplay() {
-        this.autoplayInterval = setInterval(() => {
-            this.goToNext();
-        }, 5000);
-    }
-
-    resetAutoplay() {
-        clearInterval(this.autoplayInterval);
-        this.startAutoplay();
-    }
-}
-
 class ContactForm {
     constructor() {
         this.form = document.getElementById('contactForm');
@@ -1498,6 +1276,140 @@ class ContactForm {
 }
 
 // ============================================
+// ELFSIGHT WIDGETS (GOOGLE REVIEWS & INSTAGRAM)
+// ============================================
+class ElfsightWidgets {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        this.waitForElfsight();
+        this.setupInstagramCTA();
+        this.setupScrollAnimations();
+    }
+
+    waitForElfsight() {
+        const checkElfsight = setInterval(() => {
+            if (typeof window.eapps !== 'undefined') {
+                console.log('✅ Elfsight platform loaded');
+                clearInterval(checkElfsight);
+                this.enhanceWidgets();
+            }
+        }, 500);
+
+        setTimeout(() => {
+            clearInterval(checkElfsight);
+        }, 10000);
+    }
+
+    enhanceWidgets() {
+        const widgets = document.querySelectorAll('[class*="elfsight-app"]');
+        
+        widgets.forEach(widget => {
+            widget.classList.add('widget-loading');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            widget.classList.remove('widget-loading');
+                            widget.classList.add('widget-loaded');
+                        }, 1000);
+                        observer.disconnect();
+                    }
+                });
+            });
+            
+            observer.observe(widget);
+        });
+    }
+
+    setupInstagramCTA() {
+        const instagramBtn = document.querySelector('.follow-instagram-btn');
+        
+        if (instagramBtn) {
+            instagramBtn.addEventListener('click', (e) => {
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple-effect');
+                instagramBtn.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        }
+    }
+
+    setupScrollAnimations() {
+        const reviewsSection = document.querySelector('.google-reviews-section');
+        const instagramSection = document.querySelector('.instagram-section');
+        
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('section-visible');
+                }
+            });
+        }, observerOptions);
+
+        if (reviewsSection) observer.observe(reviewsSection);
+        if (instagramSection) observer.observe(instagramSection);
+    }
+}
+
+// ============================================
+// FLOATING LEAVES ANIMATION
+// ============================================
+class FloatingLeaves {
+    constructor() {
+        this.leaves = document.querySelectorAll('.floating-leaf');
+        this.init();
+    }
+
+    init() {
+        if (this.leaves.length === 0) return;
+
+        this.leaves.forEach((leaf) => {
+            const randomDelay = Math.random() * 5;
+            const randomDuration = 12 + Math.random() * 6;
+            
+            leaf.style.animationDelay = `${randomDelay}s`;
+            leaf.style.animationDuration = `${randomDuration}s`;
+        });
+    }
+}
+
+// ============================================
+// INSTAGRAM HASHTAG INTERACTION
+// ============================================
+class HashtagInteraction {
+    constructor() {
+        this.hashtags = document.querySelectorAll('.hashtag');
+        this.init();
+    }
+
+    init() {
+        if (this.hashtags.length === 0) return;
+
+        this.hashtags.forEach(hashtag => {
+            hashtag.addEventListener('click', () => {
+                const hashtagText = hashtag.textContent.replace('#', '');
+                const instagramUrl = `https://www.instagram.com/explore/tags/${hashtagText}/`;
+                window.open(instagramUrl, '_blank');
+            });
+
+            hashtag.style.cursor = 'pointer';
+        });
+    }
+}
+
+// ============================================
 // MAIN INITIALIZATION
 // ============================================
 function initWebsite() {
@@ -1514,14 +1426,18 @@ function initWebsite() {
     specialsCarousel.init();
     window.specialsCarousel = specialsCarousel;
     
-    // Initialize Services Carousel - THIS WAS THE FIX!
+    // Initialize Services Carousel
     const servicesCarousel = new ServicesCarousel();
     servicesCarousel.init();
     window.servicesCarousel = servicesCarousel;
-    
-    new OwnerPhotoCarousel();
-    new TestimonialsSlider();
+        
+    // Initialize Contact Form
     new ContactForm();
+    
+    // Initialize Elfsight Widgets (Google Reviews & Instagram)
+    new ElfsightWidgets();
+    new FloatingLeaves();
+    new HashtagInteraction();
     
     // Initialize AOS if available
     if (typeof AOS !== 'undefined') {
@@ -1533,7 +1449,7 @@ function initWebsite() {
         });
     }
     
-    console.log('✅ All components initialized');
+    console.log('✅ All components initialized successfully');
 }
 
 // Start everything when DOM is ready
