@@ -908,260 +908,206 @@ class SpecialsCarousel {
 }
 
 // ============================================
-// ABOUT SECTION
+// OTHER COMPONENTS
 // ============================================
 
-// ============================================
-// ABOUT SECTION - PHOTO HOVER EFFECTS
-// ============================================
-class AboutPhotoEffects {
+class OwnerPhotoCarousel {
     constructor() {
-        this.photoFrames = document.querySelectorAll('.photo-frame, .photo-small, .atmosphere-photo');
+        this.carousel = document.querySelector('.owner-carousel');
+        if (!this.carousel) return;
+
+        this.slides = this.carousel.querySelectorAll('.carousel-slide');
+        this.dots = this.carousel.querySelectorAll('.carousel-dot');
+        this.currentIndex = 0;
+        this.autoplayInterval = null;
+        this.autoplayDelay = 4000;
+
         this.init();
     }
 
     init() {
-        if (this.photoFrames.length === 0) return;
+        if (this.slides.length === 0) return;
 
-        this.photoFrames.forEach(frame => {
-            frame.addEventListener('mouseenter', (e) => {
-                this.animatePhotoIn(e.currentTarget);
-            });
+        this.setupDots();
+        this.startAutoplay();
+        this.setupHoverPause();
+    }
 
-            frame.addEventListener('mouseleave', (e) => {
-                this.animatePhotoOut(e.currentTarget);
+    setupDots() {
+        this.dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                this.goToSlide(index);
+                this.resetAutoplay();
             });
         });
     }
 
-    animatePhotoIn(element) {
+    goToSlide(index) {
+        this.slides.forEach(slide => slide.classList.remove('active'));
+        this.dots.forEach(dot => dot.classList.remove('active'));
+
+        this.slides[index].classList.add('active');
+        this.dots[index].classList.add('active');
+
+        this.currentIndex = index;
+
         if (typeof gsap !== 'undefined') {
-            gsap.to(element, {
-                scale: 1.05,
-                duration: 0.4,
-                ease: 'power2.out'
-            });
-        }
-    }
-
-    animatePhotoOut(element) {
-        if (typeof gsap !== 'undefined') {
-            gsap.to(element, {
-                scale: 1,
-                duration: 0.4,
-                ease: 'power2.out'
-            });
-        }
-    }
-}
-
-// ============================================
-// ABOUT SECTION - SCROLL ANIMATIONS
-// ============================================
-class AboutScrollAnimations {
-    constructor() {
-        this.credentialItems = document.querySelectorAll('.credential-item');
-        this.valueCards = document.querySelectorAll('.value-card');
-        this.atmosphereCards = document.querySelectorAll('.atmosphere-card');
-        this.init();
-    }
-
-    init() {
-        this.setupIntersectionObserver();
-    }
-
-    setupIntersectionObserver() {
-        const options = {
-            root: null,
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('animate-in');
-                    }, index * 100);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, options);
-
-        // Observe credential items
-        this.credentialItems.forEach(item => {
-            observer.observe(item);
-        });
-
-        // Observe value cards
-        this.valueCards.forEach(card => {
-            observer.observe(card);
-        });
-
-        // Observe atmosphere cards
-        this.atmosphereCards.forEach(card => {
-            observer.observe(card);
-        });
-    }
-}
-
-// ============================================
-// ABOUT SECTION - WELCOME BANNER PARALLAX
-// ============================================
-class WelcomeBannerParallax {
-    constructor() {
-        this.banner = document.querySelector('.everyone-welcome-banner');
-        this.icon = document.querySelector('.welcome-banner-icon');
-        this.init();
-    }
-
-    init() {
-        if (!this.banner || !this.icon) return;
-
-        let ticking = false;
-
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    this.handleScroll();
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        }, { passive: true });
-    }
-
-    handleScroll() {
-        const bannerRect = this.banner.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-
-        // Check if banner is in viewport
-        if (bannerRect.top < windowHeight && bannerRect.bottom > 0) {
-            // Calculate parallax amount based on scroll position
-            const scrollProgress = (windowHeight - bannerRect.top) / (windowHeight + bannerRect.height);
-            const parallaxAmount = (scrollProgress - 0.5) * 20;
-
-            if (typeof gsap !== 'undefined') {
-                gsap.to(this.icon, {
-                    y: parallaxAmount,
-                    rotation: parallaxAmount * 0.5,
-                    duration: 0.3,
-                    ease: 'none'
-                });
-            }
-        }
-    }
-}
-
-// ============================================
-// ABOUT SECTION - PHONE NUMBER ANIMATION
-// ============================================
-class PhoneButtonAnimation {
-    constructor() {
-        this.phoneBtn = document.querySelector('.about-phone-btn');
-        this.init();
-    }
-
-    init() {
-        if (!this.phoneBtn) return;
-
-        this.phoneBtn.addEventListener('mouseenter', () => {
-            this.animatePhone();
-        });
-    }
-
-    animatePhone() {
-        if (typeof gsap !== 'undefined') {
-            const icon = this.phoneBtn.querySelector('i');
-            
-            gsap.fromTo(icon,
-                { rotation: 0 },
-                { 
-                    rotation: 15,
-                    duration: 0.1,
-                    yoyo: true,
-                    repeat: 5,
-                    ease: 'power1.inOut'
-                }
+            gsap.fromTo(this.slides[index],
+                { opacity: 0, scale: 1.05 },
+                { opacity: 1, scale: 1, duration: 1, ease: 'power2.out' }
             );
         }
     }
+
+    goToNext() {
+        const nextIndex = (this.currentIndex + 1) % this.slides.length;
+        this.goToSlide(nextIndex);
+    }
+
+    startAutoplay() {
+        this.autoplayInterval = setInterval(() => {
+            this.goToNext();
+        }, this.autoplayDelay);
+    }
+
+    stopAutoplay() {
+        if (this.autoplayInterval) {
+            clearInterval(this.autoplayInterval);
+            this.autoplayInterval = null;
+        }
+    }
+
+    resetAutoplay() {
+        this.stopAutoplay();
+        this.startAutoplay();
+    }
+
+    setupHoverPause() {
+        this.carousel.addEventListener('mouseenter', () => {
+            this.stopAutoplay();
+        });
+
+        this.carousel.addEventListener('mouseleave', () => {
+            this.startAutoplay();
+        });
+    }
 }
 
-// ============================================
-// ABOUT SECTION - COUNTER ANIMATION
-// ============================================
-class ExperienceCounter {
+class TestimonialsSlider {
     constructor() {
-        this.credentialText = document.querySelector('.credential-text strong');
-        this.hasAnimated = false;
+        this.testimonials = document.querySelectorAll('.testimonial-card');
+        this.dots = document.querySelectorAll('.testimonial-dots .dot');
+        this.prevBtn = document.querySelector('.testimonial-prev');
+        this.nextBtn = document.querySelector('.testimonial-next');
+        this.currentIndex = 0;
+        this.autoplayInterval = null;
+        
         this.init();
     }
 
     init() {
-        if (!this.credentialText) return;
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !this.hasAnimated) {
-                    this.animateCounter();
-                    this.hasAnimated = true;
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        observer.observe(this.credentialText);
-    }
-
-    animateCounter() {
-        const text = this.credentialText.textContent;
-        const match = text.match(/\d+/);
+        if (this.testimonials.length === 0) return;
         
-        if (!match) return;
+        this.setupNavigation();
+        this.startAutoplay();
+    }
 
-        const targetNumber = parseInt(match[0]);
-        const duration = 2000;
-        const startTime = Date.now();
-        const element = this.credentialText;
+    setupNavigation() {
+        this.prevBtn.addEventListener('click', () => {
+            this.goToPrev();
+            this.resetAutoplay();
+        });
 
-        const animate = () => {
-            const elapsed = Date.now() - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            const current = Math.floor(progress * targetNumber);
-            
-            element.textContent = text.replace(/\d+/, current);
+        this.nextBtn.addEventListener('click', () => {
+            this.goToNext();
+            this.resetAutoplay();
+        });
 
-            if (progress < 1) {
-                requestAnimationFrame(animate);
-            } else {
-                element.textContent = text;
-            }
-        };
+        this.dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                this.goToSlide(index);
+                this.resetAutoplay();
+            });
+        });
+    }
 
-        animate();
+    goToSlide(index) {
+        this.testimonials.forEach(t => t.classList.remove('active'));
+        this.dots.forEach(d => d.classList.remove('active'));
+        
+        this.testimonials[index].classList.add('active');
+        this.dots[index].classList.add('active');
+        
+        this.currentIndex = index;
+        
+        if (typeof gsap !== 'undefined') {
+            gsap.fromTo(this.testimonials[index],
+                { opacity: 0, y: 30 },
+                { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
+            );
+        }
+    }
+
+    goToNext() {
+        const nextIndex = (this.currentIndex + 1) % this.testimonials.length;
+        this.goToSlide(nextIndex);
+    }
+
+    goToPrev() {
+        const prevIndex = (this.currentIndex - 1 + this.testimonials.length) % this.testimonials.length;
+        this.goToSlide(prevIndex);
+    }
+
+    startAutoplay() {
+        this.autoplayInterval = setInterval(() => {
+            this.goToNext();
+        }, 5000);
+    }
+
+    resetAutoplay() {
+        clearInterval(this.autoplayInterval);
+        this.startAutoplay();
     }
 }
 
-// Initialize all About Section components
-function initAboutSection() {
-    new AboutPhotoEffects();
-    new AboutScrollAnimations();
-    new WelcomeBannerParallax();
-    new PhoneButtonAnimation();
-    new ExperienceCounter();
-    
-    console.log('✨ About section components initialized');
-}
+class ContactForm {
+    constructor() {
+        this.form = document.getElementById('contactForm');
+        this.init();
+    }
 
-// Add to existing initialization
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        // Delay initialization slightly to ensure other components load first
-        setTimeout(initAboutSection, 100);
-    });
-} else {
-    setTimeout(initAboutSection, 100);
+    init() {
+        if (!this.form) return;
+        
+        this.form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.handleSubmit();
+        });
+
+        const inputs = this.form.querySelectorAll('input, textarea, select');
+        inputs.forEach(input => {
+            input.setAttribute('placeholder', ' ');
+        });
+    }
+
+    handleSubmit() {
+        const formData = new FormData(this.form);
+        const data = Object.fromEntries(formData);
+        
+        const submitBtn = this.form.querySelector('.submit-btn');
+        const originalText = submitBtn.innerHTML;
+        
+        submitBtn.innerHTML = '<span>Message Sent!</span><i class="fas fa-check"></i>';
+        submitBtn.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+        
+        setTimeout(() => {
+            this.form.reset();
+            submitBtn.innerHTML = originalText;
+            submitBtn.style.background = '';
+        }, 3000);
+        
+        console.log('Form submitted:', data);
+    }
 }
 
 // ============================================
@@ -1181,7 +1127,7 @@ function initWebsite() {
     specialsCarousel.init();
     window.specialsCarousel = specialsCarousel; // Make globally accessible
     
-    new AboutPhotoEffects();
+    new OwnerPhotoCarousel();
     new TestimonialsSlider();
     new ContactForm();
     
