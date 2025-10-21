@@ -687,7 +687,6 @@ body {
     margin: 0 auto;
     line-height: 1.8;
 }
-
 /* ============================================
    SPECIALS SECTION - COMPLETE CAROUSEL
    ============================================ */
@@ -728,6 +727,9 @@ body {
     z-index: 1;
 }
 
+/* ============================================
+   SECTION HEADER
+   ============================================ */
 .specials-section .section-header {
     text-align: center;
     margin-bottom: 80px;
@@ -769,11 +771,17 @@ body {
     line-height: 1.8;
 }
 
+/* ============================================
+   CAROUSEL WRAPPER
+   ============================================ */
 .specials-carousel-wrapper {
     position: relative;
     padding: 0 80px;
 }
 
+/* ============================================
+   CAROUSEL CONTAINER - HORIZONTAL SCROLL
+   ============================================ */
 .specials-carousel {
     display: flex;
     gap: 35px;
@@ -796,6 +804,9 @@ body {
     pointer-events: none;
 }
 
+/* ============================================
+   SPECIAL CARD
+   ============================================ */
 .special-card {
     position: relative;
     background: linear-gradient(135deg, var(--cream) 0%, var(--soft-sand) 100%);
@@ -834,6 +845,9 @@ body {
     padding: 45px 40px;
 }
 
+/* ============================================
+   SAVE BADGE
+   ============================================ */
 .save-badge {
     position: absolute;
     top: 20px;
@@ -865,6 +879,9 @@ body {
     line-height: 1;
 }
 
+/* ============================================
+   SPECIAL IMAGE
+   ============================================ */
 .special-image {
     position: relative;
     width: 100%;
@@ -900,6 +917,9 @@ body {
     pointer-events: none;
 }
 
+/* ============================================
+   SPECIAL CONTENT
+   ============================================ */
 .special-content {
     padding: 35px 30px;
     text-align: center;
@@ -922,6 +942,9 @@ body {
     font-style: italic;
 }
 
+/* ============================================
+   PRICING
+   ============================================ */
 .special-price {
     display: flex;
     align-items: center;
@@ -955,6 +978,9 @@ body {
     margin-bottom: 25px;
 }
 
+/* ============================================
+   BOOK BUTTON
+   ============================================ */
 .special-book-btn,
 .view-details-btn {
     display: inline-flex;
@@ -992,6 +1018,9 @@ body {
     transform: translateX(5px);
 }
 
+/* ============================================
+   NO SPECIALS MESSAGE
+   ============================================ */
 .no-specials-message {
     display: none;
     text-align: center;
@@ -1077,6 +1106,9 @@ body {
     transform: translateX(5px);
 }
 
+/* ============================================
+   CAROUSEL NAVIGATION ARROWS
+   ============================================ */
 .carousel-nav {
     position: absolute;
     top: 50%;
@@ -1117,6 +1149,9 @@ body {
     pointer-events: none;
 }
 
+/* ============================================
+   CAROUSEL INDICATORS (DOTS)
+   ============================================ */
 .carousel-indicators {
     display: flex;
     align-items: center;
@@ -1153,56 +1188,71 @@ body {
     display: none;
 }
 
+/* ============================================
+   PACKAGE DETAILS MODAL
+   ============================================ */
 .package-modal {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
     height: 100vh;
-    z-index: 9999;
+    z-index: 99999;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.4s ease, visibility 0.4s ease;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .package-modal.active {
     opacity: 1;
     visibility: visible;
+    pointer-events: all;
 }
 
 .modal-overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     width: 100%;
     height: 100%;
     background: rgba(28, 28, 28, 0.85);
     backdrop-filter: blur(10px);
     cursor: pointer;
+    z-index: 1;
 }
 
 .modal-content {
     position: relative;
     width: 90%;
     max-width: 900px;
-    max-height: 85vh;
+    max-height: 90vh;
     background: linear-gradient(135deg, var(--cream) 0%, var(--soft-sand) 100%);
     border-radius: 40px;
     overflow: hidden;
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
-    transform: scale(0.9) translateY(30px);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(0.9);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
+    z-index: 2;
 }
 
 .package-modal.active .modal-content {
-    transform: scale(1) translateY(0);
+    transform: scale(1);
+    opacity: 1;
 }
 
+/* Modal Close Button */
 .modal-close {
     position: absolute;
     top: 20px;
@@ -1220,6 +1270,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0;
 }
 
 .modal-close:hover {
@@ -1229,11 +1280,13 @@ body {
     box-shadow: 0 8px 25px rgba(169, 200, 156, 0.4);
 }
 
+/* Modal Image Container */
 .modal-image-container {
     position: relative;
     width: 100%;
     height: 300px;
     overflow: hidden;
+    flex-shrink: 0;
 }
 
 .modal-image {
@@ -1255,6 +1308,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 3px;
+    z-index: 5;
 }
 
 .modal-badge .save-text {
@@ -1272,10 +1326,32 @@ body {
     line-height: 1;
 }
 
+/* Modal Body */
 .modal-body {
-    padding: 40px 45px;
+    padding: 40px 45px 45px;
     overflow-y: auto;
+    overflow-x: hidden;
     flex: 1;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Custom Scrollbar for Modal Body */
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: rgba(169, 200, 156, 0.1);
+    border-radius: 10px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: var(--mint-green);
+    border-radius: 10px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: var(--forest-green);
 }
 
 .modal-brand {
@@ -1306,6 +1382,7 @@ body {
     font-style: italic;
 }
 
+/* Modal Price Section */
 .modal-price-section {
     padding: 25px 30px;
     background: rgba(169, 200, 156, 0.08);
@@ -1336,6 +1413,7 @@ body {
     opacity: 0.7;
 }
 
+/* What's Included Section */
 .modal-includes {
     background: rgba(255, 255, 255, 0.7);
     border: 2px solid rgba(169, 200, 156, 0.25);
@@ -1385,6 +1463,7 @@ body {
     font-size: 1.3rem;
 }
 
+/* Modal Actions */
 .modal-actions {
     display: flex;
     justify-content: center;
@@ -1403,6 +1482,8 @@ body {
     letter-spacing: 1px;
     text-decoration: none;
     border-radius: 50px;
+    border: none;
+    cursor: pointer;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 8px 30px rgba(59, 74, 47, 0.3);
 }
@@ -1420,6 +1501,10 @@ body {
 .modal-book-btn:hover i {
     transform: translateX(5px);
 }
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
 
 @media (max-width: 1200px) {
     .special-card {
@@ -1527,9 +1612,13 @@ body {
     }
     
     /* Modal Responsive */
+    .package-modal {
+        padding: 15px;
+    }
+
     .modal-content {
         width: 95%;
-        max-height: 90vh;
+        max-height: 92vh;
         border-radius: 30px;
     }
 
@@ -1538,7 +1627,7 @@ body {
     }
 
     .modal-body {
-        padding: 30px 25px;
+        padding: 30px 25px 35px;
     }
 
     .modal-title {
@@ -1627,17 +1716,30 @@ body {
     }
     
     /* Modal Mobile */
+    .package-modal {
+        padding: 10px;
+    }
+
     .modal-close {
         width: 40px;
         height: 40px;
         top: 15px;
         right: 15px;
+        font-size: 1rem;
     }
 
     .modal-badge {
         padding: 12px 18px;
         top: 20px;
         left: 20px;
+    }
+
+    .modal-image-container {
+        height: 200px;
+    }
+
+    .modal-body {
+        padding: 25px 20px 30px;
     }
 
     .modal-title {
@@ -1650,6 +1752,27 @@ body {
 
     .modal-price-section {
         padding: 20px 20px;
+    }
+
+    .modal-current-price {
+        font-size: 2rem;
+    }
+
+    .modal-original-price {
+        font-size: 1.2rem;
+    }
+
+    .modal-includes {
+        padding: 20px 20px;
+    }
+
+    .includes-title {
+        font-size: 1.3rem;
+    }
+
+    .includes-list li {
+        font-size: 0.95rem;
+        padding-left: 30px;
     }
 }
 
