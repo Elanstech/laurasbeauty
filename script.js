@@ -246,485 +246,542 @@ class SpaHeaderManager {
 // ============================================
 // HERO SECTION
 // ============================================
-class AdvancedHeroManager {
+class HeroSectionManager {
     constructor() {
-        this.hero = document.querySelector('.hero');
-        if (!this.hero) return;
-
-        this.videoContainers = document.querySelectorAll('.video-container');
-        this.videos = document.querySelectorAll('.hero-video');
-        this.mobileVideos = document.querySelectorAll('.mobile-hero-video');
-        this.bgLayers = document.querySelectorAll('.bg-layer');
-        this.floatingElements = document.querySelectorAll('.float-element');
-        this.glassPanel = document.querySelector('.glass-panel');
-        this.ctaButton = document.getElementById('heroCTA');
-        this.scrollIndicator = document.getElementById('scrollIndicator');
-        this.heroHeadline = document.getElementById('heroHeadline');
-        this.heroSubtitle = document.getElementById('heroSubtitle');
-        
-        this.currentLayerIndex = 0;
+        // DOM Elements
+        this.heroSection = document.querySelector('.hero-section');
         this.swiper = null;
-        this.isDesktop = window.innerWidth > 768;
+        this.videos = document.querySelectorAll('.slide-video');
+        this.scrollIndicator = document.querySelector('.scroll-indicator');
+        this.ctaButtons = document.querySelectorAll('.cta-primary');
         
+        // State
+        this.currentSlide = 0;
+        this.isAutoplayActive = true;
+        this.isMobile = window.innerWidth <= 768;
+        
+        // Initialize
         this.init();
     }
 
+    /**
+     * Initialize all hero section functionality
+     */
     init() {
+        console.log('🌿 Initializing Hero Section...');
+        
+        this.initializeSwiper();
         this.setupVideoPlayback();
-        this.initializeGSAP();
-        this.setupBackgroundRotation();
-        this.setupParallax();
-        this.setupFloatingElements();
-        this.setupCTAButton();
         this.setupScrollIndicator();
-        this.initializeMobileSwiper();
-        this.setupDynamicContent();
-        this.setupIntersectionObserver();
+        this.setupCTAButtons();
+        this.setupParticleEffects();
         this.setupResponsiveHandling();
-    }
-
-    // ============================================
-    // VIDEO PLAYBACK MANAGEMENT
-    // ============================================
-    
-    setupVideoPlayback() {
-        const allVideos = [...this.videos, ...this.mobileVideos];
+        this.setupAccessibility();
         
-        allVideos.forEach((video, index) => {
-            // Optimize video loading
-            video.preload = index === 0 ? 'auto' : 'metadata';
-            
-            // Handle video load and play
-            video.addEventListener('loadedmetadata', () => {
-                video.play().catch(err => {
-                    console.log('Video autoplay prevented:', err);
-                    // Retry on user interaction
-                    document.addEventListener('click', () => {
-                        video.play().catch(() => {});
-                    }, { once: true });
-                });
-            });
-
-            // Loop videos smoothly
-            video.addEventListener('ended', () => {
-                video.currentTime = 0;
-                video.play();
-            });
-
-            // Pause videos when out of view
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        video.play().catch(() => {});
-                    } else {
-                        video.pause();
-                    }
-                });
-            }, { threshold: 0.3 });
-
-            observer.observe(video);
-        });
-
-        // Reduce motion preference support
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            allVideos.forEach(video => {
-                video.pause();
-                video.style.opacity = '0.6';
-            });
+        if (typeof gsap !== 'undefined') {
+            this.setupGSAPAnimations();
         }
-    }
-
-    // ============================================
-    // GSAP ANIMATIONS
-    // ============================================
-    
-    initializeGSAP() {
-        // Register GSAP plugins
-        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-            gsap.registerPlugin(ScrollTrigger);
-
-            // Hero entrance animation
-            const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
-            tl.from(this.videoContainers, {
-                scale: 0.9,
-                opacity: 0,
-                duration: 1.8,
-                stagger: 0.3,
-                ease: 'power4.out'
-            })
-            .from(this.glassPanel, {
-                y: 60,
-                opacity: 0,
-                duration: 1.2,
-                ease: 'power3.out'
-            }, '-=1.2')
-            .from('.brand-logo', {
-                y: 30,
-                opacity: 0,
-                duration: 0.8
-            }, '-=0.8')
-            .from([this.heroHeadline, this.heroSubtitle], {
-                y: 40,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.2
-            }, '-=0.6')
-            .from('.service-tags .tag', {
-                x: -20,
-                opacity: 0,
-                duration: 0.6,
-                stagger: 0.1
-            }, '-=0.4')
-            .from('.cta-button', {
-                scale: 0.9,
-                opacity: 0,
-                duration: 0.8,
-                ease: 'back.out(1.5)'
-            }, '-=0.4')
-            .from('.explore-link', {
-                y: 20,
-                opacity: 0,
-                duration: 0.6
-            }, '-=0.4')
-            .from(this.scrollIndicator, {
-                y: 20,
-                opacity: 0,
-                duration: 0.6
-            }, '-=0.3');
-
-            // Parallax scroll animations
-            gsap.to(this.videoContainers, {
-                yPercent: 15,
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: this.hero,
-                    start: 'top top',
-                    end: 'bottom top',
-                    scrub: 1.5
-                }
-            });
-
-            // Glass panel subtle movement
-            gsap.to(this.glassPanel, {
-                y: -50,
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: this.hero,
-                    start: 'top top',
-                    end: 'bottom top',
-                    scrub: 2
-                }
-            });
-
-            // Floating elements parallax
-            this.floatingElements.forEach((element, index) => {
-                const speed = 0.5 + (index * 0.2);
-                gsap.to(element, {
-                    y: -100 * speed,
-                    rotation: 15 * (index % 2 === 0 ? 1 : -1),
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: this.hero,
-                        start: 'top top',
-                        end: 'bottom top',
-                        scrub: 1 + (index * 0.2)
-                    }
-                });
-            });
-        }
-    }
-
-    // ============================================
-    // BACKGROUND LAYER ROTATION
-    // ============================================
-    
-    setupBackgroundRotation() {
-        if (this.bgLayers.length === 0) return;
-
-        setInterval(() => {
-            this.bgLayers.forEach(layer => layer.classList.remove('active'));
-            
-            this.currentLayerIndex = (this.currentLayerIndex + 1) % this.bgLayers.length;
-            this.bgLayers[this.currentLayerIndex].classList.add('active');
-        }, 6000);
-    }
-
-    // ============================================
-    // PARALLAX SCROLLING
-    // ============================================
-    
-    setupParallax() {
-        let rafId = null;
         
-        const handleParallax = () => {
-            const scrolled = window.pageYOffset;
-            const heroHeight = this.hero.offsetHeight;
-            
-            // Only apply parallax when hero is in view
-            if (scrolled < heroHeight) {
-                // Video containers parallax
-                this.videoContainers.forEach((container, index) => {
-                    const speed = 0.3 + (index * 0.1);
-                    const yPos = scrolled * speed;
-                    container.style.transform = `translateY(${yPos}px)`;
-                });
-
-                // Floating elements parallax with rotation
-                this.floatingElements.forEach((element, index) => {
-                    const speed = 0.15 + (index * 0.08);
-                    const yPos = scrolled * speed;
-                    const rotation = scrolled * 0.03 * (index + 1);
-                    const xOffset = Math.sin(scrolled * 0.002 + index) * 25;
-                    element.style.transform = `translate(${xOffset}px, ${yPos}px) rotate(${rotation}deg)`;
-                });
-            }
-            
-            rafId = null;
-        };
-
-        window.addEventListener('scroll', () => {
-            if (!rafId) {
-                rafId = requestAnimationFrame(handleParallax);
-            }
-        }, { passive: true });
+        console.log('✅ Hero Section Initialized');
     }
 
-    // ============================================
-    // FLOATING ELEMENTS
-    // ============================================
-    
-    setupFloatingElements() {
-        this.floatingElements.forEach((element, index) => {
-            const randomDelay = Math.random() * 3;
-            const randomDuration = 6 + Math.random() * 4;
-            const randomX = (Math.random() - 0.5) * 40;
-            
-            element.style.animationDelay = `${randomDelay}s`;
-            element.style.animationDuration = `${randomDuration}s`;
-            element.style.setProperty('--random-x', `${randomX}px`);
-        });
-    }
-
-    // ============================================
-    // CTA BUTTON INTERACTIONS
-    // ============================================
-    
-    setupCTAButton() {
-        if (!this.ctaButton) return;
-
-        // Ripple effect
-        this.ctaButton.addEventListener('click', (e) => {
-            const ripple = document.createElement('span');
-            ripple.classList.add('ripple-effect');
-            
-            const rect = this.ctaButton.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = e.clientX - rect.left - size / 2;
-            const y = e.clientY - rect.top - size / 2;
-            
-            ripple.style.cssText = `
-                position: absolute;
-                width: ${size}px;
-                height: ${size}px;
-                left: ${x}px;
-                top: ${y}px;
-                background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, transparent 70%);
-                border-radius: 50%;
-                pointer-events: none;
-                animation: ripple 0.8s ease-out;
-            `;
-            
-            this.ctaButton.appendChild(ripple);
-            
-            setTimeout(() => ripple.remove(), 800);
-
-            // Scroll to contact section
-            const contactSection = document.querySelector('#contact');
-            if (contactSection) {
-                contactSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-
-        // Magnetic button effect (desktop only)
-        if (this.isDesktop) {
-            const magnetic = (e) => {
-                const rect = this.ctaButton.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                const distance = Math.sqrt(x * x + y * y);
-                const threshold = 100;
-                
-                if (distance < threshold) {
-                    const strength = (threshold - distance) / threshold;
-                    const moveX = x * strength * 0.3;
-                    const moveY = y * strength * 0.3;
-                    this.ctaButton.style.transform = `translate(${moveX}px, ${moveY}px)`;
-                }
-            };
-
-            this.hero.addEventListener('mousemove', magnetic);
-            
-            this.ctaButton.addEventListener('mouseleave', () => {
-                this.ctaButton.style.transform = '';
-            });
+    /**
+     * Initialize Swiper Slider
+     */
+    initializeSwiper() {
+        if (typeof Swiper === 'undefined') {
+            console.error('❌ Swiper library not loaded');
+            return;
         }
-    }
-
-    // ============================================
-    // SCROLL INDICATOR
-    // ============================================
-    
-    setupScrollIndicator() {
-        if (!this.scrollIndicator) return;
-
-        this.scrollIndicator.addEventListener('click', () => {
-            window.scrollTo({
-                top: window.innerHeight,
-                behavior: 'smooth'
-            });
-        });
-
-        // Hide on scroll
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                this.scrollIndicator.style.opacity = '0';
-                this.scrollIndicator.style.pointerEvents = 'none';
-            } else {
-                this.scrollIndicator.style.opacity = '1';
-                this.scrollIndicator.style.pointerEvents = 'auto';
-            }
-        }, { passive: true });
-    }
-
-    // ============================================
-    // MOBILE SWIPER
-    // ============================================
-    
-    initializeMobileSwiper() {
-        if (typeof Swiper === 'undefined' || this.isDesktop) return;
-
-        const swiperElement = document.querySelector('.hero-swiper');
-        if (!swiperElement) return;
 
         this.swiper = new Swiper('.hero-swiper', {
+            // Core Settings
             effect: 'fade',
             fadeEffect: {
                 crossFade: true
             },
             speed: 1200,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
             loop: true,
-            lazy: {
-                loadPrevNext: true,
+            grabCursor: true,
+            
+            // Autoplay
+            autoplay: {
+                delay: 6000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
             },
+            
+            // Navigation
+            navigation: {
+                nextEl: '.hero-next',
+                prevEl: '.hero-prev',
+            },
+            
+            // Pagination
+            pagination: {
+                el: '.hero-pagination',
+                clickable: true,
+                renderBullet: (index, className) => {
+                    return `<span class="${className}" aria-label="Go to slide ${index + 1}"></span>`;
+                },
+            },
+            
+            // Keyboard Control
+            keyboard: {
+                enabled: true,
+                onlyInViewport: true,
+            },
+            
+            // Touch/Swipe
+            touchRatio: 1,
+            threshold: 10,
+            
+            // Events
             on: {
+                init: (swiper) => {
+                    console.log('📱 Swiper initialized');
+                    this.onSlideChange(swiper);
+                },
                 slideChange: (swiper) => {
-                    // Play current video, pause others
-                    this.mobileVideos.forEach((video, index) => {
-                        if (index === swiper.realIndex) {
-                            video.play().catch(() => {});
-                        } else {
-                            video.pause();
-                        }
-                    });
-                }
+                    this.onSlideChange(swiper);
+                },
+                slideChangeTransitionStart: (swiper) => {
+                    this.pauseInactiveVideos(swiper.realIndex);
+                },
+                slideChangeTransitionEnd: (swiper) => {
+                    this.playActiveVideo(swiper.realIndex);
+                },
             }
         });
     }
 
-    // ============================================
-    // DYNAMIC CONTENT SYSTEM
-    // ============================================
-    
-    setupDynamicContent() {
-        if (!this.heroHeadline || !this.heroSubtitle) return;
-
-        const contentOptions = [
-            {
-                headline: 'Relax. Restore. Reveal Your Glow.',
-                subtitle: 'Experience natural luxury in every treatment'
-            },
-            {
-                headline: 'Your Journey to Radiance Begins Here.',
-                subtitle: 'Personalized treatments for your unique beauty'
-            },
-            {
-                headline: 'Embrace Nature\'s Touch.',
-                subtitle: 'Organic skincare meets modern luxury'
-            }
-        ];
-
-        let currentIndex = 0;
-
-        // Optional: Rotate content every 10 seconds
-        // Uncomment to enable dynamic text rotation
-        /*
-        setInterval(() => {
-            currentIndex = (currentIndex + 1) % contentOptions.length;
-            const content = contentOptions[currentIndex];
-            
-            // Fade out
-            if (typeof gsap !== 'undefined') {
-                gsap.to([this.heroHeadline, this.heroSubtitle], {
-                    opacity: 0,
-                    y: -20,
-                    duration: 0.6,
-                    stagger: 0.1,
-                    onComplete: () => {
-                        // Update text
-                        this.heroHeadline.textContent = content.headline;
-                        this.heroSubtitle.textContent = content.subtitle;
-                        
-                        // Fade in
-                        gsap.fromTo([this.heroHeadline, this.heroSubtitle], 
-                            { opacity: 0, y: 20 },
-                            { opacity: 1, y: 0, duration: 0.6, stagger: 0.1 }
-                        );
-                    }
-                });
-            }
-        }, 10000);
-        */
+    /**
+     * Handle slide change events
+     */
+    onSlideChange(swiper) {
+        this.currentSlide = swiper.realIndex;
+        
+        // Update analytics or tracking
+        this.trackSlideView(this.currentSlide);
+        
+        // Add custom animations if needed
+        this.animateSlideContent(this.currentSlide);
     }
 
-    // ============================================
-    // INTERSECTION OBSERVER
-    // ============================================
-    
-    setupIntersectionObserver() {
-        const observerOptions = {
-            threshold: 0.2,
-            rootMargin: '0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('in-view');
+    /**
+     * Setup video playback management
+     */
+    setupVideoPlayback() {
+        this.videos.forEach((video, index) => {
+            // Preload settings
+            video.preload = index === 0 ? 'auto' : 'metadata';
+            
+            // Load event
+            video.addEventListener('loadedmetadata', () => {
+                if (index === 0) {
+                    this.playVideo(video);
                 }
             });
-        }, observerOptions);
 
-        // Observe all hero elements
-        const elementsToObserve = this.hero.querySelectorAll(
-            '.glass-panel, .floating-elements, .scroll-indicator'
-        );
-        
-        elementsToObserve.forEach(el => observer.observe(el));
+            // Error handling
+            video.addEventListener('error', (e) => {
+                console.error(`Video ${index} failed to load:`, e);
+                this.handleVideoError(video, index);
+            });
+
+            // Loop handling
+            video.addEventListener('ended', () => {
+                video.currentTime = 0;
+                this.playVideo(video);
+            });
+
+            // Intersection Observer for performance
+            this.observeVideo(video);
+        });
+
+        // Handle reduced motion preference
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            this.pauseAllVideos();
+        }
     }
 
-    // ============================================
-    // RESPONSIVE HANDLING
-    // ============================================
-    
+    /**
+     * Play video with error handling
+     */
+    playVideo(video) {
+        const playPromise = video.play();
+        
+        if (playPromise !== undefined) {
+            playPromise
+                .then(() => {
+                    console.log(`Video ${video.dataset.index || ''} playing`);
+                })
+                .catch((error) => {
+                    console.warn('Video autoplay prevented:', error);
+                    // Try to play on user interaction
+                    this.enablePlayOnInteraction(video);
+                });
+        }
+    }
+
+    /**
+     * Enable video play on user interaction
+     */
+    enablePlayOnInteraction(video) {
+        const playOnInteraction = () => {
+            this.playVideo(video);
+            document.removeEventListener('click', playOnInteraction);
+            document.removeEventListener('touchstart', playOnInteraction);
+        };
+        
+        document.addEventListener('click', playOnInteraction, { once: true });
+        document.addEventListener('touchstart', playOnInteraction, { once: true });
+    }
+
+    /**
+     * Play video for active slide
+     */
+    playActiveVideo(slideIndex) {
+        if (this.videos[slideIndex]) {
+            this.playVideo(this.videos[slideIndex]);
+        }
+    }
+
+    /**
+     * Pause videos for inactive slides
+     */
+    pauseInactiveVideos(activeIndex) {
+        this.videos.forEach((video, index) => {
+            if (index !== activeIndex) {
+                video.pause();
+            }
+        });
+    }
+
+    /**
+     * Pause all videos
+     */
+    pauseAllVideos() {
+        this.videos.forEach(video => video.pause());
+    }
+
+    /**
+     * Handle video loading errors
+     */
+    handleVideoError(video, index) {
+        const fallbackImage = video.getAttribute('poster');
+        if (fallbackImage) {
+            const parent = video.parentElement;
+            parent.style.backgroundImage = `url(${fallbackImage})`;
+            parent.style.backgroundSize = 'cover';
+            parent.style.backgroundPosition = 'center';
+            video.style.display = 'none';
+        }
+    }
+
+    /**
+     * Observe video with Intersection Observer
+     */
+    observeVideo(video) {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        this.playVideo(video);
+                    } else {
+                        video.pause();
+                    }
+                });
+            },
+            { threshold: 0.5 }
+        );
+        
+        observer.observe(video);
+    }
+
+    /**
+     * Setup scroll indicator functionality
+     */
+    setupScrollIndicator() {
+        if (!this.scrollIndicator) return;
+
+        // Click to scroll
+        this.scrollIndicator.addEventListener('click', () => {
+            this.scrollToNextSection();
+        });
+
+        // Hide on scroll
+        this.handleScrollIndicatorVisibility();
+    }
+
+    /**
+     * Scroll to next section
+     */
+    scrollToNextSection() {
+        const nextSection = this.heroSection.nextElementSibling;
+        
+        if (nextSection) {
+            nextSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        } else {
+            window.scrollTo({
+                top: window.innerHeight,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    /**
+     * Handle scroll indicator visibility
+     */
+    handleScrollIndicatorVisibility() {
+        let rafId = null;
+        
+        window.addEventListener('scroll', () => {
+            if (rafId) return;
+            
+            rafId = requestAnimationFrame(() => {
+                const scrolled = window.pageYOffset;
+                
+                if (scrolled > 300) {
+                    this.scrollIndicator.style.opacity = '0';
+                    this.scrollIndicator.style.pointerEvents = 'none';
+                } else {
+                    this.scrollIndicator.style.opacity = '1';
+                    this.scrollIndicator.style.pointerEvents = 'auto';
+                }
+                
+                rafId = null;
+            });
+        }, { passive: true });
+    }
+
+    /**
+     * Setup CTA button interactions
+     */
+    setupCTAButtons() {
+        this.ctaButtons.forEach(button => {
+            // Ripple effect
+            button.addEventListener('click', (e) => {
+                this.createRipple(e, button);
+            });
+
+            // Magnetic effect on desktop
+            if (!this.isMobile) {
+                this.addMagneticEffect(button);
+            }
+
+            // Track clicks
+            button.addEventListener('click', () => {
+                this.trackCTAClick(button);
+            });
+        });
+    }
+
+    /**
+     * Create ripple effect on button click
+     */
+    createRipple(event, button) {
+        const ripple = document.createElement('span');
+        ripple.classList.add('ripple-effect');
+        
+        const rect = button.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = event.clientX - rect.left - size / 2;
+        const y = event.clientY - rect.top - size / 2;
+        
+        ripple.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            left: ${x}px;
+            top: ${y}px;
+            background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: rippleEffect 0.8s ease-out;
+            z-index: 0;
+        `;
+        
+        button.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 800);
+    }
+
+    /**
+     * Add magnetic effect to button
+     */
+    addMagneticEffect(button) {
+        const heroSection = this.heroSection;
+        
+        const magnetic = (e) => {
+            const rect = button.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            const distance = Math.sqrt(x * x + y * y);
+            const threshold = 120;
+            
+            if (distance < threshold) {
+                const strength = (threshold - distance) / threshold;
+                const moveX = x * strength * 0.4;
+                const moveY = y * strength * 0.4;
+                button.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            }
+        };
+
+        heroSection.addEventListener('mousemove', magnetic);
+        
+        button.addEventListener('mouseleave', () => {
+            button.style.transform = '';
+        });
+    }
+
+    /**
+     * Setup particle effects
+     */
+    setupParticleEffects() {
+        const particleContainers = document.querySelectorAll('.particle-container');
+        
+        particleContainers.forEach((container, index) => {
+            const particleType = container.getAttribute('data-particle-type');
+            
+            if (particleType === 'sparkle') {
+                this.createSparkles(container);
+            } else if (particleType === 'petals') {
+                this.createPetals(container);
+            }
+        });
+    }
+
+    /**
+     * Create sparkle particles
+     */
+    createSparkles(container) {
+        const sparkleCount = this.isMobile ? 5 : 10;
+        
+        for (let i = 0; i < sparkleCount; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle-particle');
+            
+            const size = Math.random() * 4 + 2;
+            const left = Math.random() * 100;
+            const delay = Math.random() * 3;
+            const duration = Math.random() * 3 + 2;
+            
+            sparkle.style.cssText = `
+                position: absolute;
+                width: ${size}px;
+                height: ${size}px;
+                background: rgba(169, 200, 156, 0.8);
+                border-radius: 50%;
+                left: ${left}%;
+                top: -10%;
+                box-shadow: 0 0 ${size * 2}px rgba(169, 200, 156, 0.6);
+                animation: sparkleFloat ${duration}s ease-in-out ${delay}s infinite;
+                pointer-events: none;
+            `;
+            
+            container.appendChild(sparkle);
+        }
+    }
+
+    /**
+     * Create petal particles
+     */
+    createPetals(container) {
+        const petalCount = this.isMobile ? 3 : 6;
+        
+        for (let i = 0; i < petalCount; i++) {
+            const petal = document.createElement('div');
+            petal.classList.add('petal-particle');
+            
+            const left = Math.random() * 100;
+            const delay = Math.random() * 5;
+            const duration = Math.random() * 8 + 6;
+            
+            petal.textContent = '🌸';
+            petal.style.cssText = `
+                position: absolute;
+                font-size: ${Math.random() * 10 + 15}px;
+                left: ${left}%;
+                top: -10%;
+                opacity: ${Math.random() * 0.4 + 0.3};
+                animation: petalFall ${duration}s linear ${delay}s infinite;
+                pointer-events: none;
+            `;
+            
+            container.appendChild(petal);
+        }
+    }
+
+    /**
+     * Setup GSAP animations
+     */
+    setupGSAPAnimations() {
+        // Parallax effect on scroll
+        gsap.to('.slide-video', {
+            yPercent: 20,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: this.heroSection,
+                start: 'top top',
+                end: 'bottom top',
+                scrub: 1.5
+            }
+        });
+
+        // Glass panel parallax
+        gsap.to('.glass-panel', {
+            y: -60,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: this.heroSection,
+                start: 'top top',
+                end: 'bottom top',
+                scrub: 2
+            }
+        });
+    }
+
+    /**
+     * Animate slide content
+     */
+    animateSlideContent(slideIndex) {
+        const slide = document.querySelectorAll('.swiper-slide')[slideIndex];
+        if (!slide) return;
+
+        const title = slide.querySelector('.slide-title');
+        const subtitle = slide.querySelector('.slide-subtitle');
+        const cta = slide.querySelector('.cta-primary');
+
+        if (typeof gsap !== 'undefined') {
+            const tl = gsap.timeline();
+            
+            tl.from(title, {
+                y: 30,
+                opacity: 0,
+                duration: 0.8,
+                ease: 'power3.out'
+            })
+            .from(subtitle, {
+                y: 20,
+                opacity: 0,
+                duration: 0.6,
+                ease: 'power3.out'
+            }, '-=0.4')
+            .from(cta, {
+                scale: 0.95,
+                opacity: 0,
+                duration: 0.6,
+                ease: 'back.out(1.5)'
+            }, '-=0.3');
+        }
+    }
+
+    /**
+     * Setup responsive handling
+     */
     setupResponsiveHandling() {
         let resizeTimer;
         
@@ -732,17 +789,15 @@ class AdvancedHeroManager {
             clearTimeout(resizeTimer);
             
             resizeTimer = setTimeout(() => {
-                const wasDesktop = this.isDesktop;
-                this.isDesktop = window.innerWidth > 768;
+                const wasMobile = this.isMobile;
+                this.isMobile = window.innerWidth <= 768;
                 
-                // Reinitialize if device type changed
-                if (wasDesktop !== this.isDesktop) {
-                    if (!this.isDesktop && !this.swiper) {
-                        this.initializeMobileSwiper();
-                    }
+                if (wasMobile !== this.isMobile) {
+                    console.log(`📱 Device changed: ${this.isMobile ? 'Mobile' : 'Desktop'}`);
+                    this.handleDeviceChange();
                 }
 
-                // Update viewport height for mobile
+                // Update viewport height
                 const vh = window.innerHeight * 0.01;
                 document.documentElement.style.setProperty('--vh', `${vh}px`);
             }, 250);
@@ -752,25 +807,84 @@ class AdvancedHeroManager {
         const vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}px`);
     }
+
+    /**
+     * Handle device change (mobile/desktop)
+     */
+    handleDeviceChange() {
+        // Rebuild particle effects with appropriate count
+        const particleContainers = document.querySelectorAll('.particle-container');
+        particleContainers.forEach(container => {
+            container.innerHTML = '';
+        });
+        this.setupParticleEffects();
+    }
+
+    /**
+     * Setup accessibility features
+     */
+    setupAccessibility() {
+        // Keyboard navigation
+        this.heroSection.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                this.swiper?.slidePrev();
+            } else if (e.key === 'ArrowRight') {
+                this.swiper?.slideNext();
+            }
+        });
+
+        // Pause autoplay on focus
+        this.heroSection.addEventListener('focusin', () => {
+            this.swiper?.autoplay.stop();
+        });
+
+        this.heroSection.addEventListener('focusout', () => {
+            if (this.isAutoplayActive) {
+                this.swiper?.autoplay.start();
+            }
+        });
+
+        // Reduced motion
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        if (prefersReducedMotion.matches) {
+            this.swiper?.autoplay.stop();
+            this.pauseAllVideos();
+        }
+    }
+
+    /**
+     * Track slide view (analytics placeholder)
+     */
+    trackSlideView(slideIndex) {
+        console.log(`📊 Slide ${slideIndex + 1} viewed`);
+        // Add your analytics code here
+        // Example: gtag('event', 'slide_view', { slide_number: slideIndex + 1 });
+    }
+
+    /**
+     * Track CTA click (analytics placeholder)
+     */
+    trackCTAClick(button) {
+        const ctaText = button.querySelector('.cta-text')?.textContent || 'Unknown';
+        console.log(`📊 CTA clicked: ${ctaText}`);
+        // Add your analytics code here
+        // Example: gtag('event', 'cta_click', { cta_name: ctaText });
+    }
 }
 
 // ============================================
-// INITIALIZE ALL COMPONENTS
+// INITIALIZE ON DOM READY
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Preloader
-    const preloaderManager = new PreloaderManager();
+    console.log('🌿 Laura\'s Beauty Touch - Hero Section Loading...');
     
-    // Initialize Header
-    const headerManager = new SpaHeaderManager();
-    
-    // Initialize Hero
-    const heroManager = new AdvancedHeroManager();
+    // Initialize Hero Section
+    const heroManager = new HeroSectionManager();
 
-    // Add ripple animation CSS dynamically
+    // Add custom animations CSS
     const style = document.createElement('style');
     style.textContent = `
-        @keyframes ripple {
+        @keyframes rippleEffect {
             from {
                 transform: scale(0);
                 opacity: 1;
@@ -780,20 +894,55 @@ document.addEventListener('DOMContentLoaded', () => {
                 opacity: 0;
             }
         }
+
+        @keyframes sparkleFloat {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes petalFall {
+            0% {
+                transform: translateY(0) rotate(0deg) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(720deg) translateX(100px);
+                opacity: 0;
+            }
+        }
     `;
     document.head.appendChild(style);
 
-    // Performance optimization for header
-    const floatingElements = document.querySelectorAll('.header-logo, .header-logo-image');
-    floatingElements.forEach(element => {
+    // Performance optimization
+    const criticalElements = document.querySelectorAll('.slide-video, .glass-panel');
+    criticalElements.forEach(element => {
         element.style.willChange = 'transform';
     });
 
-    // Performance optimization for hero
-    const heroVideos = document.querySelectorAll('.hero-video, .mobile-hero-video');
-    heroVideos.forEach(video => {
-        video.style.willChange = 'transform';
-    });
+    // Remove will-change after animations complete
+    setTimeout(() => {
+        criticalElements.forEach(element => {
+            element.style.willChange = 'auto';
+        });
+    }, 3000);
 
     // Detect touch device
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
@@ -801,22 +950,18 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('touch-device');
     }
 
-    // Log initialization
-    console.log('🌿 Laura\'s Beauty Touch initialized successfully');
+    console.log('✅ Hero Section Ready');
 });
 
 // ============================================
 // PRELOAD CRITICAL ASSETS
 // ============================================
-const preloadVideo = () => {
-    const firstVideo = document.querySelector('.video-container.video-2 video');
+window.addEventListener('load', () => {
+    // Preload first video
+    const firstVideo = document.querySelector('.swiper-slide:first-child .slide-video');
     if (firstVideo) {
         firstVideo.preload = 'auto';
     }
-};
-
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', preloadVideo);
-} else {
-    preloadVideo();
-}
+    
+    console.log('✅ Critical assets preloaded');
+});
