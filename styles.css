@@ -1723,393 +1723,456 @@ body {
 }
 
 /* ============================================
-   ABOUT SECTION
+   ABOUT LAURA & THE SPA SECTION
    ============================================ */
 
-.about-owner-section {
-    background: linear-gradient(135deg, var(--ivory-white) 0%, var(--soft-sand) 50%, var(--cream) 100%);
+.about-laura-section {
+    background: linear-gradient(180deg, var(--ivory-white) 0%, var(--soft-sand) 50%, var(--cream) 100%);
     position: relative;
     overflow: hidden;
 }
 
-.about-owner-section::before {
+.about-laura-section::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 20% 30%, rgba(169, 200, 156, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(232, 220, 200, 0.1) 0%, transparent 50%);
+    background: 
+        radial-gradient(circle at 15% 20%, rgba(169, 200, 156, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 85% 80%, rgba(232, 220, 200, 0.08) 0%, transparent 50%);
     pointer-events: none;
-}
-
-.about-owner-header {
-    position: relative;
-    z-index: 2;
-}
-
-.about-owner-content {
-    display: grid;
-    grid-template-columns: 45% 55%;
-    gap: 60px;
-    margin-top: 80px;
-    position: relative;
-    z-index: 2;
-}
-
-/* ============================================
-   AUTO-SCROLLING PHOTO CAROUSEL
-   ============================================ */
-.owner-photos-wrapper {
-    position: relative;
-}
-
-.owner-carousel {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 3/4;
-    border-radius: 40px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(59, 74, 47, 0.2);
-    border: 3px solid rgba(169, 200, 156, 0.3);
-}
-
-.carousel-track {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.carousel-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
-}
-
-.carousel-slide.active {
-    opacity: 1;
-    visibility: visible;
     z-index: 1;
 }
 
-.owner-photo-placeholder {
+.about-container {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 120px 40px;
+    z-index: 2;
+}
+
+.about-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.laura-story-grid {
+    display: grid;
+    grid-template-columns: 45% 55%;
+    gap: 70px;
+    margin-bottom: 100px;
+    align-items: center;
+}
+
+/* Photo Gallery Stack */
+.laura-photos-section {
+    position: relative;
+}
+
+.photos-stack {
+    position: relative;
+}
+
+.photo-main {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.photo-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/5;
+    border-radius: 35px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(59, 74, 47, 0.2);
+    border: 4px solid rgba(255, 255, 255, 0.9);
+    background: linear-gradient(135deg, var(--mint-green) 0%, var(--forest-green) 100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.photo-frame:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 70px rgba(59, 74, 47, 0.3);
+}
+
+.photos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.photo-small {
+    aspect-ratio: 1;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(59, 74, 47, 0.15);
+    background: linear-gradient(135deg, var(--soft-sage) 0%, var(--mint-green) 100%);
+    transition: all 0.3s ease;
+}
+
+.photo-small:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(59, 74, 47, 0.25);
+}
+
+.photo-placeholder {
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--mint-green) 0%, var(--forest-green) 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: white;
+    text-align: center;
+    padding: 20px;
 }
 
-.owner-photo-placeholder i {
-    font-size: 6rem;
+.photo-main .photo-placeholder i {
+    font-size: 5rem;
     margin-bottom: 20px;
+    opacity: 0.95;
+}
+
+.photo-small .photo-placeholder i {
+    font-size: 2rem;
+    margin-bottom: 8px;
     opacity: 0.9;
 }
 
-.owner-photo-placeholder p {
+.photo-main .photo-placeholder p {
     font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 500;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.carousel-dots {
-    position: absolute;
-    bottom: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 12px;
-    z-index: 10;
+.photo-small .photo-placeholder p {
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 }
 
-.carousel-dot {
-    width: 12px;
-    height: 12px;
-    background: rgba(255, 255, 255, 0.4);
-    border: 2px solid rgba(255, 255, 255, 0.6);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.4s ease;
+/* Laura's Story Content */
+.laura-story-content {
+    padding-left: 20px;
 }
 
-.carousel-dot.active {
-    width: 35px;
-    border-radius: 20px;
-    background: white;
-    border-color: white;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-}
-
-/* ============================================
-   CUTE ANIMATED ARROW
-   ============================================ */
-.cute-arrow {
-    position: absolute;
-    top: 50%;
-    right: -80px;
-    transform: translateY(-50%);
-    z-index: 10;
-    animation: arrowBounce 2s ease-in-out infinite;
-}
-
-@keyframes arrowBounce {
-    0%, 100% { transform: translateY(-50%) translateX(0); }
-    50% { transform: translateY(-50%) translateX(10px); }
-}
-
-.cute-arrow svg {
-    width: 140px;
-    height: auto;
-    filter: drop-shadow(0 4px 10px rgba(169, 200, 156, 0.3));
-}
-
-.cute-arrow path {
-    animation: arrowDraw 3s ease-in-out infinite;
-}
-
-@keyframes arrowDraw {
-    0%, 100% { stroke-dasharray: 200; stroke-dashoffset: 200; }
-    50%, 80% { stroke-dasharray: 200; stroke-dashoffset: 0; }
-}
-
-.arrow-text {
-    position: absolute;
-    bottom: -35px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    color: var(--forest-green);
-    font-weight: 600;
-    white-space: nowrap;
-    text-shadow: 0 2px 8px rgba(255, 255, 255, 0.8);
-    animation: arrowTextPulse 2s ease-in-out infinite;
-}
-
-@keyframes arrowTextPulse {
-    0%, 100% { opacity: 0.7; }
-    50% { opacity: 1; }
-}
-
-/* ============================================
-   OWNER TEXT CONTENT
-   ============================================ */
-.owner-text-content {
-    display: flex;
-    flex-direction: column;
-    gap: 35px;
-}
-
-.meet-owner-card {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, var(--cream) 100%);
-    border: 2px solid rgba(169, 200, 156, 0.25);
-    border-radius: 35px;
-    padding: 45px 40px;
-    box-shadow: 0 15px 40px rgba(59, 74, 47, 0.12);
-    position: relative;
-}
-
-.owner-badge {
+.welcome-badge {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 10px 20px;
-    background: linear-gradient(135deg, var(--mint-green) 0%, var(--forest-green) 100%);
-    border-radius: 25px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--gold-accent) 0%, #E6C347 100%);
+    border-radius: 30px;
     color: white;
     font-size: 0.95rem;
     font-weight: 600;
     margin-bottom: 25px;
-    box-shadow: 0 6px 20px rgba(169, 200, 156, 0.3);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
 }
 
-.owner-badge i {
+.welcome-badge i {
     font-size: 1.1rem;
 }
 
-.owner-name {
+.laura-name {
     font-family: 'Playfair Display', serif;
-    font-size: 2.8rem;
+    font-size: 3.2rem;
     color: var(--forest-green);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     line-height: 1.2;
 }
 
-.owner-subtitle {
-    font-size: 1.15rem;
+.laura-title {
+    font-size: 1.3rem;
     color: var(--mint-green);
     font-weight: 600;
     letter-spacing: 0.5px;
-    margin-bottom: 25px;
+    margin-bottom: 35px;
 }
 
-.experience-badge {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    padding: 20px 25px;
-    background: rgba(169, 200, 156, 0.1);
-    border: 2px solid rgba(169, 200, 156, 0.3);
-    border-radius: 25px;
-    margin-bottom: 25px;
+.story-text {
+    margin-bottom: 40px;
 }
 
-.badge-icon {
-    width: 55px;
-    height: 55px;
-    background: linear-gradient(135deg, var(--gold-accent), #E6C347);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.5rem;
-    flex-shrink: 0;
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
-}
-
-.badge-text {
-    display: flex;
-    flex-direction: column;
-}
-
-.badge-text strong {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    color: var(--forest-green);
-    line-height: 1.2;
-}
-
-.badge-text span {
-    font-size: 0.95rem;
-    color: var(--warm-taupe);
-}
-
-.owner-description {
-    font-size: 1.05rem;
+.story-text p {
+    font-size: 1.1rem;
     line-height: 1.9;
     color: var(--charcoal);
     margin-bottom: 20px;
 }
 
-.owner-description:last-of-type {
+.story-text p:last-child {
     margin-bottom: 0;
 }
 
-/* ============================================
-   SERVICES HIGHLIGHTS
-   ============================================ */
-.services-highlights {
+/* Credentials */
+.laura-credentials {
     display: flex;
     flex-direction: column;
     gap: 18px;
 }
 
-.highlight-item {
+.credential-item {
     display: flex;
     align-items: center;
     gap: 20px;
     padding: 20px 25px;
-    background: rgba(255, 255, 255, 0.7);
-    border: 2px solid rgba(169, 200, 156, 0.2);
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid rgba(169, 200, 156, 0.25);
     border-radius: 25px;
     transition: all 0.3s ease;
 }
 
-.highlight-item:hover {
-    background: rgba(169, 200, 156, 0.08);
+.credential-item:hover {
+    background: rgba(169, 200, 156, 0.1);
     border-color: var(--mint-green);
     transform: translateX(8px);
-    box-shadow: 0 10px 30px rgba(59, 74, 47, 0.1);
+    box-shadow: 0 10px 30px rgba(59, 74, 47, 0.12);
 }
 
-.highlight-item i {
-    width: 50px;
-    height: 50px;
+.credential-icon {
+    width: 55px;
+    height: 55px;
     background: linear-gradient(135deg, var(--mint-green), var(--forest-green));
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     flex-shrink: 0;
+    box-shadow: 0 6px 20px rgba(169, 200, 156, 0.3);
 }
 
-.highlight-item h4 {
+.credential-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.credential-text strong {
     font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: var(--forest-green);
-    margin-bottom: 3px;
+    line-height: 1.3;
 }
 
-.highlight-item p {
+.credential-text span {
     font-size: 0.95rem;
     color: var(--warm-taupe);
 }
 
-/* ============================================
-   EXPERTISE SECTION
-   ============================================ */
-.expertise-section {
-    margin-top: 80px;
-    padding: 60px 50px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, var(--cream) 100%);
-    border: 2px solid rgba(169, 200, 156, 0.25);
-    border-radius: 40px;
-    box-shadow: 0 20px 50px rgba(59, 74, 47, 0.12);
+.spa-philosophy {
+    margin-bottom: 100px;
+    text-align: center;
 }
 
-.expertise-title {
+.philosophy-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 50px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, var(--cream) 100%);
+    border: 3px solid rgba(169, 200, 156, 0.3);
+    border-radius: 40px;
+    box-shadow: 0 20px 50px rgba(59, 74, 47, 0.15);
+}
+
+.philosophy-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--mint-green), var(--forest-green));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 30px;
+    color: white;
+    font-size: 2.2rem;
+    box-shadow: 0 10px 30px rgba(169, 200, 156, 0.4);
+}
+
+.philosophy-content h3 {
     font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     color: var(--forest-green);
-    text-align: center;
+    margin-bottom: 25px;
+}
+
+.philosophy-content p {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: var(--charcoal);
     margin-bottom: 20px;
 }
 
-.expertise-intro {
-    text-align: center;
-    font-size: 1.15rem;
-    line-height: 1.8;
-    color: var(--charcoal);
-    max-width: 800px;
-    margin: 0 auto 50px;
+.philosophy-content p:last-child {
+    margin-bottom: 0;
 }
 
-.expertise-grid {
+.spa-atmosphere {
+    margin-bottom: 100px;
+}
+
+.atmosphere-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    color: var(--forest-green);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.atmosphere-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--warm-taupe);
+    margin-bottom: 60px;
+}
+
+.atmosphere-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 30px;
 }
 
-.expertise-card {
-    padding: 35px 30px;
-    background: rgba(255, 255, 255, 0.8);
+.atmosphere-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, var(--cream) 100%);
+    border: 2px solid rgba(169, 200, 156, 0.2);
+    border-radius: 30px;
+    padding: 30px 25px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.atmosphere-card:hover {
+    background: rgba(169, 200, 156, 0.12);
+    border-color: var(--mint-green);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(59, 74, 47, 0.18);
+}
+
+.atmosphere-photo {
+    aspect-ratio: 4/3;
+    border-radius: 25px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, var(--soft-sage) 0%, var(--mint-green) 100%);
+    box-shadow: 0 10px 30px rgba(59, 74, 47, 0.15);
+}
+
+.atmosphere-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--forest-green);
+    margin-bottom: 10px;
+}
+
+.atmosphere-card p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--warm-taupe);
+}
+
+.everyone-welcome-banner {
+    margin-bottom: 100px;
+    padding: 60px 60px;
+    background: linear-gradient(135deg, var(--mint-green) 0%, var(--forest-green) 100%);
+    border-radius: 45px;
+    display: flex;
+    align-items: center;
+    gap: 45px;
+    box-shadow: 0 25px 60px rgba(59, 74, 47, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.everyone-welcome-banner::before {
+    content: '';
+    position: absolute;
+    top: -60%;
+    right: -15%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.welcome-banner-icon {
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.25);
+    border: 4px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.welcome-banner-icon i {
+    font-size: 3rem;
+    color: white;
+}
+
+.welcome-banner-content {
+    flex: 1;
+    position: relative;
+    z-index: 2;
+}
+
+.welcome-banner-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 18px;
+    line-height: 1.3;
+}
+
+.welcome-banner-content p {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.core-values {
+    margin-bottom: 100px;
+}
+
+.values-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    color: var(--forest-green);
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.value-card {
+    padding: 40px 35px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, var(--cream) 100%);
     border: 2px solid rgba(169, 200, 156, 0.2);
     border-radius: 30px;
     text-align: center;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.expertise-card:hover {
-    background: rgba(169, 200, 156, 0.08);
+.value-card:hover {
+    background: rgba(169, 200, 156, 0.1);
     border-color: var(--mint-green);
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(59, 74, 47, 0.15);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(59, 74, 47, 0.18);
 }
 
-.expertise-icon {
+.value-icon {
     width: 75px;
     height: 75px;
     background: linear-gradient(135deg, var(--mint-green), var(--forest-green));
@@ -2120,265 +2183,245 @@ body {
     margin: 0 auto 25px;
     color: white;
     font-size: 2rem;
+    box-shadow: 0 8px 25px rgba(169, 200, 156, 0.3);
     transition: transform 0.3s ease;
 }
 
-.expertise-card:hover .expertise-icon {
+.value-card:hover .value-icon {
     transform: scale(1.1) rotate(5deg);
 }
 
-.expertise-card h4 {
+.value-card h4 {
     font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     color: var(--forest-green);
-    margin-bottom: 20px;
-}
-
-.expertise-card ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align: left;
-}
-
-.expertise-card ul li {
-    font-size: 1rem;
-    color: var(--charcoal);
-    padding: 10px 0;
-    padding-left: 30px;
-    position: relative;
-    line-height: 1.6;
-}
-
-.expertise-card ul li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--mint-green);
-    font-weight: bold;
-    font-size: 1.1rem;
-}
-
-/* ============================================
-   INCLUSIVITY BANNER
-   ============================================ */
-.inclusivity-banner {
-    margin-top: 70px;
-    padding: 50px 60px;
-    background: linear-gradient(135deg, var(--mint-green) 0%, var(--forest-green) 100%);
-    border-radius: 40px;
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    box-shadow: 0 20px 50px rgba(59, 74, 47, 0.25);
-    position: relative;
-    overflow: hidden;
-}
-
-.inclusivity-banner::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -20%;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
-    border-radius: 50%;
-}
-
-.inclusivity-icon {
-    width: 90px;
-    height: 90px;
-    background: rgba(255, 255, 255, 0.2);
-    border: 3px solid rgba(255, 255, 255, 0.4);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    position: relative;
-    z-index: 2;
-}
-
-.inclusivity-icon i {
-    font-size: 2.5rem;
-    color: white;
-}
-
-.inclusivity-content {
-    flex: 1;
-    position: relative;
-    z-index: 2;
-}
-
-.inclusivity-content h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    color: white;
     margin-bottom: 15px;
 }
 
-.inclusivity-content p {
-    font-size: 1.08rem;
-    line-height: 1.85;
-    color: rgba(255, 255, 255, 0.95);
+.value-card p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--warm-taupe);
 }
 
-/* ============================================
-   CALL TO ACTION SECTION
-   ============================================ */
-.about-cta-section {
-    margin-top: 70px;
+.about-cta {
     text-align: center;
     padding: 60px 50px;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, var(--soft-sand) 100%);
-    border: 2px solid rgba(169, 200, 156, 0.3);
+    border: 3px solid rgba(169, 200, 156, 0.3);
     border-radius: 40px;
-    box-shadow: 0 15px 40px rgba(59, 74, 47, 0.1);
+    box-shadow: 0 20px 50px rgba(59, 74, 47, 0.15);
 }
 
-.cta-title {
+.about-cta h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.3rem;
+    font-size: 2.5rem;
     color: var(--forest-green);
     margin-bottom: 20px;
 }
 
-.cta-description {
-    font-size: 1.15rem;
+.about-cta p {
+    font-size: 1.2rem;
     line-height: 1.8;
     color: var(--charcoal);
-    max-width: 700px;
-    margin: 0 auto 40px;
+    max-width: 750px;
+    margin: 0 auto 45px;
 }
 
-.cta-buttons {
+.about-cta-buttons {
     display: flex;
     justify-content: center;
     gap: 25px;
     flex-wrap: wrap;
 }
 
-.cta-phone-btn,
-.cta-book-btn {
+.about-phone-btn,
+.about-booking-btn {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    padding: 18px 40px;
+    padding: 18px 45px;
     font-size: 1.05rem;
     font-weight: 600;
     letter-spacing: 0.5px;
     text-decoration: none;
     border-radius: 50px;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 8px 25px rgba(59, 74, 47, 0.2);
+    box-shadow: 0 10px 30px rgba(59, 74, 47, 0.2);
 }
 
-.cta-phone-btn {
+.about-phone-btn {
     background: linear-gradient(135deg, var(--gold-accent), #E6C347);
     color: white;
     border: 2px solid transparent;
 }
 
-.cta-phone-btn:hover {
+.about-phone-btn:hover {
     background: linear-gradient(135deg, #E6C347, var(--gold-accent));
-    transform: translateY(-3px);
-    box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
 }
 
-.cta-book-btn {
+.about-booking-btn {
     background: linear-gradient(135deg, var(--forest-green), var(--deep-forest));
     color: white;
     border: 2px solid transparent;
 }
 
-.cta-book-btn:hover {
+.about-booking-btn:hover {
     background: linear-gradient(135deg, var(--mint-green), var(--forest-green));
-    transform: translateY(-3px);
-    box-shadow: 0 12px 35px rgba(169, 200, 156, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(169, 200, 156, 0.4);
 }
 
-.cta-phone-btn i,
-.cta-book-btn i {
+.about-phone-btn i,
+.about-booking-btn i {
     font-size: 1.1rem;
     transition: transform 0.3s ease;
 }
 
-.cta-book-btn:hover i {
+.about-booking-btn:hover i {
     transform: translateX(5px);
 }
 
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
 @media (max-width: 1024px) {
-    .about-owner-content {
+    .laura-story-grid {
         grid-template-columns: 1fr;
-        gap: 50px;
+        gap: 60px;
     }
 
-    .cute-arrow {
-        top: auto;
-        bottom: -70px;
-        right: 50%;
-        transform: translateX(50%) rotate(90deg);
+    .laura-story-content {
+        padding-left: 0;
     }
 
-    .arrow-text {
-        transform: translateX(-50%) rotate(-90deg);
+    .atmosphere-gallery {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .expertise-grid {
+    .values-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
-    .about-owner-content {
-        gap: 80px;
+    .about-container {
+        padding: 80px 25px;
     }
 
-    .owner-carousel {
-        aspect-ratio: 1;
+    .about-header {
+        margin-bottom: 60px;
     }
 
-    .meet-owner-card {
-        padding: 35px 30px;
+    .laura-story-grid {
+        gap: 50px;
+        margin-bottom: 80px;
     }
 
-    .owner-name {
-        font-size: 2.3rem;
+    .laura-name {
+        font-size: 2.5rem;
     }
 
-    .expertise-section {
-        padding: 45px 30px;
+    .laura-title {
+        font-size: 1.1rem;
     }
 
-    .expertise-title {
+    .story-text p {
+        font-size: 1.05rem;
+    }
+
+    .credential-item {
+        padding: 18px 20px;
+    }
+
+    .credential-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    .credential-text strong {
+        font-size: 1.15rem;
+    }
+
+    .philosophy-content {
+        padding: 45px 35px;
+    }
+
+    .philosophy-icon {
+        width: 70px;
+        height: 70px;
         font-size: 2rem;
     }
 
-    .expertise-grid {
+    .philosophy-content h3 {
+        font-size: 2rem;
+    }
+
+    .philosophy-content p {
+        font-size: 1.05rem;
+    }
+
+    .atmosphere-title {
+        font-size: 2.2rem;
+    }
+
+    .atmosphere-gallery {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .everyone-welcome-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 45px 35px;
+        margin-bottom: 80px;
+    }
+
+    .welcome-banner-icon {
+        width: 85px;
+        height: 85px;
+    }
+
+    .welcome-banner-icon i {
+        font-size: 2.5rem;
+    }
+
+    .welcome-banner-content h3 {
+        font-size: 2rem;
+    }
+
+    .welcome-banner-content p {
+        font-size: 1.05rem;
+    }
+
+    .values-title {
+        font-size: 2.2rem;
+        margin-bottom: 50px;
+    }
+
+    .values-grid {
         grid-template-columns: 1fr;
     }
 
-    .inclusivity-banner {
-        flex-direction: column;
-        text-align: center;
-        padding: 40px 35px;
+    .about-cta {
+        padding: 45px 35px;
     }
 
-    .inclusivity-content h3 {
-        font-size: 1.9rem;
+    .about-cta h3 {
+        font-size: 2rem;
     }
 
-    .cta-buttons {
+    .about-cta p {
+        font-size: 1.1rem;
+    }
+
+    .about-cta-buttons {
         flex-direction: column;
         align-items: center;
     }
 
-    .cta-phone-btn,
-    .cta-book-btn {
+    .about-phone-btn,
+    .about-booking-btn {
         width: 100%;
         max-width: 350px;
         justify-content: center;
@@ -2386,33 +2429,46 @@ body {
 }
 
 @media (max-width: 480px) {
-    .about-cta-section {
-        padding: 40px 25px;
+    .about-container {
+        padding: 60px 20px;
     }
 
-    .cta-title {
-        font-size: 1.9rem;
+    .photos-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .owner-photo-placeholder i {
-        font-size: 4rem;
-    }
-
-    .owner-photo-placeholder p {
-        font-size: 1.2rem;
-    }
-
-    .cute-arrow svg {
-        width: 100px;
-    }
-
-    .inclusivity-icon {
-        width: 70px;
-        height: 70px;
-    }
-
-    .inclusivity-icon i {
+    .laura-name {
         font-size: 2rem;
+    }
+
+    .atmosphere-title {
+        font-size: 1.8rem;
+    }
+
+    .values-title {
+        font-size: 1.8rem;
+    }
+
+    .about-cta h3 {
+        font-size: 1.8rem;
+    }
+
+    .welcome-badge {
+        font-size: 0.85rem;
+        padding: 10px 20px;
+    }
+
+    .philosophy-content {
+        border-radius: 30px;
+    }
+
+    .everyone-welcome-banner {
+        border-radius: 35px;
+        padding: 35px 25px;
+    }
+
+    .about-cta {
+        border-radius: 30px;
     }
 }
 
