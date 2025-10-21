@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laura's Beauty Touch - Natural Luxury Spa</title>
     
+    <!-- Preload critical videos -->
+    <link rel="preload" href="https://github.com/Elanstech/laurasbeauty/releases/download/video/scrub.mp4" as="video" type="video/mp4">
+    <link rel="preload" href="https://github.com/Elanstech/laurasbeauty/releases/download/video/facial.mp4" as="video" type="video/mp4">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,9 +17,6 @@
     <!-- GSAP Animation Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    
-    <!-- Typed.js for Text Animation -->
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.16"></script>
     
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -101,7 +102,7 @@
             
             <div class="video-item video-center">
                 <video class="hero-video" autoplay muted loop playsinline preload="auto" webkit-playsinline>
-                    <source src="https://github.com/Elanstech/laurasbeauty/releases/download/video/laser.mp4" type="video/mp4">
+                    <source src="hydra.mp4" type="video/mp4">
                 </video>
                 <div class="video-gradient-overlay"></div>
             </div>
@@ -126,7 +127,7 @@
                     <div class="hero-eyebrow">Welcome to Tranquility</div>
                     <h1 class="hero-title">
                         <span class="title-line">Laura's Beauty</span>
-                        <span class="title-line typed-text" id="typed-1"></span>
+                        <span class="title-line title-accent">Touch</span>
                     </h1>
                     <p class="hero-description">Where natural luxury meets personalized care</p>
                     <a href="#contact" class="hero-cta-btn">
@@ -140,7 +141,7 @@
                     <div class="hero-eyebrow">Signature Treatments</div>
                     <h1 class="hero-title">
                         <span class="title-line">Experience the Art</span>
-                        <span class="title-line typed-text" id="typed-2"></span>
+                        <span class="title-line title-accent">of Wellness</span>
                     </h1>
                     <p class="hero-description">Customized wellness rituals for body and soul</p>
                     <a href="#services" class="hero-cta-btn">
@@ -154,7 +155,7 @@
                     <div class="hero-eyebrow">NYC's Premier Spa</div>
                     <h1 class="hero-title">
                         <span class="title-line">Reveal Your</span>
-                        <span class="title-line typed-text" id="typed-3"></span>
+                        <span class="title-line title-accent">Natural Glow</span>
                     </h1>
                     <p class="hero-description">Organic luxury in the heart of New York</p>
                     <a href="#gallery" class="hero-cta-btn">
