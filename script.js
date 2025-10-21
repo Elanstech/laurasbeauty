@@ -1410,6 +1410,127 @@ class HashtagInteraction {
 }
 
 // ============================================
+// BACK TO TOP BUTTON
+// ============================================
+class BackToTopButton {
+    constructor() {
+        this.button = document.getElementById('backToTopBtn');
+        this.scrollThreshold = 300;
+        
+        this.init();
+    }
+
+    init() {
+        if (!this.button) return;
+
+        this.handleScroll();
+        this.button.addEventListener('click', () => this.scrollToTop());
+    }
+
+    handleScroll() {
+        let ticking = false;
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.pageYOffset;
+
+                    if (scrolled > this.scrollThreshold) {
+                        this.button.classList.add('visible');
+                    } else {
+                        this.button.classList.remove('visible');
+                    }
+
+                    ticking = false;
+                });
+
+                ticking = true;
+            }
+        }, { passive: true });
+    }
+
+    scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+
+        // Optional: Add a subtle animation feedback
+        this.button.style.transform = 'translateY(-3px) scale(1.05)';
+        setTimeout(() => {
+            this.button.style.transform = '';
+        }, 200);
+    }
+}
+
+// ============================================
+// FLOATING ACTION BUTTON (FAB) - SIMPLIFIED
+// ============================================
+class FloatingActionButton {
+    constructor() {
+        this.fabMain = document.getElementById('fabMain');
+        this.fabOptions = document.getElementById('fabOptions');
+        this.isOpen = false;
+        
+        this.init();
+    }
+
+    init() {
+        if (!this.fabMain) return;
+
+        // Main FAB toggle
+        this.fabMain.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.toggleFAB();
+        });
+
+        // Close FAB when clicking outside
+        document.addEventListener('click', (e) => {
+            if (this.isOpen && !e.target.closest('.fab-container')) {
+                this.closeFAB();
+            }
+        });
+
+        // Close on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.isOpen) {
+                this.closeFAB();
+            }
+        });
+
+        // Close FAB when clicking any option
+        const fabOptions = document.querySelectorAll('.fab-option');
+        fabOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                setTimeout(() => this.closeFAB(), 200);
+            });
+        });
+    }
+
+    toggleFAB() {
+        if (this.isOpen) {
+            this.closeFAB();
+        } else {
+            this.openFAB();
+        }
+    }
+
+    openFAB() {
+        this.isOpen = true;
+        this.fabMain.classList.add('active');
+        this.fabOptions.classList.add('active');
+        console.log('📱 Contact options opened');
+    }
+
+    closeFAB() {
+        this.isOpen = false;
+        this.fabMain.classList.remove('active');
+        this.fabOptions.classList.remove('active');
+        console.log('📱 Contact options closed');
+    }
+}
+
+// ============================================
 // MAIN INITIALIZATION
 // ============================================
 function initWebsite() {
@@ -1420,6 +1541,8 @@ function initWebsite() {
     new ElegantPreloader();
     new PremiumHeader();
     new HeroVideoCollage();
+    new BackToTopButton();
+    new FloatingActionButton();
     
     // Initialize Specials Carousel
     const specialsCarousel = new SpecialsCarousel();
