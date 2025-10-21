@@ -691,6 +691,7 @@ body {
 /* ============================================
    Specials SECTION
    ============================================ */
+
 .specials-section {
     position: relative;
     background: linear-gradient(135deg, var(--forest-green) 0%, var(--deep-forest) 100%);
@@ -727,6 +728,9 @@ body {
     z-index: 1;
 }
 
+/* ============================================
+   SECTION HEADER
+   ============================================ */
 .section-header {
     text-align: center;
     margin-bottom: 80px;
@@ -768,11 +772,17 @@ body {
     line-height: 1.8;
 }
 
+/* ============================================
+   CAROUSEL WRAPPER
+   ============================================ */
 .specials-carousel-wrapper {
     position: relative;
     padding: 0 60px;
 }
 
+/* ============================================
+   CAROUSEL CONTAINER
+   ============================================ */
 .specials-carousel {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -786,6 +796,9 @@ body {
     pointer-events: none;
 }
 
+/* ============================================
+   SPECIAL CARD
+   ============================================ */
 .special-card {
     position: relative;
     background: linear-gradient(135deg, var(--cream) 0%, var(--soft-sand) 100%);
@@ -807,6 +820,9 @@ body {
     grid-template-columns: 1fr 1fr;
 }
 
+/* ============================================
+   SAVE BADGE
+   ============================================ */
 .save-badge {
     position: absolute;
     top: 20px;
@@ -838,6 +854,9 @@ body {
     line-height: 1;
 }
 
+/* ============================================
+   SPECIAL IMAGE
+   ============================================ */
 .special-image {
     position: relative;
     width: 100%;
@@ -873,6 +892,9 @@ body {
     pointer-events: none;
 }
 
+/* ============================================
+   SPECIAL CONTENT
+   ============================================ */
 .special-content {
     padding: 35px 30px;
     text-align: center;
@@ -895,6 +917,9 @@ body {
     font-style: italic;
 }
 
+/* ============================================
+   PRICING
+   ============================================ */
 .special-price {
     display: flex;
     align-items: center;
@@ -928,6 +953,9 @@ body {
     margin-bottom: 25px;
 }
 
+/* ============================================
+   BOOK BUTTON
+   ============================================ */
 .special-book-btn {
     display: inline-flex;
     align-items: center;
@@ -1088,6 +1116,9 @@ body {
     pointer-events: none;
 }
 
+/* ============================================
+   CAROUSEL INDICATORS
+   ============================================ */
 .carousel-indicators {
     display: flex;
     align-items: center;
@@ -1122,6 +1153,9 @@ body {
     display: none;
 }
 
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
 @media (max-width: 1024px) {
     .specials-carousel {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
