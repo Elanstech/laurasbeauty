@@ -306,7 +306,7 @@ class HeroVideoCollage {
 class SpecialsCarousel {
     constructor() {
         // Configuration
-        this.jsonPath = 'json/specials.json'; // Path to JSON file
+        this.jsonPath = 'json/specials.json';
         
         // DOM Elements
         this.carousel = document.getElementById('specialsCarousel');
@@ -314,6 +314,11 @@ class SpecialsCarousel {
         this.prevBtn = document.getElementById('prevBtn');
         this.nextBtn = document.getElementById('nextBtn');
         this.indicatorsContainer = document.getElementById('carouselIndicators');
+        
+        // Modal Elements
+        this.modal = document.getElementById('packageModal');
+        this.modalOverlay = this.modal?.querySelector('.modal-overlay');
+        this.modalClose = this.modal?.querySelector('.modal-close');
         
         // Carousel State
         this.specials = [];
@@ -327,9 +332,10 @@ class SpecialsCarousel {
         this.touchStartX = 0;
         this.touchEndX = 0;
         
-        // Resize handler reference
+        // Handler references
         this.resizeHandler = null;
         this.keyboardHandler = null;
+        this.scrollHandler = null;
     }
 
     /**
@@ -339,26 +345,22 @@ class SpecialsCarousel {
         try {
             console.log('📥 Loading specials from JSON...');
             
-            // Load specials from JSON
             await this.loadSpecials();
             
-            // Check if we have specials
             if (this.specials && this.specials.length > 0) {
                 console.log(`✅ Loaded ${this.specials.length} special(s)`);
                 
-                // Render special cards
                 this.renderSpecials();
-                
-                // Setup carousel
                 this.setupCarousel();
                 this.setupNavigation();
                 this.setupTouchSupport();
                 this.setupResizeHandler();
+                this.setupScrollHandler();
+                this.setupModal();
                 this.startAutoScroll();
                 
                 console.log('✅ Specials carousel initialized successfully');
             } else {
-                // Show no specials message
                 console.log('ℹ️ No specials in JSON - showing message');
                 this.showNoSpecialsMessage();
             }
@@ -398,10 +400,8 @@ class SpecialsCarousel {
             return;
         }
         
-        // Clear existing content
         this.carousel.innerHTML = '';
         
-        // Create card for each special
         this.specials.forEach(special => {
             const card = this.createSpecialCard(special);
             this.carousel.appendChild(card);
@@ -417,20 +417,18 @@ class SpecialsCarousel {
         const card = document.createElement('div');
         card.className = 'special-card';
         
-        // Add wide class if specified
         if (special.isWide) {
             card.classList.add('special-card-wide');
         }
         
-        // Build card HTML
         let cardHTML = '';
         
-        // Save badge (only if savings exists)
+        // Save badge
         if (special.savings && special.savings > 0) {
             cardHTML += `
                 <div class="save-badge">
                     <span class="save-text">SAVE</span>
-                    <span class="save-amount">$ ${special.savings.toFixed(2)}</span>
+                    <span class="save-amount">$${special.savings.toFixed(2)}</span>
                 </div>
             `;
         }
@@ -444,38 +442,32 @@ class SpecialsCarousel {
         
         // Content
         cardHTML += `<div class="special-content">`;
-        
-        // Title
         cardHTML += `<h3 class="special-title">${this.escapeHtml(special.title)}</h3>`;
         
-        // Description (optional)
         if (special.description) {
             cardHTML += `<p class="special-description">${this.escapeHtml(special.description)}</p>`;
         }
         
         // Price
         cardHTML += `<div class="special-price">`;
-        cardHTML += `<span class="current-price">$ ${special.currentPrice}</span>`;
+        cardHTML += `<span class="current-price">$${special.currentPrice}</span>`;
         
-        // Original price (optional)
         if (special.originalPrice && special.originalPrice > 0) {
-            cardHTML += `<span class="original-price">$ ${special.originalPrice}</span>`;
+            cardHTML += `<span class="original-price">$${special.originalPrice}</span>`;
         }
         
         cardHTML += `</div>`;
-        
-        // Brand
         cardHTML += `<p class="special-brand">${this.escapeHtml(special.brand)}</p>`;
         
-        // Book button
+        // View Details button
         cardHTML += `
-            <a href="${this.escapeHtml(special.bookingLink)}" class="special-book-btn">
-                <span>Book Now</span>
-                <i class="fas fa-arrow-right"></i>
-            </a>
+            <button class="special-book-btn view-details-btn" data-special-id="${special.id}">
+                <span>View Details</span>
+                <i class="fas fa-info-circle"></i>
+            </button>
         `;
         
-        cardHTML += `</div>`; // Close special-content
+        cardHTML += `</div>`;
         
         card.innerHTML = cardHTML;
         
@@ -492,23 +484,18 @@ class SpecialsCarousel {
     }
 
     /**
-     * Setup carousel based on screen size
+     * Setup carousel
      */
     setupCarousel() {
         this.itemsPerPage = this.getItemsPerPage();
         const cards = this.carousel.querySelectorAll('.special-card');
         this.totalPages = Math.ceil(cards.length / this.itemsPerPage);
         
-        console.log(`📊 Carousel setup: ${cards.length} cards, ${this.itemsPerPage} per page, ${this.totalPages} pages`);
+        console.log(`📊 Carousel: ${cards.length} cards, ${this.itemsPerPage}/page, ${this.totalPages} pages`);
         
-        // Create indicators
         this.createIndicators();
-        
-        // Update navigation visibility
         this.updateNavigationVisibility();
-        
-        // Show first page
-        this.goToPage(0);
+        this.updateIndicators();
     }
 
     /**
@@ -518,24 +505,22 @@ class SpecialsCarousel {
         const width = window.innerWidth;
         
         if (width < 768) {
-            return 1; // Mobile: 1 item
+            return 1;
         } else if (width < 1024) {
-            return 2; // Tablet: 2 items
+            return 2;
         } else {
-            return 3; // Desktop: 3 items
+            return 3;
         }
     }
 
     /**
-     * Create carousel indicators
+     * Create carousel indicators (dots)
      */
     createIndicators() {
         if (!this.indicatorsContainer) return;
         
-        // Clear existing indicators
         this.indicatorsContainer.innerHTML = '';
         
-        // Only show indicators if there's more than one page
         if (this.totalPages <= 1) {
             this.indicatorsContainer.classList.add('hidden');
             return;
@@ -543,7 +528,6 @@ class SpecialsCarousel {
         
         this.indicatorsContainer.classList.remove('hidden');
         
-        // Create indicator for each page
         for (let i = 0; i < this.totalPages; i++) {
             const indicator = document.createElement('button');
             indicator.classList.add('carousel-indicator');
@@ -564,12 +548,12 @@ class SpecialsCarousel {
     }
 
     /**
-     * Setup navigation buttons
+     * Setup navigation buttons and keyboard
      */
     setupNavigation() {
         if (!this.prevBtn || !this.nextBtn) return;
         
-        // Remove any existing listeners
+        // Remove old listeners by cloning
         const newPrevBtn = this.prevBtn.cloneNode(true);
         const newNextBtn = this.nextBtn.cloneNode(true);
         this.prevBtn.parentNode.replaceChild(newPrevBtn, this.prevBtn);
@@ -594,7 +578,6 @@ class SpecialsCarousel {
         }
         
         this.keyboardHandler = (e) => {
-            // Only respond if carousel is visible
             if (this.carousel && !this.carousel.classList.contains('hidden')) {
                 if (e.key === 'ArrowLeft') {
                     this.previousPage();
@@ -615,7 +598,6 @@ class SpecialsCarousel {
     updateNavigationVisibility() {
         if (!this.prevBtn || !this.nextBtn) return;
         
-        // Hide navigation if only one page or on mobile
         const isMobile = window.innerWidth < 768;
         const shouldHide = this.totalPages <= 1 || isMobile;
         
@@ -632,23 +614,24 @@ class SpecialsCarousel {
      * Go to specific page
      */
     goToPage(pageIndex) {
-        // Validate page index
         if (pageIndex < 0 || pageIndex >= this.totalPages) return;
         
         this.currentPage = pageIndex;
-        
-        // Update active indicator
         this.updateIndicators();
         
-        // Scroll to page (smooth scroll for better UX)
+        // Calculate scroll position
         const cards = this.carousel.querySelectorAll('.special-card');
         const startIndex = pageIndex * this.itemsPerPage;
         
         if (cards[startIndex]) {
-            cards[startIndex].scrollIntoView({
-                behavior: 'smooth',
-                block: 'nearest',
-                inline: 'start'
+            const cardRect = cards[startIndex].getBoundingClientRect();
+            const carouselRect = this.carousel.getBoundingClientRect();
+            const scrollAmount = cardRect.left - carouselRect.left + this.carousel.scrollLeft;
+            
+            // Smooth scroll within carousel only (no page jump)
+            this.carousel.scrollTo({
+                left: scrollAmount,
+                behavior: 'smooth'
             });
         }
     }
@@ -688,7 +671,64 @@ class SpecialsCarousel {
     }
 
     /**
-     * Setup touch/swipe support for mobile
+     * Setup scroll handler to update current page based on scroll position
+     */
+    setupScrollHandler() {
+        if (!this.carousel) return;
+        
+        let scrollTimeout;
+        
+        if (this.scrollHandler) {
+            this.carousel.removeEventListener('scroll', this.scrollHandler);
+        }
+        
+        this.scrollHandler = () => {
+            clearTimeout(scrollTimeout);
+            
+            scrollTimeout = setTimeout(() => {
+                this.updateCurrentPageFromScroll();
+            }, 150);
+        };
+        
+        this.carousel.addEventListener('scroll', this.scrollHandler, { passive: true });
+    }
+
+    /**
+     * Update current page based on scroll position
+     */
+    updateCurrentPageFromScroll() {
+        if (!this.carousel) return;
+        
+        const cards = this.carousel.querySelectorAll('.special-card');
+        if (cards.length === 0) return;
+        
+        const carouselRect = this.carousel.getBoundingClientRect();
+        const carouselCenter = carouselRect.left + carouselRect.width / 2;
+        
+        let closestIndex = 0;
+        let closestDistance = Infinity;
+        
+        cards.forEach((card, index) => {
+            const cardRect = card.getBoundingClientRect();
+            const cardCenter = cardRect.left + cardRect.width / 2;
+            const distance = Math.abs(cardCenter - carouselCenter);
+            
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestIndex = index;
+            }
+        });
+        
+        const newPage = Math.floor(closestIndex / this.itemsPerPage);
+        
+        if (newPage !== this.currentPage) {
+            this.currentPage = newPage;
+            this.updateIndicators();
+        }
+    }
+
+    /**
+     * Setup touch/swipe support
      */
     setupTouchSupport() {
         if (!this.carousel) return;
@@ -707,16 +747,14 @@ class SpecialsCarousel {
      * Handle swipe gestures
      */
     handleSwipe() {
-        const swipeThreshold = 50; // Minimum swipe distance
+        const swipeThreshold = 50;
         const swipeDistance = this.touchStartX - this.touchEndX;
         
         if (Math.abs(swipeDistance) < swipeThreshold) return;
         
         if (swipeDistance > 0) {
-            // Swiped left - go to next
             this.nextPage();
         } else {
-            // Swiped right - go to previous
             this.previousPage();
         }
         
@@ -734,20 +772,18 @@ class SpecialsCarousel {
         }
         
         this.resizeHandler = () => {
-            // Debounce resize events
             clearTimeout(resizeTimeout);
             
             resizeTimeout = setTimeout(() => {
                 const newItemsPerPage = this.getItemsPerPage();
                 
-                // Only rebuild if items per page changed
                 if (newItemsPerPage !== this.itemsPerPage) {
-                    console.log(`📱 Screen size changed: ${this.itemsPerPage} → ${newItemsPerPage} items per page`);
+                    console.log(`📱 Screen changed: ${this.itemsPerPage} → ${newItemsPerPage} items/page`);
                     this.itemsPerPage = newItemsPerPage;
                     this.setupCarousel();
+                    this.goToPage(0);
                 }
                 
-                // Always update navigation visibility on resize
                 this.updateNavigationVisibility();
             }, 250);
         };
@@ -759,10 +795,9 @@ class SpecialsCarousel {
      * Start auto-scroll
      */
     startAutoScroll() {
-        // Only auto-scroll if there's more than one page
         if (this.totalPages <= 1) return;
         
-        this.stopAutoScroll(); // Clear any existing interval
+        this.stopAutoScroll();
         
         this.autoScrollInterval = setInterval(() => {
             this.nextPage();
@@ -782,11 +817,135 @@ class SpecialsCarousel {
     }
 
     /**
-     * Reset auto-scroll (restart timer)
+     * Reset auto-scroll timer
      */
     resetAutoScroll() {
         this.stopAutoScroll();
         this.startAutoScroll();
+    }
+    
+    /**
+     * Setup modal event listeners
+     */
+    setupModal() {
+        if (!this.modal) {
+            console.warn('Modal element not found');
+            return;
+        }
+        
+        // Delegate click events for "View Details" buttons
+        this.carousel.addEventListener('click', (e) => {
+            const btn = e.target.closest('.view-details-btn');
+            if (btn) {
+                const specialId = parseInt(btn.dataset.specialId);
+                this.openModal(specialId);
+                this.stopAutoScroll();
+            }
+        });
+        
+        // Close modal listeners
+        this.modalClose?.addEventListener('click', () => this.closeModal());
+        this.modalOverlay?.addEventListener('click', () => this.closeModal());
+        
+        // ESC key to close modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.modal.classList.contains('active')) {
+                this.closeModal();
+            }
+        });
+    }
+    
+    /**
+     * Open modal with special details
+     */
+    openModal(specialId) {
+        const special = this.specials.find(s => s.id === specialId);
+        if (!special) {
+            console.error('Special not found:', specialId);
+            return;
+        }
+        
+        // Populate modal content
+        const modalImage = document.getElementById('modalImage');
+        const modalBadge = document.getElementById('modalBadge');
+        const modalSavings = document.getElementById('modalSavings');
+        const modalBrand = document.getElementById('modalBrand');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalCurrentPrice = document.getElementById('modalCurrentPrice');
+        const modalOriginalPrice = document.getElementById('modalOriginalPrice');
+        const includesList = document.getElementById('includesList');
+        const modalBookBtn = document.getElementById('modalBookBtn');
+        
+        // Set image
+        if (modalImage) {
+            modalImage.src = special.image;
+            modalImage.alt = special.title;
+        }
+        
+        // Set save badge
+        if (special.savings && special.savings > 0 && modalBadge && modalSavings) {
+            modalBadge.style.display = 'flex';
+            modalSavings.textContent = `$${special.savings.toFixed(2)}`;
+        } else if (modalBadge) {
+            modalBadge.style.display = 'none';
+        }
+        
+        // Set text content
+        if (modalBrand) modalBrand.textContent = special.brand;
+        if (modalTitle) modalTitle.textContent = special.title;
+        if (modalDescription) {
+            modalDescription.textContent = special.description || '';
+            modalDescription.style.display = special.description ? 'block' : 'none';
+        }
+        if (modalCurrentPrice) modalCurrentPrice.textContent = `$${special.currentPrice}`;
+        
+        // Set original price
+        if (special.originalPrice && special.originalPrice > 0 && modalOriginalPrice) {
+            modalOriginalPrice.textContent = `$${special.originalPrice}`;
+            modalOriginalPrice.style.display = 'inline';
+        } else if (modalOriginalPrice) {
+            modalOriginalPrice.style.display = 'none';
+        }
+        
+        // Set includes list
+        if (includesList && special.includes && special.includes.length > 0) {
+            includesList.innerHTML = '';
+            special.includes.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                includesList.appendChild(li);
+            });
+        }
+        
+        // Set booking link
+        if (modalBookBtn) {
+            modalBookBtn.href = special.bookingLink;
+            
+            // Close modal when clicking book button
+            modalBookBtn.addEventListener('click', () => {
+                this.closeModal();
+            });
+        }
+        
+        // Open modal with animation
+        this.modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        console.log('📋 Modal opened:', special.title);
+    }
+    
+    /**
+     * Close modal
+     */
+    closeModal() {
+        if (!this.modal) return;
+        
+        this.modal.classList.remove('active');
+        document.body.style.overflow = '';
+        this.startAutoScroll();
+        
+        console.log('✖️ Modal closed');
     }
 
     /**
@@ -795,17 +954,15 @@ class SpecialsCarousel {
     showNoSpecialsMessage() {
         if (!this.noSpecialsMessage || !this.carousel) return;
         
-        // Hide carousel and navigation
         this.carousel.classList.add('hidden');
         
         if (this.prevBtn) this.prevBtn.classList.add('hidden');
         if (this.nextBtn) this.nextBtn.classList.add('hidden');
         if (this.indicatorsContainer) this.indicatorsContainer.classList.add('hidden');
         
-        // Show no specials message
         this.noSpecialsMessage.classList.add('active');
         
-        console.log('ℹ️ Displaying "No current specials" message');
+        console.log('ℹ️ Displaying "No specials" message');
     }
 
     /**
@@ -814,15 +971,12 @@ class SpecialsCarousel {
     hideNoSpecialsMessage() {
         if (!this.noSpecialsMessage || !this.carousel) return;
         
-        // Show carousel
         this.carousel.classList.remove('hidden');
-        
-        // Hide no specials message
         this.noSpecialsMessage.classList.remove('active');
     }
 
     /**
-     * Cleanup - remove event listeners
+     * Cleanup - remove all event listeners
      */
     cleanup() {
         this.stopAutoScroll();
@@ -834,25 +988,28 @@ class SpecialsCarousel {
         if (this.keyboardHandler) {
             document.removeEventListener('keydown', this.keyboardHandler);
         }
+        
+        if (this.scrollHandler && this.carousel) {
+            this.carousel.removeEventListener('scroll', this.scrollHandler);
+        }
     }
     
+    /**
+     * Reload specials from JSON
+     */
     async reload() {
         console.log('🔄 Reloading specials...');
         
-        // Cleanup existing listeners
         this.cleanup();
         
-        // Reset state
         this.currentPage = 0;
         this.specials = [];
         this.totalPages = 0;
         
-        // Hide no specials message
         if (this.noSpecialsMessage) {
             this.noSpecialsMessage.classList.remove('active');
         }
         
-        // Reinitialize
         await this.init();
     }
 }
@@ -863,16 +1020,13 @@ function initSpecialsCarousel() {
     console.log('🌿 Laura\'s Beauty Touch - Specials Carousel');
     console.log('💎 Initializing carousel...');
     
-    // Create new carousel instance
     specialsCarousel = new SpecialsCarousel();
-    
-    // Initialize
     specialsCarousel.init();
     
-    // Make carousel globally accessible for debugging/reloading
+    // Make globally accessible
     window.specialsCarousel = specialsCarousel;
     
-    console.log('ℹ️ To reload specials, use: window.specialsCarousel.reload()');
+    console.log('ℹ️ To reload: window.specialsCarousel.reload()');
 }
 
 // Initialize when DOM is ready
@@ -883,8 +1037,6 @@ if (document.readyState === 'loading') {
 }
 
 console.log('🌟 Specials Carousel Script Loaded');
-
-
 
 // ============================================
 // ABOUT SLIDER
