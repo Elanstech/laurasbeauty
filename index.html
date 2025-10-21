@@ -10,528 +10,543 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <!-- GSAP Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     
-    <!-- Custom CSS -->
+    <!-- Typed.js for Text Animation -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.16"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom Styles -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- LIQUID GLASS PRELOADER -->
+    <!-- ELEGANT PRELOADER -->
     <div class="preloader" id="preloader">
-        
-        <!-- Subtle Animated Background -->
-        <div class="preloader-background">
-            <div class="ambient-orb orb-1"></div>
-            <div class="ambient-orb orb-2"></div>
-        </div>
-        
-        <!-- Apple-Inspired Liquid Glass Panel -->
-        <div class="liquid-glass-panel">
-            
-            <!-- Logo Container -->
-            <div class="logo-wrapper">
-                <img src="images/logo1.png" alt="Laura's Beauty Touch Logo" class="spa-logo">
+        <div class="preloader-content">
+            <div class="loader-ring"></div>
+            <div class="loader-logo">
+                <img src="images/logo1.png" alt="Laura's Beauty Touch">
             </div>
-            
-            <!-- Minimal Loading Indicator -->
-            <div class="loading-indicator">
-                <div class="loading-bar">
-                    <div class="loading-fill"></div>
-                </div>
-            </div>
-            
         </div>
-        
     </div>
 
-    <!-- ENHANCED PREMIUM HEADER -->
+    <!-- PREMIUM HEADER -->
     <header class="premium-header">
         <div class="header-container">
-            
-            <!-- Logo -->
             <div class="header-logo-wrapper">
                 <img src="images/logo1.png" alt="Laura's Beauty Touch Logo" class="header-logo">
             </div>
 
-            <!-- Desktop Navigation -->
             <nav class="desktop-navigation">
                 <ul class="nav-menu">
-                    <li class="nav-item">
-                        <a href="#about" class="nav-link">
-                            <span class="link-text">About</span>
-                            <span class="link-underline"></span>
-                        </a>
-                    </li>
-                    <li class="nav-item has-dropdown">
-                        <a href="#services" class="nav-link">
-                            <span class="link-text">Services</span>
-                            <span class="dropdown-indicator">
-                                <svg viewBox="0 0 12 8" fill="none">
-                                    <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                                </svg>
-                            </span>
-                            <span class="link-underline"></span>
-                        </a>
-                        
-                        <!-- Ultra Premium Mega Menu -->
-                        <div class="premium-mega-menu">
-                            <div class="mega-menu-backdrop"></div>
-                            <div class="mega-menu-container">
-                                
-                                <!-- Menu Header -->
-                                <div class="mega-menu-header">
-                                    <h3 class="mega-title">Our Signature Services</h3>
-                                    <p class="mega-subtitle">Discover transformative treatments crafted for your wellbeing</p>
-                                    <div class="header-divider"></div>
-                                </div>
-                                
-                                <!-- Services Grid -->
-                                <div class="services-grid">
-                                    
-                                    <!-- Service Category 1 -->
-                                    <a href="#face-treatments" class="service-item">
-                                        <div class="service-icon-wrapper">
-                                            <div class="service-icon">
-                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                                    <circle cx="12" cy="12" r="10"/>
-                                                    <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-                                                    <line x1="9" y1="9" x2="9.01" y2="9"/>
-                                                    <line x1="15" y1="9" x2="15.01" y2="9"/>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <div class="service-content">
-                                            <h4 class="service-name">Face Treatments</h4>
-                                            <p class="service-description">Rejuvenating facials & skincare</p>
-                                        </div>
-                                        <div class="service-arrow">
-                                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
-                                                <path d="M5 10h10m-4-4l4 4-4 4"/>
-                                            </svg>
-                                        </div>
-                                    </a>
-                                    
-                                    <!-- Service Category 2 -->
-                                    <a href="#permanent-makeup" class="service-item">
-                                        <div class="service-icon-wrapper">
-                                            <div class="service-icon">
-                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                                    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
-                                                    <line x1="7" y1="7" x2="7.01" y2="7"/>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <div class="service-content">
-                                            <h4 class="service-name">Permanent Make Up</h4>
-                                            <p class="service-description">Lasting beauty enhancement</p>
-                                        </div>
-                                        <div class="service-arrow">
-                                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
-                                                <path d="M5 10h10m-4-4l4 4-4 4"/>
-                                            </svg>
-                                        </div>
-                                    </a>
-                                    
-                                    <!-- Service Category 3 -->
-                                    <a href="#makeup" class="service-item">
-                                        <div class="service-icon-wrapper">
-                                            <div class="service-icon">
-                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                                    <path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-5 3c-.7.4-1 1.1-.9 1.8v.2c.1.7.6 1.2 1.3 1.3l4 .7c1.1.2 2.2-.3 2.9-1.3l2.1-2.9"/>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <div class="service-content">
-                                            <h4 class="service-name">Make Up</h4>
-                                            <p class="service-description">Professional makeup artistry</p>
-                                        </div>
-                                        <div class="service-arrow">
-                                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
-                                                <path d="M5 10h10m-4-4l4 4-4 4"/>
-                                            </svg>
-                                        </div>
-                                    </a>
-                                    
-                                    <!-- Service Category 4 -->
-                                    <a href="#body-treatments" class="service-item">
-                                        <div class="service-icon-wrapper">
-                                            <div class="service-icon">
-                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                                    <path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zM12 14c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6z"/>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <div class="service-content">
-                                            <h4 class="service-name">Body Treatments</h4>
-                                            <p class="service-description">Full body care & massage</p>
-                                        </div>
-                                        <div class="service-arrow">
-                                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
-                                                <path d="M5 10h10m-4-4l4 4-4 4"/>
-                                            </svg>
-                                        </div>
-                                    </a>
-                                    
-                                    <!-- Service Category 5 -->
-                                    <a href="#laser" class="service-item">
-                                        <div class="service-icon-wrapper">
-                                            <div class="service-icon">
-                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                                    <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/>
-                                                    <circle cx="12" cy="12" r="3"/>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <div class="service-content">
-                                            <h4 class="service-name">Laser</h4>
-                                            <p class="service-description">Advanced laser treatments</p>
-                                        </div>
-                                        <div class="service-arrow">
-                                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
-                                                <path d="M5 10h10m-4-4l4 4-4 4"/>
-                                            </svg>
-                                        </div>
-                                    </a>
-                                    
-                                    <!-- Service Category 6 -->
-                                    <a href="#wax" class="service-item">
-                                        <div class="service-icon-wrapper">
-                                            <div class="service-icon">
-                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <div class="service-content">
-                                            <h4 class="service-name">Wax</h4>
-                                            <p class="service-description">Smooth hair removal</p>
-                                        </div>
-                                        <div class="service-arrow">
-                                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
-                                                <path d="M5 10h10m-4-4l4 4-4 4"/>
-                                            </svg>
-                                        </div>
-                                    </a>
-                                    
-                                    <!-- Service Category 7 -->
-                                    <a href="#lashes" class="service-item">
-                                        <div class="service-icon-wrapper">
-                                            <div class="service-icon">
-                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                                                    <circle cx="12" cy="12" r="3"/>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <div class="service-content">
-                                            <h4 class="service-name">Lashes</h4>
-                                            <p class="service-description">Extensions & enhancements</p>
-                                        </div>
-                                        <div class="service-arrow">
-                                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
-                                                <path d="M5 10h10m-4-4l4 4-4 4"/>
-                                            </svg>
-                                        </div>
-                                    </a>
-                                    
-                                    <!-- Service Category 8 - Featured -->
-                                    <a href="#packages" class="service-item featured">
-                                        <div class="featured-badge">Popular</div>
-                                        <div class="service-icon-wrapper">
-                                            <div class="service-icon">
-                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                                    <path d="M20 6L9 17l-5-5"/>
-                                                    <path d="M21 2l-2 2m-7-2l2 2M3 15l2 2m16-2l-2 2"/>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <div class="service-content">
-                                            <h4 class="service-name">Packages</h4>
-                                            <p class="service-description">Curated treatment bundles</p>
-                                        </div>
-                                        <div class="service-arrow">
-                                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
-                                                <path d="M5 10h10m-4-4l4 4-4 4"/>
-                                            </svg>
-                                        </div>
-                                    </a>
-                                    
-                                </div>
-                                
-                                <!-- Menu Footer -->
-                                <div class="mega-menu-footer">
-                                    <p class="footer-text">Not sure which treatment to choose?</p>
-                                    <a href="#contact" class="consultation-btn">
-                                        <span>Book a Consultation</span>
-                                        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M5 10h10m-4-4l4 4-4 4"/>
-                                        </svg>
-                                    </a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#gallery" class="nav-link">
-                            <span class="link-text">Gallery</span>
-                            <span class="link-underline"></span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#testimonials" class="nav-link">
-                            <span class="link-text">Testimonials</span>
-                            <span class="link-underline"></span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#contact" class="nav-link">
-                            <span class="link-text">Contact</span>
-                            <span class="link-underline"></span>
-                        </a>
-                    </li>
+                    <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="#gallery" class="nav-link">Gallery</a></li>
+                    <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
 
-            <!-- Mobile Menu Toggle -->
+            <a href="#contact" class="header-cta-btn">Book Now</a>
+
             <button class="mobile-toggle" aria-label="Toggle menu">
                 <span class="toggle-line"></span>
                 <span class="toggle-line"></span>
                 <span class="toggle-line"></span>
             </button>
-
         </div>
     </header>
 
-    <!-- Mobile Menu Drawer -->
+    <!-- MOBILE MENU -->
     <div class="mobile-drawer">
         <div class="drawer-content">
             <div class="drawer-header">
                 <img src="images/logo1.png" alt="Laura's Beauty Touch Logo" class="drawer-logo">
             </div>
-
             <nav class="mobile-navigation">
                 <ul class="mobile-menu">
-                    <li class="mobile-item">
-                        <a href="#about" class="mobile-link">About</a>
-                    </li>
-                    <li class="mobile-item has-submenu">
-                        <button class="mobile-link submenu-trigger">
-                            Services
-                            <span class="submenu-icon">
-                                <svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M1 1.5L6 6.5L11 1.5"/>
-                                </svg>
-                            </span>
-                        </button>
-                        <div class="mobile-submenu">
-                            <ul class="submenu-list">
-                                <li><a href="#face-treatments">Face Treatments</a></li>
-                                <li><a href="#permanent-makeup">Permanent Make Up</a></li>
-                                <li><a href="#makeup">Make Up</a></li>
-                                <li><a href="#body-treatments">Body Treatments</a></li>
-                                <li><a href="#laser">Laser</a></li>
-                                <li><a href="#wax">Wax</a></li>
-                                <li><a href="#lashes">Lashes</a></li>
-                                <li><a href="#packages">Packages</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="mobile-item">
-                        <a href="#gallery" class="mobile-link">Gallery</a>
-                    </li>
-                    <li class="mobile-item">
-                        <a href="#testimonials" class="mobile-link">Testimonials</a>
-                    </li>
-                    <li class="mobile-item">
-                        <a href="#contact" class="mobile-link">Contact</a>
-                    </li>
+                    <li class="mobile-item"><a href="#home" class="mobile-link">Home</a></li>
+                    <li class="mobile-item"><a href="#about" class="mobile-link">About</a></li>
+                    <li class="mobile-item"><a href="#services" class="mobile-link">Services</a></li>
+                    <li class="mobile-item"><a href="#gallery" class="mobile-link">Gallery</a></li>
+                    <li class="mobile-item"><a href="#testimonials" class="mobile-link">Testimonials</a></li>
+                    <li class="mobile-item"><a href="#contact" class="mobile-link">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </div>
-
-    <!-- Mobile Overlay -->
     <div class="mobile-overlay"></div>
-    
-    <!-- HERO SECTION -->
+
+    <!-- STUNNING VERTICAL VIDEO COLLAGE HERO -->
     <section class="hero-section" id="home">
         
-        <!-- Swiper Container -->
-        <div class="swiper hero-swiper">
-            <div class="swiper-wrapper">
+        <!-- Video Collage Grid -->
+        <div class="video-collage-grid">
+            <div class="video-column video-col-1">
+                <video class="collage-video" autoplay muted loop playsinline preload="auto">
+                    <source src="facial.mp4" type="video/mp4">
+                </video>
+                <div class="video-overlay"></div>
+            </div>
+            
+            <div class="video-column video-col-2">
+                <video class="collage-video" autoplay muted loop playsinline preload="auto">
+                    <source src="hydra.mp4" type="video/mp4">
+                </video>
+                <div class="video-overlay"></div>
+            </div>
+            
+            <div class="video-column video-col-3">
+                <video class="collage-video" autoplay muted loop playsinline preload="metadata">
+                    <source src="https://cdn.pixabay.com/video/2022/10/16/135152-761273527_large.mp4" type="video/mp4">
+                </video>
+                <div class="video-overlay"></div>
+            </div>
+        </div>
+
+        <!-- Marble Texture Overlay -->
+        <div class="marble-overlay"></div>
+
+        <!-- Rotating Text Content -->
+        <div class="hero-content-wrapper">
+            <div class="hero-text-container">
                 
                 <!-- Slide 1 -->
-                <div class="swiper-slide">
-                    <div class="slide-background">
-                        <video class="slide-video" autoplay muted loop playsinline preload="auto">
-                            <source src="facial.mp4" type="video/mp4">
-                        </video>
-                        <div class="video-overlay overlay-neutral"></div>
-                        <div class="depth-gradient"></div>
-                    </div>
-                    
-                    <div class="bokeh-layer"></div>
-                    
-                    <div class="hero-content">
-                        <div class="content-inner">
-                            <h1 class="hero-title">
-                                <span class="title-line">Welcome to</span>
-                                <span class="title-line">Laura's Beauty Touch</span>
-                            </h1>
-                            <p class="hero-subtitle">Relax. Restore. Reveal your natural glow.</p>
-                            <a href="#contact" class="hero-btn">
-                                <span class="btn-text">Book Your Experience</span>
-                                <span class="btn-arrow">→</span>
-                            </a>
-                        </div>
-                        
-                        <div class="hero-badge">
-                            <span class="badge-text">NYC's Premier Natural Spa</span>
-                        </div>
-                    </div>
+                <div class="hero-slide active" data-slide="1">
+                    <div class="hero-eyebrow">Welcome to Tranquility</div>
+                    <h1 class="hero-title">
+                        <span class="title-line">Laura's Beauty</span>
+                        <span class="title-line typed-text" id="typed-1"></span>
+                    </h1>
+                    <p class="hero-description">Where natural luxury meets personalized care</p>
+                    <a href="#contact" class="hero-cta-btn">
+                        <span>Begin Your Journey</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
 
                 <!-- Slide 2 -->
-                <div class="swiper-slide">
-                    <div class="slide-background">
-                        <video class="slide-video" muted loop playsinline preload="metadata">
-                            <source src="hydra.mp4" type="video/mp4">
-                        </video>
-                        <div class="video-overlay overlay-golden"></div>
-                        <div class="depth-gradient"></div>
-                    </div>
-                    
-                    <div class="bokeh-layer"></div>
-                    
-                    <div class="hero-content">
-                        <div class="content-inner">
-                            <div class="seasonal-tag">
-                                <span class="tag-text">Winter Collection 2025</span>
-                            </div>
-                            
-                            <h1 class="hero-title">
-                                <span class="title-line">This Season's</span>
-                                <span class="title-line">Specials</span>
-                            </h1>
-                            <p class="hero-subtitle">Exclusive offers curated for your wellness journey</p>
-                            
-                            <div class="feature-highlights">
-                                <div class="highlight-item">
-                                    <span class="highlight-text">20% Off Winter Facials</span>
-                                </div>
-                                <div class="highlight-item">
-                                    <span class="highlight-text">Complimentary Body Scrub</span>
-                                </div>
-                            </div>
-                            
-                            <a href="#services" class="hero-btn">
-                                <span class="btn-text">View Specials</span>
-                                <span class="btn-arrow">→</span>
-                            </a>
-                        </div>
-                        
-                        <div class="hero-badge limited-badge">
-                            <span class="badge-text">Limited Time Offer</span>
-                        </div>
-                    </div>
+                <div class="hero-slide" data-slide="2">
+                    <div class="hero-eyebrow">Signature Treatments</div>
+                    <h1 class="hero-title">
+                        <span class="title-line">Experience the Art</span>
+                        <span class="title-line typed-text" id="typed-2"></span>
+                    </h1>
+                    <p class="hero-description">Customized wellness rituals for body and soul</p>
+                    <a href="#services" class="hero-cta-btn">
+                        <span>Explore Services</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
 
                 <!-- Slide 3 -->
-                <div class="swiper-slide">
-                    <div class="slide-background">
-                        <video class="slide-video" muted loop playsinline preload="metadata">
-                            <source src="https://cdn.pixabay.com/video/2022/10/16/135152-761273527_large.mp4" type="video/mp4">
-                        </video>
-                        <div class="video-overlay overlay-blush"></div>
-                        <div class="depth-gradient"></div>
-                    </div>
-                    
-                    <div class="bokeh-layer"></div>
-                    
-                    <div class="hero-content">
-                        <div class="content-inner">
-                            <div class="new-tag">
-                                <span class="pulse-dot"></span>
-                                <span class="tag-text">New Treatment</span>
-                            </div>
-                            
-                            <h1 class="hero-title">
-                                <span class="title-line">Signature</span>
-                                <span class="title-line">Body Renewal</span>
-                            </h1>
-                            <p class="hero-subtitle">Exfoliate. Renew. Glow from within.</p>
-                            
-                            <div class="treatment-steps">
-                                <div class="step-card">
-                                    <span class="step-number">01</span>
-                                    <span class="step-label">Organic Ingredients</span>
-                                </div>
-                                <div class="step-card">
-                                    <span class="step-number">02</span>
-                                    <span class="step-label">Deep Exfoliation</span>
-                                </div>
-                                <div class="step-card">
-                                    <span class="step-number">03</span>
-                                    <span class="step-label">Radiant Results</span>
-                                </div>
-                            </div>
-                            
-                            <a href="#services" class="hero-btn featured-btn">
-                                <span class="btn-text">Discover More</span>
-                                <span class="btn-arrow">→</span>
-                            </a>
-                        </div>
-                        
-                        <div class="hero-badge exclusive-badge">
-                            <span class="badge-text">Exclusive Experience</span>
-                        </div>
-                    </div>
+                <div class="hero-slide" data-slide="3">
+                    <div class="hero-eyebrow">NYC's Premier Spa</div>
+                    <h1 class="hero-title">
+                        <span class="title-line">Reveal Your</span>
+                        <span class="title-line typed-text" id="typed-3"></span>
+                    </h1>
+                    <p class="hero-description">Organic luxury in the heart of New York</p>
+                    <a href="#gallery" class="hero-cta-btn">
+                        <span>View Gallery</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
 
             </div>
-            
-            <!-- Navigation Arrows -->
-            <div class="hero-navigation">
-                <button class="swiper-button-prev" aria-label="Previous slide">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M19 12H5m7-7l-7 7 7 7"/>
-                    </svg>
-                </button>
-                <button class="swiper-button-next" aria-label="Next slide">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14m-7-7l7 7-7 7"/>
-                    </svg>
-                </button>
+
+            <!-- Slide Navigation Dots -->
+            <div class="hero-navigation-dots">
+                <button class="dot active" data-slide="1" aria-label="Slide 1"></button>
+                <button class="dot" data-slide="2" aria-label="Slide 2"></button>
+                <button class="dot" data-slide="3" aria-label="Slide 3"></button>
             </div>
-            
-            <!-- Pagination Dots -->
-            <div class="swiper-pagination"></div>
         </div>
 
         <!-- Scroll Indicator -->
         <div class="scroll-indicator">
-            <svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 5v14m-7-7l7 7 7-7"/>
-            </svg>
-            <span class="scroll-text">Scroll to Explore</span>
+            <div class="scroll-text">Discover More</div>
+            <div class="scroll-line"></div>
         </div>
 
     </section>
 
-    <!-- DEMO SECTION -->
-    <section id="about" style="min-height: 100vh; background: linear-gradient(135deg, #FAFAF7 0%, #F5F3EF 100%); padding: 120px 20px; display: flex; align-items: center; justify-content: center;">
-        <div style="max-width: 1200px; text-align: center;">
-            <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); color: #3B4A2F; margin-bottom: 30px;">About Our Spa</h2>
-            <p style="font-family: 'Lato', sans-serif; font-size: 1.25rem; color: #1C1C1C; line-height: 1.8; max-width: 800px; margin: 0 auto;">Experience the perfect blend of natural luxury and personalized care. Our treatments are designed to restore your inner balance and reveal your natural radiance.</p>
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about-section">
+        <div class="section-container">
+            <div class="about-content" data-aos="fade-up" data-aos-duration="1000">
+                <div class="section-eyebrow">Our Story</div>
+                <h2 class="section-title">Where Nature Meets Luxury</h2>
+                <div class="title-divider"></div>
+                <p class="section-description">
+                    At Laura's Beauty Touch, we believe in the transformative power of natural wellness. 
+                    Our sanctuary in the heart of New York City offers a serene escape where organic luxury 
+                    and personalized care converge to reveal your most radiant self.
+                </p>
+                <p class="section-description">
+                    Each treatment is thoughtfully curated using premium natural ingredients and time-honored 
+                    techniques, designed to restore balance, rejuvenate your spirit, and unveil your innate beauty.
+                </p>
+                <div class="about-features">
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
+                        <i class="fas fa-leaf"></i>
+                        <h3>100% Natural</h3>
+                        <p>Organic ingredients sourced with care</p>
+                    </div>
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-spa"></i>
+                        <h3>Expert Care</h3>
+                        <p>Certified specialists devoted to you</p>
+                    </div>
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
+                        <i class="fas fa-heart"></i>
+                        <h3>Personalized</h3>
+                        <p>Treatments tailored to your needs</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    
+    <!-- SERVICES SECTION -->
+    <section id="services" class="services-section">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-eyebrow">Our Offerings</div>
+                <h2 class="section-title">Signature Services</h2>
+                <div class="title-divider"></div>
+                <p class="section-subtitle">Transformative treatments crafted for your wellbeing</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon"><i class="fas fa-spa"></i></div>
+                    <h3 class="service-title">Face Treatments</h3>
+                    <p class="service-description">Rejuvenating facials and advanced skincare rituals</p>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+                    <h3 class="service-title">Permanent Makeup</h3>
+                    <p class="service-description">Lasting beauty enhancement with natural results</p>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon"><i class="fas fa-sparkles"></i></div>
+                    <h3 class="service-title">Makeup Artistry</h3>
+                    <p class="service-description">Professional makeup for every occasion</p>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon"><i class="fas fa-hands"></i></div>
+                    <h3 class="service-title">Body Treatments</h3>
+                    <p class="service-description">Full body care and therapeutic massage</p>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon"><i class="fas fa-bolt"></i></div>
+                    <h3 class="service-title">Laser Treatments</h3>
+                    <p class="service-description">Advanced laser technology for radiant skin</p>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon"><i class="fas fa-eye"></i></div>
+                    <h3 class="service-title">Lash Extensions</h3>
+                    <p class="service-description">Beautiful lashes that enhance your natural beauty</p>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section id="gallery" class="gallery-section">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-eyebrow">Our Sanctuary</div>
+                <h2 class="section-title">Experience the Space</h2>
+                <div class="title-divider"></div>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="gallery-image-placeholder">
+                        <i class="fas fa-image"></i>
+                        <p>Treatment Room</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="gallery-image-placeholder">
+                        <i class="fas fa-image"></i>
+                        <p>Relaxation Area</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="gallery-image-placeholder">
+                        <i class="fas fa-image"></i>
+                        <p>Spa Suite</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="gallery-image-placeholder">
+                        <i class="fas fa-image"></i>
+                        <p>Reception</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="gallery-image-placeholder">
+                        <i class="fas fa-image"></i>
+                        <p>Product Line</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="gallery-image-placeholder">
+                        <i class="fas fa-image"></i>
+                        <p>Treatment Detail</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-eyebrow">Client Stories</div>
+                <h2 class="section-title">What Our Clients Say</h2>
+                <div class="title-divider"></div>
+            </div>
+
+            <div class="testimonials-slider">
+                <div class="testimonial-card active" data-aos="fade-up">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Laura's Beauty Touch is my sanctuary in the city. The treatments are exceptional, 
+                        and the natural approach to beauty truly transforms. I leave feeling renewed every time."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SM</div>
+                        <div class="author-info">
+                            <h4>Sarah Mitchell</h4>
+                            <p>Manhattan, NY</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "The most luxurious spa experience I've had in New York. Laura's attention to detail 
+                        and commitment to natural products makes all the difference. Highly recommended!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">EC</div>
+                        <div class="author-info">
+                            <h4>Emily Chen</h4>
+                            <p>Brooklyn, NY</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "From the moment you walk in, you feel the difference. The ambiance, the care, 
+                        the results – everything is world-class. This is wellness elevated."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JR</div>
+                        <div class="author-info">
+                            <h4>Jennifer Rodriguez</h4>
+                            <p>Queens, NY</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-navigation">
+                <button class="testimonial-prev"><i class="fas fa-chevron-left"></i></button>
+                <div class="testimonial-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <button class="testimonial-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact-section">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-eyebrow">Get in Touch</div>
+                <h2 class="section-title">Book Your Experience</h2>
+                <div class="title-divider"></div>
+                <p class="section-subtitle">Begin your journey to natural beauty and wellness</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-form-wrapper" data-aos="fade-right">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" required>
+                            <label for="name">Full Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" required>
+                            <label for="email">Email Address</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" required>
+                            <label for="phone">Phone Number</label>
+                        </div>
+                        <div class="form-group">
+                            <select id="service" required>
+                                <option value="">Select a Service</option>
+                                <option value="facial">Face Treatments</option>
+                                <option value="permanent-makeup">Permanent Makeup</option>
+                                <option value="makeup">Makeup Artistry</option>
+                                <option value="body">Body Treatments</option>
+                                <option value="laser">Laser Treatments</option>
+                                <option value="lashes">Lash Extensions</option>
+                            </select>
+                            <label for="service">Preferred Service</label>
+                        </div>
+                        <div class="form-group full-width">
+                            <textarea id="message" rows="5" required></textarea>
+                            <label for="message">Message</label>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <span>Book Appointment</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="contact-info-wrapper" data-aos="fade-left">
+                    <div class="contact-info-card">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Visit Us</h4>
+                                <p>123 Spa Avenue<br>New York, NY 10001</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Call Us</h4>
+                                <p>(212) 555-0123</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email Us</h4>
+                                <p>hello@laurasbeautytouch.com</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Hours</h4>
+                                <p>Mon-Fri: 9am - 8pm<br>Sat-Sun: 10am - 6pm</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
+                    <img src="images/logo1.png" alt="Laura's Beauty Touch" class="footer-logo">
+                    <p class="footer-description">Natural luxury spa in the heart of New York City</p>
+                </div>
+                <div class="footer-col" data-aos="fade-up" data-aos-delay="200">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col" data-aos="fade-up" data-aos-delay="300">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">Face Treatments</a></li>
+                        <li><a href="#services">Permanent Makeup</a></li>
+                        <li><a href="#services">Body Treatments</a></li>
+                        <li><a href="#services">Laser</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col" data-aos="fade-up" data-aos-delay="400">
+                    <h4>Contact</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> New York, NY</li>
+                        <li><i class="fas fa-phone"></i> (212) 555-0123</li>
+                        <li><i class="fas fa-envelope"></i> hello@laurasbeautytouch.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Laura's Beauty Touch. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <!-- Custom JavaScript -->
     <script src="script.js"></script>
 
