@@ -333,7 +333,7 @@ body {
 }
 
 /* ============================================
-   STUNNING VERTICAL VIDEO COLLAGE HERO
+   HERO SECTION - SIMPLE VIDEO COLLAGE
    ============================================ */
 .hero-section {
     position: relative;
@@ -346,7 +346,8 @@ body {
     justify-content: center;
 }
 
-.video-collage-grid {
+/* Simple 3-Video Grid Layout */
+.video-collage-container {
     position: absolute;
     top: 0;
     left: 0;
@@ -354,31 +355,19 @@ body {
     height: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0;
+    gap: 8px;
+    padding: 8px;
     z-index: 1;
 }
 
-.video-column {
+.video-item {
     position: relative;
     overflow: hidden;
+    border-radius: 30px;
     height: 100%;
 }
 
-.video-col-1 {
-    clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
-}
-
-.video-col-2 {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%);
-    transform: translateY(-5%);
-}
-
-.video-col-3 {
-    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
-    transform: translateY(5%);
-}
-
-.collage-video {
+.hero-video {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -386,52 +375,42 @@ body {
     min-height: 100%;
     width: auto;
     height: auto;
-    transform: translate(-50%, -50%) scale(1.1);
+    transform: translate(-50%, -50%);
     object-fit: cover;
-    filter: brightness(0.6) contrast(1.1);
-    transition: transform 8s ease-out;
+    filter: brightness(0.75) contrast(1.05);
 }
 
-.video-overlay {
+.video-gradient-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: linear-gradient(
-        135deg,
-        rgba(59, 74, 47, 0.5) 0%,
-        rgba(169, 200, 156, 0.3) 50%,
-        rgba(139, 115, 85, 0.4) 100%
+        180deg,
+        rgba(59, 74, 47, 0.3) 0%,
+        rgba(169, 200, 156, 0.2) 50%,
+        rgba(59, 74, 47, 0.4) 100%
     );
-    mix-blend-mode: multiply;
-    opacity: 0.8;
     z-index: 2;
 }
 
-.marble-overlay {
+.hero-master-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: radial-gradient(
-        circle at 30% 50%,
-        rgba(232, 220, 200, 0.15) 0%,
-        transparent 50%
-    ),
-    radial-gradient(
-        circle at 70% 50%,
-        rgba(169, 200, 156, 0.1) 0%,
-        transparent 50%
+        ellipse at center,
+        rgba(28, 28, 28, 0.3) 0%,
+        rgba(59, 74, 47, 0.5) 100%
     );
     z-index: 3;
     pointer-events: none;
 }
 
-/* ============================================
-   HERO TEXT CONTENT
-   ============================================ */
+/* Hero Content */
 .hero-content-wrapper {
     position: relative;
     z-index: 10;
@@ -545,9 +524,7 @@ body {
     transform: translateX(5px);
 }
 
-/* ============================================
-   HERO NAVIGATION
-   ============================================ */
+/* Hero Navigation */
 .hero-navigation-dots {
     display: flex;
     align-items: center;
@@ -573,9 +550,7 @@ body {
     box-shadow: 0 0 15px rgba(169, 200, 156, 0.6);
 }
 
-/* ============================================
-   SCROLL INDICATOR
-   ============================================ */
+/* Scroll Indicator */
 .scroll-indicator {
     position: absolute;
     bottom: 40px;
@@ -1278,23 +1253,9 @@ body {
         display: none;
     }
     
-    .video-collage-grid {
+    .video-collage-container {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(3, 1fr);
-    }
-    
-    .video-col-1 {
-        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-    }
-    
-    .video-col-2 {
-        clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 85%);
-        transform: translateX(-5%);
-    }
-    
-    .video-col-3 {
-        clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 100%);
-        transform: translateX(5%);
     }
     
     .contact-content {
@@ -1352,5 +1313,14 @@ body {
     
     .testimonial-text {
         font-size: 1.1rem;
+    }
+    
+    .video-collage-container {
+        gap: 4px;
+        padding: 4px;
+    }
+    
+    .video-item {
+        border-radius: 20px;
     }
 }
