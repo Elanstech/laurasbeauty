@@ -1410,6 +1410,175 @@ class HashtagInteraction {
 }
 
 // ============================================
+// BACK TO TOP BUTTON
+// ============================================
+class BackToTopButton {
+    constructor() {
+        this.button = document.getElementById('backToTopBtn');
+        this.scrollThreshold = 300;
+        
+        this.init();
+    }
+
+    init() {
+        if (!this.button) return;
+
+        this.handleScroll();
+        this.button.addEventListener('click', () => this.scrollToTop());
+    }
+
+    handleScroll() {
+        let ticking = false;
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.pageYOffset;
+
+                    if (scrolled > this.scrollThreshold) {
+                        this.button.classList.add('visible');
+                    } else {
+                        this.button.classList.remove('visible');
+                    }
+
+                    ticking = false;
+                });
+
+                ticking = true;
+            }
+        }, { passive: true });
+    }
+
+    scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+
+        // Optional: Add a subtle animation feedback
+        this.button.style.transform = 'translateY(-3px) scale(1.05)';
+        setTimeout(() => {
+            this.button.style.transform = '';
+        }, 200);
+    }
+}
+
+// ============================================
+// FLOATING ACTION BUTTON (FAB)
+// ============================================
+class FloatingActionButton {
+    constructor() {
+        this.fabMain = document.getElementById('fabMain');
+        this.fabOptions = document.getElementById('fabOptions');
+        this.instaChatBtn = document.getElementById('instaChat');
+        this.elfsightContainer = document.getElementById('elfsightContainer');
+        this.elfsightOverlay = document.getElementById('elfsightOverlay');
+        this.elfsightClose = document.getElementById('elfsightClose');
+        
+        this.isOpen = false;
+        
+        this.init();
+    }
+
+    init() {
+        if (!this.fabMain) return;
+
+        // Main FAB toggle
+        this.fabMain.addEventListener('click', () => this.toggleFAB());
+
+        // Instagram chat button
+        if (this.instaChatBtn) {
+            this.instaChatBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.openInstagramChat();
+            });
+        }
+
+        // Close Elfsight modal
+        if (this.elfsightClose) {
+            this.elfsightClose.addEventListener('click', () => this.closeInstagramChat());
+        }
+
+        if (this.elfsightOverlay) {
+            this.elfsightOverlay.addEventListener('click', () => this.closeInstagramChat());
+        }
+
+        // Close FAB when clicking outside
+        document.addEventListener('click', (e) => {
+            if (this.isOpen && !e.target.closest('.fab-container')) {
+                this.closeFAB();
+            }
+        });
+
+        // Close FAB on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (this.elfsightContainer && this.elfsightContainer.classList.contains('active')) {
+                    this.closeInstagramChat();
+                } else if (this.isOpen) {
+                    this.closeFAB();
+                }
+            }
+        });
+
+        // Close FAB when clicking any option
+        const fabOptionLinks = document.querySelectorAll('.fab-option:not(.fab-instagram)');
+        fabOptionLinks.forEach(option => {
+            option.addEventListener('click', () => {
+                setTimeout(() => this.closeFAB(), 300);
+            });
+        });
+    }
+
+    toggleFAB() {
+        if (this.isOpen) {
+            this.closeFAB();
+        } else {
+            this.openFAB();
+        }
+    }
+
+    openFAB() {
+        this.isOpen = true;
+        this.fabMain.classList.add('active');
+        this.fabOptions.classList.add('active');
+    }
+
+    closeFAB() {
+        this.isOpen = false;
+        this.fabMain.classList.remove('active');
+        this.fabOptions.classList.remove('active');
+    }
+
+    openInstagramChat() {
+        if (!this.elfsightContainer) return;
+
+        // Close FAB first
+        this.closeFAB();
+
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
+        
+        // Show Elfsight modal
+        this.elfsightContainer.classList.add('active');
+
+        console.log('📱 Instagram Chat opened - Elfsight widget should load');
+    }
+
+    closeInstagramChat() {
+        if (!this.elfsightContainer) return;
+
+        // Hide Elfsight modal
+        this.elfsightContainer.classList.remove('active');
+
+        // Restore body scroll
+        document.body.style.overflow = '';
+
+        console.log('📱 Instagram Chat closed');
+    }
+}
+
+// ============================================
 // MAIN INITIALIZATION
 // ============================================
 function initWebsite() {
@@ -1433,6 +1602,13 @@ function initWebsite() {
         
     // Initialize Contact Form
     new ContactForm();
+
+    // Initialize Back to Top Button
+    new BackToTopButton();
+    
+    // Initialize Floating Action Button
+    new FloatingActionButton();
+
     
     // Initialize Elfsight Widgets (Google Reviews & Instagram)
     new ElfsightWidgets();
