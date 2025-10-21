@@ -1273,14 +1273,9 @@ function initWebsite() {
     new ElegantPreloader();
     new PremiumHeader();
     new HeroVideoCollage();
-    
-    // Initialize Specials Carousel - ONLY ONCE
-    const specialsCarousel = new SpecialsCarousel();
-    specialsCarousel.init();
-    window.specialsCarousel = specialsCarousel; // Make globally accessible
-    
+    new SpecialsCarousel();
     new ServicesCarousel();
-    
+
     // Initialize AOS if available
     if (typeof AOS !== 'undefined') {
         AOS.init({
