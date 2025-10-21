@@ -689,7 +689,7 @@ body {
 }
 
 /* ============================================
-   Specials SECTION
+   SPECIALS SECTION - COMPLETE CAROUSEL
    ============================================ */
 
 .specials-section {
@@ -728,15 +728,12 @@ body {
     z-index: 1;
 }
 
-/* ============================================
-   SECTION HEADER
-   ============================================ */
-.section-header {
+.specials-section .section-header {
     text-align: center;
     margin-bottom: 80px;
 }
 
-.section-eyebrow {
+.specials-section .section-eyebrow {
     font-family: 'Lato', sans-serif;
     font-size: 14px;
     font-weight: 600;
@@ -746,7 +743,7 @@ body {
     margin-bottom: 15px;
 }
 
-.section-title {
+.specials-section .section-title {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 600;
@@ -755,7 +752,7 @@ body {
     line-height: 1.2;
 }
 
-.title-divider {
+.specials-section .title-divider {
     width: 80px;
     height: 3px;
     background: linear-gradient(90deg, var(--mint-green), var(--gold-accent));
@@ -763,7 +760,7 @@ body {
     border-radius: 10px;
 }
 
-.section-subtitle {
+.specials-section .section-subtitle {
     font-family: 'Lato', sans-serif;
     font-size: 1.2rem;
     color: rgba(250, 250, 247, 0.8);
@@ -772,23 +769,26 @@ body {
     line-height: 1.8;
 }
 
-/* ============================================
-   CAROUSEL WRAPPER
-   ============================================ */
 .specials-carousel-wrapper {
     position: relative;
-    padding: 0 60px;
+    padding: 0 80px;
 }
 
-/* ============================================
-   CAROUSEL CONTAINER
-   ============================================ */
 .specials-carousel {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    display: flex;
     gap: 35px;
-    opacity: 1;
-    transition: opacity 0.4s ease;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    padding: 20px 0 40px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+
+.specials-carousel::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
 }
 
 .specials-carousel.hidden {
@@ -796,39 +796,50 @@ body {
     pointer-events: none;
 }
 
-/* ============================================
-   SPECIAL CARD
-   ============================================ */
 .special-card {
     position: relative;
     background: linear-gradient(135deg, var(--cream) 0%, var(--soft-sand) 100%);
+    border: 2px solid rgba(169, 200, 156, 0.2);
     border-radius: 30px;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    flex: 0 0 calc(33.333% - 24px);
+    min-width: 350px;
+    scroll-snap-align: start;
 }
 
 .special-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border-color: var(--mint-green);
 }
 
 /* Wide card variant */
 .special-card-wide {
-    grid-column: span 2;
+    flex: 0 0 calc(66.666% - 18px);
+    min-width: 700px;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
-/* ============================================
-   SAVE BADGE
-   ============================================ */
+.special-card-wide .special-image {
+    aspect-ratio: 1/1;
+}
+
+.special-card-wide .special-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 45px 40px;
+}
+
 .save-badge {
     position: absolute;
     top: 20px;
     left: 20px;
     z-index: 10;
-    background: var(--coral-red);
+    background: linear-gradient(135deg, #D84545, #C23939);
     color: white;
     padding: 12px 18px;
     border-radius: 20px;
@@ -854,9 +865,6 @@ body {
     line-height: 1;
 }
 
-/* ============================================
-   SPECIAL IMAGE
-   ============================================ */
 .special-image {
     position: relative;
     width: 100%;
@@ -892,9 +900,6 @@ body {
     pointer-events: none;
 }
 
-/* ============================================
-   SPECIAL CONTENT
-   ============================================ */
 .special-content {
     padding: 35px 30px;
     text-align: center;
@@ -917,9 +922,6 @@ body {
     font-style: italic;
 }
 
-/* ============================================
-   PRICING
-   ============================================ */
 .special-price {
     display: flex;
     align-items: center;
@@ -953,10 +955,8 @@ body {
     margin-bottom: 25px;
 }
 
-/* ============================================
-   BOOK BUTTON
-   ============================================ */
-.special-book-btn {
+.special-book-btn,
+.view-details-btn {
     display: inline-flex;
     align-items: center;
     gap: 10px;
@@ -968,29 +968,30 @@ body {
     font-weight: 600;
     letter-spacing: 1px;
     text-decoration: none;
-    border-radius: 50px;
     border: 2px solid transparent;
+    border-radius: 50px;
+    cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 6px 20px rgba(59, 74, 47, 0.3);
 }
 
-.special-book-btn:hover {
+.special-book-btn:hover,
+.view-details-btn:hover {
     background: linear-gradient(135deg, var(--mint-green), var(--forest-green));
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(169, 200, 156, 0.4);
 }
 
-.special-book-btn i {
+.special-book-btn i,
+.view-details-btn i {
     transition: transform 0.3s ease;
 }
 
-.special-book-btn:hover i {
+.special-book-btn:hover i,
+.view-details-btn:hover i {
     transform: translateX(5px);
 }
 
-/* ============================================
-   NO SPECIALS MESSAGE
-   ============================================ */
 .no-specials-message {
     display: none;
     text-align: center;
@@ -1076,9 +1077,6 @@ body {
     transform: translateX(5px);
 }
 
-/* ============================================
-   CAROUSEL NAVIGATION
-   ============================================ */
 .carousel-nav {
     position: absolute;
     top: 50%;
@@ -1094,6 +1092,9 @@ body {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .carousel-nav:hover {
@@ -1116,9 +1117,6 @@ body {
     pointer-events: none;
 }
 
-/* ============================================
-   CAROUSEL INDICATORS
-   ============================================ */
 .carousel-indicators {
     display: flex;
     align-items: center;
@@ -1135,6 +1133,7 @@ body {
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0;
 }
 
 .carousel-indicator.active {
@@ -1147,23 +1146,312 @@ body {
 
 .carousel-indicator:hover:not(.active) {
     background: rgba(250, 250, 247, 0.6);
+    transform: scale(1.2);
 }
 
 .carousel-indicators.hidden {
     display: none;
 }
 
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
-@media (max-width: 1024px) {
-    .specials-carousel {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+.package-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.package-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(28, 28, 28, 0.85);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+}
+
+.modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    max-height: 85vh;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--soft-sand) 100%);
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+    transform: scale(0.9) translateY(30px);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.package-modal.active .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid rgba(169, 200, 156, 0.3);
+    border-radius: 50%;
+    color: var(--forest-green);
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    background: var(--mint-green);
+    color: white;
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 8px 25px rgba(169, 200, 156, 0.4);
+}
+
+.modal-image-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-badge {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background: linear-gradient(135deg, #D84545, #C23939);
+    color: white;
+    padding: 15px 22px;
+    border-radius: 25px;
+    box-shadow: 0 8px 25px rgba(216, 69, 69, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+.modal-badge .save-text {
+    font-family: 'Lato', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.modal-badge .save-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.modal-body {
+    padding: 40px 45px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.modal-brand {
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--mint-green);
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--forest-green);
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.modal-description {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.15rem;
+    color: var(--warm-taupe);
+    margin-bottom: 25px;
+    line-height: 1.7;
+    font-style: italic;
+}
+
+.modal-price-section {
+    padding: 25px 30px;
+    background: rgba(169, 200, 156, 0.08);
+    border: 2px solid rgba(169, 200, 156, 0.2);
+    border-radius: 25px;
+    margin-bottom: 30px;
+}
+
+.modal-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.modal-current-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--forest-green);
+}
+
+.modal-original-price {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.6rem;
+    color: var(--warm-taupe);
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+.modal-includes {
+    background: rgba(255, 255, 255, 0.7);
+    border: 2px solid rgba(169, 200, 156, 0.25);
+    border-radius: 30px;
+    padding: 35px 40px;
+    margin-bottom: 35px;
+}
+
+.includes-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--forest-green);
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.includes-title i {
+    color: var(--mint-green);
+    font-size: 1.6rem;
+}
+
+.includes-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 15px;
+}
+
+.includes-list li {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.1rem;
+    color: var(--charcoal);
+    padding-left: 35px;
+    position: relative;
+    line-height: 1.6;
+}
+
+.includes-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--mint-green);
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.modal-book-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 45px;
+    background: linear-gradient(135deg, var(--forest-green), var(--deep-forest));
+    color: var(--ivory-white);
+    font-family: 'Lato', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 30px rgba(59, 74, 47, 0.3);
+}
+
+.modal-book-btn:hover {
+    background: linear-gradient(135deg, var(--mint-green), var(--forest-green));
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(169, 200, 156, 0.4);
+}
+
+.modal-book-btn i {
+    transition: transform 0.3s ease;
+}
+
+.modal-book-btn:hover i {
+    transform: translateX(5px);
+}
+
+@media (max-width: 1200px) {
+    .special-card {
+        flex: 0 0 calc(50% - 18px);
+        min-width: 300px;
     }
     
     .special-card-wide {
-        grid-column: span 1;
+        flex: 0 0 100%;
+        min-width: 100%;
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1024px) {
+    .specials-carousel-wrapper {
+        padding: 0 60px;
+    }
+    
+    .special-card {
+        flex: 0 0 calc(50% - 18px);
+        min-width: 280px;
+    }
+    
+    .special-card-wide {
+        grid-template-columns: 1fr;
+    }
+    
+    .carousel-nav {
+        width: 50px;
+        height: 50px;
+        font-size: 1.1rem;
     }
 }
 
@@ -1176,7 +1464,7 @@ body {
         padding: 0 25px;
     }
     
-    .section-header {
+    .specials-section .section-header {
         margin-bottom: 60px;
     }
     
@@ -1185,14 +1473,22 @@ body {
     }
     
     .specials-carousel {
-        grid-template-columns: 1fr;
         gap: 25px;
+        padding: 20px 0 30px;
+    }
+    
+    .special-card {
+        flex: 0 0 85%;
+        min-width: 280px;
+    }
+    
+    .special-card-wide {
+        flex: 0 0 85%;
+        min-width: 280px;
     }
     
     .carousel-nav {
-        width: 50px;
-        height: 50px;
-        font-size: 1.1rem;
+        display: none;
     }
     
     .special-card {
@@ -1229,6 +1525,52 @@ body {
     .no-specials-message p {
         font-size: 1.05rem;
     }
+    
+    /* Modal Responsive */
+    .modal-content {
+        width: 95%;
+        max-height: 90vh;
+        border-radius: 30px;
+    }
+
+    .modal-image-container {
+        height: 220px;
+    }
+
+    .modal-body {
+        padding: 30px 25px;
+    }
+
+    .modal-title {
+        font-size: 2rem;
+    }
+
+    .modal-current-price {
+        font-size: 2.2rem;
+    }
+
+    .modal-original-price {
+        font-size: 1.3rem;
+    }
+
+    .modal-includes {
+        padding: 25px 25px;
+    }
+
+    .includes-title {
+        font-size: 1.5rem;
+    }
+
+    .includes-list li {
+        font-size: 1rem;
+    }
+
+    .modal-book-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 16px 35px;
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1240,8 +1582,19 @@ body {
         padding: 0 20px;
     }
     
+    .specials-carousel {
+        gap: 20px;
+    }
+    
     .special-card {
+        flex: 0 0 90%;
+        min-width: 260px;
         border-radius: 20px;
+    }
+    
+    .special-card-wide {
+        flex: 0 0 90%;
+        min-width: 260px;
     }
     
     .save-badge {
@@ -1263,17 +1616,40 @@ body {
         padding: 25px 20px;
     }
     
-    .special-book-btn {
+    .special-book-btn,
+    .view-details-btn {
         padding: 12px 30px;
         font-size: 14px;
     }
     
-    .carousel-nav {
-        display: none;
-    }
-    
     .carousel-indicators {
         margin-top: 40px;
+    }
+    
+    /* Modal Mobile */
+    .modal-close {
+        width: 40px;
+        height: 40px;
+        top: 15px;
+        right: 15px;
+    }
+
+    .modal-badge {
+        padding: 12px 18px;
+        top: 20px;
+        left: 20px;
+    }
+
+    .modal-title {
+        font-size: 1.7rem;
+    }
+
+    .modal-description {
+        font-size: 1rem;
+    }
+
+    .modal-price-section {
+        padding: 20px 20px;
     }
 }
 
