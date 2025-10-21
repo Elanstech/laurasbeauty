@@ -887,6 +887,236 @@ console.log('🌟 Specials Carousel Script Loaded');
 
 
 // ============================================
+// ABOUT SLIDER
+// ============================================
+
+class OwnerPhotoCarousel {
+    constructor() {
+        this.carousel = document.querySelector('.owner-carousel');
+        if (!this.carousel) return;
+
+        this.slides = this.carousel.querySelectorAll('.carousel-slide');
+        this.dots = this.carousel.querySelectorAll('.carousel-dot');
+        this.currentIndex = 0;
+        this.autoplayInterval = null;
+        this.autoplayDelay = 4000; // 4 seconds per slide
+
+        this.init();
+    }
+
+    init() {
+        if (this.slides.length === 0) return;
+
+        this.setupDots();
+        this.startAutoplay();
+        this.setupHoverPause();
+    }
+
+    setupDots() {
+        this.dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                this.goToSlide(index);
+                this.resetAutoplay();
+            });
+        });
+    }
+
+    goToSlide(index) {
+        // Remove active class from all slides and dots
+        this.slides.forEach(slide => slide.classList.remove('active'));
+        this.dots.forEach(dot => dot.classList.remove('active'));
+
+        // Add active class to target slide and dot
+        this.slides[index].classList.add('active');
+        this.dots[index].classList.add('active');
+
+        this.currentIndex = index;
+
+        // GSAP fade animation (optional enhancement)
+        if (typeof gsap !== 'undefined') {
+            gsap.fromTo(this.slides[index],
+                { opacity: 0, scale: 1.05 },
+                { opacity: 1, scale: 1, duration: 1, ease: 'power2.out' }
+            );
+        }
+    }
+
+    goToNext() {
+        const nextIndex = (this.currentIndex + 1) % this.slides.length;
+        this.goToSlide(nextIndex);
+    }
+
+    startAutoplay() {
+        this.autoplayInterval = setInterval(() => {
+            this.goToNext();
+        }, this.autoplayDelay);
+    }
+
+    stopAutoplay() {
+        if (this.autoplayInterval) {
+            clearInterval(this.autoplayInterval);
+            this.autoplayInterval = null;
+        }
+    }
+
+    resetAutoplay() {
+        this.stopAutoplay();
+        this.startAutoplay();
+    }
+
+    setupHoverPause() {
+        // Pause autoplay when user hovers over carousel
+        this.carousel.addEventListener('mouseenter', () => {
+            this.stopAutoplay();
+        });
+
+        this.carousel.addEventListener('mouseleave', () => {
+            this.startAutoplay();
+        });
+    }
+}
+
+class CuteArrowAnimation {
+    constructor() {
+        this.arrow = document.querySelector('.cute-arrow');
+        if (!this.arrow) return;
+
+        this.init();
+    }
+
+    init() {
+        // Add extra bounce on scroll into view
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.create({
+                trigger: this.arrow,
+                start: 'top 80%',
+                onEnter: () => {
+                    gsap.to(this.arrow, {
+                        scale: 1.15,
+                        duration: 0.3,
+                        ease: 'back.out(2)',
+                        yoyo: true,
+                        repeat: 1
+                    });
+                }
+            });
+        }
+
+        // Accessibility: Skip animation on reduced motion preference
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            this.arrow.style.animation = 'none';
+            const arrowText = this.arrow.querySelector('.arrow-text');
+            if (arrowText) {
+                arrowText.style.animation = 'none';
+            }
+        }
+    }
+}
+
+class AboutSectionAnimations {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+        // Expertise cards stagger animation
+        const expertiseCards = document.querySelectorAll('.expertise-card');
+        if (expertiseCards.length > 0) {
+            gsap.from(expertiseCards, {
+                opacity: 0,
+                y: 50,
+                stagger: 0.15,
+                duration: 0.8,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '.expertise-grid',
+                    start: 'top 75%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        }
+
+        // Highlights items animation
+        const highlightItems = document.querySelectorAll('.highlight-item');
+        if (highlightItems.length > 0) {
+            gsap.from(highlightItems, {
+                opacity: 0,
+                x: -30,
+                stagger: 0.12,
+                duration: 0.6,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: '.services-highlights',
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        }
+
+        // Inclusivity banner animation
+        const inclusivityBanner = document.querySelector('.inclusivity-banner');
+        if (inclusivityBanner) {
+            gsap.from(inclusivityBanner, {
+                opacity: 0,
+                scale: 0.95,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: inclusivityBanner,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        }
+
+        // CTA Section animation
+        const ctaSection = document.querySelector('.about-cta-section');
+        if (ctaSection) {
+            gsap.from(ctaSection, {
+                opacity: 0,
+                y: 40,
+                duration: 0.9,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: ctaSection,
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        }
+    }
+}
+
+function initAboutSection() {
+    // Check if we're on a page with the about-owner section
+    if (document.querySelector('.about-owner-section')) {
+        console.log('📸 Initializing Owner Photo Carousel...');
+        new OwnerPhotoCarousel();
+
+        console.log('➡️ Initializing Cute Arrow Animation...');
+        new CuteArrowAnimation();
+
+        console.log('✨ Initializing About Section Animations...');
+        new AboutSectionAnimations();
+
+        console.log('✅ About section components ready');
+    }
+}
+
+// Add to existing initialization
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        initAboutSection();
+    });
+} else {
+    initAboutSection();
+}
+
+
+
+// ============================================
 // TESTIMONIALS SLIDER
 // ============================================
 class TestimonialsSlider {
@@ -1185,8 +1415,9 @@ function initWebsite() {
     
     new ElegantPreloader();
     new PremiumHeader();
-    new HeroVideoCollage();
+    new HeroVideoCollage(); 
     new SpecialsCarousel();
+    new OwnerPhotoCarousel();
     new TestimonialsSlider();
     new ContactForm();
     new PerformanceOptimizer();
