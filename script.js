@@ -908,205 +908,357 @@ class SpecialsCarousel {
 }
 
 // ============================================
-// OTHER COMPONENTS
+// SERVICES SECTION
 // ============================================
 
-class OwnerPhotoCarousel {
+class ServicesCarousel {
     constructor() {
-        this.carousel = document.querySelector('.owner-carousel');
-        if (!this.carousel) return;
-
-        this.slides = this.carousel.querySelectorAll('.carousel-slide');
-        this.dots = this.carousel.querySelectorAll('.carousel-dot');
-        this.currentIndex = 0;
-        this.autoplayInterval = null;
-        this.autoplayDelay = 4000;
-
-        this.init();
+        this.carousel = document.getElementById('servicesCarouselTrack');
+        this.prevBtn = document.getElementById('servicesPrevBtn');
+        this.nextBtn = document.getElementById('servicesNextBtn');
+        this.indicatorsContainer = document.getElementById('servicesCarouselIndicators');
+        
+        this.cards = [];
+        this.currentPage = 0;
+        this.itemsPerPage = this.getItemsPerPage();
+        this.totalPages = 0;
+        this.autoScrollInterval = null;
+        this.autoScrollDelay = 5000;
+        
+        this.touchStartX = 0;
+        this.touchEndX = 0;
+        
+        this.resizeHandler = null;
+        this.keyboardHandler = null;
+        this.scrollHandler = null;
     }
 
     init() {
-        if (this.slides.length === 0) return;
-
-        this.setupDots();
-        this.startAutoplay();
-        this.setupHoverPause();
-    }
-
-    setupDots() {
-        this.dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                this.goToSlide(index);
-                this.resetAutoplay();
-            });
-        });
-    }
-
-    goToSlide(index) {
-        this.slides.forEach(slide => slide.classList.remove('active'));
-        this.dots.forEach(dot => dot.classList.remove('active'));
-
-        this.slides[index].classList.add('active');
-        this.dots[index].classList.add('active');
-
-        this.currentIndex = index;
-
-        if (typeof gsap !== 'undefined') {
-            gsap.fromTo(this.slides[index],
-                { opacity: 0, scale: 1.05 },
-                { opacity: 1, scale: 1, duration: 1, ease: 'power2.out' }
-            );
+        if (!this.carousel) {
+            console.warn('Services carousel not found');
+            return;
         }
-    }
 
-    goToNext() {
-        const nextIndex = (this.currentIndex + 1) % this.slides.length;
-        this.goToSlide(nextIndex);
-    }
-
-    startAutoplay() {
-        this.autoplayInterval = setInterval(() => {
-            this.goToNext();
-        }, this.autoplayDelay);
-    }
-
-    stopAutoplay() {
-        if (this.autoplayInterval) {
-            clearInterval(this.autoplayInterval);
-            this.autoplayInterval = null;
+        console.log('Initializing Services Carousel...');
+        
+        this.cards = Array.from(this.carousel.querySelectorAll('.service-category-card'));
+        
+        if (this.cards.length === 0) {
+            console.warn('No service cards found');
+            return;
         }
-    }
 
-    resetAutoplay() {
-        this.stopAutoplay();
-        this.startAutoplay();
-    }
-
-    setupHoverPause() {
-        this.carousel.addEventListener('mouseenter', () => {
-            this.stopAutoplay();
-        });
-
-        this.carousel.addEventListener('mouseleave', () => {
-            this.startAutoplay();
-        });
-    }
-}
-
-class TestimonialsSlider {
-    constructor() {
-        this.testimonials = document.querySelectorAll('.testimonial-card');
-        this.dots = document.querySelectorAll('.testimonial-dots .dot');
-        this.prevBtn = document.querySelector('.testimonial-prev');
-        this.nextBtn = document.querySelector('.testimonial-next');
-        this.currentIndex = 0;
-        this.autoplayInterval = null;
-        
-        this.init();
-    }
-
-    init() {
-        if (this.testimonials.length === 0) return;
-        
+        this.setupCarousel();
         this.setupNavigation();
-        this.startAutoplay();
+        this.setupTouchSupport();
+        this.setupResizeHandler();
+        this.setupScrollHandler();
+        this.startAutoScroll();
+
+        console.log(`Services Carousel initialized with ${this.cards.length} cards`);
+    }
+
+    setupCarousel() {
+        this.itemsPerPage = this.getItemsPerPage();
+        this.totalPages = Math.ceil(this.cards.length / this.itemsPerPage);
+        
+        console.log(`Setup: ${this.cards.length} cards, ${this.itemsPerPage}/page, ${this.totalPages} pages`);
+        
+        this.createIndicators();
+        this.updateNavigationVisibility();
+        this.updateIndicators();
+    }
+
+    getItemsPerPage() {
+        const width = window.innerWidth;
+        
+        if (width < 768) {
+            return 1;
+        } else if (width < 1024) {
+            return 2;
+        } else {
+            return 3;
+        }
+    }
+
+    createIndicators() {
+        if (!this.indicatorsContainer) return;
+        
+        this.indicatorsContainer.innerHTML = '';
+        
+        if (this.totalPages <= 1) {
+            this.indicatorsContainer.classList.add('hidden');
+            return;
+        }
+        
+        this.indicatorsContainer.classList.remove('hidden');
+        
+        for (let i = 0; i < this.totalPages; i++) {
+            const indicator = document.createElement('button');
+            indicator.classList.add('services-indicator');
+            indicator.setAttribute('aria-label', `Go to page ${i + 1}`);
+            indicator.setAttribute('type', 'button');
+            
+            if (i === 0) {
+                indicator.classList.add('active');
+            }
+            
+            indicator.addEventListener('click', () => {
+                this.goToPage(i);
+                this.resetAutoScroll();
+            });
+            
+            this.indicatorsContainer.appendChild(indicator);
+        }
     }
 
     setupNavigation() {
-        this.prevBtn.addEventListener('click', () => {
-            this.goToPrev();
-            this.resetAutoplay();
+        if (!this.prevBtn || !this.nextBtn) return;
+        
+        const newPrevBtn = this.prevBtn.cloneNode(true);
+        const newNextBtn = this.nextBtn.cloneNode(true);
+        this.prevBtn.parentNode.replaceChild(newPrevBtn, this.prevBtn);
+        this.nextBtn.parentNode.replaceChild(newNextBtn, this.nextBtn);
+        this.prevBtn = newPrevBtn;
+        this.nextBtn = newNextBtn;
+        
+        this.prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            this.previousPage();
+            this.resetAutoScroll();
         });
-
-        this.nextBtn.addEventListener('click', () => {
-            this.goToNext();
-            this.resetAutoplay();
+        
+        this.nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            this.nextPage();
+            this.resetAutoScroll();
         });
-
-        this.dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                this.goToSlide(index);
-                this.resetAutoplay();
-            });
-        });
+        
+        if (this.keyboardHandler) {
+            document.removeEventListener('keydown', this.keyboardHandler);
+        }
+        
+        this.keyboardHandler = (e) => {
+            if (this.carousel && !this.carousel.classList.contains('hidden')) {
+                if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    this.previousPage();
+                    this.resetAutoScroll();
+                } else if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    this.nextPage();
+                    this.resetAutoScroll();
+                }
+            }
+        };
+        
+        document.addEventListener('keydown', this.keyboardHandler);
     }
 
-    goToSlide(index) {
-        this.testimonials.forEach(t => t.classList.remove('active'));
-        this.dots.forEach(d => d.classList.remove('active'));
+    updateNavigationVisibility() {
+        if (!this.prevBtn || !this.nextBtn) return;
         
-        this.testimonials[index].classList.add('active');
-        this.dots[index].classList.add('active');
+        const isMobile = window.innerWidth < 768;
+        const shouldHide = this.totalPages <= 1 || isMobile;
         
-        this.currentIndex = index;
-        
-        if (typeof gsap !== 'undefined') {
-            gsap.fromTo(this.testimonials[index],
-                { opacity: 0, y: 30 },
-                { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
-            );
+        if (shouldHide) {
+            this.prevBtn.classList.add('hidden');
+            this.nextBtn.classList.add('hidden');
+        } else {
+            this.prevBtn.classList.remove('hidden');
+            this.nextBtn.classList.remove('hidden');
         }
     }
 
-    goToNext() {
-        const nextIndex = (this.currentIndex + 1) % this.testimonials.length;
-        this.goToSlide(nextIndex);
-    }
-
-    goToPrev() {
-        const prevIndex = (this.currentIndex - 1 + this.testimonials.length) % this.testimonials.length;
-        this.goToSlide(prevIndex);
-    }
-
-    startAutoplay() {
-        this.autoplayInterval = setInterval(() => {
-            this.goToNext();
-        }, 5000);
-    }
-
-    resetAutoplay() {
-        clearInterval(this.autoplayInterval);
-        this.startAutoplay();
-    }
-}
-
-class ContactForm {
-    constructor() {
-        this.form = document.getElementById('contactForm');
-        this.init();
-    }
-
-    init() {
-        if (!this.form) return;
+    goToPage(pageIndex) {
+        if (pageIndex < 0 || pageIndex >= this.totalPages) return;
         
-        this.form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            this.handleSubmit();
+        this.currentPage = pageIndex;
+        this.updateIndicators();
+        
+        const startIndex = pageIndex * this.itemsPerPage;
+        
+        if (this.cards[startIndex]) {
+            const cardRect = this.cards[startIndex].getBoundingClientRect();
+            const carouselRect = this.carousel.getBoundingClientRect();
+            const scrollAmount = cardRect.left - carouselRect.left + this.carousel.scrollLeft;
+            
+            this.carousel.scrollTo({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    nextPage() {
+        if (this.totalPages <= 1) return;
+        const nextPage = (this.currentPage + 1) % this.totalPages;
+        this.goToPage(nextPage);
+    }
+
+    previousPage() {
+        if (this.totalPages <= 1) return;
+        const prevPage = (this.currentPage - 1 + this.totalPages) % this.totalPages;
+        this.goToPage(prevPage);
+    }
+
+    updateIndicators() {
+        const indicators = this.indicatorsContainer?.querySelectorAll('.services-indicator');
+        if (!indicators) return;
+        
+        indicators.forEach((indicator, index) => {
+            if (index === this.currentPage) {
+                indicator.classList.add('active');
+            } else {
+                indicator.classList.remove('active');
+            }
         });
-
-        const inputs = this.form.querySelectorAll('input, textarea, select');
-        inputs.forEach(input => {
-            input.setAttribute('placeholder', ' ');
-        });
     }
 
-    handleSubmit() {
-        const formData = new FormData(this.form);
-        const data = Object.fromEntries(formData);
+    setupScrollHandler() {
+        if (!this.carousel) return;
         
-        const submitBtn = this.form.querySelector('.submit-btn');
-        const originalText = submitBtn.innerHTML;
+        let scrollTimeout;
         
-        submitBtn.innerHTML = '<span>Message Sent!</span><i class="fas fa-check"></i>';
-        submitBtn.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+        if (this.scrollHandler) {
+            this.carousel.removeEventListener('scroll', this.scrollHandler);
+        }
         
-        setTimeout(() => {
-            this.form.reset();
-            submitBtn.innerHTML = originalText;
-            submitBtn.style.background = '';
-        }, 3000);
+        this.scrollHandler = () => {
+            clearTimeout(scrollTimeout);
+            
+            scrollTimeout = setTimeout(() => {
+                this.updateCurrentPageFromScroll();
+            }, 150);
+        };
         
-        console.log('Form submitted:', data);
+        this.carousel.addEventListener('scroll', this.scrollHandler, { passive: true });
+    }
+
+    updateCurrentPageFromScroll() {
+        if (!this.carousel || this.cards.length === 0) return;
+        
+        const carouselRect = this.carousel.getBoundingClientRect();
+        const carouselCenter = carouselRect.left + carouselRect.width / 2;
+        
+        let closestIndex = 0;
+        let closestDistance = Infinity;
+        
+        this.cards.forEach((card, index) => {
+            const cardRect = card.getBoundingClientRect();
+            const cardCenter = cardRect.left + cardRect.width / 2;
+            const distance = Math.abs(cardCenter - carouselCenter);
+            
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestIndex = index;
+            }
+        });
+        
+        const newPage = Math.floor(closestIndex / this.itemsPerPage);
+        
+        if (newPage !== this.currentPage) {
+            this.currentPage = newPage;
+            this.updateIndicators();
+        }
+    }
+
+    setupTouchSupport() {
+        if (!this.carousel) return;
+        
+        this.carousel.addEventListener('touchstart', (e) => {
+            this.touchStartX = e.changedTouches[0].screenX;
+            this.stopAutoScroll();
+        }, { passive: true });
+        
+        this.carousel.addEventListener('touchend', (e) => {
+            this.touchEndX = e.changedTouches[0].screenX;
+            this.handleSwipe();
+        }, { passive: true });
+    }
+
+    handleSwipe() {
+        const swipeThreshold = 50;
+        const swipeDistance = this.touchStartX - this.touchEndX;
+        
+        if (Math.abs(swipeDistance) < swipeThreshold) {
+            this.startAutoScroll();
+            return;
+        }
+        
+        if (swipeDistance > 0) {
+            this.nextPage();
+        } else {
+            this.previousPage();
+        }
+        
+        this.resetAutoScroll();
+    }
+
+    setupResizeHandler() {
+        let resizeTimeout;
+        
+        if (this.resizeHandler) {
+            window.removeEventListener('resize', this.resizeHandler);
+        }
+        
+        this.resizeHandler = () => {
+            clearTimeout(resizeTimeout);
+            
+            resizeTimeout = setTimeout(() => {
+                const newItemsPerPage = this.getItemsPerPage();
+                
+                if (newItemsPerPage !== this.itemsPerPage) {
+                    this.itemsPerPage = newItemsPerPage;
+                    this.setupCarousel();
+                    this.goToPage(0);
+                }
+                
+                this.updateNavigationVisibility();
+            }, 250);
+        };
+        
+        window.addEventListener('resize', this.resizeHandler);
+    }
+
+    startAutoScroll() {
+        if (this.totalPages <= 1) return;
+        
+        this.stopAutoScroll();
+        
+        this.autoScrollInterval = setInterval(() => {
+            this.nextPage();
+        }, this.autoScrollDelay);
+    }
+
+    stopAutoScroll() {
+        if (this.autoScrollInterval) {
+            clearInterval(this.autoScrollInterval);
+            this.autoScrollInterval = null;
+        }
+    }
+
+    resetAutoScroll() {
+        this.stopAutoScroll();
+        this.startAutoScroll();
+    }
+
+    cleanup() {
+        this.stopAutoScroll();
+        
+        if (this.resizeHandler) {
+            window.removeEventListener('resize', this.resizeHandler);
+        }
+        
+        if (this.keyboardHandler) {
+            document.removeEventListener('keydown', this.keyboardHandler);
+        }
+        
+        if (this.scrollHandler && this.carousel) {
+            this.carousel.removeEventListener('scroll', this.scrollHandler);
+        }
     }
 }
 
@@ -1127,7 +1279,7 @@ function initWebsite() {
     specialsCarousel.init();
     window.specialsCarousel = specialsCarousel; // Make globally accessible
     
-    new OwnerPhotoCarousel();
+    new ServicesCarousel();
     new TestimonialsSlider();
     new ContactForm();
     
