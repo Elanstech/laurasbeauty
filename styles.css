@@ -2512,12 +2512,13 @@ body {
 }
 
 /* ============================================
-   SERVICES SECTION
+   SERVICES CAROUSEL SECTION
    ============================================ */
+
 .services-carousel-section {
     position: relative;
     padding: 120px 0;
-    background: linear-gradient(135deg, var(--suede) 0%, var(--warm-taupe) 50%, var(--suede) 100%);
+    background: linear-gradient(135deg, #2A3522 0%, #3B4A2F 50%, #2A3522 100%);
     overflow: hidden;
 }
 
@@ -2528,21 +2529,9 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
-        repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 35px,
-            rgba(59, 74, 47, 0.03) 35px,
-            rgba(59, 74, 47, 0.03) 70px
-        ),
-        repeating-linear-gradient(
-            -45deg,
-            transparent,
-            transparent 35px,
-            rgba(169, 200, 156, 0.03) 35px,
-            rgba(169, 200, 156, 0.03) 70px
-        );
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(169, 200, 156, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(169, 200, 156, 0.08) 0%, transparent 40%);
     pointer-events: none;
     z-index: 1;
 }
@@ -2555,12 +2544,18 @@ body {
     width: 100%;
     height: 100%;
     background-image: 
-        radial-gradient(circle at 20% 30%, rgba(169, 200, 156, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(59, 74, 47, 0.06) 0%, transparent 40%),
-        url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="suede" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.5" fill="rgba(0,0,0,0.015)"/></pattern></defs><rect width="100" height="100" fill="url(%23suede)"/></svg>');
-    opacity: 0.6;
+        repeating-conic-gradient(from 0deg at 50% 50%, 
+            transparent 0deg 60deg,
+            rgba(169, 200, 156, 0.03) 60deg 120deg),
+        repeating-conic-gradient(from 30deg at 50% 50%, 
+            transparent 0deg 60deg,
+            rgba(59, 74, 47, 0.04) 60deg 120deg);
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+    opacity: 0.5;
     pointer-events: none;
     z-index: 1;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .services-container {
@@ -2583,35 +2578,35 @@ body {
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 3px;
-    color: var(--forest-green);
+    color: var(--mint-green);
     text-transform: uppercase;
     margin-bottom: 15px;
-    text-shadow: 0 2px 8px rgba(255, 255, 255, 0.5);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .services-carousel-section .section-title {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 600;
-    color: var(--deep-forest);
+    color: var(--ivory-white);
     margin-bottom: 20px;
     line-height: 1.2;
-    text-shadow: 0 2px 12px rgba(255, 255, 255, 0.3);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
 
 .services-carousel-section .title-divider {
     width: 80px;
     height: 3px;
-    background: linear-gradient(90deg, var(--forest-green), var(--mint-green));
+    background: linear-gradient(90deg, var(--mint-green), var(--gold-accent));
     margin: 20px auto;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(59, 74, 47, 0.3);
+    box-shadow: 0 2px 8px rgba(169, 200, 156, 0.4);
 }
 
 .services-carousel-section .section-subtitle {
     font-family: 'Lato', sans-serif;
     font-size: 1.2rem;
-    color: var(--charcoal);
+    color: rgba(250, 250, 247, 0.85);
     max-width: 700px;
     margin: 0 auto;
     line-height: 1.8;
@@ -2649,11 +2644,11 @@ body {
     overflow: hidden;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 
-        0 15px 40px rgba(28, 28, 28, 0.15),
-        0 5px 15px rgba(28, 28, 28, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    background: linear-gradient(135deg, var(--ivory-white) 0%, var(--cream) 100%);
-    border: 2px solid rgba(169, 200, 156, 0.25);
+        0 15px 40px rgba(0, 0, 0, 0.3),
+        0 5px 15px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, var(--cream) 0%, var(--ivory-white) 100%);
+    border: 2px solid rgba(169, 200, 156, 0.3);
 }
 
 .service-category-card::before {
@@ -2664,14 +2659,11 @@ body {
     width: 100%;
     height: 100%;
     background: 
-        linear-gradient(135deg, transparent 0%, rgba(169, 200, 156, 0.08) 100%),
-        repeating-linear-gradient(
-            90deg,
-            transparent,
-            transparent 2px,
-            rgba(59, 74, 47, 0.02) 2px,
-            rgba(59, 74, 47, 0.02) 4px
-        );
+        radial-gradient(circle at 25% 25%, transparent 0%, transparent 8%, rgba(169, 200, 156, 0.04) 8%, rgba(169, 200, 156, 0.04) 12%, transparent 12%),
+        radial-gradient(circle at 75% 25%, transparent 0%, transparent 8%, rgba(59, 74, 47, 0.03) 8%, rgba(59, 74, 47, 0.03) 12%, transparent 12%),
+        radial-gradient(circle at 25% 75%, transparent 0%, transparent 8%, rgba(59, 74, 47, 0.03) 8%, rgba(59, 74, 47, 0.03) 12%, transparent 12%),
+        radial-gradient(circle at 75% 75%, transparent 0%, transparent 8%, rgba(169, 200, 156, 0.04) 8%, rgba(169, 200, 156, 0.04) 12%, transparent 12%);
+    background-size: 40px 40px;
     opacity: 0;
     transition: opacity 0.5s ease;
     pointer-events: none;
@@ -2681,9 +2673,9 @@ body {
 .service-category-card:hover {
     transform: translateY(-12px) scale(1.02);
     box-shadow: 
-        0 25px 60px rgba(28, 28, 28, 0.25),
-        0 10px 25px rgba(28, 28, 28, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        0 25px 60px rgba(0, 0, 0, 0.4),
+        0 10px 25px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
     border-color: var(--mint-green);
 }
 
@@ -2704,7 +2696,7 @@ body {
     width: 100%;
     height: 280px;
     overflow: hidden;
-    background: linear-gradient(135deg, var(--mint-green) 0%, var(--forest-green) 50%, var(--deep-forest) 100%);
+    background: linear-gradient(135deg, #A9C89C 0%, #3B4A2F 50%, #2A3522 100%);
 }
 
 .service-card-image::before {
@@ -2715,14 +2707,14 @@ body {
     width: 100%;
     height: 100%;
     background: 
-        radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
     opacity: 1;
     transition: opacity 0.5s ease;
 }
 
 .service-category-card:hover .service-card-image::before {
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 .service-image-overlay {
@@ -2731,23 +2723,45 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        180deg,
-        transparent 0%,
-        rgba(28, 28, 28, 0.2) 60%,
-        rgba(28, 28, 28, 0.4) 100%
-    );
+    background: 
+        repeating-radial-gradient(
+            circle at 50% 50%,
+            transparent 0%,
+            transparent 8%,
+            rgba(28, 28, 28, 0.05) 8%,
+            rgba(28, 28, 28, 0.05) 10%,
+            transparent 10%,
+            transparent 18%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(28, 28, 28, 0.1) 0%,
+            rgba(28, 28, 28, 0.3) 60%,
+            rgba(28, 28, 28, 0.5) 100%
+        );
+    background-size: 30px 30px, 100% 100%;
     transition: all 0.5s ease;
     z-index: 1;
 }
 
 .service-category-card:hover .service-image-overlay {
-    background: linear-gradient(
-        180deg,
-        rgba(169, 200, 156, 0.1) 0%,
-        rgba(59, 74, 47, 0.3) 60%,
-        rgba(59, 74, 47, 0.5) 100%
-    );
+    background: 
+        repeating-radial-gradient(
+            circle at 50% 50%,
+            transparent 0%,
+            transparent 8%,
+            rgba(169, 200, 156, 0.08) 8%,
+            rgba(169, 200, 156, 0.08) 10%,
+            transparent 10%,
+            transparent 18%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(169, 200, 156, 0.15) 0%,
+            rgba(59, 74, 47, 0.35) 60%,
+            rgba(59, 74, 47, 0.55) 100%
+        );
+    background-size: 30px 30px, 100% 100%;
 }
 
 .service-icon-wrapper {
@@ -2757,9 +2771,9 @@ body {
     transform: translate(-50%, -50%);
     width: 100px;
     height: 100px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(250, 250, 247, 0.25);
     backdrop-filter: blur(10px);
-    border: 3px solid rgba(255, 255, 255, 0.4);
+    border: 3px solid rgba(250, 250, 247, 0.5);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -2769,17 +2783,17 @@ body {
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 2;
     box-shadow: 
-        0 10px 30px rgba(0, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 .service-category-card:hover .service-icon-wrapper {
     transform: translate(-50%, -50%) scale(1.15) rotate(5deg);
-    background: rgba(255, 255, 255, 0.3);
-    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(250, 250, 247, 0.35);
+    border-color: rgba(250, 250, 247, 0.7);
     box-shadow: 
-        0 15px 45px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        0 15px 45px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 .service-card-content {
@@ -2863,7 +2877,7 @@ body {
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 
-        0 8px 25px rgba(0, 0, 0, 0.15),
+        0 8px 25px rgba(0, 0, 0, 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.5);
     z-index: 10;
     display: flex;
@@ -2874,10 +2888,14 @@ body {
 .services-carousel-nav:hover {
     background: var(--mint-green);
     color: white;
-    transform: translateY(-50%) scale(1.1);
+    transform: translateY(-50%) scale(1.15);
     box-shadow: 
-        0 12px 35px rgba(169, 200, 156, 0.4),
+        0 12px 35px rgba(169, 200, 156, 0.5),
         inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.services-carousel-nav:active {
+    transform: translateY(-50%) scale(1.05);
 }
 
 .services-prev {
@@ -2903,8 +2921,8 @@ body {
 .services-indicator {
     width: 12px;
     height: 12px;
-    background: rgba(59, 74, 47, 0.25);
-    border: 2px solid rgba(59, 74, 47, 0.4);
+    background: rgba(250, 250, 247, 0.25);
+    border: 2px solid rgba(250, 250, 247, 0.4);
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -2914,13 +2932,13 @@ body {
 .services-indicator.active {
     width: 40px;
     border-radius: 20px;
-    background: var(--forest-green);
-    border-color: var(--forest-green);
-    box-shadow: 0 0 15px rgba(59, 74, 47, 0.5);
+    background: var(--mint-green);
+    border-color: var(--mint-green);
+    box-shadow: 0 0 15px rgba(169, 200, 156, 0.6);
 }
 
 .services-indicator:hover:not(.active) {
-    background: rgba(59, 74, 47, 0.5);
+    background: rgba(250, 250, 247, 0.5);
     transform: scale(1.2);
 }
 
@@ -2948,7 +2966,7 @@ body {
     text-decoration: none;
     border-radius: 50px;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 10px 30px rgba(28, 28, 28, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     position: relative;
     overflow: hidden;
 }
@@ -2971,15 +2989,15 @@ body {
 }
 
 .services-book-btn {
-    background: linear-gradient(135deg, var(--forest-green), var(--deep-forest));
+    background: linear-gradient(135deg, var(--mint-green), var(--forest-green));
     color: white;
     border: 2px solid transparent;
 }
 
 .services-book-btn:hover {
-    background: linear-gradient(135deg, var(--deep-forest), var(--forest-green));
+    background: linear-gradient(135deg, var(--forest-green), var(--deep-forest));
     transform: translateY(-4px);
-    box-shadow: 0 15px 40px rgba(59, 74, 47, 0.4);
+    box-shadow: 0 15px 40px rgba(169, 200, 156, 0.5);
 }
 
 .services-view-all-btn {
@@ -2992,7 +3010,7 @@ body {
     background: var(--mint-green);
     color: white;
     transform: translateY(-4px);
-    box-shadow: 0 15px 40px rgba(169, 200, 156, 0.4);
+    box-shadow: 0 15px 40px rgba(169, 200, 156, 0.5);
 }
 
 .services-book-btn i,
