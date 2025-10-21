@@ -306,7 +306,7 @@ class HeroVideoCollage {
 class SpecialsCarousel {
     constructor() {
         // Configuration
-        this.jsonPath = 'specials.json'; // Path to JSON file
+        this.jsonPath = 'json/specials.json'; // Path to JSON file
         
         // DOM Elements
         this.carousel = document.getElementById('specialsCarousel');
