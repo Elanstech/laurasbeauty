@@ -1,5 +1,5 @@
 // ============================================
-// PRELOADER SECTION
+// PRELOADER 
 // ============================================
 class PreloaderManager {
     constructor() {
