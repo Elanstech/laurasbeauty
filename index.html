@@ -197,120 +197,9 @@
             <!-- Specials Carousel Wrapper -->
             <div class="specials-carousel-wrapper">
                 
-                <!-- Carousel Container -->
+                <!-- Carousel Container (populated dynamically from JSON) -->
                 <div class="specials-carousel" id="specialsCarousel">
-                    
-                    <!-- Special Card 1 -->
-                    <div class="special-card">
-                        <div class="save-badge">
-                            <span class="save-text">SAVE</span>
-                            <span class="save-amount">$ 51.00</span>
-                        </div>
-                        <div class="special-image">
-                            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80" alt="Spooktacular Glow Package">
-                        </div>
-                        <div class="special-content">
-                            <h3 class="special-title">Spooktacular Glow Package</h3>
-                            <div class="special-price">
-                                <span class="current-price">$ 89</span>
-                                <span class="original-price">$ 140</span>
-                            </div>
-                            <p class="special-brand">LAURA'S BEAUTY TOUCH</p>
-                            <a href="#contact" class="special-book-btn">
-                                <span>Book Now</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Special Card 2 -->
-                    <div class="special-card">
-                        <div class="save-badge">
-                            <span class="save-text">SAVE</span>
-                            <span class="save-amount">$ 36.00</span>
-                        </div>
-                        <div class="special-image">
-                            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80" alt="Halloween Pampering Package">
-                        </div>
-                        <div class="special-content">
-                            <h3 class="special-title">Halloween Pampering Package</h3>
-                            <div class="special-price">
-                                <span class="current-price">$ 149</span>
-                                <span class="original-price">$ 185</span>
-                            </div>
-                            <p class="special-brand">LAURA'S BEAUTY TOUCH</p>
-                            <a href="#contact" class="special-book-btn">
-                                <span>Book Now</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Special Card 3 -->
-                    <div class="special-card">
-                        <div class="save-badge">
-                            <span class="save-text">SAVE</span>
-                            <span class="save-amount">$ 70.00</span>
-                        </div>
-                        <div class="special-image">
-                            <img src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=800&q=80" alt="Trick or Treat Yourself">
-                        </div>
-                        <div class="special-content">
-                            <h3 class="special-title">Trick or Treat Yourself</h3>
-                            <div class="special-price">
-                                <span class="current-price">$ 170</span>
-                                <span class="original-price">$ 240</span>
-                            </div>
-                            <p class="special-brand">LAURA'S BEAUTY TOUCH</p>
-                            <a href="#contact" class="special-book-btn">
-                                <span>Book Now</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Special Card 4 -->
-                    <div class="special-card">
-                        <div class="save-badge">
-                            <span class="save-text">SAVE</span>
-                            <span class="save-amount">$ 80.00</span>
-                        </div>
-                        <div class="special-image">
-                            <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=800&q=80" alt="Vampire Glow Facial">
-                        </div>
-                        <div class="special-content">
-                            <h3 class="special-title">Vampire Glow Facial</h3>
-                            <div class="special-price">
-                                <span class="current-price">$ 170</span>
-                                <span class="original-price">$ 250</span>
-                            </div>
-                            <p class="special-brand">LAURA'S BEAUTY TOUCH</p>
-                            <a href="#contact" class="special-book-btn">
-                                <span>Book Now</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Special Card 5 -->
-                    <div class="special-card special-card-wide">
-                        <div class="special-image">
-                            <img src="https://images.unsplash.com/photo-1595956313196-2e1a6b50cede?w=800&q=80" alt="Spellbinding Beauty Special">
-                        </div>
-                        <div class="special-content">
-                            <h3 class="special-title">Spellbinding Beauty Special</h3>
-                            <p class="special-description">Get One Session, Get the Next 50% Off</p>
-                            <div class="special-price">
-                                <span class="current-price">$ 500</span>
-                            </div>
-                            <p class="special-brand">LAURA'S BEAUTY TOUCH</p>
-                            <a href="#contact" class="special-book-btn">
-                                <span>Book Now</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
+                    <!-- Special cards will be loaded here from specials.json -->
                 </div>
 
                 <!-- No Specials Message (Hidden by default) -->
@@ -338,11 +227,10 @@
 
             <!-- Carousel Indicators -->
             <div class="carousel-indicators" id="carouselIndicators"></div>
+
         </div>
     </section>
-
     
-
     <!-- ABOUT SECTION -->
     <section id="about" class="about-section">
         <div class="section-container">
