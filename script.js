@@ -152,78 +152,130 @@ class PremiumHeader {
 }
 
 // ============================================
-// STUNNING VERTICAL VIDEO COLLAGE HERO
+// HERO VIDEO COLLAGE WITH SMOOTH PLAYBACK
 // ============================================
-class VerticalVideoCollageHero {
+class HeroVideoCollage {
     constructor() {
-        this.videos = document.querySelectorAll('.collage-video');
+        this.videos = document.querySelectorAll('.hero-video');
         this.slides = document.querySelectorAll('.hero-slide');
         this.dots = document.querySelectorAll('.hero-navigation-dots .dot');
         this.scrollIndicator = document.querySelector('.scroll-indicator');
         this.currentSlide = 0;
         this.slideInterval = null;
         this.typedInstances = [];
+        this.userInteracted = false;
         
         this.init();
     }
 
     init() {
-        this.setupVideos();
+        this.setupVideoPlayback();
         this.initTypedAnimations();
         this.setupNavigation();
         this.setupScrollIndicator();
         this.startAutoPlay();
-        this.setupVideoParallax();
     }
 
-    setupVideos() {
-        this.videos.forEach((video, index) => {
-            // Enable autoplay on user interaction
-            const playVideo = () => {
-                video.muted = true;
-                video.play().catch(e => console.log('Video autoplay prevented'));
-            };
-
-            if (index === 0) {
-                playVideo();
-            }
-
-            video.addEventListener('loadedmetadata', () => {
-                if (index === 0) {
-                    setTimeout(playVideo, 100);
+    setupVideoPlayback() {
+        // Force video playback with multiple fallbacks
+        const playVideo = (video) => {
+            if (!video) return;
+            
+            video.muted = true;
+            video.playsInline = true;
+            video.setAttribute('playsinline', '');
+            video.setAttribute('webkit-playsinline', '');
+            video.setAttribute('muted', '');
+            
+            const attemptPlay = () => {
+                const playPromise = video.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.log('Video autoplay prevented, retrying...', error);
+                        setTimeout(attemptPlay, 100);
+                    });
                 }
+            };
+            
+            attemptPlay();
+        };
+
+        // Setup each video
+        this.videos.forEach((video, index) => {
+            // Set video attributes
+            video.muted = true;
+            video.loop = true;
+            video.playsInline = true;
+            
+            // Handle video loaded
+            video.addEventListener('loadeddata', () => {
+                console.log(`Video ${index + 1} loaded`);
+                playVideo(video);
             });
 
-            // Loop videos seamlessly
+            // Handle video errors
+            video.addEventListener('error', (e) => {
+                console.error(`Video ${index + 1} error:`, e);
+            });
+
+            // Seamless looping
             video.addEventListener('ended', () => {
                 video.currentTime = 0;
                 video.play();
             });
 
-            // Intersection observer for performance
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        video.play().catch(e => {});
-                    } else {
-                        video.pause();
-                    }
-                });
-            }, { threshold: 0.5 });
+            // Load video
+            video.load();
             
-            observer.observe(video);
+            // Attempt initial play
+            setTimeout(() => playVideo(video), 100);
         });
 
-        // Enable play on first user interaction
-        const enableVideos = () => {
+        // Enable videos on ANY user interaction
+        const enableAllVideos = () => {
+            if (this.userInteracted) return;
+            
+            this.userInteracted = true;
+            console.log('User interacted - enabling all videos');
+            
             this.videos.forEach(video => {
                 video.muted = true;
-                video.play().catch(e => {});
+                video.play().catch(e => {
+                    console.log('Play prevented:', e);
+                });
             });
         };
-        
-        ['click', 'touchstart', 'keydown'].forEach(event => {
-            document.addEventListener(event, enableVideos, { once: true });
+
+        // Listen for multiple interaction types
+        ['click', 'touchstart', 'scroll', 'keydown', 'mousemove'].forEach(event => {
+            document.addEventListener(event, enableAllVideos, { once: true, passive: true });
+        });
+
+        // Intersection Observer for performance
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const video = entry.target;
+                if (entry.isIntersecting) {
+                    video.play().catch(e => console.log('Observer play prevented'));
+                } else {
+                    // Don't pause, keep videos playing for smooth experience
+                    // video.pause();
+                }
+            });
+        }, { threshold: 0.25 });
+
+        this.videos.forEach(video => videoObserver.observe(video));
+
+        // Visibility change handler
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+                this.videos.forEach(video => {
+                    if (video.paused) {
+                        video.play().catch(e => {});
+                    }
+                });
+            }
         });
     }
 
@@ -290,10 +342,12 @@ class VerticalVideoCollageHero {
         this.currentSlide = index;
         
         // GSAP animation for smooth transition
-        gsap.fromTo(this.slides[index], 
-            { opacity: 0, y: 30 },
-            { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }
-        );
+        if (typeof gsap !== 'undefined') {
+            gsap.fromTo(this.slides[index], 
+                { opacity: 0, y: 30 },
+                { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }
+            );
+        }
     }
 
     startAutoPlay() {
@@ -325,44 +379,23 @@ class VerticalVideoCollageHero {
                 window.requestAnimationFrame(() => {
                     const scrolled = window.pageYOffset;
                     
-                    if (scrolled > 100) {
-                        gsap.to(this.scrollIndicator, {
-                            opacity: 0,
-                            duration: 0.3,
-                            ease: 'power2.out'
-                        });
-                    } else {
-                        gsap.to(this.scrollIndicator, {
-                            opacity: 1,
-                            duration: 0.3,
-                            ease: 'power2.out'
-                        });
-                    }
-                    
-                    ticking = false;
-                });
-                
-                ticking = true;
-            }
-        }, { passive: true });
-    }
-
-    setupVideoParallax() {
-        let ticking = false;
-        
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const scrolled = window.pageYOffset;
-                    
-                    this.videos.forEach(video => {
-                        const parallaxSpeed = 0.3;
-                        const yOffset = scrolled * parallaxSpeed;
-                        
-                        if (scrolled < window.innerHeight) {
-                            video.style.transform = `translate(-50%, calc(-50% + ${yOffset}px)) scale(1.1)`;
+                    if (typeof gsap !== 'undefined') {
+                        if (scrolled > 100) {
+                            gsap.to(this.scrollIndicator, {
+                                opacity: 0,
+                                duration: 0.3,
+                                ease: 'power2.out'
+                            });
+                        } else {
+                            gsap.to(this.scrollIndicator, {
+                                opacity: 1,
+                                duration: 0.3,
+                                ease: 'power2.out'
+                            });
                         }
-                    });
+                    } else {
+                        this.scrollIndicator.style.opacity = scrolled > 100 ? '0' : '1';
+                    }
                     
                     ticking = false;
                 });
@@ -430,10 +463,12 @@ class TestimonialsSlider {
         this.currentIndex = index;
         
         // GSAP animation
-        gsap.fromTo(this.testimonials[index],
-            { opacity: 0, y: 30 },
-            { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
-        );
+        if (typeof gsap !== 'undefined') {
+            gsap.fromTo(this.testimonials[index],
+                { opacity: 0, y: 30 },
+                { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
+            );
+        }
     }
 
     goToNext() {
@@ -490,25 +525,36 @@ class ContactForm {
         const submitBtn = this.form.querySelector('.submit-btn');
         const originalText = submitBtn.innerHTML;
         
-        gsap.to(submitBtn, {
-            scale: 0.95,
-            duration: 0.1,
-            onComplete: () => {
-                submitBtn.innerHTML = '<span>Message Sent!</span><i class="fas fa-check"></i>';
-                submitBtn.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
-                
-                gsap.to(submitBtn, {
-                    scale: 1,
-                    duration: 0.2
-                });
-                
-                setTimeout(() => {
-                    this.form.reset();
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.style.background = '';
-                }, 3000);
-            }
-        });
+        if (typeof gsap !== 'undefined') {
+            gsap.to(submitBtn, {
+                scale: 0.95,
+                duration: 0.1,
+                onComplete: () => {
+                    submitBtn.innerHTML = '<span>Message Sent!</span><i class="fas fa-check"></i>';
+                    submitBtn.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+                    
+                    gsap.to(submitBtn, {
+                        scale: 1,
+                        duration: 0.2
+                    });
+                    
+                    setTimeout(() => {
+                        this.form.reset();
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.style.background = '';
+                    }, 3000);
+                }
+            });
+        } else {
+            submitBtn.innerHTML = '<span>Message Sent!</span><i class="fas fa-check"></i>';
+            submitBtn.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+            
+            setTimeout(() => {
+                this.form.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.style.background = '';
+            }, 3000);
+        }
         
         console.log('Form submitted:', data);
     }
@@ -524,7 +570,7 @@ function initAOS() {
             easing: 'ease-out-cubic',
             once: true,
             offset: 100,
-            disable: 'mobile'
+            disable: false
         });
     }
 }
@@ -533,7 +579,10 @@ function initAOS() {
 // GSAP SCROLL ANIMATIONS
 // ============================================
 function initGSAPAnimations() {
-    if (typeof gsap === 'undefined') return;
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+        console.log('GSAP or ScrollTrigger not loaded');
+        return;
+    }
     
     gsap.registerPlugin(ScrollTrigger);
     
@@ -656,7 +705,7 @@ function initWebsite() {
     
     new ElegantPreloader();
     new PremiumHeader();
-    new VerticalVideoCollageHero();
+    new HeroVideoCollage();
     new TestimonialsSlider();
     new ContactForm();
     new PerformanceOptimizer();
@@ -664,7 +713,7 @@ function initWebsite() {
     // Initialize AOS
     initAOS();
     
-    // Initialize GSAP animations
+    // Initialize GSAP animations with delay
     setTimeout(() => {
         initGSAPAnimations();
     }, 100);
