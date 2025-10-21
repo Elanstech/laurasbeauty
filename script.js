@@ -929,7 +929,6 @@ class ServicesCarousel {
         this.touchEndX = 0;
         
         this.resizeHandler = null;
-        this.keyboardHandler = null;
         this.scrollHandler = null;
     }
 
@@ -939,7 +938,7 @@ class ServicesCarousel {
             return;
         }
 
-        console.log('Initializing Services Carousel...');
+        console.log('🎨 Initializing Services Carousel...');
         
         this.cards = Array.from(this.carousel.querySelectorAll('.service-category-card'));
         
@@ -955,14 +954,14 @@ class ServicesCarousel {
         this.setupScrollHandler();
         this.startAutoScroll();
 
-        console.log(`Services Carousel initialized with ${this.cards.length} cards`);
+        console.log(`✅ Services Carousel initialized with ${this.cards.length} cards`);
     }
 
     setupCarousel() {
         this.itemsPerPage = this.getItemsPerPage();
         this.totalPages = Math.ceil(this.cards.length / this.itemsPerPage);
         
-        console.log(`Setup: ${this.cards.length} cards, ${this.itemsPerPage}/page, ${this.totalPages} pages`);
+        console.log(`📊 Setup: ${this.cards.length} cards, ${this.itemsPerPage}/page, ${this.totalPages} pages`);
         
         this.createIndicators();
         this.updateNavigationVisibility();
@@ -1013,18 +1012,30 @@ class ServicesCarousel {
     }
 
     setupNavigation() {
-        if (!this.prevBtn || !this.nextBtn) return;
+        if (!this.prevBtn || !this.nextBtn) {
+            console.warn('Navigation buttons not found');
+            return;
+        }
         
+        // Remove any existing event listeners by cloning
         const newPrevBtn = this.prevBtn.cloneNode(true);
         const newNextBtn = this.nextBtn.cloneNode(true);
-        this.prevBtn.parentNode.replaceChild(newPrevBtn, this.prevBtn);
-        this.nextBtn.parentNode.replaceChild(newNextBtn, this.nextBtn);
+        
+        if (this.prevBtn.parentNode) {
+            this.prevBtn.parentNode.replaceChild(newPrevBtn, this.prevBtn);
+        }
+        if (this.nextBtn.parentNode) {
+            this.nextBtn.parentNode.replaceChild(newNextBtn, this.nextBtn);
+        }
+        
         this.prevBtn = newPrevBtn;
         this.nextBtn = newNextBtn;
         
+        // Add new event listeners
         this.prevBtn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
+            console.log('⬅️ Previous button clicked');
             this.previousPage();
             this.resetAutoScroll();
         });
@@ -1032,29 +1043,12 @@ class ServicesCarousel {
         this.nextBtn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
+            console.log('➡️ Next button clicked');
             this.nextPage();
             this.resetAutoScroll();
         });
         
-        if (this.keyboardHandler) {
-            document.removeEventListener('keydown', this.keyboardHandler);
-        }
-        
-        this.keyboardHandler = (e) => {
-            if (this.carousel && !this.carousel.classList.contains('hidden')) {
-                if (e.key === 'ArrowLeft') {
-                    e.preventDefault();
-                    this.previousPage();
-                    this.resetAutoScroll();
-                } else if (e.key === 'ArrowRight') {
-                    e.preventDefault();
-                    this.nextPage();
-                    this.resetAutoScroll();
-                }
-            }
-        };
-        
-        document.addEventListener('keydown', this.keyboardHandler);
+        console.log('✅ Navigation buttons set up successfully');
     }
 
     updateNavigationVisibility() {
@@ -1074,6 +1068,8 @@ class ServicesCarousel {
 
     goToPage(pageIndex) {
         if (pageIndex < 0 || pageIndex >= this.totalPages) return;
+        
+        console.log(`📄 Going to page ${pageIndex + 1}`);
         
         this.currentPage = pageIndex;
         this.updateIndicators();
@@ -1095,12 +1091,14 @@ class ServicesCarousel {
     nextPage() {
         if (this.totalPages <= 1) return;
         const nextPage = (this.currentPage + 1) % this.totalPages;
+        console.log(`Moving to next page: ${nextPage + 1}`);
         this.goToPage(nextPage);
     }
 
     previousPage() {
         if (this.totalPages <= 1) return;
         const prevPage = (this.currentPage - 1 + this.totalPages) % this.totalPages;
+        console.log(`Moving to previous page: ${prevPage + 1}`);
         this.goToPage(prevPage);
     }
 
@@ -1121,10 +1119,6 @@ class ServicesCarousel {
         if (!this.carousel) return;
         
         let scrollTimeout;
-        
-        if (this.scrollHandler) {
-            this.carousel.removeEventListener('scroll', this.scrollHandler);
-        }
         
         this.scrollHandler = () => {
             clearTimeout(scrollTimeout);
@@ -1200,10 +1194,6 @@ class ServicesCarousel {
     setupResizeHandler() {
         let resizeTimeout;
         
-        if (this.resizeHandler) {
-            window.removeEventListener('resize', this.resizeHandler);
-        }
-        
         this.resizeHandler = () => {
             clearTimeout(resizeTimeout);
             
@@ -1250,10 +1240,6 @@ class ServicesCarousel {
         
         if (this.resizeHandler) {
             window.removeEventListener('resize', this.resizeHandler);
-        }
-        
-        if (this.keyboardHandler) {
-            document.removeEventListener('keydown', this.keyboardHandler);
         }
         
         if (this.scrollHandler && this.carousel) {
