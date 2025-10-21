@@ -176,67 +176,60 @@ class HeroVideoCollage {
     setupVideoPlayback() {
         console.log('Setting up video playback...');
         
-        // Simple, aggressive video setup
+        // Simple video setup - just play and loop
         this.videos.forEach((video, index) => {
-            // Set all necessary attributes
+            // Set attributes
             video.muted = true;
             video.loop = true;
             video.playsInline = true;
             video.autoplay = true;
             video.defaultMuted = true;
             
-            // Remove any transforms that might cause stutter
-            video.style.transform = 'none';
-            
-            // Force load and play
-            video.load();
-            
+            // Simple play function
             const playVideo = () => {
                 const promise = video.play();
                 if (promise !== undefined) {
                     promise.then(() => {
-                        console.log(`Video ${index + 1} playing successfully`);
+                        console.log(`Video ${index + 1} playing`);
                     }).catch(error => {
-                        console.log(`Video ${index + 1} autoplay blocked:`, error.message);
+                        console.log(`Video ${index + 1} autoplay blocked, waiting for interaction`);
                     });
                 }
             };
             
-            // Try to play when loaded
-            video.addEventListener('loadeddata', playVideo);
-            video.addEventListener('canplay', playVideo);
+            // Try to play when ready
+            video.addEventListener('canplay', playVideo, { once: true });
             
             // Handle errors
             video.addEventListener('error', (e) => {
                 console.error(`Video ${index + 1} error:`, e);
             });
             
-            // Immediate play attempt
-            setTimeout(playVideo, 100);
+            // Load the video
+            video.load();
         });
 
-        // Force play on any user interaction
-        let played = false;
-        const forcePlay = () => {
-            if (played) return;
-            played = true;
+        // Enable all videos on first user interaction
+        let userInteracted = false;
+        const enableVideos = () => {
+            if (userInteracted) return;
+            userInteracted = true;
             
-            console.log('User interaction detected - playing videos');
+            console.log('User interaction - enabling videos');
             this.videos.forEach((video, index) => {
                 video.muted = true;
-                video.play().then(() => {
-                    console.log(`Video ${index + 1} playing after interaction`);
-                }).catch(e => {
-                    console.log(`Video ${index + 1} still blocked:`, e.message);
+                video.play().catch(e => {
+                    console.log(`Video ${index + 1}:`, e.message);
                 });
             });
         };
 
-        ['click', 'touchstart', 'keydown', 'scroll'].forEach(event => {
-            document.addEventListener(event, forcePlay, { once: true, passive: true });
+        // Listen for user interaction
+        ['click', 'touchstart', 'scroll', 'keydown'].forEach(event => {
+            document.addEventListener(event, enableVideos, { once: true, passive: true });
         });
 
-        // Auto-play attempt after page load
+        // Try to autoplay after page load
         window.addEventListener('load', () => {
             setTimeout(() => {
                 this.videos.forEach(video => {
@@ -244,7 +237,7 @@ class HeroVideoCollage {
                         video.play().catch(() => {});
                     }
                 });
-            }, 500);
+            }, 300);
         });
     }
 
