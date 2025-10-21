@@ -303,6 +303,10 @@ class HeroVideoCollage {
 // SPECIALS SECTION
 // ============================================
 
+// ============================================
+// SPECIALS CAROUSEL WITH MODAL
+// ============================================
+
 class SpecialsCarousel {
     constructor() {
         // Configuration
@@ -326,7 +330,8 @@ class SpecialsCarousel {
         this.itemsPerPage = this.getItemsPerPage();
         this.totalPages = 0;
         this.autoScrollInterval = null;
-        this.autoScrollDelay = 5000; // 5 seconds
+        this.autoScrollDelay = 5000;
+        this.scrollPosition = 0;
         
         // Touch Support
         this.touchStartX = 0;
@@ -562,12 +567,14 @@ class SpecialsCarousel {
         this.nextBtn = newNextBtn;
         
         // Add click listeners
-        this.prevBtn.addEventListener('click', () => {
+        this.prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             this.previousPage();
             this.resetAutoScroll();
         });
         
-        this.nextBtn.addEventListener('click', () => {
+        this.nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             this.nextPage();
             this.resetAutoScroll();
         });
@@ -580,9 +587,11 @@ class SpecialsCarousel {
         this.keyboardHandler = (e) => {
             if (this.carousel && !this.carousel.classList.contains('hidden')) {
                 if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
                     this.previousPage();
                     this.resetAutoScroll();
                 } else if (e.key === 'ArrowRight') {
+                    e.preventDefault();
                     this.nextPage();
                     this.resetAutoScroll();
                 }
@@ -823,6 +832,10 @@ class SpecialsCarousel {
         this.stopAutoScroll();
         this.startAutoScroll();
     }
+
+    // ============================================
+    // MODAL FUNCTIONALITY
+    // ============================================
     
     /**
      * Setup modal event listeners
@@ -837,6 +850,9 @@ class SpecialsCarousel {
         this.carousel.addEventListener('click', (e) => {
             const btn = e.target.closest('.view-details-btn');
             if (btn) {
+                e.preventDefault();
+                e.stopPropagation();
+                
                 const specialId = parseInt(btn.dataset.specialId);
                 this.openModal(specialId);
                 this.stopAutoScroll();
@@ -844,12 +860,20 @@ class SpecialsCarousel {
         });
         
         // Close modal listeners
-        this.modalClose?.addEventListener('click', () => this.closeModal());
-        this.modalOverlay?.addEventListener('click', () => this.closeModal());
+        this.modalClose?.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.closeModal();
+        });
+        
+        this.modalOverlay?.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.closeModal();
+        });
         
         // ESC key to close modal
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.modal.classList.contains('active')) {
+                e.preventDefault();
                 this.closeModal();
             }
         });
@@ -922,15 +946,29 @@ class SpecialsCarousel {
         if (modalBookBtn) {
             modalBookBtn.href = special.bookingLink;
             
-            // Close modal when clicking book button
-            modalBookBtn.addEventListener('click', () => {
-                this.closeModal();
+            // Remove any existing click listeners
+            const newModalBookBtn = modalBookBtn.cloneNode(true);
+            modalBookBtn.parentNode.replaceChild(newModalBookBtn, modalBookBtn);
+            
+            // Add new click listener that closes modal
+            newModalBookBtn.addEventListener('click', () => {
+                setTimeout(() => {
+                    this.closeModal();
+                }, 300);
             });
         }
         
-        // Open modal with animation
-        this.modal.classList.add('active');
+        // PREVENT BODY SCROLL BEFORE OPENING
+        this.scrollPosition = window.scrollY;
         document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+        document.body.style.top = `-${this.scrollPosition}px`;
+        
+        // Open modal with small delay for smooth animation
+        requestAnimationFrame(() => {
+            this.modal.classList.add('active');
+        });
         
         console.log('📋 Modal opened:', special.title);
     }
@@ -942,7 +980,18 @@ class SpecialsCarousel {
         if (!this.modal) return;
         
         this.modal.classList.remove('active');
+        
+        // RESTORE BODY SCROLL
         document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+        document.body.style.top = '';
+        
+        // Restore scroll position
+        if (this.scrollPosition !== undefined) {
+            window.scrollTo(0, this.scrollPosition);
+        }
+        
         this.startAutoScroll();
         
         console.log('✖️ Modal closed');
@@ -1013,6 +1062,10 @@ class SpecialsCarousel {
         await this.init();
     }
 }
+
+// ============================================
+// INITIALIZATION
+// ============================================
 
 let specialsCarousel;
 
