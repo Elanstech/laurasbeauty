@@ -281,7 +281,7 @@ class HeroVideoCollage {
 }
 
 // ============================================
-// SPECIALS CAROUSEL WITH FIXED MODAL
+// SPECIALS CAROUSEL - FIXED VERSION
 // ============================================
 class SpecialsCarousel {
     constructor() {
@@ -315,12 +315,13 @@ class SpecialsCarousel {
 
     async init() {
         try {
-            console.log('📥 Loading specials...');
+            console.log('📥 Loading specials from:', this.jsonPath);
             
             await this.loadSpecials();
             
             if (this.specials && this.specials.length > 0) {
                 console.log(`✅ Loaded ${this.specials.length} special(s)`);
+                console.log('First special:', this.specials[0]);
                 
                 this.renderSpecials();
                 this.setupCarousel();
@@ -331,34 +332,51 @@ class SpecialsCarousel {
                 this.setupModal();
                 this.startAutoScroll();
                 
-                console.log('✅ Carousel initialized');
+                console.log('✅ Carousel initialized successfully');
             } else {
+                console.log('ℹ️ No specials found - showing fallback message');
                 this.showNoSpecialsMessage();
             }
         } catch (error) {
-            console.error('❌ Error:', error);
+            console.error('❌ Error initializing carousel:', error);
             this.showNoSpecialsMessage();
         }
     }
 
     async loadSpecials() {
-        const response = await fetch(this.jsonPath);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+        try {
+            const response = await fetch(this.jsonPath);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            console.log('📦 JSON data loaded:', data);
+            this.specials = data.specials || [];
+            
+        } catch (error) {
+            console.error('❌ Error loading JSON:', error);
+            throw error;
         }
-        const data = await response.json();
-        this.specials = data.specials || [];
     }
 
     renderSpecials() {
-        if (!this.carousel) return;
+        if (!this.carousel) {
+            console.error('❌ Carousel container not found!');
+            return;
+        }
         
+        console.log('🎨 Rendering', this.specials.length, 'specials...');
         this.carousel.innerHTML = '';
         
-        this.specials.forEach(special => {
+        this.specials.forEach((special, index) => {
+            console.log(`Creating card ${index + 1}:`, special.title);
             const card = this.createSpecialCard(special);
             this.carousel.appendChild(card);
         });
+        
+        console.log('✅ Cards rendered. Carousel HTML:', this.carousel.innerHTML.length, 'chars');
     }
 
     createSpecialCard(special) {
@@ -427,6 +445,8 @@ class SpecialsCarousel {
         this.itemsPerPage = this.getItemsPerPage();
         const cards = this.carousel.querySelectorAll('.special-card');
         this.totalPages = Math.ceil(cards.length / this.itemsPerPage);
+        
+        console.log(`📊 Setup: ${cards.length} cards, ${this.itemsPerPage}/page, ${this.totalPages} pages`);
         
         this.createIndicators();
         this.updateNavigationVisibility();
@@ -711,17 +731,12 @@ class SpecialsCarousel {
         this.startAutoScroll();
     }
 
-    // ============================================
-    // FIXED MODAL
-    // ============================================
-    
     setupModal() {
         if (!this.modal) {
             console.warn('Modal not found');
             return;
         }
         
-        // Event delegation for view details buttons
         this.carousel.addEventListener('click', (e) => {
             const btn = e.target.closest('.view-details-btn');
             if (btn) {
@@ -733,7 +748,6 @@ class SpecialsCarousel {
             }
         });
         
-        // Close button
         if (this.modalClose) {
             this.modalClose.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -742,7 +756,6 @@ class SpecialsCarousel {
             });
         }
         
-        // Overlay click
         if (this.modalOverlay) {
             this.modalOverlay.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -751,7 +764,6 @@ class SpecialsCarousel {
             });
         }
         
-        // ESC key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.modal.classList.contains('active')) {
                 e.preventDefault();
@@ -767,13 +779,9 @@ class SpecialsCarousel {
             return;
         }
         
-        // Stop carousel auto-scroll
         this.stopAutoScroll();
-        
-        // Save scroll position
         this.scrollPosition = window.pageYOffset;
         
-        // Populate modal
         const modalImage = document.getElementById('modalImage');
         const modalBadge = document.getElementById('modalBadge');
         const modalSavings = document.getElementById('modalSavings');
@@ -825,14 +833,12 @@ class SpecialsCarousel {
             modalBookBtn.href = special.bookingLink;
         }
         
-        // Lock body scroll
         document.documentElement.style.overflow = 'hidden';
         document.body.style.overflow = 'hidden';
         document.body.style.position = 'fixed';
         document.body.style.top = `-${this.scrollPosition}px`;
         document.body.style.width = '100%';
         
-        // Show modal
         this.modal.classList.add('active');
         
         console.log('📋 Modal opened:', special.title);
@@ -841,20 +847,16 @@ class SpecialsCarousel {
     closeModal() {
         if (!this.modal) return;
         
-        // Hide modal
         this.modal.classList.remove('active');
         
-        // Restore body scroll
         document.documentElement.style.overflow = '';
         document.body.style.overflow = '';
         document.body.style.position = '';
         document.body.style.top = '';
         document.body.style.width = '';
         
-        // Restore scroll position
         window.scrollTo(0, this.scrollPosition);
         
-        // Resume auto-scroll
         this.startAutoScroll();
         
         console.log('✖️ Modal closed');
@@ -870,6 +872,8 @@ class SpecialsCarousel {
         if (this.indicatorsContainer) this.indicatorsContainer.classList.add('hidden');
         
         this.noSpecialsMessage.classList.add('active');
+        
+        console.log('ℹ️ No specials message displayed');
     }
 
     cleanup() {
@@ -889,8 +893,8 @@ class SpecialsCarousel {
     }
     
     async reload() {
+        console.log('🔄 Reloading...');
         this.cleanup();
-        
         this.currentPage = 0;
         this.specials = [];
         this.totalPages = 0;
@@ -904,7 +908,7 @@ class SpecialsCarousel {
 }
 
 // ============================================
-// OTHER COMPONENTS (UNCHANGED)
+// OTHER COMPONENTS
 // ============================================
 
 class OwnerPhotoCarousel {
@@ -1093,56 +1097,41 @@ class ContactForm {
         const submitBtn = this.form.querySelector('.submit-btn');
         const originalText = submitBtn.innerHTML;
         
-        if (typeof gsap !== 'undefined') {
-            gsap.to(submitBtn, {
-                scale: 0.95,
-                duration: 0.1,
-                onComplete: () => {
-                    submitBtn.innerHTML = '<span>Message Sent!</span><i class="fas fa-check"></i>';
-                    submitBtn.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
-                    
-                    gsap.to(submitBtn, {
-                        scale: 1,
-                        duration: 0.2
-                    });
-                    
-                    setTimeout(() => {
-                        this.form.reset();
-                        submitBtn.innerHTML = originalText;
-                        submitBtn.style.background = '';
-                    }, 3000);
-                }
-            });
-        } else {
-            submitBtn.innerHTML = '<span>Message Sent!</span><i class="fas fa-check"></i>';
-            submitBtn.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
-            
-            setTimeout(() => {
-                this.form.reset();
-                submitBtn.innerHTML = originalText;
-                submitBtn.style.background = '';
-            }, 3000);
-        }
+        submitBtn.innerHTML = '<span>Message Sent!</span><i class="fas fa-check"></i>';
+        submitBtn.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+        
+        setTimeout(() => {
+            this.form.reset();
+            submitBtn.innerHTML = originalText;
+            submitBtn.style.background = '';
+        }, 3000);
         
         console.log('Form submitted:', data);
     }
 }
 
 // ============================================
-// INITIALIZE
+// MAIN INITIALIZATION - FIXED
 // ============================================
 function initWebsite() {
     console.log('🌿 Laura\'s Beauty Touch');
-    console.log('💎 Initializing...');
+    console.log('💎 Initializing components...');
     
+    // Initialize all components
     new ElegantPreloader();
     new PremiumHeader();
-    new HeroVideoCollage(); 
-    new SpecialsCarousel();
+    new HeroVideoCollage();
+    
+    // Initialize Specials Carousel - ONLY ONCE
+    const specialsCarousel = new SpecialsCarousel();
+    specialsCarousel.init();
+    window.specialsCarousel = specialsCarousel; // Make globally accessible
+    
     new OwnerPhotoCarousel();
     new TestimonialsSlider();
     new ContactForm();
     
+    // Initialize AOS if available
     if (typeof AOS !== 'undefined') {
         AOS.init({
             duration: 1000,
@@ -1152,11 +1141,14 @@ function initWebsite() {
         });
     }
     
-    console.log('✅ Ready');
+    console.log('✅ All components initialized');
 }
 
+// Start everything when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initWebsite);
 } else {
     initWebsite();
 }
+
+console.log('🌟 Script loaded and ready');
