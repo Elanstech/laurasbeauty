@@ -930,20 +930,38 @@ class ServicesCarousel {
         
         this.resizeHandler = null;
         this.scrollHandler = null;
+        
+        // Bind methods to preserve context
+        this.handlePrevClick = this.handlePrevClick.bind(this);
+        this.handleNextClick = this.handleNextClick.bind(this);
     }
 
     init() {
+        console.log('🎨 Starting Services Carousel Initialization...');
+        
         if (!this.carousel) {
-            console.warn('Services carousel not found');
+            console.error('❌ Services carousel track not found! ID: servicesCarouselTrack');
             return;
         }
+        console.log('✅ Carousel track found');
 
-        console.log('🎨 Initializing Services Carousel...');
+        if (!this.prevBtn) {
+            console.error('❌ Previous button not found! ID: servicesPrevBtn');
+        } else {
+            console.log('✅ Previous button found');
+        }
+
+        if (!this.nextBtn) {
+            console.error('❌ Next button not found! ID: servicesNextBtn');
+        } else {
+            console.log('✅ Next button found');
+        }
         
         this.cards = Array.from(this.carousel.querySelectorAll('.service-category-card'));
+        console.log(`📦 Found ${this.cards.length} service cards`);
         
         if (this.cards.length === 0) {
-            console.warn('No service cards found');
+            console.warn('⚠️ No service cards found');
             return;
         }
 
@@ -954,14 +972,14 @@ class ServicesCarousel {
         this.setupScrollHandler();
         this.startAutoScroll();
 
-        console.log(`✅ Services Carousel initialized with ${this.cards.length} cards`);
+        console.log(`✅ Services Carousel fully initialized with ${this.cards.length} cards`);
     }
 
     setupCarousel() {
         this.itemsPerPage = this.getItemsPerPage();
         this.totalPages = Math.ceil(this.cards.length / this.itemsPerPage);
         
-        console.log(`📊 Setup: ${this.cards.length} cards, ${this.itemsPerPage}/page, ${this.totalPages} pages`);
+        console.log(`📊 Carousel Setup: ${this.cards.length} cards, ${this.itemsPerPage} per page, ${this.totalPages} total pages`);
         
         this.createIndicators();
         this.updateNavigationVisibility();
@@ -981,12 +999,16 @@ class ServicesCarousel {
     }
 
     createIndicators() {
-        if (!this.indicatorsContainer) return;
+        if (!this.indicatorsContainer) {
+            console.warn('⚠️ Indicators container not found');
+            return;
+        }
         
         this.indicatorsContainer.innerHTML = '';
         
         if (this.totalPages <= 1) {
             this.indicatorsContainer.classList.add('hidden');
+            console.log('ℹ️ Only 1 page, hiding indicators');
             return;
         }
         
@@ -1003,52 +1025,48 @@ class ServicesCarousel {
             }
             
             indicator.addEventListener('click', () => {
+                console.log(`📍 Indicator ${i + 1} clicked`);
                 this.goToPage(i);
                 this.resetAutoScroll();
             });
             
             this.indicatorsContainer.appendChild(indicator);
         }
+        
+        console.log(`✅ Created ${this.totalPages} indicators`);
     }
 
     setupNavigation() {
         if (!this.prevBtn || !this.nextBtn) {
-            console.warn('Navigation buttons not found');
+            console.warn('⚠️ Navigation buttons not available');
             return;
         }
         
-        // Remove any existing event listeners by cloning
-        const newPrevBtn = this.prevBtn.cloneNode(true);
-        const newNextBtn = this.nextBtn.cloneNode(true);
+        // Remove any existing listeners
+        this.prevBtn.removeEventListener('click', this.handlePrevClick);
+        this.nextBtn.removeEventListener('click', this.handleNextClick);
         
-        if (this.prevBtn.parentNode) {
-            this.prevBtn.parentNode.replaceChild(newPrevBtn, this.prevBtn);
-        }
-        if (this.nextBtn.parentNode) {
-            this.nextBtn.parentNode.replaceChild(newNextBtn, this.nextBtn);
-        }
+        // Add fresh listeners
+        this.prevBtn.addEventListener('click', this.handlePrevClick);
+        this.nextBtn.addEventListener('click', this.handleNextClick);
         
-        this.prevBtn = newPrevBtn;
-        this.nextBtn = newNextBtn;
-        
-        // Add new event listeners
-        this.prevBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            console.log('⬅️ Previous button clicked');
-            this.previousPage();
-            this.resetAutoScroll();
-        });
-        
-        this.nextBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            console.log('➡️ Next button clicked');
-            this.nextPage();
-            this.resetAutoScroll();
-        });
-        
-        console.log('✅ Navigation buttons set up successfully');
+        console.log('✅ Navigation buttons configured with event listeners');
+    }
+
+    handlePrevClick(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('⬅️ PREVIOUS BUTTON CLICKED - Current page:', this.currentPage + 1);
+        this.previousPage();
+        this.resetAutoScroll();
+    }
+
+    handleNextClick(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('➡️ NEXT BUTTON CLICKED - Current page:', this.currentPage + 1);
+        this.nextPage();
+        this.resetAutoScroll();
     }
 
     updateNavigationVisibility() {
@@ -1057,48 +1075,66 @@ class ServicesCarousel {
         const isMobile = window.innerWidth < 768;
         const shouldHide = this.totalPages <= 1 || isMobile;
         
+        console.log(`🔍 Navigation visibility - Mobile: ${isMobile}, Total pages: ${this.totalPages}, Should hide: ${shouldHide}`);
+        
         if (shouldHide) {
             this.prevBtn.classList.add('hidden');
             this.nextBtn.classList.add('hidden');
+            console.log('👻 Navigation buttons hidden');
         } else {
             this.prevBtn.classList.remove('hidden');
             this.nextBtn.classList.remove('hidden');
+            console.log('👁️ Navigation buttons visible');
         }
     }
 
     goToPage(pageIndex) {
-        if (pageIndex < 0 || pageIndex >= this.totalPages) return;
+        if (pageIndex < 0 || pageIndex >= this.totalPages) {
+            console.warn(`⚠️ Invalid page index: ${pageIndex}`);
+            return;
+        }
         
-        console.log(`📄 Going to page ${pageIndex + 1}`);
+        console.log(`📄 Navigating from page ${this.currentPage + 1} to page ${pageIndex + 1}`);
         
         this.currentPage = pageIndex;
         this.updateIndicators();
         
         const startIndex = pageIndex * this.itemsPerPage;
+        console.log(`📍 Scrolling to card index: ${startIndex}`);
         
         if (this.cards[startIndex]) {
             const cardRect = this.cards[startIndex].getBoundingClientRect();
             const carouselRect = this.carousel.getBoundingClientRect();
             const scrollAmount = cardRect.left - carouselRect.left + this.carousel.scrollLeft;
             
+            console.log(`📏 Scroll amount: ${scrollAmount}px`);
+            
             this.carousel.scrollTo({
                 left: scrollAmount,
                 behavior: 'smooth'
             });
+        } else {
+            console.error(`❌ Card at index ${startIndex} not found`);
         }
     }
 
     nextPage() {
-        if (this.totalPages <= 1) return;
+        if (this.totalPages <= 1) {
+            console.log('ℹ️ Only 1 page, cannot go to next');
+            return;
+        }
         const nextPage = (this.currentPage + 1) % this.totalPages;
-        console.log(`Moving to next page: ${nextPage + 1}`);
+        console.log(`➡️ Next page calculation: (${this.currentPage} + 1) % ${this.totalPages} = ${nextPage}`);
         this.goToPage(nextPage);
     }
 
     previousPage() {
-        if (this.totalPages <= 1) return;
+        if (this.totalPages <= 1) {
+            console.log('ℹ️ Only 1 page, cannot go to previous');
+            return;
+        }
         const prevPage = (this.currentPage - 1 + this.totalPages) % this.totalPages;
-        console.log(`Moving to previous page: ${prevPage + 1}`);
+        console.log(`⬅️ Previous page calculation: (${this.currentPage} - 1 + ${this.totalPages}) % ${this.totalPages} = ${prevPage}`);
         this.goToPage(prevPage);
     }
 
@@ -1129,6 +1165,7 @@ class ServicesCarousel {
         };
         
         this.carousel.addEventListener('scroll', this.scrollHandler, { passive: true });
+        console.log('✅ Scroll handler configured');
     }
 
     updateCurrentPageFromScroll() {
@@ -1171,6 +1208,8 @@ class ServicesCarousel {
             this.touchEndX = e.changedTouches[0].screenX;
             this.handleSwipe();
         }, { passive: true });
+        
+        console.log('✅ Touch support configured');
     }
 
     handleSwipe() {
@@ -1181,6 +1220,8 @@ class ServicesCarousel {
             this.startAutoScroll();
             return;
         }
+        
+        console.log(`👆 Swipe detected: ${swipeDistance > 0 ? 'Left' : 'Right'}`);
         
         if (swipeDistance > 0) {
             this.nextPage();
@@ -1201,6 +1242,7 @@ class ServicesCarousel {
                 const newItemsPerPage = this.getItemsPerPage();
                 
                 if (newItemsPerPage !== this.itemsPerPage) {
+                    console.log(`🔄 Resize detected - Items per page changed from ${this.itemsPerPage} to ${newItemsPerPage}`);
                     this.itemsPerPage = newItemsPerPage;
                     this.setupCarousel();
                     this.goToPage(0);
@@ -1211,6 +1253,7 @@ class ServicesCarousel {
         };
         
         window.addEventListener('resize', this.resizeHandler);
+        console.log('✅ Resize handler configured');
     }
 
     startAutoScroll() {
@@ -1219,23 +1262,29 @@ class ServicesCarousel {
         this.stopAutoScroll();
         
         this.autoScrollInterval = setInterval(() => {
+            console.log('⏰ Auto-scroll triggered');
             this.nextPage();
         }, this.autoScrollDelay);
+        
+        console.log(`✅ Auto-scroll started (${this.autoScrollDelay}ms interval)`);
     }
 
     stopAutoScroll() {
         if (this.autoScrollInterval) {
             clearInterval(this.autoScrollInterval);
             this.autoScrollInterval = null;
+            console.log('⏸️ Auto-scroll stopped');
         }
     }
 
     resetAutoScroll() {
+        console.log('🔄 Resetting auto-scroll');
         this.stopAutoScroll();
         this.startAutoScroll();
     }
 
     cleanup() {
+        console.log('🧹 Cleaning up Services Carousel');
         this.stopAutoScroll();
         
         if (this.resizeHandler) {
@@ -1244,6 +1293,14 @@ class ServicesCarousel {
         
         if (this.scrollHandler && this.carousel) {
             this.carousel.removeEventListener('scroll', this.scrollHandler);
+        }
+        
+        if (this.prevBtn) {
+            this.prevBtn.removeEventListener('click', this.handlePrevClick);
+        }
+        
+        if (this.nextBtn) {
+            this.nextBtn.removeEventListener('click', this.handleNextClick);
         }
     }
 }
