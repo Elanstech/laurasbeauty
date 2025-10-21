@@ -1,5 +1,5 @@
 // ============================================
-// PRELOADER 
+// PRELOADER MANAGER
 // ============================================
 class PreloaderManager {
     constructor() {
@@ -8,41 +8,44 @@ class PreloaderManager {
     }
 
     init() {
-        // Hide preloader on window load
+        document.body.style.overflow = 'hidden';
+        
         window.addEventListener('load', () => {
-            this.startHideSequence();
+            console.log('🎬 Page loaded, hiding preloader...');
+            this.hidePreloader();
         });
 
-        // Failsafe: hide preloader after 4 seconds regardless
         setTimeout(() => {
             if (this.preloader && !this.preloader.classList.contains('hidden')) {
-                console.log('Failsafe: Hiding preloader');
-                this.startHideSequence();
+                console.log('⚡ Failsafe: Hiding preloader');
+                this.hidePreloader();
             }
-        }, 4000);
-    }
-
-    startHideSequence() {
-        setTimeout(() => {
-            this.hidePreloader();
-        }, 2200);
+        }, 2500);
     }
 
     hidePreloader() {
-        if (this.preloader) {
+        if (!this.preloader) {
+            console.log('⚠️ No preloader found');
+            document.body.style.overflow = 'auto';
+            return;
+        }
+        
+        setTimeout(() => {
             this.preloader.classList.add('hidden');
+            
             setTimeout(() => {
                 this.preloader.style.display = 'none';
                 document.body.style.overflow = 'auto';
-            }, 500);
-        }
+                console.log('✅ Preloader hidden, scrolling enabled');
+            }, 600);
+        }, 1500);
     }
 }
 
 // ============================================
-// HEADER SECTION
+// HEADER MANAGER
 // ============================================
-class SpaHeaderManager {
+class HeaderManager {
     constructor() {
         this.header = document.querySelector('.spa-header');
         this.mobileToggle = document.querySelector('.mobile-menu-toggle');
@@ -50,9 +53,6 @@ class SpaHeaderManager {
         this.mobileOverlay = document.querySelector('.mobile-overlay');
         this.accordionTriggers = document.querySelectorAll('.accordion-trigger');
         this.logo = document.querySelector('.header-logo');
-        this.allNavLinks = document.querySelectorAll('.nav-link, .mobile-nav-link, .mega-service-card, .accordion-links a');
-        this.megaMenuItems = document.querySelectorAll('.has-mega-menu');
-        this.megaMenuTimeout = null;
         
         this.init();
     }
@@ -62,73 +62,29 @@ class SpaHeaderManager {
         this.handleMobileMenu();
         this.handleAccordion();
         this.handleLogoClick();
-        this.handleSmoothScroll();
-        this.handleMegaMenuHover();
     }
 
     handleScroll() {
-        let lastScrollTop = 0;
-        
         window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop > 50) {
+            if (window.pageYOffset > 50) {
                 this.header.classList.add('scrolled');
             } else {
                 this.header.classList.remove('scrolled');
             }
-            
-            lastScrollTop = scrollTop;
-        });
-    }
-
-    handleMegaMenuHover() {
-        this.megaMenuItems.forEach(item => {
-            const megaMenu = item.querySelector('.mega-menu');
-            
-            if (!megaMenu) return;
-
-            // Mouse enter on nav item or mega menu
-            const handleMouseEnter = () => {
-                clearTimeout(this.megaMenuTimeout);
-                megaMenu.style.opacity = '1';
-                megaMenu.style.visibility = 'visible';
-                megaMenu.style.pointerEvents = 'all';
-            };
-
-            // Mouse leave with delay
-            const handleMouseLeave = () => {
-                this.megaMenuTimeout = setTimeout(() => {
-                    megaMenu.style.opacity = '0';
-                    megaMenu.style.visibility = 'hidden';
-                    megaMenu.style.pointerEvents = 'none';
-                }, 200);
-            };
-
-            // Attach events to nav item
-            item.addEventListener('mouseenter', handleMouseEnter);
-            item.addEventListener('mouseleave', handleMouseLeave);
-
-            // Attach events to mega menu itself
-            megaMenu.addEventListener('mouseenter', handleMouseEnter);
-            megaMenu.addEventListener('mouseleave', handleMouseLeave);
-        });
+        }, { passive: true });
     }
 
     handleMobileMenu() {
-        if (!this.mobileToggle || !this.mobileDrawer || !this.mobileOverlay) return;
+        if (!this.mobileToggle) return;
 
-        // Open/close drawer on toggle click
         this.mobileToggle.addEventListener('click', () => {
             this.toggleMobileMenu();
         });
 
-        // Close drawer when overlay is clicked
         this.mobileOverlay.addEventListener('click', () => {
             this.closeMobileMenu();
         });
 
-        // Close drawer when any nav link is clicked (except accordion trigger)
         const mobileLinks = document.querySelectorAll('.mobile-nav-link:not(.accordion-trigger), .accordion-links a');
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -136,7 +92,6 @@ class SpaHeaderManager {
             });
         });
 
-        // Close drawer on Escape key press
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.mobileDrawer.classList.contains('active')) {
                 this.closeMobileMenu();
@@ -149,7 +104,6 @@ class SpaHeaderManager {
         this.mobileDrawer.classList.toggle('active');
         this.mobileOverlay.classList.toggle('active');
         
-        // Prevent body scroll when menu is open
         if (this.mobileDrawer.classList.contains('active')) {
             document.body.style.overflow = 'hidden';
         } else {
@@ -163,7 +117,6 @@ class SpaHeaderManager {
         this.mobileOverlay.classList.remove('active');
         document.body.style.overflow = '';
         
-        // Close all accordions when menu closes
         this.accordionTriggers.forEach(trigger => {
             trigger.classList.remove('active');
             const accordion = trigger.nextElementSibling;
@@ -181,7 +134,6 @@ class SpaHeaderManager {
                 const accordion = trigger.nextElementSibling;
                 const isActive = trigger.classList.contains('active');
                 
-                // Close all other accordions first
                 this.accordionTriggers.forEach(otherTrigger => {
                     if (otherTrigger !== trigger) {
                         otherTrigger.classList.remove('active');
@@ -192,7 +144,6 @@ class SpaHeaderManager {
                     }
                 });
                 
-                // Toggle current accordion
                 if (isActive) {
                     trigger.classList.remove('active');
                     accordion.classList.remove('active');
@@ -214,39 +165,11 @@ class SpaHeaderManager {
             });
         }
     }
-    
-    handleSmoothScroll() {
-        this.allNavLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                const href = link.getAttribute('href');
-                
-                // Only handle hash links (internal anchor links)
-                if (href && href.startsWith('#')) {
-                    const targetId = href.substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    
-                    if (targetElement) {
-                        e.preventDefault();
-                        
-                        // Calculate offset accounting for fixed header
-                        const headerHeight = this.header.offsetHeight;
-                        const targetPosition = targetElement.offsetTop - headerHeight - 20;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-            });
-        });
-    }
 }
 
 // ============================================
-// HERO SECTION - JavaScript
+// HERO SECTION MANAGER
 // ============================================
-
 class HeroSection {
     constructor() {
         this.swiper = null;
@@ -261,19 +184,10 @@ class HeroSection {
     init() {
         console.log('🌿 Initializing Hero Section...');
         
-        // Initialize Swiper
         this.initSwiper();
-        
-        // Setup video controls
         this.setupVideos();
-        
-        // Setup scroll indicator
         this.setupScrollIndicator();
-        
-        // Setup particles
         this.createParticles();
-        
-        // Handle scroll visibility
         this.handleScroll();
         
         console.log('✅ Hero Section Ready');
@@ -281,12 +195,11 @@ class HeroSection {
 
     initSwiper() {
         if (typeof Swiper === 'undefined') {
-            console.error('Swiper library not loaded');
+            console.error('❌ Swiper library not loaded');
             return;
         }
 
         this.swiper = new Swiper('.hero-swiper', {
-            // Core Settings
             effect: 'fade',
             fadeEffect: {
                 crossFade: true
@@ -295,20 +208,17 @@ class HeroSection {
             loop: true,
             grabCursor: true,
             
-            // Autoplay
             autoplay: {
                 delay: 6000,
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true,
             },
             
-            // Navigation
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
             
-            // Pagination
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
@@ -317,17 +227,14 @@ class HeroSection {
                 },
             },
             
-            // Keyboard
             keyboard: {
                 enabled: true,
                 onlyInViewport: true,
             },
             
-            // Touch
             touchRatio: 1,
             threshold: 10,
             
-            // Events
             on: {
                 init: () => {
                     this.onSlideChange();
@@ -350,50 +257,42 @@ class HeroSection {
     onSlideChange() {
         if (this.swiper) {
             this.currentSlide = this.swiper.realIndex;
-            console.log(`Slide changed to: ${this.currentSlide}`);
+            console.log(`Slide: ${this.currentSlide + 1}`);
         }
     }
 
     setupVideos() {
         this.videos.forEach((video, index) => {
-            // Preload first video
             if (index === 0) {
                 video.preload = 'auto';
             } else {
                 video.preload = 'metadata';
             }
 
-            // Load event
             video.addEventListener('loadedmetadata', () => {
                 console.log(`Video ${index} loaded`);
                 if (index === 0) {
-                    // Try to play first video immediately
                     setTimeout(() => this.playVideo(video), 100);
                 }
             });
 
-            // Error handling
             video.addEventListener('error', (e) => {
                 console.error(`Video ${index} error:`, e);
                 this.handleVideoError(video);
             });
 
-            // Loop
             video.addEventListener('ended', () => {
                 video.currentTime = 0;
                 video.play().catch(e => console.log('Loop play prevented'));
             });
 
-            // Intersection Observer for performance
             this.observeVideo(video);
         });
 
-        // Handle reduced motion
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             this.videos.forEach(video => video.pause());
         }
 
-        // Enable play on first user interaction
         this.enablePlayOnFirstInteraction();
     }
 
@@ -405,24 +304,22 @@ class HeroSection {
         if (playPromise !== undefined) {
             playPromise
                 .then(() => {
-                    console.log('✅ Video playing successfully');
+                    console.log('✅ Video playing');
                 })
-                .catch((error) => {
-                    console.log('ℹ️ Video autoplay prevented (normal browser behavior)');
-                    // This is expected - will play on user interaction
+                .catch(() => {
+                    console.log('ℹ️ Autoplay prevented (will play on interaction)');
                 });
         }
     }
 
     enablePlayOnFirstInteraction() {
         const playAllVideos = () => {
-            console.log('🎬 User interacted - enabling videos');
+            console.log('🎬 User interaction - enabling videos');
             this.videos.forEach(video => {
-                video.muted = true; // Ensure muted for autoplay
+                video.muted = true;
                 video.play().catch(e => console.log('Video play failed'));
             });
             
-            // Remove listeners after first interaction
             document.removeEventListener('click', playAllVideos);
             document.removeEventListener('touchstart', playAllVideos);
             document.removeEventListener('keydown', playAllVideos);
@@ -438,9 +335,9 @@ class HeroSection {
             const activeIndex = this.swiper.realIndex;
             if (this.videos[activeIndex]) {
                 const video = this.videos[activeIndex];
-                video.muted = true; // Ensure muted
+                video.muted = true;
                 video.play().catch(e => {
-                    console.log('Active video play prevented - will play on interaction');
+                    console.log('Active video play prevented');
                 });
             }
         }
@@ -461,7 +358,7 @@ class HeroSection {
         const parent = video.parentElement;
         parent.style.background = 'linear-gradient(135deg, #3B4A2F 0%, #2A3522 100%)';
         video.style.display = 'none';
-        console.log('Video error handled with gradient background');
+        console.log('Video error handled');
     }
 
     observeVideo(video) {
@@ -470,9 +367,7 @@ class HeroSection {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         video.muted = true;
-                        video.play().catch(e => {
-                            // Silent catch - normal behavior
-                        });
+                        video.play().catch(e => {});
                     } else {
                         if (!video.paused) {
                             video.pause();
@@ -489,7 +384,6 @@ class HeroSection {
     setupScrollIndicator() {
         if (!this.scrollIndicator) return;
 
-        // Click to scroll
         this.scrollIndicator.addEventListener('click', () => {
             this.scrollToNext();
         });
@@ -520,7 +414,6 @@ class HeroSection {
             rafId = requestAnimationFrame(() => {
                 const scrolled = window.pageYOffset;
                 
-                // Hide scroll indicator on scroll
                 if (this.scrollIndicator) {
                     if (scrolled > 200) {
                         this.scrollIndicator.style.opacity = '0';
@@ -540,7 +433,6 @@ class HeroSection {
         const containers = document.querySelectorAll('.particle-container');
         
         containers.forEach((container, slideIndex) => {
-            // Different particles for each slide
             if (slideIndex === 0) {
                 this.createFloatingParticles(container, '✨', 8);
             } else if (slideIndex === 1) {
@@ -580,47 +472,27 @@ class HeroSection {
     }
 }
 
-// Add particle animation styles
-const particleStyles = document.createElement('style');
-particleStyles.textContent = `
-    @keyframes floatParticle {
-        0% {
-            transform: translateY(0) rotate(0deg) translateX(0);
-            opacity: 0;
-        }
-        10% {
-            opacity: 1;
-        }
-        90% {
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(110vh) rotate(360deg) translateX(50px);
-            opacity: 0;
-        }
-    }
-
-    .floating-particle {
-        will-change: transform, opacity;
-    }
-`;
-document.head.appendChild(particleStyles);
-
-// Initialize when DOM is ready
+// ============================================
+// INITIALIZE ALL
+// ============================================
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
+        new PreloaderManager();
+        new HeaderManager();
         new HeroSection();
     });
 } else {
+    new PreloaderManager();
+    new HeaderManager();
     new HeroSection();
 }
 
-// Preload critical video on page load
 window.addEventListener('load', () => {
     const firstVideo = document.querySelector('.swiper-slide:first-child .slide-video');
     if (firstVideo) {
         firstVideo.preload = 'auto';
     }
+    console.log('✅ Page fully loaded');
 });
 
 console.log('🌿 Hero Section Script Loaded');
