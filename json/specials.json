@@ -1,0 +1,58 @@
+{
+  "specials": [
+    {
+      "id": 1,
+      "title": "Spooktacular Glow Package",
+      "currentPrice": 89,
+      "originalPrice": 140,
+      "savings": 51,
+      "brand": "LAURA'S BEAUTY TOUCH",
+      "image": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80",
+      "bookingLink": "#contact",
+      "isWide": false
+    },
+    {
+      "id": 2,
+      "title": "Halloween Pampering Package",
+      "currentPrice": 149,
+      "originalPrice": 185,
+      "savings": 36,
+      "brand": "LAURA'S BEAUTY TOUCH",
+      "image": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80",
+      "bookingLink": "#contact",
+      "isWide": false
+    },
+    {
+      "id": 3,
+      "title": "Trick or Treat Yourself",
+      "currentPrice": 170,
+      "originalPrice": 240,
+      "savings": 70,
+      "brand": "LAURA'S BEAUTY TOUCH",
+      "image": "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=800&q=80",
+      "bookingLink": "#contact",
+      "isWide": false
+    },
+    {
+      "id": 4,
+      "title": "Vampire Glow Facial",
+      "currentPrice": 170,
+      "originalPrice": 250,
+      "savings": 80,
+      "brand": "LAURA'S BEAUTY TOUCH",
+      "image": "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=800&q=80",
+      "bookingLink": "#contact",
+      "isWide": false
+    },
+    {
+      "id": 5,
+      "title": "Spellbinding Beauty Special",
+      "description": "Get One Session, Get the Next 50% Off",
+      "currentPrice": 500,
+      "brand": "LAURA'S BEAUTY TOUCH",
+      "image": "https://images.unsplash.com/photo-1595956313196-2e1a6b50cede?w=800&q=80",
+      "bookingLink": "#contact",
+      "isWide": true
+    }
+  ]
+}
