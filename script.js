@@ -1393,6 +1393,53 @@ class FloatingActionButton {
         this.fabOptions.classList.remove('active');
         console.log('📱 Contact options closed');
     }
+}// ============================================
+// SECTION VISIBILITY OBSERVER
+// ============================================
+class SectionVisibilityObserver {
+    constructor() {
+        this.sections = document.querySelectorAll('.google-reviews-section, .instagram-section');
+        this.init();
+    }
+
+    init() {
+        if (!this.sections.length) {
+            console.log('⚠️ No review/instagram sections found to observe');
+            return;
+        }
+
+        console.log(`👀 Observing ${this.sections.length} sections for visibility`);
+
+        // Check if IntersectionObserver is supported
+        if (!('IntersectionObserver' in window)) {
+            console.log('⚠️ IntersectionObserver not supported, showing sections immediately');
+            this.sections.forEach(section => {
+                section.classList.add('section-visible');
+            });
+            return;
+        }
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('section-visible');
+                    console.log('✅ Section became visible:', entry.target.id || entry.target.className);
+                }
+            });
+        }, observerOptions);
+
+        this.sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        console.log('✅ Section visibility observer initialized');
+    }
 }
 
 // ============================================
@@ -1421,6 +1468,9 @@ function initWebsite() {
     new BackToTopButton();
     new FloatingActionButton();
     
+    // Section Visibility
+    new SectionVisibilityObserver();
+    
     // Initialize AOS if available
     if (typeof AOS !== 'undefined') {
         AOS.init({
@@ -1433,12 +1483,3 @@ function initWebsite() {
     
     console.log('✅ All components initialized successfully');
 }
-
-// Start everything when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initWebsite);
-} else {
-    initWebsite();
-}
-
-console.log('🌟 Script loaded and ready');
