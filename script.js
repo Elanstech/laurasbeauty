@@ -162,211 +162,89 @@ class HeroVideoCollage {
         this.scrollIndicator = document.querySelector('.scroll-indicator');
         this.currentSlide = 0;
         this.slideInterval = null;
-        this.typedInstances = [];
-        this.userInteracted = false;
         
         this.init();
     }
 
     init() {
         this.setupVideoPlayback();
-        this.initTypedAnimations();
         this.setupNavigation();
         this.setupScrollIndicator();
         this.startAutoPlay();
     }
 
     setupVideoPlayback() {
-        // Synchronize all videos to start together
-        const syncVideos = () => {
-            let allLoaded = true;
-            
-            this.videos.forEach(video => {
-                if (video.readyState < 3) { // HAVE_FUTURE_DATA
-                    allLoaded = false;
-                }
-            });
-            
-            if (allLoaded && !this.userInteracted) {
-                this.userInteracted = true;
-                
-                // Synchronize start time
-                const startTime = 0;
-                this.videos.forEach(video => {
-                    video.currentTime = startTime;
-                    video.muted = true;
-                    video.play().catch(e => console.log('Sync play prevented'));
-                });
-                
-                console.log('All videos synchronized and playing');
-            }
-        };
-
-        // Setup each video with aggressive loading
+        console.log('Setting up video playback...');
+        
+        // Simple, aggressive video setup
         this.videos.forEach((video, index) => {
-            // Force all attributes for smooth playback
+            // Set all necessary attributes
             video.muted = true;
             video.loop = true;
             video.playsInline = true;
-            video.setAttribute('playsinline', '');
-            video.setAttribute('webkit-playsinline', '');
-            video.setAttribute('muted', '');
-            video.preload = 'auto';
+            video.autoplay = true;
+            video.defaultMuted = true;
             
-            // Handle when video can play
-            video.addEventListener('canplay', () => {
-                console.log(`Video ${index + 1} can play`);
-                syncVideos();
-            });
-
-            video.addEventListener('canplaythrough', () => {
-                console.log(`Video ${index + 1} loaded`);
-                syncVideos();
-            });
-
-            // Handle video errors
+            // Remove any transforms that might cause stutter
+            video.style.transform = 'none';
+            
+            // Force load and play
+            video.load();
+            
+            const playVideo = () => {
+                const promise = video.play();
+                if (promise !== undefined) {
+                    promise.then(() => {
+                        console.log(`Video ${index + 1} playing successfully`);
+                    }).catch(error => {
+                        console.log(`Video ${index + 1} autoplay blocked:`, error.message);
+                    });
+                }
+            };
+            
+            // Try to play when loaded
+            video.addEventListener('loadeddata', playVideo);
+            video.addEventListener('canplay', playVideo);
+            
+            // Handle errors
             video.addEventListener('error', (e) => {
                 console.error(`Video ${index + 1} error:`, e);
             });
-
-            // Perfect loop without gaps
-            video.addEventListener('timeupdate', () => {
-                // Loop before the end to avoid gaps
-                if (video.currentTime >= video.duration - 0.1) {
-                    video.currentTime = 0;
-                }
-            });
-
-            // Start loading
-            video.load();
+            
+            // Immediate play attempt
+            setTimeout(playVideo, 100);
         });
 
-        // Force play on user interaction
-        const enableAllVideos = () => {
-            console.log('User interacted - enabling all videos');
+        // Force play on any user interaction
+        let played = false;
+        const forcePlay = () => {
+            if (played) return;
+            played = true;
             
-            // Sync all videos to same timestamp
-            const syncTime = this.videos[0].currentTime || 0;
-            
-            this.videos.forEach(video => {
-                video.currentTime = syncTime;
+            console.log('User interaction detected - playing videos');
+            this.videos.forEach((video, index) => {
                 video.muted = true;
                 video.play().then(() => {
-                    console.log('Video playing after interaction');
+                    console.log(`Video ${index + 1} playing after interaction`);
                 }).catch(e => {
-                    console.log('Play prevented:', e);
+                    console.log(`Video ${index + 1} still blocked:`, e.message);
                 });
             });
         };
 
-        // Listen for user interactions
-        ['click', 'touchstart', 'scroll', 'keydown'].forEach(event => {
-            document.addEventListener(event, enableAllVideos, { once: true, passive: true });
+        ['click', 'touchstart', 'keydown', 'scroll'].forEach(event => {
+            document.addEventListener(event, forcePlay, { once: true, passive: true });
         });
 
-        // Auto-attempt play after short delay
-        setTimeout(() => {
-            if (!this.userInteracted) {
-                enableAllVideos();
-            }
-        }, 500);
-
-        // Keep videos in sync periodically
-        setInterval(() => {
-            if (this.videos.length < 2) return;
-            
-            const masterVideo = this.videos[0];
-            const masterTime = masterVideo.currentTime;
-            
-            this.videos.forEach((video, index) => {
-                if (index === 0) return; // Skip master video
-                
-                const timeDiff = Math.abs(video.currentTime - masterTime);
-                
-                // If videos drift more than 0.3 seconds, resync
-                if (timeDiff > 0.3) {
-                    video.currentTime = masterTime;
-                    console.log(`Resynced video ${index + 1}`);
-                }
-            });
-        }, 2000); // Check every 2 seconds
-
-        // Visibility change handler - resync when tab becomes visible
-        document.addEventListener('visibilitychange', () => {
-            if (!document.hidden) {
-                const masterTime = this.videos[0].currentTime;
+        // Auto-play attempt after page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
                 this.videos.forEach(video => {
-                    video.currentTime = masterTime;
                     if (video.paused) {
-                        video.play().catch(e => {});
+                        video.play().catch(() => {});
                     }
                 });
-            }
-        });
-    }
-
-    initTypedAnimations() {
-        // Check if Typed.js is available
-        if (typeof Typed === 'undefined') {
-            console.log('Typed.js not loaded, using fallback text');
-            // Fallback: just show static text
-            const fallbacks = {
-                '#typed-1': 'Touch',
-                '#typed-2': 'of Wellness',
-                '#typed-3': 'Natural Glow'
-            };
-            
-            Object.keys(fallbacks).forEach(selector => {
-                const element = document.querySelector(selector);
-                if (element) {
-                    element.textContent = fallbacks[selector];
-                }
-            });
-            return;
-        }
-
-        const typedConfigs = [
-            {
-                element: '#typed-1',
-                strings: ['Touch^1000', 'Sanctuary^1000', 'Experience'],
-                typeSpeed: 80,
-                backSpeed: 60,
-                backDelay: 1500,
-                loop: true,
-                showCursor: true,
-                cursorChar: '|'
-            },
-            {
-                element: '#typed-2',
-                strings: ['of Wellness^1000', 'of Beauty^1000', 'of Luxury'],
-                typeSpeed: 80,
-                backSpeed: 60,
-                backDelay: 1500,
-                loop: true,
-                showCursor: true,
-                cursorChar: '|'
-            },
-            {
-                element: '#typed-3',
-                strings: ['Natural Glow^1000', 'Inner Beauty^1000', 'True Radiance'],
-                typeSpeed: 80,
-                backSpeed: 60,
-                backDelay: 1500,
-                loop: true,
-                showCursor: true,
-                cursorChar: '|'
-            }
-        ];
-
-        typedConfigs.forEach(config => {
-            if (document.querySelector(config.element)) {
-                try {
-                    const typed = new Typed(config.element, config);
-                    this.typedInstances.push(typed);
-                } catch (error) {
-                    console.error('Error initializing Typed.js:', error);
-                }
-            }
+            }, 500);
         });
     }
 
@@ -389,14 +267,6 @@ class HeroVideoCollage {
         this.dots[index].classList.add('active');
         
         this.currentSlide = index;
-        
-        // GSAP animation for smooth transition
-        if (typeof gsap !== 'undefined') {
-            gsap.fromTo(this.slides[index], 
-                { opacity: 0, y: 30 },
-                { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }
-            );
-        }
     }
 
     startAutoPlay() {
@@ -427,28 +297,9 @@ class HeroVideoCollage {
             if (!ticking) {
                 window.requestAnimationFrame(() => {
                     const scrolled = window.pageYOffset;
-                    
-                    if (typeof gsap !== 'undefined') {
-                        if (scrolled > 100) {
-                            gsap.to(this.scrollIndicator, {
-                                opacity: 0,
-                                duration: 0.3,
-                                ease: 'power2.out'
-                            });
-                        } else {
-                            gsap.to(this.scrollIndicator, {
-                                opacity: 1,
-                                duration: 0.3,
-                                ease: 'power2.out'
-                            });
-                        }
-                    } else {
-                        this.scrollIndicator.style.opacity = scrolled > 100 ? '0' : '1';
-                    }
-                    
+                    this.scrollIndicator.style.opacity = scrolled > 100 ? '0' : '1';
                     ticking = false;
                 });
-                
                 ticking = true;
             }
         }, { passive: true });
