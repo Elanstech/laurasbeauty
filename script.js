@@ -1233,90 +1233,6 @@ class ServicesCarousel {
 }
 
 // ============================================
-// TESTIMONIALS SLIDER
-// ============================================
-class TestimonialsSlider {
-    constructor() {
-        this.testimonials = document.querySelectorAll('.testimonial-card');
-        this.dots = document.querySelectorAll('.testimonial-dots .dot');
-        this.prevBtn = document.querySelector('.testimonial-prev');
-        this.nextBtn = document.querySelector('.testimonial-next');
-        this.currentIndex = 0;
-        this.autoplayInterval = null;
-        
-        this.init();
-    }
-
-    init() {
-        if (this.testimonials.length === 0) return;
-        
-        this.setupNavigation();
-        this.startAutoplay();
-    }
-
-    setupNavigation() {
-        if (this.prevBtn) {
-            this.prevBtn.addEventListener('click', () => {
-                this.goToPrev();
-                this.resetAutoplay();
-            });
-        }
-
-        if (this.nextBtn) {
-            this.nextBtn.addEventListener('click', () => {
-                this.goToNext();
-                this.resetAutoplay();
-            });
-        }
-
-        this.dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                this.goToSlide(index);
-                this.resetAutoplay();
-            });
-        });
-    }
-
-    goToSlide(index) {
-        this.testimonials.forEach(t => t.classList.remove('active'));
-        this.dots.forEach(d => d.classList.remove('active'));
-        
-        this.testimonials[index].classList.add('active');
-        this.dots[index].classList.add('active');
-        
-        this.currentIndex = index;
-        
-        if (typeof gsap !== 'undefined') {
-            gsap.fromTo(this.testimonials[index],
-                { opacity: 0, y: 30 },
-                { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
-            );
-        }
-    }
-
-    goToNext() {
-        const nextIndex = (this.currentIndex + 1) % this.testimonials.length;
-        this.goToSlide(nextIndex);
-    }
-
-    goToPrev() {
-        const prevIndex = (this.currentIndex - 1 + this.testimonials.length) % this.testimonials.length;
-        this.goToSlide(prevIndex);
-    }
-
-    startAutoplay() {
-        this.autoplayInterval = setInterval(() => {
-            this.goToNext();
-        }, 5000);
-    }
-
-    resetAutoplay() {
-        clearInterval(this.autoplayInterval);
-        this.startAutoplay();
-    }
-}
-
-// ============================================
 // CONTACT FORM
 // ============================================
 class ContactForm {
@@ -1514,10 +1430,7 @@ function initWebsite() {
     const servicesCarousel = new ServicesCarousel();
     servicesCarousel.init();
     window.servicesCarousel = servicesCarousel;
-    
-    // Initialize Testimonials
-    new TestimonialsSlider();
-    
+        
     // Initialize Contact Form
     new ContactForm();
     
