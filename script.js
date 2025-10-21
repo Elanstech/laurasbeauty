@@ -1,6 +1,6 @@
 // ============================================
 // LAURA'S BEAUTY TOUCH - MAIN JAVASCRIPT
-// Natural Luxury Spa Experience
+// Natural Luxury Spa 
 // ============================================
 
 // ============================================
