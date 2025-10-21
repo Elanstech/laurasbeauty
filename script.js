@@ -1,24 +1,19 @@
 // ============================================
-// ENHANCED PREMIUM PRELOADER
+// LIQUID GLASS PRELOADER (Apple-Inspired)
 // ============================================
-class PremiumPreloader {
+class LiquidGlassPreloader {
     constructor() {
         this.preloader = document.querySelector('.preloader');
-        this.loadingProgress = document.querySelector('.loading-progress');
-        this.loadingPercentage = document.querySelector('.loading-percentage');
-        this.premiumLogo = document.querySelector('.premium-logo');
+        this.loadingFill = document.querySelector('.loading-fill');
         this.init();
     }
 
     init() {
         document.body.style.overflow = 'hidden';
         
-        // Simulate loading progress
-        this.simulateLoading();
-        
         // Handle page load
         window.addEventListener('load', () => {
-            console.log('✨ Page loaded - preparing exit animation...');
+            console.log('✨ Page loaded - elegant exit...');
             setTimeout(() => {
                 this.hidePreloader();
             }, 500);
@@ -27,47 +22,26 @@ class PremiumPreloader {
         // Failsafe timeout
         setTimeout(() => {
             if (this.preloader && !this.preloader.classList.contains('hidden')) {
-                console.log('⚡ Failsafe triggered - hiding preloader');
+                console.log('⚡ Failsafe: hiding preloader');
                 this.hidePreloader();
             }
-        }, 4000);
-    }
-
-    simulateLoading() {
-        let progress = 0;
-        const interval = setInterval(() => {
-            if (progress < 100) {
-                progress += Math.random() * 15;
-                if (progress > 100) progress = 100;
-                
-                if (this.loadingProgress) {
-                    this.loadingProgress.style.width = `${progress}%`;
-                }
-                
-                if (this.loadingPercentage) {
-                    this.loadingPercentage.textContent = `${Math.floor(progress)}%`;
-                }
-            } else {
-                clearInterval(interval);
-            }
-        }, 150);
+        }, 3500);
     }
 
     hidePreloader() {
         if (!this.preloader) {
-            console.log('⚠️ No preloader element found');
+            console.log('⚠️ No preloader found');
             document.body.style.overflow = 'auto';
             return;
         }
         
-        // Add exit animation
         this.preloader.classList.add('hidden');
         
         setTimeout(() => {
             this.preloader.style.display = 'none';
             document.body.style.overflow = 'auto';
-            console.log('✅ Preloader hidden - welcome to luxury');
-        }, 1000);
+            console.log('✅ Welcome to Laura\'s Beauty Touch');
+        }, 800);
     }
 }
 
@@ -671,17 +645,16 @@ class PerformanceOptimizer {
 // INITIALIZE ALL COMPONENTS
 // ============================================
 const initializeWebsite = () => {
-    console.log('🌿 Laura\'s Beauty Touch - Enhanced Premium Experience');
-    console.log('💎 Initializing all components...');
+    console.log('🌿 Laura\'s Beauty Touch - Simple Luxury');
+    console.log('💎 Initializing components...');
     
-    new PremiumPreloader();
+    new LiquidGlassPreloader();
     new PremiumHeader();
     new EnhancedHeroSection();
     new SmoothScroll();
     new PerformanceOptimizer();
     
-    console.log('✅ All components initialized successfully');
-    console.log('🎉 Welcome to luxury and elegance');
+    console.log('✅ All components ready');
 };
 
 // Initialize when DOM is ready
@@ -702,4 +675,4 @@ window.addEventListener('load', () => {
     }
 });
 
-console.log('🌟 Enhanced Premium Script Loaded Successfully');
+console.log('🌟 Simple Luxury - Script Loaded');
