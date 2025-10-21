@@ -147,7 +147,7 @@ body {
 }
 
 .premium-header.scrolled .header-logo {
-    height: 180px;
+    height: 80px;
 }
 
 .desktop-navigation {
@@ -1454,274 +1454,6 @@ body {
     transform: translateX(5px);
 }
 
-@media (max-width: 1200px) {
-    .special-card {
-        flex: 0 0 calc(50% - 18px);
-        min-width: 300px;
-    }
-    
-    .special-card-wide {
-        flex: 0 0 100%;
-        min-width: 100%;
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 1024px) {
-    .specials-carousel-wrapper {
-        padding: 0 60px;
-    }
-    
-    .special-card {
-        flex: 0 0 calc(50% - 18px);
-        min-width: 280px;
-    }
-    
-    .special-card-wide {
-        grid-template-columns: 1fr;
-    }
-    
-    .carousel-nav {
-        width: 50px;
-        height: 50px;
-        font-size: 1.1rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .specials-section {
-        padding: 80px 0;
-    }
-    
-    .specials-container {
-        padding: 0 25px;
-    }
-    
-    .specials-section .section-header {
-        margin-bottom: 60px;
-    }
-    
-    .specials-carousel-wrapper {
-        padding: 0;
-    }
-    
-    .specials-carousel {
-        gap: 25px;
-        padding: 20px 0 30px;
-    }
-    
-    .special-card {
-        flex: 0 0 85%;
-        min-width: 280px;
-    }
-    
-    .special-card-wide {
-        flex: 0 0 85%;
-        min-width: 280px;
-    }
-    
-    .carousel-nav {
-        display: none !important;
-    }
-    
-    .special-card {
-        border-radius: 25px;
-    }
-    
-    .special-content {
-        padding: 30px 25px;
-    }
-    
-    .special-title {
-        font-size: 1.4rem;
-    }
-    
-    .current-price {
-        font-size: 1.8rem;
-    }
-    
-    .no-specials-message {
-        padding: 60px 30px;
-        border-radius: 30px;
-    }
-    
-    .no-specials-icon {
-        width: 80px;
-        height: 80px;
-        font-size: 2.5rem;
-    }
-    
-    .no-specials-message h3 {
-        font-size: 2rem;
-    }
-    
-    .no-specials-message p {
-        font-size: 1.05rem;
-    }
-    
-    .package-modal {
-        padding: 15px;
-    }
-
-    .modal-content {
-        width: 95%;
-        max-height: 92vh;
-        border-radius: 30px;
-    }
-
-    .modal-image-container {
-        height: 220px;
-    }
-
-    .modal-body {
-        padding: 30px 25px 35px;
-    }
-
-    .modal-title {
-        font-size: 2rem;
-    }
-
-    .modal-current-price {
-        font-size: 2.2rem;
-    }
-
-    .modal-original-price {
-        font-size: 1.3rem;
-    }
-
-    .modal-includes {
-        padding: 25px 25px;
-    }
-
-    .includes-title {
-        font-size: 1.5rem;
-    }
-
-    .includes-list li {
-        font-size: 1rem;
-    }
-
-    .modal-book-btn {
-        width: 100%;
-        justify-content: center;
-        padding: 16px 35px;
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .specials-section {
-        padding: 60px 0;
-    }
-    
-    .specials-container {
-        padding: 0 20px;
-    }
-    
-    .specials-carousel {
-        gap: 20px;
-    }
-    
-    .special-card {
-        flex: 0 0 90%;
-        min-width: 260px;
-        border-radius: 20px;
-    }
-    
-    .special-card-wide {
-        flex: 0 0 90%;
-        min-width: 260px;
-    }
-    
-    .save-badge {
-        padding: 10px 15px;
-        border-radius: 15px;
-        top: 15px;
-        left: 15px;
-    }
-    
-    .save-text {
-        font-size: 10px;
-    }
-    
-    .save-amount {
-        font-size: 16px;
-    }
-    
-    .special-content {
-        padding: 25px 20px;
-    }
-    
-    .special-book-btn,
-    .view-details-btn {
-        padding: 12px 30px;
-        font-size: 14px;
-    }
-    
-    .carousel-indicators {
-        margin-top: 40px;
-    }
-    
-    .package-modal {
-        padding: 10px;
-    }
-
-    .modal-close {
-        width: 40px;
-        height: 40px;
-        top: 15px;
-        right: 15px;
-        font-size: 1rem;
-    }
-
-    .modal-badge {
-        padding: 12px 18px;
-        top: 20px;
-        left: 20px;
-    }
-
-    .modal-image-container {
-        height: 200px;
-    }
-
-    .modal-body {
-        padding: 25px 20px 30px;
-    }
-
-    .modal-title {
-        font-size: 1.7rem;
-    }
-
-    .modal-description {
-        font-size: 1rem;
-    }
-
-    .modal-price-section {
-        padding: 20px 20px;
-    }
-
-    .modal-current-price {
-        font-size: 2rem;
-    }
-
-    .modal-original-price {
-        font-size: 1.2rem;
-    }
-
-    .modal-includes {
-        padding: 20px 20px;
-    }
-
-    .includes-title {
-        font-size: 1.3rem;
-    }
-
-    .includes-list li {
-        font-size: 0.95rem;
-        padding-left: 30px;
-    }
-}
-
 /* ============================================
    ABOUT LAURA & THE SPA SECTION
    ============================================ */
@@ -1818,41 +1550,12 @@ body {
     box-shadow: 0 15px 40px rgba(59, 74, 47, 0.25);
 }
 
-.photo-placeholder {
+/* Image styling for About section */
+.about-photo-img {
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-
-.photo-main .photo-placeholder i {
-    font-size: 5rem;
-    margin-bottom: 20px;
-    opacity: 0.95;
-}
-
-.photo-small .photo-placeholder i {
-    font-size: 2rem;
-    margin-bottom: 8px;
-    opacity: 0.9;
-}
-
-.photo-main .photo-placeholder p {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    font-weight: 500;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-.photo-small .photo-placeholder p {
-    font-size: 0.85rem;
-    font-weight: 500;
-    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+    display: block;
 }
 
 /* Laura's Story Content */
@@ -2282,271 +1985,6 @@ body {
 
 .about-booking-btn:hover i {
     transform: translateX(5px);
-}
-
-@media (max-width: 1024px) {
-    .laura-story-grid {
-        grid-template-columns: 1fr;
-        gap: 60px;
-    }
-
-    .laura-story-content {
-        padding-left: 0;
-    }
-
-    .atmosphere-gallery {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .values-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .about-container {
-        padding: 80px 25px;
-    }
-
-    .about-header {
-        margin-bottom: 60px;
-    }
-
-    .laura-story-grid {
-        gap: 50px;
-        margin-bottom: 80px;
-    }
-
-    .laura-name {
-        font-size: 2.5rem;
-    }
-
-    .laura-title {
-        font-size: 1.1rem;
-    }
-
-    .story-text p {
-        font-size: 1.05rem;
-    }
-
-    .credential-item {
-        padding: 18px 20px;
-    }
-
-    .credential-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.2rem;
-    }
-
-    .credential-text strong {
-        font-size: 1.15rem;
-    }
-
-    .philosophy-content {
-        padding: 45px 35px;
-    }
-
-    .philosophy-icon {
-        width: 70px;
-        height: 70px;
-        font-size: 2rem;
-    }
-
-    .philosophy-content h3 {
-        font-size: 2rem;
-    }
-
-    .philosophy-content p {
-        font-size: 1.05rem;
-    }
-
-    .atmosphere-title {
-        font-size: 2.2rem;
-    }
-
-    .atmosphere-gallery {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-
-    .everyone-welcome-banner {
-        flex-direction: column;
-        text-align: center;
-        padding: 45px 35px;
-        margin-bottom: 80px;
-    }
-
-    .welcome-banner-icon {
-        width: 85px;
-        height: 85px;
-    }
-
-    .welcome-banner-icon i {
-        font-size: 2.5rem;
-    }
-
-    .welcome-banner-content h3 {
-        font-size: 2rem;
-    }
-
-    .welcome-banner-content p {
-        font-size: 1.05rem;
-    }
-
-    .values-title {
-        font-size: 2.2rem;
-        margin-bottom: 50px;
-    }
-
-    .values-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .about-cta {
-        padding: 45px 35px;
-    }
-
-    .about-cta h3 {
-        font-size: 2rem;
-    }
-
-    .about-cta p {
-        font-size: 1.1rem;
-    }
-
-    .about-cta-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .about-phone-btn,
-    .about-booking-btn {
-        width: 100%;
-        max-width: 350px;
-        justify-content: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .about-container {
-        padding: 60px 20px;
-    }
-
-    .photos-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .laura-name {
-        font-size: 2rem;
-    }
-
-    .atmosphere-title {
-        font-size: 1.8rem;
-    }
-
-    .values-title {
-        font-size: 1.8rem;
-    }
-
-    .about-cta h3 {
-        font-size: 1.8rem;
-    }
-
-    .welcome-badge {
-        font-size: 0.85rem;
-        padding: 10px 20px;
-    }
-
-    .philosophy-content {
-        border-radius: 30px;
-    }
-
-    .everyone-welcome-banner {
-        border-radius: 35px;
-        padding: 35px 25px;
-    }
-
-    .about-cta {
-        border-radius: 30px;
-    }
-}
-
-/* ============================================
-   SERVICES SECTION
-   ============================================ */
-.services-section {
-    background: var(--ivory-white);
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 35px;
-}
-
-.service-card {
-    padding: 45px 35px;
-    background: linear-gradient(135deg, var(--cream) 0%, rgba(255, 255, 255, 0.8) 100%);
-    border: 2px solid rgba(169, 200, 156, 0.2);
-    border-radius: 30px;
-    text-align: center;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.service-card:hover {
-    background: linear-gradient(135deg, rgba(169, 200, 156, 0.15) 0%, rgba(255, 255, 255, 0.9) 100%);
-    border-color: var(--mint-green);
-    transform: translateY(-10px);
-    box-shadow: 0 20px 50px rgba(59, 74, 47, 0.15);
-}
-
-.service-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, var(--mint-green) 0%, var(--forest-green) 100%);
-    border-radius: 50%;
-    color: white;
-    font-size: 2rem;
-    transition: all 0.3s ease;
-}
-
-.service-card:hover .service-icon {
-    transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 10px 30px rgba(169, 200, 156, 0.4);
-}
-
-.service-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    color: var(--forest-green);
-    margin-bottom: 15px;
-}
-
-.service-description {
-    font-size: 1.05rem;
-    color: var(--warm-taupe);
-    line-height: 1.7;
-    margin-bottom: 25px;
-}
-
-.service-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--forest-green);
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.service-link:hover {
-    color: var(--mint-green);
-    gap: 12px;
 }
 
 /* ============================================
@@ -3032,6 +2470,23 @@ body {
     .contact-content {
         grid-template-columns: 1fr;
     }
+    
+    .laura-story-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .laura-story-content {
+        padding-left: 0;
+    }
+
+    .atmosphere-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
@@ -3052,7 +2507,6 @@ body {
         font-size: 14px;
     }
     
-    .services-grid,
     .gallery-grid {
         grid-template-columns: 1fr;
     }
@@ -3066,6 +2520,129 @@ body {
         flex-direction: column;
         gap: 25px;
         text-align: center;
+    }
+    
+    .about-container {
+        padding: 80px 25px;
+    }
+
+    .about-header {
+        margin-bottom: 60px;
+    }
+
+    .laura-story-grid {
+        gap: 50px;
+        margin-bottom: 80px;
+    }
+
+    .laura-name {
+        font-size: 2.5rem;
+    }
+
+    .laura-title {
+        font-size: 1.1rem;
+    }
+
+    .story-text p {
+        font-size: 1.05rem;
+    }
+
+    .credential-item {
+        padding: 18px 20px;
+    }
+
+    .credential-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    .credential-text strong {
+        font-size: 1.15rem;
+    }
+
+    .philosophy-content {
+        padding: 45px 35px;
+    }
+
+    .philosophy-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+    }
+
+    .philosophy-content h3 {
+        font-size: 2rem;
+    }
+
+    .philosophy-content p {
+        font-size: 1.05rem;
+    }
+
+    .atmosphere-title {
+        font-size: 2.2rem;
+    }
+
+    .atmosphere-gallery {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .everyone-welcome-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 45px 35px;
+        margin-bottom: 80px;
+    }
+
+    .welcome-banner-icon {
+        width: 85px;
+        height: 85px;
+    }
+
+    .welcome-banner-icon i {
+        font-size: 2.5rem;
+    }
+
+    .welcome-banner-content h3 {
+        font-size: 2rem;
+    }
+
+    .welcome-banner-content p {
+        font-size: 1.05rem;
+    }
+
+    .values-title {
+        font-size: 2.2rem;
+        margin-bottom: 50px;
+    }
+
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-cta {
+        padding: 45px 35px;
+    }
+
+    .about-cta h3 {
+        font-size: 2rem;
+    }
+
+    .about-cta p {
+        font-size: 1.1rem;
+    }
+
+    .about-cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-phone-btn,
+    .about-booking-btn {
+        width: 100%;
+        max-width: 350px;
+        justify-content: center;
     }
 }
 
@@ -3093,5 +2670,315 @@ body {
     
     .video-item {
         border-radius: 20px;
+    }
+    
+    .about-container {
+        padding: 60px 20px;
+    }
+
+    .photos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .laura-name {
+        font-size: 2rem;
+    }
+
+    .atmosphere-title {
+        font-size: 1.8rem;
+    }
+
+    .values-title {
+        font-size: 1.8rem;
+    }
+
+    .about-cta h3 {
+        font-size: 1.8rem;
+    }
+
+    .welcome-badge {
+        font-size: 0.85rem;
+        padding: 10px 20px;
+    }
+
+    .philosophy-content {
+        border-radius: 30px;
+    }
+
+    .everyone-welcome-banner {
+        border-radius: 35px;
+        padding: 35px 25px;
+    }
+
+    .about-cta {
+        border-radius: 30px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .special-card {
+        flex: 0 0 calc(50% - 18px);
+        min-width: 300px;
+    }
+    
+    .special-card-wide {
+        flex: 0 0 100%;
+        min-width: 100%;
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1024px) {
+    .specials-carousel-wrapper {
+        padding: 0 60px;
+    }
+    
+    .special-card {
+        flex: 0 0 calc(50% - 18px);
+        min-width: 280px;
+    }
+    
+    .special-card-wide {
+        grid-template-columns: 1fr;
+    }
+    
+    .carousel-nav {
+        width: 50px;
+        height: 50px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .specials-section {
+        padding: 80px 0;
+    }
+    
+    .specials-container {
+        padding: 0 25px;
+    }
+    
+    .specials-section .section-header {
+        margin-bottom: 60px;
+    }
+    
+    .specials-carousel-wrapper {
+        padding: 0;
+    }
+    
+    .specials-carousel {
+        gap: 25px;
+        padding: 20px 0 30px;
+    }
+    
+    .special-card {
+        flex: 0 0 85%;
+        min-width: 280px;
+    }
+    
+    .special-card-wide {
+        flex: 0 0 85%;
+        min-width: 280px;
+    }
+    
+    .carousel-nav {
+        display: none !important;
+    }
+    
+    .special-card {
+        border-radius: 25px;
+    }
+    
+    .special-content {
+        padding: 30px 25px;
+    }
+    
+    .special-title {
+        font-size: 1.4rem;
+    }
+    
+    .current-price {
+        font-size: 1.8rem;
+    }
+    
+    .no-specials-message {
+        padding: 60px 30px;
+        border-radius: 30px;
+    }
+    
+    .no-specials-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 2.5rem;
+    }
+    
+    .no-specials-message h3 {
+        font-size: 2rem;
+    }
+    
+    .no-specials-message p {
+        font-size: 1.05rem;
+    }
+    
+    .package-modal {
+        padding: 15px;
+    }
+
+    .modal-content {
+        width: 95%;
+        max-height: 92vh;
+        border-radius: 30px;
+    }
+
+    .modal-image-container {
+        height: 220px;
+    }
+
+    .modal-body {
+        padding: 30px 25px 35px;
+    }
+
+    .modal-title {
+        font-size: 2rem;
+    }
+
+    .modal-current-price {
+        font-size: 2.2rem;
+    }
+
+    .modal-original-price {
+        font-size: 1.3rem;
+    }
+
+    .modal-includes {
+        padding: 25px 25px;
+    }
+
+    .includes-title {
+        font-size: 1.5rem;
+    }
+
+    .includes-list li {
+        font-size: 1rem;
+    }
+
+    .modal-book-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 16px 35px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .specials-section {
+        padding: 60px 0;
+    }
+    
+    .specials-container {
+        padding: 0 20px;
+    }
+    
+    .specials-carousel {
+        gap: 20px;
+    }
+    
+    .special-card {
+        flex: 0 0 90%;
+        min-width: 260px;
+        border-radius: 20px;
+    }
+    
+    .special-card-wide {
+        flex: 0 0 90%;
+        min-width: 260px;
+    }
+    
+    .save-badge {
+        padding: 10px 15px;
+        border-radius: 15px;
+        top: 15px;
+        left: 15px;
+    }
+    
+    .save-text {
+        font-size: 10px;
+    }
+    
+    .save-amount {
+        font-size: 16px;
+    }
+    
+    .special-content {
+        padding: 25px 20px;
+    }
+    
+    .special-book-btn,
+    .view-details-btn {
+        padding: 12px 30px;
+        font-size: 14px;
+    }
+    
+    .carousel-indicators {
+        margin-top: 40px;
+    }
+    
+    .package-modal {
+        padding: 10px;
+    }
+
+    .modal-close {
+        width: 40px;
+        height: 40px;
+        top: 15px;
+        right: 15px;
+        font-size: 1rem;
+    }
+
+    .modal-badge {
+        padding: 12px 18px;
+        top: 20px;
+        left: 20px;
+    }
+
+    .modal-image-container {
+        height: 200px;
+    }
+
+    .modal-body {
+        padding: 25px 20px 30px;
+    }
+
+    .modal-title {
+        font-size: 1.7rem;
+    }
+
+    .modal-description {
+        font-size: 1rem;
+    }
+
+    .modal-price-section {
+        padding: 20px 20px;
+    }
+
+    .modal-current-price {
+        font-size: 2rem;
+    }
+
+    .modal-original-price {
+        font-size: 1.2rem;
+    }
+
+    .modal-includes {
+        padding: 20px 20px;
+    }
+
+    .includes-title {
+        font-size: 1.3rem;
+    }
+
+    .includes-list li {
+        font-size: 0.95rem;
+        padding-left: 30px;
     }
 }
