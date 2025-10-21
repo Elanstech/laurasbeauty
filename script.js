@@ -1,182 +1,19 @@
 // ============================================
-// PRELOADER MANAGER
+// HERO SECTION MANAGER - REDESIGNED
+// Parallax, Auto-scroll, Bokeh Particles
 // ============================================
-class PreloaderManager {
-    constructor() {
-        this.preloader = document.querySelector('.preloader');
-        this.init();
-    }
 
-    init() {
-        document.body.style.overflow = 'hidden';
-        
-        window.addEventListener('load', () => {
-            console.log('🎬 Page loaded, hiding preloader...');
-            this.hidePreloader();
-        });
-
-        setTimeout(() => {
-            if (this.preloader && !this.preloader.classList.contains('hidden')) {
-                console.log('⚡ Failsafe: Hiding preloader');
-                this.hidePreloader();
-            }
-        }, 2500);
-    }
-
-    hidePreloader() {
-        if (!this.preloader) {
-            console.log('⚠️ No preloader found');
-            document.body.style.overflow = 'auto';
-            return;
-        }
-        
-        setTimeout(() => {
-            this.preloader.classList.add('hidden');
-            
-            setTimeout(() => {
-                this.preloader.style.display = 'none';
-                document.body.style.overflow = 'auto';
-                console.log('✅ Preloader hidden, scrolling enabled');
-            }, 600);
-        }, 1500);
-    }
-}
-
-// ============================================
-// HEADER MANAGER
-// ============================================
-class HeaderManager {
-    constructor() {
-        this.header = document.querySelector('.spa-header');
-        this.mobileToggle = document.querySelector('.mobile-menu-toggle');
-        this.mobileDrawer = document.querySelector('.mobile-drawer');
-        this.mobileOverlay = document.querySelector('.mobile-overlay');
-        this.accordionTriggers = document.querySelectorAll('.accordion-trigger');
-        this.logo = document.querySelector('.header-logo');
-        
-        this.init();
-    }
-
-    init() {
-        this.handleScroll();
-        this.handleMobileMenu();
-        this.handleAccordion();
-        this.handleLogoClick();
-    }
-
-    handleScroll() {
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 50) {
-                this.header.classList.add('scrolled');
-            } else {
-                this.header.classList.remove('scrolled');
-            }
-        }, { passive: true });
-    }
-
-    handleMobileMenu() {
-        if (!this.mobileToggle) return;
-
-        this.mobileToggle.addEventListener('click', () => {
-            this.toggleMobileMenu();
-        });
-
-        this.mobileOverlay.addEventListener('click', () => {
-            this.closeMobileMenu();
-        });
-
-        const mobileLinks = document.querySelectorAll('.mobile-nav-link:not(.accordion-trigger), .accordion-links a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                this.closeMobileMenu();
-            });
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && this.mobileDrawer.classList.contains('active')) {
-                this.closeMobileMenu();
-            }
-        });
-    }
-
-    toggleMobileMenu() {
-        this.mobileToggle.classList.toggle('active');
-        this.mobileDrawer.classList.toggle('active');
-        this.mobileOverlay.classList.toggle('active');
-        
-        if (this.mobileDrawer.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
-    }
-
-    closeMobileMenu() {
-        this.mobileToggle.classList.remove('active');
-        this.mobileDrawer.classList.remove('active');
-        this.mobileOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-        
-        this.accordionTriggers.forEach(trigger => {
-            trigger.classList.remove('active');
-            const accordion = trigger.nextElementSibling;
-            if (accordion) {
-                accordion.classList.remove('active');
-            }
-        });
-    }
-
-    handleAccordion() {
-        this.accordionTriggers.forEach(trigger => {
-            trigger.addEventListener('click', (e) => {
-                e.preventDefault();
-                
-                const accordion = trigger.nextElementSibling;
-                const isActive = trigger.classList.contains('active');
-                
-                this.accordionTriggers.forEach(otherTrigger => {
-                    if (otherTrigger !== trigger) {
-                        otherTrigger.classList.remove('active');
-                        const otherAccordion = otherTrigger.nextElementSibling;
-                        if (otherAccordion) {
-                            otherAccordion.classList.remove('active');
-                        }
-                    }
-                });
-                
-                if (isActive) {
-                    trigger.classList.remove('active');
-                    accordion.classList.remove('active');
-                } else {
-                    trigger.classList.add('active');
-                    accordion.classList.add('active');
-                }
-            });
-        });
-    }
-
-    handleLogoClick() {
-        if (this.logo) {
-            this.logo.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-        }
-    }
-}
-
-// ============================================
-// HERO SECTION MANAGER
-// ============================================
 class HeroSection {
     constructor() {
         this.swiper = null;
         this.videos = document.querySelectorAll('.slide-video');
         this.scrollIndicator = document.querySelector('.scroll-indicator');
         this.heroSection = document.querySelector('.hero-section');
+        this.heroContent = document.querySelectorAll('.hero-content');
         this.currentSlide = 0;
+        this.autoScrollTimer = null;
+        this.userHovered = false;
+        this.scrollOffset = 0;
         
         this.init();
     }
@@ -186,13 +23,18 @@ class HeroSection {
         
         this.initSwiper();
         this.setupVideos();
+        this.createBokehParticles();
+        this.setupParallaxScroll();
         this.setupScrollIndicator();
-        this.createParticles();
-        this.handleScroll();
+        this.setupAutoScroll();
+        this.handleHoverPause();
         
         console.log('✅ Hero Section Ready');
     }
 
+    // ============================================
+    // SWIPER INITIALIZATION
+    // ============================================
     initSwiper() {
         if (typeof Swiper === 'undefined') {
             console.error('❌ Swiper library not loaded');
@@ -211,7 +53,7 @@ class HeroSection {
             autoplay: {
                 delay: 6000,
                 disableOnInteraction: false,
-                pauseOnMouseEnter: true,
+                pauseOnMouseEnter: false,
             },
             
             navigation: {
@@ -231,9 +73,6 @@ class HeroSection {
                 enabled: true,
                 onlyInViewport: true,
             },
-            
-            touchRatio: 1,
-            threshold: 10,
             
             on: {
                 init: () => {
@@ -257,42 +96,52 @@ class HeroSection {
     onSlideChange() {
         if (this.swiper) {
             this.currentSlide = this.swiper.realIndex;
-            console.log(`Slide: ${this.currentSlide + 1}`);
+            console.log(`📍 Slide: ${this.currentSlide + 1}`);
         }
     }
 
+    // ============================================
+    // VIDEO MANAGEMENT
+    // ============================================
     setupVideos() {
         this.videos.forEach((video, index) => {
+            // Set preload strategy
             if (index === 0) {
                 video.preload = 'auto';
             } else {
                 video.preload = 'metadata';
             }
 
+            // Handle loaded metadata
             video.addEventListener('loadedmetadata', () => {
-                console.log(`Video ${index} loaded`);
+                console.log(`🎬 Video ${index + 1} loaded`);
                 if (index === 0) {
                     setTimeout(() => this.playVideo(video), 100);
                 }
             });
 
+            // Error handling
             video.addEventListener('error', (e) => {
-                console.error(`Video ${index} error:`, e);
+                console.error(`❌ Video ${index + 1} error:`, e);
                 this.handleVideoError(video);
             });
 
+            // Loop handling
             video.addEventListener('ended', () => {
                 video.currentTime = 0;
                 video.play().catch(e => console.log('Loop play prevented'));
             });
 
+            // Intersection observer for performance
             this.observeVideo(video);
         });
 
+        // Respect user preferences for reduced motion
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             this.videos.forEach(video => video.pause());
         }
 
+        // Enable play on first interaction
         this.enablePlayOnFirstInteraction();
     }
 
@@ -319,10 +168,6 @@ class HeroSection {
                 video.muted = true;
                 video.play().catch(e => console.log('Video play failed'));
             });
-            
-            document.removeEventListener('click', playAllVideos);
-            document.removeEventListener('touchstart', playAllVideos);
-            document.removeEventListener('keydown', playAllVideos);
         };
         
         document.addEventListener('click', playAllVideos, { once: true });
@@ -358,7 +203,7 @@ class HeroSection {
         const parent = video.parentElement;
         parent.style.background = 'linear-gradient(135deg, #3B4A2F 0%, #2A3522 100%)';
         video.style.display = 'none';
-        console.log('Video error handled');
+        console.log('📹 Video error handled with gradient fallback');
     }
 
     observeVideo(video) {
@@ -381,12 +226,113 @@ class HeroSection {
         observer.observe(video);
     }
 
+    // ============================================
+    // BOKEH PARTICLES (Replacing Emojis)
+    // ============================================
+    createBokehParticles() {
+        const bokehLayers = document.querySelectorAll('.bokeh-layer');
+        const isMobile = window.innerWidth <= 768;
+        
+        bokehLayers.forEach((layer, slideIndex) => {
+            const particleCount = isMobile ? 4 : 8;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const bokeh = document.createElement('div');
+                bokeh.className = 'bokeh';
+                
+                // Random properties
+                const left = Math.random() * 100;
+                const delay = Math.random() * 8;
+                const duration = Math.random() * 12 + 8;
+                const size = Math.random() * 40 + 20;
+                const drift = (Math.random() - 0.5) * 100;
+                
+                bokeh.style.cssText = `
+                    left: ${left}%;
+                    top: 110%;
+                    width: ${size}px;
+                    height: ${size}px;
+                    animation-delay: ${delay}s;
+                    animation-duration: ${duration}s;
+                    --drift: ${drift}px;
+                `;
+                
+                layer.appendChild(bokeh);
+            }
+        });
+        
+        console.log('✨ Bokeh particles created');
+    }
+
+    // ============================================
+    // PARALLAX SCROLL EFFECT
+    // ============================================
+    setupParallaxScroll() {
+        let rafId = null;
+        
+        window.addEventListener('scroll', () => {
+            if (rafId) return;
+            
+            rafId = requestAnimationFrame(() => {
+                this.scrollOffset = window.pageYOffset;
+                
+                // Apply parallax to hero content
+                this.heroContent.forEach((content) => {
+                    const parallaxSpeed = 0.4;
+                    const yOffset = this.scrollOffset * parallaxSpeed;
+                    content.style.transform = `translateZ(60px) translateY(${yOffset}px)`;
+                });
+                
+                // Apply parallax to videos (slower than content)
+                this.videos.forEach((video) => {
+                    const parallaxSpeed = 0.2;
+                    const yOffset = this.scrollOffset * parallaxSpeed;
+                    const currentTransform = video.style.transform || 'translate(-50%, -50%) scale(1.15)';
+                    
+                    // Only apply if hero is still visible
+                    if (this.scrollOffset < window.innerHeight) {
+                        video.style.transform = `translate(-50%, calc(-50% + ${yOffset}px)) scale(1.15)`;
+                    }
+                });
+                
+                rafId = null;
+            });
+        }, { passive: true });
+        
+        console.log('🌊 Parallax scroll enabled');
+    }
+
+    // ============================================
+    // SCROLL INDICATOR
+    // ============================================
     setupScrollIndicator() {
         if (!this.scrollIndicator) return;
 
+        // Click handler
         this.scrollIndicator.addEventListener('click', () => {
             this.scrollToNext();
         });
+
+        // Hide on scroll
+        let rafId = null;
+        
+        window.addEventListener('scroll', () => {
+            if (rafId) return;
+            
+            rafId = requestAnimationFrame(() => {
+                const scrolled = window.pageYOffset;
+                
+                if (scrolled > 100) {
+                    this.scrollIndicator.classList.add('hidden');
+                } else {
+                    this.scrollIndicator.classList.remove('hidden');
+                }
+                
+                rafId = null;
+            });
+        }, { passive: true });
+        
+        console.log('👆 Scroll indicator ready');
     }
 
     scrollToNext() {
@@ -405,94 +351,61 @@ class HeroSection {
         }
     }
 
-    handleScroll() {
-        let rafId = null;
+    // ============================================
+    // AUTO-SCROLL FUNCTIONALITY
+    // ============================================
+    setupAutoScroll() {
+        // Calculate total autoplay duration
+        // 3 slides × 6 seconds per slide = 18 seconds
+        // Add 2 seconds buffer for transitions
+        const autoScrollDelay = 20000; // 20 seconds
         
-        window.addEventListener('scroll', () => {
-            if (rafId) return;
-            
-            rafId = requestAnimationFrame(() => {
-                const scrolled = window.pageYOffset;
-                
-                if (this.scrollIndicator) {
-                    if (scrolled > 200) {
-                        this.scrollIndicator.style.opacity = '0';
-                        this.scrollIndicator.style.pointerEvents = 'none';
-                    } else {
-                        this.scrollIndicator.style.opacity = '1';
-                        this.scrollIndicator.style.pointerEvents = 'auto';
-                    }
-                }
-                
-                rafId = null;
-            });
-        }, { passive: true });
-    }
-
-    createParticles() {
-        const containers = document.querySelectorAll('.particle-container');
-        
-        containers.forEach((container, slideIndex) => {
-            if (slideIndex === 0) {
-                this.createFloatingParticles(container, '✨', 8);
-            } else if (slideIndex === 1) {
-                this.createFloatingParticles(container, '🌿', 6);
-            } else if (slideIndex === 2) {
-                this.createFloatingParticles(container, '💫', 7);
+        this.autoScrollTimer = setTimeout(() => {
+            // Only auto-scroll if user hasn't hovered
+            if (!this.userHovered && window.pageYOffset === 0) {
+                console.log('🔽 Auto-scrolling to next section');
+                this.scrollToNext();
             }
-        });
+        }, autoScrollDelay);
+        
+        console.log('⏰ Auto-scroll scheduled for 20 seconds');
     }
 
-    createFloatingParticles(container, emoji, count) {
-        const isMobile = window.innerWidth <= 768;
-        const particleCount = isMobile ? Math.floor(count / 2) : count;
-        
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'floating-particle';
-            particle.textContent = emoji;
-            
-            const left = Math.random() * 100;
-            const delay = Math.random() * 5;
-            const duration = Math.random() * 8 + 6;
-            const size = Math.random() * 10 + 15;
-            
-            particle.style.cssText = `
-                position: absolute;
-                font-size: ${size}px;
-                left: ${left}%;
-                top: -10%;
-                opacity: ${Math.random() * 0.4 + 0.3};
-                animation: floatParticle ${duration}s linear ${delay}s infinite;
-                pointer-events: none;
-            `;
-            
-            container.appendChild(particle);
-        }
+    // ============================================
+    // HOVER PAUSE FOR AUTO-SCROLL
+    // ============================================
+    handleHoverPause() {
+        this.heroSection.addEventListener('mouseenter', () => {
+            this.userHovered = true;
+            console.log('⏸️ Auto-scroll paused (user hovering)');
+        });
+
+        this.heroSection.addEventListener('mouseleave', () => {
+            // Don't re-enable auto-scroll after user has already hovered
+            // This prevents unexpected scrolling
+            console.log('▶️ User left hero area');
+        });
     }
 }
 
 // ============================================
-// INITIALIZE ALL
+// INITIALIZE
 // ============================================
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-        new PreloaderManager();
-        new HeaderManager();
         new HeroSection();
     });
 } else {
-    new PreloaderManager();
-    new HeaderManager();
     new HeroSection();
 }
 
+// Optimize first video on full page load
 window.addEventListener('load', () => {
     const firstVideo = document.querySelector('.swiper-slide:first-child .slide-video');
     if (firstVideo) {
         firstVideo.preload = 'auto';
     }
-    console.log('✅ Page fully loaded');
+    console.log('✅ Page fully loaded - Hero optimized');
 });
 
 console.log('🌿 Hero Section Script Loaded');
