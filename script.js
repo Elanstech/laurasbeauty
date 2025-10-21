@@ -1280,7 +1280,6 @@ function initWebsite() {
     window.specialsCarousel = specialsCarousel; // Make globally accessible
     
     new ServicesCarousel();
-    new TestimonialsSlider();
     new ContactForm();
     
     // Initialize AOS if available
