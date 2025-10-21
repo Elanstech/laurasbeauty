@@ -1276,140 +1276,6 @@ class ContactForm {
 }
 
 // ============================================
-// ELFSIGHT WIDGETS (GOOGLE REVIEWS & INSTAGRAM)
-// ============================================
-class ElfsightWidgets {
-    constructor() {
-        this.init();
-    }
-
-    init() {
-        this.waitForElfsight();
-        this.setupInstagramCTA();
-        this.setupScrollAnimations();
-    }
-
-    waitForElfsight() {
-        const checkElfsight = setInterval(() => {
-            if (typeof window.eapps !== 'undefined') {
-                console.log('✅ Elfsight platform loaded');
-                clearInterval(checkElfsight);
-                this.enhanceWidgets();
-            }
-        }, 500);
-
-        setTimeout(() => {
-            clearInterval(checkElfsight);
-        }, 10000);
-    }
-
-    enhanceWidgets() {
-        const widgets = document.querySelectorAll('[class*="elfsight-app"]');
-        
-        widgets.forEach(widget => {
-            widget.classList.add('widget-loading');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        setTimeout(() => {
-                            widget.classList.remove('widget-loading');
-                            widget.classList.add('widget-loaded');
-                        }, 1000);
-                        observer.disconnect();
-                    }
-                });
-            });
-            
-            observer.observe(widget);
-        });
-    }
-
-    setupInstagramCTA() {
-        const instagramBtn = document.querySelector('.follow-instagram-btn');
-        
-        if (instagramBtn) {
-            instagramBtn.addEventListener('click', (e) => {
-                const ripple = document.createElement('span');
-                ripple.classList.add('ripple-effect');
-                instagramBtn.appendChild(ripple);
-                
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
-            });
-        }
-    }
-
-    setupScrollAnimations() {
-        const reviewsSection = document.querySelector('.google-reviews-section');
-        const instagramSection = document.querySelector('.instagram-section');
-        
-        const observerOptions = {
-            threshold: 0.2,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('section-visible');
-                }
-            });
-        }, observerOptions);
-
-        if (reviewsSection) observer.observe(reviewsSection);
-        if (instagramSection) observer.observe(instagramSection);
-    }
-}
-
-// ============================================
-// FLOATING LEAVES ANIMATION
-// ============================================
-class FloatingLeaves {
-    constructor() {
-        this.leaves = document.querySelectorAll('.floating-leaf');
-        this.init();
-    }
-
-    init() {
-        if (this.leaves.length === 0) return;
-
-        this.leaves.forEach((leaf) => {
-            const randomDelay = Math.random() * 5;
-            const randomDuration = 12 + Math.random() * 6;
-            
-            leaf.style.animationDelay = `${randomDelay}s`;
-            leaf.style.animationDuration = `${randomDuration}s`;
-        });
-    }
-}
-
-// ============================================
-// INSTAGRAM HASHTAG INTERACTION
-// ============================================
-class HashtagInteraction {
-    constructor() {
-        this.hashtags = document.querySelectorAll('.hashtag');
-        this.init();
-    }
-
-    init() {
-        if (this.hashtags.length === 0) return;
-
-        this.hashtags.forEach(hashtag => {
-            hashtag.addEventListener('click', () => {
-                const hashtagText = hashtag.textContent.replace('#', '');
-                const instagramUrl = `https://www.instagram.com/explore/tags/${hashtagText}/`;
-                window.open(instagramUrl, '_blank');
-            });
-
-            hashtag.style.cursor = 'pointer';
-        });
-    }
-}
-
-// ============================================
 // BACK TO TOP BUTTON
 // ============================================
 class BackToTopButton {
@@ -1455,7 +1321,6 @@ class BackToTopButton {
             behavior: 'smooth'
         });
 
-        // Optional: Add a subtle animation feedback
         this.button.style.transform = 'translateY(-3px) scale(1.05)';
         setTimeout(() => {
             this.button.style.transform = '';
@@ -1464,19 +1329,13 @@ class BackToTopButton {
 }
 
 // ============================================
-// FLOATING ACTION BUTTON (FAB) - FINAL VERSION
+// FLOATING ACTION BUTTON (FAB)
 // ============================================
 class FloatingActionButton {
     constructor() {
         this.fabMain = document.getElementById('fabMain');
         this.fabOptions = document.getElementById('fabOptions');
-        this.instaChatBtn = document.getElementById('instaChat');
-        this.elfsightContainer = document.getElementById('elfsightContainer');
-        this.elfsightOverlay = document.getElementById('elfsightOverlay');
-        this.elfsightClose = document.getElementById('elfsightClose');
-        
         this.isOpen = false;
-        this.scrollPosition = 0;
         
         this.init();
     }
@@ -1490,32 +1349,6 @@ class FloatingActionButton {
             this.toggleFAB();
         });
 
-        // Instagram chat button
-        if (this.instaChatBtn) {
-            this.instaChatBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                this.openInstagramChat();
-            });
-        }
-
-        // Close Elfsight modal
-        if (this.elfsightClose) {
-            this.elfsightClose.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                this.closeInstagramChat();
-            });
-        }
-
-        if (this.elfsightOverlay) {
-            this.elfsightOverlay.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                this.closeInstagramChat();
-            });
-        }
-
         // Close FAB when clicking outside
         document.addEventListener('click', (e) => {
             if (this.isOpen && !e.target.closest('.fab-container')) {
@@ -1525,21 +1358,16 @@ class FloatingActionButton {
 
         // Close on ESC key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                if (this.elfsightContainer && this.elfsightContainer.classList.contains('active')) {
-                    e.preventDefault();
-                    this.closeInstagramChat();
-                } else if (this.isOpen) {
-                    this.closeFAB();
-                }
+            if (e.key === 'Escape' && this.isOpen) {
+                this.closeFAB();
             }
         });
 
-        // Close FAB when clicking any option (except Instagram)
-        const fabOptionLinks = document.querySelectorAll('.fab-option:not(.fab-instagram)');
-        fabOptionLinks.forEach(option => {
+        // Close FAB when clicking any option
+        const fabOptions = document.querySelectorAll('.fab-option');
+        fabOptions.forEach(option => {
             option.addEventListener('click', () => {
-                setTimeout(() => this.closeFAB(), 300);
+                setTimeout(() => this.closeFAB(), 200);
             });
         });
     }
@@ -1556,70 +1384,14 @@ class FloatingActionButton {
         this.isOpen = true;
         this.fabMain.classList.add('active');
         this.fabOptions.classList.add('active');
+        console.log('📱 Contact options opened');
     }
 
     closeFAB() {
         this.isOpen = false;
         this.fabMain.classList.remove('active');
         this.fabOptions.classList.remove('active');
-    }
-
-    openInstagramChat() {
-        if (!this.elfsightContainer) return;
-
-        // Close FAB first
-        this.closeFAB();
-
-        // Save scroll position
-        this.scrollPosition = window.pageYOffset;
-
-        // Prevent body scroll
-        document.body.style.overflow = 'hidden';
-        document.body.style.position = 'fixed';
-        document.body.style.top = `-${this.scrollPosition}px`;
-        document.body.style.width = '100%';
-        
-        // Show Elfsight modal
-        this.elfsightContainer.classList.add('active');
-
-        // Send message to Elfsight widget to show
-        setTimeout(() => {
-            window.postMessage('showElfsightChat', '*');
-            
-            // Also try to find and show the iframe
-            const elfsightIframe = document.querySelector('.elfsight-app-82c92139-8dd5-4656-a651-8c38921c8e22 iframe');
-            if (elfsightIframe && elfsightIframe.contentWindow) {
-                elfsightIframe.contentWindow.postMessage('showElfsightChat', '*');
-            }
-        }, 100);
-
-        console.log('📱 Instagram Chat opened');
-    }
-
-    closeInstagramChat() {
-        if (!this.elfsightContainer) return;
-
-        // Send message to Elfsight widget to hide
-        window.postMessage('hideElfsightChat', '*');
-        
-        const elfsightIframe = document.querySelector('.elfsight-app-82c92139-8dd5-4656-a651-8c38921c8e22 iframe');
-        if (elfsightIframe && elfsightIframe.contentWindow) {
-            elfsightIframe.contentWindow.postMessage('hideElfsightChat', '*');
-        }
-
-        // Hide Elfsight modal
-        this.elfsightContainer.classList.remove('active');
-
-        // Restore body scroll
-        document.body.style.overflow = '';
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-        
-        // Restore scroll position
-        window.scrollTo(0, this.scrollPosition);
-
-        console.log('📱 Instagram Chat closed');
+        console.log('📱 Contact options closed');
     }
 }
 
@@ -1630,35 +1402,24 @@ function initWebsite() {
     console.log('🌿 Laura\'s Beauty Touch');
     console.log('💎 Initializing components...');
     
-    // Initialize all components
+    // Core Components
     new ElegantPreloader();
     new PremiumHeader();
     new HeroVideoCollage();
     
-    // Initialize Specials Carousel
+    // Carousels
     const specialsCarousel = new SpecialsCarousel();
     specialsCarousel.init();
     window.specialsCarousel = specialsCarousel;
     
-    // Initialize Services Carousel
     const servicesCarousel = new ServicesCarousel();
     servicesCarousel.init();
     window.servicesCarousel = servicesCarousel;
-        
-    // Initialize Contact Form
+    
+    // Forms & Interactions
     new ContactForm();
-
-    // Initialize Back to Top Button
     new BackToTopButton();
-    
-    // Initialize Floating Action Button
     new FloatingActionButton();
-
-    
-    // Initialize Elfsight Widgets (Google Reviews & Instagram)
-    new ElfsightWidgets();
-    new FloatingLeaves();
-    new HashtagInteraction();
     
     // Initialize AOS if available
     if (typeof AOS !== 'undefined') {
