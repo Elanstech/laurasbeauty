@@ -1464,7 +1464,7 @@ class BackToTopButton {
 }
 
 // ============================================
-// FLOATING ACTION BUTTON (FAB)
+// FLOATING ACTION BUTTON (FAB) - FINAL VERSION
 // ============================================
 class FloatingActionButton {
     constructor() {
@@ -1476,6 +1476,7 @@ class FloatingActionButton {
         this.elfsightClose = document.getElementById('elfsightClose');
         
         this.isOpen = false;
+        this.scrollPosition = 0;
         
         this.init();
     }
@@ -1484,11 +1485,15 @@ class FloatingActionButton {
         if (!this.fabMain) return;
 
         // Main FAB toggle
-        this.fabMain.addEventListener('click', () => this.toggleFAB());
+        this.fabMain.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.toggleFAB();
+        });
 
         // Instagram chat button
         if (this.instaChatBtn) {
             this.instaChatBtn.addEventListener('click', (e) => {
+                e.preventDefault();
                 e.stopPropagation();
                 this.openInstagramChat();
             });
@@ -1496,11 +1501,19 @@ class FloatingActionButton {
 
         // Close Elfsight modal
         if (this.elfsightClose) {
-            this.elfsightClose.addEventListener('click', () => this.closeInstagramChat());
+            this.elfsightClose.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.closeInstagramChat();
+            });
         }
 
         if (this.elfsightOverlay) {
-            this.elfsightOverlay.addEventListener('click', () => this.closeInstagramChat());
+            this.elfsightOverlay.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.closeInstagramChat();
+            });
         }
 
         // Close FAB when clicking outside
@@ -1510,10 +1523,11 @@ class FloatingActionButton {
             }
         });
 
-        // Close FAB on ESC key
+        // Close on ESC key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 if (this.elfsightContainer && this.elfsightContainer.classList.contains('active')) {
+                    e.preventDefault();
                     this.closeInstagramChat();
                 } else if (this.isOpen) {
                     this.closeFAB();
@@ -1521,7 +1535,7 @@ class FloatingActionButton {
             }
         });
 
-        // Close FAB when clicking any option
+        // Close FAB when clicking any option (except Instagram)
         const fabOptionLinks = document.querySelectorAll('.fab-option:not(.fab-instagram)');
         fabOptionLinks.forEach(option => {
             option.addEventListener('click', () => {
@@ -1556,23 +1570,54 @@ class FloatingActionButton {
         // Close FAB first
         this.closeFAB();
 
+        // Save scroll position
+        this.scrollPosition = window.pageYOffset;
+
         // Prevent body scroll
         document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${this.scrollPosition}px`;
+        document.body.style.width = '100%';
         
         // Show Elfsight modal
         this.elfsightContainer.classList.add('active');
 
-        console.log('📱 Instagram Chat opened - Elfsight widget should load');
+        // Send message to Elfsight widget to show
+        setTimeout(() => {
+            window.postMessage('showElfsightChat', '*');
+            
+            // Also try to find and show the iframe
+            const elfsightIframe = document.querySelector('.elfsight-app-82c92139-8dd5-4656-a651-8c38921c8e22 iframe');
+            if (elfsightIframe && elfsightIframe.contentWindow) {
+                elfsightIframe.contentWindow.postMessage('showElfsightChat', '*');
+            }
+        }, 100);
+
+        console.log('📱 Instagram Chat opened');
     }
 
     closeInstagramChat() {
         if (!this.elfsightContainer) return;
+
+        // Send message to Elfsight widget to hide
+        window.postMessage('hideElfsightChat', '*');
+        
+        const elfsightIframe = document.querySelector('.elfsight-app-82c92139-8dd5-4656-a651-8c38921c8e22 iframe');
+        if (elfsightIframe && elfsightIframe.contentWindow) {
+            elfsightIframe.contentWindow.postMessage('hideElfsightChat', '*');
+        }
 
         // Hide Elfsight modal
         this.elfsightContainer.classList.remove('active');
 
         // Restore body scroll
         document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        
+        // Restore scroll position
+        window.scrollTo(0, this.scrollPosition);
 
         console.log('📱 Instagram Chat closed');
     }
