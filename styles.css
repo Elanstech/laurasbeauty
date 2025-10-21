@@ -3188,136 +3188,523 @@ body {
 }
 
 /* ============================================
-   TESTIMONIALS SECTION
+   GOOGLE REVIEWS SECTION
    ============================================ */
-.testimonials-section {
-    background: var(--ivory-white);
-}
 
-.testimonials-slider {
+.google-reviews-section {
     position: relative;
-    max-width: 900px;
-    margin: 0 auto 40px;
-    min-height: 400px;
+    background: linear-gradient(
+        180deg,
+        var(--ivory-white) 0%,
+        var(--cream) 50%,
+        rgba(169, 200, 156, 0.08) 100%
+    );
+    padding: 120px 0;
+    overflow: hidden;
 }
 
-.testimonial-card {
+/* Decorative Background Elements */
+.reviews-bg-decoration {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 60px 50px;
-    background: linear-gradient(135deg, var(--cream) 0%, rgba(255, 255, 255, 0.9) 100%);
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.floating-leaf {
+    position: absolute;
+    font-size: 3rem;
+    color: rgba(169, 200, 156, 0.15);
+    animation: floatLeaf 15s ease-in-out infinite;
+}
+
+.leaf-1 {
+    top: 15%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.leaf-2 {
+    top: 60%;
+    right: 15%;
+    animation-delay: 5s;
+}
+
+.leaf-3 {
+    bottom: 20%;
+    left: 20%;
+    animation-delay: 10s;
+}
+
+@keyframes floatLeaf {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.15;
+    }
+    50% {
+        transform: translateY(-30px) rotate(10deg);
+        opacity: 0.25;
+    }
+}
+
+.reviews-container {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    z-index: 2;
+}
+
+.reviews-widget-wrapper {
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.reviews-widget-wrapper .widget-frame {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(250, 250, 247, 0.9) 100%
+    );
     border: 2px solid rgba(169, 200, 156, 0.2);
     border-radius: 40px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(30px);
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 50px 40px;
+    box-shadow: 
+        0 20px 60px rgba(59, 74, 47, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.testimonial-card.active {
-    position: relative;
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+.reviews-widget-wrapper .widget-frame:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 30px 80px rgba(59, 74, 47, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border-color: var(--mint-green);
 }
 
-.testimonial-stars {
+/* Google Reviews CTA */
+.reviews-cta {
     display: flex;
-    gap: 8px;
-    justify-content: center;
-    margin-bottom: 30px;
-    color: var(--gold-accent);
-    font-size: 1.2rem;
-}
-
-.testimonial-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.35rem;
-    line-height: 1.8;
-    color: var(--charcoal);
-    text-align: center;
-    margin-bottom: 35px;
-    font-style: italic;
-}
-
-.testimonial-author {
-    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
-
-.author-avatar {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, var(--mint-green), var(--forest-green));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: 600;
-    font-size: 1.2rem;
-}
-
-.author-info h4 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    color: var(--forest-green);
-    margin-bottom: 5px;
-}
-
-.author-info p {
-    color: var(--warm-taupe);
-    font-size: 0.95rem;
-}
-
-.testimonial-navigation {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     gap: 30px;
+    padding: 50px 40px;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.9) 0%,
+        var(--soft-sand) 100%
+    );
+    border: 2px solid rgba(169, 200, 156, 0.25);
+    border-radius: 35px;
+    box-shadow: 0 15px 40px rgba(59, 74, 47, 0.1);
 }
 
-.testimonial-prev,
-.testimonial-next {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, var(--mint-green), var(--forest-green));
-    border: none;
-    border-radius: 50%;
-    color: white;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.testimonial-prev:hover,
-.testimonial-next:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 25px rgba(169, 200, 156, 0.4);
-}
-
-.testimonial-dots {
+.google-badge {
     display: flex;
-    gap: 12px;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 35px;
+    background: white;
+    border: 2px solid rgba(169, 200, 156, 0.2);
+    border-radius: 25px;
+    box-shadow: 0 8px 25px rgba(59, 74, 47, 0.08);
 }
 
-.testimonial-dots .dot {
-    width: 12px;
-    height: 12px;
-    background: rgba(169, 200, 156, 0.3);
+.google-badge i {
+    font-size: 2.5rem;
+    color: #4285F4;
+}
+
+.badge-text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.rating-stars {
+    font-size: 1.3rem;
+    color: var(--gold-accent);
+    letter-spacing: 2px;
+}
+
+.badge-label {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.95rem;
+    color: var(--warm-taupe);
+    font-weight: 500;
+}
+
+.leave-review-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 45px;
+    background: linear-gradient(135deg, #4285F4, #357AE8);
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    border-radius: 50px;
+    border: 2px solid transparent;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(66, 133, 244, 0.3);
+}
+
+.leave-review-btn:hover {
+    background: linear-gradient(135deg, #357AE8, #2A66CC);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(66, 133, 244, 0.5);
+}
+
+.leave-review-btn i {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.leave-review-btn:hover i {
+    transform: translateX(3px);
+}
+
+/* ============================================
+   INSTAGRAM SECTION
+   ============================================ */
+
+.instagram-section {
+    position: relative;
+    background: linear-gradient(
+        135deg,
+        #833AB4 0%,
+        #C13584 25%,
+        #E1306C 50%,
+        #FD1D1D 75%,
+        #F56040 100%
+    );
+    padding: 120px 0;
+    overflow: hidden;
+}
+
+/* Instagram Background Pattern */
+.instagram-bg-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+        repeating-conic-gradient(
+            from 0deg at 50% 50%,
+            transparent 0deg 60deg,
+            rgba(255, 255, 255, 0.03) 60deg 120deg
+        );
+    background-size: 100% 100%, 100% 100%, 50px 50px;
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.instagram-container {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    z-index: 2;
+}
+
+.instagram-section .section-eyebrow {
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.instagram-section .section-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    color: white;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.instagram-icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 3px solid rgba(255, 255, 255, 0.4);
     border-radius: 50%;
-    cursor: pointer;
+    font-size: 2rem;
+    animation: pulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+        transform: scale(1.05);
+    }
+}
+
+.instagram-section .section-subtitle {
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+}
+
+.instagram-widget-wrapper {
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.instagram-widget-wrapper .widget-frame {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 40px;
+    padding: 50px 40px;
+    box-shadow: 
+        0 25px 70px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.instagram-widget-wrapper .widget-frame:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 35px 90px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Instagram CTA */
+.instagram-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 50px 40px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 35px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+.cta-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: white;
+    text-align: center;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+.follow-instagram-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px 45px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #C13584;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    border-radius: 50px;
+    border: 2px solid transparent;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.follow-instagram-btn:hover {
+    background: white;
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 
+        0 15px 45px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 white;
+}
+
+.follow-instagram-btn i:first-child {
+    font-size: 1.4rem;
+    background: linear-gradient(45deg, #833AB4, #C13584, #E1306C, #FD1D1D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.follow-instagram-btn i:last-child {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.follow-instagram-btn:hover i:last-child {
+    transform: translateX(5px);
+}
+
+.hashtag-display {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.hashtag {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
 }
 
-.testimonial-dots .dot.active {
-    width: 35px;
-    border-radius: 20px;
-    background: var(--mint-green);
+.hashtag:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .google-reviews-section,
+    .instagram-section {
+        padding: 80px 0;
+    }
+
+    .reviews-container,
+    .instagram-container {
+        padding: 0 30px;
+    }
+
+    .reviews-widget-wrapper .widget-frame,
+    .instagram-widget-wrapper .widget-frame {
+        padding: 40px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .google-reviews-section,
+    .instagram-section {
+        padding: 60px 0;
+    }
+
+    .reviews-container,
+    .instagram-container {
+        padding: 0 20px;
+    }
+
+    .floating-leaf {
+        font-size: 2rem;
+    }
+
+    .reviews-widget-wrapper .widget-frame,
+    .instagram-widget-wrapper .widget-frame {
+        padding: 30px 25px;
+        border-radius: 30px;
+    }
+
+    .reviews-cta,
+    .instagram-cta {
+        padding: 40px 30px;
+        border-radius: 30px;
+    }
+
+    .google-badge {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 25px;
+    }
+
+    .leave-review-btn,
+    .follow-instagram-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 16px 40px;
+        font-size: 1rem;
+    }
+
+    .instagram-section .section-title {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .instagram-icon-wrapper {
+        width: 60px;
+        height: 60px;
+        font-size: 1.7rem;
+    }
+
+    .hashtag-display {
+        gap: 10px;
+    }
+
+    .hashtag {
+        font-size: 0.85rem;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .google-reviews-section,
+    .instagram-section {
+        padding: 50px 0;
+    }
+
+    .reviews-widget-wrapper .widget-frame,
+    .instagram-widget-wrapper .widget-frame {
+        padding: 25px 20px;
+        border-radius: 25px;
+    }
+
+    .reviews-cta,
+    .instagram-cta {
+        padding: 30px 20px;
+        border-radius: 25px;
+    }
+
+    .google-badge {
+        padding: 18px 20px;
+    }
+
+    .google-badge i {
+        font-size: 2rem;
+    }
+
+    .rating-stars {
+        font-size: 1.1rem;
+    }
+
+    .leave-review-btn,
+    .follow-instagram-btn {
+        padding: 15px 35px;
+        font-size: 0.95rem;
+    }
+
+    .cta-text {
+        font-size: 1.1rem;
+    }
 }
 
 /* ============================================
@@ -3671,15 +4058,7 @@ body {
     .section-container {
         padding: 60px 20px;
     }
-    
-    .testimonial-card {
-        padding: 40px 30px;
-    }
-    
-    .testimonial-text {
-        font-size: 1.1rem;
-    }
-    
+       
     .video-collage-container {
         gap: 4px;
         padding: 4px;
