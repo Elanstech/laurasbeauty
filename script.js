@@ -281,7 +281,7 @@ class HeroVideoCollage {
 }
 
 // ============================================
-// SPECIALS CAROUSEL - FIXED VERSION
+// SPECIALS CAROUSEL
 // ============================================
 class SpecialsCarousel {
     constructor() {
@@ -321,7 +321,6 @@ class SpecialsCarousel {
             
             if (this.specials && this.specials.length > 0) {
                 console.log(`✅ Loaded ${this.specials.length} special(s)`);
-                console.log('First special:', this.specials[0]);
                 
                 this.renderSpecials();
                 this.setupCarousel();
@@ -332,13 +331,13 @@ class SpecialsCarousel {
                 this.setupModal();
                 this.startAutoScroll();
                 
-                console.log('✅ Carousel initialized successfully');
+                console.log('✅ Specials Carousel initialized successfully');
             } else {
                 console.log('ℹ️ No specials found - showing fallback message');
                 this.showNoSpecialsMessage();
             }
         } catch (error) {
-            console.error('❌ Error initializing carousel:', error);
+            console.error('❌ Error initializing specials carousel:', error);
             this.showNoSpecialsMessage();
         }
     }
@@ -352,7 +351,6 @@ class SpecialsCarousel {
             }
             
             const data = await response.json();
-            console.log('📦 JSON data loaded:', data);
             this.specials = data.specials || [];
             
         } catch (error) {
@@ -367,16 +365,12 @@ class SpecialsCarousel {
             return;
         }
         
-        console.log('🎨 Rendering', this.specials.length, 'specials...');
         this.carousel.innerHTML = '';
         
-        this.specials.forEach((special, index) => {
-            console.log(`Creating card ${index + 1}:`, special.title);
+        this.specials.forEach((special) => {
             const card = this.createSpecialCard(special);
             this.carousel.appendChild(card);
         });
-        
-        console.log('✅ Cards rendered. Carousel HTML:', this.carousel.innerHTML.length, 'chars');
     }
 
     createSpecialCard(special) {
@@ -445,8 +439,6 @@ class SpecialsCarousel {
         this.itemsPerPage = this.getItemsPerPage();
         const cards = this.carousel.querySelectorAll('.special-card');
         this.totalPages = Math.ceil(cards.length / this.itemsPerPage);
-        
-        console.log(`📊 Setup: ${cards.length} cards, ${this.itemsPerPage}/page, ${this.totalPages} pages`);
         
         this.createIndicators();
         this.updateNavigationVisibility();
@@ -840,8 +832,6 @@ class SpecialsCarousel {
         document.body.style.width = '100%';
         
         this.modal.classList.add('active');
-        
-        console.log('📋 Modal opened:', special.title);
     }
     
     closeModal() {
@@ -858,8 +848,6 @@ class SpecialsCarousel {
         window.scrollTo(0, this.scrollPosition);
         
         this.startAutoScroll();
-        
-        console.log('✖️ Modal closed');
     }
 
     showNoSpecialsMessage() {
@@ -872,8 +860,6 @@ class SpecialsCarousel {
         if (this.indicatorsContainer) this.indicatorsContainer.classList.add('hidden');
         
         this.noSpecialsMessage.classList.add('active');
-        
-        console.log('ℹ️ No specials message displayed');
     }
 
     cleanup() {
@@ -891,26 +877,11 @@ class SpecialsCarousel {
             this.carousel.removeEventListener('scroll', this.scrollHandler);
         }
     }
-    
-    async reload() {
-        console.log('🔄 Reloading...');
-        this.cleanup();
-        this.currentPage = 0;
-        this.specials = [];
-        this.totalPages = 0;
-        
-        if (this.noSpecialsMessage) {
-            this.noSpecialsMessage.classList.remove('active');
-        }
-        
-        await this.init();
-    }
 }
 
 // ============================================
-// SERVICES SECTION
+// SERVICES CAROUSEL
 // ============================================
-
 class ServicesCarousel {
     constructor() {
         this.carousel = document.getElementById('servicesCarouselTrack');
@@ -929,11 +900,8 @@ class ServicesCarousel {
         this.touchEndX = 0;
         
         this.resizeHandler = null;
+        this.keyboardHandler = null;
         this.scrollHandler = null;
-        
-        // Bind methods to preserve context
-        this.handlePrevClick = this.handlePrevClick.bind(this);
-        this.handleNextClick = this.handleNextClick.bind(this);
     }
 
     init() {
@@ -1042,31 +1010,52 @@ class ServicesCarousel {
             return;
         }
         
-        // Remove any existing listeners
-        this.prevBtn.removeEventListener('click', this.handlePrevClick);
-        this.nextBtn.removeEventListener('click', this.handleNextClick);
+        const newPrevBtn = this.prevBtn.cloneNode(true);
+        const newNextBtn = this.nextBtn.cloneNode(true);
+        this.prevBtn.parentNode.replaceChild(newPrevBtn, this.prevBtn);
+        this.nextBtn.parentNode.replaceChild(newNextBtn, this.nextBtn);
+        this.prevBtn = newPrevBtn;
+        this.nextBtn = newNextBtn;
         
-        // Add fresh listeners
-        this.prevBtn.addEventListener('click', this.handlePrevClick);
-        this.nextBtn.addEventListener('click', this.handleNextClick);
+        this.prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('⬅️ PREVIOUS BUTTON CLICKED - Current page:', this.currentPage + 1);
+            this.previousPage();
+            this.resetAutoScroll();
+        });
         
-        console.log('✅ Navigation buttons configured with event listeners');
-    }
-
-    handlePrevClick(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        console.log('⬅️ PREVIOUS BUTTON CLICKED - Current page:', this.currentPage + 1);
-        this.previousPage();
-        this.resetAutoScroll();
-    }
-
-    handleNextClick(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        console.log('➡️ NEXT BUTTON CLICKED - Current page:', this.currentPage + 1);
-        this.nextPage();
-        this.resetAutoScroll();
+        this.nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('➡️ NEXT BUTTON CLICKED - Current page:', this.currentPage + 1);
+            this.nextPage();
+            this.resetAutoScroll();
+        });
+        
+        if (this.keyboardHandler) {
+            document.removeEventListener('keydown', this.keyboardHandler);
+        }
+        
+        this.keyboardHandler = (e) => {
+            if (this.carousel && !this.carousel.classList.contains('hidden')) {
+                if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    console.log('⬅️ Left arrow key pressed');
+                    this.previousPage();
+                    this.resetAutoScroll();
+                } else if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    console.log('➡️ Right arrow key pressed');
+                    this.nextPage();
+                    this.resetAutoScroll();
+                }
+            }
+        };
+        
+        document.addEventListener('keydown', this.keyboardHandler);
+        
+        console.log('✅ Navigation configured with event listeners');
     }
 
     updateNavigationVisibility() {
@@ -1156,6 +1145,10 @@ class ServicesCarousel {
         
         let scrollTimeout;
         
+        if (this.scrollHandler) {
+            this.carousel.removeEventListener('scroll', this.scrollHandler);
+        }
+        
         this.scrollHandler = () => {
             clearTimeout(scrollTimeout);
             
@@ -1235,6 +1228,10 @@ class ServicesCarousel {
     setupResizeHandler() {
         let resizeTimeout;
         
+        if (this.resizeHandler) {
+            window.removeEventListener('resize', this.resizeHandler);
+        }
+        
         this.resizeHandler = () => {
             clearTimeout(resizeTimeout);
             
@@ -1273,40 +1270,235 @@ class ServicesCarousel {
         if (this.autoScrollInterval) {
             clearInterval(this.autoScrollInterval);
             this.autoScrollInterval = null;
-            console.log('⏸️ Auto-scroll stopped');
         }
     }
 
     resetAutoScroll() {
-        console.log('🔄 Resetting auto-scroll');
         this.stopAutoScroll();
         this.startAutoScroll();
     }
 
     cleanup() {
-        console.log('🧹 Cleaning up Services Carousel');
         this.stopAutoScroll();
         
         if (this.resizeHandler) {
             window.removeEventListener('resize', this.resizeHandler);
         }
         
+        if (this.keyboardHandler) {
+            document.removeEventListener('keydown', this.keyboardHandler);
+        }
+        
         if (this.scrollHandler && this.carousel) {
             this.carousel.removeEventListener('scroll', this.scrollHandler);
-        }
-        
-        if (this.prevBtn) {
-            this.prevBtn.removeEventListener('click', this.handlePrevClick);
-        }
-        
-        if (this.nextBtn) {
-            this.nextBtn.removeEventListener('click', this.handleNextClick);
         }
     }
 }
 
 // ============================================
-// MAIN INITIALIZATION - FIXED
+// OTHER COMPONENTS
+// ============================================
+class OwnerPhotoCarousel {
+    constructor() {
+        this.carousel = document.querySelector('.owner-carousel');
+        if (!this.carousel) return;
+
+        this.slides = this.carousel.querySelectorAll('.carousel-slide');
+        this.dots = this.carousel.querySelectorAll('.carousel-dot');
+        this.currentIndex = 0;
+        this.autoplayInterval = null;
+        this.autoplayDelay = 4000;
+
+        this.init();
+    }
+
+    init() {
+        if (this.slides.length === 0) return;
+
+        this.setupDots();
+        this.startAutoplay();
+        this.setupHoverPause();
+    }
+
+    setupDots() {
+        this.dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                this.goToSlide(index);
+                this.resetAutoplay();
+            });
+        });
+    }
+
+    goToSlide(index) {
+        this.slides.forEach(slide => slide.classList.remove('active'));
+        this.dots.forEach(dot => dot.classList.remove('active'));
+
+        this.slides[index].classList.add('active');
+        this.dots[index].classList.add('active');
+
+        this.currentIndex = index;
+
+        if (typeof gsap !== 'undefined') {
+            gsap.fromTo(this.slides[index],
+                { opacity: 0, scale: 1.05 },
+                { opacity: 1, scale: 1, duration: 1, ease: 'power2.out' }
+            );
+        }
+    }
+
+    goToNext() {
+        const nextIndex = (this.currentIndex + 1) % this.slides.length;
+        this.goToSlide(nextIndex);
+    }
+
+    startAutoplay() {
+        this.autoplayInterval = setInterval(() => {
+            this.goToNext();
+        }, this.autoplayDelay);
+    }
+
+    stopAutoplay() {
+        if (this.autoplayInterval) {
+            clearInterval(this.autoplayInterval);
+            this.autoplayInterval = null;
+        }
+    }
+
+    resetAutoplay() {
+        this.stopAutoplay();
+        this.startAutoplay();
+    }
+
+    setupHoverPause() {
+        this.carousel.addEventListener('mouseenter', () => {
+            this.stopAutoplay();
+        });
+
+        this.carousel.addEventListener('mouseleave', () => {
+            this.startAutoplay();
+        });
+    }
+}
+
+class TestimonialsSlider {
+    constructor() {
+        this.testimonials = document.querySelectorAll('.testimonial-card');
+        this.dots = document.querySelectorAll('.testimonial-dots .dot');
+        this.prevBtn = document.querySelector('.testimonial-prev');
+        this.nextBtn = document.querySelector('.testimonial-next');
+        this.currentIndex = 0;
+        this.autoplayInterval = null;
+        
+        this.init();
+    }
+
+    init() {
+        if (this.testimonials.length === 0) return;
+        
+        this.setupNavigation();
+        this.startAutoplay();
+    }
+
+    setupNavigation() {
+        this.prevBtn.addEventListener('click', () => {
+            this.goToPrev();
+            this.resetAutoplay();
+        });
+
+        this.nextBtn.addEventListener('click', () => {
+            this.goToNext();
+            this.resetAutoplay();
+        });
+
+        this.dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                this.goToSlide(index);
+                this.resetAutoplay();
+            });
+        });
+    }
+
+    goToSlide(index) {
+        this.testimonials.forEach(t => t.classList.remove('active'));
+        this.dots.forEach(d => d.classList.remove('active'));
+        
+        this.testimonials[index].classList.add('active');
+        this.dots[index].classList.add('active');
+        
+        this.currentIndex = index;
+        
+        if (typeof gsap !== 'undefined') {
+            gsap.fromTo(this.testimonials[index],
+                { opacity: 0, y: 30 },
+                { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
+            );
+        }
+    }
+
+    goToNext() {
+        const nextIndex = (this.currentIndex + 1) % this.testimonials.length;
+        this.goToSlide(nextIndex);
+    }
+
+    goToPrev() {
+        const prevIndex = (this.currentIndex - 1 + this.testimonials.length) % this.testimonials.length;
+        this.goToSlide(prevIndex);
+    }
+
+    startAutoplay() {
+        this.autoplayInterval = setInterval(() => {
+            this.goToNext();
+        }, 5000);
+    }
+
+    resetAutoplay() {
+        clearInterval(this.autoplayInterval);
+        this.startAutoplay();
+    }
+}
+
+class ContactForm {
+    constructor() {
+        this.form = document.getElementById('contactForm');
+        this.init();
+    }
+
+    init() {
+        if (!this.form) return;
+        
+        this.form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.handleSubmit();
+        });
+
+        const inputs = this.form.querySelectorAll('input, textarea, select');
+        inputs.forEach(input => {
+            input.setAttribute('placeholder', ' ');
+        });
+    }
+
+    handleSubmit() {
+        const formData = new FormData(this.form);
+        const data = Object.fromEntries(formData);
+        
+        const submitBtn = this.form.querySelector('.submit-btn');
+        const originalText = submitBtn.innerHTML;
+        
+        submitBtn.innerHTML = '<span>Message Sent!</span><i class="fas fa-check"></i>';
+        submitBtn.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+        
+        setTimeout(() => {
+            this.form.reset();
+            submitBtn.innerHTML = originalText;
+            submitBtn.style.background = '';
+        }, 3000);
+        
+        console.log('Form submitted:', data);
+    }
+}
+
+// ============================================
+// MAIN INITIALIZATION
 // ============================================
 function initWebsite() {
     console.log('🌿 Laura\'s Beauty Touch');
@@ -1316,9 +1508,21 @@ function initWebsite() {
     new ElegantPreloader();
     new PremiumHeader();
     new HeroVideoCollage();
-    new SpecialsCarousel();
-    new ServicesCarousel();
-
+    
+    // Initialize Specials Carousel
+    const specialsCarousel = new SpecialsCarousel();
+    specialsCarousel.init();
+    window.specialsCarousel = specialsCarousel;
+    
+    // Initialize Services Carousel - THIS WAS THE FIX!
+    const servicesCarousel = new ServicesCarousel();
+    servicesCarousel.init();
+    window.servicesCarousel = servicesCarousel;
+    
+    new OwnerPhotoCarousel();
+    new TestimonialsSlider();
+    new ContactForm();
+    
     // Initialize AOS if available
     if (typeof AOS !== 'undefined') {
         AOS.init({
