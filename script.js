@@ -1233,6 +1233,90 @@ class ServicesCarousel {
 }
 
 // ============================================
+// TESTIMONIALS SLIDER
+// ============================================
+class TestimonialsSlider {
+    constructor() {
+        this.testimonials = document.querySelectorAll('.testimonial-card');
+        this.dots = document.querySelectorAll('.testimonial-dots .dot');
+        this.prevBtn = document.querySelector('.testimonial-prev');
+        this.nextBtn = document.querySelector('.testimonial-next');
+        this.currentIndex = 0;
+        this.autoplayInterval = null;
+        
+        this.init();
+    }
+
+    init() {
+        if (this.testimonials.length === 0) return;
+        
+        this.setupNavigation();
+        this.startAutoplay();
+    }
+
+    setupNavigation() {
+        if (this.prevBtn) {
+            this.prevBtn.addEventListener('click', () => {
+                this.goToPrev();
+                this.resetAutoplay();
+            });
+        }
+
+        if (this.nextBtn) {
+            this.nextBtn.addEventListener('click', () => {
+                this.goToNext();
+                this.resetAutoplay();
+            });
+        }
+
+        this.dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                this.goToSlide(index);
+                this.resetAutoplay();
+            });
+        });
+    }
+
+    goToSlide(index) {
+        this.testimonials.forEach(t => t.classList.remove('active'));
+        this.dots.forEach(d => d.classList.remove('active'));
+        
+        this.testimonials[index].classList.add('active');
+        this.dots[index].classList.add('active');
+        
+        this.currentIndex = index;
+        
+        if (typeof gsap !== 'undefined') {
+            gsap.fromTo(this.testimonials[index],
+                { opacity: 0, y: 30 },
+                { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
+            );
+        }
+    }
+
+    goToNext() {
+        const nextIndex = (this.currentIndex + 1) % this.testimonials.length;
+        this.goToSlide(nextIndex);
+    }
+
+    goToPrev() {
+        const prevIndex = (this.currentIndex - 1 + this.testimonials.length) % this.testimonials.length;
+        this.goToSlide(prevIndex);
+    }
+
+    startAutoplay() {
+        this.autoplayInterval = setInterval(() => {
+            this.goToNext();
+        }, 5000);
+    }
+
+    resetAutoplay() {
+        clearInterval(this.autoplayInterval);
+        this.startAutoplay();
+    }
+}
+
+// ============================================
 // CONTACT FORM
 // ============================================
 class ContactForm {
@@ -1276,169 +1360,136 @@ class ContactForm {
 }
 
 // ============================================
-// BACK TO TOP BUTTON
+// ELFSIGHT WIDGETS (GOOGLE REVIEWS & INSTAGRAM)
 // ============================================
-class BackToTopButton {
+class ElfsightWidgets {
     constructor() {
-        this.button = document.getElementById('backToTopBtn');
-        this.scrollThreshold = 300;
-        
         this.init();
     }
 
     init() {
-        if (!this.button) return;
-
-        this.handleScroll();
-        this.button.addEventListener('click', () => this.scrollToTop());
+        this.waitForElfsight();
+        this.setupInstagramCTA();
+        this.setupScrollAnimations();
     }
 
-    handleScroll() {
-        let ticking = false;
-
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const scrolled = window.pageYOffset;
-
-                    if (scrolled > this.scrollThreshold) {
-                        this.button.classList.add('visible');
-                    } else {
-                        this.button.classList.remove('visible');
-                    }
-
-                    ticking = false;
-                });
-
-                ticking = true;
+    waitForElfsight() {
+        const checkElfsight = setInterval(() => {
+            if (typeof window.eapps !== 'undefined') {
+                console.log('✅ Elfsight platform loaded');
+                clearInterval(checkElfsight);
+                this.enhanceWidgets();
             }
-        }, { passive: true });
-    }
+        }, 500);
 
-    scrollToTop() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-
-        this.button.style.transform = 'translateY(-3px) scale(1.05)';
         setTimeout(() => {
-            this.button.style.transform = '';
-        }, 200);
+            clearInterval(checkElfsight);
+        }, 10000);
     }
-}
 
-// ============================================
-// FLOATING ACTION BUTTON (FAB)
-// ============================================
-class FloatingActionButton {
-    constructor() {
-        this.fabMain = document.getElementById('fabMain');
-        this.fabOptions = document.getElementById('fabOptions');
-        this.isOpen = false;
+    enhanceWidgets() {
+        const widgets = document.querySelectorAll('[class*="elfsight-app"]');
         
-        this.init();
-    }
-
-    init() {
-        if (!this.fabMain) return;
-
-        // Main FAB toggle
-        this.fabMain.addEventListener('click', (e) => {
-            e.stopPropagation();
-            this.toggleFAB();
-        });
-
-        // Close FAB when clicking outside
-        document.addEventListener('click', (e) => {
-            if (this.isOpen && !e.target.closest('.fab-container')) {
-                this.closeFAB();
-            }
-        });
-
-        // Close on ESC key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && this.isOpen) {
-                this.closeFAB();
-            }
-        });
-
-        // Close FAB when clicking any option
-        const fabOptions = document.querySelectorAll('.fab-option');
-        fabOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                setTimeout(() => this.closeFAB(), 200);
+        widgets.forEach(widget => {
+            widget.classList.add('widget-loading');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            widget.classList.remove('widget-loading');
+                            widget.classList.add('widget-loaded');
+                        }, 1000);
+                        observer.disconnect();
+                    }
+                });
             });
+            
+            observer.observe(widget);
         });
     }
 
-    toggleFAB() {
-        if (this.isOpen) {
-            this.closeFAB();
-        } else {
-            this.openFAB();
-        }
-    }
-
-    openFAB() {
-        this.isOpen = true;
-        this.fabMain.classList.add('active');
-        this.fabOptions.classList.add('active');
-        console.log('📱 Contact options opened');
-    }
-
-    closeFAB() {
-        this.isOpen = false;
-        this.fabMain.classList.remove('active');
-        this.fabOptions.classList.remove('active');
-        console.log('📱 Contact options closed');
-    }
-}// ============================================
-// SECTION VISIBILITY OBSERVER
-// ============================================
-class SectionVisibilityObserver {
-    constructor() {
-        this.sections = document.querySelectorAll('.google-reviews-section, .instagram-section');
-        this.init();
-    }
-
-    init() {
-        if (!this.sections.length) {
-            console.log('⚠️ No review/instagram sections found to observe');
-            return;
-        }
-
-        console.log(`👀 Observing ${this.sections.length} sections for visibility`);
-
-        // Check if IntersectionObserver is supported
-        if (!('IntersectionObserver' in window)) {
-            console.log('⚠️ IntersectionObserver not supported, showing sections immediately');
-            this.sections.forEach(section => {
-                section.classList.add('section-visible');
+    setupInstagramCTA() {
+        const instagramBtn = document.querySelector('.follow-instagram-btn');
+        
+        if (instagramBtn) {
+            instagramBtn.addEventListener('click', (e) => {
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple-effect');
+                instagramBtn.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
             });
-            return;
         }
+    }
 
+    setupScrollAnimations() {
+        const reviewsSection = document.querySelector('.google-reviews-section');
+        const instagramSection = document.querySelector('.instagram-section');
+        
         const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('section-visible');
-                    console.log('✅ Section became visible:', entry.target.id || entry.target.className);
                 }
             });
         }, observerOptions);
 
-        this.sections.forEach(section => {
-            observer.observe(section);
-        });
+        if (reviewsSection) observer.observe(reviewsSection);
+        if (instagramSection) observer.observe(instagramSection);
+    }
+}
 
-        console.log('✅ Section visibility observer initialized');
+// ============================================
+// FLOATING LEAVES ANIMATION
+// ============================================
+class FloatingLeaves {
+    constructor() {
+        this.leaves = document.querySelectorAll('.floating-leaf');
+        this.init();
+    }
+
+    init() {
+        if (this.leaves.length === 0) return;
+
+        this.leaves.forEach((leaf) => {
+            const randomDelay = Math.random() * 5;
+            const randomDuration = 12 + Math.random() * 6;
+            
+            leaf.style.animationDelay = `${randomDelay}s`;
+            leaf.style.animationDuration = `${randomDuration}s`;
+        });
+    }
+}
+
+// ============================================
+// INSTAGRAM HASHTAG INTERACTION
+// ============================================
+class HashtagInteraction {
+    constructor() {
+        this.hashtags = document.querySelectorAll('.hashtag');
+        this.init();
+    }
+
+    init() {
+        if (this.hashtags.length === 0) return;
+
+        this.hashtags.forEach(hashtag => {
+            hashtag.addEventListener('click', () => {
+                const hashtagText = hashtag.textContent.replace('#', '');
+                const instagramUrl = `https://www.instagram.com/explore/tags/${hashtagText}/`;
+                window.open(instagramUrl, '_blank');
+            });
+
+            hashtag.style.cursor = 'pointer';
+        });
     }
 }
 
@@ -1449,27 +1500,31 @@ function initWebsite() {
     console.log('🌿 Laura\'s Beauty Touch');
     console.log('💎 Initializing components...');
     
-    // Core Components
+    // Initialize all components
     new ElegantPreloader();
     new PremiumHeader();
     new HeroVideoCollage();
     
-    // Carousels
+    // Initialize Specials Carousel
     const specialsCarousel = new SpecialsCarousel();
     specialsCarousel.init();
     window.specialsCarousel = specialsCarousel;
     
+    // Initialize Services Carousel
     const servicesCarousel = new ServicesCarousel();
     servicesCarousel.init();
     window.servicesCarousel = servicesCarousel;
     
-    // Forms & Interactions
-    new ContactForm();
-    new BackToTopButton();
-    new FloatingActionButton();
+    // Initialize Testimonials
+    new TestimonialsSlider();
     
-    // Section Visibility
-    new SectionVisibilityObserver();
+    // Initialize Contact Form
+    new ContactForm();
+    
+    // Initialize Elfsight Widgets (Google Reviews & Instagram)
+    new ElfsightWidgets();
+    new FloatingLeaves();
+    new HashtagInteraction();
     
     // Initialize AOS if available
     if (typeof AOS !== 'undefined') {
@@ -1483,3 +1538,12 @@ function initWebsite() {
     
     console.log('✅ All components initialized successfully');
 }
+
+// Start everything when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initWebsite);
+} else {
+    initWebsite();
+}
+
+console.log('🌟 Script loaded and ready');
