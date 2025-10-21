@@ -177,41 +177,51 @@ class HeroVideoCollage {
     }
 
     setupVideoPlayback() {
-        // Force video playback with multiple fallbacks
-        const playVideo = (video) => {
-            if (!video) return;
+        // Synchronize all videos to start together
+        const syncVideos = () => {
+            let allLoaded = true;
             
+            this.videos.forEach(video => {
+                if (video.readyState < 3) { // HAVE_FUTURE_DATA
+                    allLoaded = false;
+                }
+            });
+            
+            if (allLoaded && !this.userInteracted) {
+                this.userInteracted = true;
+                
+                // Synchronize start time
+                const startTime = 0;
+                this.videos.forEach(video => {
+                    video.currentTime = startTime;
+                    video.muted = true;
+                    video.play().catch(e => console.log('Sync play prevented'));
+                });
+                
+                console.log('All videos synchronized and playing');
+            }
+        };
+
+        // Setup each video with aggressive loading
+        this.videos.forEach((video, index) => {
+            // Force all attributes for smooth playback
             video.muted = true;
+            video.loop = true;
             video.playsInline = true;
             video.setAttribute('playsinline', '');
             video.setAttribute('webkit-playsinline', '');
             video.setAttribute('muted', '');
+            video.preload = 'auto';
             
-            const attemptPlay = () => {
-                const playPromise = video.play();
-                
-                if (playPromise !== undefined) {
-                    playPromise.catch(error => {
-                        console.log('Video autoplay prevented, retrying...', error);
-                        setTimeout(attemptPlay, 100);
-                    });
-                }
-            };
-            
-            attemptPlay();
-        };
+            // Handle when video can play
+            video.addEventListener('canplay', () => {
+                console.log(`Video ${index + 1} can play`);
+                syncVideos();
+            });
 
-        // Setup each video
-        this.videos.forEach((video, index) => {
-            // Set video attributes
-            video.muted = true;
-            video.loop = true;
-            video.playsInline = true;
-            
-            // Handle video loaded
-            video.addEventListener('loadeddata', () => {
+            video.addEventListener('canplaythrough', () => {
                 console.log(`Video ${index + 1} loaded`);
-                playVideo(video);
+                syncVideos();
             });
 
             // Handle video errors
@@ -219,58 +229,74 @@ class HeroVideoCollage {
                 console.error(`Video ${index + 1} error:`, e);
             });
 
-            // Seamless looping
-            video.addEventListener('ended', () => {
-                video.currentTime = 0;
-                video.play();
+            // Perfect loop without gaps
+            video.addEventListener('timeupdate', () => {
+                // Loop before the end to avoid gaps
+                if (video.currentTime >= video.duration - 0.1) {
+                    video.currentTime = 0;
+                }
             });
 
-            // Load video
+            // Start loading
             video.load();
-            
-            // Attempt initial play
-            setTimeout(() => playVideo(video), 100);
         });
 
-        // Enable videos on ANY user interaction
+        // Force play on user interaction
         const enableAllVideos = () => {
-            if (this.userInteracted) return;
-            
-            this.userInteracted = true;
             console.log('User interacted - enabling all videos');
             
+            // Sync all videos to same timestamp
+            const syncTime = this.videos[0].currentTime || 0;
+            
             this.videos.forEach(video => {
+                video.currentTime = syncTime;
                 video.muted = true;
-                video.play().catch(e => {
+                video.play().then(() => {
+                    console.log('Video playing after interaction');
+                }).catch(e => {
                     console.log('Play prevented:', e);
                 });
             });
         };
 
-        // Listen for multiple interaction types
-        ['click', 'touchstart', 'scroll', 'keydown', 'mousemove'].forEach(event => {
+        // Listen for user interactions
+        ['click', 'touchstart', 'scroll', 'keydown'].forEach(event => {
             document.addEventListener(event, enableAllVideos, { once: true, passive: true });
         });
 
-        // Intersection Observer for performance
-        const videoObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                const video = entry.target;
-                if (entry.isIntersecting) {
-                    video.play().catch(e => console.log('Observer play prevented'));
-                } else {
-                    // Don't pause, keep videos playing for smooth experience
-                    // video.pause();
+        // Auto-attempt play after short delay
+        setTimeout(() => {
+            if (!this.userInteracted) {
+                enableAllVideos();
+            }
+        }, 500);
+
+        // Keep videos in sync periodically
+        setInterval(() => {
+            if (this.videos.length < 2) return;
+            
+            const masterVideo = this.videos[0];
+            const masterTime = masterVideo.currentTime;
+            
+            this.videos.forEach((video, index) => {
+                if (index === 0) return; // Skip master video
+                
+                const timeDiff = Math.abs(video.currentTime - masterTime);
+                
+                // If videos drift more than 0.3 seconds, resync
+                if (timeDiff > 0.3) {
+                    video.currentTime = masterTime;
+                    console.log(`Resynced video ${index + 1}`);
                 }
             });
-        }, { threshold: 0.25 });
+        }, 2000); // Check every 2 seconds
 
-        this.videos.forEach(video => videoObserver.observe(video));
-
-        // Visibility change handler
+        // Visibility change handler - resync when tab becomes visible
         document.addEventListener('visibilitychange', () => {
             if (!document.hidden) {
+                const masterTime = this.videos[0].currentTime;
                 this.videos.forEach(video => {
+                    video.currentTime = masterTime;
                     if (video.paused) {
                         video.play().catch(e => {});
                     }
@@ -280,6 +306,25 @@ class HeroVideoCollage {
     }
 
     initTypedAnimations() {
+        // Check if Typed.js is available
+        if (typeof Typed === 'undefined') {
+            console.log('Typed.js not loaded, using fallback text');
+            // Fallback: just show static text
+            const fallbacks = {
+                '#typed-1': 'Touch',
+                '#typed-2': 'of Wellness',
+                '#typed-3': 'Natural Glow'
+            };
+            
+            Object.keys(fallbacks).forEach(selector => {
+                const element = document.querySelector(selector);
+                if (element) {
+                    element.textContent = fallbacks[selector];
+                }
+            });
+            return;
+        }
+
         const typedConfigs = [
             {
                 element: '#typed-1',
@@ -315,8 +360,12 @@ class HeroVideoCollage {
 
         typedConfigs.forEach(config => {
             if (document.querySelector(config.element)) {
-                const typed = new Typed(config.element, config);
-                this.typedInstances.push(typed);
+                try {
+                    const typed = new Typed(config.element, config);
+                    this.typedInstances.push(typed);
+                } catch (error) {
+                    console.error('Error initializing Typed.js:', error);
+                }
             }
         });
     }
