@@ -88,6 +88,20 @@
     </div>
     <div class="mobile-overlay"></div>
 
+        <!-- FLOATING SPECIALS BUTTON -->
+    <a href="specials.html" class="specials-floating-btn" id="specialsFloatingBtn">
+        <div class="btn-content">
+            <div class="btn-icon">
+                <i class="fas fa-sparkles"></i>
+            </div>
+            <div class="btn-text">
+                <div class="btn-label">View Specials</div>
+                <div class="btn-subtitle">ON SALE NOW</div>
+            </div>
+        </div>
+        <div class="specials-badge">4</div>
+    </a>
+
     <!-- HERO SECTION WITH VIDEO COLLAGE -->
     <section class="hero-section" id="home">
         
@@ -181,104 +195,6 @@
         </div>
     </section>
 
-    
-    <!-- SPECIALS CAROUSEL SECTION -->
-    <section class="specials-section" id="specials">
-        <div class="specials-container">
-            
-            <!-- Section Header -->
-            <div class="section-header">
-                <div class="section-eyebrow">Limited Time Offers</div>
-                <h2 class="section-title">Our Current Specials</h2>
-                <div class="title-divider"></div>
-                <p class="section-subtitle">Indulge in luxury treatments at exceptional value</p>
-            </div>
-
-            <!-- Specials Carousel Wrapper -->
-            <div class="specials-carousel-wrapper">
-                
-                <!-- Carousel Container (populated dynamically from JSON) -->
-                <div class="specials-carousel" id="specialsCarousel">
-                    <!-- Special cards will be loaded here from specials.json -->
-                </div>
-
-                <!-- No Specials Message (Hidden by default) -->
-                <div class="no-specials-message" id="noSpecialsMessage">
-                    <div class="no-specials-icon">
-                        <i class="fas fa-spa"></i>
-                    </div>
-                    <h3>No Current Specials</h3>
-                    <p>We're currently not offering any special promotions, but our regular services are always exceptional.</p>
-                    <a href="#services" class="view-services-btn">
-                        <span>View Our Services</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <!-- Carousel Navigation -->
-                <button class="carousel-nav carousel-prev" id="prevBtn" aria-label="Previous special">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="carousel-nav carousel-next" id="nextBtn" aria-label="Next special">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-
-            </div>
-
-            <!-- Carousel Indicators -->
-            <div class="carousel-indicators" id="carouselIndicators"></div>
-
-        </div>
-
-        <!-- PACKAGE DETAILS MODAL -->
-        <div class="package-modal" id="packageModal">
-            <div class="modal-overlay"></div>
-            <div class="modal-content">
-                <button class="modal-close" aria-label="Close modal">
-                    <i class="fas fa-times"></i>
-                </button>
-                
-                <div class="modal-image-container">
-                    <img src="" alt="" class="modal-image" id="modalImage">
-                    <div class="modal-badge" id="modalBadge">
-                        <span class="save-text">SAVE</span>
-                        <span class="save-amount" id="modalSavings"></span>
-                    </div>
-                </div>
-
-                <div class="modal-body">
-                    <div class="modal-brand" id="modalBrand"></div>
-                    <h3 class="modal-title" id="modalTitle"></h3>
-                    <p class="modal-description" id="modalDescription"></p>
-
-                    <div class="modal-price-section">
-                        <div class="modal-price">
-                            <span class="modal-current-price" id="modalCurrentPrice"></span>
-                            <span class="modal-original-price" id="modalOriginalPrice"></span>
-                        </div>
-                    </div>
-
-                    <div class="modal-includes" id="modalIncludes">
-                        <h4 class="includes-title">
-                            <i class="fas fa-check-circle"></i>
-                            What's Included
-                        </h4>
-                        <ul class="includes-list" id="includesList">
-                            <!-- Will be populated dynamically -->
-                        </ul>
-                    </div>
-
-                    <div class="modal-actions">
-                        <a href="#contact" class="modal-book-btn" id="modalBookBtn">
-                            <span>Book This Package</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
 <!-- ABOUT LAURA & THE SPA SECTION -->
 <section id="about" class="about-laura-section">
     <div class="about-container">
@@ -636,7 +552,7 @@
 
                 <!-- Service Card: Specials -->
                 <div class="service-category-card" data-category="specials">
-                    <a href="#specials" class="service-card-link">
+                    <a href="specials.html" class="service-card-link">
                         <div class="service-card-image">
                             <div class="service-image-overlay"></div>
                             <div class="service-icon-wrapper">
