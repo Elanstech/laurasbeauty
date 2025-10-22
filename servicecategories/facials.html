@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Treatments - Laura's Beauty Touch</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="servicescat.css">
+</head>
+<body data-category="facials">
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <span class="logo-text">Laura's Beauty Touch</span>
+                </a>
+                
+                <div class="nav-menu" id="navMenu">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link active">Services</a>
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                    <a href="testimonials.html" class="nav-link">Reviews</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+                
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Category Hero Section -->
+    <section class="category-hero" id="categoryHero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="category-title" id="categoryTitle">Face Treatments</h1>
+            <p class="category-subtitle" id="categorySubtitle">Rejuvenate your skin with our luxurious facial treatments</p>
+            <div class="hero-divider"></div>
+        </div>
+    </section>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb-container">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="separator">/</span>
+                <a href="services.html">Services</a>
+                <span class="separator">/</span>
+                <span class="current" id="breadcrumbCurrent">Face Treatments</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Services Grid Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="services-intro">
+                <h2 class="section-title">Our Treatments</h2>
+                <p class="section-description" id="sectionDescription">
+                    Discover our range of specialized facial treatments designed to address your unique skincare needs.
+                </p>
+            </div>
+
+            <!-- Loading State -->
+            <div class="loading-state" id="loadingState">
+                <div class="loading-spinner"></div>
+                <p>Loading treatments...</p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="services-grid" id="servicesGrid">
+                <!-- Services will be dynamically loaded here -->
+            </div>
+
+            <!-- No Services Message -->
+            <div class="no-services" id="noServices" style="display: none;">
+                <i class="fas fa-spa"></i>
+                <p>No services available at this time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Experience Natural Beauty?</h2>
+                <p class="cta-text">Book your appointment today and let us pamper you with our luxury treatments</p>
+                <a href="contact.html" class="cta-button">
+                    <span>Book Now</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">Laura's Beauty Touch</h3>
+                    <p class="footer-description">Experience natural luxury and rejuvenation in our serene spa sanctuary.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Book Now</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-heading">Hours</h4>
+                    <ul class="footer-info">
+                        <li>Monday - Friday: 9am - 7pm</li>
+                        <li>Saturday: 9am - 6pm</li>
+                        <li>Sunday: 10am - 5pm</li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-heading">Contact</h4>
+                    <ul class="footer-info">
+                        <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@laurasbeauty.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Spa Lane, Beauty City</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Laura's Beauty Touch. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <span>|</span>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <a href="contact.html" class="fab-button" aria-label="Book Appointment">
+        <i class="fas fa-calendar-check"></i>
+        <span class="fab-text">Book Now</span>
+    </a>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="servicescat.js"></script>
+</body>
+</html>
