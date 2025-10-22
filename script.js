@@ -1,4 +1,8 @@
 // ============================================
+// LAURA'S BEAUTY TOUCH - MAIN SCRIPT
+// ============================================
+
+// ============================================
 // ELEGANT PRELOADER
 // ============================================
 class ElegantPreloader {
@@ -277,346 +281,6 @@ class HeroVideoCollage {
                 ticking = true;
             }
         }, { passive: true });
-    }
-}
-
-// ============================================
-// SPECIALS CAROUSEL
-// ============================================
-
-class SpecialsButton {
-    constructor() {
-        // JSON Path
-        this.jsonPath = 'json/specials.json';
-        
-        // Elements
-        this.floatingBtn = document.getElementById('specialsBtn');
-        this.specialsCount = document.getElementById('specialsCount');
-        this.specialsModal = document.getElementById('specialsModal');
-        this.specialsModalOverlay = document.getElementById('specialsModalOverlay');
-        this.closeModalBtn = document.getElementById('closeModalBtn');
-        this.specialsGrid = document.getElementById('specialsGrid');
-        this.noSpecials = document.getElementById('noSpecials');
-        
-        // Detail Modal Elements
-        this.detailModal = document.getElementById('detailModal');
-        this.detailModalOverlay = document.getElementById('detailModalOverlay');
-        this.closeDetailBtn = document.getElementById('closeDetailBtn');
-        
-        // Data
-        this.specials = [];
-        this.currentSpecial = null;
-    }
-
-    async init() {
-        try {
-            console.log('🎁 Initializing Specials Button System...');
-            
-            // Load specials from JSON
-            await this.loadSpecials();
-            
-            if (this.specials && this.specials.length > 0) {
-                console.log(`✅ Loaded ${this.specials.length} special(s)`);
-                
-                // Update badge count
-                this.updateBadgeCount();
-                
-                // Render specials grid
-                this.renderSpecialsGrid();
-                
-                // Setup event listeners
-                this.setupEventListeners();
-                
-                // Show floating button
-                this.floatingBtn.classList.remove('hidden');
-                
-                console.log('✅ Specials Button System initialized successfully');
-            } else {
-                console.log('ℹ️ No specials found - hiding button');
-                this.floatingBtn.classList.add('hidden');
-            }
-        } catch (error) {
-            console.error('❌ Error initializing specials button:', error);
-            this.floatingBtn.classList.add('hidden');
-        }
-    }
-
-    async loadSpecials() {
-        try {
-            const response = await fetch(this.jsonPath);
-            
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            
-            const data = await response.json();
-            this.specials = data.specials || [];
-            
-        } catch (error) {
-            console.error('❌ Error loading specials JSON:', error);
-            throw error;
-        }
-    }
-
-    updateBadgeCount() {
-        if (this.specialsCount) {
-            this.specialsCount.textContent = this.specials.length;
-        }
-    }
-
-    renderSpecialsGrid() {
-        if (!this.specialsGrid) {
-            console.error('❌ Specials grid container not found');
-            return;
-        }
-
-        this.specialsGrid.innerHTML = '';
-
-        if (this.specials.length === 0) {
-            if (this.noSpecials) {
-                this.noSpecials.style.display = 'block';
-            }
-            return;
-        }
-
-        if (this.noSpecials) {
-            this.noSpecials.style.display = 'none';
-        }
-
-        this.specials.forEach((special) => {
-            const card = this.createSpecialCard(special);
-            this.specialsGrid.appendChild(card);
-        });
-    }
-
-    createSpecialCard(special) {
-        const card = document.createElement('div');
-        card.className = 'special-grid-card';
-        card.dataset.specialId = special.id;
-        
-        let cardHTML = `
-            <div class="special-card-image">
-                <img src="${special.image}" alt="${this.escapeHtml(special.title)}" loading="lazy">
-        `;
-        
-        // Add savings badge if applicable
-        if (special.savings && special.savings > 0) {
-            cardHTML += `
-                <div class="card-save-badge">
-                    <span class="save-text">SAVE</span>
-                    <span class="save-amount">$${special.savings.toFixed(2)}</span>
-                </div>
-            `;
-        }
-        
-        cardHTML += `</div>`;
-        
-        // Card content
-        cardHTML += `
-            <div class="special-card-content">
-                <div class="card-brand">${this.escapeHtml(special.brand)}</div>
-                <h3 class="card-title">${this.escapeHtml(special.title)}</h3>
-        `;
-        
-        if (special.description) {
-            cardHTML += `<p class="card-description">${this.escapeHtml(special.description)}</p>`;
-        }
-        
-        // Price section
-        cardHTML += `
-            <div class="card-price">
-                <span class="card-current-price">$${special.currentPrice}</span>
-        `;
-        
-        if (special.originalPrice && special.originalPrice > 0) {
-            cardHTML += `<span class="card-original-price">$${special.originalPrice}</span>`;
-        }
-        
-        cardHTML += `</div>`;
-        
-        // View details button
-        cardHTML += `
-                <button type="button" class="card-view-btn">
-                    <span>View Details</span>
-                    <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-        `;
-        
-        card.innerHTML = cardHTML;
-        
-        // Add click event to open detail modal
-        card.addEventListener('click', () => {
-            this.openDetailModal(special.id);
-        });
-        
-        return card;
-    }
-
-    setupEventListeners() {
-        // Open main modal
-        if (this.floatingBtn) {
-            this.floatingBtn.addEventListener('click', () => {
-                this.openMainModal();
-            });
-        }
-
-        // Close main modal
-        if (this.closeModalBtn) {
-            this.closeModalBtn.addEventListener('click', () => {
-                this.closeMainModal();
-            });
-        }
-
-        if (this.specialsModalOverlay) {
-            this.specialsModalOverlay.addEventListener('click', () => {
-                this.closeMainModal();
-            });
-        }
-
-        // Close detail modal
-        if (this.closeDetailBtn) {
-            this.closeDetailBtn.addEventListener('click', () => {
-                this.closeDetailModal();
-            });
-        }
-
-        if (this.detailModalOverlay) {
-            this.detailModalOverlay.addEventListener('click', () => {
-                this.closeDetailModal();
-            });
-        }
-
-        // ESC key to close modals
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                if (this.detailModal.classList.contains('active')) {
-                    this.closeDetailModal();
-                } else if (this.specialsModal.classList.contains('active')) {
-                    this.closeMainModal();
-                }
-            }
-        });
-    }
-
-    openMainModal() {
-        if (this.specialsModal) {
-            this.specialsModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-    }
-
-    closeMainModal() {
-        if (this.specialsModal) {
-            this.specialsModal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    }
-
-    openDetailModal(specialId) {
-        const special = this.specials.find(s => s.id === specialId);
-        
-        if (!special) {
-            console.error('❌ Special not found:', specialId);
-            return;
-        }
-
-        this.currentSpecial = special;
-        this.populateDetailModal(special);
-
-        // Close main modal and open detail modal
-        this.closeMainModal();
-        
-        setTimeout(() => {
-            if (this.detailModal) {
-                this.detailModal.classList.add('active');
-            }
-        }, 300);
-    }
-
-    populateDetailModal(special) {
-        // Image
-        const detailImage = document.getElementById('detailImage');
-        if (detailImage) {
-            detailImage.src = special.image;
-            detailImage.alt = special.title;
-        }
-
-        // Savings badge
-        const detailBadge = document.getElementById('detailBadge');
-        const detailSavings = document.getElementById('detailSavings');
-        if (special.savings && special.savings > 0) {
-            if (detailBadge) detailBadge.style.display = 'flex';
-            if (detailSavings) detailSavings.textContent = `$${special.savings.toFixed(2)}`;
-        } else {
-            if (detailBadge) detailBadge.style.display = 'none';
-        }
-
-        // Brand
-        const detailBrand = document.getElementById('detailBrand');
-        if (detailBrand) detailBrand.textContent = special.brand;
-
-        // Title
-        const detailTitle = document.getElementById('detailTitle');
-        if (detailTitle) detailTitle.textContent = special.title;
-
-        // Description
-        const detailDescription = document.getElementById('detailDescription');
-        if (detailDescription) {
-            detailDescription.textContent = special.description || '';
-            detailDescription.style.display = special.description ? 'block' : 'none';
-        }
-
-        // Current price
-        const detailCurrentPrice = document.getElementById('detailCurrentPrice');
-        if (detailCurrentPrice) {
-            detailCurrentPrice.textContent = `$${special.currentPrice}`;
-        }
-
-        // Original price
-        const detailOriginalPrice = document.getElementById('detailOriginalPrice');
-        if (detailOriginalPrice) {
-            if (special.originalPrice && special.originalPrice > 0) {
-                detailOriginalPrice.textContent = `$${special.originalPrice}`;
-                detailOriginalPrice.style.display = 'inline';
-            } else {
-                detailOriginalPrice.style.display = 'none';
-            }
-        }
-
-        // Includes list
-        const detailIncludesList = document.getElementById('detailIncludesList');
-        if (detailIncludesList && special.includes && special.includes.length > 0) {
-            detailIncludesList.innerHTML = '';
-            special.includes.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item;
-                detailIncludesList.appendChild(li);
-            });
-        }
-
-        // Book button
-        const detailBookBtn = document.getElementById('detailBookBtn');
-        if (detailBookBtn && special.bookingLink) {
-            detailBookBtn.href = special.bookingLink;
-        }
-    }
-
-    closeDetailModal() {
-        if (this.detailModal) {
-            this.detailModal.classList.remove('active');
-            
-            // Reopen main modal after a delay
-            setTimeout(() => {
-                this.openMainModal();
-            }, 300);
-        }
-    }
-
-    escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
     }
 }
 
@@ -1166,7 +830,7 @@ class TeamSection {
 }
 
 // ============================================
-// ELFSIGHT WIDGETS (GOOGLE REVIEWS & INSTAGRAM)
+// ELFSIGHT WIDGETS
 // ============================================
 class ElfsightWidgets {
     constructor() {
@@ -1219,7 +883,7 @@ class ElfsightWidgets {
         const instagramBtn = document.querySelector('.follow-instagram-btn');
         
         if (instagramBtn) {
-            instagramBtn.addEventListener('click', (e) => {
+            instagramBtn.addEventListener('click', () => {
                 const ripple = document.createElement('span');
                 ripple.classList.add('ripple-effect');
                 instagramBtn.appendChild(ripple);
@@ -1253,6 +917,9 @@ class ElfsightWidgets {
     }
 }
 
+// ============================================
+// FLOATING LEAVES ANIMATION
+// ============================================
 class FloatingLeaves {
     constructor() {
         this.leaves = document.querySelectorAll('.floating-leaf');
@@ -1315,20 +982,21 @@ class ContactSection {
         this.setupButtonTracking();
         this.setupCardAnimations();
         this.setupScrollReveal();
+        this.addRippleStyles();
     }
 
     setupButtonTracking() {
         if (this.bookButton) {
-            this.bookButton.addEventListener('click', () => {
+            this.bookButton.addEventListener('click', (e) => {
                 console.log('📅 Book Appointment clicked');
-                this.createButtonRipple(event);
+                this.createButtonRipple(e);
             });
         }
 
         if (this.callButton) {
-            this.callButton.addEventListener('click', () => {
+            this.callButton.addEventListener('click', (e) => {
                 console.log('📞 Call button clicked');
-                this.createButtonRipple(event);
+                this.createButtonRipple(e);
             });
         }
     }
@@ -1364,6 +1032,9 @@ class ContactSection {
         const icon = card.querySelector('.cta-icon');
         if (icon) {
             icon.style.transform = 'scale(1.1) rotate(5deg)';
+            setTimeout(() => {
+                icon.style.transform = '';
+            }, 300);
         }
     }
 
@@ -1383,34 +1054,38 @@ class ContactSection {
 
         observer.observe(this.contactSection);
     }
-}
 
-// Add button ripple styles
-const contactStyles = document.createElement('style');
-contactStyles.textContent = `
-    .contact-button-ripple {
-        position: absolute;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.4);
-        transform: scale(0);
-        animation: contactRipple 0.6s ease-out;
-        pointer-events: none;
+    addRippleStyles() {
+        if (document.getElementById('contact-ripple-styles')) return;
+
+        const style = document.createElement('style');
+        style.id = 'contact-ripple-styles';
+        style.textContent = `
+            .contact-button-ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.4);
+                transform: scale(0);
+                animation: contactRipple 0.6s ease-out;
+                pointer-events: none;
+            }
+            
+            @keyframes contactRipple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+            
+            .btn-book-now,
+            .btn-call-now {
+                position: relative;
+                overflow: hidden;
+            }
+        `;
+        document.head.appendChild(style);
     }
-    
-    @keyframes contactRipple {
-        to {
-            transform: scale(2);
-            opacity: 0;
-        }
-    }
-    
-    .btn-book-now,
-    .btn-call-now {
-        position: relative;
-        overflow: hidden;
-    }
-`;
-document.head.appendChild(contactStyles);
+}
 
 // ============================================
 // SUPER FOOTER
@@ -1434,6 +1109,7 @@ class SuperFooter {
         this.setupSocialTracking();
         this.setupCTATracking();
         this.setupScrollReveal();
+        this.addFooterStyles();
     }
 
     setCurrentYear() {
@@ -1452,7 +1128,6 @@ class SuperFooter {
     }
 
     animateLink(link) {
-        // Add ripple effect on hover
         link.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
     }
 
@@ -1462,7 +1137,6 @@ class SuperFooter {
                 const platform = link.getAttribute('aria-label');
                 console.log(`Social link clicked: ${platform}`);
                 
-                // Add click animation
                 link.style.transform = 'scale(0.9)';
                 setTimeout(() => {
                     link.style.transform = '';
@@ -1476,8 +1150,6 @@ class SuperFooter {
 
         this.ctaButton.addEventListener('click', (e) => {
             console.log('Footer CTA clicked: Book Appointment');
-            
-            // Create ripple effect
             this.createRipple(e);
         });
     }
@@ -1544,34 +1216,38 @@ class SuperFooter {
             }, index * 100);
         });
     }
-}
 
-// Add ripple animation styles
-const footerStyles = document.createElement('style');
-footerStyles.textContent = `
-    @keyframes footerRipple {
-        to {
-            transform: scale(2);
-            opacity: 0;
-        }
+    addFooterStyles() {
+        if (document.getElementById('footer-styles')) return;
+
+        const style = document.createElement('style');
+        style.id = 'footer-styles';
+        style.textContent = `
+            @keyframes footerRipple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+            
+            .footer-visible {
+                animation: fadeInUp 0.8s ease forwards;
+            }
+            
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
     }
-    
-    .footer-visible {
-        animation: fadeInUp 0.8s ease forwards;
-    }
-    
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-`;
-document.head.appendChild(footerStyles);
+}
 
 // ============================================
 // BACK TO TOP BUTTON
@@ -1619,7 +1295,6 @@ class BackToTopButton {
             behavior: 'smooth'
         });
 
-        // Optional: Add a subtle animation feedback
         this.button.style.transform = 'translateY(-3px) scale(1.05)';
         setTimeout(() => {
             this.button.style.transform = '';
@@ -1628,7 +1303,7 @@ class BackToTopButton {
 }
 
 // ============================================
-// FLOATING ACTION BUTTON (FAB) - SIMPLIFIED
+// FLOATING ACTION BUTTON (FAB)
 // ============================================
 class FloatingActionButton {
     constructor() {
@@ -1642,27 +1317,23 @@ class FloatingActionButton {
     init() {
         if (!this.fabMain) return;
 
-        // Main FAB toggle
         this.fabMain.addEventListener('click', (e) => {
             e.stopPropagation();
             this.toggleFAB();
         });
 
-        // Close FAB when clicking outside
         document.addEventListener('click', (e) => {
             if (this.isOpen && !e.target.closest('.fab-container')) {
                 this.closeFAB();
             }
         });
 
-        // Close on ESC key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.isOpen) {
                 this.closeFAB();
             }
         });
 
-        // Close FAB when clicking any option
         const fabOptions = document.querySelectorAll('.fab-option');
         fabOptions.forEach(option => {
             option.addEventListener('click', () => {
@@ -1698,37 +1369,34 @@ class FloatingActionButton {
 // MAIN INITIALIZATION
 // ============================================
 function initWebsite() {
-    console.log('🌿 Laura\'s Beauty Touch');
+    console.log('🌿 Laura\'s Beauty Touch - Website Loading...');
     console.log('💎 Initializing components...');
     
-    // Initialize all components
+    // Core Components
     new ElegantPreloader();
     new PremiumHeader();
     new HeroVideoCollage();
+    
+    // Interactive Elements
     new BackToTopButton();
     new FloatingActionButton();
+    
+    // Content Sections
     new TeamSection();
+    new ContactSection();
     new SuperFooter();
     
-    // Initialize Specials Carousel
-    const specialsButton = new SpecialsButton();
-    specialsButton.init();
-    window.specialsButton = specialsButton;
-    
-    // Initialize Services Carousel
+    // Services Carousel
     const servicesCarousel = new ServicesCarousel();
     servicesCarousel.init();
     window.servicesCarousel = servicesCarousel;
-        
-    // Initialize Contact Form
-    new ContactSection();
     
-    // Initialize Elfsight Widgets (Google Reviews & Instagram)
+    // Third-Party Widgets
     new ElfsightWidgets();
     new FloatingLeaves();
     new HashtagInteraction();
     
-    // Initialize AOS if available
+    // Initialize AOS (Animate On Scroll)
     if (typeof AOS !== 'undefined') {
         AOS.init({
             duration: 1000,
@@ -1741,7 +1409,7 @@ function initWebsite() {
     console.log('✅ All components initialized successfully');
 }
 
-// Start everything when DOM is ready
+// Start initialization when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initWebsite);
 } else {
