@@ -65,6 +65,9 @@ class PremiumHeaderWithMegaMenu {
         this.handleMobileSubmenu(); // New mobile submenu functionality
     }
 
+    // ============================================
+    // SCROLL HANDLING (from original)
+    // ============================================
     handleScroll() {
         let ticking = false;
         
@@ -86,7 +89,10 @@ class PremiumHeaderWithMegaMenu {
             }
         }, { passive: true });
     }
-    
+
+    // ============================================
+    // MOBILE MENU (from original)
+    // ============================================
     handleMobileMenu() {
         if (!this.mobileToggle) return;
 
@@ -130,7 +136,10 @@ class PremiumHeaderWithMegaMenu {
         this.mobileOverlay.classList.remove('active');
         document.body.style.overflow = '';
     }
-    
+
+    // ============================================
+    // LOGO CLICK (from original)
+    // ============================================
     handleLogoClick() {
         if (this.logoWrapper) {
             this.logoWrapper.addEventListener('click', () => {
@@ -139,6 +148,9 @@ class PremiumHeaderWithMegaMenu {
         }
     }
 
+    // ============================================
+    // SMOOTH SCROLL (from original)
+    // ============================================
     handleSmoothScroll() {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', (e) => {
@@ -166,7 +178,10 @@ class PremiumHeaderWithMegaMenu {
         });
     }
 
-handleMegaMenu() {
+    // ============================================
+    // MEGA MENU FUNCTIONALITY (NEW)
+    // ============================================
+    handleMegaMenu() {
         if (!this.megamenuItem || !this.megamenuWrapper) return;
 
         // Show mega menu on hover
@@ -174,9 +189,13 @@ handleMegaMenu() {
             this.openMegaMenu();
         });
 
-        // Hide mega menu on mouse leave with delay
-        this.megamenuItem.addEventListener('mouseleave', () => {
-            this.scheduleMegaMenuClose();
+        // Hide mega menu on mouse leave with longer delay
+        this.megamenuItem.addEventListener('mouseleave', (e) => {
+            // Check if mouse is moving towards the mega menu
+            const rect = this.megamenuWrapper.getBoundingClientRect();
+            if (e.clientY < rect.top) {
+                this.scheduleMegaMenuClose(300); // Longer delay
+            }
         });
 
         // Keep menu open when hovering over it
@@ -185,7 +204,7 @@ handleMegaMenu() {
         });
 
         this.megamenuWrapper.addEventListener('mouseleave', () => {
-            this.scheduleMegaMenuClose();
+            this.scheduleMegaMenuClose(200); // Slightly shorter when leaving menu
         });
 
         // Close mega menu on click outside
@@ -244,10 +263,10 @@ handleMegaMenu() {
         console.log('🎯 Mega menu closed');
     }
 
-    scheduleMegaMenuClose() {
+    scheduleMegaMenuClose(delay = 200) {
         this.megamenuTimeout = setTimeout(() => {
             this.closeMegaMenu();
-        }, 150);
+        }, delay);
     }
 
     cancelMegaMenuClose() {
@@ -272,7 +291,10 @@ handleMegaMenu() {
             });
         });
     }
-    
+
+    // ============================================
+    // MOBILE SUBMENU ACCORDION (NEW)
+    // ============================================
     handleMobileSubmenu() {
         const mobileDropdownTriggers = document.querySelectorAll('.mobile-dropdown-trigger');
         
@@ -313,7 +335,10 @@ handleMegaMenu() {
             });
         });
     }
-    
+
+    // ============================================
+    // ENTRANCE ANIMATIONS
+    // ============================================
     addEntranceAnimations() {
         const navItems = document.querySelectorAll('.nav-item');
         navItems.forEach((item, index) => {
