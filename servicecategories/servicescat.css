@@ -1,0 +1,585 @@
+/* ===================================
+   SERVICE CATEGORY PAGE STYLES
+   Laura's Beauty Touch
+   =================================== */
+
+/* Category Hero Section */
+.category-hero {
+    position: relative;
+    height: 60vh;
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Default background images for each category */
+body[data-category="facials"] .category-hero {
+    background-image: url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1920');
+}
+
+body[data-category="addons"] .category-hero {
+    background-image: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1920');
+}
+
+body[data-category="body"] .category-hero {
+    background-image: url('https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=1920');
+}
+
+body[data-category="specials"] .category-hero {
+    background-image: url('https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=1920');
+}
+
+body[data-category="nails"] .category-hero {
+    background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1920');
+}
+
+body[data-category="packages"] .category-hero {
+    background-image: url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1920');
+}
+
+body[data-category="laser"] .category-hero {
+    background-image: url('https://images.unsplash.com/photo-1629198735790-e0b8f8c43ea6?w=1920');
+}
+
+body[data-category="wax"] .category-hero {
+    background-image: url('https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=1920');
+}
+
+body[data-category="pmu"] .category-hero {
+    background-image: url('https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=1920');
+}
+
+body[data-category="lashes"] .category-hero {
+    background-image: url('https://images.unsplash.com/photo-1583001308285-ade8e90ea3a2?w=1920');
+}
+
+body[data-category="makeup"] .category-hero {
+    background-image: url('https://images.unsplash.com/photo-1596704017254-9b121068ec31?w=1920');
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(59, 74, 47, 0.85) 0%, 
+        rgba(59, 74, 47, 0.7) 50%,
+        rgba(169, 200, 156, 0.6) 100%);
+    backdrop-filter: blur(2px);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #FAFAF7;
+    max-width: 800px;
+    padding: 0 2rem;
+    animation: fadeInUp 1s ease-out;
+}
+
+.category-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+    letter-spacing: 1px;
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.category-subtitle {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 300;
+    margin: 0;
+    opacity: 0.95;
+    letter-spacing: 0.5px;
+}
+
+.hero-divider {
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #A9C89C, transparent);
+    margin: 2rem auto 0;
+    border-radius: 10px;
+}
+
+/* Breadcrumb Navigation */
+.breadcrumb-container {
+    background-color: #FAFAF7;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(169, 200, 156, 0.2);
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+}
+
+.breadcrumb a {
+    color: #3B4A2F;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover {
+    color: #A9C89C;
+}
+
+.breadcrumb .separator {
+    color: #B6A98C;
+    opacity: 0.5;
+}
+
+.breadcrumb .current {
+    color: #1C1C1C;
+    font-weight: 500;
+}
+
+/* Services Section */
+.services-section {
+    padding: 5rem 0;
+    background-color: #FAFAF7;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.services-intro {
+    text-align: center;
+    margin-bottom: 4rem;
+    animation: fadeIn 1s ease-out;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #3B4A2F;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.section-description {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.1rem;
+    color: #1C1C1C;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+    opacity: 0.85;
+}
+
+/* Loading State */
+.loading-state {
+    text-align: center;
+    padding: 4rem 0;
+    color: #3B4A2F;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(169, 200, 156, 0.3);
+    border-top-color: #A9C89C;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-state p {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    opacity: 0.7;
+}
+
+/* Services Grid */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+/* Service Card */
+.service-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(59, 74, 47, 0.08);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+.service-card:nth-child(4) { animation-delay: 0.4s; }
+.service-card:nth-child(5) { animation-delay: 0.5s; }
+.service-card:nth-child(6) { animation-delay: 0.6s; }
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 45px rgba(59, 74, 47, 0.15);
+}
+
+.service-image {
+    height: 240px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, 
+        transparent 0%, 
+        rgba(59, 74, 47, 0.2) 100%);
+    transition: opacity 0.4s ease;
+}
+
+.service-card:hover .service-image::after {
+    opacity: 0.5;
+}
+
+.service-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(169, 200, 156, 0.95);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    z-index: 2;
+    backdrop-filter: blur(10px);
+}
+
+.service-content {
+    padding: 2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-header {
+    margin-bottom: 1rem;
+}
+
+.service-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #3B4A2F;
+    margin: 0 0 0.5rem 0;
+    font-weight: 600;
+}
+
+.service-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    color: #B6A98C;
+}
+
+.meta-item i {
+    color: #A9C89C;
+    font-size: 1rem;
+}
+
+.service-description {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #1C1C1C;
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.service-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(169, 200, 156, 0.2);
+}
+
+.service-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    color: #3B4A2F;
+    font-weight: 600;
+}
+
+.price-label {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.85rem;
+    color: #B6A98C;
+    display: block;
+    margin-top: 0.25rem;
+}
+
+.book-button {
+    background: linear-gradient(135deg, #3B4A2F 0%, #4a5d3a 100%);
+    color: white;
+    border: none;
+    padding: 0.875rem 2rem;
+    border-radius: 30px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 15px rgba(59, 74, 47, 0.2);
+}
+
+.book-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(59, 74, 47, 0.3);
+    background: linear-gradient(135deg, #4a5d3a 0%, #3B4A2F 100%);
+}
+
+.book-button i {
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.book-button:hover i {
+    transform: translateX(3px);
+}
+
+/* No Services Message */
+.no-services {
+    text-align: center;
+    padding: 4rem 0;
+    color: #B6A98C;
+}
+
+.no-services i {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.no-services p {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.1rem;
+}
+
+/* Call to Action Section */
+.cta-section {
+    background: linear-gradient(135deg, #3B4A2F 0%, #4a5d3a 100%);
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #FAFAF7;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.cta-text {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.15rem;
+    color: #FAFAF7;
+    opacity: 0.9;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #A9C89C;
+    color: #3B4A2F;
+    padding: 1.125rem 3rem;
+    border-radius: 35px;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+    background: #b5d4a8;
+}
+
+.cta-button i {
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover i {
+    transform: translateX(5px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .services-grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .category-hero {
+        height: 50vh;
+        min-height: 400px;
+        background-attachment: scroll;
+    }
+    
+    .category-title {
+        font-size: 2.5rem;
+    }
+    
+    .category-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .service-card {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .service-footer {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+    
+    .book-button {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .cta-title {
+        font-size: 2rem;
+    }
+    
+    .cta-text {
+        font-size: 1rem;
+    }
+    
+    .breadcrumb {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1.25rem;
+    }
+    
+    .category-title {
+        font-size: 2rem;
+    }
+    
+    .category-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hero-content {
+        padding: 0 1.25rem;
+    }
+    
+    .service-content {
+        padding: 1.5rem;
+    }
+    
+    .service-name {
+        font-size: 1.3rem;
+    }
+    
+    .service-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .cta-title {
+        font-size: 1.75rem;
+    }
+}
