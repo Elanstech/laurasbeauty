@@ -236,9 +236,12 @@ body {
     box-shadow: 0 6px 20px rgba(169, 200, 156, 0.3);
 }
 
+/* ============================================
+   MEGA MENU DROPDOWN
+   ============================================ */
 .megamenu-wrapper {
     position: absolute;
-    top: calc(100% + 20px);
+    top: 100%;
     left: 50%;
     transform: translateX(-50%);
     width: 900px;
@@ -248,13 +251,14 @@ body {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
     z-index: 100;
+    padding-top: 10px; /* Creates bridge between nav and menu */
 }
 
-.has-megamenu:hover .megamenu-wrapper {
+.has-megamenu:hover .megamenu-wrapper,
+.megamenu-wrapper:hover {
     opacity: 1;
     visibility: visible;
     pointer-events: all;
-    top: calc(100% + 10px);
 }
 
 .megamenu-container {
@@ -265,6 +269,7 @@ body {
     border: 1px solid rgba(169, 200, 156, 0.2);
     position: relative;
     overflow: hidden;
+    margin-top: 10px; /* Space from the padding-top bridge */
 }
 
 /* Decorative Background Elements */
@@ -471,6 +476,9 @@ body {
     transform: translateX(5px);
 }
 
+/* ============================================
+   MOBILE TOGGLE & DRAWER
+   ============================================ */
 .mobile-toggle {
     display: none;
     flex-direction: column;
@@ -656,6 +664,10 @@ body {
     opacity: 1;
     visibility: visible;
 }
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
 
 /* Tablet & Below */
 @media (max-width: 1024px) {
