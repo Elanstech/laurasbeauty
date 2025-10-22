@@ -283,62 +283,61 @@ class HeroVideoCollage {
 // ============================================
 // SPECIALS CAROUSEL
 // ============================================
-class SpecialsCarousel {
+
+class SpecialsButton {
     constructor() {
+        // JSON Path
         this.jsonPath = 'json/specials.json';
         
-        this.carousel = document.getElementById('specialsCarousel');
-        this.noSpecialsMessage = document.getElementById('noSpecialsMessage');
-        this.prevBtn = document.getElementById('prevBtn');
-        this.nextBtn = document.getElementById('nextBtn');
-        this.indicatorsContainer = document.getElementById('carouselIndicators');
+        // Elements
+        this.floatingBtn = document.getElementById('specialsBtn');
+        this.specialsCount = document.getElementById('specialsCount');
+        this.specialsModal = document.getElementById('specialsModal');
+        this.specialsModalOverlay = document.getElementById('specialsModalOverlay');
+        this.closeModalBtn = document.getElementById('closeModalBtn');
+        this.specialsGrid = document.getElementById('specialsGrid');
+        this.noSpecials = document.getElementById('noSpecials');
         
-        this.modal = document.getElementById('packageModal');
-        this.modalOverlay = this.modal?.querySelector('.modal-overlay');
-        this.modalClose = this.modal?.querySelector('.modal-close');
+        // Detail Modal Elements
+        this.detailModal = document.getElementById('detailModal');
+        this.detailModalOverlay = document.getElementById('detailModalOverlay');
+        this.closeDetailBtn = document.getElementById('closeDetailBtn');
         
+        // Data
         this.specials = [];
-        this.currentPage = 0;
-        this.itemsPerPage = this.getItemsPerPage();
-        this.totalPages = 0;
-        this.autoScrollInterval = null;
-        this.autoScrollDelay = 5000;
-        this.scrollPosition = 0;
-        
-        this.touchStartX = 0;
-        this.touchEndX = 0;
-        
-        this.resizeHandler = null;
-        this.keyboardHandler = null;
-        this.scrollHandler = null;
+        this.currentSpecial = null;
     }
 
     async init() {
         try {
-            console.log('📥 Loading specials from:', this.jsonPath);
+            console.log('🎁 Initializing Specials Button System...');
             
+            // Load specials from JSON
             await this.loadSpecials();
             
             if (this.specials && this.specials.length > 0) {
                 console.log(`✅ Loaded ${this.specials.length} special(s)`);
                 
-                this.renderSpecials();
-                this.setupCarousel();
-                this.setupNavigation();
-                this.setupTouchSupport();
-                this.setupResizeHandler();
-                this.setupScrollHandler();
-                this.setupModal();
-                this.startAutoScroll();
+                // Update badge count
+                this.updateBadgeCount();
                 
-                console.log('✅ Specials Carousel initialized successfully');
+                // Render specials grid
+                this.renderSpecialsGrid();
+                
+                // Setup event listeners
+                this.setupEventListeners();
+                
+                // Show floating button
+                this.floatingBtn.classList.remove('hidden');
+                
+                console.log('✅ Specials Button System initialized successfully');
             } else {
-                console.log('ℹ️ No specials found - showing fallback message');
-                this.showNoSpecialsMessage();
+                console.log('ℹ️ No specials found - hiding button');
+                this.floatingBtn.classList.add('hidden');
             }
         } catch (error) {
-            console.error('❌ Error initializing specials carousel:', error);
-            this.showNoSpecialsMessage();
+            console.error('❌ Error initializing specials button:', error);
+            this.floatingBtn.classList.add('hidden');
         }
     }
 
@@ -354,528 +353,270 @@ class SpecialsCarousel {
             this.specials = data.specials || [];
             
         } catch (error) {
-            console.error('❌ Error loading JSON:', error);
+            console.error('❌ Error loading specials JSON:', error);
             throw error;
         }
     }
 
-    renderSpecials() {
-        if (!this.carousel) {
-            console.error('❌ Carousel container not found!');
+    updateBadgeCount() {
+        if (this.specialsCount) {
+            this.specialsCount.textContent = this.specials.length;
+        }
+    }
+
+    renderSpecialsGrid() {
+        if (!this.specialsGrid) {
+            console.error('❌ Specials grid container not found');
             return;
         }
-        
-        this.carousel.innerHTML = '';
-        
+
+        this.specialsGrid.innerHTML = '';
+
+        if (this.specials.length === 0) {
+            if (this.noSpecials) {
+                this.noSpecials.style.display = 'block';
+            }
+            return;
+        }
+
+        if (this.noSpecials) {
+            this.noSpecials.style.display = 'none';
+        }
+
         this.specials.forEach((special) => {
             const card = this.createSpecialCard(special);
-            this.carousel.appendChild(card);
+            this.specialsGrid.appendChild(card);
         });
     }
 
     createSpecialCard(special) {
         const card = document.createElement('div');
-        card.className = 'special-card';
+        card.className = 'special-grid-card';
+        card.dataset.specialId = special.id;
         
-        if (special.isWide) {
-            card.classList.add('special-card-wide');
-        }
+        let cardHTML = `
+            <div class="special-card-image">
+                <img src="${special.image}" alt="${this.escapeHtml(special.title)}" loading="lazy">
+        `;
         
-        let cardHTML = '';
-        
+        // Add savings badge if applicable
         if (special.savings && special.savings > 0) {
             cardHTML += `
-                <div class="save-badge">
+                <div class="card-save-badge">
                     <span class="save-text">SAVE</span>
                     <span class="save-amount">$${special.savings.toFixed(2)}</span>
                 </div>
             `;
         }
         
+        cardHTML += `</div>`;
+        
+        // Card content
         cardHTML += `
-            <div class="special-image">
-                <img src="${special.image}" alt="${this.escapeHtml(special.title)}" loading="lazy">
+            <div class="special-card-content">
+                <div class="card-brand">${this.escapeHtml(special.brand)}</div>
+                <h3 class="card-title">${this.escapeHtml(special.title)}</h3>
+        `;
+        
+        if (special.description) {
+            cardHTML += `<p class="card-description">${this.escapeHtml(special.description)}</p>`;
+        }
+        
+        // Price section
+        cardHTML += `
+            <div class="card-price">
+                <span class="card-current-price">$${special.currentPrice}</span>
+        `;
+        
+        if (special.originalPrice && special.originalPrice > 0) {
+            cardHTML += `<span class="card-original-price">$${special.originalPrice}</span>`;
+        }
+        
+        cardHTML += `</div>`;
+        
+        // View details button
+        cardHTML += `
+                <button type="button" class="card-view-btn">
+                    <span>View Details</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
             </div>
         `;
         
-        cardHTML += `<div class="special-content">`;
-        cardHTML += `<h3 class="special-title">${this.escapeHtml(special.title)}</h3>`;
-        
-        if (special.description) {
-            cardHTML += `<p class="special-description">${this.escapeHtml(special.description)}</p>`;
-        }
-        
-        cardHTML += `<div class="special-price">`;
-        cardHTML += `<span class="current-price">$${special.currentPrice}</span>`;
-        
-        if (special.originalPrice && special.originalPrice > 0) {
-            cardHTML += `<span class="original-price">$${special.originalPrice}</span>`;
-        }
-        
-        cardHTML += `</div>`;
-        cardHTML += `<p class="special-brand">${this.escapeHtml(special.brand)}</p>`;
-        
-        cardHTML += `
-            <button type="button" class="special-book-btn view-details-btn" data-special-id="${special.id}">
-                <span>View Details</span>
-                <i class="fas fa-info-circle"></i>
-            </button>
-        `;
-        
-        cardHTML += `</div>`;
-        
         card.innerHTML = cardHTML;
         
+        // Add click event to open detail modal
+        card.addEventListener('click', () => {
+            this.openDetailModal(special.id);
+        });
+        
         return card;
+    }
+
+    setupEventListeners() {
+        // Open main modal
+        if (this.floatingBtn) {
+            this.floatingBtn.addEventListener('click', () => {
+                this.openMainModal();
+            });
+        }
+
+        // Close main modal
+        if (this.closeModalBtn) {
+            this.closeModalBtn.addEventListener('click', () => {
+                this.closeMainModal();
+            });
+        }
+
+        if (this.specialsModalOverlay) {
+            this.specialsModalOverlay.addEventListener('click', () => {
+                this.closeMainModal();
+            });
+        }
+
+        // Close detail modal
+        if (this.closeDetailBtn) {
+            this.closeDetailBtn.addEventListener('click', () => {
+                this.closeDetailModal();
+            });
+        }
+
+        if (this.detailModalOverlay) {
+            this.detailModalOverlay.addEventListener('click', () => {
+                this.closeDetailModal();
+            });
+        }
+
+        // ESC key to close modals
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (this.detailModal.classList.contains('active')) {
+                    this.closeDetailModal();
+                } else if (this.specialsModal.classList.contains('active')) {
+                    this.closeMainModal();
+                }
+            }
+        });
+    }
+
+    openMainModal() {
+        if (this.specialsModal) {
+            this.specialsModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    closeMainModal() {
+        if (this.specialsModal) {
+            this.specialsModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    openDetailModal(specialId) {
+        const special = this.specials.find(s => s.id === specialId);
+        
+        if (!special) {
+            console.error('❌ Special not found:', specialId);
+            return;
+        }
+
+        this.currentSpecial = special;
+        this.populateDetailModal(special);
+
+        // Close main modal and open detail modal
+        this.closeMainModal();
+        
+        setTimeout(() => {
+            if (this.detailModal) {
+                this.detailModal.classList.add('active');
+            }
+        }, 300);
+    }
+
+    populateDetailModal(special) {
+        // Image
+        const detailImage = document.getElementById('detailImage');
+        if (detailImage) {
+            detailImage.src = special.image;
+            detailImage.alt = special.title;
+        }
+
+        // Savings badge
+        const detailBadge = document.getElementById('detailBadge');
+        const detailSavings = document.getElementById('detailSavings');
+        if (special.savings && special.savings > 0) {
+            if (detailBadge) detailBadge.style.display = 'flex';
+            if (detailSavings) detailSavings.textContent = `$${special.savings.toFixed(2)}`;
+        } else {
+            if (detailBadge) detailBadge.style.display = 'none';
+        }
+
+        // Brand
+        const detailBrand = document.getElementById('detailBrand');
+        if (detailBrand) detailBrand.textContent = special.brand;
+
+        // Title
+        const detailTitle = document.getElementById('detailTitle');
+        if (detailTitle) detailTitle.textContent = special.title;
+
+        // Description
+        const detailDescription = document.getElementById('detailDescription');
+        if (detailDescription) {
+            detailDescription.textContent = special.description || '';
+            detailDescription.style.display = special.description ? 'block' : 'none';
+        }
+
+        // Current price
+        const detailCurrentPrice = document.getElementById('detailCurrentPrice');
+        if (detailCurrentPrice) {
+            detailCurrentPrice.textContent = `$${special.currentPrice}`;
+        }
+
+        // Original price
+        const detailOriginalPrice = document.getElementById('detailOriginalPrice');
+        if (detailOriginalPrice) {
+            if (special.originalPrice && special.originalPrice > 0) {
+                detailOriginalPrice.textContent = `$${special.originalPrice}`;
+                detailOriginalPrice.style.display = 'inline';
+            } else {
+                detailOriginalPrice.style.display = 'none';
+            }
+        }
+
+        // Includes list
+        const detailIncludesList = document.getElementById('detailIncludesList');
+        if (detailIncludesList && special.includes && special.includes.length > 0) {
+            detailIncludesList.innerHTML = '';
+            special.includes.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                detailIncludesList.appendChild(li);
+            });
+        }
+
+        // Book button
+        const detailBookBtn = document.getElementById('detailBookBtn');
+        if (detailBookBtn && special.bookingLink) {
+            detailBookBtn.href = special.bookingLink;
+        }
+    }
+
+    closeDetailModal() {
+        if (this.detailModal) {
+            this.detailModal.classList.remove('active');
+            
+            // Reopen main modal after a delay
+            setTimeout(() => {
+                this.openMainModal();
+            }, 300);
+        }
     }
 
     escapeHtml(text) {
         const div = document.createElement('div');
         div.textContent = text;
         return div.innerHTML;
-    }
-
-    setupCarousel() {
-        this.itemsPerPage = this.getItemsPerPage();
-        const cards = this.carousel.querySelectorAll('.special-card');
-        this.totalPages = Math.ceil(cards.length / this.itemsPerPage);
-        
-        this.createIndicators();
-        this.updateNavigationVisibility();
-        this.updateIndicators();
-    }
-
-    getItemsPerPage() {
-        const width = window.innerWidth;
-        
-        if (width < 768) {
-            return 1;
-        } else if (width < 1024) {
-            return 2;
-        } else {
-            return 3;
-        }
-    }
-
-    createIndicators() {
-        if (!this.indicatorsContainer) return;
-        
-        this.indicatorsContainer.innerHTML = '';
-        
-        if (this.totalPages <= 1) {
-            this.indicatorsContainer.classList.add('hidden');
-            return;
-        }
-        
-        this.indicatorsContainer.classList.remove('hidden');
-        
-        for (let i = 0; i < this.totalPages; i++) {
-            const indicator = document.createElement('button');
-            indicator.classList.add('carousel-indicator');
-            indicator.setAttribute('aria-label', `Go to page ${i + 1}`);
-            indicator.setAttribute('type', 'button');
-            
-            if (i === 0) {
-                indicator.classList.add('active');
-            }
-            
-            indicator.addEventListener('click', () => {
-                this.goToPage(i);
-                this.resetAutoScroll();
-            });
-            
-            this.indicatorsContainer.appendChild(indicator);
-        }
-    }
-
-    setupNavigation() {
-        if (!this.prevBtn || !this.nextBtn) return;
-        
-        const newPrevBtn = this.prevBtn.cloneNode(true);
-        const newNextBtn = this.nextBtn.cloneNode(true);
-        this.prevBtn.parentNode.replaceChild(newPrevBtn, this.prevBtn);
-        this.nextBtn.parentNode.replaceChild(newNextBtn, this.nextBtn);
-        this.prevBtn = newPrevBtn;
-        this.nextBtn = newNextBtn;
-        
-        this.prevBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            this.previousPage();
-            this.resetAutoScroll();
-        });
-        
-        this.nextBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            this.nextPage();
-            this.resetAutoScroll();
-        });
-        
-        if (this.keyboardHandler) {
-            document.removeEventListener('keydown', this.keyboardHandler);
-        }
-        
-        this.keyboardHandler = (e) => {
-            if (this.modal && this.modal.classList.contains('active')) return;
-            
-            if (this.carousel && !this.carousel.classList.contains('hidden')) {
-                if (e.key === 'ArrowLeft') {
-                    e.preventDefault();
-                    this.previousPage();
-                    this.resetAutoScroll();
-                } else if (e.key === 'ArrowRight') {
-                    e.preventDefault();
-                    this.nextPage();
-                    this.resetAutoScroll();
-                }
-            }
-        };
-        
-        document.addEventListener('keydown', this.keyboardHandler);
-    }
-
-    updateNavigationVisibility() {
-        if (!this.prevBtn || !this.nextBtn) return;
-        
-        const isMobile = window.innerWidth < 768;
-        const shouldHide = this.totalPages <= 1 || isMobile;
-        
-        if (shouldHide) {
-            this.prevBtn.classList.add('hidden');
-            this.nextBtn.classList.add('hidden');
-        } else {
-            this.prevBtn.classList.remove('hidden');
-            this.nextBtn.classList.remove('hidden');
-        }
-    }
-
-    goToPage(pageIndex) {
-        if (pageIndex < 0 || pageIndex >= this.totalPages) return;
-        
-        this.currentPage = pageIndex;
-        this.updateIndicators();
-        
-        const cards = this.carousel.querySelectorAll('.special-card');
-        const startIndex = pageIndex * this.itemsPerPage;
-        
-        if (cards[startIndex]) {
-            const cardRect = cards[startIndex].getBoundingClientRect();
-            const carouselRect = this.carousel.getBoundingClientRect();
-            const scrollAmount = cardRect.left - carouselRect.left + this.carousel.scrollLeft;
-            
-            this.carousel.scrollTo({
-                left: scrollAmount,
-                behavior: 'smooth'
-            });
-        }
-    }
-
-    nextPage() {
-        if (this.totalPages <= 1) return;
-        const nextPage = (this.currentPage + 1) % this.totalPages;
-        this.goToPage(nextPage);
-    }
-
-    previousPage() {
-        if (this.totalPages <= 1) return;
-        const prevPage = (this.currentPage - 1 + this.totalPages) % this.totalPages;
-        this.goToPage(prevPage);
-    }
-
-    updateIndicators() {
-        const indicators = this.indicatorsContainer?.querySelectorAll('.carousel-indicator');
-        if (!indicators) return;
-        
-        indicators.forEach((indicator, index) => {
-            if (index === this.currentPage) {
-                indicator.classList.add('active');
-            } else {
-                indicator.classList.remove('active');
-            }
-        });
-    }
-
-    setupScrollHandler() {
-        if (!this.carousel) return;
-        
-        let scrollTimeout;
-        
-        if (this.scrollHandler) {
-            this.carousel.removeEventListener('scroll', this.scrollHandler);
-        }
-        
-        this.scrollHandler = () => {
-            clearTimeout(scrollTimeout);
-            
-            scrollTimeout = setTimeout(() => {
-                this.updateCurrentPageFromScroll();
-            }, 150);
-        };
-        
-        this.carousel.addEventListener('scroll', this.scrollHandler, { passive: true });
-    }
-
-    updateCurrentPageFromScroll() {
-        if (!this.carousel) return;
-        
-        const cards = this.carousel.querySelectorAll('.special-card');
-        if (cards.length === 0) return;
-        
-        const carouselRect = this.carousel.getBoundingClientRect();
-        const carouselCenter = carouselRect.left + carouselRect.width / 2;
-        
-        let closestIndex = 0;
-        let closestDistance = Infinity;
-        
-        cards.forEach((card, index) => {
-            const cardRect = card.getBoundingClientRect();
-            const cardCenter = cardRect.left + cardRect.width / 2;
-            const distance = Math.abs(cardCenter - carouselCenter);
-            
-            if (distance < closestDistance) {
-                closestDistance = distance;
-                closestIndex = index;
-            }
-        });
-        
-        const newPage = Math.floor(closestIndex / this.itemsPerPage);
-        
-        if (newPage !== this.currentPage) {
-            this.currentPage = newPage;
-            this.updateIndicators();
-        }
-    }
-
-    setupTouchSupport() {
-        if (!this.carousel) return;
-        
-        this.carousel.addEventListener('touchstart', (e) => {
-            this.touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-        
-        this.carousel.addEventListener('touchend', (e) => {
-            this.touchEndX = e.changedTouches[0].screenX;
-            this.handleSwipe();
-        }, { passive: true });
-    }
-
-    handleSwipe() {
-        const swipeThreshold = 50;
-        const swipeDistance = this.touchStartX - this.touchEndX;
-        
-        if (Math.abs(swipeDistance) < swipeThreshold) return;
-        
-        if (swipeDistance > 0) {
-            this.nextPage();
-        } else {
-            this.previousPage();
-        }
-        
-        this.resetAutoScroll();
-    }
-
-    setupResizeHandler() {
-        let resizeTimeout;
-        
-        if (this.resizeHandler) {
-            window.removeEventListener('resize', this.resizeHandler);
-        }
-        
-        this.resizeHandler = () => {
-            clearTimeout(resizeTimeout);
-            
-            resizeTimeout = setTimeout(() => {
-                const newItemsPerPage = this.getItemsPerPage();
-                
-                if (newItemsPerPage !== this.itemsPerPage) {
-                    this.itemsPerPage = newItemsPerPage;
-                    this.setupCarousel();
-                    this.goToPage(0);
-                }
-                
-                this.updateNavigationVisibility();
-            }, 250);
-        };
-        
-        window.addEventListener('resize', this.resizeHandler);
-    }
-
-    startAutoScroll() {
-        if (this.totalPages <= 1) return;
-        
-        this.stopAutoScroll();
-        
-        this.autoScrollInterval = setInterval(() => {
-            this.nextPage();
-        }, this.autoScrollDelay);
-    }
-
-    stopAutoScroll() {
-        if (this.autoScrollInterval) {
-            clearInterval(this.autoScrollInterval);
-            this.autoScrollInterval = null;
-        }
-    }
-
-    resetAutoScroll() {
-        this.stopAutoScroll();
-        this.startAutoScroll();
-    }
-
-    setupModal() {
-        if (!this.modal) {
-            console.warn('Modal not found');
-            return;
-        }
-        
-        this.carousel.addEventListener('click', (e) => {
-            const btn = e.target.closest('.view-details-btn');
-            if (btn) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const specialId = parseInt(btn.dataset.specialId);
-                this.openModal(specialId);
-            }
-        });
-        
-        if (this.modalClose) {
-            this.modalClose.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                this.closeModal();
-            });
-        }
-        
-        if (this.modalOverlay) {
-            this.modalOverlay.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                this.closeModal();
-            });
-        }
-        
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && this.modal.classList.contains('active')) {
-                e.preventDefault();
-                this.closeModal();
-            }
-        });
-    }
-    
-    openModal(specialId) {
-        const special = this.specials.find(s => s.id === specialId);
-        if (!special) {
-            console.error('Special not found:', specialId);
-            return;
-        }
-        
-        this.stopAutoScroll();
-        this.scrollPosition = window.pageYOffset;
-        
-        const modalImage = document.getElementById('modalImage');
-        const modalBadge = document.getElementById('modalBadge');
-        const modalSavings = document.getElementById('modalSavings');
-        const modalBrand = document.getElementById('modalBrand');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalDescription = document.getElementById('modalDescription');
-        const modalCurrentPrice = document.getElementById('modalCurrentPrice');
-        const modalOriginalPrice = document.getElementById('modalOriginalPrice');
-        const includesList = document.getElementById('includesList');
-        const modalBookBtn = document.getElementById('modalBookBtn');
-        
-        if (modalImage) {
-            modalImage.src = special.image;
-            modalImage.alt = special.title;
-        }
-        
-        if (special.savings && special.savings > 0 && modalBadge && modalSavings) {
-            modalBadge.style.display = 'flex';
-            modalSavings.textContent = `$${special.savings.toFixed(2)}`;
-        } else if (modalBadge) {
-            modalBadge.style.display = 'none';
-        }
-        
-        if (modalBrand) modalBrand.textContent = special.brand;
-        if (modalTitle) modalTitle.textContent = special.title;
-        if (modalDescription) {
-            modalDescription.textContent = special.description || '';
-            modalDescription.style.display = special.description ? 'block' : 'none';
-        }
-        if (modalCurrentPrice) modalCurrentPrice.textContent = `$${special.currentPrice}`;
-        
-        if (special.originalPrice && special.originalPrice > 0 && modalOriginalPrice) {
-            modalOriginalPrice.textContent = `$${special.originalPrice}`;
-            modalOriginalPrice.style.display = 'inline';
-        } else if (modalOriginalPrice) {
-            modalOriginalPrice.style.display = 'none';
-        }
-        
-        if (includesList && special.includes && special.includes.length > 0) {
-            includesList.innerHTML = '';
-            special.includes.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item;
-                includesList.appendChild(li);
-            });
-        }
-        
-        if (modalBookBtn) {
-            modalBookBtn.href = special.bookingLink;
-        }
-        
-        document.documentElement.style.overflow = 'hidden';
-        document.body.style.overflow = 'hidden';
-        document.body.style.position = 'fixed';
-        document.body.style.top = `-${this.scrollPosition}px`;
-        document.body.style.width = '100%';
-        
-        this.modal.classList.add('active');
-    }
-    
-    closeModal() {
-        if (!this.modal) return;
-        
-        this.modal.classList.remove('active');
-        
-        document.documentElement.style.overflow = '';
-        document.body.style.overflow = '';
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-        
-        window.scrollTo(0, this.scrollPosition);
-        
-        this.startAutoScroll();
-    }
-
-    showNoSpecialsMessage() {
-        if (!this.noSpecialsMessage || !this.carousel) return;
-        
-        this.carousel.classList.add('hidden');
-        
-        if (this.prevBtn) this.prevBtn.classList.add('hidden');
-        if (this.nextBtn) this.nextBtn.classList.add('hidden');
-        if (this.indicatorsContainer) this.indicatorsContainer.classList.add('hidden');
-        
-        this.noSpecialsMessage.classList.add('active');
-    }
-
-    cleanup() {
-        this.stopAutoScroll();
-        
-        if (this.resizeHandler) {
-            window.removeEventListener('resize', this.resizeHandler);
-        }
-        
-        if (this.keyboardHandler) {
-            document.removeEventListener('keydown', this.keyboardHandler);
-        }
-        
-        if (this.scrollHandler && this.carousel) {
-            this.carousel.removeEventListener('scroll', this.scrollHandler);
-        }
     }
 }
 
@@ -1970,9 +1711,9 @@ function initWebsite() {
     new SuperFooter();
     
     // Initialize Specials Carousel
-    const specialsCarousel = new SpecialsCarousel();
-    specialsCarousel.init();
-    window.specialsCarousel = specialsCarousel;
+    const specialsButton = new SpecialsButton();
+    specialsButton.init();
+    window.specialsButton = specialsButton;
     
     // Initialize Services Carousel
     const servicesCarousel = new ServicesCarousel();
