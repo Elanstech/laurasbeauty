@@ -1602,6 +1602,167 @@ class HashtagInteraction {
 }
 
 // ============================================
+// SUPER FOOTER
+// ============================================
+class SuperFooter {
+    constructor() {
+        this.footer = document.querySelector('.super-footer');
+        this.currentYearElement = document.getElementById('currentYear');
+        this.footerLinks = document.querySelectorAll('.footer-link');
+        this.socialLinks = document.querySelectorAll('.social-link');
+        this.ctaButton = document.querySelector('.footer-cta-btn');
+        
+        if (!this.footer) return;
+        
+        this.init();
+    }
+
+    init() {
+        this.setCurrentYear();
+        this.setupLinkAnimations();
+        this.setupSocialTracking();
+        this.setupCTATracking();
+        this.setupScrollReveal();
+    }
+
+    setCurrentYear() {
+        if (this.currentYearElement) {
+            const currentYear = new Date().getFullYear();
+            this.currentYearElement.textContent = currentYear;
+        }
+    }
+
+    setupLinkAnimations() {
+        this.footerLinks.forEach(link => {
+            link.addEventListener('mouseenter', (e) => {
+                this.animateLink(e.target);
+            });
+        });
+    }
+
+    animateLink(link) {
+        // Add ripple effect on hover
+        link.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+    }
+
+    setupSocialTracking() {
+        this.socialLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const platform = link.getAttribute('aria-label');
+                console.log(`Social link clicked: ${platform}`);
+                
+                // Add click animation
+                link.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    link.style.transform = '';
+                }, 150);
+            });
+        });
+    }
+
+    setupCTATracking() {
+        if (!this.ctaButton) return;
+
+        this.ctaButton.addEventListener('click', (e) => {
+            console.log('Footer CTA clicked: Book Appointment');
+            
+            // Create ripple effect
+            this.createRipple(e);
+        });
+    }
+
+    createRipple(e) {
+        const button = e.currentTarget;
+        const ripple = document.createElement('span');
+        const rect = button.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            left: ${x}px;
+            top: ${y}px;
+            border-radius: 50%;
+            background: rgba(59, 74, 47, 0.3);
+            transform: scale(0);
+            animation: footerRipple 0.6s ease-out;
+            pointer-events: none;
+        `;
+        
+        button.style.position = 'relative';
+        button.style.overflow = 'hidden';
+        button.appendChild(ripple);
+        
+        setTimeout(() => ripple.remove(), 600);
+    }
+
+    setupScrollReveal() {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('footer-visible');
+                    this.animateFooterElements();
+                }
+            });
+        }, observerOptions);
+
+        observer.observe(this.footer);
+    }
+
+    animateFooterElements() {
+        const columns = document.querySelectorAll('.footer-column');
+        
+        columns.forEach((column, index) => {
+            setTimeout(() => {
+                column.style.opacity = '0';
+                column.style.transform = 'translateY(30px)';
+                column.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                
+                requestAnimationFrame(() => {
+                    column.style.opacity = '1';
+                    column.style.transform = 'translateY(0)';
+                });
+            }, index * 100);
+        });
+    }
+}
+
+// Add ripple animation styles
+const footerStyles = document.createElement('style');
+footerStyles.textContent = `
+    @keyframes footerRipple {
+        to {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+    
+    .footer-visible {
+        animation: fadeInUp 0.8s ease forwards;
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+`;
+document.head.appendChild(footerStyles);
+
+// ============================================
 // BACK TO TOP BUTTON
 // ============================================
 class BackToTopButton {
@@ -1736,6 +1897,7 @@ function initWebsite() {
     new BackToTopButton();
     new FloatingActionButton();
     new TeamSection();
+    new SuperFooter();
     
     // Initialize Specials Carousel
     const specialsCarousel = new SpecialsCarousel();
