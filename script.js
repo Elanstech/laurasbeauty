@@ -1425,49 +1425,6 @@ class TeamSection {
 }
 
 // ============================================
-// CONTACT FORM
-// ============================================
-class ContactForm {
-    constructor() {
-        this.form = document.getElementById('contactForm');
-        this.init();
-    }
-
-    init() {
-        if (!this.form) return;
-        
-        this.form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            this.handleSubmit();
-        });
-
-        const inputs = this.form.querySelectorAll('input, textarea, select');
-        inputs.forEach(input => {
-            input.setAttribute('placeholder', ' ');
-        });
-    }
-
-    handleSubmit() {
-        const formData = new FormData(this.form);
-        const data = Object.fromEntries(formData);
-        
-        const submitBtn = this.form.querySelector('.submit-btn');
-        const originalText = submitBtn.innerHTML;
-        
-        submitBtn.innerHTML = '<span>Message Sent!</span><i class="fas fa-check"></i>';
-        submitBtn.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
-        
-        setTimeout(() => {
-            this.form.reset();
-            submitBtn.innerHTML = originalText;
-            submitBtn.style.background = '';
-        }, 3000);
-        
-        console.log('Form submitted:', data);
-    }
-}
-
-// ============================================
 // ELFSIGHT WIDGETS (GOOGLE REVIEWS & INSTAGRAM)
 // ============================================
 class ElfsightWidgets {
@@ -1555,9 +1512,6 @@ class ElfsightWidgets {
     }
 }
 
-// ============================================
-// FLOATING LEAVES ANIMATION
-// ============================================
 class FloatingLeaves {
     constructor() {
         this.leaves = document.querySelectorAll('.floating-leaf');
@@ -1600,6 +1554,122 @@ class HashtagInteraction {
         });
     }
 }
+
+// ============================================
+// CONTACT SECTION
+// ============================================
+class ContactSection {
+    constructor() {
+        this.contactSection = document.querySelector('.contact-section');
+        this.bookButton = document.querySelector('.btn-book-now');
+        this.callButton = document.querySelector('.btn-call-now');
+        this.ctaCards = document.querySelectorAll('.cta-card');
+        
+        if (!this.contactSection) return;
+        
+        this.init();
+    }
+
+    init() {
+        this.setupButtonTracking();
+        this.setupCardAnimations();
+        this.setupScrollReveal();
+    }
+
+    setupButtonTracking() {
+        if (this.bookButton) {
+            this.bookButton.addEventListener('click', () => {
+                console.log('📅 Book Appointment clicked');
+                this.createButtonRipple(event);
+            });
+        }
+
+        if (this.callButton) {
+            this.callButton.addEventListener('click', () => {
+                console.log('📞 Call button clicked');
+                this.createButtonRipple(event);
+            });
+        }
+    }
+
+    createButtonRipple(e) {
+        const button = e.currentTarget;
+        const ripple = document.createElement('span');
+        const rect = button.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.classList.add('contact-button-ripple');
+        ripple.style.width = `${size}px`;
+        ripple.style.height = `${size}px`;
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+        
+        button.appendChild(ripple);
+        
+        setTimeout(() => ripple.remove(), 600);
+    }
+
+    setupCardAnimations() {
+        this.ctaCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                this.animateCard(card);
+            });
+        });
+    }
+
+    animateCard(card) {
+        const icon = card.querySelector('.cta-icon');
+        if (icon) {
+            icon.style.transform = 'scale(1.1) rotate(5deg)';
+        }
+    }
+
+    setupScrollReveal() {
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('contact-visible');
+                }
+            });
+        }, observerOptions);
+
+        observer.observe(this.contactSection);
+    }
+}
+
+// Add button ripple styles
+const contactStyles = document.createElement('style');
+contactStyles.textContent = `
+    .contact-button-ripple {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        transform: scale(0);
+        animation: contactRipple 0.6s ease-out;
+        pointer-events: none;
+    }
+    
+    @keyframes contactRipple {
+        to {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+    
+    .btn-book-now,
+    .btn-call-now {
+        position: relative;
+        overflow: hidden;
+    }
+`;
+document.head.appendChild(contactStyles);
 
 // ============================================
 // SUPER FOOTER
@@ -1910,7 +1980,7 @@ function initWebsite() {
     window.servicesCarousel = servicesCarousel;
         
     // Initialize Contact Form
-    new ContactForm();
+    new ContactSection();
     
     // Initialize Elfsight Widgets (Google Reviews & Instagram)
     new ElfsightWidgets();
