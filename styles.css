@@ -5029,6 +5029,11 @@ a.contact-value:hover {
     .gallery-grid {
         grid-template-columns: 1fr;
     }
+    
+    .scroll-indicator {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
 }
 
 @media (max-width: 480px) {
@@ -5038,6 +5043,12 @@ a.contact-value:hover {
     
     .section-container {
         padding: 60px 20px;
+    }
+    
+    .scroll-indicator {
+        bottom: 30px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
     }
        
     .video-collage-container {
