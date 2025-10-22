@@ -1233,6 +1233,198 @@ class ServicesCarousel {
 }
 
 // ============================================
+// TEAM SECTION
+// ============================================
+class TeamSection {
+    constructor() {
+        this.teamSection = document.querySelector('.team-section');
+        this.teamStats = document.querySelectorAll('.team-stat');
+        this.teamImageFrame = document.querySelector('.team-image-frame');
+        this.meetTeamBtn = document.querySelector('.btn-meet-team');
+        this.animatedStats = new Set();
+        
+        if (!this.teamSection) return;
+        
+        this.init();
+    }
+
+    init() {
+        this.setupParallax();
+        this.setupImageEffects();
+        this.setupButtonEffects();
+        this.setupStatsAnimation();
+        this.addRippleStyles();
+    }
+
+    setupParallax() {
+        if (this.teamStats.length === 0) return;
+
+        let ticking = false;
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    this.handleParallax();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+    }
+
+    handleParallax() {
+        const sectionTop = this.teamSection.offsetTop;
+        const sectionHeight = this.teamSection.offsetHeight;
+        const scrollPosition = window.pageYOffset;
+        const windowHeight = window.innerHeight;
+        
+        if (scrollPosition + windowHeight > sectionTop && 
+            scrollPosition < sectionTop + sectionHeight) {
+            
+            const scrollProgress = (scrollPosition + windowHeight - sectionTop) / (sectionHeight + windowHeight);
+            
+            this.teamStats.forEach((stat, index) => {
+                const speed = (index + 1) * 20;
+                const yOffset = (scrollProgress - 0.5) * speed;
+                stat.style.transform = `translateY(${yOffset}px)`;
+            });
+        }
+    }
+
+    setupImageEffects() {
+        if (!this.teamImageFrame) return;
+
+        this.teamImageFrame.addEventListener('mousemove', (e) => {
+            this.handleImageTilt(e);
+        });
+
+        this.teamImageFrame.addEventListener('mouseleave', () => {
+            this.resetImageTilt();
+        });
+    }
+
+    handleImageTilt(e) {
+        const rect = this.teamImageFrame.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 30;
+        const rotateY = (centerX - x) / 30;
+        
+        this.teamImageFrame.style.transform = `
+            translateY(-8px) 
+            perspective(1000px) 
+            rotateX(${rotateX}deg) 
+            rotateY(${rotateY}deg)
+        `;
+    }
+
+    resetImageTilt() {
+        this.teamImageFrame.style.transform = 'translateY(0) perspective(1000px) rotateX(0) rotateY(0)';
+    }
+
+    setupButtonEffects() {
+        if (!this.meetTeamBtn) return;
+
+        this.meetTeamBtn.addEventListener('click', (e) => {
+            this.createRipple(e);
+        });
+    }
+
+    createRipple(e) {
+        const button = e.currentTarget;
+        const ripple = document.createElement('span');
+        const rect = button.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.classList.add('team-ripple');
+        ripple.style.width = `${size}px`;
+        ripple.style.height = `${size}px`;
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+        
+        button.appendChild(ripple);
+        
+        setTimeout(() => ripple.remove(), 600);
+    }
+
+    setupStatsAnimation() {
+        if (this.teamStats.length === 0) return;
+
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    this.animateStatNumber(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        this.teamStats.forEach(stat => {
+            statsObserver.observe(stat);
+        });
+    }
+
+    animateStatNumber(statElement) {
+        const numberElement = statElement.querySelector('.stat-number');
+        if (!numberElement || this.animatedStats.has(numberElement)) return;
+        
+        this.animatedStats.add(numberElement);
+        
+        const finalNumber = numberElement.textContent;
+        const hasPlus = finalNumber.includes('+');
+        const numericValue = parseInt(finalNumber.replace(/[^0-9]/g, ''));
+        let current = 0;
+        const increment = numericValue / 50;
+        const stepTime = 30;
+        
+        numberElement.textContent = '0';
+        
+        const counter = setInterval(() => {
+            current += increment;
+            if (current >= numericValue) {
+                numberElement.textContent = finalNumber;
+                clearInterval(counter);
+            } else {
+                numberElement.textContent = Math.floor(current) + (hasPlus ? '+' : '');
+            }
+        }, stepTime);
+    }
+
+    addRippleStyles() {
+        if (document.getElementById('team-ripple-styles')) return;
+
+        const style = document.createElement('style');
+        style.id = 'team-ripple-styles';
+        style.textContent = `
+            .team-ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.4);
+                transform: scale(0);
+                animation: teamRipple 0.6s ease-out;
+                pointer-events: none;
+            }
+            
+            @keyframes teamRipple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+}
+
+// ============================================
 // CONTACT FORM
 // ============================================
 class ContactForm {
@@ -1543,6 +1735,7 @@ function initWebsite() {
     new HeroVideoCollage();
     new BackToTopButton();
     new FloatingActionButton();
+    new TeamSection();
     
     // Initialize Specials Carousel
     const specialsCarousel = new SpecialsCarousel();
