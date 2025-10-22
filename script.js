@@ -47,7 +47,6 @@ class PremiumHeaderWithMegaMenu {
         this.mobileDrawer = document.querySelector('.mobile-drawer');
         this.mobileOverlay = document.querySelector('.mobile-overlay');
         this.logoWrapper = document.querySelector('.header-logo-wrapper');
-        this.specialsFloatingBtn = document.getElementById('specialsFloatingBtn'); // ADD THIS LINE
         
         // Mega Menu specific elements
         this.megamenuItem = document.querySelector('.has-megamenu');
@@ -120,40 +119,23 @@ class PremiumHeaderWithMegaMenu {
     }
 
     toggleMenu() {
-    this.mobileToggle.classList.toggle('active');
-    this.mobileDrawer.classList.toggle('active');
-    this.mobileOverlay.classList.toggle('active');
-    
-    if (this.mobileDrawer.classList.contains('active')) {
-        document.body.style.overflow = 'hidden';
-        // Hide specials floating button when menu opens
-        if (this.specialsFloatingBtn) {
-            this.specialsFloatingBtn.style.opacity = '0';
-            this.specialsFloatingBtn.style.visibility = 'hidden';
-            this.specialsFloatingBtn.style.pointerEvents = 'none';
+        this.mobileToggle.classList.toggle('active');
+        this.mobileDrawer.classList.toggle('active');
+        this.mobileOverlay.classList.toggle('active');
+        
+        if (this.mobileDrawer.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
         }
-    } else {
-        document.body.style.overflow = '';
-        // Show specials floating button when menu closes
-        if (this.specialsFloatingBtn) {
-            this.specialsFloatingBtn.style.opacity = '1';
-            this.specialsFloatingBtn.style.visibility = 'visible';
-            this.specialsFloatingBtn.style.pointerEvents = 'all';
-        }
-    }
-}
-    closeMenu() {
-    this.mobileToggle.classList.remove('active');
-    this.mobileDrawer.classList.remove('active');
-    this.mobileOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-    // Show specials floating button when menu closes
-    if (this.specialsFloatingBtn) {
-        this.specialsFloatingBtn.style.opacity = '1';
-        this.specialsFloatingBtn.style.visibility = 'visible';
-        this.specialsFloatingBtn.style.pointerEvents = 'all';
     }
 
+    closeMenu() {
+        this.mobileToggle.classList.remove('active');
+        this.mobileDrawer.classList.remove('active');
+        this.mobileOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
 
     // ============================================
     // LOGO CLICK (from original)
