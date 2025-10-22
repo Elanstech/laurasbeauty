@@ -40,13 +40,18 @@ class ElegantPreloader {
 // ============================================
 // PREMIUM HEADER
 // ============================================
-class PremiumHeader {
+class PremiumHeaderWithMegaMenu {
     constructor() {
         this.header = document.querySelector('.premium-header');
         this.mobileToggle = document.querySelector('.mobile-toggle');
         this.mobileDrawer = document.querySelector('.mobile-drawer');
         this.mobileOverlay = document.querySelector('.mobile-overlay');
         this.logoWrapper = document.querySelector('.header-logo-wrapper');
+        
+        // Mega Menu specific elements
+        this.megamenuItem = document.querySelector('.has-megamenu');
+        this.megamenuWrapper = document.querySelector('.megamenu-wrapper');
+        this.megamenuTimeout = null;
         
         this.init();
     }
@@ -56,6 +61,8 @@ class PremiumHeader {
         this.handleMobileMenu();
         this.handleLogoClick();
         this.handleSmoothScroll();
+        this.handleMegaMenu(); // New mega menu functionality
+        this.handleMobileSubmenu(); // New mobile submenu functionality
     }
 
     handleScroll() {
@@ -79,7 +86,7 @@ class PremiumHeader {
             }
         }, { passive: true });
     }
-
+    
     handleMobileMenu() {
         if (!this.mobileToggle) return;
 
@@ -91,7 +98,7 @@ class PremiumHeader {
             this.closeMenu();
         });
 
-        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const mobileLinks = document.querySelectorAll('.mobile-link:not(.mobile-dropdown-trigger)');
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 this.closeMenu();
@@ -123,7 +130,7 @@ class PremiumHeader {
         this.mobileOverlay.classList.remove('active');
         document.body.style.overflow = '';
     }
-
+    
     handleLogoClick() {
         if (this.logoWrapper) {
             this.logoWrapper.addEventListener('click', () => {
@@ -143,6 +150,12 @@ class PremiumHeader {
                 
                 if (target) {
                     e.preventDefault();
+                    
+                    // Close mobile menu if open
+                    if (this.mobileDrawer && this.mobileDrawer.classList.contains('active')) {
+                        this.closeMenu();
+                    }
+                    
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     
                     if (history.pushState) {
@@ -150,6 +163,168 @@ class PremiumHeader {
                     }
                 }
             });
+        });
+    }
+
+handleMegaMenu() {
+        if (!this.megamenuItem || !this.megamenuWrapper) return;
+
+        // Show mega menu on hover
+        this.megamenuItem.addEventListener('mouseenter', () => {
+            this.openMegaMenu();
+        });
+
+        // Hide mega menu on mouse leave with delay
+        this.megamenuItem.addEventListener('mouseleave', () => {
+            this.scheduleMegaMenuClose();
+        });
+
+        // Keep menu open when hovering over it
+        this.megamenuWrapper.addEventListener('mouseenter', () => {
+            this.cancelMegaMenuClose();
+        });
+
+        this.megamenuWrapper.addEventListener('mouseleave', () => {
+            this.scheduleMegaMenuClose();
+        });
+
+        // Close mega menu on click outside
+        document.addEventListener('click', (e) => {
+            if (!this.megamenuItem.contains(e.target)) {
+                this.closeMegaMenu(true);
+            }
+        });
+
+        // Keyboard support - ESC to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.megamenuWrapper.style.display === 'block') {
+                this.closeMegaMenu(true);
+            }
+        });
+
+        // Handle mega menu item interactions
+        this.setupMegaMenuItems();
+    }
+
+    openMegaMenu() {
+        clearTimeout(this.megamenuTimeout);
+        this.megamenuWrapper.style.display = 'block';
+        
+        // Trigger reflow for animation
+        void this.megamenuWrapper.offsetWidth;
+        
+        // Add staggered animation to menu items
+        const menuItems = this.megamenuWrapper.querySelectorAll('.megamenu-item');
+        menuItems.forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(10px)';
+            
+            setTimeout(() => {
+                item.style.transition = 'all 0.3s ease';
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+            }, index * 30);
+        });
+
+        console.log('🎯 Mega menu opened');
+    }
+
+    closeMegaMenu(immediate = false) {
+        const menuItems = this.megamenuWrapper.querySelectorAll('.megamenu-item');
+        
+        menuItems.forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(10px)';
+        });
+        
+        setTimeout(() => {
+            this.megamenuWrapper.style.display = 'none';
+        }, immediate ? 0 : 200);
+
+        console.log('🎯 Mega menu closed');
+    }
+
+    scheduleMegaMenuClose() {
+        this.megamenuTimeout = setTimeout(() => {
+            this.closeMegaMenu();
+        }, 150);
+    }
+
+    cancelMegaMenuClose() {
+        clearTimeout(this.megamenuTimeout);
+    }
+
+    setupMegaMenuItems() {
+        const megamenuItems = this.megamenuWrapper.querySelectorAll('.megamenu-item');
+        
+        megamenuItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                const icon = this.querySelector('.megamenu-icon');
+                if (icon) {
+                    icon.style.transition = 'all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                }
+            });
+
+            // Add click tracking
+            item.addEventListener('click', function() {
+                const title = this.querySelector('.megamenu-item-title')?.textContent;
+                console.log(`📍 Category clicked: ${title}`);
+            });
+        });
+    }
+    
+    handleMobileSubmenu() {
+        const mobileDropdownTriggers = document.querySelectorAll('.mobile-dropdown-trigger');
+        
+        mobileDropdownTriggers.forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation(); // Prevent closing the mobile menu
+                
+                const parentItem = trigger.closest('.mobile-has-submenu');
+                const isActive = parentItem.classList.contains('active');
+                
+                // Close all other submenus
+                document.querySelectorAll('.mobile-has-submenu').forEach(item => {
+                    if (item !== parentItem) {
+                        item.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current submenu
+                if (isActive) {
+                    parentItem.classList.remove('active');
+                    console.log('📱 Mobile submenu closed');
+                } else {
+                    parentItem.classList.add('active');
+                    console.log('📱 Mobile submenu opened');
+                }
+            });
+        });
+
+        // Handle submenu link clicks (close mobile menu after navigation)
+        const submenuLinks = document.querySelectorAll('.mobile-submenu-link');
+        submenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // Small delay to allow navigation
+                setTimeout(() => {
+                    this.closeMenu();
+                }, 100);
+            });
+        });
+    }
+    
+    addEntranceAnimations() {
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(-10px)';
+            
+            setTimeout(() => {
+                item.style.transition = 'all 0.5s ease';
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+            }, index * 50);
         });
     }
 }
@@ -1374,7 +1549,7 @@ function initWebsite() {
     
     // Core Components
     new ElegantPreloader();
-    new PremiumHeader();
+    new PremiumHeaderWithMegaMenu();
     new HeroVideoCollage();
     
     // Interactive Elements
