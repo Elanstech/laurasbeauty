@@ -1037,10 +1037,6 @@ body {
     cursor: pointer;
     transition: opacity 0.3s ease;
     animation: fadeInUp 0.8s ease-out 1s both;
-    margin-left: auto;
-    margin-right: auto;
-    width: fit-content;
-    max-width: 200px; 
 }
 
 .scroll-indicator:hover .scroll-line {
