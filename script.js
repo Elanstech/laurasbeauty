@@ -628,7 +628,6 @@ class HeroVideoCollage {
             if (this.nextButton) {
                 this.nextButton.disabled = this.currentIndex === this.totalSlides - 1;
             }
-            */
         }
         
         handleTouchStart(e) {
