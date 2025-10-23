@@ -23,17 +23,17 @@
     <header class="main-header">
         <nav class="navbar">
             <div class="nav-container">
-                <a href="index.html" class="logo">
+                <a href="../index.html" class="logo">
                     <span class="logo-text">Laura's Beauty Touch</span>
                 </a>
                 
                 <div class="nav-menu" id="navMenu">
-                    <a href="index.html" class="nav-link">Home</a>
-                    <a href="about.html" class="nav-link">About</a>
-                    <a href="services.html" class="nav-link active">Services</a>
-                    <a href="gallery.html" class="nav-link">Gallery</a>
-                    <a href="testimonials.html" class="nav-link">Reviews</a>
-                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="../index.html" class="nav-link">Home</a>
+                    <a href="../about.html" class="nav-link">About</a>
+                    <a href="../services.html" class="nav-link active">Services</a>
+                    <a href="../gallery.html" class="nav-link">Gallery</a>
+                    <a href="../testimonials.html" class="nav-link">Reviews</a>
+                    <a href="../contact.html" class="nav-link">Contact</a>
                 </div>
                 
                 <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
@@ -45,13 +45,20 @@
         </nav>
     </header>
 
-    <!-- Category Hero Section -->
-    <section class="category-hero" id="categoryHero">
+    <!-- Parallax Hero Section with Enhanced Design -->
+    <section class="category-hero parallax-hero" id="categoryHero">
+        <div class="parallax-background"></div>
         <div class="hero-overlay"></div>
+        <div class="hero-particles"></div>
         <div class="hero-content">
-            <h1 class="category-title" id="categoryTitle">Face Treatments</h1>
-            <p class="category-subtitle" id="categorySubtitle">Rejuvenate your skin with our luxurious facial treatments</p>
+            <div class="hero-badge">Premium Skincare</div>
+            <h1 class="category-title animate-in" id="categoryTitle">Face Treatments</h1>
+            <p class="category-subtitle animate-in" id="categorySubtitle">Rejuvenate your skin with our luxurious facial treatments</p>
             <div class="hero-divider"></div>
+            <a href="#services-section" class="hero-cta-button smooth-scroll">
+                <span>Explore Treatments</span>
+                <i class="fas fa-arrow-down"></i>
+            </a>
         </div>
     </section>
 
@@ -59,9 +66,9 @@
     <div class="breadcrumb-container">
         <div class="container">
             <nav class="breadcrumb">
-                <a href="index.html">Home</a>
+                <a href="../index.html">Home</a>
                 <span class="separator">/</span>
-                <a href="services.html">Services</a>
+                <a href="../services.html">Services</a>
                 <span class="separator">/</span>
                 <span class="current" id="breadcrumbCurrent">Face Treatments</span>
             </nav>
@@ -69,10 +76,10 @@
     </div>
 
     <!-- Services Grid Section -->
-    <section class="services-section">
+    <section class="services-section" id="services-section">
         <div class="container">
             <div class="services-intro">
-                <h2 class="section-title">Our Treatments</h2>
+                <h2 class="section-title">Our Facial Treatments</h2>
                 <p class="section-description" id="sectionDescription">
                     Discover our range of specialized facial treatments designed to address your unique skincare needs.
                 </p>
@@ -97,16 +104,134 @@
         </div>
     </section>
 
+    <!-- Fresha Booking Section -->
+    <section class="booking-section" id="book-section">
+        <div class="container">
+            <div class="booking-content">
+                <div class="booking-header">
+                    <div class="booking-badge">Easy Online Booking</div>
+                    <h2 class="booking-title">Book Your Facial Treatment</h2>
+                    <p class="booking-description">
+                        Schedule your appointment instantly with Fresha. Choose your preferred date, time, and treatment in just a few clicks.
+                    </p>
+                </div>
+
+                <div class="booking-options">
+                    <!-- Fresha Booking Card -->
+                    <div class="booking-card primary-booking">
+                        <div class="booking-card-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3 class="booking-card-title">Book Online Now</h3>
+                        <p class="booking-card-text">
+                            Select your treatment, choose your time, and book instantly through our secure booking platform.
+                        </p>
+                        <a href="https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="booking-button primary-button">
+                            <span>Book on Fresha</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+
+                    <!-- Phone Booking Card -->
+                    <div class="booking-card">
+                        <div class="booking-card-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3 class="booking-card-title">Call to Book</h3>
+                        <p class="booking-card-text">
+                            Prefer to speak with us? Call our team and we'll help you schedule the perfect treatment.
+                        </p>
+                        <a href="tel:7188419919" class="booking-button secondary-button">
+                            <span>(718) 841-9919</span>
+                            <i class="fas fa-phone"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Booking Benefits -->
+                <div class="booking-benefits">
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Instant Confirmation</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>24/7 Online Booking</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Flexible Rescheduling</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Secure Payment</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-section">
+        <div class="container">
+            <div class="why-choose-content">
+                <h2 class="section-title">Why Choose Our Facials</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3 class="feature-title">Natural Products</h3>
+                        <p class="feature-text">We use only premium, organic skincare products that are gentle on your skin and the environment.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <h3 class="feature-title">Expert Estheticians</h3>
+                        <p class="feature-text">Our licensed professionals have years of experience in advanced facial techniques and skincare.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 class="feature-title">Personalized Care</h3>
+                        <p class="feature-text">Every facial is customized to your unique skin type and concerns for optimal results.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <h3 class="feature-title">Relaxing Atmosphere</h3>
+                        <p class="feature-text">Enjoy a tranquil, spa-like environment designed for your comfort and relaxation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Call to Action Section -->
     <section class="cta-section">
         <div class="container">
             <div class="cta-content">
                 <h2 class="cta-title">Ready to Experience Natural Beauty?</h2>
-                <p class="cta-text">Book your appointment today and let us pamper you with our luxury treatments</p>
-                <a href="contact.html" class="cta-button">
-                    <span>Book Now</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
+                <p class="cta-text">Book your appointment today and let us pamper you with our luxury facial treatments</p>
+                <div class="cta-buttons">
+                    <a href="https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="cta-button primary">
+                        <span>Book Online</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="tel:7188419919" class="cta-button secondary">
+                        <span>Call Us</span>
+                        <i class="fas fa-phone"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -114,49 +239,79 @@
     <!-- Footer -->
     <footer class="main-footer">
         <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3 class="footer-title">Laura's Beauty Touch</h3>
-                    <p class="footer-description">Experience natural luxury and rejuvenation in our serene spa sanctuary.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <!-- Footer Top -->
+            <div class="footer-top">
+                <div class="footer-column footer-brand">
+                    <h3 class="footer-logo">Laura's Beauty Touch</h3>
+                    <p class="footer-tagline">Where natural beauty meets modern elegance</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Pinterest">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
                     </div>
                 </div>
 
-                <div class="footer-section">
-                    <h4 class="footer-heading">Quick Links</h4>
+                <div class="footer-column">
+                    <h4 class="footer-title">Quick Links</h4>
                     <ul class="footer-links">
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="gallery.html">Gallery</a></li>
-                        <li><a href="contact.html">Book Now</a></li>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../services.html">Services</a></li>
+                        <li><a href="../gallery.html">Gallery</a></li>
+                        <li><a href="../testimonials.html">Reviews</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
                     </ul>
                 </div>
 
-                <div class="footer-section">
-                    <h4 class="footer-heading">Hours</h4>
-                    <ul class="footer-info">
-                        <li>Monday - Friday: 9am - 7pm</li>
-                        <li>Saturday: 9am - 6pm</li>
-                        <li>Sunday: 10am - 5pm</li>
+                <div class="footer-column">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="facials.html">Face Treatments</a></li>
+                        <li><a href="body.html">Body Treatments</a></li>
+                        <li><a href="nails.html">Nail Services</a></li>
+                        <li><a href="lashes.html">Lash Services</a></li>
+                        <li><a href="wax.html">Waxing</a></li>
+                        <li><a href="laser.html">Laser Treatments</a></li>
                     </ul>
                 </div>
 
-                <div class="footer-section">
-                    <h4 class="footer-heading">Contact</h4>
-                    <ul class="footer-info">
-                        <li><i class="fas fa-phone"></i> (555) 123-4567</li>
-                        <li><i class="fas fa-envelope"></i> info@laurasbeauty.com</li>
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Spa Lane, Beauty City</li>
+                <div class="footer-column">
+                    <h4 class="footer-title">Contact Info</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>97-12 66th Avenue<br>Rego Park, NY 11374</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:7188419919">(718) 841-9919</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@laurasbeautytouch.com">info@laurasbeautytouch.com</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Sat: 9AM - 7PM<br>Sun: 10AM - 5PM</span>
+                        </li>
                     </ul>
                 </div>
             </div>
 
+            <!-- Footer Bottom -->
             <div class="footer-bottom">
-                <p>&copy; 2025 Laura's Beauty Touch. All rights reserved.</p>
+                <p class="footer-copyright">
+                    &copy; 2025 Laura's Beauty Touch. All rights reserved.
+                </p>
                 <div class="footer-bottom-links">
                     <a href="#">Privacy Policy</a>
                     <span>|</span>
@@ -167,7 +322,11 @@
     </footer>
 
     <!-- Floating Action Button -->
-    <a href="contact.html" class="fab-button" aria-label="Book Appointment">
+    <a href="https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="fab-button" 
+       aria-label="Book Appointment">
         <i class="fas fa-calendar-check"></i>
         <span class="fab-text">Book Now</span>
     </a>
@@ -178,7 +337,7 @@
     </button>
 
     <!-- Scripts -->
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
     <script src="servicescat.js"></script>
 </body>
 </html>
