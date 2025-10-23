@@ -1426,12 +1426,9 @@ class AboutCarousel {
             }, 400);
         }
 
-        if (window.innerWidth < 768) {
-            const offset = -this.currentIndex * 100;
-            this.track.style.transform = `translateX(${offset}%)`;
-        } else {
-            this.track.style.transform = 'translateX(0)';
-        }
+        // Apply transform on ALL screen sizes
+        const offset = -this.currentIndex * 100;
+        this.track.style.transform = `translateX(${offset}%)`;
 
         this.slides.forEach((slide, index) => {
             slide.classList.toggle('active', index === this.currentIndex);
@@ -1444,17 +1441,14 @@ class AboutCarousel {
     }
 
     handleTouchStart(e) {
-        if (window.innerWidth >= 768) return;
         this.touchStartX = e.touches[0].clientX;
     }
 
     handleTouchMove(e) {
-        if (window.innerWidth >= 768) return;
         this.touchEndX = e.touches[0].clientX;
     }
 
     handleTouchEnd() {
-        if (window.innerWidth >= 768) return;
         this.handleSwipe();
     }
 
@@ -1476,27 +1470,24 @@ class AboutCarousel {
     }
 
     handleMouseDown(e) {
-        if (window.innerWidth >= 768) return;
         this.isDragging = true;
         this.touchStartX = e.clientX;
         this.track.style.cursor = 'grabbing';
     }
 
     handleMouseMove(e) {
-        if (!this.isDragging || window.innerWidth >= 768) return;
+        if (!this.isDragging) return;
         this.touchEndX = e.clientX;
     }
 
     handleMouseUp() {
-        if (!this.isDragging || window.innerWidth >= 768) return;
+        if (!this.isDragging) return;
         this.isDragging = false;
         this.track.style.cursor = 'grab';
         this.handleSwipe();
     }
 
     handleKeyboard(e) {
-        if (window.innerWidth >= 768) return;
-        
         switch(e.key) {
             case 'ArrowLeft':
                 e.preventDefault();
