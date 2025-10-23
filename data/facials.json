@@ -2,55 +2,330 @@
   "category": "facials",
   "services": [
     {
-      "name": "European Facial",
-      "description": "A classic deep-cleansing facial that includes steaming, extractions, massage, and a customized mask to leave your skin glowing and refreshed.",
+      "name": "Express Facial",
+      "description": "A quick, refreshing facial perfect for those on-the-go. Includes cleansing, exfoliation, and moisturizing to instantly revive your skin.",
+      "fullDescription": "Our Express Facial is designed for busy individuals who want quick results. This 30-minute treatment includes deep cleansing to remove impurities, gentle exfoliation to reveal fresh skin, a nourishing serum application, and hydrating moisturizer. Perfect as a pick-me-up before an event or as a regular maintenance treatment.",
+      "duration": "30 minutes",
+      "price": "60",
+      "priceLabel": "Starting at",
+      "image": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800",
+      "benefits": [
+        "Quick skin refresh",
+        "Deep cleansing",
+        "Instant glow",
+        "Perfect for busy schedules"
+      ]
+    },
+    {
+      "name": "Champagne Facial",
+      "description": "Luxurious anti-aging treatment infused with champagne extracts. Detoxifies, brightens, and firms the skin for a radiant, youthful glow.",
+      "fullDescription": "Indulge in the ultimate luxury with our Champagne Facial. This elegant treatment harnesses the powerful antioxidants found in champagne to detoxify and rejuvenate your skin. The natural tartaric acid gently exfoliates while polyphenols protect against free radicals. Includes cleansing, champagne-infused mask, facial massage, and hydrating treatment. Your skin will feel refreshed, firm, and radiant.",
+      "duration": "45 minutes",
+      "price": "75",
+      "priceLabel": "Starting at",
+      "image": "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800",
+      "badge": "Luxury",
+      "benefits": [
+        "Anti-aging properties",
+        "Brightens complexion",
+        "Firms and tones",
+        "Rich in antioxidants"
+      ]
+    },
+    {
+      "name": "European Deep Pore Cleansing Facial",
+      "description": "Traditional deep-cleansing facial with steam, extractions, and massage. Thoroughly cleanses pores and leaves skin purified and balanced.",
+      "fullDescription": "Experience the classic European facial technique perfected over generations. This comprehensive treatment begins with a thorough skin analysis, followed by deep cleansing, steam therapy to open pores, professional extractions to remove impurities, relaxing facial massage to stimulate circulation, a customized mask, and finishing with toner and moisturizer. Ideal for all skin types, especially those prone to congestion.",
+      "duration": "60 minutes",
+      "price": "85",
+      "priceLabel": "Starting at",
+      "image": "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=800",
+      "badge": "Popular",
+      "benefits": [
+        "Deep pore cleansing",
+        "Professional extractions",
+        "Improves skin texture",
+        "Relaxing massage included"
+      ]
+    },
+    {
+      "name": "Organic Facial",
+      "description": "100% organic, chemical-free treatment using natural botanicals. Gentle, nourishing, and perfect for sensitive skin seeking natural care.",
+      "fullDescription": "Treat your skin to the purest ingredients nature has to offer. Our Organic Facial uses only certified organic products free from synthetic chemicals, parabens, and artificial fragrances. This gentle yet effective treatment includes organic cleansing, enzyme exfoliation with fruit acids, a nutrient-rich organic mask, and botanical moisturizers. Perfect for sensitive skin, those avoiding chemicals, or anyone seeking a natural approach to skincare.",
+      "duration": "60 minutes",
+      "price": "85",
+      "priceLabel": "Starting at",
+      "image": "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=800",
+      "benefits": [
+        "100% organic products",
+        "Chemical-free",
+        "Gentle on sensitive skin",
+        "Natural botanicals"
+      ]
+    },
+    {
+      "name": "Cranberry & Pomegranate Facial",
+      "description": "Antioxidant-rich treatment using cranberry and pomegranate extracts. Brightens, protects, and revitalizes for a healthy, glowing complexion.",
+      "fullDescription": "Harness the power of superfruits with this antioxidant-packed facial. Cranberries and pomegranates are loaded with vitamins C and E, protecting skin from environmental damage while promoting cell renewal. This treatment includes deep cleansing, a gentle cranberry enzyme exfoliation, a pomegranate antioxidant mask rich in polyphenols, facial massage, and hydrating serums. Leaves skin bright, firm, and glowing with health.",
+      "duration": "60 minutes",
+      "price": "85",
+      "priceLabel": "Starting at",
+      "image": "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800",
+      "benefits": [
+        "Powerful antioxidants",
+        "Brightens complexion",
+        "Anti-aging benefits",
+        "Vitamin-rich treatment"
+      ]
+    },
+    {
+      "name": "Sweet Mango Facial",
+      "description": "Tropical enzyme facial with mango extracts. Gently exfoliates, hydrates, and leaves skin soft, smooth, and beautifully radiant.",
+      "fullDescription": "Transport your skin to a tropical paradise with our Sweet Mango Facial. Rich in vitamins A, C, and E, mango naturally exfoliates dead skin cells while providing intense hydration. This delicious-smelling treatment includes cleansing, mango enzyme peel to reveal fresh skin, a hydrating mango butter mask, soothing massage, and protective moisturizer. Perfect for dull, dry skin needing rejuvenation.",
+      "duration": "60 minutes",
+      "price": "85",
+      "priceLabel": "Starting at",
+      "image": "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800",
+      "benefits": [
+        "Natural enzyme exfoliation",
+        "Deep hydration",
+        "Vitamin-rich formula",
+        "Softens and smooths"
+      ]
+    },
+    {
+      "name": "Men's Facial",
+      "description": "Specially formulated for men's skin. Addresses razor burn, ingrown hairs, and oil control while providing deep cleansing and hydration.",
+      "fullDescription": "Designed specifically for men's thicker, oilier skin and unique concerns. This masculine facial treatment includes deep cleansing to remove oil and impurities, gentle exfoliation to prevent ingrown hairs, steam therapy, extractions if needed, a purifying charcoal mask, beard area treatment, soothing aftershave care, and oil-free moisturizer. Addresses razor burn, large pores, and rough texture while leaving skin refreshed and comfortable.",
+      "duration": "60 minutes",
+      "price": "100",
+      "priceLabel": "Starting at",
+      "image": "https://images.unsplash.com/photo-1621607512214-68297480165e?w=800",
+      "benefits": [
+        "Formulated for men's skin",
+        "Prevents ingrown hairs",
+        "Soothes razor burn",
+        "Controls oil production"
+      ]
+    },
+    {
+      "name": "Detox Facial",
+      "description": "Purifying treatment to eliminate toxins and impurities. Uses activated charcoal and clay to deeply cleanse and refresh congested skin.",
+      "fullDescription": "Give your skin a fresh start with our intensive Detox Facial. Perfect for city dwellers or anyone exposed to pollution and environmental stressors. This powerful treatment uses activated charcoal to draw out impurities, bentonite clay to absorb excess oil, lymphatic drainage massage to eliminate toxins, and antioxidant serums to protect and restore. Includes deep cleansing, detoxifying mask, facial massage, and protective moisturizer. Skin looks clearer, feels lighter, and glows with renewed vitality.",
       "duration": "60 minutes",
       "price": "95",
       "priceLabel": "Starting at",
       "image": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800",
-      "badge": "Popular"
+      "benefits": [
+        "Removes toxins",
+        "Purifies pores",
+        "Activated charcoal",
+        "Refreshes congested skin"
+      ]
     },
     {
-      "name": "Anti-Aging Facial",
-      "description": "Target fine lines and wrinkles with this luxurious treatment featuring collagen-boosting serums, gentle exfoliation, and lifting massage techniques.",
-      "duration": "75 minutes",
-      "price": "135",
-      "priceLabel": "Starting at",
-      "image": "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800",
-      "badge": "Best Seller"
-    },
-    {
-      "name": "Hydrating Facial",
-      "description": "Quench thirsty skin with this moisture-intensive treatment. Perfect for dry, dehydrated, or dull complexions needing a boost of hydration.",
-      "duration": "60 minutes",
-      "price": "105",
-      "priceLabel": "Starting at",
-      "image": "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=800"
-    },
-    {
-      "name": "Acne Treatment Facial",
-      "description": "Combat breakouts with this purifying facial designed to deep clean pores, reduce inflammation, and prevent future blemishes.",
-      "duration": "60 minutes",
-      "price": "110",
-      "priceLabel": "Starting at",
-      "image": "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800"
-    },
-    {
-      "name": "Brightening Facial",
-      "description": "Reveal luminous, even-toned skin with vitamin C, gentle exfoliation, and brightening agents that diminish dark spots and hyperpigmentation.",
-      "duration": "75 minutes",
-      "price": "125",
-      "priceLabel": "Starting at",
-      "image": "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800",
-      "badge": "New"
-    },
-    {
-      "name": "Gentleman's Facial",
-      "description": "Specially formulated for men's skin. Includes deep cleansing, beard area care, and treatments to address concerns like razor burn and oiliness.",
+      "name": "Turmeric Deep Pore Cleansing Facial",
+      "description": "Anti-inflammatory facial using turmeric's healing properties. Reduces redness, clears pores, and brightens for an even, radiant complexion.",
+      "fullDescription": "Experience the ancient healing power of turmeric in this therapeutic facial. Turmeric's anti-inflammatory and antibacterial properties make it ideal for acne-prone, inflamed, or uneven skin. This treatment includes gentle cleansing, turmeric-infused steam to open pores, deep extractions, a golden turmeric mask packed with antioxidants, soothing massage, and brightening serum. Reduces redness, fades dark spots, and leaves skin glowing with a healthy, even tone.",
       "duration": "60 minutes",
       "price": "95",
       "priceLabel": "Starting at",
-      "image": "https://images.unsplash.com/photo-1621607512214-68297480165e?w=800"
+      "image": "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800",
+      "benefits": [
+        "Anti-inflammatory",
+        "Brightens skin tone",
+        "Clears blemishes",
+        "Ancient healing properties"
+      ]
+    },
+    {
+      "name": "Papaya Pumpkin Deep Pore Cleansing Facial",
+      "description": "Enzyme-rich treatment combining papaya and pumpkin. Gently exfoliates, unclogs pores, and reveals smooth, glowing skin.",
+      "fullDescription": "This powerful enzyme facial combines the exfoliating benefits of papaya with the vitamin-rich properties of pumpkin. Papain enzymes gently dissolve dead skin cells while pumpkin's natural AHAs and vitamins A, C, and E nourish and protect. Treatment includes cleansing, papaya-pumpkin enzyme peel, steam, extractions, a nourishing pumpkin mask, facial massage, and hydrating moisturizer. Perfect for dull, congested skin needing renewal without harsh scrubs.",
+      "duration": "60 minutes",
+      "price": "95",
+      "priceLabel": "Starting at",
+      "image": "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=800",
+      "benefits": [
+        "Natural enzyme exfoliation",
+        "Vitamin-rich formula",
+        "Unclogs pores",
+        "Reveals radiant skin"
+      ]
+    },
+    {
+      "name": "Collagen Glow Facial",
+      "description": "Youth-boosting treatment with collagen to improve elasticity and firmness. Reduces fine lines and restores a youthful, glowing appearance.",
+      "fullDescription": "Turn back time with our Collagen Glow Facial. This age-defying treatment infuses skin with collagen peptides to improve elasticity, reduce fine lines, and restore firmness. Includes deep cleansing, gentle exfoliation, a collagen-rich sheet mask, targeted serum application, lymphatic drainage massage to sculpt and lift, and peptide moisturizer. Vitamin C and hyaluronic acid boost collagen production while immediately plumping and brightening skin for a youthful, radiant glow.",
+      "duration": "60 minutes",
+      "price": "100",
+      "priceLabel": "Starting at",
+      "image": "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800",
+      "badge": "Anti-Aging",
+      "benefits": [
+        "Boosts collagen production",
+        "Improves skin elasticity",
+        "Reduces fine lines",
+        "Instant glow"
+      ]
+    },
+    {
+      "name": "Luxurious Facial",
+      "description": "Our premium signature facial with advanced techniques and luxury products. Complete rejuvenation for ultimate relaxation and stunning results.",
+      "fullDescription": "Indulge in the ultimate spa experience with our Luxurious Facial. This comprehensive treatment combines the best techniques and premium products for complete skin transformation. Includes thorough skin analysis, double cleansing, enzyme exfoliation, steam therapy, meticulous extractions, LED light therapy, a customized luxury mask with precious ingredients, extended facial and décolleté massage with hot stones, targeted serums, and protective moisturizer. Every step is designed for maximum results and pure relaxation.",
+      "duration": "75 minutes",
+      "price": "100",
+      "priceLabel": "Starting at",
+      "image": "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800",
+      "badge": "Premium",
+      "benefits": [
+        "Complete skin transformation",
+        "Premium luxury products",
+        "Extended massage",
+        "LED light therapy"
+      ]
+    },
+    {
+      "name": "Oxygen Facial",
+      "description": "High-tech treatment infusing pure oxygen and vitamins into skin. Instantly brightens, plumps, and revitalizes for red-carpet results.",
+      "fullDescription": "Experience the celebrity favorite! Our Oxygen Facial uses pressurized oxygen to infuse a customized serum of hyaluronic acid, vitamins, and antioxidants deep into the skin. This innovative treatment stimulates collagen production, accelerates cell renewal, and instantly plumps and brightens. Includes cleansing, gentle exfoliation, oxygen infusion treatment targeting your specific concerns, hydrating mask, and protective moisturizer with SPF. No downtime, immediate results - perfect before special events.",
+      "duration": "80 minutes",
+      "price": "100",
+      "priceLabel": "Starting at",
+      "image": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800",
+      "badge": "Best Seller",
+      "benefits": [
+        "Instantly plumps skin",
+        "Increases circulation",
+        "No downtime",
+        "Celebrity favorite"
+      ]
+    },
+    {
+      "name": "24 Karat Facial",
+      "description": "Luxurious gold-infused treatment for ultimate anti-aging. Pure gold stimulates collagen, firms skin, and delivers unparalleled radiance.",
+      "fullDescription": "Experience pure luxury with our 24 Karat Gold Facial. Used by royalty for centuries, pure gold has powerful anti-aging properties. Gold particles stimulate collagen production, improve elasticity, and reflect light for an instant luminous glow. This opulent treatment includes deep cleansing, exfoliation, a 24-karat gold leaf mask application, facial massage with gold-infused serum, and protective moisturizer. Gold's anti-inflammatory properties calm skin while promoting cell renewal for firmer, younger-looking skin.",
+      "duration": "60 minutes",
+      "price": "110",
+      "priceLabel": "Starting at",
+      "image": "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800",
+      "badge": "Luxury",
+      "benefits": [
+        "Pure 24K gold treatment",
+        "Stimulates collagen",
+        "Ultimate luxury",
+        "Instant radiance"
+      ]
+    },
+    {
+      "name": "Acne Facial",
+      "description": "Specialized treatment for acne-prone skin. Clears breakouts, reduces inflammation, and prevents future blemishes with targeted care.",
+      "fullDescription": "Finally, clear, confident skin! Our Acne Facial is specifically designed to treat active breakouts and prevent future ones. This therapeutic treatment uses medical-grade products with salicylic acid, benzoyl peroxide, and natural antibacterials. Includes deep cleansing, steam with antibacterial herbs, gentle extractions of comedones, high-frequency treatment to kill acne bacteria, a purifying sulfur or clay mask, spot treatment, and oil-free hydration. We'll also provide a customized home care regimen.",
+      "duration": "70 minutes",
+      "price": "120",
+      "priceLabel": "Starting at",
+      "image": "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800",
+      "benefits": [
+        "Clears active breakouts",
+        "Prevents future acne",
+        "Reduces inflammation",
+        "High-frequency treatment"
+      ]
+    },
+    {
+      "name": "Dermaplaning Facial",
+      "description": "Advanced exfoliation removing dead skin and peach fuzz. Reveals ultra-smooth, glowing skin with enhanced product absorption.",
+      "fullDescription": "Achieve instantly smooth, luminous skin with Dermaplaning. This advanced exfoliation technique uses a sterile surgical blade to gently remove dead skin cells and vellus hair (peach fuzz) from the face. The result? Incredibly smooth skin, reduced appearance of fine lines, better makeup application, and enhanced absorption of skincare products. Includes cleansing, dermaplaning treatment, hydrating mask, facial massage, and protective serums. Safe, painless, and provides immediate results with no downtime.",
+      "duration": "70 minutes",
+      "price": "120",
+      "priceLabel": "Starting at",
+      "image": "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800",
+      "badge": "Popular",
+      "benefits": [
+        "Removes dead skin & peach fuzz",
+        "Instantly smooth skin",
+        "Enhances product absorption",
+        "No downtime"
+      ]
+    },
+    {
+      "name": "Anti-Aging Facial",
+      "description": "Comprehensive age-defying treatment targeting wrinkles, firmness, and tone. Advanced products and techniques for visibly younger skin.",
+      "fullDescription": "Turn back the clock with our results-driven Anti-Aging Facial. This powerful treatment combines proven anti-aging ingredients including retinol, peptides, vitamin C, and growth factors. Includes double cleansing, gentle exfoliation, steam, extractions if needed, LED light therapy (red light for collagen, blue for clarity), a peptide-rich mask, micro-current or radio-frequency treatment to lift and firm, targeted eye and lip treatments, facial massage, and age-defying serums and moisturizers. See visible reduction in fine lines and improved firmness.",
+      "duration": "75 minutes",
+      "price": "120",
+      "priceLabel": "Starting at",
+      "image": "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=800",
+      "badge": "Advanced",
+      "benefits": [
+        "Reduces fine lines & wrinkles",
+        "Firms and lifts",
+        "Advanced technology",
+        "Visible results"
+      ]
+    },
+    {
+      "name": "Hydra Facial",
+      "description": "Medical-grade hydrodermabrasion treatment. Cleanses, exfoliates, extracts, and hydrates in one powerful, painless session.",
+      "fullDescription": "Experience the most advanced facial technology with the Hydra Facial MD. This patented, multi-step treatment uses vortex-fusion technology to deeply cleanse, exfoliate, extract impurities, and infuse skin with intensive serums. The process: cleansing and exfoliation with gentle acids, painless vacuum extraction to clear pores, infusion of antioxidants, peptides, and hyaluronic acid. Customized boosters target your specific concerns (brightening, anti-aging, clarity). Immediate, visible results with zero downtime. Suitable for all skin types.",
+      "duration": "70 minutes",
+      "price": "180",
+      "priceLabel": "Starting at",
+      "image": "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800",
+      "badge": "Best Seller",
+      "benefits": [
+        "Medical-grade treatment",
+        "Immediate visible results",
+        "Painless extractions",
+        "Deep hydration"
+      ]
+    },
+    {
+      "name": "Micro-Dermabrasion Facial",
+      "description": "Diamond-tip microdermabrasion for deep exfoliation. Improves texture, reduces scarring, and reveals fresh, rejuvenated skin.",
+      "fullDescription": "Resurface your skin with professional Micro-Dermabrasion. This medical-grade treatment uses a diamond-tipped wand to mechanically exfoliate the outer layer of dead skin cells, stimulating cell renewal and collagen production. Particularly effective for improving skin texture, reducing fine lines, fading acne scars and hyperpigmentation, and minimizing pores. Includes cleansing, customized microdermabrasion treatment, soothing mask, facial massage, and protective serums. A series of treatments provides dramatic results.",
+      "duration": "70 minutes",
+      "price": "130",
+      "priceLabel": "Starting at",
+      "image": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800",
+      "benefits": [
+        "Deep exfoliation",
+        "Reduces scarring",
+        "Improves skin texture",
+        "Stimulates collagen"
+      ]
+    },
+    {
+      "name": "Oxygen-Hydra Facial",
+      "description": "Ultimate combination treatment: Hydrafacial + Oxygen infusion. Maximum hydration, deep cleansing, and immediate radiance.",
+      "fullDescription": "Get the best of both worlds with our Oxygen-Hydra Facial combo. This powerhouse treatment begins with the Hydrafacial's vortex technology to deeply cleanse, exfoliate, and extract, followed immediately by oxygen infusion to push vitamins and hyaluronic acid deep into freshly exfoliated skin. The combination provides unparalleled hydration, immediate plumping, enhanced absorption of serums, and incredible glow. Perfect before weddings, photo shoots, or anytime you want to look your absolute best. Extended treatment time ensures complete relaxation.",
+      "duration": "90 minutes",
+      "price": "195",
+      "priceLabel": "Starting at",
+      "image": "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800",
+      "badge": "Premium",
+      "benefits": [
+        "Combines two powerful treatments",
+        "Maximum hydration",
+        "Immediate dramatic results",
+        "Perfect for special occasions"
+      ]
+    },
+    {
+      "name": "Micro-Needling",
+      "description": "Advanced collagen induction therapy. Dramatically improves scarring, wrinkles, and skin texture for transformative results.",
+      "fullDescription": "Achieve dramatic skin transformation with professional Micro-Needling (also called Collagen Induction Therapy). Using a sterile device with fine needles, we create microscopic channels in the skin, triggering the body's natural healing response and massive collagen production. Highly effective for reducing acne scars, surgical scars, stretch marks, fine lines, wrinkles, and large pores. Includes numbing cream for comfort, microneedling treatment with growth factor serum, calming mask, and healing ointment. Downtime is minimal (slight redness for 1-2 days). Results improve over weeks as collagen rebuilds. A series recommended for best results.",
+      "duration": "60 minutes",
+      "price": "250",
+      "priceLabel": "Starting at",
+      "image": "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800",
+      "badge": "Advanced",
+      "benefits": [
+        "Dramatic results",
+        "Reduces scarring significantly",
+        "Stimulates collagen production",
+        "Medical-grade treatment"
+      ]
     }
   ]
 }
