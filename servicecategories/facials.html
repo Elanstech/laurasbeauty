@@ -18,15 +18,6 @@
     <link rel="stylesheet" href="servicescat.css">
 </head>
 <body data-category="facials">
-    <!-- ELEGANT PRELOADER -->
-    <div class="preloader" id="preloader">
-        <div class="preloader-content">
-            <div class="loader-ring"></div>
-            <div class="loader-logo">
-                <img src="../images/logo1.png" alt="Laura's Beauty Touch">
-            </div>
-        </div>
-    </div>
 
 <!-- PREMIUM HEADER WITH MEGA MENU -->
     <header class="premium-header">
@@ -269,6 +260,7 @@
 
     <!-- Mobile Overlay -->
     <div class="mobile-overlay"></div>
+
 
     <!-- Parallax Hero Section with Enhanced Design -->
     <section class="category-hero parallax-hero" id="categoryHero">
@@ -638,6 +630,62 @@
         <i class="fas fa-times fab-icon-close"></i>
     </button>
 </div>
+
+    <!-- Floating Action Button -->
+    <a href="https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="fab-button" 
+       aria-label="Book Appointment">
+        <i class="fas fa-calendar-check"></i>
+        <span class="fab-text">Book Now</span>
+    </a>
+
+    <!-- Service Detail Modal -->
+    <div class="service-modal" id="serviceModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose" aria-label="Close modal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-image" id="modalImage"></div>
+            
+            <div class="modal-body">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modalTitle"></h2>
+                    <div class="modal-meta">
+                        <span class="modal-duration" id="modalDuration"></span>
+                        <span class="modal-price" id="modalPrice"></span>
+                    </div>
+                </div>
+                
+                <div class="modal-description">
+                    <p id="modalDescription"></p>
+                    <p id="modalFullDescription"></p>
+                </div>
+                
+                <div class="modal-benefits" id="modalBenefits">
+                    <h3>What to Expect:</h3>
+                    <ul id="modalBenefitsList"></ul>
+                </div>
+                
+                <div class="modal-actions">
+                    <a href="https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="modal-book-button">
+                        <span>Book This Treatment</span>
+                        <i class="fas fa-calendar-check"></i>
+                    </a>
+                    <a href="tel:7188419919" class="modal-call-button">
+                        <i class="fas fa-phone"></i>
+                        <span>Call (718) 841-9919</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="../script.js"></script>
