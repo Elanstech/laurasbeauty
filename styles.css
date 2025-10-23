@@ -1304,9 +1304,6 @@ body {
     align-items: center;
 }
 
-/* ============================================
-   PHOTO GALLERY STACK
-   ============================================ */
 .laura-photos-section {
     position: relative;
 }
@@ -2128,31 +2125,38 @@ body {
 }
 
 @media (min-width: 768px) {
+    /* Keep Carousel Controls visible on all devices */
     .carousel-arrow {
-        display: none !important;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 56px;
+        height: 56px;
     }
 
     .carousel-indicators {
-        display: none !important;
+        display: flex !important;
     }
 
+    /* Carousel stays the same */
     .carousel-track-container {
-        overflow: visible;
+        overflow: hidden;
     }
 
     .carousel-track {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
+        display: flex;
     }
 
     .carousel-slide {
-        min-width: auto;
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
         padding: 0;
     }
 
+    /* Card Hover Effects */
     .carousel-card {
-        cursor: default;
+        cursor: pointer;
     }
 }
 
@@ -2173,14 +2177,15 @@ body {
         font-size: 20px;
     }
 
-    .sanctuary-section .carousel-track {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 28px;
+    /* Larger arrows */
+    .carousel-arrow {
+        width: 64px;
+        height: 64px;
     }
 
-    .values-section .carousel-track {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 28px;
+    .carousel-arrow svg {
+        width: 28px;
+        height: 28px;
     }
 
     .carousel-card {
@@ -2221,14 +2226,6 @@ body {
     .carousel-subtitle {
         font-size: 22px;
         max-width: 700px;
-    }
-
-    .sanctuary-section .carousel-track {
-        gap: 32px;
-    }
-
-    .values-section .carousel-track {
-        gap: 32px;
     }
 
     .carousel-card {
