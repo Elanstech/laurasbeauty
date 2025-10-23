@@ -441,209 +441,194 @@ class HeroVideoCollage {
 // ============================================
 class ServicesCarousel {
     constructor() {
-        this.carousel = document.getElementById('servicesCarouselTrack');
-        this.prevButton = document.getElementById('carouselPrev');
-        this.nextButton = document.getElementById('carouselNext');
-        this.indicators = document.querySelectorAll('.carousel-indicators .carousel-dot');
+        this.track = document.querySelector('.services-carousel-track');
+        this.slides = document.querySelectorAll('.service-tile');
+        this.prevBtn = document.querySelector('.services-prev');
+        this.nextBtn = document.querySelector('.services-next');
+        this.indicators = document.querySelectorAll('.services-indicator');
         
-        this.currentPage = 0;
-        this.cardsPerPage = 3;
-        this.totalCards = 0;
-        this.totalPages = 0;
-        this.autoScrollInterval = null;
-        this.autoScrollDelay = 5000;
+        this.currentIndex = 0;
+        this.slidesToShow = this.getSlidesToShow();
+        this.totalSlides = this.slides.length;
+        this.maxIndex = this.totalSlides - this.slidesToShow;
+        this.autoplayInterval = null;
+        this.autoplayDelay = 5000;
+        this.isAutoplayEnabled = true;
         
-        this.resizeHandler = null;
-        this.keyboardHandler = null;
-        this.scrollHandler = null;
+        this.touchStartX = 0;
+        this.touchEndX = 0;
+        
+        this.init();
     }
-
+    
     init() {
-        if (!this.carousel) return;
-
-        this.totalCards = this.carousel.children.length;
-        this.calculatePages();
-        this.setupEventListeners();
-        this.updateIndicators();
-        this.updateNavigationVisibility();
-        this.startAutoScroll();
+        this.updateCarousel();
+        this.attachEventListeners();
+        if (this.isAutoplayEnabled) {
+            this.startAutoplay();
+        }
+        window.addEventListener('resize', () => this.handleResize());
     }
-
-    calculatePages() {
+    
+    getSlidesToShow() {
         const width = window.innerWidth;
-        
-        if (width < 768) {
-            this.cardsPerPage = 1;
-        } else if (width < 1200) {
-            this.cardsPerPage = 2;
-        } else {
-            this.cardsPerPage = 3;
-        }
-        
-        this.totalPages = Math.ceil(this.totalCards / this.cardsPerPage);
-        
-        if (this.currentPage >= this.totalPages) {
-            this.currentPage = Math.max(0, this.totalPages - 1);
-        }
+        if (width <= 768) return 1;
+        if (width <= 1200) return 2;
+        return 3;
     }
-
-    setupEventListeners() {
-        if (this.prevButton) {
-            this.prevButton.addEventListener('click', () => {
-                this.prevPage();
-                this.resetAutoScroll();
-            });
-        }
-        
-        if (this.nextButton) {
-            this.nextButton.addEventListener('click', () => {
-                this.nextPage();
-                this.resetAutoScroll();
-            });
-        }
-        
-        this.indicators.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                this.goToPage(index);
-                this.resetAutoScroll();
-            });
-        });
-        
-        this.keyboardHandler = (e) => {
-            if (e.key === 'ArrowLeft') {
-                this.prevPage();
-                this.resetAutoScroll();
-            } else if (e.key === 'ArrowRight') {
-                this.nextPage();
-                this.resetAutoScroll();
+    
+    handleResize() {
+        const newSlidesToShow = this.getSlidesToShow();
+        if (newSlidesToShow !== this.slidesToShow) {
+            this.slidesToShow = newSlidesToShow;
+            this.maxIndex = this.totalSlides - this.slidesToShow;
+            if (this.currentIndex > this.maxIndex) {
+                this.currentIndex = this.maxIndex;
             }
-        };
-        document.addEventListener('keydown', this.keyboardHandler);
-        
-        let isScrolling = null;
-        this.scrollHandler = () => {
-            this.stopAutoScroll();
-            
-            clearTimeout(isScrolling);
-            isScrolling = setTimeout(() => {
-                this.startAutoScroll();
-            }, 3000);
-        };
-        
-        if (this.carousel) {
-            this.carousel.addEventListener('scroll', this.scrollHandler, { passive: true });
+            this.updateCarousel();
         }
-        
-        this.resizeHandler = () => {
-            clearTimeout(this.resizeTimeout);
-            this.resizeTimeout = setTimeout(() => {
-                const oldCardsPerPage = this.cardsPerPage;
-                this.calculatePages();
-                
-                if (oldCardsPerPage !== this.cardsPerPage) {
-                    this.goToPage(0);
-                }
-                
-                this.updateNavigationVisibility();
-            }, 250);
-        };
-        
-        window.addEventListener('resize', this.resizeHandler);
     }
-
-    goToPage(page) {
-        if (page < 0 || page >= this.totalPages) return;
+    
+    updateCarousel() {
+        const slideWidth = this.slides[0].offsetWidth;
+        const gap = 30;
+        const offset = -(this.currentIndex * (slideWidth + gap));
         
-        this.currentPage = page;
-        const scrollAmount = page * (100 / this.totalPages);
-        
-        if (this.carousel) {
-            this.carousel.style.transform = `translateX(-${scrollAmount}%)`;
-        }
+        this.track.style.transform = `translateX(${offset}px)`;
         
         this.updateIndicators();
-        this.updateButtonStates();
+        this.updateNavigationButtons();
     }
-
-    nextPage() {
-        const nextPage = (this.currentPage + 1) % this.totalPages;
-        this.goToPage(nextPage);
-    }
-
-    prevPage() {
-        const prevPage = (this.currentPage - 1 + this.totalPages) % this.totalPages;
-        this.goToPage(prevPage);
-    }
-
+    
     updateIndicators() {
-        this.indicators.forEach((dot, index) => {
-            dot.classList.toggle('active', index === this.currentPage);
+        this.indicators.forEach((indicator, index) => {
+            if (index === this.currentIndex) {
+                indicator.classList.add('active');
+            } else {
+                indicator.classList.remove('active');
+            }
         });
     }
-
-    updateButtonStates() {
-        if (this.prevButton) {
-            this.prevButton.disabled = false;
+    
+    updateNavigationButtons() {
+        if (this.currentIndex === 0) {
+            this.prevBtn.style.opacity = '0.5';
+            this.prevBtn.style.cursor = 'not-allowed';
+        } else {
+            this.prevBtn.style.opacity = '1';
+            this.prevBtn.style.cursor = 'pointer';
         }
-        if (this.nextButton) {
-            this.nextButton.disabled = false;
+        
+        if (this.currentIndex >= this.maxIndex) {
+            this.nextBtn.style.opacity = '0.5';
+            this.nextBtn.style.cursor = 'not-allowed';
+        } else {
+            this.nextBtn.style.opacity = '1';
+            this.nextBtn.style.cursor = 'pointer';
         }
     }
-
-    updateNavigationVisibility() {
-        const shouldShow = this.totalPages > 1;
-        
-        if (this.prevButton) {
-            this.prevButton.style.display = shouldShow ? 'flex' : 'none';
+    
+    goToSlide(index) {
+        if (index < 0 || index > this.maxIndex) return;
+        this.currentIndex = index;
+        this.updateCarousel();
+        this.resetAutoplay();
+    }
+    
+    nextSlide() {
+        if (this.currentIndex < this.maxIndex) {
+            this.currentIndex++;
+            this.updateCarousel();
+        } else if (this.isAutoplayEnabled) {
+            this.currentIndex = 0;
+            this.updateCarousel();
         }
-        if (this.nextButton) {
-            this.nextButton.style.display = shouldShow ? 'flex' : 'none';
+        this.resetAutoplay();
+    }
+    
+    prevSlide() {
+        if (this.currentIndex > 0) {
+            this.currentIndex--;
+            this.updateCarousel();
         }
-        
-        const indicatorsContainer = document.querySelector('.carousel-indicators');
-        if (indicatorsContainer) {
-            indicatorsContainer.style.display = shouldShow ? 'flex' : 'none';
+        this.resetAutoplay();
+    }
+    
+    startAutoplay() {
+        this.autoplayInterval = setInterval(() => {
+            if (this.currentIndex < this.maxIndex) {
+                this.nextSlide();
+            } else {
+                this.currentIndex = 0;
+                this.updateCarousel();
+            }
+        }, this.autoplayDelay);
+    }
+    
+    stopAutoplay() {
+        if (this.autoplayInterval) {
+            clearInterval(this.autoplayInterval);
+            this.autoplayInterval = null;
         }
     }
-
-    startAutoScroll() {
-        if (this.totalPages <= 1) return;
-        
-        this.stopAutoScroll();
-        
-        this.autoScrollInterval = setInterval(() => {
-            this.nextPage();
-        }, this.autoScrollDelay);
-    }
-
-    stopAutoScroll() {
-        if (this.autoScrollInterval) {
-            clearInterval(this.autoScrollInterval);
-            this.autoScrollInterval = null;
+    
+    resetAutoplay() {
+        if (this.isAutoplayEnabled) {
+            this.stopAutoplay();
+            this.startAutoplay();
         }
     }
-
-    resetAutoScroll() {
-        this.stopAutoScroll();
-        this.startAutoScroll();
+    
+    handleTouchStart(e) {
+        this.touchStartX = e.touches[0].clientX;
     }
-
-    cleanup() {
-        this.stopAutoScroll();
+    
+    handleTouchMove(e) {
+        this.touchEndX = e.touches[0].clientX;
+    }
+    
+    handleTouchEnd() {
+        const swipeThreshold = 50;
+        const diff = this.touchStartX - this.touchEndX;
         
-        if (this.resizeHandler) {
-            window.removeEventListener('resize', this.resizeHandler);
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                this.nextSlide();
+            } else {
+                this.prevSlide();
+            }
         }
+    }
+    
+    attachEventListeners() {
+        this.prevBtn.addEventListener('click', () => this.prevSlide());
+        this.nextBtn.addEventListener('click', () => this.nextSlide());
         
-        if (this.keyboardHandler) {
-            document.removeEventListener('keydown', this.keyboardHandler);
-        }
+        this.indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => this.goToSlide(index));
+        });
         
-        if (this.scrollHandler && this.carousel) {
-            this.carousel.removeEventListener('scroll', this.scrollHandler);
-        }
+        this.track.addEventListener('touchstart', (e) => this.handleTouchStart(e), { passive: true });
+        this.track.addEventListener('touchmove', (e) => this.handleTouchMove(e), { passive: true });
+        this.track.addEventListener('touchend', () => this.handleTouchEnd());
+        
+        const carouselWrapper = document.querySelector('.services-carousel-wrapper');
+        carouselWrapper.addEventListener('mouseenter', () => {
+            if (this.isAutoplayEnabled) {
+                this.stopAutoplay();
+            }
+        });
+        carouselWrapper.addEventListener('mouseleave', () => {
+            if (this.isAutoplayEnabled) {
+                this.startAutoplay();
+            }
+        });
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const servicesCarousel = new ServicesCarousel();
+});
 
 // ============================================
 // TEAM SECTION
