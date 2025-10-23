@@ -519,7 +519,7 @@ class ServicesCarousel {
             this.prevBtn.style.cursor = 'pointer';
         }
         
-        if (this.currentIndex >= this.maxIndex) {
+        if (this.currentIndex >= this.totalSlides - 1) {
             this.nextBtn.style.opacity = '0.5';
             this.nextBtn.style.cursor = 'not-allowed';
         } else {
@@ -529,14 +529,14 @@ class ServicesCarousel {
     }
     
     goToSlide(index) {
-        if (index < 0 || index > this.maxIndex) return;
+        if (index < 0 || index >= this.totalSlides) return;
         this.currentIndex = index;
         this.updateCarousel();
         this.resetAutoplay();
     }
     
     nextSlide() {
-        if (this.currentIndex < this.maxIndex) {
+        if (this.currentIndex < this.totalSlides - 1) {
             this.currentIndex++;
             this.updateCarousel();
         } else if (this.isAutoplayEnabled) {
@@ -556,7 +556,7 @@ class ServicesCarousel {
     
     startAutoplay() {
         this.autoplayInterval = setInterval(() => {
-            if (this.currentIndex < this.maxIndex) {
+            if (this.currentIndex < this.totalSlides - 1) {
                 this.nextSlide();
             } else {
                 this.currentIndex = 0;
