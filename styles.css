@@ -814,21 +814,6 @@ body {
     -webkit-transform: translate3d(0, 0, 0);
 }
 
-.hero-master-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(
-        ellipse at center,
-        rgba(28, 28, 28, 0.3) 0%,
-        rgba(59, 74, 47, 0.5) 100%
-    );
-    z-index: 3;
-    pointer-events: none;
-}
-
 /* Hero Content */
 .hero-content-wrapper {
     position: relative;
