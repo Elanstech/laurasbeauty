@@ -6,67 +6,67 @@
 // Category configuration mapping
 const categoryConfig = {
     facials: {
-        jsonFile: 'data/facials.json',
+        jsonFile: '../data/facials.json',
         title: 'Face Treatments',
         subtitle: 'Rejuvenate your skin with our luxurious facial treatments',
         description: 'Discover our range of specialized facial treatments designed to address your unique skincare needs.'
     },
     addons: {
-        jsonFile: 'data/addons.json',
+        jsonFile: '../data/addons.json',
         title: 'Add-Ons',
         subtitle: 'Enhance your treatment with our premium add-on services',
         description: 'Elevate your spa experience with our carefully curated selection of treatment enhancements.'
     },
     body: {
-        jsonFile: 'data/body.json',
+        jsonFile: '../data/body.json',
         title: 'Body Treatments',
         subtitle: 'Indulge in full-body relaxation and rejuvenation',
         description: 'Experience ultimate relaxation with our luxurious body treatments designed to revitalize your entire being.'
     },
     specials: {
-        jsonFile: 'data/specials.json',
+        jsonFile: '../data/specials.json',
         title: 'Special Offers',
         subtitle: 'Exclusive deals on our premium treatments',
         description: 'Take advantage of our limited-time special offers and seasonal packages.'
     },
     nails: {
-        jsonFile: 'data/nails.json',
+        jsonFile: '../data/nails.json',
         title: 'Nail Services',
         subtitle: 'Perfect manicures and pedicures for beautiful hands and feet',
         description: 'Pamper yourself with our professional nail care services and stunning nail art.'
     },
     packages: {
-        jsonFile: 'data/packages.json',
+        jsonFile: '../data/packages.json',
         title: 'Spa Packages',
         subtitle: 'Complete wellness experiences combining multiple treatments',
         description: 'Immerse yourself in our curated spa packages designed for ultimate relaxation and transformation.'
     },
     laser: {
-        jsonFile: 'data/laser.json',
+        jsonFile: '../data/laser.json',
         title: 'Laser Treatments',
         subtitle: 'Advanced laser technology for skin perfection',
         description: 'Experience cutting-edge laser treatments for hair removal, skin rejuvenation, and more.'
     },
     wax: {
-        jsonFile: 'data/wax.json',
+        jsonFile: '../data/wax.json',
         title: 'Waxing Services',
         subtitle: 'Smooth, hair-free skin with our expert waxing treatments',
         description: 'Professional waxing services using premium products for long-lasting smoothness.'
     },
     pmu: {
-        jsonFile: 'data/pmu.json',
+        jsonFile: '../data/pmu.json',
         title: 'Permanent Makeup',
         subtitle: 'Wake up beautiful with semi-permanent cosmetic enhancements',
         description: 'Enhance your natural beauty with our expertly applied permanent makeup solutions.'
     },
     lashes: {
-        jsonFile: 'data/lashes.json',
+        jsonFile: '../data/lashes.json',
         title: 'Lash Services',
         subtitle: 'Dramatic, beautiful lashes that enhance your eyes',
         description: 'Transform your look with our professional lash extensions and enhancement services.'
     },
     makeup: {
-        jsonFile: 'data/makeup.json',
+        jsonFile: '../data/makeup.json',
         title: 'Makeup Services',
         subtitle: 'Professional makeup artistry for any occasion',
         description: 'Look your best with our expert makeup application services for all occasions.'
@@ -80,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     initSmoothScrolling();
     initBackToTop();
+    initModal();
 });
 
 /**
@@ -372,7 +373,7 @@ function createServiceCard(service, index) {
         content.appendChild(description);
     }
     
-    // Footer with price and book button
+    // Footer with price and buttons
     const footer = document.createElement('div');
     footer.className = 'service-footer';
     
@@ -392,6 +393,21 @@ function createServiceCard(service, index) {
     
     footer.appendChild(priceContainer);
     
+    // Button container
+    const buttonContainer = document.createElement('div');
+    buttonContainer.style.display = 'flex';
+    buttonContainer.style.gap = '0.75rem';
+    buttonContainer.style.flexWrap = 'wrap';
+    
+    // View Details button
+    const viewDetailsButton = document.createElement('button');
+    viewDetailsButton.className = 'view-details-button';
+    viewDetailsButton.innerHTML = `
+        <span>View Details</span>
+        <i class="fas fa-info-circle"></i>
+    `;
+    viewDetailsButton.addEventListener('click', () => openModal(service));
+    
     // Book button with Fresha link
     const bookButton = document.createElement('a');
     bookButton.className = 'book-button';
@@ -403,7 +419,10 @@ function createServiceCard(service, index) {
         <i class="fas fa-arrow-right"></i>
     `;
     
-    footer.appendChild(bookButton);
+    buttonContainer.appendChild(viewDetailsButton);
+    buttonContainer.appendChild(bookButton);
+    
+    footer.appendChild(buttonContainer);
     content.appendChild(footer);
     
     card.appendChild(content);
@@ -447,3 +466,106 @@ window.addEventListener('resize', function() {
         }
     }, 250);
 });
+
+/**
+ * Initialize modal functionality
+ */
+function initModal() {
+    const modal = document.getElementById('serviceModal');
+    const modalClose = document.getElementById('modalClose');
+    const modalOverlay = document.getElementById('modalOverlay');
+    
+    if (!modal) return;
+    
+    // Close modal on close button click
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+    }
+    
+    // Close modal on overlay click
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', closeModal);
+    }
+    
+    // Close modal on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+}
+
+/**
+ * Open modal with service details
+ */
+function openModal(service) {
+    const modal = document.getElementById('serviceModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDuration = document.getElementById('modalDuration');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalFullDescription = document.getElementById('modalFullDescription');
+    const modalBenefitsList = document.getElementById('modalBenefitsList');
+    
+    if (!modal) return;
+    
+    // Set image
+    if (modalImage && service.image) {
+        modalImage.style.backgroundImage = `url('${service.image}')`;
+    }
+    
+    // Set title
+    if (modalTitle) {
+        modalTitle.textContent = service.name;
+    }
+    
+    // Set duration
+    if (modalDuration && service.duration) {
+        modalDuration.textContent = service.duration;
+    }
+    
+    // Set price
+    if (modalPrice && service.price) {
+        modalPrice.textContent = service.price;
+    }
+    
+    // Set descriptions
+    if (modalDescription && service.description) {
+        modalDescription.textContent = service.description;
+    }
+    
+    if (modalFullDescription && service.fullDescription) {
+        modalFullDescription.textContent = service.fullDescription;
+    } else if (modalFullDescription) {
+        modalFullDescription.style.display = 'none';
+    }
+    
+    // Set benefits
+    if (modalBenefitsList && service.benefits && service.benefits.length > 0) {
+        modalBenefitsList.innerHTML = '';
+        service.benefits.forEach(benefit => {
+            const li = document.createElement('li');
+            li.textContent = benefit;
+            modalBenefitsList.appendChild(li);
+        });
+    } else if (document.getElementById('modalBenefits')) {
+        document.getElementById('modalBenefits').style.display = 'none';
+    }
+    
+    // Show modal
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+/**
+ * Close modal
+ */
+function closeModal() {
+    const modal = document.getElementById('serviceModal');
+    
+    if (!modal) return;
+    
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
