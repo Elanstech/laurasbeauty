@@ -1263,788 +1263,382 @@ body {
    ABOUT LAURA & THE SPA SECTION
    ============================================ */
 
-.about-laura-section {
-    background: linear-gradient(180deg, var(--ivory-white) 0%, var(--soft-sand) 50%, var(--cream) 100%);
-    position: relative;
+.about-carousel-section {
+    padding: 80px 20px;
+    background-color: var(--ivory-white);
     overflow: hidden;
 }
 
-.about-laura-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 15% 20%, rgba(169, 200, 156, 0.06) 0%, transparent 50%),
-        radial-gradient(circle at 85% 80%, rgba(232, 220, 200, 0.08) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 1;
+.about-carousel-section.values-section {
+    background-color: #ffffff;
 }
 
-.about-container {
-    position: relative;
-    max-width: 1400px;
+.about-carousel-container {
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 120px 40px;
-    z-index: 2;
+    width: 100%;
 }
 
-.about-header {
+.carousel-header {
     text-align: center;
-    margin-bottom: 80px;
+    margin-bottom: 48px;
 }
 
-.laura-story-grid {
-    display: grid;
-    grid-template-columns: 45% 55%;
-    gap: 70px;
-    margin-bottom: 100px;
-    align-items: center;
-}
-
-/* Photo Gallery Stack */
-.laura-photos-section {
-    position: relative;
-}
-
-.photos-stack {
-    position: relative;
-}
-
-.photo-main {
-    position: relative;
-    margin-bottom: 25px;
-}
-
-.photo-frame {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 4/5;
-    border-radius: 35px;
-    overflow: hidden;
-    box-shadow: 0 25px 60px rgba(59, 74, 47, 0.2);
-    border: 4px solid rgba(255, 255, 255, 0.9);
-    background: linear-gradient(135deg, var(--mint-green) 0%, var(--forest-green) 100%);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.photo-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.photo-frame:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 30px 70px rgba(59, 74, 47, 0.3);
-}
-
-.photos-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-}
-
-.photo-small {
-    aspect-ratio: 1;
-    border-radius: 25px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(59, 74, 47, 0.15);
-    background: linear-gradient(135deg, var(--soft-sage) 0%, var(--mint-green) 100%);
-    transition: all 0.3s ease;
-}
-
-.photo-small:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 15px 40px rgba(59, 74, 47, 0.25);
-}
-
-.photo-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-
-.photo-main .photo-placeholder i {
-    font-size: 5rem;
-    margin-bottom: 20px;
-    opacity: 0.95;
-}
-
-.photo-small .photo-placeholder i {
-    font-size: 2rem;
-    margin-bottom: 8px;
-    opacity: 0.9;
-}
-
-.photo-main .photo-placeholder p {
+.carousel-title {
     font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    font-weight: 500;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-.photo-small .photo-placeholder p {
-    font-size: 0.85rem;
-    font-weight: 500;
-    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
-}
-
-/* Laura's Story Content */
-.laura-story-content {
-    padding-left: 20px;
-}
-
-.welcome-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 24px;
-    background: linear-gradient(135deg, var(--gold-accent) 0%, #E6C347 100%);
-    border-radius: 30px;
-    color: white;
-    font-size: 0.95rem;
+    font-size: 36px;
     font-weight: 600;
-    margin-bottom: 25px;
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
-}
-
-.welcome-badge i {
-    font-size: 1.1rem;
-}
-
-.laura-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.2rem;
     color: var(--forest-green);
-    margin-bottom: 10px;
-    line-height: 1.2;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
 }
 
-.laura-title {
-    font-size: 1.3rem;
-    color: var(--mint-green);
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    margin-bottom: 35px;
-}
-
-.story-text {
-    margin-bottom: 40px;
-}
-
-.story-text p {
-    font-size: 1.1rem;
-    line-height: 1.9;
+.carousel-subtitle {
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
     color: var(--charcoal);
-    margin-bottom: 20px;
-}
-
-.story-text p:last-child {
-    margin-bottom: 0;
-}
-
-/* Credentials */
-.laura-credentials {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-
-.credential-item {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 20px 25px;
-    background: rgba(255, 255, 255, 0.8);
-    border: 2px solid rgba(169, 200, 156, 0.25);
-    border-radius: 25px;
-    transition: all 0.3s ease;
-}
-
-.credential-item:hover {
-    background: rgba(169, 200, 156, 0.1);
-    border-color: var(--mint-green);
-    transform: translateX(8px);
-    box-shadow: 0 10px 30px rgba(59, 74, 47, 0.12);
-}
-
-.credential-icon {
-    width: 55px;
-    height: 55px;
-    background: linear-gradient(135deg, var(--mint-green), var(--forest-green));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.4rem;
-    flex-shrink: 0;
-    box-shadow: 0 6px 20px rgba(169, 200, 156, 0.3);
-}
-
-.credential-text {
-    display: flex;
-    flex-direction: column;
-}
-
-.credential-text strong {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    color: var(--forest-green);
-    line-height: 1.3;
-}
-
-.credential-text span {
-    font-size: 0.95rem;
-    color: var(--warm-taupe);
-}
-
-.spa-philosophy {
-    margin-bottom: 100px;
-    text-align: center;
-}
-
-.philosophy-content {
-    max-width: 900px;
+    opacity: 0.8;
+    max-width: 600px;
     margin: 0 auto;
-    padding: 60px 50px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, var(--cream) 100%);
-    border: 3px solid rgba(169, 200, 156, 0.3);
-    border-radius: 40px;
-    box-shadow: 0 20px 50px rgba(59, 74, 47, 0.15);
+    line-height: 1.6;
 }
 
-.philosophy-icon {
+.carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.carousel-track-container {
+    overflow: hidden;
+    flex: 1;
+    border-radius: 20px;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    flex-shrink: 0;
+    padding: 0 8px;
+    box-sizing: border-box;
+}
+
+.carousel-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 40px 28px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(59, 74, 47, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(169, 200, 156, 0.1);
+    min-height: 320px;
+}
+
+.sanctuary-section .carousel-card {
+    background: linear-gradient(135deg, #ffffff 0%, #fafaf9 100%);
+}
+
+.carousel-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(59, 74, 47, 0.12);
+}
+
+/* Card Icon */
+.card-icon {
     width: 80px;
     height: 80px;
-    background: linear-gradient(135deg, var(--mint-green), var(--forest-green));
+    background: linear-gradient(135deg, var(--mint-green) 0%, rgba(169, 200, 156, 0.7) 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 30px;
-    color: white;
-    font-size: 2.2rem;
-    box-shadow: 0 10px 30px rgba(169, 200, 156, 0.4);
+    margin-bottom: 24px;
+    box-shadow: 0 8px 24px rgba(169, 200, 156, 0.25);
+    transition: all 0.3s ease;
 }
 
-.philosophy-content h3 {
+.values-section .card-icon {
+    background: linear-gradient(135deg, var(--forest-green) 0%, var(--deep-forest) 100%);
+}
+
+.carousel-card:hover .card-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 12px 32px rgba(169, 200, 156, 0.35);
+}
+
+.card-icon svg {
+    width: 48px;
+    height: 48px;
+}
+
+/* Card Title */
+.card-title {
     font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
+    font-size: 22px;
+    font-weight: 600;
     color: var(--forest-green);
-    margin-bottom: 25px;
-}
-
-.philosophy-content p {
-    font-size: 1.15rem;
-    line-height: 1.9;
-    color: var(--charcoal);
-    margin-bottom: 20px;
-}
-
-.philosophy-content p:last-child {
-    margin-bottom: 0;
-}
-
-.spa-atmosphere {
-    margin-bottom: 100px;
-}
-
-.atmosphere-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.8rem;
-    color: var(--forest-green);
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-.atmosphere-subtitle {
-    text-align: center;
-    font-size: 1.2rem;
-    color: var(--warm-taupe);
-    margin-bottom: 60px;
-}
-
-.atmosphere-gallery {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-}
-
-.atmosphere-card {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, var(--cream) 100%);
-    border: 2px solid rgba(169, 200, 156, 0.2);
-    border-radius: 30px;
-    padding: 30px 25px;
-    text-align: center;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.atmosphere-card:hover {
-    background: rgba(169, 200, 156, 0.12);
-    border-color: var(--mint-green);
-    transform: translateY(-10px);
-    box-shadow: 0 20px 50px rgba(59, 74, 47, 0.18);
-}
-
-.atmosphere-photo {
-    aspect-ratio: 4/3;
-    border-radius: 25px;
-    overflow: hidden;
-    margin-bottom: 20px;
-    background: linear-gradient(135deg, var(--soft-sage) 0%, var(--mint-green) 100%);
-    box-shadow: 0 10px 30px rgba(59, 74, 47, 0.15);
-    position: relative;
-}
-
-.atmosphere-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.atmosphere-card:hover .atmosphere-photo img {
-    transform: scale(1.08);
-}
-
-.atmosphere-photo::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        rgba(59, 74, 47, 0.1) 100%
-    );
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-
-.atmosphere-card:hover .atmosphere-photo::after {
-    opacity: 0.7;
-}
-
-.atmosphere-card h4 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    color: var(--forest-green);
-    margin-bottom: 10px;
-}
-
-.atmosphere-card p {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: var(--warm-taupe);
-}
-
-.everyone-welcome-banner {
-    margin-bottom: 100px;
-    padding: 60px 60px;
-    background: linear-gradient(135deg, var(--mint-green) 0%, var(--forest-green) 100%);
-    border-radius: 45px;
-    display: flex;
-    align-items: center;
-    gap: 45px;
-    box-shadow: 0 25px 60px rgba(59, 74, 47, 0.3);
-    position: relative;
-    overflow: hidden;
-}
-
-.everyone-welcome-banner::before {
-    content: '';
-    position: absolute;
-    top: -60%;
-    right: -15%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
-    border-radius: 50%;
-}
-
-.welcome-banner-icon {
-    width: 100px;
-    height: 100px;
-    background: rgba(255, 255, 255, 0.25);
-    border: 4px solid rgba(255, 255, 255, 0.4);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    position: relative;
-    z-index: 2;
-}
-
-.welcome-banner-icon i {
-    font-size: 3rem;
-    color: white;
-}
-
-.welcome-banner-content {
-    flex: 1;
-    position: relative;
-    z-index: 2;
-}
-
-.welcome-banner-content h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    color: white;
-    margin-bottom: 18px;
+    margin-bottom: 12px;
     line-height: 1.3;
 }
 
-.welcome-banner-content p {
-    font-size: 1.1rem;
-    line-height: 1.9;
-    color: rgba(255, 255, 255, 0.95);
-}
-
-.core-values {
-    margin-bottom: 100px;
-}
-
-.values-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.8rem;
-    color: var(--forest-green);
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.values-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-}
-
-.value-card {
-    padding: 40px 35px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, var(--cream) 100%);
-    border: 2px solid rgba(169, 200, 156, 0.2);
-    border-radius: 30px;
-    text-align: center;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.value-card:hover {
-    background: rgba(169, 200, 156, 0.1);
-    border-color: var(--mint-green);
-    transform: translateY(-10px);
-    box-shadow: 0 20px 50px rgba(59, 74, 47, 0.18);
-}
-
-.value-icon {
-    width: 75px;
-    height: 75px;
-    background: linear-gradient(135deg, var(--mint-green), var(--forest-green));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 25px;
-    color: white;
-    font-size: 2rem;
-    box-shadow: 0 8px 25px rgba(169, 200, 156, 0.3);
-    transition: transform 0.3s ease;
-}
-
-.value-card:hover .value-icon {
-    transform: scale(1.1) rotate(5deg);
-}
-
-.value-card h4 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    color: var(--forest-green);
-    margin-bottom: 15px;
-}
-
-.value-card p {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: var(--warm-taupe);
-}
-
-.about-cta {
-    text-align: center;
-    padding: 60px 50px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, var(--soft-sand) 100%);
-    border: 3px solid rgba(169, 200, 156, 0.3);
-    border-radius: 40px;
-    box-shadow: 0 20px 50px rgba(59, 74, 47, 0.15);
-}
-
-.about-cta h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    color: var(--forest-green);
-    margin-bottom: 20px;
-}
-
-.about-cta p {
-    font-size: 1.2rem;
-    line-height: 1.8;
+/* Card Description */
+.card-description {
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
     color: var(--charcoal);
-    max-width: 750px;
-    margin: 0 auto 45px;
+    opacity: 0.75;
+    line-height: 1.6;
+    max-width: 280px;
 }
 
-.about-cta-buttons {
-    display: flex;
+.carousel-arrow {
+    display: none;
+    width: 48px;
+    height: 48px;
+    background: var(--forest-green);
+    border: none;
+    border-radius: 50%;
+    color: var(--ivory-white);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(59, 74, 47, 0.25);
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+.carousel-arrow:hover {
+    background: var(--deep-forest);
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(59, 74, 47, 0.35);
+}
+
+.carousel-arrow:active {
+    transform: scale(0.95);
+}
+
+.carousel-arrow svg {
+    width: 24px;
+    height: 24px;
+}
+
+.carousel-indicators {
+    display: none;
     justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 24px;
 }
 
-.about-phone-btn,
-.about-booking-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 18px 45px;
-    font-size: 1.05rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-decoration: none;
-    border-radius: 50px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 10px 30px rgba(59, 74, 47, 0.2);
+.indicator {
+    width: 10px;
+    height: 10px;
+    background: var(--warm-taupe);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.3;
+    padding: 0;
 }
 
-.about-phone-btn {
-    background: linear-gradient(135deg, var(--gold-accent), #E6C347);
-    color: white;
-    border: 2px solid transparent;
+.indicator.active {
+    width: 28px;
+    border-radius: 5px;
+    background: var(--forest-green);
+    opacity: 1;
 }
 
-.about-phone-btn:hover {
-    background: linear-gradient(135deg, #E6C347, var(--gold-accent));
-    transform: translateY(-4px);
-    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+.indicator:hover {
+    opacity: 0.6;
 }
 
-.about-booking-btn {
-    background: linear-gradient(135deg, var(--forest-green), var(--deep-forest));
-    color: white;
-    border: 2px solid transparent;
-}
-
-.about-booking-btn:hover {
-    background: linear-gradient(135deg, var(--mint-green), var(--forest-green));
-    transform: translateY(-4px);
-    box-shadow: 0 15px 40px rgba(169, 200, 156, 0.4);
-}
-
-.about-phone-btn i,
-.about-booking-btn i {
-    font-size: 1.1rem;
-    transition: transform 0.3s ease;
-}
-
-.about-booking-btn:hover i {
-    transform: translateX(5px);
-}
-
-@media (max-width: 1024px) {
-    .laura-story-grid {
-        grid-template-columns: 1fr;
-        gap: 60px;
+@media (max-width: 767px) {
+    /* Section Padding */
+    .about-carousel-section {
+        padding: 60px 16px;
     }
 
-    .laura-story-content {
-        padding-left: 0;
+    /* Header */
+    .carousel-header {
+        margin-bottom: 32px;
     }
 
-    .atmosphere-gallery {
-        grid-template-columns: repeat(2, 1fr);
+    .carousel-title {
+        font-size: 28px;
     }
 
-    .values-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .about-container {
-        padding: 80px 25px;
+    .carousel-subtitle {
+        font-size: 16px;
+        padding: 0 16px;
     }
 
-    .about-header {
-        margin-bottom: 60px;
-    }
-
-    .laura-story-grid {
-        gap: 50px;
-        margin-bottom: 80px;
-    }
-
-    .laura-name {
-        font-size: 2.5rem;
-    }
-
-    .laura-title {
-        font-size: 1.1rem;
-    }
-
-    .story-text p {
-        font-size: 1.05rem;
-    }
-
-    .credential-item {
-        padding: 18px 20px;
-    }
-
-    .credential-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.2rem;
-    }
-
-    .credential-text strong {
-        font-size: 1.15rem;
-    }
-
-    .philosophy-content {
-        padding: 45px 35px;
-    }
-
-    .philosophy-icon {
-        width: 70px;
-        height: 70px;
-        font-size: 2rem;
-    }
-
-    .philosophy-content h3 {
-        font-size: 2rem;
-    }
-
-    .philosophy-content p {
-        font-size: 1.05rem;
-    }
-
-    .atmosphere-title {
-        font-size: 2.2rem;
-    }
-
-    .atmosphere-gallery {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-
-    .everyone-welcome-banner {
-        flex-direction: column;
-        text-align: center;
-        padding: 45px 35px;
-        margin-bottom: 80px;
-    }
-
-    .welcome-banner-icon {
-        width: 85px;
-        height: 85px;
-    }
-
-    .welcome-banner-icon i {
-        font-size: 2.5rem;
-    }
-
-    .welcome-banner-content h3 {
-        font-size: 2rem;
-    }
-
-    .welcome-banner-content p {
-        font-size: 1.05rem;
-    }
-
-    .values-title {
-        font-size: 2.2rem;
-        margin-bottom: 50px;
-    }
-
-    .values-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .about-cta {
-        padding: 45px 35px;
-    }
-
-    .about-cta h3 {
-        font-size: 2rem;
-    }
-
-    .about-cta p {
-        font-size: 1.1rem;
-    }
-
-    .about-cta-buttons {
-        flex-direction: column;
+    /* Show Carousel Controls */
+    .carousel-arrow {
+        display: flex;
         align-items: center;
-    }
-
-    .about-phone-btn,
-    .about-booking-btn {
-        width: 100%;
-        max-width: 350px;
         justify-content: center;
     }
+
+    .carousel-indicators {
+        display: flex;
+    }
+
+    /* Carousel Wrapper */
+    .carousel-wrapper {
+        gap: 12px;
+    }
+
+    /* Card Adjustments */
+    .carousel-card {
+        padding: 32px 24px;
+        min-height: 280px;
+    }
+
+    .card-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 20px;
+    }
+
+    .card-icon svg {
+        width: 42px;
+        height: 42px;
+    }
+
+    .card-title {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .card-description {
+        font-size: 14px;
+    }
 }
 
-@media (max-width: 480px) {
-    .about-container {
-        padding: 60px 20px;
+@media (min-width: 768px) {
+    /* Hide Carousel Controls */
+    .carousel-arrow {
+        display: none !important;
     }
 
-    .photos-grid {
+    .carousel-indicators {
+        display: none !important;
+    }
+
+    /* Grid Layout */
+    .carousel-track-container {
+        overflow: visible;
+    }
+
+    .carousel-track {
+        display: grid;
         grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
     }
 
-    .laura-name {
-        font-size: 2rem;
+    .carousel-slide {
+        min-width: auto;
+        padding: 0;
     }
 
-    .atmosphere-title {
-        font-size: 1.8rem;
+    /* Card Hover Effects */
+    .carousel-card {
+        cursor: default;
+    }
+}
+
+@media (min-width: 1024px) {
+    /* Section Padding */
+    .about-carousel-section {
+        padding: 100px 40px;
     }
 
-    .values-title {
-        font-size: 1.8rem;
+    /* Header */
+    .carousel-header {
+        margin-bottom: 64px;
     }
 
-    .about-cta h3 {
-        font-size: 1.8rem;
+    .carousel-title {
+        font-size: 42px;
     }
 
-    .welcome-badge {
-        font-size: 0.85rem;
-        padding: 10px 20px;
+    .carousel-subtitle {
+        font-size: 20px;
     }
 
-    .philosophy-content {
-        border-radius: 30px;
+    /* Grid Layout - 4 columns for sanctuary (4 items) */
+    .sanctuary-section .carousel-track {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 28px;
     }
 
-    .everyone-welcome-banner {
-        border-radius: 35px;
-        padding: 35px 25px;
+    /* Grid Layout - 3 columns for values (6 items) */
+    .values-section .carousel-track {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
     }
 
-    .about-cta {
-        border-radius: 30px;
+    /* Card Sizing */
+    .carousel-card {
+        padding: 44px 32px;
+    }
+
+    .card-icon {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 28px;
+    }
+
+    .card-icon svg {
+        width: 52px;
+        height: 52px;
+    }
+
+    .card-title {
+        font-size: 24px;
+        margin-bottom: 14px;
+    }
+
+    .card-description {
+        font-size: 16px;
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 1440px) {
+    .about-carousel-container {
+        max-width: 1400px;
+    }
+
+    .carousel-title {
+        font-size: 48px;
+    }
+
+    .carousel-subtitle {
+        font-size: 22px;
+        max-width: 700px;
+    }
+
+    /* Larger spacing */
+    .sanctuary-section .carousel-track {
+        gap: 32px;
+    }
+
+    .values-section .carousel-track {
+        gap: 32px;
+    }
+
+    .carousel-card {
+        padding: 48px 36px;
     }
 }
 
