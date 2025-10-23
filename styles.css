@@ -1304,6 +1304,9 @@ body {
     align-items: center;
 }
 
+/* ============================================
+   PHOTO GALLERY STACK
+   ============================================ */
 .laura-photos-section {
     position: relative;
 }
@@ -1601,9 +1604,12 @@ body {
 
 /* Carousel Slides */
 .carousel-slide {
+    width: 100%;
     min-width: 100%;
+    max-width: 100%;
     flex-shrink: 0;
-    padding: 0 8px;
+    flex-grow: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -1636,18 +1642,30 @@ body {
 .card-icon {
     width: 80px;
     height: 80px;
-    background: linear-gradient(135deg, var(--mint-green) 0%, rgba(169, 200, 156, 0.7) 100%);
+    background: linear-gradient(135deg, var(--forest-green) 0%, var(--deep-forest) 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 24px;
-    box-shadow: 0 8px 24px rgba(169, 200, 156, 0.25);
+    box-shadow: 0 8px 24px rgba(59, 74, 47, 0.25);
     transition: all 0.3s ease;
 }
 
-.values-section .card-icon {
+.sanctuary-section .card-icon {
     background: linear-gradient(135deg, var(--forest-green) 0%, var(--deep-forest) 100%);
+}
+
+.values-section .card-icon {
+    background: linear-gradient(135deg, var(--mint-green) 0%, var(--soft-sage) 100%);
+}
+
+.sanctuary-section .card-icon svg {
+    stroke: var(--mint-green);
+}
+
+.values-section .card-icon svg {
+    stroke: var(--forest-green);
 }
 
 .carousel-card:hover .card-icon {
