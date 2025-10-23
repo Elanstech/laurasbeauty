@@ -390,232 +390,402 @@
     </section>
 
 <!-- ABOUT LAURA & THE SPA SECTION -->
-<section class="about-carousel-section sanctuary-section">
-    <div class="about-carousel-container">
+<section id="about" class="about-laura-section">
+    <div class="about-container">
+        
         <!-- Section Header -->
-        <div class="carousel-header">
-            <h2 class="carousel-title">Experience Our Sanctuary</h2>
-            <p class="carousel-subtitle">Step into a world of tranquility where every detail is designed for your comfort</p>
+        <div class="about-header" data-aos="fade-up">
+            <div class="section-eyebrow">Our Story</div>
+            <h2 class="section-title">Where Beauty Meets Nature</h2>
+            <div class="title-divider"></div>
+            <p class="section-subtitle">
+                A sanctuary of natural luxury in the heart of New York City, 
+                where every guest is welcomed like family
+            </p>
         </div>
 
-        <!-- Carousel Wrapper -->
-        <div class="carousel-wrapper">
-            <!-- Previous Arrow (Mobile Only) -->
-            <button class="carousel-arrow carousel-arrow-prev" aria-label="Previous slide">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
-
-            <!-- Carousel Track -->
-            <div class="carousel-track-container">
-                <div class="carousel-track" data-carousel="sanctuary">
+        <!-- Laura's Story Grid -->
+        <div class="laura-story-grid">
+            
+            <!-- Left: Photo Gallery -->
+            <div class="laura-photos-section" data-aos="fade-right">
+                <div class="photos-stack">
+                    <!-- Main Featured Photo -->
+                    <div class="photo-main">
+                        <div class="photo-frame">
+                            <img src="images/laura.jpeg" alt="Laura at the Spa" loading="lazy">
+                        </div>
+                    </div>
                     
-                    <!-- Slide 1: Serene Spaces -->
-                    <div class="carousel-slide active">
-                        <div class="carousel-card">
-                            <div class="card-icon">
-                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M8 18L24 6L40 18V38C40 39.0609 39.5786 40.0783 38.8284 40.8284C38.0783 41.5786 37.0609 42 36 42H12C10.9391 42 9.92172 41.5786 9.17157 40.8284C8.42143 40.0783 8 39.0609 8 38V18Z" stroke="#A9C89C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M18 42V24H30V42" stroke="#A9C89C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
+                    <!-- Secondary Photos Grid -->
+                    <div class="photos-grid">
+                        <div class="photo-small">
+                            <div class="photo-placeholder">
+                                <i class="fas fa-leaf"></i>
+                                <p>Natural Products</p>
                             </div>
-                            <h3 class="card-title">Serene Spaces</h3>
-                            <p class="card-description">Thoughtfully designed treatment rooms that promote deep relaxation</p>
+                        </div>
+                        <div class="photo-small">
+                            <div class="photo-placeholder">
+                                <i class="fas fa-hands-helping"></i>
+                                <p>Client Care</p>
+                            </div>
+                        </div>
+                        <div class="photo-small">
+                            <div class="photo-placeholder">
+                                <i class="fas fa-heart"></i>
+                                <p>Wellness Focus</p>
+                            </div>
+                        </div>
+                        <div class="photo-small">
+                            <div class="photo-placeholder">
+                                <i class="fas fa-smile"></i>
+                                <p>Happy Clients</p>
+                            </div>
                         </div>
                     </div>
-
-                    <!-- Slide 2: Natural Elements -->
-                    <div class="carousel-slide">
-                        <div class="carousel-card">
-                            <div class="card-icon">
-                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M24 42C24 42 8 32 8 20C8 15.7565 9.68571 11.6869 12.6863 8.68629C15.6869 5.68571 19.7565 4 24 4C28.2435 4 32.3131 5.68571 35.3137 8.68629C38.3143 11.6869 40 15.7565 40 20C40 32 24 42 24 42Z" stroke="#A9C89C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M24 26C27.3137 26 30 23.3137 30 20C30 16.6863 27.3137 14 24 14C20.6863 14 18 16.6863 18 20C18 23.3137 20.6863 26 24 26Z" stroke="#A9C89C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <h3 class="card-title">Natural Elements</h3>
-                            <p class="card-description">Organic textures and calming colors inspired by nature</p>
-                        </div>
-                    </div>
-
-                    <!-- Slide 3: Sensory Experience -->
-                    <div class="carousel-slide">
-                        <div class="carousel-card">
-                            <div class="card-icon">
-                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M24 40C33.9411 40 42 31.9411 42 22C42 12.0589 33.9411 4 24 4C14.0589 4 6 12.0589 6 22C6 31.9411 14.0589 40 24 40Z" stroke="#A9C89C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M16 24C16 24 19 28 24 28C29 28 32 24 32 24" stroke="#A9C89C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <circle cx="17" cy="18" r="2" fill="#A9C89C"/>
-                                    <circle cx="31" cy="18" r="2" fill="#A9C89C"/>
-                                </svg>
-                            </div>
-                            <h3 class="card-title">Sensory Experience</h3>
-                            <p class="card-description">Essential oils and botanical scents that soothe the soul</p>
-                        </div>
-                    </div>
-
-                    <!-- Slide 4: Warm Welcome -->
-                    <div class="carousel-slide">
-                        <div class="carousel-card">
-                            <div class="card-icon">
-                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44Z" stroke="#A9C89C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M12 24L24 12L36 24L24 36L12 24Z" stroke="#A9C89C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <h3 class="card-title">Warm Welcome</h3>
-                            <p class="card-description">A peaceful entrance where your wellness journey begins</p>
-                        </div>
-                    </div>
-
                 </div>
             </div>
 
-            <!-- Next Arrow (Mobile Only) -->
-            <button class="carousel-arrow carousel-arrow-next" aria-label="Next slide">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
-        </div>
+            <!-- Right: Laura's Story -->
+            <div class="laura-story-content" data-aos="fade-left">
+                
+                <!-- Welcome Badge -->
+                <div class="welcome-badge">
+                    <i class="fas fa-star"></i>
+                    <span>Licensed Esthetician Since 2001</span>
+                </div>
 
-        <!-- Carousel Indicators (Mobile Only) -->
-        <div class="carousel-indicators" data-indicators="sanctuary">
-            <button class="indicator active" data-slide="0" aria-label="Go to slide 1"></button>
-            <button class="indicator" data-slide="1" aria-label="Go to slide 2"></button>
-            <button class="indicator" data-slide="2" aria-label="Go to slide 3"></button>
-            <button class="indicator" data-slide="3" aria-label="Go to slide 4"></button>
-        </div>
-    </div>
-</section>
+                <h3 class="laura-name">Meet Laura</h3>
+                <p class="laura-title">Founder & Master Esthetician</p>
 
-<!-- What We Stand For Section -->
-<section class="about-carousel-section values-section">
-    <div class="about-carousel-container">
-        <!-- Section Header -->
-        <div class="carousel-header">
-            <h2 class="carousel-title">What We Stand For</h2>
-        </div>
-
-        <!-- Carousel Wrapper -->
-        <div class="carousel-wrapper">
-            <!-- Previous Arrow (Mobile Only) -->
-            <button class="carousel-arrow carousel-arrow-prev" aria-label="Previous slide">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
-
-            <!-- Carousel Track -->
-            <div class="carousel-track-container">
-                <div class="carousel-track" data-carousel="values">
+                <div class="story-text">
+                    <p>
+                        Welcome to Laura's Beauty Touch, where natural beauty and expert care 
+                        come together in perfect harmony. For over two decades, I've dedicated 
+                        my life to helping people feel confident, radiant, and truly cared for.
+                    </p>
                     
-                    <!-- Slide 1: Personalized Care -->
-                    <div class="carousel-slide active">
-                        <div class="carousel-card">
-                            <div class="card-icon">
-                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M24 40C33.9411 40 42 31.9411 42 22C42 12.0589 33.9411 4 24 4C14.0589 4 6 12.0589 6 22C6 31.9411 14.0589 40 24 40Z" stroke="#3B4A2F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M16 20H32M24 12V32" stroke="#3B4A2F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <h3 class="card-title">Personalized Care</h3>
-                            <p class="card-description">Every treatment is customized to your unique skin type and wellness goals</p>
+                    <p>
+                        As a New York State licensed skin care professional, I believe in the 
+                        power of organic, pure ingredients and personalized attention. Every 
+                        treatment is customized to your unique needs, ensuring you receive 
+                        exactly what your skin and body require.
+                    </p>
+                    
+                    <p>
+                        What makes Laura's Beauty Touch special isn't just the treatments—it's 
+                        the warm, inclusive environment we've created. This is a judgment-free 
+                        zone where everyone is welcome, and every body is beautiful. My goal 
+                        is simple: to make you feel good, inside and out.
+                    </p>
+                </div>
+
+                <!-- Credentials -->
+                <div class="laura-credentials">
+                    <div class="credential-item">
+                        <div class="credential-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="credential-text">
+                            <strong>Licensed Since 2001</strong>
+                            <span>New York State Board Certified</span>
                         </div>
                     </div>
-
-                    <!-- Slide 2: Natural & Organic -->
-                    <div class="carousel-slide">
-                        <div class="carousel-card">
-                            <div class="card-icon">
-                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M24 4V24M24 24L38 10M24 24L10 10" stroke="#3B4A2F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M12 20C12 28 16 36 24 44C32 36 36 28 36 20" stroke="#3B4A2F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <h3 class="card-title">Natural & Organic</h3>
-                            <p class="card-description">We use only the purest organic products that are safe and sustainable</p>
+                    <div class="credential-item">
+                        <div class="credential-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="credential-text">
+                            <strong>Continuing Education</strong>
+                            <span>Advanced Training in Organic Skincare</span>
                         </div>
                     </div>
-
-                    <!-- Slide 3: Holistic Wellness -->
-                    <div class="carousel-slide">
-                        <div class="carousel-card">
-                            <div class="card-icon">
-                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="24" cy="24" r="18" stroke="#3B4A2F" stroke-width="3"/>
-                                    <path d="M24 6V24M24 24L36 12M24 24L12 12M24 24L12 36M24 24L36 36M24 24V42" stroke="#3B4A2F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <h3 class="card-title">Holistic Wellness</h3>
-                            <p class="card-description">Treating body, mind, and spirit for complete well-being</p>
-                        </div>
-                    </div>
-
-                    <!-- Slide 4: Safe & Clean -->
-                    <div class="carousel-slide">
-                        <div class="carousel-card">
-                            <div class="card-icon">
-                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M24 4L6 12V22C6 32 12 40 24 44C36 40 42 32 42 22V12L24 4Z" stroke="#3B4A2F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M18 24L22 28L30 20" stroke="#3B4A2F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <h3 class="card-title">Safe & Clean</h3>
-                            <p class="card-description">Highest standards of hygiene and safety in every treatment</p>
-                        </div>
-                    </div>
-
-                    <!-- Slide 5: Inclusive Community -->
-                    <div class="carousel-slide">
-                        <div class="carousel-card">
-                            <div class="card-icon">
-                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="16" cy="14" r="6" stroke="#3B4A2F" stroke-width="3"/>
-                                    <circle cx="32" cy="14" r="6" stroke="#3B4A2F" stroke-width="3"/>
-                                    <path d="M8 38C8 32 11 28 16 28C18 28 20 28.5 21.5 29.5M40 38C40 32 37 28 32 28C30 28 28 28.5 26.5 29.5" stroke="#3B4A2F" stroke-width="3" stroke-linecap="round"/>
-                                    <circle cx="24" cy="28" r="5" stroke="#3B4A2F" stroke-width="3"/>
-                                    <path d="M18 44C18 40 20 37 24 37C28 37 30 40 30 44" stroke="#3B4A2F" stroke-width="3" stroke-linecap="round"/>
-                                </svg>
-                            </div>
-                            <h3 class="card-title">Inclusive Community</h3>
-                            <p class="card-description">A welcoming space for all people and all bodies</p>
-                        </div>
-                    </div>
-
-                    <!-- Slide 6: Expert Excellence -->
-                    <div class="carousel-slide">
-                        <div class="carousel-card">
-                            <div class="card-icon">
-                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M24 4L28 16H41L31 24L35 36L24 28L13 36L17 24L7 16H20L24 4Z" stroke="#3B4A2F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <h3 class="card-title">Expert Excellence</h3>
-                            <p class="card-description">Over two decades of professional experience and continuing education</p>
-                        </div>
-                    </div>
-
                 </div>
             </div>
-
-            <!-- Next Arrow (Mobile Only) -->
-            <button class="carousel-arrow carousel-arrow-next" aria-label="Next slide">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
         </div>
 
-        <!-- Carousel Indicators (Mobile Only) -->
-        <div class="carousel-indicators" data-indicators="values">
-            <button class="indicator active" data-slide="0" aria-label="Go to slide 1"></button>
-            <button class="indicator" data-slide="1" aria-label="Go to slide 2"></button>
-            <button class="indicator" data-slide="2" aria-label="Go to slide 3"></button>
-            <button class="indicator" data-slide="3" aria-label="Go to slide 4"></button>
-            <button class="indicator" data-slide="4" aria-label="Go to slide 5"></button>
-            <button class="indicator" data-slide="5" aria-label="Go to slide 6"></button>
+        <!-- Philosophy Section -->
+        <div class="philosophy-section" data-aos="fade-up">
+            <div class="philosophy-content">
+                <div class="philosophy-icon">
+                    <i class="fas fa-spa"></i>
+                </div>
+                <h3>Our Philosophy</h3>
+                <p>
+                    At Laura's Beauty Touch, we believe beauty is more than skin deep. 
+                    Our holistic approach combines professional expertise with natural, 
+                    organic products to deliver treatments that nourish your body, calm 
+                    your mind, and lift your spirit. We're not just about looking good—we're 
+                    about feeling amazing from the inside out.
+                </p>
+            </div>
+        </div>
+
+        <!-- Experience Our Sanctuary Carousel -->
+        <section class="about-carousel-section sanctuary-section">
+            <div class="about-carousel-container">
+                <!-- Section Header -->
+                <div class="carousel-header">
+                    <h2 class="carousel-title">Experience Our Sanctuary</h2>
+                    <p class="carousel-subtitle">Step into a world of tranquility where every detail is designed for your comfort</p>
+                </div>
+
+                <!-- Carousel Wrapper -->
+                <div class="carousel-wrapper">
+                    <!-- Previous Arrow (Mobile Only) -->
+                    <button class="carousel-arrow carousel-arrow-prev" aria-label="Previous slide">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+
+                    <!-- Carousel Track -->
+                    <div class="carousel-track-container">
+                        <div class="carousel-track" data-carousel="sanctuary">
+                            
+                            <!-- Slide 1: Serene Spaces -->
+                            <div class="carousel-slide active">
+                                <div class="carousel-card">
+                                    <div class="card-icon">
+                                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 18L24 6L40 18V38C40 39.0609 39.5786 40.0783 38.8284 40.8284C38.0783 41.5786 37.0609 42 36 42H12C10.9391 42 9.92172 41.5786 9.17157 40.8284C8.42143 40.0783 8 39.0609 8 38V18Z" stroke="#A9C89C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M18 42V24H30V42" stroke="#A9C89C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="card-title">Serene Spaces</h3>
+                                    <p class="card-description">Thoughtfully designed treatment rooms that promote deep relaxation</p>
+                                </div>
+                            </div>
+
+                            <!-- Slide 2: Natural Elements -->
+                            <div class="carousel-slide">
+                                <div class="carousel-card">
+                                    <div class="card-icon">
+                                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M24 42C24 42 8 32 8 20C8 15.7565 9.68571 11.6869 12.6863 8.68629C15.6869 5.68571 19.7565 4 24 4C28.2435 4 32.3131 5.68571 35.3137 8.68629C38.3143 11.6869 40 15.7565 40 20C40 32 24 42 24 42Z" stroke="#A9C89C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M24 26C27.3137 26 30 23.3137 30 20C30 16.6863 27.3137 14 24 14C20.6863 14 18 16.6863 18 20C18 23.3137 20.6863 26 24 26Z" stroke="#A9C89C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="card-title">Natural Elements</h3>
+                                    <p class="card-description">Organic textures and calming colors inspired by nature</p>
+                                </div>
+                            </div>
+
+                            <!-- Slide 3: Sensory Experience -->
+                            <div class="carousel-slide">
+                                <div class="carousel-card">
+                                    <div class="card-icon">
+                                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M24 40C33.9411 40 42 31.9411 42 22C42 12.0589 33.9411 4 24 4C14.0589 4 6 12.0589 6 22C6 31.9411 14.0589 40 24 40Z" stroke="#A9C89C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M16 24C16 24 19 28 24 28C29 28 32 24 32 24" stroke="#A9C89C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <circle cx="17" cy="18" r="2" fill="#A9C89C"/>
+                                            <circle cx="31" cy="18" r="2" fill="#A9C89C"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="card-title">Sensory Experience</h3>
+                                    <p class="card-description">Essential oils and botanical scents that soothe the soul</p>
+                                </div>
+                            </div>
+
+                            <!-- Slide 4: Warm Welcome -->
+                            <div class="carousel-slide">
+                                <div class="carousel-card">
+                                    <div class="card-icon">
+                                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44Z" stroke="#A9C89C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M12 24L24 12L36 24L24 36L12 24Z" stroke="#A9C89C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="card-title">Warm Welcome</h3>
+                                    <p class="card-description">A peaceful entrance where your wellness journey begins</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Next Arrow (Mobile Only) -->
+                    <button class="carousel-arrow carousel-arrow-next" aria-label="Next slide">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Carousel Indicators (Mobile Only) -->
+                <div class="carousel-indicators" data-indicators="sanctuary">
+                    <button class="indicator active" data-slide="0" aria-label="Go to slide 1"></button>
+                    <button class="indicator" data-slide="1" aria-label="Go to slide 2"></button>
+                    <button class="indicator" data-slide="2" aria-label="Go to slide 3"></button>
+                    <button class="indicator" data-slide="3" aria-label="Go to slide 4"></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- What We Stand For Carousel -->
+        <section class="about-carousel-section values-section">
+            <div class="about-carousel-container">
+                <!-- Section Header -->
+                <div class="carousel-header">
+                    <h2 class="carousel-title">What We Stand For</h2>
+                </div>
+
+                <!-- Carousel Wrapper -->
+                <div class="carousel-wrapper">
+                    <!-- Previous Arrow (Mobile Only) -->
+                    <button class="carousel-arrow carousel-arrow-prev" aria-label="Previous slide">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+
+                    <!-- Carousel Track -->
+                    <div class="carousel-track-container">
+                        <div class="carousel-track" data-carousel="values">
+                            
+                            <!-- Slide 1: Personalized Care -->
+                            <div class="carousel-slide active">
+                                <div class="carousel-card">
+                                    <div class="card-icon">
+                                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M24 40C33.9411 40 42 31.9411 42 22C42 12.0589 33.9411 4 24 4C14.0589 4 6 12.0589 6 22C6 31.9411 14.0589 40 24 40Z" stroke="#3B4A2F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M16 20H32M24 12V32" stroke="#3B4A2F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="card-title">Personalized Care</h3>
+                                    <p class="card-description">Every treatment is customized to your unique skin type and wellness goals</p>
+                                </div>
+                            </div>
+
+                            <!-- Slide 2: Natural & Organic -->
+                            <div class="carousel-slide">
+                                <div class="carousel-card">
+                                    <div class="card-icon">
+                                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M24 4V24M24 24L38 10M24 24L10 10" stroke="#3B4A2F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M12 20C12 28 16 36 24 44C32 36 36 28 36 20" stroke="#3B4A2F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="card-title">Natural & Organic</h3>
+                                    <p class="card-description">We use only the purest organic products that are safe and sustainable</p>
+                                </div>
+                            </div>
+
+                            <!-- Slide 3: Holistic Wellness -->
+                            <div class="carousel-slide">
+                                <div class="carousel-card">
+                                    <div class="card-icon">
+                                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="24" cy="24" r="18" stroke="#3B4A2F" stroke-width="3"/>
+                                            <path d="M24 6V24M24 24L36 12M24 24L12 12M24 24L12 36M24 24L36 36M24 24V42" stroke="#3B4A2F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="card-title">Holistic Wellness</h3>
+                                    <p class="card-description">Treating body, mind, and spirit for complete well-being</p>
+                                </div>
+                            </div>
+
+                            <!-- Slide 4: Safe & Clean -->
+                            <div class="carousel-slide">
+                                <div class="carousel-card">
+                                    <div class="card-icon">
+                                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M24 4L6 12V22C6 32 12 40 24 44C36 40 42 32 42 22V12L24 4Z" stroke="#3B4A2F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M18 24L22 28L30 20" stroke="#3B4A2F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="card-title">Safe & Clean</h3>
+                                    <p class="card-description">Highest standards of hygiene and safety in every treatment</p>
+                                </div>
+                            </div>
+
+                            <!-- Slide 5: Inclusive Community -->
+                            <div class="carousel-slide">
+                                <div class="carousel-card">
+                                    <div class="card-icon">
+                                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="16" cy="14" r="6" stroke="#3B4A2F" stroke-width="3"/>
+                                            <circle cx="32" cy="14" r="6" stroke="#3B4A2F" stroke-width="3"/>
+                                            <path d="M8 38C8 32 11 28 16 28C18 28 20 28.5 21.5 29.5M40 38C40 32 37 28 32 28C30 28 28 28.5 26.5 29.5" stroke="#3B4A2F" stroke-width="3" stroke-linecap="round"/>
+                                            <circle cx="24" cy="28" r="5" stroke="#3B4A2F" stroke-width="3"/>
+                                            <path d="M18 44C18 40 20 37 24 37C28 37 30 40 30 44" stroke="#3B4A2F" stroke-width="3" stroke-linecap="round"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="card-title">Inclusive Community</h3>
+                                    <p class="card-description">A welcoming space for all people and all bodies</p>
+                                </div>
+                            </div>
+
+                            <!-- Slide 6: Expert Excellence -->
+                            <div class="carousel-slide">
+                                <div class="carousel-card">
+                                    <div class="card-icon">
+                                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M24 4L28 16H41L31 24L35 36L24 28L13 36L17 24L7 16H20L24 4Z" stroke="#3B4A2F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="card-title">Expert Excellence</h3>
+                                    <p class="card-description">Over two decades of professional experience and continuing education</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Next Arrow (Mobile Only) -->
+                    <button class="carousel-arrow carousel-arrow-next" aria-label="Next slide">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Carousel Indicators (Mobile Only) -->
+                <div class="carousel-indicators" data-indicators="values">
+                    <button class="indicator active" data-slide="0" aria-label="Go to slide 1"></button>
+                    <button class="indicator" data-slide="1" aria-label="Go to slide 2"></button>
+                    <button class="indicator" data-slide="2" aria-label="Go to slide 3"></button>
+                    <button class="indicator" data-slide="3" aria-label="Go to slide 4"></button>
+                    <button class="indicator" data-slide="4" aria-label="Go to slide 5"></button>
+                    <button class="indicator" data-slide="5" aria-label="Go to slide 6"></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Everyone Welcome Banner -->
+        <div class="everyone-welcome-banner" data-aos="zoom-in">
+            <div class="welcome-banner-icon">
+                <i class="fas fa-hands-helping"></i>
+            </div>
+            <div class="welcome-banner-content">
+                <h3>A Space For Everyone</h3>
+                <p>
+                    We celebrate diversity and welcome all people, regardless of age, size, 
+                    gender, race, or background. This is a safe, judgment-free zone where 
+                    everyone deserves to feel beautiful and cared for.
+                </p>
+            </div>
+        </div>
+
+        <!-- Final CTA -->
+        <div class="about-cta" data-aos="fade-up">
+            <h3>Ready to Begin Your Wellness Journey?</h3>
+            <p>
+                Experience the Laura's Beauty Touch difference. Book your appointment 
+                today and discover what personalized, natural beauty care feels like. 
+                We can't wait to welcome you.
+            </p>
+            <div class="about-cta-buttons">
+                <a href="tel:7188419919" class="about-phone-btn">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>(718) 841-9919</span>
+                </a>
+                <a href="#contact" class="about-booking-btn">
+                    <span>Book Your Visit</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
         </div>
     </div>
 </section>
