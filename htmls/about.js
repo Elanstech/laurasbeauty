@@ -35,44 +35,44 @@ class PhotoGallery {
     constructor() {
         this.galleryImages = [
             {
-                src: 'images/gallery/spa-interior-1.jpg',
-                title: 'Treatment Room',
-                description: 'Where magic happens'
+                src: '../images/waiting.jpeg',
+                title: 'Waiting Area',
+                description: 'Where your journey begins'
             },
             {
-                src: 'images/gallery/spa-products.jpg',
-                title: 'Natural Products',
-                description: 'Premium organic care'
+                src: '../images/products.jpeg',
+                title: 'Premium Products',
+                description: 'Natural & organic care'
             },
             {
-                src: 'images/gallery/relaxation-area.jpg',
-                title: 'Relaxation Lounge',
+                src: '../images/spaint.jpeg',
+                title: 'Spa Interior',
                 description: 'Your peaceful escape'
             },
             {
-                src: 'images/gallery/treatment-detail.jpg',
-                title: 'Expert Care',
-                description: 'Personalized treatments'
+                src: '../images/treatroom.jpeg',
+                title: 'Treatment Room',
+                description: 'Where the magic happens'
             },
             {
-                src: 'images/gallery/reception-area.jpg',
-                title: 'Welcome Lobby',
-                description: 'Your journey begins here'
+                src: '../images/team.jpeg',
+                title: 'Our Team',
+                description: 'Expert care providers'
             },
             {
-                src: 'images/gallery/spa-atmosphere.jpg',
-                title: 'Tranquil Ambiance',
-                description: 'Designed for serenity'
+                src: '../images/microroom.jpeg',
+                title: 'Microneedling Suite',
+                description: 'Advanced treatments'
             },
             {
-                src: 'images/gallery/treatment-tools.jpg',
-                title: 'Professional Tools',
-                description: 'State-of-the-art equipment'
+                src: '../images/wallart.jpeg',
+                title: 'Spa Ambiance',
+                description: 'Designed for tranquility'
             },
             {
-                src: 'images/gallery/before-after.jpg',
-                title: 'Amazing Results',
-                description: 'See the difference'
+                src: '../images/brows.jpeg',
+                title: 'Brow Artistry',
+                description: 'Precision & perfection'
             }
         ];
 
