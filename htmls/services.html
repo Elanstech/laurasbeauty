@@ -1,1 +1,706 @@
-hello
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Laura's Beauty Touch</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="services.css">
+</head>
+<body>
+
+  <!-- ELEGANT PRELOADER -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="loader-ring"></div>
+            <div class="loader-logo">
+                <img src="../images/logo1.png" alt="Laura's Beauty Touch">
+            </div>
+        </div>
+    </div>
+
+<!-- PREMIUM HEADER WITH MEGA MENU -->
+    <header class="premium-header">
+        <div class="header-container">
+            <!-- Logo -->
+            <div class="header-logo-wrapper">
+                <img src="../images/logo1.png" alt="Laura's Beauty Touch Logo" class="header-logo">
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="desktop-navigation">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    
+                    <!-- Services with Mega Menu -->
+                    <li class="nav-item has-megamenu">
+                        <a href="services.html" class="nav-link">
+                            Services
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </a>
+                        
+                        <!-- Mega Menu Dropdown -->
+                        <div class="megamenu-wrapper">
+                            <div class="megamenu-container">
+                                
+                                <!-- Mega Menu Header -->
+                                <div class="megamenu-header">
+                                    <h3 class="megamenu-title">Our Services</h3>
+                                    <p class="megamenu-subtitle">Discover our comprehensive range of luxury treatments</p>
+                                </div>
+
+                                <!-- Services Grid -->
+                                <div class="megamenu-grid">
+                                    
+                                    <!-- Face Treatments -->
+                                    <a href="../servicecategories/facials.html" class="megamenu-item">
+                                        <div class="megamenu-icon">
+                                            <i class="fas fa-spa"></i>
+                                        </div>
+                                        <div class="megamenu-content">
+                                            <h4 class="megamenu-item-title">Face Treatments</h4>
+                                            <p class="megamenu-item-desc">Rejuvenating facials & skincare</p>
+                                        </div>
+                                        <i class="fas fa-arrow-right megamenu-arrow"></i>
+                                    </a>
+
+                                    <!-- Add On's -->
+                                    <a href="../servicecategories/addons.html" class="megamenu-item">
+                                        <div class="megamenu-icon">
+                                            <i class="fas fa-plus-circle"></i>
+                                        </div>
+                                        <div class="megamenu-content">
+                                            <h4 class="megamenu-item-title">Add On's</h4>
+                                            <p class="megamenu-item-desc">Enhance your experience</p>
+                                        </div>
+                                        <i class="fas fa-arrow-right megamenu-arrow"></i>
+                                    </a>
+
+                                    <!-- Body Treatments -->
+                                    <a href="../servicecategories/body.html" class="megamenu-item">
+                                        <div class="megamenu-icon">
+                                            <i class="fas fa-leaf"></i>
+                                        </div>
+                                        <div class="megamenu-content">
+                                            <h4 class="megamenu-item-title">Body Treatments</h4>
+                                            <p class="megamenu-item-desc">Full body care & wellness</p>
+                                        </div>
+                                        <i class="fas fa-arrow-right megamenu-arrow"></i>
+                                    </a>
+
+                                    <!-- Specials -->
+                                    <a href="../servicecategories/specials.html" class="megamenu-item featured">
+                                        <div class="megamenu-icon">
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <div class="megamenu-content">
+                                            <h4 class="megamenu-item-title">Specials</h4>
+                                            <p class="megamenu-item-desc">Limited time offers</p>
+                                        </div>
+                                        <i class="fas fa-arrow-right megamenu-arrow"></i>
+                                    </a>
+
+                                    <!-- Nails -->
+                                    <a href="../servicecategories/nails.html" class="megamenu-item">
+                                        <div class="megamenu-icon">
+                                            <i class="fas fa-hand-sparkles"></i>
+                                        </div>
+                                        <div class="megamenu-content">
+                                            <h4 class="megamenu-item-title">Nails</h4>
+                                            <p class="megamenu-item-desc">Manicures & pedicures</p>
+                                        </div>
+                                        <i class="fas fa-arrow-right megamenu-arrow"></i>
+                                    </a>
+
+                                    <!-- Packages -->
+                                    <a href="../servicecategories/packages.html" class="megamenu-item">
+                                        <div class="megamenu-icon">
+                                            <i class="fas fa-gift"></i>
+                                        </div>
+                                        <div class="megamenu-content">
+                                            <h4 class="megamenu-item-title">Packages</h4>
+                                            <p class="megamenu-item-desc">Curated spa experiences</p>
+                                        </div>
+                                        <i class="fas fa-arrow-right megamenu-arrow"></i>
+                                    </a>
+
+                                    <!-- Laser -->
+                                    <a href="../servicecategories/laser.html" class="megamenu-item">
+                                        <div class="megamenu-icon">
+                                            <i class="fas fa-wand-magic-sparkles"></i>
+                                        </div>
+                                        <div class="megamenu-content">
+                                            <h4 class="megamenu-item-title">Laser</h4>
+                                            <p class="megamenu-item-desc">Advanced laser treatments</p>
+                                        </div>
+                                        <i class="fas fa-arrow-right megamenu-arrow"></i>
+                                    </a>
+
+                                    <!-- Wax -->
+                                    <a href="../servicecategories/wax.html" class="megamenu-item">
+                                        <div class="megamenu-icon">
+                                            <i class="fas fa-droplet"></i>
+                                        </div>
+                                        <div class="megamenu-content">
+                                            <h4 class="megamenu-item-title">Wax</h4>
+                                            <p class="megamenu-item-desc">Gentle hair removal</p>
+                                        </div>
+                                        <i class="fas fa-arrow-right megamenu-arrow"></i>
+                                    </a>
+
+                                    <!-- Permanent Make Up -->
+                                    <a href="../servicecategories/permanent-makeup.html" class="megamenu-item">
+                                        <div class="megamenu-icon">
+                                            <i class="fas fa-palette"></i>
+                                        </div>
+                                        <div class="megamenu-content">
+                                            <h4 class="megamenu-item-title">Permanent Make Up</h4>
+                                            <p class="megamenu-item-desc">Long-lasting beauty</p>
+                                        </div>
+                                        <i class="fas fa-arrow-right megamenu-arrow"></i>
+                                    </a>
+
+                                    <!-- Lashes -->
+                                    <a href="../servicecategories/lashes.html" class="megamenu-item">
+                                        <div class="megamenu-icon">
+                                            <i class="fas fa-eye"></i>
+                                        </div>
+                                        <div class="megamenu-content">
+                                            <h4 class="megamenu-item-title">Lashes</h4>
+                                            <p class="megamenu-item-desc">Extensions & enhancements</p>
+                                        </div>
+                                        <i class="fas fa-arrow-right megamenu-arrow"></i>
+                                    </a>
+
+                                    <!-- Make Up -->
+                                    <a href="../servicecategories/makeup.html" class="megamenu-item">
+                                        <div class="megamenu-icon">
+                                            <i class="fas fa-paint-brush"></i>
+                                        </div>
+                                        <div class="megamenu-content">
+                                            <h4 class="megamenu-item-title">Make Up</h4>
+                                            <p class="megamenu-item-desc">Professional artistry</p>
+                                        </div>
+                                        <i class="fas fa-arrow-right megamenu-arrow"></i>
+                                    </a>
+
+                                </div>
+
+                                <!-- Mega Menu Footer CTA -->
+                                <div class="megamenu-footer">
+                                    <a href="services.html" class="megamenu-view-all">
+                                        View All Services
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item"><a href="../htmls/gallery.html" class="nav-link">Gallery</a></li>
+                    <li class="nav-item"><a href="../htmls/contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Book Now Button -->
+            <a href="contact.html" class="header-cta-btn">Book Now</a>
+
+            <!-- Mobile Toggle -->
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-drawer">
+        <div class="drawer-content">
+            <div class="drawer-header">
+                <img src="images/logo1.png" alt="Laura's Beauty Touch Logo" class="drawer-logo">
+            </div>
+            <nav class="mobile-navigation">
+                <ul class="mobile-menu">
+                    <li class="mobile-item"><a href="index.html" class="mobile-link">Home</a></li>
+                    <li class="mobile-item"><a href="about.html" class="mobile-link">About</a></li>
+                    
+                    <!-- Mobile Services with Accordion -->
+                    <li class="mobile-item mobile-has-submenu">
+                        <button class="mobile-link mobile-dropdown-trigger">
+                            Services
+                            <i class="fas fa-chevron-down mobile-dropdown-icon"></i>
+                        </button>
+                        <ul class="mobile-submenu">
+                            <li><a href="servicecategories/facials.html" class="mobile-submenu-link">Face Treatments</a></li>
+                            <li><a href="servicecategories/addons.html" class="mobile-submenu-link">Add On's</a></li>
+                            <li><a href="servicecategories/body.html" class="mobile-submenu-link">Body Treatments</a></li>
+                            <li><a href="servicecategories/specials.html" class="mobile-submenu-link">Specials</a></li>
+                            <li><a href="servicecategories/nails.html" class="mobile-submenu-link">Nails</a></li>
+                            <li><a href="servicecategories/packages.html" class="mobile-submenu-link">Packages</a></li>
+                            <li><a href="servicecategories/laser.html" class="mobile-submenu-link">Laser</a></li>
+                            <li><a href="servicecategories/wax.html" class="mobile-submenu-link">Wax</a></li>
+                            <li><a href="servicecategories/permanent-makeup.html" class="mobile-submenu-link">Permanent Make Up</a></li>
+                            <li><a href="servicecategories/lashes.html" class="mobile-submenu-link">Lashes</a></li>
+                            <li><a href="servicecategories/makeup.html" class="mobile-submenu-link">Make Up</a></li>
+                            <li><a href="services.html" class="mobile-submenu-link view-all">View All Services</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="mobile-item"><a href="gallery.html" class="mobile-link">Gallery</a></li>
+                    <li class="mobile-item"><a href="testimonials.html" class="mobile-link">Testimonials</a></li>
+                    <li class="mobile-item"><a href="contact.html" class="mobile-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay"></div>
+
+  <!-- ============================================
+         SERVICES HERO SECTION
+         ============================================ -->
+    <section class="services-hero">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        
+        <!-- Floating Decorative Elements -->
+        <div class="hero-decor hero-decor-1"></div>
+        <div class="hero-decor hero-decor-2"></div>
+        <div class="hero-decor hero-decor-3"></div>
+        
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="hero-badge">
+                <i class="fas fa-sparkles"></i>
+                <span>Luxury Treatments</span>
+            </div>
+            <h1 class="hero-title">Discover Your<br>Perfect Treatment</h1>
+            <p class="hero-subtitle">
+                From rejuvenating facials to transformative body treatments, explore our complete collection 
+                of luxury services designed to enhance your natural beauty
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-number">11</div>
+                    <div class="stat-label">Service Categories</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Premium Treatments</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Years of Excellence</div>
+                </div>
+            </div>
+            <div class="hero-scroll-indicator">
+                <span>Explore Services</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SERVICES GRID SECTION
+         ============================================ -->
+    <section class="services-grid-section">
+        <div class="services-container">
+            
+            <!-- Section Header -->
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-eyebrow">
+                    <i class="fas fa-leaf"></i>
+                    Choose Your Experience
+                </div>
+                <h2 class="section-title">Our Service Collection</h2>
+                <div class="title-divider"></div>
+                <p class="section-subtitle">
+                    Each category is crafted with care, combining natural ingredients with expert techniques 
+                    for results that speak for themselves
+                </p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="services-grid">
+                
+                <!-- Service Card 1: Face Treatments -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-image-wrapper">
+                        <img src="https://www.anushkaspa.com/wp-content/uploads/2024/04/hpqtkTKm_AVq2eaQcgSu3-J73EcfbuqfqqOsip_6RpRBpYJeEXGF0n21GEd7dgXcjXC8r3Tu7G3qltCi7tJ2lnxihCaOM_Aeue5LoHUwWF_YRWXW9R4X9abm5sGmxWqN7RB7RPGv.jpeg" alt="Face Treatments" class="card-image">
+                        <div class="card-overlay">
+                            <div class="overlay-content">
+                                <div class="overlay-icon">
+                                    <i class="fas fa-spa"></i>
+                                </div>
+                                <h3 class="overlay-title">View Treatments</h3>
+                            </div>
+                        </div>
+                        <div class="card-badge">Popular</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <h3 class="card-title">Face Treatments</h3>
+                        <p class="card-description">
+                            Revitalize your skin with our signature facials using organic botanicals and advanced techniques
+                        </p>
+                        <a href="servicecategories/facials.html" class="card-link">
+                            Explore Treatments
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service Card 2: Add On's -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="card-image-wrapper">
+                        <img src="https://essentspa.com/wp-content/uploads/2017/05/spa-add-ons.jpg" alt="Add On's" class="card-image">
+                        <div class="card-overlay">
+                            <div class="overlay-content">
+                                <div class="overlay-icon">
+                                    <i class="fas fa-plus-circle"></i>
+                                </div>
+                                <h3 class="overlay-title">View Treatments</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-plus-circle"></i>
+                        </div>
+                        <h3 class="card-title">Add On's</h3>
+                        <p class="card-description">
+                            Enhance your experience with luxurious extras designed to elevate any treatment
+                        </p>
+                        <a href="servicecategories/addons.html" class="card-link">
+                            Explore Treatments
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service Card 3: Body Treatments -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-image-wrapper">
+                        <img src="https://yukienatori-newyork.com/wp-content/uploads/2024/02/body-treatments-in-the-spa.jpeg" alt="Body Treatments" class="card-image">
+                        <div class="card-overlay">
+                            <div class="overlay-content">
+                                <div class="overlay-icon">
+                                    <i class="fas fa-hands-wash"></i>
+                                </div>
+                                <h3 class="overlay-title">View Treatments</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-hands-wash"></i>
+                        </div>
+                        <h3 class="card-title">Body Treatments</h3>
+                        <p class="card-description">
+                            Luxurious body scrubs and wraps that detoxify, nourish, and leave your skin silky smooth
+                        </p>
+                        <a href="servicecategories/body.html" class="card-link">
+                            Explore Treatments
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service Card 4: Specials -->
+                <div class="service-card service-card-featured" data-aos="fade-up" data-aos-delay="250">
+                    <div class="card-image-wrapper">
+                        <img src="https://img.freepik.com/free-photo/attractive-african-woman-enjoying-face-massage-spa-salon_176420-13953.jpg?semt=ais_hybrid&w=740&q=80" alt="Specials" class="card-image">
+                        <div class="card-overlay">
+                            <div class="overlay-content">
+                                <div class="overlay-icon">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <h3 class="overlay-title">View Treatments</h3>
+                            </div>
+                        </div>
+                        <div class="card-badge special-badge">Limited Time</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-icon special-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="card-title">Specials</h3>
+                        <p class="card-description">
+                            Exclusive seasonal offerings and limited-time treatments curated just for you
+                        </p>
+                        <a href="servicecategories/specials.html" class="card-link special-link">
+                            Explore Treatments
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service Card 5: Nails -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-image-wrapper">
+                        <img src="https://edited.beautybay.com/wp-content/uploads/2025/07/simlynail.jpg" alt="Nails" class="card-image">
+                        <div class="card-overlay">
+                            <div class="overlay-content">
+                                <div class="overlay-icon">
+                                    <i class="fas fa-hand-sparkles"></i>
+                                </div>
+                                <h3 class="overlay-title">View Treatments</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-hand-sparkles"></i>
+                        </div>
+                        <h3 class="card-title">Nails</h3>
+                        <p class="card-description">
+                            Premium manicures and pedicures for perfectly polished hands and feet
+                        </p>
+                        <a href="servicecategories/nails.html" class="card-link">
+                            Explore Treatments
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service Card 6: Packages -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="350">
+                    <div class="card-image-wrapper">
+                        <img src="https://cedarstonespa.com/wp-content/uploads/2012/11/treatment-packages-quad.jpg" alt="Packages" class="card-image">
+                        <div class="card-overlay">
+                            <div class="overlay-content">
+                                <div class="overlay-icon">
+                                    <i class="fas fa-gift"></i>
+                                </div>
+                                <h3 class="overlay-title">View Treatments</h3>
+                            </div>
+                        </div>
+                        <div class="card-badge">Best Value</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h3 class="card-title">Packages</h3>
+                        <p class="card-description">
+                            Curated wellness journeys combining multiple treatments for ultimate relaxation
+                        </p>
+                        <a href="servicecategories/packages.html" class="card-link">
+                            Explore Treatments
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service Card 7: Laser -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-image-wrapper">
+                        <img src="https://vitalityspabocaraton.com/wp-content/uploads/2018/09/vitality-spa-boca-raton-laser-hair-removal3.png" alt="Laser" class="card-image">
+                        <div class="card-overlay">
+                            <div class="overlay-content">
+                                <div class="overlay-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <h3 class="overlay-title">View Treatments</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 class="card-title">Laser</h3>
+                        <p class="card-description">
+                            Advanced laser treatments for hair removal, skin rejuvenation, and more
+                        </p>
+                        <a href="servicecategories/laser.html" class="card-link">
+                            Explore Treatments
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service Card 8: Wax -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="450">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.squarespace-cdn.com/content/v1/52e7f434e4b079ae91b7831c/1600467222673-WFOI1SL0G8IIHOTTCN5A/AdobeStock_144248813.jpeg?format=2500w" alt="Wax" class="card-image">
+                        <div class="card-overlay">
+                            <div class="overlay-content">
+                                <div class="overlay-icon">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+                                <h3 class="overlay-title">View Treatments</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3 class="card-title">Wax</h3>
+                        <p class="card-description">
+                            Gentle, effective hair removal with premium organic wax for smooth, lasting results
+                        </p>
+                        <a href="servicecategories/wax.html" class="card-link">
+                            Explore Treatments
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service Card 9: Permanent Make Up -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card-image-wrapper">
+                        <img src="https://www.nyib.edu/wp-content/uploads/2021/06/What-Is-Permanent-Makeup.jpg" alt="Permanent Make Up" class="card-image">
+                        <div class="card-overlay">
+                            <div class="overlay-content">
+                                <div class="overlay-icon">
+                                    <i class="fas fa-paint-brush"></i>
+                                </div>
+                                <h3 class="overlay-title">View Treatments</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3 class="card-title">Permanent Make Up</h3>
+                        <p class="card-description">
+                            Wake up beautiful with expertly applied permanent makeup for brows, lips, and eyes
+                        </p>
+                        <a href="servicecategories/permanent-makeup.html" class="card-link">
+                            Explore Treatments
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service Card 10: Lashes -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="550">
+                    <div class="card-image-wrapper">
+                        <img src="https://www.eyelashextensionssupplies.com/cdn/shop/files/nympholashes.jpg?v=1711578754" alt="Lashes" class="card-image">
+                        <div class="card-overlay">
+                            <div class="overlay-content">
+                                <div class="overlay-icon">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <h3 class="overlay-title">View Treatments</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3 class="card-title">Lashes</h3>
+                        <p class="card-description">
+                            Enhance your eyes with stunning lash extensions, lifts, and tinting services
+                        </p>
+                        <a href="servicecategories/lashes.html" class="card-link">
+                            Explore Treatments
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service Card 11: Make Up -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="card-image-wrapper">
+                        <img src="https://nima.edu/wp-content/uploads/2022/08/makeup.jpg" alt="Make Up" class="card-image">
+                        <div class="card-overlay">
+                            <div class="overlay-content">
+                                <div class="overlay-icon">
+                                    <i class="fas fa-palette"></i>
+                                </div>
+                                <h3 class="overlay-title">View Treatments</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3 class="card-title">Make Up</h3>
+                        <p class="card-description">
+                            Professional makeup artistry for special occasions, events, and everyday glamour
+                        </p>
+                        <a href="servicecategories/makeup.html" class="card-link">
+                            Explore Treatments
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CTA SECTION
+         ============================================ -->
+    <section class="services-cta-section">
+        <div class="cta-container" data-aos="fade-up">
+            <div class="cta-content">
+                <div class="cta-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h2 class="cta-title">Ready to Begin Your Beauty Journey?</h2>
+                <p class="cta-description">
+                    Book your appointment today and experience the luxury treatment you deserve. 
+                    Our expert team is ready to create your personalized wellness experience.
+                </p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="cta-btn cta-btn-primary">
+                        Book Now
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="tel:7188419919" class="cta-btn cta-btn-secondary">
+                        <i class="fas fa-phone"></i>
+                        Call Us: (718) 841-9919
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER SPACE - You will integrate your footer here
+         ============================================ -->
+    <!-- Your premium footer goes here -->
+
+    <!-- ============================================
+         BACK TO TOP BUTTON SPACE
+         ============================================ -->
+    <!-- Your back to top button goes here -->
+
+    <!-- ============================================
+         FAB BUTTON SPACE
+         ============================================ -->
+    <!-- Your floating action button goes here -->
+
+    <!-- JavaScript -->
+    <script src="services.js"></script>
+</body>
+</html>
