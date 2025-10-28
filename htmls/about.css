@@ -1,37 +1,50 @@
 /* ============================================
    ABOUT PAGE STYLES - LAURA'S BEAUTY TOUCH
    Natural Luxury Design System
+   Optimized & Conflict-Free
    ============================================ */
 
 /* ============================================
-   ABOUT HERO SECTION
+   ABOUT HERO SECTION - FIXED OVERLAY
    ============================================ */
 .about-hero {
     position: relative;
-    height: 85vh;
-    min-height: 600px;
+    height: 100vh;
+    min-height: 700px;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    margin-top: 100px;
+    margin-top: 0;
+    padding-top: 0;
 }
 
-.hero-background {
+.about-hero .hero-background {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--forest-green) 0%, var(--deep-forest) 100%);
+    background-color: var(--forest-green);
     background-image: url('../images/spaint.jpeg');
     background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
     z-index: 1;
+    will-change: transform;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
-.hero-overlay {
+/* Enable parallax only on desktop for performance */
+@media (min-width: 1024px) {
+    .about-hero .hero-background {
+        background-attachment: fixed;
+    }
+}
+
+.about-hero .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -43,7 +56,7 @@
     z-index: 2;
 }
 
-.hero-content {
+.about-hero .hero-content {
     position: relative;
     z-index: 3;
     text-align: center;
@@ -52,12 +65,13 @@
     margin: 0 auto;
 }
 
-.hero-badge {
+.about-hero .hero-badge {
     display: inline-flex;
     align-items: center;
     gap: 10px;
     background: rgba(169, 200, 156, 0.2);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 2px solid rgba(169, 200, 156, 0.4);
     color: var(--mint-green);
     padding: 12px 28px;
@@ -71,11 +85,11 @@
     animation: fadeInUp 0.8s ease-out;
 }
 
-.hero-badge i {
+.about-hero .hero-badge i {
     font-size: 1.1rem;
 }
 
-.hero-title {
+.about-hero .hero-title {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2.5rem, 6vw, 5rem);
     font-weight: 700;
@@ -85,7 +99,7 @@
     animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
-.hero-subtitle {
+.about-hero .hero-subtitle {
     font-family: 'Lato', sans-serif;
     font-size: clamp(1.1rem, 2vw, 1.4rem);
     color: rgba(250, 250, 247, 0.9);
@@ -94,7 +108,7 @@
     animation: fadeInUp 0.8s ease-out 0.4s both;
 }
 
-.hero-scroll-indicator {
+.about-hero .hero-scroll-indicator {
     display: inline-flex;
     flex-direction: column;
     align-items: center;
@@ -109,7 +123,7 @@
     animation: fadeInUp 0.8s ease-out 0.6s both, bounceAnimation 2s ease-in-out 1.5s infinite;
 }
 
-.hero-scroll-indicator i {
+.about-hero .hero-scroll-indicator i {
     font-size: 1.2rem;
 }
 
@@ -143,7 +157,7 @@
     overflow: hidden;
 }
 
-.story-container {
+.laura-story-section .story-container {
     max-width: 1400px;
     margin: 0 auto;
     display: grid;
@@ -152,29 +166,29 @@
     align-items: center;
 }
 
-.story-image-wrapper {
+.laura-story-section .story-image-wrapper {
     position: relative;
 }
 
-.image-frame {
+.laura-story-section .image-frame {
     position: relative;
     border-radius: 40px;
     overflow: hidden;
     box-shadow: 0 25px 70px rgba(59, 74, 47, 0.25);
 }
 
-.story-image {
+.laura-story-section .story-image {
     width: 100%;
     height: auto;
     display: block;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.image-frame:hover .story-image {
+.laura-story-section .image-frame:hover .story-image {
     transform: scale(1.05);
 }
 
-.image-overlay {
+.laura-story-section .image-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -186,12 +200,13 @@
     transition: opacity 0.3s ease;
 }
 
-.overlay-badge {
+.laura-story-section .overlay-badge {
     display: inline-flex;
     align-items: center;
     gap: 12px;
     background: rgba(169, 200, 156, 0.3);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 2px solid rgba(169, 200, 156, 0.5);
     color: var(--ivory-white);
     padding: 14px 24px;
@@ -201,12 +216,12 @@
     font-weight: 600;
 }
 
-.overlay-badge i {
+.laura-story-section .overlay-badge i {
     font-size: 1.1rem;
     color: var(--gold-accent);
 }
 
-.floating-decor {
+.laura-story-section .floating-decor {
     position: absolute;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--mint-green), var(--forest-green));
@@ -214,7 +229,7 @@
     z-index: -1;
 }
 
-.decor-1 {
+.laura-story-section .decor-1 {
     width: 300px;
     height: 300px;
     top: -50px;
@@ -222,7 +237,7 @@
     animation: float 6s ease-in-out infinite;
 }
 
-.decor-2 {
+.laura-story-section .decor-2 {
     width: 200px;
     height: 200px;
     bottom: -40px;
@@ -239,11 +254,11 @@
     }
 }
 
-.story-text-wrapper {
+.laura-story-section .story-text-wrapper {
     padding: 20px 0;
 }
 
-.section-eyebrow {
+.laura-story-section .section-eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 10px;
@@ -256,11 +271,11 @@
     margin-bottom: 20px;
 }
 
-.section-eyebrow i {
+.laura-story-section .section-eyebrow i {
     font-size: 1rem;
 }
 
-.section-title {
+.laura-story-section .section-title {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2.2rem, 4vw, 3.5rem);
     font-weight: 700;
@@ -269,7 +284,7 @@
     margin-bottom: 25px;
 }
 
-.title-divider {
+.laura-story-section .title-divider {
     width: 80px;
     height: 4px;
     background: linear-gradient(90deg, var(--mint-green), var(--gold-accent));
@@ -277,11 +292,11 @@
     margin-bottom: 35px;
 }
 
-.story-content {
+.laura-story-section .story-content {
     margin-bottom: 40px;
 }
 
-.story-paragraph {
+.laura-story-section .story-paragraph {
     font-family: 'Lato', sans-serif;
     font-size: 1.1rem;
     line-height: 1.9;
@@ -289,7 +304,7 @@
     margin-bottom: 20px;
 }
 
-.story-paragraph.highlight {
+.laura-story-section .story-paragraph.highlight {
     font-family: 'Playfair Display', serif;
     font-size: 1.25rem;
     font-style: italic;
@@ -301,13 +316,13 @@
     margin-top: 30px;
 }
 
-.credentials-grid {
+.laura-story-section .credentials-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
 }
 
-.credential-card {
+.laura-story-section .credential-card {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -318,12 +333,12 @@
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.credential-card:hover {
+.laura-story-section .credential-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 50px rgba(59, 74, 47, 0.2);
 }
 
-.credential-icon {
+.laura-story-section .credential-icon {
     width: 60px;
     height: 60px;
     background: linear-gradient(135deg, var(--mint-green), var(--forest-green));
@@ -336,7 +351,7 @@
     flex-shrink: 0;
 }
 
-.credential-info h4 {
+.laura-story-section .credential-info h4 {
     font-family: 'Lato', sans-serif;
     font-size: 1.05rem;
     font-weight: 700;
@@ -344,7 +359,7 @@
     margin-bottom: 5px;
 }
 
-.credential-info p {
+.laura-story-section .credential-info p {
     font-family: 'Lato', sans-serif;
     font-size: 0.9rem;
     color: var(--warm-taupe);
@@ -372,7 +387,7 @@
     border-radius: 50%;
 }
 
-.philosophy-container {
+.philosophy-section .philosophy-container {
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
@@ -380,12 +395,13 @@
     z-index: 2;
 }
 
-.philosophy-icon {
+.philosophy-section .philosophy-icon {
     width: 80px;
     height: 80px;
     margin: 0 auto 30px;
     background: rgba(169, 200, 156, 0.2);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 2px solid rgba(169, 200, 156, 0.4);
     border-radius: 50%;
     display: flex;
@@ -395,7 +411,7 @@
     font-size: 2rem;
 }
 
-.philosophy-title {
+.philosophy-section .philosophy-title {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 700;
@@ -403,7 +419,7 @@
     margin-bottom: 25px;
 }
 
-.philosophy-divider {
+.philosophy-section .philosophy-divider {
     width: 100px;
     height: 4px;
     background: linear-gradient(90deg, var(--mint-green), var(--gold-accent));
@@ -411,7 +427,7 @@
     margin: 0 auto 35px;
 }
 
-.philosophy-text {
+.philosophy-section .philosophy-text {
     font-family: 'Lato', sans-serif;
     font-size: 1.2rem;
     line-height: 1.9;
@@ -419,14 +435,14 @@
     margin-bottom: 50px;
 }
 
-.philosophy-values {
+.philosophy-section .philosophy-values {
     display: flex;
     justify-content: center;
     gap: 40px;
     flex-wrap: wrap;
 }
 
-.value-item {
+.philosophy-section .value-item {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -434,23 +450,24 @@
     padding: 30px;
     background: rgba(169, 200, 156, 0.1);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 2px solid rgba(169, 200, 156, 0.3);
     border-radius: 25px;
     transition: all 0.4s ease;
 }
 
-.value-item:hover {
+.philosophy-section .value-item:hover {
     transform: translateY(-10px);
     background: rgba(169, 200, 156, 0.2);
     border-color: rgba(169, 200, 156, 0.5);
 }
 
-.value-item i {
+.philosophy-section .value-item i {
     font-size: 2.5rem;
     color: var(--gold-accent);
 }
 
-.value-item span {
+.philosophy-section .value-item span {
     font-family: 'Lato', sans-serif;
     font-size: 1rem;
     font-weight: 600;
@@ -466,7 +483,7 @@
     background: var(--ivory-white);
 }
 
-.gallery-header {
+.gallery-section .gallery-header {
     text-align: center;
     margin-bottom: 80px;
     max-width: 800px;
@@ -474,7 +491,37 @@
     margin-right: auto;
 }
 
-.section-subtitle {
+.gallery-section .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--mint-green);
+    margin-bottom: 20px;
+}
+
+.gallery-section .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    color: var(--forest-green);
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+.gallery-section .title-divider {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--mint-green), var(--gold-accent));
+    border-radius: 10px;
+    margin: 0 auto 25px;
+}
+
+.gallery-section .section-subtitle {
     font-family: 'Lato', sans-serif;
     font-size: 1.15rem;
     line-height: 1.8;
@@ -482,7 +529,7 @@
     margin-top: 20px;
 }
 
-.gallery-grid {
+.gallery-section .gallery-grid {
     max-width: 1400px;
     margin: 0 auto;
     display: grid;
@@ -491,45 +538,45 @@
     gap: 20px;
 }
 
-.gallery-item {
+.gallery-section .gallery-item {
     position: relative;
     overflow: hidden;
     border-radius: 30px;
     cursor: pointer;
 }
 
-.gallery-item.gallery-large {
+.gallery-section .gallery-item.gallery-large {
     grid-column: span 2;
     grid-row: span 2;
 }
 
-.gallery-item.gallery-tall {
+.gallery-section .gallery-item.gallery-tall {
     grid-row: span 2;
 }
 
-.gallery-item.gallery-wide {
+.gallery-section .gallery-item.gallery-wide {
     grid-column: span 2;
 }
 
-.gallery-image-wrapper {
+.gallery-section .gallery-image-wrapper {
     width: 100%;
     height: 100%;
     position: relative;
     overflow: hidden;
 }
 
-.gallery-image {
+.gallery-section .gallery-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.gallery-item:hover .gallery-image {
+.gallery-section .gallery-item:hover .gallery-image {
     transform: scale(1.1);
 }
 
-.gallery-overlay {
+.gallery-section .gallery-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -546,34 +593,35 @@
     padding: 30px;
 }
 
-.gallery-item:hover .gallery-overlay {
+.gallery-section .gallery-item:hover .gallery-overlay {
     opacity: 1;
 }
 
-.gallery-content {
+.gallery-section .gallery-content {
     color: var(--ivory-white);
 }
 
-.gallery-content h3 {
+.gallery-section .gallery-content h3 {
     font-family: 'Playfair Display', serif;
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 8px;
 }
 
-.gallery-content p {
+.gallery-section .gallery-content p {
     font-family: 'Lato', sans-serif;
     font-size: 0.95rem;
     opacity: 0.9;
     margin-bottom: 15px;
 }
 
-.gallery-view-btn {
+.gallery-section .gallery-view-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     background: rgba(169, 200, 156, 0.3);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 2px solid rgba(169, 200, 156, 0.5);
     color: white;
     padding: 10px 20px;
@@ -585,26 +633,26 @@
     transition: all 0.3s ease;
 }
 
-.gallery-view-btn:hover {
+.gallery-section .gallery-view-btn:hover {
     background: var(--mint-green);
     border-color: var(--mint-green);
     transform: translateY(-2px);
 }
 
 /* Gallery CTA */
-.gallery-cta {
+.gallery-section .gallery-cta {
     text-align: center;
     margin-top: 80px;
 }
 
-.cta-text {
+.gallery-section .cta-text {
     font-family: 'Playfair Display', serif;
     font-size: 1.5rem;
     color: var(--forest-green);
     margin-bottom: 25px;
 }
 
-.cta-btn {
+.gallery-section .cta-btn {
     display: inline-flex;
     align-items: center;
     gap: 12px;
@@ -620,16 +668,16 @@
     box-shadow: 0 10px 35px rgba(169, 200, 156, 0.4);
 }
 
-.cta-btn:hover {
+.gallery-section .cta-btn:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 45px rgba(169, 200, 156, 0.5);
 }
 
-.cta-btn i {
+.gallery-section .cta-btn i {
     transition: transform 0.3s ease;
 }
 
-.cta-btn:hover i {
+.gallery-section .cta-btn:hover i {
     transform: translateX(5px);
 }
 
@@ -662,6 +710,7 @@
     height: 50px;
     background: rgba(169, 200, 156, 0.2);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 2px solid rgba(169, 200, 156, 0.4);
     border-radius: 50%;
     color: white;
@@ -685,6 +734,7 @@
     height: 60px;
     background: rgba(169, 200, 156, 0.2);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 2px solid rgba(169, 200, 156, 0.4);
     border-radius: 50%;
     color: white;
@@ -747,18 +797,18 @@
     background: linear-gradient(to bottom, var(--cream), var(--ivory-white));
 }
 
-.commitment-container {
+.commitment-section .commitment-container {
     max-width: 1400px;
     margin: 0 auto;
 }
 
-.commitment-grid {
+.commitment-section .commitment-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
 }
 
-.commitment-card {
+.commitment-section .commitment-card {
     background: white;
     padding: 40px 30px;
     border-radius: 30px;
@@ -767,12 +817,12 @@
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.commitment-card:hover {
+.commitment-section .commitment-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 60px rgba(59, 74, 47, 0.2);
 }
 
-.commitment-icon {
+.commitment-section .commitment-icon {
     width: 80px;
     height: 80px;
     margin: 0 auto 25px;
@@ -785,7 +835,7 @@
     font-size: 2rem;
 }
 
-.commitment-title {
+.commitment-section .commitment-title {
     font-family: 'Playfair Display', serif;
     font-size: 1.4rem;
     font-weight: 600;
@@ -793,7 +843,7 @@
     margin-bottom: 15px;
 }
 
-.commitment-text {
+.commitment-section .commitment-text {
     font-family: 'Lato', sans-serif;
     font-size: 1rem;
     line-height: 1.7;
@@ -805,66 +855,65 @@
    RESPONSIVE DESIGN
    ============================================ */
 @media (max-width: 1200px) {
-    .story-container {
+    .laura-story-section .story-container {
         gap: 60px;
     }
     
-    .gallery-grid {
+    .gallery-section .gallery-grid {
         grid-template-columns: repeat(3, 1fr);
     }
     
-    .commitment-grid {
+    .commitment-section .commitment-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 968px) {
     .about-hero {
-        height: 70vh;
-        min-height: 500px;
-        margin-top: 80px;
+        height: 80vh;
+        min-height: 550px;
     }
     
     .laura-story-section {
         padding: 80px 30px;
     }
     
-    .story-container {
+    .laura-story-section .story-container {
         grid-template-columns: 1fr;
         gap: 50px;
     }
     
-    .credentials-grid {
+    .laura-story-section .credentials-grid {
         grid-template-columns: 1fr;
     }
     
-    .gallery-grid {
+    .gallery-section .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
         grid-auto-rows: 250px;
         gap: 15px;
     }
     
-    .gallery-item.gallery-large,
-    .gallery-item.gallery-wide {
+    .gallery-section .gallery-item.gallery-large,
+    .gallery-section .gallery-item.gallery-wide {
         grid-column: span 2;
     }
     
-    .gallery-item.gallery-tall {
+    .gallery-section .gallery-item.gallery-tall {
         grid-row: span 1;
     }
     
-    .philosophy-values {
+    .philosophy-section .philosophy-values {
         gap: 20px;
     }
 }
 
 @media (max-width: 768px) {
     .about-hero {
-        height: 60vh;
-        min-height: 450px;
+        height: 100vh;
+        min-height: 600px;
     }
     
-    .hero-title {
+    .about-hero .hero-title {
         font-size: 2.5rem;
     }
     
@@ -872,7 +921,7 @@
         padding: 60px 20px;
     }
     
-    .section-title {
+    .laura-story-section .section-title {
         font-size: 2rem;
     }
     
@@ -884,14 +933,14 @@
         padding: 80px 20px;
     }
     
-    .gallery-grid {
+    .gallery-section .gallery-grid {
         grid-template-columns: 1fr;
         grid-auto-rows: 300px;
     }
     
-    .gallery-item.gallery-large,
-    .gallery-item.gallery-wide,
-    .gallery-item.gallery-tall {
+    .gallery-section .gallery-item.gallery-large,
+    .gallery-section .gallery-item.gallery-wide,
+    .gallery-section .gallery-item.gallery-tall {
         grid-column: span 1;
         grid-row: span 1;
     }
@@ -900,7 +949,7 @@
         padding: 60px 20px;
     }
     
-    .commitment-grid {
+    .commitment-section .commitment-grid {
         grid-template-columns: 1fr;
     }
     
@@ -927,46 +976,46 @@
 }
 
 @media (max-width: 480px) {
-    .hero-badge {
+    .about-hero .hero-badge {
         font-size: 0.85rem;
         padding: 10px 20px;
     }
     
-    .hero-title {
+    .about-hero .hero-title {
         font-size: 2rem;
     }
     
-    .hero-subtitle {
+    .about-hero .hero-subtitle {
         font-size: 1rem;
     }
     
-    .section-title {
+    .laura-story-section .section-title {
         font-size: 1.8rem;
     }
     
-    .story-paragraph {
+    .laura-story-section .story-paragraph {
         font-size: 1rem;
     }
     
-    .credential-card {
+    .laura-story-section .credential-card {
         padding: 20px;
     }
     
-    .credential-icon {
+    .laura-story-section .credential-icon {
         width: 50px;
         height: 50px;
         font-size: 1.2rem;
     }
     
-    .gallery-grid {
+    .gallery-section .gallery-grid {
         grid-auto-rows: 250px;
     }
     
-    .commitment-card {
+    .commitment-section .commitment-card {
         padding: 30px 20px;
     }
     
-    .commitment-icon {
+    .commitment-section .commitment-icon {
         width: 70px;
         height: 70px;
         font-size: 1.8rem;
