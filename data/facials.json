@@ -2,329 +2,366 @@
   "category": "facials",
   "services": [
     {
+      "id": "express-facial",
       "name": "Express Facial",
-      "description": "A quick, refreshing facial perfect for those on-the-go. Includes cleansing, exfoliation, and moisturizing to instantly revive your skin.",
-      "fullDescription": "Our Express Facial is designed for busy individuals who want quick results. This 30-minute treatment includes deep cleansing to remove impurities, gentle exfoliation to reveal fresh skin, a nourishing serum application, and hydrating moisturizer. Perfect as a pick-me-up before an event or as a regular maintenance treatment.",
-      "duration": "30 minutes",
-      "price": "60",
-      "priceLabel": "Starting at",
+      "description": "A quick yet effective facial treatment perfect for busy schedules. Deep cleansing and instant refreshment in just 30 minutes.",
+      "fullDescription": "Our Express Facial is designed for those seeking quick results without compromising quality. This treatment includes cleansing, exfoliation, and a customized mask to leave your skin refreshed and glowing.",
+      "duration": "30 min",
+      "price": "$60",
+      "priceLabel": "Starting at $60",
+      "bookNowUrl": "https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true",
       "image": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800",
       "benefits": [
-        "Quick skin refresh",
-        "Deep cleansing",
-        "Instant glow",
-        "Perfect for busy schedules"
+        "Quick cleansing and exfoliation",
+        "Instant skin refreshment",
+        "Perfect for maintenance facials",
+        "Suitable for all skin types"
       ]
     },
     {
+      "id": "champagne-facial",
       "name": "Champagne Facial",
-      "description": "Luxurious anti-aging treatment infused with champagne extracts. Detoxifies, brightens, and firms the skin for a radiant, youthful glow.",
-      "fullDescription": "Indulge in the ultimate luxury with our Champagne Facial. This elegant treatment harnesses the powerful antioxidants found in champagne to detoxify and rejuvenate your skin. The natural tartaric acid gently exfoliates while polyphenols protect against free radicals. Includes cleansing, champagne-infused mask, facial massage, and hydrating treatment. Your skin will feel refreshed, firm, and radiant.",
-      "duration": "45 minutes",
-      "price": "75",
-      "priceLabel": "Starting at",
-      "image": "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800",
-      "badge": "Luxury",
+      "description": "Indulge in luxury with our Champagne Facial. Antioxidant-rich champagne extracts rejuvenate and brighten your complexion.",
+      "fullDescription": "The Champagne Facial combines the power of antioxidants found in champagne with advanced skincare techniques. This luxurious treatment detoxifies, firms, and illuminates your skin for a youthful, radiant glow.",
+      "duration": "45 min",
+      "price": "$75",
+      "priceLabel": "Starting at $75",
+      "bookNowUrl": "https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true",
+      "image": "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=800",
       "benefits": [
-        "Anti-aging properties",
+        "Rich in antioxidants",
+        "Firms and tightens skin",
         "Brightens complexion",
-        "Firms and tones",
-        "Rich in antioxidants"
+        "Luxurious spa experience"
       ]
     },
     {
+      "id": "european-deep-pore",
       "name": "European Deep Pore Cleansing Facial",
-      "description": "Traditional deep-cleansing facial with steam, extractions, and massage. Thoroughly cleanses pores and leaves skin purified and balanced.",
-      "fullDescription": "Experience the classic European facial technique perfected over generations. This comprehensive treatment begins with a thorough skin analysis, followed by deep cleansing, steam therapy to open pores, professional extractions to remove impurities, relaxing facial massage to stimulate circulation, a customized mask, and finishing with toner and moisturizer. Ideal for all skin types, especially those prone to congestion.",
-      "duration": "60 minutes",
-      "price": "85",
-      "priceLabel": "Starting at",
-      "image": "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=800",
-      "badge": "Popular",
+      "description": "Deep cleansing treatment that purifies pores and removes impurities. Traditional European techniques for exceptionally clean skin.",
+      "fullDescription": "Experience the time-honored European approach to skincare with our Deep Pore Cleansing Facial. This thorough treatment includes steam, extractions, and specialized masks to deeply purify and refine your skin.",
+      "duration": "60 min",
+      "price": "$85",
+      "priceLabel": "Starting at $85",
+      "bookNowUrl": "https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true",
+      "image": "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=800",
       "benefits": [
         "Deep pore cleansing",
         "Professional extractions",
-        "Improves skin texture",
-        "Relaxing massage included"
+        "Reduces blackheads and congestion",
+        "Refines skin texture"
       ]
     },
     {
+      "id": "organic-facial",
       "name": "Organic Facial",
-      "description": "100% organic, chemical-free treatment using natural botanicals. Gentle, nourishing, and perfect for sensitive skin seeking natural care.",
-      "fullDescription": "Treat your skin to the purest ingredients nature has to offer. Our Organic Facial uses only certified organic products free from synthetic chemicals, parabens, and artificial fragrances. This gentle yet effective treatment includes organic cleansing, enzyme exfoliation with fruit acids, a nutrient-rich organic mask, and botanical moisturizers. Perfect for sensitive skin, those avoiding chemicals, or anyone seeking a natural approach to skincare.",
-      "duration": "60 minutes",
-      "price": "85",
-      "priceLabel": "Starting at",
-      "image": "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=800",
+      "description": "All-natural, organic skincare treatment using only the finest plant-based ingredients. Gentle yet effective for sensitive skin.",
+      "fullDescription": "Our Organic Facial uses certified organic products free from harsh chemicals. This gentle treatment nourishes your skin with nature's finest ingredients while providing deep hydration and rejuvenation.",
+      "duration": "60 min",
+      "price": "$85",
+      "priceLabel": "Starting at $85",
+      "bookNowUrl": "https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true",
+      "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=800",
+      "badge": "100% Organic",
       "benefits": [
-        "100% organic products",
-        "Chemical-free",
+        "Certified organic products",
+        "Chemical-free treatment",
         "Gentle on sensitive skin",
-        "Natural botanicals"
+        "Environmentally conscious"
       ]
     },
     {
+      "id": "cranberry-pomegranate",
       "name": "Cranberry & Pomegranate Facial",
-      "description": "Antioxidant-rich treatment using cranberry and pomegranate extracts. Brightens, protects, and revitalizes for a healthy, glowing complexion.",
-      "fullDescription": "Harness the power of superfruits with this antioxidant-packed facial. Cranberries and pomegranates are loaded with vitamins C and E, protecting skin from environmental damage while promoting cell renewal. This treatment includes deep cleansing, a gentle cranberry enzyme exfoliation, a pomegranate antioxidant mask rich in polyphenols, facial massage, and hydrating serums. Leaves skin bright, firm, and glowing with health.",
-      "duration": "60 minutes",
-      "price": "85",
-      "priceLabel": "Starting at",
-      "image": "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800",
+      "description": "Antioxidant-rich facial featuring cranberry and pomegranate extracts. Fights free radicals and promotes youthful, radiant skin.",
+      "fullDescription": "Harness the power of superfruits with our Cranberry & Pomegranate Facial. This antioxidant-rich treatment protects against environmental damage while brightening and revitalizing your complexion.",
+      "duration": "60 min",
+      "price": "$85",
+      "priceLabel": "Starting at $85",
+      "bookNowUrl": "https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true",
+      "image": "https://images.unsplash.com/photo-1571875257727-256c39da42af?w=800",
       "benefits": [
-        "Powerful antioxidants",
-        "Brightens complexion",
-        "Anti-aging benefits",
-        "Vitamin-rich treatment"
+        "Powerful antioxidant protection",
+        "Brightens dull skin",
+        "Anti-aging properties",
+        "Refreshing fruit extracts"
       ]
     },
     {
+      "id": "sweet-mango",
       "name": "Sweet Mango Facial",
-      "description": "Tropical enzyme facial with mango extracts. Gently exfoliates, hydrates, and leaves skin soft, smooth, and beautifully radiant.",
-      "fullDescription": "Transport your skin to a tropical paradise with our Sweet Mango Facial. Rich in vitamins A, C, and E, mango naturally exfoliates dead skin cells while providing intense hydration. This delicious-smelling treatment includes cleansing, mango enzyme peel to reveal fresh skin, a hydrating mango butter mask, soothing massage, and protective moisturizer. Perfect for dull, dry skin needing rejuvenation.",
-      "duration": "60 minutes",
-      "price": "85",
-      "priceLabel": "Starting at",
-      "image": "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800",
+      "description": "Tropical treat for your skin! Vitamin-rich mango extracts nourish and hydrate for a glowing, healthy complexion.",
+      "fullDescription": "Transport yourself to paradise with our Sweet Mango Facial. Rich in vitamins A, C, and E, this tropical treatment deeply nourishes and hydrates while leaving your skin soft, smooth, and radiant.",
+      "duration": "60 min",
+      "price": "$85",
+      "priceLabel": "Starting at $85",
+      "bookNowUrl": "https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true",
+      "image": "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=800",
       "benefits": [
-        "Natural enzyme exfoliation",
+        "Rich in vitamins A, C, and E",
         "Deep hydration",
-        "Vitamin-rich formula",
-        "Softens and smooths"
+        "Brightens complexion",
+        "Delightful tropical aroma"
       ]
     },
     {
+      "id": "mens-facial",
       "name": "Men's Facial",
-      "description": "Specially formulated for men's skin. Addresses razor burn, ingrown hairs, and oil control while providing deep cleansing and hydration.",
-      "fullDescription": "Designed specifically for men's thicker, oilier skin and unique concerns. This masculine facial treatment includes deep cleansing to remove oil and impurities, gentle exfoliation to prevent ingrown hairs, steam therapy, extractions if needed, a purifying charcoal mask, beard area treatment, soothing aftershave care, and oil-free moisturizer. Addresses razor burn, large pores, and rough texture while leaving skin refreshed and comfortable.",
-      "duration": "60 minutes",
-      "price": "100",
-      "priceLabel": "Starting at",
-      "image": "https://images.unsplash.com/photo-1621607512214-68297480165e?w=800",
+      "description": "Specifically designed for men's skin. Addresses unique concerns like razor burn, large pores, and oil control.",
+      "fullDescription": "Our Men's Facial is tailored to address the specific needs of male skin. This treatment focuses on deep cleansing, soothing razor irritation, controlling oil, and refining pores for healthy, clear skin.",
+      "duration": "60 min",
+      "price": "$100",
+      "priceLabel": "Starting at $100",
+      "bookNowUrl": "https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true",
+      "image": "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=800",
       "benefits": [
-        "Formulated for men's skin",
-        "Prevents ingrown hairs",
         "Soothes razor burn",
-        "Controls oil production"
+        "Controls excess oil",
+        "Refines large pores",
+        "Masculine spa experience"
       ]
     },
     {
+      "id": "detox-facial",
       "name": "Detox Facial",
-      "description": "Purifying treatment to eliminate toxins and impurities. Uses activated charcoal and clay to deeply cleanse and refresh congested skin.",
-      "fullDescription": "Give your skin a fresh start with our intensive Detox Facial. Perfect for city dwellers or anyone exposed to pollution and environmental stressors. This powerful treatment uses activated charcoal to draw out impurities, bentonite clay to absorb excess oil, lymphatic drainage massage to eliminate toxins, and antioxidant serums to protect and restore. Includes deep cleansing, detoxifying mask, facial massage, and protective moisturizer. Skin looks clearer, feels lighter, and glows with renewed vitality.",
-      "duration": "60 minutes",
-      "price": "95",
-      "priceLabel": "Starting at",
-      "image": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800",
-      "benefits": [
-        "Removes toxins",
-        "Purifies pores",
-        "Activated charcoal",
-        "Refreshes congested skin"
-      ]
-    },
-    {
-      "name": "Turmeric Deep Pore Cleansing Facial",
-      "description": "Anti-inflammatory facial using turmeric's healing properties. Reduces redness, clears pores, and brightens for an even, radiant complexion.",
-      "fullDescription": "Experience the ancient healing power of turmeric in this therapeutic facial. Turmeric's anti-inflammatory and antibacterial properties make it ideal for acne-prone, inflamed, or uneven skin. This treatment includes gentle cleansing, turmeric-infused steam to open pores, deep extractions, a golden turmeric mask packed with antioxidants, soothing massage, and brightening serum. Reduces redness, fades dark spots, and leaves skin glowing with a healthy, even tone.",
-      "duration": "60 minutes",
-      "price": "95",
-      "priceLabel": "Starting at",
-      "image": "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800",
-      "benefits": [
-        "Anti-inflammatory",
-        "Brightens skin tone",
-        "Clears blemishes",
-        "Ancient healing properties"
-      ]
-    },
-    {
-      "name": "Papaya Pumpkin Deep Pore Cleansing Facial",
-      "description": "Enzyme-rich treatment combining papaya and pumpkin. Gently exfoliates, unclogs pores, and reveals smooth, glowing skin.",
-      "fullDescription": "This powerful enzyme facial combines the exfoliating benefits of papaya with the vitamin-rich properties of pumpkin. Papain enzymes gently dissolve dead skin cells while pumpkin's natural AHAs and vitamins A, C, and E nourish and protect. Treatment includes cleansing, papaya-pumpkin enzyme peel, steam, extractions, a nourishing pumpkin mask, facial massage, and hydrating moisturizer. Perfect for dull, congested skin needing renewal without harsh scrubs.",
-      "duration": "60 minutes",
-      "price": "95",
-      "priceLabel": "Starting at",
+      "description": "Purifying treatment that draws out toxins and impurities. Perfect for congested, stressed, or urban-exposed skin.",
+      "fullDescription": "Our Detox Facial uses activated charcoal and detoxifying clay masks to deeply cleanse and purify. This treatment eliminates environmental pollutants and toxins, leaving your skin refreshed and clear.",
+      "duration": "60 min",
+      "price": "$95",
+      "priceLabel": "Starting at $95",
+      "bookNowUrl": "https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true",
       "image": "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=800",
       "benefits": [
-        "Natural enzyme exfoliation",
-        "Vitamin-rich formula",
-        "Unclogs pores",
-        "Reveals radiant skin"
+        "Removes environmental toxins",
+        "Deep pore purification",
+        "Clarifies congested skin",
+        "Balances skin health"
       ]
     },
     {
+      "id": "turmeric-deep-pore",
+      "name": "Turmeric Deep Pore Cleansing Facial",
+      "description": "Anti-inflammatory turmeric combined with deep pore cleansing. Reduces redness, calms irritation, and purifies skin.",
+      "fullDescription": "Harness the healing power of turmeric in this specialized facial. Known for its anti-inflammatory and antibacterial properties, turmeric brightens, evens skin tone, and deeply cleanses pores.",
+      "duration": "60 min",
+      "price": "$95",
+      "priceLabel": "Starting at $95",
+      "bookNowUrl": "https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true",
+      "image": "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=800",
+      "benefits": [
+        "Anti-inflammatory properties",
+        "Brightens skin tone",
+        "Reduces acne and blemishes",
+        "Natural healing ingredients"
+      ]
+    },
+    {
+      "id": "papaya-pumpkin",
+      "name": "Papaya Pumpkin Deep Pore Cleansing Facial",
+      "description": "Enzymatic exfoliation with papaya and pumpkin. Gently removes dead skin while deeply cleansing pores for smooth, radiant skin.",
+      "fullDescription": "This enzyme-rich facial combines papaya and pumpkin to gently dissolve dead skin cells and impurities. The natural enzymes and vitamins provide gentle exfoliation and deep pore cleansing for all skin types.",
+      "duration": "60 min",
+      "price": "$95",
+      "priceLabel": "Starting at $95",
+      "bookNowUrl": "https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true",
+      "image": "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=800",
+      "benefits": [
+        "Natural enzyme exfoliation",
+        "Rich in vitamins and antioxidants",
+        "Gentle on sensitive skin",
+        "Brightens and smooths texture"
+      ]
+    },
+    {
+      "id": "collagen-glow",
       "name": "Collagen Glow Facial",
-      "description": "Youth-boosting treatment with collagen to improve elasticity and firmness. Reduces fine lines and restores a youthful, glowing appearance.",
-      "fullDescription": "Turn back time with our Collagen Glow Facial. This age-defying treatment infuses skin with collagen peptides to improve elasticity, reduce fine lines, and restore firmness. Includes deep cleansing, gentle exfoliation, a collagen-rich sheet mask, targeted serum application, lymphatic drainage massage to sculpt and lift, and peptide moisturizer. Vitamin C and hyaluronic acid boost collagen production while immediately plumping and brightening skin for a youthful, radiant glow.",
-      "duration": "60 minutes",
-      "price": "100",
-      "priceLabel": "Starting at",
-      "image": "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800",
-      "badge": "Anti-Aging",
+      "description": "Boost your skin's collagen production for firmer, plumper skin. Anti-aging treatment that restores youthful radiance.",
+      "fullDescription": "Our Collagen Glow Facial uses advanced collagen-boosting ingredients to improve skin elasticity and firmness. This anti-aging treatment reduces fine lines and restores a youthful, glowing complexion.",
+      "duration": "60 min",
+      "price": "$100",
+      "priceLabel": "Starting at $100",
+      "bookNowUrl": "https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true",
+      "image": "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=800",
       "benefits": [
         "Boosts collagen production",
         "Improves skin elasticity",
         "Reduces fine lines",
-        "Instant glow"
+        "Firms and plumps skin"
       ]
     },
     {
+      "id": "luxurious-facial",
       "name": "Luxurious Facial",
-      "description": "Our premium signature facial with advanced techniques and luxury products. Complete rejuvenation for ultimate relaxation and stunning results.",
-      "fullDescription": "Indulge in the ultimate spa experience with our Luxurious Facial. This comprehensive treatment combines the best techniques and premium products for complete skin transformation. Includes thorough skin analysis, double cleansing, enzyme exfoliation, steam therapy, meticulous extractions, LED light therapy, a customized luxury mask with precious ingredients, extended facial and décolleté massage with hot stones, targeted serums, and protective moisturizer. Every step is designed for maximum results and pure relaxation.",
-      "duration": "75 minutes",
-      "price": "100",
-      "priceLabel": "Starting at",
-      "image": "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800",
+      "description": "Ultimate pampering experience with premium products and extended treatment time. Complete rejuvenation for body and soul.",
+      "fullDescription": "Indulge in our signature Luxurious Facial, an extended treatment featuring the finest skincare products and techniques. This comprehensive facial includes massage, masks, serums, and specialized treatments for ultimate relaxation and visible results.",
+      "duration": "75 min",
+      "price": "$100",
+      "priceLabel": "Starting at $100",
+      "bookNowUrl": "https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true",
+      "image": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800",
       "badge": "Premium",
       "benefits": [
-        "Complete skin transformation",
+        "Extended treatment time",
         "Premium luxury products",
-        "Extended massage",
-        "LED light therapy"
+        "Complete relaxation",
+        "Comprehensive skincare"
       ]
     },
     {
+      "id": "oxygen-facial",
       "name": "Oxygen Facial",
-      "description": "High-tech treatment infusing pure oxygen and vitamins into skin. Instantly brightens, plumps, and revitalizes for red-carpet results.",
-      "fullDescription": "Experience the celebrity favorite! Our Oxygen Facial uses pressurized oxygen to infuse a customized serum of hyaluronic acid, vitamins, and antioxidants deep into the skin. This innovative treatment stimulates collagen production, accelerates cell renewal, and instantly plumps and brightens. Includes cleansing, gentle exfoliation, oxygen infusion treatment targeting your specific concerns, hydrating mask, and protective moisturizer with SPF. No downtime, immediate results - perfect before special events.",
-      "duration": "80 minutes",
-      "price": "100",
-      "priceLabel": "Starting at",
-      "image": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800",
-      "badge": "Best Seller",
+      "description": "Revitalizing oxygen therapy that breathes new life into tired, dull skin. Instantly brightens and rejuvenates complexion.",
+      "fullDescription": "Experience the power of pure oxygen with our Oxygen Facial. This innovative treatment infuses oxygen, vitamins, and nutrients deep into the skin, promoting cell renewal and leaving you with a radiant, youthful glow.",
+      "duration": "80 min",
+      "price": "$100",
+      "priceLabel": "Starting at $100",
+      "bookNowUrl": "https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true",
+      "image": "https://images.unsplash.com/photo-1570554886111-e80fcca6a029?w=800",
       "benefits": [
-        "Instantly plumps skin",
-        "Increases circulation",
-        "No downtime",
-        "Celebrity favorite"
+        "Promotes cell renewal",
+        "Instant brightening",
+        "Deeply hydrating",
+        "Reduces signs of fatigue"
       ]
     },
     {
+      "id": "24k-gold",
       "name": "24 Karat Facial",
-      "description": "Luxurious gold-infused treatment for ultimate anti-aging. Pure gold stimulates collagen, firms skin, and delivers unparalleled radiance.",
-      "fullDescription": "Experience pure luxury with our 24 Karat Gold Facial. Used by royalty for centuries, pure gold has powerful anti-aging properties. Gold particles stimulate collagen production, improve elasticity, and reflect light for an instant luminous glow. This opulent treatment includes deep cleansing, exfoliation, a 24-karat gold leaf mask application, facial massage with gold-infused serum, and protective moisturizer. Gold's anti-inflammatory properties calm skin while promoting cell renewal for firmer, younger-looking skin.",
-      "duration": "60 minutes",
-      "price": "110",
-      "priceLabel": "Starting at",
-      "image": "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800",
+      "description": "Luxurious 24K gold-infused facial for ultimate anti-aging. Gold particles stimulate circulation and promote youthful radiance.",
+      "fullDescription": "Treat yourself to the ultimate luxury with our 24 Karat Facial. Real gold particles improve blood circulation, stimulate cellular regeneration, and provide powerful anti-aging benefits for luminous, youthful skin.",
+      "duration": "60 min",
+      "price": "$110",
+      "priceLabel": "Starting at $110",
+      "bookNowUrl": "https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true",
+      "image": "https://images.unsplash.com/photo-1559599238-e2f9d8e1ea1d?w=800",
       "badge": "Luxury",
       "benefits": [
-        "Pure 24K gold treatment",
-        "Stimulates collagen",
-        "Ultimate luxury",
-        "Instant radiance"
+        "Real 24K gold treatment",
+        "Stimulates circulation",
+        "Anti-aging properties",
+        "Ultimate luxury experience"
       ]
     },
     {
+      "id": "acne-facial",
       "name": "Acne Facial",
-      "description": "Specialized treatment for acne-prone skin. Clears breakouts, reduces inflammation, and prevents future blemishes with targeted care.",
-      "fullDescription": "Finally, clear, confident skin! Our Acne Facial is specifically designed to treat active breakouts and prevent future ones. This therapeutic treatment uses medical-grade products with salicylic acid, benzoyl peroxide, and natural antibacterials. Includes deep cleansing, steam with antibacterial herbs, gentle extractions of comedones, high-frequency treatment to kill acne bacteria, a purifying sulfur or clay mask, spot treatment, and oil-free hydration. We'll also provide a customized home care regimen.",
-      "duration": "70 minutes",
-      "price": "120",
-      "priceLabel": "Starting at",
-      "image": "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800",
+      "description": "Specialized treatment for acne-prone skin. Deep cleansing, extractions, and targeted treatments to clear breakouts and prevent future ones.",
+      "fullDescription": "Our Acne Facial is specifically designed to treat and prevent breakouts. This comprehensive treatment includes deep cleansing, professional extractions, antibacterial masks, and specialized serums to clear existing acne and prevent future blemishes.",
+      "duration": "70 min",
+      "price": "$120",
+      "priceLabel": "Starting at $120",
+      "bookNowUrl": "https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true",
+      "image": "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=800",
       "benefits": [
-        "Clears active breakouts",
+        "Treats active breakouts",
+        "Professional extractions",
         "Prevents future acne",
-        "Reduces inflammation",
-        "High-frequency treatment"
+        "Reduces inflammation"
       ]
     },
     {
+      "id": "dermaplaning",
       "name": "Dermaplaning Facial",
-      "description": "Advanced exfoliation removing dead skin and peach fuzz. Reveals ultra-smooth, glowing skin with enhanced product absorption.",
-      "fullDescription": "Achieve instantly smooth, luminous skin with Dermaplaning. This advanced exfoliation technique uses a sterile surgical blade to gently remove dead skin cells and vellus hair (peach fuzz) from the face. The result? Incredibly smooth skin, reduced appearance of fine lines, better makeup application, and enhanced absorption of skincare products. Includes cleansing, dermaplaning treatment, hydrating mask, facial massage, and protective serums. Safe, painless, and provides immediate results with no downtime.",
-      "duration": "70 minutes",
-      "price": "120",
-      "priceLabel": "Starting at",
-      "image": "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800",
-      "badge": "Popular",
-      "benefits": [
-        "Removes dead skin & peach fuzz",
-        "Instantly smooth skin",
-        "Enhances product absorption",
-        "No downtime"
-      ]
-    },
-    {
-      "name": "Anti-Aging Facial",
-      "description": "Comprehensive age-defying treatment targeting wrinkles, firmness, and tone. Advanced products and techniques for visibly younger skin.",
-      "fullDescription": "Turn back the clock with our results-driven Anti-Aging Facial. This powerful treatment combines proven anti-aging ingredients including retinol, peptides, vitamin C, and growth factors. Includes double cleansing, gentle exfoliation, steam, extractions if needed, LED light therapy (red light for collagen, blue for clarity), a peptide-rich mask, micro-current or radio-frequency treatment to lift and firm, targeted eye and lip treatments, facial massage, and age-defying serums and moisturizers. See visible reduction in fine lines and improved firmness.",
-      "duration": "75 minutes",
-      "price": "120",
-      "priceLabel": "Starting at",
-      "image": "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=800",
-      "badge": "Advanced",
-      "benefits": [
-        "Reduces fine lines & wrinkles",
-        "Firms and lifts",
-        "Advanced technology",
-        "Visible results"
-      ]
-    },
-    {
-      "name": "Hydra Facial",
-      "description": "Medical-grade hydrodermabrasion treatment. Cleanses, exfoliates, extracts, and hydrates in one powerful, painless session.",
-      "fullDescription": "Experience the most advanced facial technology with the Hydra Facial MD. This patented, multi-step treatment uses vortex-fusion technology to deeply cleanse, exfoliate, extract impurities, and infuse skin with intensive serums. The process: cleansing and exfoliation with gentle acids, painless vacuum extraction to clear pores, infusion of antioxidants, peptides, and hyaluronic acid. Customized boosters target your specific concerns (brightening, anti-aging, clarity). Immediate, visible results with zero downtime. Suitable for all skin types.",
-      "duration": "70 minutes",
-      "price": "180",
-      "priceLabel": "Starting at",
+      "description": "Advanced exfoliation technique that removes dead skin and peach fuzz. Reveals smooth, glowing skin with improved product absorption.",
+      "fullDescription": "Dermaplaning is a medical-grade exfoliation technique using a surgical blade to gently remove the top layer of dead skin cells and vellus hair. The result is incredibly smooth, radiant skin with improved makeup application and skincare absorption.",
+      "duration": "70 min",
+      "price": "$120",
+      "priceLabel": "Starting at $120",
+      "bookNowUrl": "https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true",
       "image": "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800",
-      "badge": "Best Seller",
+      "benefits": [
+        "Removes peach fuzz",
+        "Deep exfoliation",
+        "Smooth makeup application",
+        "Enhances product absorption"
+      ]
+    },
+    {
+      "id": "anti-aging",
+      "name": "Anti-Aging Facial",
+      "description": "Comprehensive anti-aging treatment targeting fine lines, wrinkles, and loss of firmness. Advanced techniques for visible rejuvenation.",
+      "fullDescription": "Our Anti-Aging Facial combines cutting-edge ingredients and techniques to combat visible signs of aging. This treatment focuses on boosting collagen, improving elasticity, and reducing fine lines and wrinkles for noticeably younger-looking skin.",
+      "duration": "75 min",
+      "price": "$120",
+      "priceLabel": "Starting at $120",
+      "bookNowUrl": "https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true",
+      "image": "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800",
+      "benefits": [
+        "Reduces fine lines and wrinkles",
+        "Improves skin firmness",
+        "Boosts collagen production",
+        "Comprehensive age-fighting"
+      ]
+    },
+    {
+      "id": "hydra-facial",
+      "name": "Hydra Facial",
+      "description": "Medical-grade hydradermabrasion treatment. Deep cleansing, exfoliation, extraction, and intense hydration in one powerful treatment.",
+      "fullDescription": "The Hydra Facial is a revolutionary treatment that combines cleansing, exfoliation, extraction, hydration, and antioxidant protection. This non-invasive procedure delivers immediate, visible results with no downtime.",
+      "duration": "70 min",
+      "price": "$180",
+      "priceLabel": "Starting at $180",
+      "bookNowUrl": "https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true",
+      "image": "https://images.unsplash.com/photo-1620331311520-246422fd82f9?w=800",
+      "badge": "Advanced",
       "benefits": [
         "Medical-grade treatment",
         "Immediate visible results",
-        "Painless extractions",
-        "Deep hydration"
+        "No downtime",
+        "Suitable for all skin types"
       ]
     },
     {
-      "name": "Micro-Dermabrasion Facial",
-      "description": "Diamond-tip microdermabrasion for deep exfoliation. Improves texture, reduces scarring, and reveals fresh, rejuvenated skin.",
-      "fullDescription": "Resurface your skin with professional Micro-Dermabrasion. This medical-grade treatment uses a diamond-tipped wand to mechanically exfoliate the outer layer of dead skin cells, stimulating cell renewal and collagen production. Particularly effective for improving skin texture, reducing fine lines, fading acne scars and hyperpigmentation, and minimizing pores. Includes cleansing, customized microdermabrasion treatment, soothing mask, facial massage, and protective serums. A series of treatments provides dramatic results.",
-      "duration": "70 minutes",
-      "price": "130",
-      "priceLabel": "Starting at",
+      "id": "micro-dermabrasion",
+      "name": "Micro - Dermabrasion Facial",
+      "description": "Professional microdermabrasion treatment that resurfaces skin. Reduces fine lines, scars, and hyperpigmentation for smoother texture.",
+      "fullDescription": "Microdermabrasion is a non-invasive procedure that uses fine crystals or a diamond-tipped wand to exfoliate the skin's surface. This treatment effectively reduces the appearance of fine lines, age spots, acne scars, and uneven texture.",
+      "duration": "70 min",
+      "price": "$130",
+      "priceLabel": "Starting at $130",
+      "bookNowUrl": "https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true",
       "image": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800",
       "benefits": [
-        "Deep exfoliation",
-        "Reduces scarring",
-        "Improves skin texture",
-        "Stimulates collagen"
+        "Resurfaces skin texture",
+        "Reduces fine lines",
+        "Fades acne scars",
+        "Minimizes hyperpigmentation"
       ]
     },
     {
+      "id": "oxygen-hydra",
       "name": "Oxygen-Hydra Facial",
-      "description": "Ultimate combination treatment: Hydrafacial + Oxygen infusion. Maximum hydration, deep cleansing, and immediate radiance.",
-      "fullDescription": "Get the best of both worlds with our Oxygen-Hydra Facial combo. This powerhouse treatment begins with the Hydrafacial's vortex technology to deeply cleanse, exfoliate, and extract, followed immediately by oxygen infusion to push vitamins and hyaluronic acid deep into freshly exfoliated skin. The combination provides unparalleled hydration, immediate plumping, enhanced absorption of serums, and incredible glow. Perfect before weddings, photo shoots, or anytime you want to look your absolute best. Extended treatment time ensures complete relaxation.",
-      "duration": "90 minutes",
-      "price": "195",
-      "priceLabel": "Starting at",
-      "image": "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800",
-      "badge": "Premium",
+      "description": "Ultimate combination of oxygen therapy and hydradermabrasion. Maximum hydration, brightening, and rejuvenation in one treatment.",
+      "fullDescription": "Experience the best of both worlds with our Oxygen-Hydra Facial. This premium treatment combines the cleansing power of hydradermabrasion with oxygen infusion therapy for unparalleled results and radiant, youthful skin.",
+      "duration": "90 min",
+      "price": "$195",
+      "priceLabel": "Starting at $195",
+      "bookNowUrl": "https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true",
+      "image": "https://images.unsplash.com/photo-1552693673-1bf958298935?w=800",
+      "badge": "Ultimate",
       "benefits": [
-        "Combines two powerful treatments",
+        "Combined power treatment",
         "Maximum hydration",
-        "Immediate dramatic results",
-        "Perfect for special occasions"
+        "Dramatic brightening",
+        "Extended luxury experience"
       ]
     },
     {
+      "id": "micro-needling",
       "name": "Micro-Needling",
-      "description": "Advanced collagen induction therapy. Dramatically improves scarring, wrinkles, and skin texture for transformative results.",
-      "fullDescription": "Achieve dramatic skin transformation with professional Micro-Needling (also called Collagen Induction Therapy). Using a sterile device with fine needles, we create microscopic channels in the skin, triggering the body's natural healing response and massive collagen production. Highly effective for reducing acne scars, surgical scars, stretch marks, fine lines, wrinkles, and large pores. Includes numbing cream for comfort, microneedling treatment with growth factor serum, calming mask, and healing ointment. Downtime is minimal (slight redness for 1-2 days). Results improve over weeks as collagen rebuilds. A series recommended for best results.",
-      "duration": "60 minutes",
-      "price": "250",
-      "priceLabel": "Starting at",
-      "image": "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800",
+      "description": "Advanced collagen induction therapy using micro-needles. Dramatically improves scars, wrinkles, and overall skin texture.",
+      "fullDescription": "Micro-needling is a minimally invasive procedure that creates controlled micro-injuries to stimulate your body's natural wound healing process. This treatment boosts collagen and elastin production for significant improvement in skin texture, tone, and firmness.",
+      "duration": "60 min",
+      "price": "$250",
+      "priceLabel": "Starting at $250",
+      "bookNowUrl": "https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true",
+      "image": "https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=800",
       "badge": "Advanced",
       "benefits": [
-        "Dramatic results",
-        "Reduces scarring significantly",
         "Stimulates collagen production",
-        "Medical-grade treatment"
+        "Reduces acne scars",
+        "Minimizes wrinkles",
+        "Improves skin texture"
       ]
     }
   ]
