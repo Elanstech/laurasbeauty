@@ -366,7 +366,7 @@ function displayConsoleWelcome() {
         'font-size: 20px; font-weight: bold; color: #3B4A2F; font-family: Playfair Display, serif;'
     );
     console.log(
-        '%cServices Page | Designed by Elan | Natural Luxury Spa Experience',
+        '%cServices Page | 11 Categories | Designed by Elan | Natural Luxury Spa Experience',
         'font-size: 12px; color: #A9C89C; font-family: Lato, sans-serif;'
     );
 }
