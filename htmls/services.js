@@ -1,95 +1,168 @@
-/* ============================================
-   SERVICES PAGE JAVASCRIPT - LAURA'S BEAUTY TOUCH
-   Luxury Interactions & Animations
-   ============================================ */
+// ============================================
+// SERVICES PAGE JAVASCRIPT
+// Laura's Beauty Touch - Natural Luxury Spa
+// ============================================
+
+'use strict';
 
 // ============================================
-// INITIALIZE AOS ANIMATIONS
+// NAVIGATION FUNCTIONALITY
 // ============================================
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize AOS
-    if (typeof AOS !== 'undefined') {
-        AOS.init({
-            duration: 1000,
-            easing: 'ease-out-cubic',
-            once: true,
-            offset: 100,
-            delay: 0
-        });
-    }
 
-    // Initialize parallax effect for hero
-    initParallaxEffect();
-    
-    // Initialize smooth scroll for hero indicator
-    initSmoothScroll();
-    
-    // Initialize card animations
-    initCardAnimations();
-    
-    // Initialize floating decorations
-    animateFloatingDecor();
-});
+/**
+ * Initialize mobile navigation toggle
+ */
+function initMobileNavigation() {
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const navbar = document.querySelector('.navbar');
 
-// ============================================
-// PARALLAX EFFECT FOR HERO
-// ============================================
-function initParallaxEffect() {
-    const heroBackground = document.querySelector('.hero-background');
-    
-    if (!heroBackground) return;
-    
-    let ticking = false;
-    
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                const scrolled = window.pageYOffset;
-                const parallaxSpeed = 0.5;
-                
-                if (scrolled < window.innerHeight) {
-                    heroBackground.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
-                }
-                
-                ticking = false;
-            });
+    if (mobileToggle && navMenu) {
+        mobileToggle.addEventListener('click', function() {
+            // Toggle active classes
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
             
-            ticking = true;
-        }
-    }, { passive: true });
-}
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = navMenu.classList.contains('active') 
+                ? 'hidden' 
+                : '';
+        });
 
-// ============================================
-// SMOOTH SCROLL FUNCTIONALITY
-// ============================================
-function initSmoothScroll() {
-    const scrollIndicator = document.querySelector('.hero-scroll-indicator');
-    
-    if (scrollIndicator) {
-        scrollIndicator.addEventListener('click', () => {
-            const targetSection = document.querySelector('.services-grid-section');
-            if (targetSection) {
-                const headerOffset = 100;
-                const elementPosition = targetSection.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        // Close menu when clicking on a link
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
 
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navbar.contains(e.target) && navMenu.classList.contains('active')) {
+                mobileToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
             }
         });
     }
 }
 
 // ============================================
-// CARD HOVER ANIMATIONS
+// NAVBAR SCROLL BEHAVIOR
 // ============================================
-function initCardAnimations() {
-    const cards = document.querySelectorAll('.service-card');
+
+/**
+ * Handle navbar appearance on scroll
+ */
+function initNavbarScroll() {
+    const navbar = document.querySelector('.navbar');
+    let lastScroll = 0;
+
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            // Add shadow when scrolled
+            if (currentScroll > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            lastScroll = currentScroll;
+        }, { passive: true });
+    }
+}
+
+// ============================================
+// SCROLL ANIMATIONS
+// ============================================
+
+/**
+ * Intersection Observer for scroll animations
+ */
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+                
+                // Optional: Stop observing after animation
+                // observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observe all service cards
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach(card => observer.observe(card));
+
+    // Observe section headers
+    const sectionHeaders = document.querySelectorAll('.section-header');
+    sectionHeaders.forEach(header => observer.observe(header));
+
+    // Observe CTA section
+    const ctaSection = document.querySelector('.services-cta');
+    if (ctaSection) {
+        observer.observe(ctaSection);
+    }
+}
+
+// ============================================
+// SMOOTH SCROLL FOR ANCHOR LINKS
+// ============================================
+
+/**
+ * Enable smooth scrolling for all anchor links
+ */
+function initSmoothScroll() {
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
     
-    cards.forEach(card => {
-        // Add magnetic effect
+    anchorLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            
+            // Skip if href is just "#"
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                e.preventDefault();
+                
+                // Calculate offset for fixed navbar
+                const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 0;
+                const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// ============================================
+// SERVICE CARD INTERACTIONS
+// ============================================
+
+/**
+ * Enhanced service card hover effects
+ */
+function initServiceCardInteractions() {
+    const serviceCards = document.querySelectorAll('.service-card');
+    
+    serviceCards.forEach(card => {
+        // Add subtle parallax effect on mouse move
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -98,360 +171,268 @@ function initCardAnimations() {
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
             
-            const rotateX = (y - centerY) / 20;
-            const rotateY = (centerX - x) / 20;
+            const rotateX = (y - centerY) / 30;
+            const rotateY = (centerX - x) / 30;
             
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-15px)`;
+            card.style.transform = `
+                perspective(1000px)
+                rotateX(${rotateX}deg)
+                rotateY(${rotateY}deg)
+                translateY(-10px)
+                scale3d(1.02, 1.02, 1.02)
+            `;
         });
         
         card.addEventListener('mouseleave', () => {
             card.style.transform = '';
         });
-        
-        // Add ripple effect on click
-        card.addEventListener('click', function(e) {
-            const ripple = document.createElement('div');
-            ripple.className = 'ripple-effect';
-            this.appendChild(ripple);
-            
-            const rect = this.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            ripple.style.left = x + 'px';
-            ripple.style.top = y + 'px';
-            
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
-        });
-    });
-    
-    // Add ripple CSS
-    const style = document.createElement('style');
-    style.textContent = `
-        .ripple-effect {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: rgba(169, 200, 156, 0.6);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            animation: ripple-animation 0.6s ease-out;
-            pointer-events: none;
-            z-index: 100;
-        }
-        
-        @keyframes ripple-animation {
-            to {
-                width: 300px;
-                height: 300px;
-                opacity: 0;
-            }
-        }
-    `;
-    document.head.appendChild(style);
-}
-
-// ============================================
-// FLOATING DECORATIVE ELEMENTS ANIMATION
-// ============================================
-function animateFloatingDecor() {
-    const decorElements = document.querySelectorAll('.hero-decor');
-    
-    decorElements.forEach((decor, index) => {
-        const randomDuration = 15 + Math.random() * 10; // 15-25 seconds
-        const randomDelay = index * 2;
-        
-        decor.style.animation = `floatAnimation ${randomDuration}s ease-in-out ${randomDelay}s infinite`;
     });
 }
 
 // ============================================
-// SCROLL REVEAL ANIMATIONS
+// LAZY LOADING IMAGES
 // ============================================
-class ScrollReveal {
-    constructor() {
-        this.elements = document.querySelectorAll('.service-card');
-        this.init();
-    }
 
-    init() {
-        if ('IntersectionObserver' in window) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            });
-
-            this.elements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(50px)';
-                element.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-                observer.observe(element);
-            });
-        }
-    }
-}
-
-// Initialize scroll reveal
-document.addEventListener('DOMContentLoaded', () => {
-    new ScrollReveal();
-});
-
-// ============================================
-// STATS COUNTER ANIMATION
-// ============================================
-class StatsCounter {
-    constructor() {
-        this.statsInitialized = false;
-        this.init();
-    }
-
-    init() {
-        const statsSection = document.querySelector('.hero-stats');
-        if (!statsSection) return;
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !this.statsInitialized) {
-                    this.animateStats();
-                    this.statsInitialized = true;
-                }
-            });
-        }, { threshold: 0.5 });
-
-        observer.observe(statsSection);
-    }
-
-    animateStats() {
-        const statNumbers = document.querySelectorAll('.stat-number');
-        
-        statNumbers.forEach(stat => {
-            const target = parseInt(stat.textContent);
-            const duration = 2000;
-            const increment = target / (duration / 16);
-            let current = 0;
-
-            const updateCounter = () => {
-                current += increment;
-                if (current < target) {
-                    stat.textContent = Math.floor(current) + (stat.textContent.includes('+') ? '+' : '');
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    stat.textContent = target + (stat.textContent.includes('+') ? '+' : '');
-                }
-            };
-
-            updateCounter();
-        });
-    }
-}
-
-// Initialize stats counter
-document.addEventListener('DOMContentLoaded', () => {
-    new StatsCounter();
-});
-
-// ============================================
-// CARD LINK SMOOTH NAVIGATION
-// ============================================
-document.addEventListener('DOMContentLoaded', () => {
-    const cardLinks = document.querySelectorAll('.card-link');
+/**
+ * Lazy load images for better performance
+ */
+function initLazyLoading() {
+    const images = document.querySelectorAll('img[data-src]');
     
-    cardLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            // Add a subtle loading animation
-            const icon = link.querySelector('i');
-            if (icon) {
-                icon.style.animation = 'spin 0.5s ease-in-out';
-            }
-        });
-    });
-    
-    // Add spin animation
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-    `;
-    document.head.appendChild(style);
-});
-
-// ============================================
-// PERFORMANCE OPTIMIZATION
-// ============================================
-// Debounce function for resize events
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Handle window resize
-const handleResize = debounce(() => {
-    // Refresh AOS if needed
-    if (typeof AOS !== 'undefined') {
-        AOS.refresh();
-    }
-    
-    // Reset card transforms on resize
-    const cards = document.querySelectorAll('.service-card');
-    cards.forEach(card => {
-        card.style.transform = '';
-    });
-}, 250);
-
-window.addEventListener('resize', handleResize);
-
-// ============================================
-// PAGE LOAD OPTIMIZATION
-// ============================================
-window.addEventListener('load', () => {
-    // Remove any loading states
-    document.body.classList.add('page-loaded');
-    
-    // Trigger any final animations
-    setTimeout(() => {
-        const heroContent = document.querySelector('.hero-content');
-        if (heroContent) {
-            heroContent.style.opacity = '1';
-        }
-    }, 100);
-});
-
-// ============================================
-// ACCESSIBILITY ENHANCEMENTS
-// ============================================
-document.addEventListener('DOMContentLoaded', () => {
-    // Add ARIA labels to interactive elements
-    const cards = document.querySelectorAll('.service-card');
-    cards.forEach((card, index) => {
-        const title = card.querySelector('.card-title');
-        if (title) {
-            card.setAttribute('aria-label', `View ${title.textContent} category`);
-        }
-    });
-    
-    // Add keyboard support for cards
-    cards.forEach(card => {
-        card.setAttribute('tabindex', '0');
-        
-        card.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                const link = card.querySelector('.card-link');
-                if (link) {
-                    link.click();
-                }
-            }
-        });
-    });
-    
-    // Add focus styles for keyboard navigation
-    const style = document.createElement('style');
-    style.textContent = `
-        .service-card:focus,
-        .card-link:focus,
-        .cta-btn:focus {
-            outline: 3px solid var(--mint-green);
-            outline-offset: 4px;
-        }
-        
-        .service-card:focus {
-            transform: translateY(-15px);
-        }
-    `;
-    document.head.appendChild(style);
-});
-
-// ============================================
-// LAZY LOADING FOR IMAGES
-// ============================================
-if ('IntersectionObserver' in window) {
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const img = entry.target;
-                const src = img.getAttribute('data-src');
-                
-                if (src) {
-                    img.src = src;
-                    img.removeAttribute('data-src');
-                    img.classList.add('loaded');
-                }
-                
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
                 observer.unobserve(img);
             }
         });
-    }, {
-        rootMargin: '50px'
     });
     
-    document.addEventListener('DOMContentLoaded', () => {
-        const lazyImages = document.querySelectorAll('img[data-src]');
-        lazyImages.forEach(img => imageObserver.observe(img));
+    images.forEach(img => imageObserver.observe(img));
+}
+
+// ============================================
+// PERFORMANCE OPTIMIZATION
+// ============================================
+
+/**
+ * Debounce function for performance optimization
+ */
+function debounce(func, wait = 20, immediate = true) {
+    let timeout;
+    return function() {
+        const context = this;
+        const args = arguments;
+        const later = function() {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        const callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+}
+
+// ============================================
+// SCROLL TO TOP FUNCTIONALITY
+// ============================================
+
+/**
+ * Show/hide scroll to top button
+ */
+function initScrollToTop() {
+    // Create scroll to top button if it doesn't exist
+    let scrollTopBtn = document.querySelector('.scroll-to-top');
+    
+    if (!scrollTopBtn) {
+        scrollTopBtn = document.createElement('button');
+        scrollTopBtn.className = 'scroll-to-top';
+        scrollTopBtn.innerHTML = '↑';
+        scrollTopBtn.setAttribute('aria-label', 'Scroll to top');
+        document.body.appendChild(scrollTopBtn);
+    }
+    
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', debounce(() => {
+        if (window.pageYOffset > 500) {
+            scrollTopBtn.classList.add('visible');
+        } else {
+            scrollTopBtn.classList.remove('visible');
+        }
+    }), { passive: true });
+    
+    // Scroll to top on click
+    scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
 }
 
 // ============================================
-// BADGE ANIMATION
+// FORM VALIDATION (if contact form present)
 // ============================================
-document.addEventListener('DOMContentLoaded', () => {
-    const badges = document.querySelectorAll('.card-badge');
-    
-    badges.forEach(badge => {
-        // Add subtle floating animation
-        setInterval(() => {
-            badge.style.animation = 'none';
-            setTimeout(() => {
-                badge.style.animation = badge.classList.contains('special-badge') 
-                    ? 'pulse 2s ease-in-out infinite' 
-                    : 'float 3s ease-in-out infinite';
-            }, 10);
-        }, 3000);
-    });
-});
 
-// ============================================
-// CTA BUTTONS INTERACTION
-// ============================================
-document.addEventListener('DOMContentLoaded', () => {
-    const ctaButtons = document.querySelectorAll('.cta-btn');
+/**
+ * Basic form validation
+ */
+function initFormValidation() {
+    const forms = document.querySelectorAll('form');
     
-    ctaButtons.forEach(button => {
-        button.addEventListener('mouseenter', () => {
-            const icon = button.querySelector('i');
-            if (icon) {
-                icon.style.transform = 'translateX(5px) scale(1.2)';
+    forms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            const inputs = form.querySelectorAll('input[required], textarea[required]');
+            let isValid = true;
+            
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.classList.add('error');
+                    
+                    // Create or update error message
+                    let errorMsg = input.nextElementSibling;
+                    if (!errorMsg || !errorMsg.classList.contains('error-message')) {
+                        errorMsg = document.createElement('span');
+                        errorMsg.className = 'error-message';
+                        errorMsg.textContent = 'This field is required';
+                        input.parentNode.insertBefore(errorMsg, input.nextSibling);
+                    }
+                } else {
+                    input.classList.remove('error');
+                    const errorMsg = input.nextElementSibling;
+                    if (errorMsg && errorMsg.classList.contains('error-message')) {
+                        errorMsg.remove();
+                    }
+                }
+            });
+            
+            if (!isValid) {
+                e.preventDefault();
             }
         });
+    });
+}
+
+// ============================================
+// ACCESSIBILITY ENHANCEMENTS
+// ============================================
+
+/**
+ * Improve keyboard navigation and accessibility
+ */
+function initAccessibility() {
+    // Add keyboard focus styles
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+            document.body.classList.add('keyboard-nav');
+        }
+    });
+    
+    document.addEventListener('mousedown', () => {
+        document.body.classList.remove('keyboard-nav');
+    });
+    
+    // Ensure all interactive elements are keyboard accessible
+    const interactiveElements = document.querySelectorAll('.service-card, .service-btn, .cta-btn');
+    
+    interactiveElements.forEach(element => {
+        if (!element.hasAttribute('tabindex')) {
+            element.setAttribute('tabindex', '0');
+        }
         
-        button.addEventListener('mouseleave', () => {
-            const icon = button.querySelector('i');
-            if (icon) {
-                icon.style.transform = '';
+        // Add keyboard event listeners
+        element.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                element.click();
             }
         });
     });
+}
+
+// ============================================
+// CONSOLE WELCOME MESSAGE
+// ============================================
+
+/**
+ * Display welcome message in console
+ */
+function displayConsoleWelcome() {
+    console.log(
+        '%c✨ Laura\'s Beauty Touch ✨',
+        'font-size: 20px; font-weight: bold; color: #3B4A2F; font-family: Playfair Display, serif;'
+    );
+    console.log(
+        '%cServices Page | Designed by Elan | Natural Luxury Spa Experience',
+        'font-size: 12px; color: #A9C89C; font-family: Lato, sans-serif;'
+    );
+}
+
+// ============================================
+// INITIALIZATION
+// ============================================
+
+/**
+ * Initialize all functions when DOM is ready
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize core features
+    initMobileNavigation();
+    initNavbarScroll();
+    initScrollAnimations();
+    initSmoothScroll();
+    initServiceCardInteractions();
+    initLazyLoading();
+    initScrollToTop();
+    initFormValidation();
+    initAccessibility();
+    
+    // Display console message
+    displayConsoleWelcome();
+    
+    // Log successful initialization
+    console.log('✓ Services page initialized successfully');
 });
 
 // ============================================
-// CONSOLE MESSAGE
+// HANDLE PAGE VISIBILITY CHANGES
 // ============================================
-console.log('%c✨ Laura\'s Beauty Touch - Services Page', 'font-size: 20px; font-weight: bold; color: #A9C89C;');
-console.log('%cLuxury treatments await you!', 'font-size: 14px; color: #3B4A2F;');
+
+/**
+ * Optimize performance when page is not visible
+ */
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        // Page is hidden - pause animations if needed
+        console.log('Page hidden - optimizing performance');
+    } else {
+        // Page is visible - resume normal operation
+        console.log('Page visible - resuming animations');
+    }
+});
+
+// ============================================
+// ERROR HANDLING
+// ============================================
+
+/**
+ * Global error handler
+ */
+window.addEventListener('error', (e) => {
+    console.error('An error occurred:', e.message);
+    // You can add error reporting here
+});
+
+// ============================================
+// EXPORT FOR MODULE USAGE (if needed)
+// ============================================
+
+// If you're using ES6 modules, uncomment below:
+// export {
+//     initMobileNavigation,
+//     initScrollAnimations,
+//     initServiceCardInteractions
+// };
