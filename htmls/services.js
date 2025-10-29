@@ -4,15 +4,31 @@
 // Designer: Elan
 // ============================================
 
-// This file contains ONLY services-page specific JavaScript
-// Global functions (header, footer, navigation, etc.) are in script.js
-// No duplicate initialization of shared components
 
 'use strict';
 
 // ============================================
 // SERVICES PAGE - SPECIFIC ANIMATIONS
 // ============================================
+
+/**
+ * Initialize hero scroll indicator
+ */
+function initHeroScrollIndicator() {
+    const scrollIndicator = document.querySelector('.services-page .hero-scroll-indicator');
+    
+    if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', () => {
+            const servicesSection = document.querySelector('.services-page .services-section');
+            if (servicesSection) {
+                servicesSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    }
+}
 
 /**
  * Initialize services page specific scroll animations
@@ -51,37 +67,12 @@ function initServicesScrollAnimations() {
 // ============================================
 
 /**
- * Enhanced service card hover effects with 3D tilt
+ * Enhanced service card hover effects (no 3D tilt)
  */
 function initServiceCardInteractions() {
     const serviceCards = document.querySelectorAll('.services-page .service-card');
     
     serviceCards.forEach(card => {
-        // Add subtle parallax effect on mouse move
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateX = (y - centerY) / 30;
-            const rotateY = (centerX - x) / 30;
-            
-            card.style.transform = `
-                perspective(1000px)
-                rotateX(${rotateX}deg)
-                rotateY(${rotateY}deg)
-                translateY(-10px)
-                scale3d(1.02, 1.02, 1.02)
-            `;
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = '';
-        });
-
         // Make cards keyboard accessible
         card.addEventListener('keypress', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
@@ -284,6 +275,7 @@ function initServicesPage() {
     // Wait a bit to ensure global script.js has initialized
     setTimeout(() => {
         // Services-specific initializations
+        initHeroScrollIndicator();
         initServicesScrollAnimations();
         initServiceCardInteractions();
         initServicesPageSmoothScroll();
