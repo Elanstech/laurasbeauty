@@ -1,7 +1,8 @@
-/* ===================================
-   SERVICE CATEGORY PAGE SCRIPT - ENHANCED
+/* ============================================
+   SERVICE CATEGORY PAGES - MASTER SCRIPT
    Laura's Beauty Touch
-   =================================== */
+   Shared JavaScript for all service category pages
+   ============================================ */
 
 // Category configuration mapping
 const categoryConfig = {
@@ -9,239 +10,134 @@ const categoryConfig = {
         jsonFile: '../data/facials.json',
         title: 'Face Treatments',
         subtitle: 'Rejuvenate your skin with our luxurious facial treatments',
-        description: 'Discover our range of specialized facial treatments designed to address your unique skincare needs.'
+        description: 'Discover our range of specialized facial treatments designed to address your unique skincare needs and reveal your natural radiance.',
+        badge: 'Luxury Skincare'
     },
     addons: {
         jsonFile: '../data/addons.json',
-        title: 'Add-Ons',
-        subtitle: 'Enhance your treatment with our premium add-on services',
-        description: 'Elevate your spa experience with our carefully curated selection of treatment enhancements.'
+        title: 'Add-On Services',
+        subtitle: 'Enhance your treatment with our premium add-ons',
+        description: 'Elevate your spa experience with our carefully curated selection of treatment enhancements.',
+        badge: 'Enhancement Services'
     },
     body: {
         jsonFile: '../data/body.json',
         title: 'Body Treatments',
         subtitle: 'Indulge in full-body relaxation and rejuvenation',
-        description: 'Experience ultimate relaxation with our luxurious body treatments designed to revitalize your entire being.'
+        description: 'Experience ultimate relaxation with our luxurious body treatments designed to revitalize your entire being.',
+        badge: 'Full Body Wellness'
     },
     specials: {
         jsonFile: '../data/specials.json',
         title: 'Special Offers',
         subtitle: 'Exclusive deals on our premium treatments',
-        description: 'Take advantage of our limited-time special offers and seasonal packages.'
+        description: 'Take advantage of our limited-time special offers and seasonal packages.',
+        badge: 'Limited Time Offers'
     },
     nails: {
         jsonFile: '../data/nails.json',
         title: 'Nail Services',
         subtitle: 'Perfect manicures and pedicures for beautiful hands and feet',
-        description: 'Pamper yourself with our professional nail care services and stunning nail art.'
+        description: 'Pamper yourself with our professional nail care services and stunning nail art.',
+        badge: 'Nail Artistry'
     },
     packages: {
         jsonFile: '../data/packages.json',
         title: 'Spa Packages',
         subtitle: 'Complete wellness experiences combining multiple treatments',
-        description: 'Immerse yourself in our curated spa packages designed for ultimate relaxation and transformation.'
+        description: 'Immerse yourself in our curated spa packages designed for ultimate relaxation and transformation.',
+        badge: 'Complete Packages'
     },
     laser: {
         jsonFile: '../data/laser.json',
         title: 'Laser Treatments',
         subtitle: 'Advanced laser technology for skin perfection',
-        description: 'Experience cutting-edge laser treatments for hair removal, skin rejuvenation, and more.'
+        description: 'Experience cutting-edge laser treatments for hair removal, skin rejuvenation, and more.',
+        badge: 'Advanced Technology'
     },
     wax: {
         jsonFile: '../data/wax.json',
         title: 'Waxing Services',
         subtitle: 'Smooth, hair-free skin with our expert waxing treatments',
-        description: 'Professional waxing services using premium products for long-lasting smoothness.'
+        description: 'Professional waxing services using premium products for long-lasting smoothness.',
+        badge: 'Smooth Skin'
     },
     pmu: {
         jsonFile: '../data/pmu.json',
         title: 'Permanent Makeup',
         subtitle: 'Wake up beautiful with semi-permanent cosmetic enhancements',
-        description: 'Enhance your natural beauty with our expertly applied permanent makeup solutions.'
+        description: 'Enhance your natural beauty with our expertly applied permanent makeup solutions.',
+        badge: 'Beauty Enhancement'
     },
     lashes: {
         jsonFile: '../data/lashes.json',
         title: 'Lash Services',
         subtitle: 'Dramatic, beautiful lashes that enhance your eyes',
-        description: 'Transform your look with our professional lash extensions and enhancement services.'
+        description: 'Transform your look with our professional lash extensions and enhancement services.',
+        badge: 'Lash Enhancement'
     },
     makeup: {
         jsonFile: '../data/makeup.json',
         title: 'Makeup Services',
         subtitle: 'Professional makeup artistry for any occasion',
-        description: 'Look your best with our expert makeup application services for all occasions.'
+        description: 'Look your best with our expert makeup application services for all occasions.',
+        badge: 'Professional Artistry'
     }
 };
 
-// Initialize when DOM is loaded
+/**
+ * Initialize the page
+ */
 document.addEventListener('DOMContentLoaded', function() {
-    initCategoryPage();
-    initParallaxEffect();
-    initScrollAnimations();
-    initSmoothScrolling();
-    initBackToTop();
-    initModal();
+    // Detect category from body data attribute
+    const category = document.body.getAttribute('data-category');
+    
+    if (category && categoryConfig[category]) {
+        initializePage(category);
+    } else {
+        console.error('Invalid category or category not found');
+        showError('Unable to load category information');
+    }
+    
+    // Initialize header
+    initializeHeader();
+    
+    // Initialize mobile menu
+    initializeMobileMenu();
+    
+    // Initialize back to top button
+    initializeBackToTop();
+    
+    // Initialize modal close handlers
+    initializeModal();
 });
 
 /**
- * Initialize the category page
+ * Initialize the page with category data
  */
-function initCategoryPage() {
-    const categoryKey = document.body.getAttribute('data-category');
+function initializePage(category) {
+    const config = categoryConfig[category];
     
-    if (!categoryKey || !categoryConfig[categoryKey]) {
-        console.error('Invalid category key:', categoryKey);
-        showError('Invalid category');
-        return;
-    }
+    // Update hero section
+    updateHeroSection(config);
     
-    const config = categoryConfig[categoryKey];
-    
-    // Update page content
-    updatePageContent(config);
-    
-    // Load services data
+    // Load and render services
     loadServices(config.jsonFile);
 }
 
 /**
- * Update page content with category information
+ * Update hero section with category information
  */
-function updatePageContent(config) {
-    // Update title and subtitle
-    const titleElement = document.getElementById('categoryTitle');
-    const subtitleElement = document.getElementById('categorySubtitle');
-    const breadcrumbElement = document.getElementById('breadcrumbCurrent');
-    const descriptionElement = document.getElementById('sectionDescription');
+function updateHeroSection(config) {
+    const categoryBadge = document.getElementById('categoryBadge');
+    const categoryTitle = document.getElementById('categoryTitle');
+    const categorySubtitle = document.getElementById('categorySubtitle');
+    const categoryDescription = document.getElementById('categoryDescription');
     
-    if (titleElement) titleElement.textContent = config.title;
-    if (subtitleElement) subtitleElement.textContent = config.subtitle;
-    if (breadcrumbElement) breadcrumbElement.textContent = config.title;
-    if (descriptionElement) descriptionElement.textContent = config.description;
-    
-    // Update page title
-    document.title = `${config.title} - Laura's Beauty Touch`;
-}
-
-/**
- * Initialize parallax scrolling effect
- */
-function initParallaxEffect() {
-    const parallaxBg = document.querySelector('.parallax-background');
-    
-    if (!parallaxBg) return;
-    
-    // Check if device supports parallax (not mobile)
-    const isMobile = window.innerWidth <= 768;
-    
-    if (isMobile) {
-        // Disable parallax on mobile for performance
-        return;
-    }
-    
-    // Throttle function to improve performance
-    let ticking = false;
-    
-    window.addEventListener('scroll', function() {
-        if (!ticking) {
-            window.requestAnimationFrame(function() {
-                const scrolled = window.pageYOffset;
-                const heroHeight = document.querySelector('.category-hero')?.offsetHeight || 0;
-                
-                // Only apply parallax when hero is in view
-                if (scrolled < heroHeight) {
-                    const parallaxSpeed = 0.5;
-                    parallaxBg.style.transform = `translate3d(0, ${scrolled * parallaxSpeed}px, 0)`;
-                }
-                
-                ticking = false;
-            });
-            
-            ticking = true;
-        }
-    });
-}
-
-/**
- * Initialize smooth scrolling for anchor links
- */
-function initSmoothScrolling() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-            
-            // Skip if it's just "#"
-            if (href === '#') return;
-            
-            e.preventDefault();
-            
-            const targetId = href.substring(1);
-            const targetElement = document.getElementById(targetId);
-            
-            if (targetElement) {
-                const headerOffset = 100;
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-}
-
-/**
- * Initialize scroll animations
- */
-function initScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-    
-    // Observe elements for fade-in animations
-    const elementsToAnimate = document.querySelectorAll('.services-intro, .booking-content, .why-choose-content');
-    elementsToAnimate.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
-        observer.observe(el);
-    });
-}
-
-/**
- * Initialize back to top button
- */
-function initBackToTop() {
-    const backToTopButton = document.getElementById('backToTop');
-    
-    if (!backToTopButton) return;
-    
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-            backToTopButton.classList.add('visible');
-        } else {
-            backToTopButton.classList.remove('visible');
-        }
-    });
-    
-    backToTopButton.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
+    if (categoryBadge) categoryBadge.textContent = config.badge;
+    if (categoryTitle) categoryTitle.textContent = config.title;
+    if (categorySubtitle) categorySubtitle.textContent = config.subtitle;
+    if (categoryDescription) categoryDescription.textContent = config.description;
 }
 
 /**
@@ -249,13 +145,13 @@ function initBackToTop() {
  */
 async function loadServices(jsonFile) {
     const loadingState = document.getElementById('loadingState');
-    const servicesGrid = document.getElementById('servicesGrid');
+    const servicesList = document.getElementById('servicesList');
     const noServicesMessage = document.getElementById('noServices');
     
     try {
         // Show loading state
-        if (loadingState) loadingState.style.display = 'block';
-        if (servicesGrid) servicesGrid.style.display = 'none';
+        if (loadingState) loadingState.style.display = 'flex';
+        if (servicesList) servicesList.style.display = 'none';
         if (noServicesMessage) noServicesMessage.style.display = 'none';
         
         // Fetch JSON data
@@ -281,58 +177,70 @@ async function loadServices(jsonFile) {
         
     } catch (error) {
         console.error('Error loading services:', error);
+        if (loadingState) loadingState.style.display = 'none';
         showError('Unable to load services. Please try again later.');
     }
 }
 
 /**
- * Render services to the grid
+ * Render services to the list
  */
 function renderServices(services) {
-    const servicesGrid = document.getElementById('servicesGrid');
+    const servicesList = document.getElementById('servicesList');
     
-    if (!servicesGrid) return;
+    if (!servicesList) return;
     
     // Clear existing content
-    servicesGrid.innerHTML = '';
-    servicesGrid.style.display = 'grid';
+    servicesList.innerHTML = '';
+    servicesList.style.display = 'flex';
     
-    // Create service cards
+    // Create service items
     services.forEach((service, index) => {
-        const card = createServiceCard(service, index);
-        servicesGrid.appendChild(card);
+        const serviceItem = createServiceItem(service, index);
+        servicesList.appendChild(serviceItem);
     });
 }
 
 /**
- * Create a service card element
+ * Create a service item element
  */
-function createServiceCard(service, index) {
-    const card = document.createElement('div');
-    card.className = 'service-card';
-    card.style.animationDelay = `${index * 0.1}s`;
+function createServiceItem(service, index) {
+    const item = document.createElement('div');
+    item.className = 'service-item';
+    item.style.animationDelay = `${index * 0.1}s`;
     
-    // Service image
-    const imageDiv = document.createElement('div');
-    imageDiv.className = 'service-image';
+    // Image Wrapper
+    const imageWrapper = document.createElement('div');
+    imageWrapper.className = 'service-image-wrapper';
+    
+    // Service Image
+    const image = document.createElement('div');
+    image.className = 'service-image';
     if (service.image) {
-        imageDiv.style.backgroundImage = `url('${service.image}')`;
+        image.style.backgroundImage = `url('${service.image}')`;
     } else {
-        // Default placeholder
-        imageDiv.style.backgroundImage = `url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800')`;
+        // Default placeholder image
+        image.style.backgroundImage = `url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800')`;
     }
     
-    // Optional badge
+    // Image Overlay
+    const imageOverlay = document.createElement('div');
+    imageOverlay.className = 'service-image-overlay';
+    
+    imageWrapper.appendChild(image);
+    imageWrapper.appendChild(imageOverlay);
+    
+    // Optional Badge
     if (service.badge) {
         const badge = document.createElement('div');
         badge.className = 'service-badge';
         badge.textContent = service.badge;
-        imageDiv.appendChild(badge);
+        imageWrapper.appendChild(badge);
     }
     
-    card.appendChild(imageDiv);
+    item.appendChild(imageWrapper);
     
-    // Service content
+    // Service Content
     const content = document.createElement('div');
     content.className = 'service-content';
     
@@ -345,19 +253,35 @@ function createServiceCard(service, index) {
     name.textContent = service.name;
     header.appendChild(name);
     
-    // Meta information
-    if (service.duration || service.priceLabel) {
+    // Meta Information
+    if (service.duration || service.price || service.priceLabel) {
         const meta = document.createElement('div');
         meta.className = 'service-meta';
         
         if (service.duration) {
             const durationItem = document.createElement('div');
-            durationItem.className = 'meta-item';
+            durationItem.className = 'service-meta-item';
             durationItem.innerHTML = `
                 <i class="fas fa-clock"></i>
                 <span>${service.duration}</span>
             `;
             meta.appendChild(durationItem);
+        }
+        
+        if ((service.duration && service.price) || (service.duration && service.priceLabel)) {
+            const divider = document.createElement('div');
+            divider.className = 'meta-divider';
+            meta.appendChild(divider);
+        }
+        
+        if (service.price || service.priceLabel) {
+            const priceItem = document.createElement('div');
+            priceItem.className = 'service-meta-item';
+            priceItem.innerHTML = `
+                <i class="fas fa-tag"></i>
+                <span>${service.priceLabel || service.price}</span>
+            `;
+            meta.appendChild(priceItem);
         }
         
         header.appendChild(meta);
@@ -373,146 +297,69 @@ function createServiceCard(service, index) {
         content.appendChild(description);
     }
     
-    // Footer with price and buttons
+    // Footer with buttons
     const footer = document.createElement('div');
     footer.className = 'service-footer';
     
-    // Price
-    const priceContainer = document.createElement('div');
-    const price = document.createElement('div');
-    price.className = 'service-price';
-    price.textContent = `$${service.price}`;
-    priceContainer.appendChild(price);
-    
-    if (service.priceLabel) {
-        const priceLabel = document.createElement('span');
-        priceLabel.className = 'price-label';
-        priceLabel.textContent = service.priceLabel;
-        priceContainer.appendChild(priceLabel);
-    }
-    
-    footer.appendChild(priceContainer);
-    
-    // Button container
-    const buttonContainer = document.createElement('div');
-    buttonContainer.style.display = 'flex';
-    buttonContainer.style.gap = '0.75rem';
-    buttonContainer.style.flexWrap = 'wrap';
-    
-    // View Details button
-    const viewDetailsButton = document.createElement('button');
-    viewDetailsButton.className = 'view-details-button';
-    viewDetailsButton.innerHTML = `
-        <span>View Details</span>
-        <i class="fas fa-info-circle"></i>
-    `;
-    viewDetailsButton.addEventListener('click', () => openModal(service));
-    
-    // Book button with Fresha link
+    // Book Now Button
     const bookButton = document.createElement('a');
-    bookButton.className = 'book-button';
-    bookButton.href = 'https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true';
-    bookButton.target = '_blank';
-    bookButton.rel = 'noopener noreferrer';
+    bookButton.href = '../htmls/contact.html';
+    bookButton.className = 'service-book-button';
     bookButton.innerHTML = `
         <span>Book Now</span>
+        <i class="fas fa-calendar-check"></i>
+    `;
+    footer.appendChild(bookButton);
+    
+    // View Details Button (opens modal)
+    const detailsButton = document.createElement('button');
+    detailsButton.className = 'service-details-button';
+    detailsButton.innerHTML = `
+        <span>View Details</span>
         <i class="fas fa-arrow-right"></i>
     `;
-    
-    buttonContainer.appendChild(viewDetailsButton);
-    buttonContainer.appendChild(bookButton);
-    
-    footer.appendChild(buttonContainer);
-    content.appendChild(footer);
-    
-    card.appendChild(content);
-    
-    return card;
-}
-
-/**
- * Show error message
- */
-function showError(message) {
-    const loadingState = document.getElementById('loadingState');
-    const servicesGrid = document.getElementById('servicesGrid');
-    const noServicesMessage = document.getElementById('noServices');
-    
-    if (loadingState) loadingState.style.display = 'none';
-    if (servicesGrid) servicesGrid.style.display = 'none';
-    
-    if (noServicesMessage) {
-        noServicesMessage.style.display = 'block';
-        const messageP = noServicesMessage.querySelector('p');
-        if (messageP) {
-            messageP.textContent = message;
-        }
-    }
-}
-
-// Handle window resize for parallax
-let resizeTimer;
-window.addEventListener('resize', function() {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function() {
-        // Reinitialize parallax if needed
-        const isMobile = window.innerWidth <= 768;
-        const parallaxBg = document.querySelector('.parallax-background');
-        
-        if (parallaxBg) {
-            if (isMobile) {
-                parallaxBg.style.transform = 'translate3d(0, 0, 0)';
-            }
-        }
-    }, 250);
-});
-
-/**
- * Initialize modal functionality
- */
-function initModal() {
-    const modal = document.getElementById('serviceModal');
-    const modalClose = document.getElementById('modalClose');
-    const modalOverlay = document.getElementById('modalOverlay');
-    
-    if (!modal) return;
-    
-    // Close modal on close button click
-    if (modalClose) {
-        modalClose.addEventListener('click', closeModal);
-    }
-    
-    // Close modal on overlay click
-    if (modalOverlay) {
-        modalOverlay.addEventListener('click', closeModal);
-    }
-    
-    // Close modal on escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-            closeModal();
-        }
+    detailsButton.addEventListener('click', function() {
+        openModal(service);
     });
+    footer.appendChild(detailsButton);
+    
+    content.appendChild(footer);
+    item.appendChild(content);
+    
+    return item;
 }
 
 /**
- * Open modal with service details
+ * Open service detail modal
  */
 function openModal(service) {
     const modal = document.getElementById('serviceModal');
     const modalImage = document.getElementById('modalImage');
+    const modalBadge = document.getElementById('modalBadge');
     const modalTitle = document.getElementById('modalTitle');
     const modalDuration = document.getElementById('modalDuration');
     const modalPrice = document.getElementById('modalPrice');
     const modalDescription = document.getElementById('modalDescription');
     const modalFullDescription = document.getElementById('modalFullDescription');
+    const modalFullDescriptionWrapper = document.getElementById('modalFullDescriptionWrapper');
     const modalBenefitsList = document.getElementById('modalBenefitsList');
+    const modalBenefitsWrapper = document.getElementById('modalBenefitsWrapper');
     
     if (!modal) return;
     
     // Set image
     if (modalImage && service.image) {
         modalImage.style.backgroundImage = `url('${service.image}')`;
+    } else if (modalImage) {
+        modalImage.style.backgroundImage = `url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800')`;
+    }
+    
+    // Set badge
+    if (modalBadge && service.badge) {
+        modalBadge.textContent = service.badge;
+        modalBadge.style.display = 'block';
+    } else if (modalBadge) {
+        modalBadge.style.display = 'none';
     }
     
     // Set title
@@ -526,19 +373,23 @@ function openModal(service) {
     }
     
     // Set price
-    if (modalPrice && service.price) {
-        modalPrice.textContent = service.price;
+    if (modalPrice && (service.price || service.priceLabel)) {
+        modalPrice.textContent = service.priceLabel || service.price;
     }
     
-    // Set descriptions
+    // Set description
     if (modalDescription && service.description) {
         modalDescription.textContent = service.description;
     }
     
+    // Set full description
     if (modalFullDescription && service.fullDescription) {
         modalFullDescription.textContent = service.fullDescription;
-    } else if (modalFullDescription) {
-        modalFullDescription.style.display = 'none';
+        if (modalFullDescriptionWrapper) {
+            modalFullDescriptionWrapper.style.display = 'block';
+        }
+    } else if (modalFullDescriptionWrapper) {
+        modalFullDescriptionWrapper.style.display = 'none';
     }
     
     // Set benefits
@@ -549,8 +400,11 @@ function openModal(service) {
             li.textContent = benefit;
             modalBenefitsList.appendChild(li);
         });
-    } else if (document.getElementById('modalBenefits')) {
-        document.getElementById('modalBenefits').style.display = 'none';
+        if (modalBenefitsWrapper) {
+            modalBenefitsWrapper.style.display = 'block';
+        }
+    } else if (modalBenefitsWrapper) {
+        modalBenefitsWrapper.style.display = 'none';
     }
     
     // Show modal
@@ -569,3 +423,183 @@ function closeModal() {
     modal.classList.remove('active');
     document.body.style.overflow = '';
 }
+
+/**
+ * Initialize modal event handlers
+ */
+function initializeModal() {
+    const modal = document.getElementById('serviceModal');
+    const modalClose = document.querySelector('.modal-close');
+    const modalOverlay = document.querySelector('.modal-overlay');
+    
+    // Close button
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+    }
+    
+    // Overlay click
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', closeModal);
+    }
+    
+    // Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+}
+
+/**
+ * Show error message
+ */
+function showError(message) {
+    const servicesList = document.getElementById('servicesList');
+    const noServicesMessage = document.getElementById('noServices');
+    
+    if (noServicesMessage) {
+        noServicesMessage.style.display = 'block';
+        const messageText = noServicesMessage.querySelector('p');
+        if (messageText) {
+            messageText.textContent = message;
+        }
+    }
+    
+    if (servicesList) {
+        servicesList.style.display = 'none';
+    }
+}
+
+/**
+ * Initialize header functionality
+ */
+function initializeHeader() {
+    const header = document.querySelector('.premium-header');
+    
+    if (!header) return;
+    
+    // Scroll effect
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+    
+    // Mega menu hover effect
+    const megaMenuItems = document.querySelectorAll('.has-megamenu');
+    
+    megaMenuItems.forEach(item => {
+        let timeout;
+        
+        item.addEventListener('mouseenter', function() {
+            clearTimeout(timeout);
+            this.classList.add('active');
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            timeout = setTimeout(() => {
+                this.classList.remove('active');
+            }, 200);
+        });
+    });
+}
+
+/**
+ * Initialize mobile menu
+ */
+function initializeMobileMenu() {
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileMenuClose = document.querySelector('.mobile-menu-close');
+    const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+    
+    if (!menuToggle || !mobileMenu) return;
+    
+    // Open menu
+    menuToggle.addEventListener('click', function() {
+        mobileMenu.classList.add('active');
+        if (mobileMenuOverlay) {
+            mobileMenuOverlay.classList.add('active');
+        }
+        document.body.style.overflow = 'hidden';
+    });
+    
+    // Close menu function
+    function closeMobileMenu() {
+        mobileMenu.classList.remove('active');
+        if (mobileMenuOverlay) {
+            mobileMenuOverlay.classList.remove('active');
+        }
+        document.body.style.overflow = '';
+    }
+    
+    // Close button
+    if (mobileMenuClose) {
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+    }
+    
+    // Overlay click
+    if (mobileMenuOverlay) {
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+    }
+    
+    // Close on link click
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+    });
+}
+
+/**
+ * Initialize back to top button
+ */
+function initializeBackToTop() {
+    const backToTop = document.getElementById('backToTop');
+    
+    if (!backToTop) return;
+    
+    // Show/hide on scroll
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 500) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+    
+    // Scroll to top on click
+    backToTop.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+/**
+ * Smooth scroll for anchor links
+ */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        
+        // Skip if it's just "#"
+        if (href === '#') return;
+        
+        e.preventDefault();
+        
+        const target = document.querySelector(href);
+        
+        if (target) {
+            const headerHeight = document.querySelector('.premium-header')?.offsetHeight || 0;
+            const targetPosition = target.offsetTop - headerHeight - 20;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
