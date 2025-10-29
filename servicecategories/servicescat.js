@@ -301,10 +301,14 @@ function createServiceItem(service, index) {
     const footer = document.createElement('div');
     footer.className = 'service-footer';
     
-    // Book Now Button
+    // Book Now Button - use bookNowUrl if available, otherwise use contact page
     const bookButton = document.createElement('a');
-    bookButton.href = '../htmls/contact.html';
+    bookButton.href = service.bookNowUrl || '../htmls/contact.html';
     bookButton.className = 'service-book-button';
+    if (service.bookNowUrl) {
+        bookButton.target = '_blank';
+        bookButton.rel = 'noopener noreferrer';
+    }
     bookButton.innerHTML = `
         <span>Book Now</span>
         <i class="fas fa-calendar-check"></i>
@@ -344,6 +348,18 @@ function openModal(service) {
     const modalFullDescriptionWrapper = document.getElementById('modalFullDescriptionWrapper');
     const modalBenefitsList = document.getElementById('modalBenefitsList');
     const modalBenefitsWrapper = document.getElementById('modalBenefitsWrapper');
+    
+    // Update modal book button with bookNowUrl
+    const modalBookButton = document.querySelector('.modal-book-button');
+    if (modalBookButton && service.bookNowUrl) {
+        modalBookButton.href = service.bookNowUrl;
+        modalBookButton.target = '_blank';
+        modalBookButton.rel = 'noopener noreferrer';
+    } else if (modalBookButton) {
+        modalBookButton.href = '../htmls/contact.html';
+        modalBookButton.removeAttribute('target');
+        modalBookButton.removeAttribute('rel');
+    }
     
     if (!modal) return;
     
