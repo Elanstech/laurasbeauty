@@ -1,22 +1,18 @@
 /* ============================================
-   SERVICES PAGE STYLES
+   SERVICES PAGE STYLES - COMPLETE FILE
    Laura's Beauty Touch - Natural Luxury Spa
+   Designer: Elan
    ============================================ */
 
-/* Using root variables from main styles.css */
-/* Expected variables:
-   --forest-green: #3B4A2F
-   --mint-green: #A9C89C
-   --ivory-white: #FAFAF7
-   --warm-taupe: #B6A98C
-   --charcoal-text: #1C1C1C
-*/
+/* This file contains ONLY services-page specific styles
+   Global styles (header, footer, animations, etc.) are in styles.css
+   All styles are scoped with .services-page to prevent conflicts */
 
 /* ============================================
-   HERO SECTION
+   SERVICES PAGE - HERO SECTION
    ============================================ */
 
-.hero-section {
+.services-page .hero-section {
     position: relative;
     height: 60vh;
     min-height: 450px;
@@ -31,9 +27,10 @@
     overflow: hidden;
     border-radius: 0 0 50px 50px;
     margin-bottom: 80px;
+    margin-top: 100px;
 }
 
-.hero-overlay {
+.services-page .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -47,17 +44,16 @@
     z-index: 1;
 }
 
-.hero-content {
+.services-page .hero-content {
     position: relative;
     z-index: 2;
     text-align: center;
     color: var(--ivory-white, #FAFAF7);
     padding: 40px 20px;
     max-width: 900px;
-    animation: fadeInUp 1s ease-out;
 }
 
-.hero-title {
+.services-page .hero-title {
     font-family: 'Playfair Display', serif;
     font-size: 4rem;
     font-weight: 600;
@@ -66,7 +62,7 @@
     text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.hero-subtitle {
+.services-page .hero-subtitle {
     font-family: 'Lato', sans-serif;
     font-size: 1.3rem;
     font-weight: 300;
@@ -77,27 +73,26 @@
 }
 
 /* ============================================
-   SERVICES SECTION
+   SERVICES SECTION CONTAINER
    ============================================ */
 
-.services-section {
+.services-page .services-section {
     padding: 80px 20px;
     background-color: var(--ivory-white, #FAFAF7);
 }
 
-.services-container {
+.services-page .services-container {
     max-width: 1400px;
     margin: 0 auto;
 }
 
 /* Section Header */
-.section-header {
+.services-page .section-header {
     text-align: center;
     margin-bottom: 70px;
-    animation: fadeInUp 0.8s ease-out;
 }
 
-.section-header h2 {
+.services-page .section-header h2 {
     font-family: 'Playfair Display', serif;
     font-size: 3rem;
     color: var(--forest-green, #3B4A2F);
@@ -105,10 +100,10 @@
     font-weight: 600;
 }
 
-.section-header p {
+.services-page .section-header p {
     font-family: 'Lato', sans-serif;
     font-size: 1.2rem;
-    color: var(--charcoal-text, #1C1C1C);
+    color: var(--charcoal, #1C1C1C);
     max-width: 700px;
     margin: 0 auto;
     line-height: 1.8;
@@ -119,7 +114,7 @@
    SERVICES GRID
    ============================================ */
 
-.services-grid {
+.services-page .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 40px;
@@ -128,59 +123,65 @@
 
 /* For larger screens, ensure maximum 3 columns for better balance with 11 cards */
 @media (min-width: 1400px) {
-    .services-grid {
+    .services-page .services-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/* Service Card */
-.service-card {
+/* ============================================
+   SERVICE CARD
+   ============================================ */
+
+.services-page .service-card {
     background: white;
     border-radius: 30px;
     overflow: hidden;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
     transition: all 0.4s ease;
-    animation: fadeInUp 0.6s ease-out backwards;
 }
 
-.service-card:nth-child(1) { animation-delay: 0.1s; }
-.service-card:nth-child(2) { animation-delay: 0.15s; }
-.service-card:nth-child(3) { animation-delay: 0.2s; }
-.service-card:nth-child(4) { animation-delay: 0.25s; }
-.service-card:nth-child(5) { animation-delay: 0.3s; }
-.service-card:nth-child(6) { animation-delay: 0.35s; }
-.service-card:nth-child(7) { animation-delay: 0.4s; }
-.service-card:nth-child(8) { animation-delay: 0.45s; }
-.service-card:nth-child(9) { animation-delay: 0.5s; }
-.service-card:nth-child(10) { animation-delay: 0.55s; }
-.service-card:nth-child(11) { animation-delay: 0.6s; }
+/* Stagger animation delays for each card */
+.services-page .service-card:nth-child(1) { animation-delay: 0.1s; }
+.services-page .service-card:nth-child(2) { animation-delay: 0.15s; }
+.services-page .service-card:nth-child(3) { animation-delay: 0.2s; }
+.services-page .service-card:nth-child(4) { animation-delay: 0.25s; }
+.services-page .service-card:nth-child(5) { animation-delay: 0.3s; }
+.services-page .service-card:nth-child(6) { animation-delay: 0.35s; }
+.services-page .service-card:nth-child(7) { animation-delay: 0.4s; }
+.services-page .service-card:nth-child(8) { animation-delay: 0.45s; }
+.services-page .service-card:nth-child(9) { animation-delay: 0.5s; }
+.services-page .service-card:nth-child(10) { animation-delay: 0.55s; }
+.services-page .service-card:nth-child(11) { animation-delay: 0.6s; }
 
-.service-card:hover {
+.services-page .service-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 45px rgba(59, 74, 47, 0.15);
 }
 
-/* Service Image Container */
-.service-image {
+/* ============================================
+   SERVICE CARD - IMAGE SECTION
+   ============================================ */
+
+.services-page .service-image {
     position: relative;
     height: 280px;
     overflow: hidden;
     border-radius: 30px 30px 0 0;
 }
 
-.service-image img {
+.services-page .service-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
 }
 
-.service-card:hover .service-image img {
+.services-page .service-card:hover .service-image img {
     transform: scale(1.08);
 }
 
-/* Image Overlay */
-.service-overlay {
+/* Image Overlay Effect */
+.services-page .service-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -199,11 +200,11 @@
     transition: opacity 0.4s ease;
 }
 
-.service-card:hover .service-overlay {
+.services-page .service-card:hover .service-overlay {
     opacity: 1;
 }
 
-.view-details {
+.services-page .view-details {
     font-family: 'Lato', sans-serif;
     font-size: 1rem;
     color: white;
@@ -216,16 +217,19 @@
     transition: transform 0.4s ease;
 }
 
-.service-card:hover .view-details {
+.services-page .service-card:hover .view-details {
     transform: translateY(0);
 }
 
-/* Service Info */
-.service-info {
+/* ============================================
+   SERVICE CARD - INFO SECTION
+   ============================================ */
+
+.services-page .service-info {
     padding: 35px 30px;
 }
 
-.service-info h3 {
+.services-page .service-info h3 {
     font-family: 'Playfair Display', serif;
     font-size: 1.9rem;
     color: var(--forest-green, #3B4A2F);
@@ -233,33 +237,36 @@
     font-weight: 600;
 }
 
-.service-info > p {
+.services-page .service-info > p {
     font-family: 'Lato', sans-serif;
     font-size: 1.05rem;
-    color: var(--charcoal-text, #1C1C1C);
+    color: var(--charcoal, #1C1C1C);
     line-height: 1.7;
     margin-bottom: 20px;
     opacity: 0.85;
 }
 
-/* Service Features List */
-.service-features {
+/* ============================================
+   SERVICE FEATURES LIST
+   ============================================ */
+
+.services-page .service-features {
     list-style: none;
     padding: 0;
     margin: 25px 0 30px 0;
 }
 
-.service-features li {
+.services-page .service-features li {
     font-family: 'Lato', sans-serif;
     font-size: 0.95rem;
-    color: var(--charcoal-text, #1C1C1C);
+    color: var(--charcoal, #1C1C1C);
     padding: 10px 0 10px 30px;
     position: relative;
     line-height: 1.6;
     opacity: 0.8;
 }
 
-.service-features li::before {
+.services-page .service-features li::before {
     content: '✓';
     position: absolute;
     left: 0;
@@ -268,8 +275,11 @@
     font-size: 1.2rem;
 }
 
-/* Service Button */
-.service-btn {
+/* ============================================
+   SERVICE BUTTON
+   ============================================ */
+
+.services-page .service-btn {
     display: inline-block;
     font-family: 'Lato', sans-serif;
     font-size: 1rem;
@@ -284,7 +294,7 @@
     box-shadow: 0 4px 15px rgba(59, 74, 47, 0.2);
 }
 
-.service-btn:hover {
+.services-page .service-btn:hover {
     background: var(--mint-green, #A9C89C);
     color: var(--forest-green, #3B4A2F);
     transform: translateY(-2px);
@@ -295,7 +305,7 @@
    CALL TO ACTION SECTION
    ============================================ */
 
-.services-cta {
+.services-page .services-cta {
     text-align: center;
     background: linear-gradient(
         135deg,
@@ -305,17 +315,16 @@
     padding: 60px 40px;
     border-radius: 40px;
     color: white;
-    animation: fadeInUp 0.8s ease-out;
 }
 
-.services-cta h3 {
+.services-page .services-cta h3 {
     font-family: 'Playfair Display', serif;
     font-size: 2.3rem;
     margin-bottom: 15px;
     font-weight: 600;
 }
 
-.services-cta p {
+.services-page .services-cta p {
     font-family: 'Lato', sans-serif;
     font-size: 1.2rem;
     margin-bottom: 35px;
@@ -325,7 +334,7 @@
     margin-right: auto;
 }
 
-.cta-btn {
+.services-page .cta-btn {
     display: inline-block;
     font-family: 'Lato', sans-serif;
     font-size: 1.1rem;
@@ -340,67 +349,45 @@
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
 }
 
-.cta-btn:hover {
+.services-page .cta-btn:hover {
     background: var(--ivory-white, #FAFAF7);
     transform: translateY(-3px);
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
 }
 
 /* ============================================
-   ANIMATIONS
+   RESPONSIVE DESIGN - TABLETS
    ============================================ */
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
-
-/* Tablets and Below */
 @media (max-width: 1024px) {
-    .hero-title {
+    .services-page .hero-title {
         font-size: 3.2rem;
     }
 
-    .hero-subtitle {
+    .services-page .hero-subtitle {
         font-size: 1.15rem;
     }
 
-    .section-header h2 {
+    .services-page .section-header h2 {
         font-size: 2.5rem;
     }
 
-    .services-grid {
+    .services-page .services-grid {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 35px;
     }
 
-    .service-info h3 {
+    .services-page .service-info h3 {
         font-size: 1.7rem;
     }
 }
 
-/* Mobile Devices */
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE DEVICES
+   ============================================ */
+
 @media (max-width: 768px) {
-    .hero-section {
+    .services-page .hero-section {
         height: 50vh;
         min-height: 400px;
         border-radius: 0 0 35px 35px;
@@ -408,139 +395,142 @@
         background-attachment: scroll;
     }
 
-    .hero-title {
+    .services-page .hero-title {
         font-size: 2.5rem;
     }
 
-    .hero-subtitle {
+    .services-page .hero-subtitle {
         font-size: 1rem;
     }
 
-    .services-section {
+    .services-page .services-section {
         padding: 60px 20px;
     }
 
-    .section-header {
+    .services-page .section-header {
         margin-bottom: 50px;
     }
 
-    .section-header h2 {
+    .services-page .section-header h2 {
         font-size: 2rem;
     }
 
-    .section-header p {
+    .services-page .section-header p {
         font-size: 1.05rem;
     }
 
-    .services-grid {
+    .services-page .services-grid {
         grid-template-columns: 1fr;
         gap: 30px;
         margin-bottom: 60px;
     }
 
-    .service-card {
+    .services-page .service-card {
         border-radius: 25px;
     }
 
-    .service-image {
+    .services-page .service-image {
         height: 240px;
         border-radius: 25px 25px 0 0;
     }
 
-    .service-info {
+    .services-page .service-info {
         padding: 30px 25px;
     }
 
-    .service-info h3 {
+    .services-page .service-info h3 {
         font-size: 1.6rem;
     }
 
-    .service-info > p {
+    .services-page .service-info > p {
         font-size: 1rem;
     }
 
-    .service-features li {
+    .services-page .service-features li {
         font-size: 0.9rem;
         padding: 8px 0 8px 25px;
     }
 
-    .service-btn {
+    .services-page .service-btn {
         padding: 12px 35px;
         font-size: 0.95rem;
     }
 
-    .services-cta {
+    .services-page .services-cta {
         padding: 45px 30px;
         border-radius: 30px;
     }
 
-    .services-cta h3 {
+    .services-page .services-cta h3 {
         font-size: 1.8rem;
     }
 
-    .services-cta p {
+    .services-page .services-cta p {
         font-size: 1.05rem;
         margin-bottom: 30px;
     }
 
-    .cta-btn {
+    .services-page .cta-btn {
         padding: 14px 40px;
         font-size: 1rem;
     }
 }
 
-/* Small Mobile Devices */
+/* ============================================
+   RESPONSIVE DESIGN - SMALL MOBILE
+   ============================================ */
+
 @media (max-width: 480px) {
-    .hero-section {
+    .services-page .hero-section {
         height: 45vh;
         min-height: 350px;
         border-radius: 0 0 25px 25px;
     }
 
-    .hero-title {
+    .services-page .hero-title {
         font-size: 2rem;
         letter-spacing: 1px;
     }
 
-    .hero-subtitle {
+    .services-page .hero-subtitle {
         font-size: 0.95rem;
     }
 
-    .section-header h2 {
+    .services-page .section-header h2 {
         font-size: 1.75rem;
     }
 
-    .section-header p {
+    .services-page .section-header p {
         font-size: 1rem;
     }
 
-    .service-card {
+    .services-page .service-card {
         border-radius: 20px;
     }
 
-    .service-image {
+    .services-page .service-image {
         height: 220px;
         border-radius: 20px 20px 0 0;
     }
 
-    .service-info {
+    .services-page .service-info {
         padding: 25px 20px;
     }
 
-    .service-info h3 {
+    .services-page .service-info h3 {
         font-size: 1.5rem;
     }
 
-    .services-cta {
+    .services-page .services-cta {
         padding: 40px 25px;
         border-radius: 25px;
     }
 
-    .services-cta h3 {
+    .services-page .services-cta h3 {
         font-size: 1.6rem;
     }
 
-    .services-cta p {
+    .services-page .services-cta p {
         font-size: 1rem;
     }
 }
@@ -550,16 +540,85 @@
    ============================================ */
 
 @media print {
-    .hero-section,
-    .navbar,
-    .footer,
-    .service-btn,
-    .cta-btn {
+    .services-page .hero-section,
+    .services-page .service-btn,
+    .services-page .cta-btn {
         display: none;
     }
 
-    .service-card {
+    .services-page .service-card {
         break-inside: avoid;
         page-break-inside: avoid;
     }
+
+    .services-page .services-section {
+        padding: 20px;
+    }
 }
+
+/* ============================================
+   ACCESSIBILITY ENHANCEMENTS
+   ============================================ */
+
+/* Focus states for keyboard navigation */
+.services-page .service-btn:focus,
+.services-page .cta-btn:focus {
+    outline: 3px solid var(--mint-green, #A9C89C);
+    outline-offset: 3px;
+}
+
+.services-page .service-card:focus {
+    outline: 2px solid var(--mint-green, #A9C89C);
+    outline-offset: 4px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    .services-page .service-card,
+    .services-page .service-image img,
+    .services-page .service-overlay,
+    .services-page .view-details,
+    .services-page .service-btn,
+    .services-page .cta-btn {
+        transition: none;
+        animation: none;
+    }
+
+    .services-page .service-card:hover {
+        transform: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .services-page .service-card {
+        border: 2px solid var(--forest-green, #3B4A2F);
+    }
+
+    .services-page .service-btn,
+    .services-page .cta-btn {
+        border: 2px solid currentColor;
+    }
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+
+/* Use GPU acceleration for transforms */
+.services-page .service-card,
+.services-page .service-image img,
+.services-page .service-btn,
+.services-page .cta-btn {
+    will-change: transform;
+}
+
+/* Optimize images */
+.services-page .service-image img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+/* ============================================
+   END OF SERVICES PAGE STYLES
+   ============================================ */
