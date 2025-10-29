@@ -5,16 +5,18 @@
    ============================================ */
 
 /* ============================================
-   CATEGORY HERO SECTION
+   CATEGORY HERO SECTION - ABOUT STYLE
    ============================================ */
 .category-hero {
     position: relative;
-    min-height: 75vh;
+    height: 100vh;
+    min-height: 700px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 160px 40px 100px;
     overflow: hidden;
+    margin-top: 0;
+    padding-top: 0;
 }
 
 .hero-background-wrapper {
@@ -32,17 +34,23 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, 
-        var(--forest-green) 0%, 
-        var(--deep-forest) 50%,
-        var(--forest-green) 100%);
-    background-size: 200% 200%;
-    animation: gradientShift 15s ease infinite;
+    background-color: var(--forest-green);
+    background-image: url('../images/spaint.jpeg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    z-index: 1;
+    will-change: transform;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
-@keyframes gradientShift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+/* Enable parallax only on desktop for performance */
+@media (min-width: 1024px) {
+    .hero-background {
+        background-attachment: fixed;
+    }
 }
 
 .hero-overlay {
@@ -51,19 +59,19 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
-        radial-gradient(circle at 20% 30%, rgba(169, 200, 156, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(182, 169, 140, 0.1) 0%, transparent 50%),
-        linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
+    background: linear-gradient(135deg, 
+        rgba(59, 74, 47, 0.85) 0%, 
+        rgba(42, 53, 34, 0.9) 100%);
+    z-index: 2;
 }
 
 .hero-content-wrapper {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     text-align: center;
+    padding: 0 20px;
     max-width: 900px;
     margin: 0 auto;
-    animation: fadeInUp 1s ease-out;
 }
 
 @keyframes fadeInUp {
@@ -81,20 +89,20 @@
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(15px);
-    border: 2px solid rgba(255, 255, 255, 0.25);
-    color: white;
+    background: rgba(169, 200, 156, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid rgba(169, 200, 156, 0.4);
+    color: var(--mint-green);
     padding: 12px 28px;
     border-radius: 50px;
     font-family: 'Lato', sans-serif;
     font-size: 0.95rem;
     font-weight: 600;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     margin-bottom: 30px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-    animation: fadeInUp 1s ease-out 0.2s both;
+    animation: fadeInUp 0.8s ease-out;
 }
 
 .hero-badge i {
@@ -103,13 +111,12 @@
 
 .hero-title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-size: clamp(2.5rem, 6vw, 5rem);
     font-weight: 700;
-    color: white;
-    line-height: 1.1;
+    color: var(--ivory-white);
+    line-height: 1.2;
     margin: 0 0 25px;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    animation: fadeInUp 1s ease-out 0.4s both;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
 .hero-divider {
@@ -118,117 +125,71 @@
     background: linear-gradient(90deg, transparent, var(--mint-green), transparent);
     margin: 0 auto 25px;
     border-radius: 10px;
-    animation: fadeInUp 1s ease-out 0.6s both;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
 }
 
 .hero-subtitle {
     font-family: 'Lato', sans-serif;
     font-size: clamp(1.1rem, 2vw, 1.4rem);
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.95);
-    line-height: 1.6;
+    color: rgba(250, 250, 247, 0.9);
+    line-height: 1.8;
     margin: 0 0 20px;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    animation: fadeInUp 1s ease-out 0.8s both;
+    animation: fadeInUp 0.8s ease-out 0.6s both;
 }
 
 .hero-description {
     font-family: 'Lato', sans-serif;
     font-size: 1.05rem;
     font-weight: 300;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(250, 250, 247, 0.85);
     line-height: 1.8;
-    margin: 0 0 40px;
+    margin: 0 0 50px;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    animation: fadeInUp 1s ease-out 1s both;
-}
-
-.hero-explore-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    background: linear-gradient(135deg, var(--mint-green) 0%, var(--soft-sage) 100%);
-    color: var(--forest-green);
-    font-family: 'Lato', sans-serif;
-    font-size: 1.05rem;
-    font-weight: 700;
-    padding: 18px 40px;
-    border-radius: 50px;
-    text-decoration: none;
-    box-shadow: 0 10px 30px rgba(169, 200, 156, 0.4);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: fadeInUp 1s ease-out 1.2s both;
-}
-
-.hero-explore-button:hover {
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 15px 40px rgba(169, 200, 156, 0.5);
-    background: linear-gradient(135deg, var(--soft-sage) 0%, var(--mint-green) 100%);
-}
-
-.hero-explore-button i {
-    transition: transform 0.3s ease;
-}
-
-.hero-explore-button:hover i {
-    transform: translateY(4px);
+    animation: fadeInUp 0.8s ease-out 0.8s both;
 }
 
 .hero-scroll-indicator {
     position: absolute;
-    bottom: 40px;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 2;
-    display: flex;
+    z-index: 3;
+    display: inline-flex;
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    animation: fadeInUp 1s ease-out 1.4s both;
-}
-
-.scroll-mouse {
-    width: 28px;
-    height: 45px;
-    border: 2px solid rgba(255, 255, 255, 0.4);
-    border-radius: 25px;
-    position: relative;
-}
-
-.scroll-mouse::before {
-    content: '';
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: 4px;
-    animation: scrollAnimation 2s ease infinite;
-}
-
-@keyframes scrollAnimation {
-    0%, 100% {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-    }
-    50% {
-        opacity: 0;
-        transform: translateX(-50%) translateY(12px);
-    }
+    color: var(--mint-green);
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    animation: fadeInUp 0.8s ease-out 1s both, bounceAnimation 2s ease-in-out 1.5s infinite;
 }
 
 .hero-scroll-indicator span {
-    font-family: 'Lato', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.7);
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    color: var(--mint-green);
+}
+
+.hero-scroll-indicator i {
+    font-size: 1.2rem;
+}
+
+@keyframes bounceAnimation {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+.scroll-mouse {
+    display: none;
 }
 
 /* ============================================
@@ -1068,6 +1029,11 @@
 
 /* Tablets */
 @media (max-width: 1024px) {
+    .category-hero {
+        height: 80vh;
+        min-height: 600px;
+    }
+    
     .service-item {
         grid-template-columns: 350px 1fr;
         min-height: 280px;
@@ -1084,8 +1050,8 @@
 
 @media (max-width: 900px) {
     .category-hero {
-        padding: 140px 30px 80px;
-        min-height: 65vh;
+        height: 100vh;
+        min-height: 600px;
     }
     
     .hero-title {
@@ -1145,8 +1111,8 @@
 /* Mobile */
 @media (max-width: 600px) {
     .category-hero {
-        padding: 120px 20px 60px;
-        min-height: 60vh;
+        height: 100vh;
+        min-height: 600px;
     }
     
     .hero-badge {
@@ -1155,7 +1121,7 @@
     }
     
     .hero-title {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
         margin-bottom: 20px;
     }
     
@@ -1168,13 +1134,9 @@
         margin-bottom: 30px;
     }
     
-    .hero-explore-button {
-        font-size: 1rem;
-        padding: 15px 32px;
-    }
-    
     .hero-scroll-indicator {
         bottom: 30px;
+        font-size: 0.85rem;
     }
     
     .services-list-section {
@@ -1306,8 +1268,17 @@
 
 /* Very Small Mobile */
 @media (max-width: 400px) {
+    .hero-badge {
+        font-size: 0.8rem;
+        padding: 8px 18px;
+    }
+    
     .hero-title {
         font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
     }
     
     .service-name {
