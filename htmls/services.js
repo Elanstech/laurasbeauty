@@ -1,90 +1,23 @@
 // ============================================
-// SERVICES PAGE JAVASCRIPT
+// SERVICES PAGE JAVASCRIPT - NO CONFLICTS
 // Laura's Beauty Touch - Natural Luxury Spa
+// Designer: Elan
 // ============================================
+
+// This file contains ONLY services-page specific JavaScript
+// Global functions (header, footer, navigation, etc.) are in script.js
+// No duplicate initialization of shared components
 
 'use strict';
 
 // ============================================
-// NAVIGATION FUNCTIONALITY
+// SERVICES PAGE - SPECIFIC ANIMATIONS
 // ============================================
 
 /**
- * Initialize mobile navigation toggle
+ * Initialize services page specific scroll animations
  */
-function initMobileNavigation() {
-    const mobileToggle = document.querySelector('.mobile-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    const navbar = document.querySelector('.navbar');
-
-    if (mobileToggle && navMenu) {
-        mobileToggle.addEventListener('click', function() {
-            // Toggle active classes
-            this.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            
-            // Prevent body scroll when menu is open
-            document.body.style.overflow = navMenu.classList.contains('active') 
-                ? 'hidden' 
-                : '';
-        });
-
-        // Close menu when clicking on a link
-        const navLinks = navMenu.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!navbar.contains(e.target) && navMenu.classList.contains('active')) {
-                mobileToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-    }
-}
-
-// ============================================
-// NAVBAR SCROLL BEHAVIOR
-// ============================================
-
-/**
- * Handle navbar appearance on scroll
- */
-function initNavbarScroll() {
-    const navbar = document.querySelector('.navbar');
-    let lastScroll = 0;
-
-    if (navbar) {
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-
-            // Add shadow when scrolled
-            if (currentScroll > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-
-            lastScroll = currentScroll;
-        }, { passive: true });
-    }
-}
-
-// ============================================
-// SCROLL ANIMATIONS
-// ============================================
-
-/**
- * Intersection Observer for scroll animations
- */
-function initScrollAnimations() {
+function initServicesScrollAnimations() {
     const observerOptions = {
         threshold: 0.15,
         rootMargin: '0px 0px -50px 0px'
@@ -94,61 +27,23 @@ function initScrollAnimations() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate-in');
-                
-                // Optional: Stop observing after animation
-                // observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // Observe all service cards
-    const serviceCards = document.querySelectorAll('.service-card');
+    // Observe service cards
+    const serviceCards = document.querySelectorAll('.services-page .service-card');
     serviceCards.forEach(card => observer.observe(card));
 
     // Observe section headers
-    const sectionHeaders = document.querySelectorAll('.section-header');
+    const sectionHeaders = document.querySelectorAll('.services-page .section-header');
     sectionHeaders.forEach(header => observer.observe(header));
 
     // Observe CTA section
-    const ctaSection = document.querySelector('.services-cta');
+    const ctaSection = document.querySelector('.services-page .services-cta');
     if (ctaSection) {
         observer.observe(ctaSection);
     }
-}
-
-// ============================================
-// SMOOTH SCROLL FOR ANCHOR LINKS
-// ============================================
-
-/**
- * Enable smooth scrolling for all anchor links
- */
-function initSmoothScroll() {
-    const anchorLinks = document.querySelectorAll('a[href^="#"]');
-    
-    anchorLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            
-            // Skip if href is just "#"
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                e.preventDefault();
-                
-                // Calculate offset for fixed navbar
-                const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 0;
-                const targetPosition = targetElement.offsetTop - navbarHeight - 20;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
 }
 
 // ============================================
@@ -156,10 +51,10 @@ function initSmoothScroll() {
 // ============================================
 
 /**
- * Enhanced service card hover effects
+ * Enhanced service card hover effects with 3D tilt
  */
 function initServiceCardInteractions() {
-    const serviceCards = document.querySelectorAll('.service-card');
+    const serviceCards = document.querySelectorAll('.services-page .service-card');
     
     serviceCards.forEach(card => {
         // Add subtle parallax effect on mouse move
@@ -186,31 +81,172 @@ function initServiceCardInteractions() {
         card.addEventListener('mouseleave', () => {
             card.style.transform = '';
         });
+
+        // Make cards keyboard accessible
+        card.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const link = card.querySelector('.service-btn');
+                if (link) link.click();
+            }
+        });
     });
 }
 
 // ============================================
-// LAZY LOADING IMAGES
+// SMOOTH SCROLL FOR SERVICE LINKS
 // ============================================
 
 /**
- * Lazy load images for better performance
+ * Smooth scroll behavior for internal links
  */
-function initLazyLoading() {
-    const images = document.querySelectorAll('img[data-src]');
+function initServicesPageSmoothScroll() {
+    const internalLinks = document.querySelectorAll('.services-page a[href^="#"]');
     
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.removeAttribute('data-src');
-                observer.unobserve(img);
+    internalLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                e.preventDefault();
+                
+                const navbarHeight = document.querySelector('.premium-header')?.offsetHeight || 100;
+                const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
             }
         });
     });
+}
+
+// ============================================
+// LAZY LOADING FOR SERVICE IMAGES
+// ============================================
+
+/**
+ * Lazy load service images for better performance
+ */
+function initServicesLazyLoading() {
+    const images = document.querySelectorAll('.services-page img[data-src]');
     
-    images.forEach(img => imageObserver.observe(img));
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                    observer.unobserve(img);
+                }
+            });
+        });
+        
+        images.forEach(img => imageObserver.observe(img));
+    } else {
+        // Fallback for browsers without IntersectionObserver
+        images.forEach(img => {
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+        });
+    }
+}
+
+// ============================================
+// SERVICE CARD ANALYTICS TRACKING
+// ============================================
+
+/**
+ * Track service card clicks for analytics (optional)
+ */
+function initServicesAnalytics() {
+    const serviceLinks = document.querySelectorAll('.services-page .service-btn');
+    
+    serviceLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const serviceName = this.closest('.service-card')?.querySelector('h3')?.textContent;
+            
+            // Log for debugging (replace with actual analytics if needed)
+            console.log('Service clicked:', serviceName);
+            
+            // Example: Send to Google Analytics
+            // if (typeof gtag !== 'undefined') {
+            //     gtag('event', 'service_click', {
+            //         'event_category': 'Services',
+            //         'event_label': serviceName
+            //     });
+            // }
+        });
+    });
+}
+
+// ============================================
+// KEYBOARD NAVIGATION ENHANCEMENTS
+// ============================================
+
+/**
+ * Enhance keyboard navigation for services page
+ */
+function initServicesKeyboardNav() {
+    const serviceCards = document.querySelectorAll('.services-page .service-card');
+    
+    serviceCards.forEach((card, index) => {
+        // Make cards focusable
+        if (!card.hasAttribute('tabindex')) {
+            card.setAttribute('tabindex', '0');
+        }
+        
+        // Add keyboard navigation between cards
+        card.addEventListener('keydown', (e) => {
+            let targetCard = null;
+            
+            switch(e.key) {
+                case 'ArrowRight':
+                case 'ArrowDown':
+                    e.preventDefault();
+                    targetCard = serviceCards[index + 1];
+                    break;
+                case 'ArrowLeft':
+                case 'ArrowUp':
+                    e.preventDefault();
+                    targetCard = serviceCards[index - 1];
+                    break;
+            }
+            
+            if (targetCard) {
+                targetCard.focus();
+                targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+    });
+}
+
+// ============================================
+// SERVICES PAGE CONSOLE WELCOME
+// ============================================
+
+/**
+ * Display services page info in console
+ */
+function displayServicesConsoleWelcome() {
+    console.log(
+        '%c✨ Laura\'s Beauty Touch - Services ✨',
+        'font-size: 20px; font-weight: bold; color: #3B4A2F; font-family: Playfair Display, serif;'
+    );
+    console.log(
+        '%c11 Service Categories | Designed by Elan | Natural Luxury Spa Experience',
+        'font-size: 12px; color: #A9C89C; font-family: Lato, sans-serif;'
+    );
+    console.log(
+        '%cServices Page JavaScript Loaded Successfully',
+        'font-size: 10px; color: #666; font-style: italic;'
+    );
 }
 
 // ============================================
@@ -218,7 +254,7 @@ function initLazyLoading() {
 // ============================================
 
 /**
- * Debounce function for performance optimization
+ * Debounce function for performance
  */
 function debounce(func, wait = 20, immediate = true) {
     let timeout;
@@ -237,180 +273,55 @@ function debounce(func, wait = 20, immediate = true) {
 }
 
 // ============================================
-// SCROLL TO TOP FUNCTIONALITY
+// INITIALIZE SERVICES PAGE
 // ============================================
 
 /**
- * Show/hide scroll to top button
+ * Initialize all services page functionality
+ * This runs AFTER the global script.js has initialized shared components
  */
-function initScrollToTop() {
-    // Create scroll to top button if it doesn't exist
-    let scrollTopBtn = document.querySelector('.scroll-to-top');
-    
-    if (!scrollTopBtn) {
-        scrollTopBtn = document.createElement('button');
-        scrollTopBtn.className = 'scroll-to-top';
-        scrollTopBtn.innerHTML = '↑';
-        scrollTopBtn.setAttribute('aria-label', 'Scroll to top');
-        document.body.appendChild(scrollTopBtn);
-    }
-    
-    // Show/hide button based on scroll position
-    window.addEventListener('scroll', debounce(() => {
-        if (window.pageYOffset > 500) {
-            scrollTopBtn.classList.add('visible');
-        } else {
-            scrollTopBtn.classList.remove('visible');
-        }
-    }), { passive: true });
-    
-    // Scroll to top on click
-    scrollTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-}
-
-// ============================================
-// FORM VALIDATION (if contact form present)
-// ============================================
-
-/**
- * Basic form validation
- */
-function initFormValidation() {
-    const forms = document.querySelectorAll('form');
-    
-    forms.forEach(form => {
-        form.addEventListener('submit', function(e) {
-            const inputs = form.querySelectorAll('input[required], textarea[required]');
-            let isValid = true;
-            
-            inputs.forEach(input => {
-                if (!input.value.trim()) {
-                    isValid = false;
-                    input.classList.add('error');
-                    
-                    // Create or update error message
-                    let errorMsg = input.nextElementSibling;
-                    if (!errorMsg || !errorMsg.classList.contains('error-message')) {
-                        errorMsg = document.createElement('span');
-                        errorMsg.className = 'error-message';
-                        errorMsg.textContent = 'This field is required';
-                        input.parentNode.insertBefore(errorMsg, input.nextSibling);
-                    }
-                } else {
-                    input.classList.remove('error');
-                    const errorMsg = input.nextElementSibling;
-                    if (errorMsg && errorMsg.classList.contains('error-message')) {
-                        errorMsg.remove();
-                    }
-                }
-            });
-            
-            if (!isValid) {
-                e.preventDefault();
-            }
-        });
-    });
-}
-
-// ============================================
-// ACCESSIBILITY ENHANCEMENTS
-// ============================================
-
-/**
- * Improve keyboard navigation and accessibility
- */
-function initAccessibility() {
-    // Add keyboard focus styles
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Tab') {
-            document.body.classList.add('keyboard-nav');
-        }
-    });
-    
-    document.addEventListener('mousedown', () => {
-        document.body.classList.remove('keyboard-nav');
-    });
-    
-    // Ensure all interactive elements are keyboard accessible
-    const interactiveElements = document.querySelectorAll('.service-card, .service-btn, .cta-btn');
-    
-    interactiveElements.forEach(element => {
-        if (!element.hasAttribute('tabindex')) {
-            element.setAttribute('tabindex', '0');
-        }
+function initServicesPage() {
+    // Wait a bit to ensure global script.js has initialized
+    setTimeout(() => {
+        // Services-specific initializations
+        initServicesScrollAnimations();
+        initServiceCardInteractions();
+        initServicesPageSmoothScroll();
+        initServicesLazyLoading();
+        initServicesAnalytics();
+        initServicesKeyboardNav();
         
-        // Add keyboard event listeners
-        element.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                element.click();
-            }
-        });
-    });
+        // Console welcome message
+        displayServicesConsoleWelcome();
+        
+        console.log('✓ Services page functionality initialized');
+    }, 100);
 }
 
 // ============================================
-// CONSOLE WELCOME MESSAGE
+// DOM READY EVENT
 // ============================================
 
-/**
- * Display welcome message in console
- */
-function displayConsoleWelcome() {
-    console.log(
-        '%c✨ Laura\'s Beauty Touch ✨',
-        'font-size: 20px; font-weight: bold; color: #3B4A2F; font-family: Playfair Display, serif;'
-    );
-    console.log(
-        '%cServices Page | 11 Categories | Designed by Elan | Natural Luxury Spa Experience',
-        'font-size: 12px; color: #A9C89C; font-family: Lato, sans-serif;'
-    );
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initServicesPage);
+} else {
+    // DOM is already ready
+    initServicesPage();
 }
 
 // ============================================
-// INITIALIZATION
+// PAGE VISIBILITY OPTIMIZATION
 // ============================================
 
 /**
- * Initialize all functions when DOM is ready
- */
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize core features
-    initMobileNavigation();
-    initNavbarScroll();
-    initScrollAnimations();
-    initSmoothScroll();
-    initServiceCardInteractions();
-    initLazyLoading();
-    initScrollToTop();
-    initFormValidation();
-    initAccessibility();
-    
-    // Display console message
-    displayConsoleWelcome();
-    
-    // Log successful initialization
-    console.log('✓ Services page initialized successfully');
-});
-
-// ============================================
-// HANDLE PAGE VISIBILITY CHANGES
-// ============================================
-
-/**
- * Optimize performance when page is not visible
+ * Pause/resume animations based on page visibility
  */
 document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
-        // Page is hidden - pause animations if needed
-        console.log('Page hidden - optimizing performance');
+        console.log('Services page hidden - pausing animations');
     } else {
-        // Page is visible - resume normal operation
-        console.log('Page visible - resuming animations');
+        console.log('Services page visible - resuming animations');
     }
 });
 
@@ -419,20 +330,21 @@ document.addEventListener('visibilitychange', () => {
 // ============================================
 
 /**
- * Global error handler
+ * Catch any JavaScript errors on the services page
  */
 window.addEventListener('error', (e) => {
-    console.error('An error occurred:', e.message);
-    // You can add error reporting here
+    console.error('Services page error:', e.message, e.filename, e.lineno);
 });
 
 // ============================================
 // EXPORT FOR MODULE USAGE (if needed)
 // ============================================
 
-// If you're using ES6 modules, uncomment below:
-// export {
-//     initMobileNavigation,
-//     initScrollAnimations,
-//     initServiceCardInteractions
-// };
+// If using ES6 modules, export functions
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        initServicesPage,
+        initServiceCardInteractions,
+        initServicesScrollAnimations
+    };
+}
