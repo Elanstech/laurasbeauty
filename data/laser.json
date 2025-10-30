@@ -1,0 +1,296 @@
+{
+  "category": "laser",
+  "services": [
+    {
+      "id": "underarm-laser-him",
+      "name": "Underarm Laser For Him",
+      "description": "Professional laser hair removal for men's underarms. Achieve smooth, hair-free underarms with lasting results.",
+      "fullDescription": "Our Underarm Laser treatment for men uses advanced laser technology to permanently reduce unwanted underarm hair. This treatment is quick, effective, and designed specifically for male skin and hair texture. Say goodbye to daily shaving and irritation.",
+      "duration": "15 min",
+      "price": "$100",
+      "priceLabel": "Starting at $100",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24892777&share=true&pId=2609547",
+      "image": "https://www.simplelaserhairremoval.com/wp-content/uploads/2023/08/laser-hair-removal-men-underarm.jpg",
+      "benefits": [
+        "Long-lasting hair reduction",
+        "No more razor burn or ingrown hairs",
+        "Quick and convenient treatment",
+        "Suitable for all skin types"
+      ]
+    },
+    {
+      "id": "shoulder-laser-him",
+      "name": "Shoulder Laser for Him",
+      "description": "Remove unwanted shoulder hair with precision laser treatments. Perfect for achieving smooth, hair-free shoulders.",
+      "fullDescription": "Our Shoulder Laser treatment effectively targets and removes unwanted hair from the shoulder area. Using state-of-the-art laser technology, we provide comfortable and efficient hair removal with long-lasting results tailored for men.",
+      "duration": "20 min",
+      "price": "$100",
+      "priceLabel": "Starting at $100",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24892755&share=true&pId=2609547",
+      "image": "https://www.aescosmeticdermatology.com/wp-content/uploads/2018/09/laser-hair-removal-for-men.jpg",
+      "benefits": [
+        "Permanent hair reduction",
+        "Smooth, hair-free shoulders",
+        "Boosts confidence",
+        "Minimal discomfort"
+      ]
+    },
+    {
+      "id": "full-upper-body-him",
+      "name": "Full Upper Body Laser for Him",
+      "description": "Comprehensive laser hair removal for the entire upper body. Includes chest, back, shoulders, and arms.",
+      "fullDescription": "Our Full Upper Body Laser package offers complete hair removal for men's upper body, including chest, back, shoulders, and arms. This comprehensive treatment provides uniform, smooth results and represents excellent value for extensive coverage.",
+      "duration": "90 min",
+      "price": "$420",
+      "priceLabel": "Starting at $420",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24892724&share=true&pId=2609547",
+      "image": "https://yalahairremoval.com/wp-content/uploads/2023/09/IMG_1145.jpg",
+      "badge": "Complete Package",
+      "benefits": [
+        "Comprehensive upper body coverage",
+        "Cost-effective package pricing",
+        "Uniform, smooth results",
+        "Long-lasting hair reduction"
+      ]
+    },
+    {
+      "id": "chest-laser-him",
+      "name": "Chest Laser For Him",
+      "description": "Achieve a smooth, hair-free chest with professional laser treatments designed for men's skin and hair.",
+      "fullDescription": "Our Chest Laser treatment for men effectively removes unwanted chest hair using advanced laser technology. This treatment is perfect for achieving a clean, groomed appearance with results that last much longer than traditional hair removal methods.",
+      "duration": "30 min",
+      "price": "$180",
+      "priceLabel": "Starting at $180",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24892697&share=true&pId=2609547",
+      "image": "https://www.gotoskin.com/wp-content/uploads/2023/07/mens-chest-hair-removal.jpg",
+      "benefits": [
+        "Defined chest appearance",
+        "Eliminates daily maintenance",
+        "Comfortable treatment",
+        "Professional results"
+      ]
+    },
+    {
+      "id": "womens-underarm-laser",
+      "name": "Women's Underarm Laser",
+      "description": "Gentle and effective laser hair removal for women's underarms. Enjoy smooth, confident underarms year-round.",
+      "fullDescription": "Our Women's Underarm Laser treatment provides a gentle yet effective solution for permanent hair reduction. Designed specifically for women's delicate underarm skin, this treatment offers lasting smoothness and freedom from daily shaving.",
+      "duration": "15 min",
+      "price": "$70",
+      "priceLabel": "Starting at $70",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24201623&share=true&pId=2609547",
+      "image": "https://www.skintight.com.au/wp-content/uploads/2019/08/laser-hair-removal-underarm.jpg",
+      "benefits": [
+        "Gentle on sensitive skin",
+        "Long-lasting smoothness",
+        "No more razor burn",
+        "Quick treatment time"
+      ]
+    },
+    {
+      "id": "half-leg-laser",
+      "name": "Half Leg Laser",
+      "description": "Professional laser hair removal for lower or upper legs. Smooth, hair-free legs without the hassle of shaving.",
+      "fullDescription": "Our Half Leg Laser treatment targets either your lower legs (knee to ankle) or upper legs (thigh to knee) with precision laser technology. Enjoy silky smooth legs without the constant need for shaving or waxing.",
+      "duration": "30 min",
+      "price": "$120",
+      "priceLabel": "Starting at $120",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24201614&share=true&pId=2609547",
+      "image": "https://yalahairremoval.com/wp-content/uploads/2022/01/IMG_0476-scaled.jpg",
+      "benefits": [
+        "Smooth, hair-free legs",
+        "Saves time on daily shaving",
+        "Reduces ingrown hairs",
+        "Long-lasting results"
+      ]
+    },
+    {
+      "id": "full-back-laser-him",
+      "name": "Full Back Laser for Him",
+      "description": "Complete back hair removal for men. Achieve a smooth, confident back with advanced laser technology.",
+      "fullDescription": "Our Full Back Laser treatment for men provides comprehensive hair removal across the entire back area. Using powerful yet comfortable laser technology, we eliminate unwanted back hair for a clean, groomed appearance.",
+      "duration": "45 min",
+      "price": "$180",
+      "priceLabel": "Starting at $180",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24201535&share=true&pId=2609547",
+      "image": "https://lagunabeachaesthetics.com/wp-content/uploads/2021/02/Laser-Hair-Removal-Orange-County.jpeg",
+      "benefits": [
+        "Complete back coverage",
+        "Boosts confidence",
+        "Permanent hair reduction",
+        "Comfortable treatment"
+      ]
+    },
+    {
+      "id": "full-back-laser-her",
+      "name": "Full Back Laser For Her",
+      "description": "Gentle laser hair removal for women's back. Smooth, flawless skin from shoulders to lower back.",
+      "fullDescription": "Our Full Back Laser treatment for women gently removes unwanted back hair using advanced laser technology. Perfect for achieving smooth, flawless skin that looks great in any outfit, from backless dresses to swimwear.",
+      "duration": "30 min",
+      "price": "$100",
+      "priceLabel": "Starting at $100",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24201518&share=true&pId=2609547",
+      "image": "https://www.dermani.com.au/wp-content/uploads/2020/09/back-laser-hair-removal-1.jpg",
+      "benefits": [
+        "Smooth, flawless back",
+        "Perfect for backless outfits",
+        "Gentle on skin",
+        "Long-lasting smoothness"
+      ]
+    },
+    {
+      "id": "full-arm-laser",
+      "name": "Full Arm Laser",
+      "description": "Complete arm hair removal from shoulders to fingertips. Enjoy beautifully smooth arms year-round.",
+      "fullDescription": "Our Full Arm Laser treatment provides complete hair removal from shoulders to fingertips, including upper arms, elbows, and forearms. Achieve silky smooth arms without the need for constant shaving or waxing.",
+      "duration": "40 min",
+      "price": "$150",
+      "priceLabel": "Starting at $150",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24201406&share=true&pId=2609547",
+      "image": "https://www.marylandlaserhairandskincenter.com/wp-content/uploads/2022/11/ARMS-AFTER.png",
+      "benefits": [
+        "Complete arm coverage",
+        "Smooth, hair-free arms",
+        "No more daily shaving",
+        "Uniform results"
+      ]
+    },
+    {
+      "id": "ear-laser",
+      "name": "Ear Laser",
+      "description": "Precision laser treatment for unwanted ear hair. Safe, effective, and comfortable treatment.",
+      "fullDescription": "Our Ear Laser treatment safely and effectively removes unwanted ear hair using precise laser technology. This quick treatment targets hair on and around the ears for a clean, groomed appearance.",
+      "duration": "10 min",
+      "price": "$70",
+      "priceLabel": "Starting at $70",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24201397&share=true&pId=2609547",
+      "image": "https://www.skinspaceutah.com/wp-content/uploads/2024/06/Laser-Hair-Removal-For-Men.jpg",
+      "benefits": [
+        "Precise and safe",
+        "Quick treatment",
+        "Clean, groomed appearance",
+        "Comfortable procedure"
+      ]
+    },
+    {
+      "id": "chin-laser",
+      "name": "Chin Laser",
+      "description": "Effective laser hair removal for chin and jawline. Perfect for eliminating unwanted facial hair.",
+      "fullDescription": "Our Chin Laser treatment targets unwanted hair on the chin and jawline with precision. Ideal for those dealing with hormonal hair growth or simply wanting a smoother, hair-free facial appearance.",
+      "duration": "15 min",
+      "price": "$75",
+      "priceLabel": "Starting at $75",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24201392&share=true&pId=2609547",
+      "image": "https://sarahchapman.com/wp-content/uploads/2021/09/chin-laser-hair-removal.jpg",
+      "benefits": [
+        "Smooth, hair-free chin",
+        "Boosts confidence",
+        "No more plucking or waxing",
+        "Precise targeting"
+      ]
+    },
+    {
+      "id": "buttocks-laser",
+      "name": "Buttocks Laser",
+      "description": "Professional laser hair removal for the buttocks area. Smooth, comfortable results with privacy assured.",
+      "fullDescription": "Our Buttocks Laser treatment provides discreet and professional hair removal for the buttocks area. Using advanced laser technology, we ensure comfortable treatment and smooth, long-lasting results in a private, respectful environment.",
+      "duration": "25 min",
+      "price": "$100",
+      "priceLabel": "Starting at $100",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24201293&share=true&pId=2609547",
+      "image": "https://www.simplelaserhairremoval.com/wp-content/uploads/2021/07/brazilian-laser-hair-removal.jpg",
+      "benefits": [
+        "Smooth, hair-free results",
+        "Private, professional service",
+        "Long-lasting effects",
+        "Comfortable treatment"
+      ]
+    },
+    {
+      "id": "brazilian-laser",
+      "name": "Brazilian Laser",
+      "description": "Complete bikini area laser hair removal. Achieve smooth, confident results with our gentle Brazilian laser treatment.",
+      "fullDescription": "Our Brazilian Laser treatment offers complete hair removal for the entire bikini area, providing smooth, long-lasting results. Our experienced technicians ensure a comfortable, professional experience in a private setting.",
+      "duration": "30 min",
+      "price": "$170",
+      "priceLabel": "Starting at $170",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24201285&share=true&pId=2609547",
+      "image": "https://www.harleylaserspecialists.com/wp-content/uploads/2020/01/Brazilian-laser-hair-removal-treatment.jpg",
+      "benefits": [
+        "Complete bikini area coverage",
+        "Long-lasting smoothness",
+        "Professional and discreet",
+        "Eliminates ingrown hairs"
+      ]
+    },
+    {
+      "id": "half-arm-laser",
+      "name": "Half Arm Laser",
+      "description": "Laser hair removal for either upper or lower arms. Smooth, hair-free arms with targeted treatment.",
+      "fullDescription": "Our Half Arm Laser treatment focuses on either your upper arms (shoulder to elbow) or lower arms (elbow to wrist), providing smooth, hair-free skin exactly where you need it most.",
+      "duration": "25 min",
+      "price": "$100",
+      "priceLabel": "Starting at $100",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24201599&share=true&pId=2609547",
+      "image": "https://laserhairremovalnj.com/wp-content/uploads/2017/09/Laser-Hair-Removal-For-Arms-1.jpg",
+      "benefits": [
+        "Targeted treatment area",
+        "Smooth results",
+        "Quick treatment time",
+        "Cost-effective option"
+      ]
+    },
+    {
+      "id": "full-leg-laser",
+      "name": "Full Leg Laser",
+      "description": "Complete leg hair removal from thigh to ankle. Enjoy silky smooth legs without the daily shaving routine.",
+      "fullDescription": "Our Full Leg Laser treatment provides comprehensive hair removal for your entire legs, from thighs to ankles. Say goodbye to daily shaving and hello to smooth, beautiful legs year-round.",
+      "duration": "60 min",
+      "price": "$200",
+      "priceLabel": "Starting at $200",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24201592&share=true&pId=2609547",
+      "image": "https://www.bodylaseimagingspa.com/wp-content/uploads/2021/06/full-leg-laser-hair-removal.jpg",
+      "benefits": [
+        "Complete leg coverage",
+        "Silky smooth results",
+        "Save time on shaving",
+        "Long-lasting hair reduction"
+      ]
+    },
+    {
+      "id": "full-face-laser",
+      "name": "Full Face Laser",
+      "description": "Comprehensive facial laser hair removal. Achieve smooth, hair-free facial skin with precision treatment.",
+      "fullDescription": "Our Full Face Laser treatment targets unwanted facial hair across the entire face, including upper lip, chin, cheeks, and jawline. Experience smooth, flawless skin and newfound confidence with our gentle yet effective facial laser treatment.",
+      "duration": "30 min",
+      "price": "$150",
+      "priceLabel": "Starting at $150",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24201551&share=true&pId=2609547",
+      "image": "https://drguyardlaser.com/wp-content/uploads/2024/09/woman-getting-laser-hair-removal-on-chin-1024x576.jpg",
+      "benefits": [
+        "Complete facial coverage",
+        "Smooth, flawless skin",
+        "Boosts confidence",
+        "Gentle on delicate facial skin"
+      ]
+    },
+    {
+      "id": "full-body-laser-her",
+      "name": "Full Body Laser For Her",
+      "description": "Ultimate full body laser hair removal package for women. Complete hair-free smoothness from head to toe.",
+      "fullDescription": "Our Full Body Laser package for women offers the ultimate in comprehensive hair removal. This extensive treatment covers all major body areas, providing smooth, hair-free skin from head to toe. Perfect for those seeking complete, long-lasting results.",
+      "duration": "120 min",
+      "price": "$500",
+      "priceLabel": "Starting at $500",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24201539&share=true&pId=2609547",
+      "image": "https://www.skinspaceutah.com/wp-content/uploads/2024/06/Laser-Hair-Removal-1.jpg",
+      "badge": "Premium Package",
+      "benefits": [
+        "Complete body coverage",
+        "Ultimate convenience",
+        "Best value package",
+        "Long-lasting smoothness everywhere"
+      ]
+    }
+  ]
+}
