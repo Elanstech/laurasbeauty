@@ -1,0 +1,226 @@
+{
+  "category": "addons",
+  "services": [
+    {
+      "id": "relaxing-scalp-massage",
+      "name": "Add on Relaxing Scalp Massage",
+      "description": "Luxurious scalp massage that melts away tension. Relieves stress, promotes circulation, and leaves you completely relaxed.",
+      "fullDescription": "Indulge in our Relaxing Scalp Massage add-on, featuring therapeutic massage techniques that release tension and promote deep relaxation. This soothing treatment relieves headaches, reduces stress, and creates a sense of complete tranquility.",
+      "duration": "15 min",
+      "price": "$15",
+      "priceLabel": "Add $15",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24203851&share=true&pId=2609547",
+      "image": "https://www.spaindex.com/media/magazine/articles/2021/08/scalp-massage-spa.jpg",
+      "benefits": [
+        "Relieves tension headaches",
+        "Promotes relaxation",
+        "Improves circulation",
+        "Reduces stress"
+      ]
+    },
+    {
+      "id": "vitamin-c-mask",
+      "name": "Add on Vitamin C Mask",
+      "description": "Brightening vitamin C mask that illuminates your complexion. Fights free radicals and reveals radiant, glowing skin.",
+      "fullDescription": "Enhance your facial with our Vitamin C Mask, a powerful antioxidant treatment that brightens, evens skin tone, and protects against environmental damage. This luxurious mask infuses your skin with pure vitamin C for a luminous, youthful glow.",
+      "duration": "15 min",
+      "price": "$25",
+      "priceLabel": "Add $25",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A25207095&share=true&pId=2609547",
+      "image": "https://cdn.shopify.com/s/files/1/0250/5305/6718/files/vitamin-c-face-mask.jpg",
+      "benefits": [
+        "Brightens complexion",
+        "Fights free radicals",
+        "Evens skin tone",
+        "Powerful antioxidant protection"
+      ]
+    },
+    {
+      "id": "oxygen-mask",
+      "name": "Add on Oxygen Mask",
+      "description": "Revitalizing oxygen mask that breathes new life into tired skin. Instantly brightens and refreshes for a healthy glow.",
+      "fullDescription": "Experience the rejuvenating power of our Oxygen Mask. This innovative treatment infuses pure oxygen deep into your skin, promoting cellular renewal, reducing signs of fatigue, and leaving your complexion radiant and refreshed.",
+      "duration": "15 min",
+      "price": "$25",
+      "priceLabel": "Add $25",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24203946&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/5c4f6ba1e2ccd1ee6075495d/1655419707450-FYAW4T2G57D503SWMHT7/oxygen-facial.jpg",
+      "benefits": [
+        "Promotes cell renewal",
+        "Instant brightening",
+        "Deeply refreshing",
+        "Reduces fatigue signs"
+      ]
+    },
+    {
+      "id": "collagen-mask",
+      "name": "Add on Collagen Mask",
+      "description": "Premium collagen mask for intense hydration and anti-aging. Plumps skin, reduces fine lines, and restores youthful firmness.",
+      "fullDescription": "Upgrade to our luxurious Collagen Mask for maximum anti-aging benefits. Packed with marine collagen, hyaluronic acid, and peptides, this premium mask deeply hydrates, firms, and visibly reduces the appearance of fine lines and wrinkles.",
+      "duration": "15 min",
+      "price": "$25",
+      "priceLabel": "Add $25",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24203948&share=true&pId=2609547",
+      "image": "https://cdn.shopify.com/s/files/1/0267/8497/7402/files/collagen-mask-treatment.jpg",
+      "benefits": [
+        "Intense hydration",
+        "Plumps and firms skin",
+        "Reduces fine lines",
+        "Marine collagen formula"
+      ]
+    },
+    {
+      "id": "gold-mask",
+      "name": "Add on Gold Mask",
+      "description": "Luxurious 24K gold mask for ultimate rejuvenation. Stimulates circulation, promotes radiance, and delivers anti-aging benefits.",
+      "fullDescription": "Indulge in the luxury of our 24K Gold Mask. Real gold particles improve blood circulation, stimulate cellular regeneration, and provide powerful anti-aging benefits for luminous, youthful skin that glows from within.",
+      "duration": "15 min",
+      "price": "$25",
+      "priceLabel": "Add $25",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24203949&share=true&pId=2609547",
+      "image": "https://images.herzindagi.info/image/2020/Nov/24-karat-gold-facial.jpg",
+      "benefits": [
+        "24K gold infusion",
+        "Stimulates circulation",
+        "Anti-aging properties",
+        "Luminous radiance"
+      ]
+    },
+    {
+      "id": "detox-mask",
+      "name": "Add on Detox Mask",
+      "description": "Purifying detox mask that draws out impurities and toxins. Perfect for congested, stressed, or urban-exposed skin.",
+      "fullDescription": "Cleanse and purify with our Detox Mask, formulated with activated charcoal and mineral-rich clay. This powerful treatment draws out toxins, unclogs pores, and leaves your skin feeling refreshed, balanced, and deeply cleansed.",
+      "duration": "15 min",
+      "price": "$25",
+      "priceLabel": "Add $25",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24203951&share=true&pId=2609547",
+      "image": "https://www.byrdie.com/thmb/detox-face-mask-clay.jpg",
+      "benefits": [
+        "Draws out toxins",
+        "Unclogs pores",
+        "Balances skin",
+        "Deep purification"
+      ]
+    },
+    {
+      "id": "glo-glycolic-peel",
+      "name": "Add on Glo Glycolic Peel Treatment",
+      "description": "Professional glycolic peel for smoother, brighter skin. Exfoliates dead cells, reduces hyperpigmentation, and refines texture.",
+      "fullDescription": "Transform your skin with our Glo Glycolic Peel Treatment. This advanced chemical exfoliation uses medical-grade glycolic acid to resurface skin, reduce dark spots, minimize pores, and reveal a smoother, more radiant complexion.",
+      "duration": "20 min",
+      "price": "$35",
+      "priceLabel": "Add $35",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24203956&share=true&pId=2609547",
+      "image": "https://www.drleslie.com/wp-content/uploads/2020/06/glycolic-peel-treatment.jpg",
+      "benefits": [
+        "Exfoliates dead skin cells",
+        "Reduces hyperpigmentation",
+        "Refines skin texture",
+        "Minimizes pores"
+      ]
+    },
+    {
+      "id": "microdermabrasion",
+      "name": "Add on Microdermabrasion",
+      "description": "Advanced exfoliation treatment that polishes away dull skin. Reveals fresh, smooth, glowing skin instantly.",
+      "fullDescription": "Experience the transformative power of Microdermabrasion. This non-invasive treatment uses diamond-tip technology to gently exfoliate, stimulate collagen production, and reveal smoother, more youthful skin with improved tone and texture.",
+      "duration": "20 min",
+      "price": "$35",
+      "priceLabel": "Add $35",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24203959&share=true&pId=2609547",
+      "image": "https://www.radiancemedspa.com/wp-content/uploads/2019/08/microdermabrasion-treatment.jpg",
+      "benefits": [
+        "Diamond-tip exfoliation",
+        "Stimulates collagen",
+        "Smooths texture",
+        "Instant glow"
+      ]
+    },
+    {
+      "id": "oxygen-mask-infusion",
+      "name": "Add on Oxygen Mask + Oxygen Infusion",
+      "description": "Double oxygen treatment combining mask and infusion therapy. Maximum brightening, hydration, and cellular rejuvenation.",
+      "fullDescription": "Experience the ultimate oxygen therapy with our combined Oxygen Mask + Infusion treatment. This powerful duo infuses pure oxygen, vitamins, and nutrients deep into the skin while the mask seals in benefits for maximum radiance and rejuvenation.",
+      "duration": "25 min",
+      "price": "$35",
+      "priceLabel": "Add $35",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24203961&share=true&pId=2609547",
+      "image": "https://www.plasticsurgery.org/images/oxygen-facial-treatment.jpg",
+      "benefits": [
+        "Double oxygen boost",
+        "Deep nutrient infusion",
+        "Maximum brightening",
+        "Enhanced cell renewal"
+      ]
+    },
+    {
+      "id": "extraction",
+      "name": "Add on Extraction",
+      "description": "Professional extraction service for deep pore cleansing. Removes blackheads, whiteheads, and congestion for clearer skin.",
+      "fullDescription": "Achieve crystal-clear skin with our professional Extraction add-on. Using gentle, expert techniques, we thoroughly cleanse pores, remove impurities, and eliminate blackheads and whiteheads for a refined, smooth complexion.",
+      "duration": "20 min",
+      "price": "$35",
+      "priceLabel": "Add $35",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24203976&share=true&pId=2609547",
+      "image": "https://www.skincarebyphysicians.com/images/facial-extraction.jpg",
+      "benefits": [
+        "Deep pore cleansing",
+        "Removes blackheads",
+        "Clears congestion",
+        "Smoother complexion"
+      ]
+    },
+    {
+      "id": "hydra-machine",
+      "name": "Add on Hydra Machine",
+      "description": "Advanced hydradermabrasion treatment for deep cleansing and hydration. Vortex technology exfoliates and infuses simultaneously.",
+      "fullDescription": "Experience next-level skincare with our Hydra Machine treatment. This revolutionary technology combines cleansing, exfoliation, extraction, and hydration in one seamless treatment, delivering instant results with no downtime.",
+      "duration": "25 min",
+      "price": "$35",
+      "priceLabel": "Add $35",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24203997&share=true&pId=2609547",
+      "image": "https://www.aestheticsjournal.com/images/hydrafacial-machine.jpg",
+      "benefits": [
+        "4-in-1 treatment",
+        "Deep hydration",
+        "Vortex exfoliation",
+        "Instant results"
+      ]
+    },
+    {
+      "id": "led-light-therapy",
+      "name": "Add on LED Light Therapy",
+      "description": "Advanced LED technology for skin rejuvenation. Reduces fine lines, brightens complexion, and promotes collagen production.",
+      "fullDescription": "Harness the power of LED light therapy to enhance your facial treatment. Different wavelengths target specific skin concerns - red light for anti-aging and collagen, blue light for acne, and near-infrared for deep healing and rejuvenation.",
+      "duration": "20 min",
+      "price": "$35",
+      "priceLabel": "Add $35",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24203992&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/60a8b9c7d8e9f0a1b2c3d4e5/led-light-therapy.jpg",
+      "benefits": [
+        "Stimulates collagen production",
+        "Reduces fine lines",
+        "Brightens complexion",
+        "Non-invasive rejuvenation"
+      ]
+    },
+    {
+      "id": "dermaplaning",
+      "name": "Add on Dermaplaning",
+      "description": "Expert dermaplaning for ultra-smooth skin. Removes dead skin and peach fuzz for flawless texture and enhanced product absorption.",
+      "fullDescription": "Transform your skin with our Dermaplaning treatment. This precise exfoliation technique uses a surgical blade to gently remove dead skin cells and vellus hair, revealing instantly smoother, brighter skin with improved makeup application and product penetration.",
+      "duration": "25 min",
+      "price": "$40",
+      "priceLabel": "Add $40",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24191197&share=true&pId=2609547",
+      "image": "https://www.americanmedspa.com/images/dermaplaning-treatment.jpg",
+      "benefits": [
+        "Removes dead skin cells",
+        "Eliminates peach fuzz",
+        "Ultra-smooth texture",
+        "Enhanced product absorption"
+      ]
+    }
+  ]
+}
