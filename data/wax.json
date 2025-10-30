@@ -1,0 +1,447 @@
+{
+  "category": "wax",
+  "services": [
+    {
+      "id": "lip-wax",
+      "name": "Lip Wax",
+      "description": "Quick and gentle upper lip hair removal for smooth, hair-free skin.",
+      "fullDescription": "Our gentle lip waxing service removes unwanted upper lip hair quickly and effectively. Using premium wax formulated for sensitive facial skin, this treatment leaves your upper lip smooth and hair-free.",
+      "duration": "5 min",
+      "price": "$8",
+      "priceLabel": "Starting at $8",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24200689&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/lip-wax.jpg",
+      "benefits": [
+        "Quick 5-minute treatment",
+        "Gentle on sensitive skin",
+        "Smooth, hair-free results",
+        "Long-lasting effect"
+      ]
+    },
+    {
+      "id": "chin-wax-threading",
+      "name": "Chin Wax or Threading",
+      "description": "Effective chin hair removal using wax or threading method. Your choice for smooth results.",
+      "fullDescription": "Remove unwanted chin hair with your choice of waxing or threading. Both methods provide precise hair removal, leaving your chin smooth and well-groomed. Our experienced estheticians will recommend the best method for your skin type.",
+      "duration": "10 min",
+      "price": "$10",
+      "priceLabel": "Starting at $10",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24200694&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/chin-wax.jpg",
+      "benefits": [
+        "Choice of wax or threading",
+        "Precise hair removal",
+        "Quick and effective",
+        "Smooth results"
+      ]
+    },
+    {
+      "id": "stomach-line-wax",
+      "name": "Stomach Line Wax",
+      "description": "Remove unwanted stomach line hair for a clean, smooth appearance.",
+      "fullDescription": "Our stomach line waxing service removes unwanted hair along the stomach line, creating a clean and smooth appearance. Perfect for maintaining a groomed look.",
+      "duration": "10 min",
+      "price": "$10",
+      "priceLabel": "Starting at $10",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24200705&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/stomach-line-wax.jpg",
+      "benefits": [
+        "Clean, smooth appearance",
+        "Quick treatment",
+        "Long-lasting results",
+        "Professional application"
+      ]
+    },
+    {
+      "id": "eyebrows-wax-threading",
+      "name": "Eyebrows Wax or Threading",
+      "description": "Professional eyebrow shaping with wax or threading for perfectly groomed brows.",
+      "fullDescription": "Achieve perfectly shaped eyebrows with our professional waxing or threading service. Our skilled estheticians will shape your brows to complement your facial features, creating a polished and defined look.",
+      "duration": "15 min",
+      "price": "$15",
+      "priceLabel": "Starting at $15",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24200748&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/eyebrow-wax.jpg",
+      "benefits": [
+        "Professional brow shaping",
+        "Choice of wax or threading",
+        "Customized to your face",
+        "Defined, groomed look"
+      ]
+    },
+    {
+      "id": "earlobe-waxing",
+      "name": "Earlobe Waxing",
+      "description": "Gentle earlobe hair removal for clean, well-groomed ears.",
+      "fullDescription": "Our gentle earlobe waxing service removes unwanted hair from the earlobes and surrounding area, leaving your ears looking clean and well-groomed. Perfect for maintaining a polished appearance.",
+      "duration": "10 min",
+      "price": "$15",
+      "priceLabel": "Starting at $15",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24200758&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/earlobe-wax.jpg",
+      "benefits": [
+        "Gentle on sensitive skin",
+        "Clean, groomed appearance",
+        "Quick service",
+        "Precise application"
+      ]
+    },
+    {
+      "id": "lower-stomach-wax",
+      "name": "Lower Stomach Wax",
+      "description": "Remove unwanted lower stomach hair for smooth, hair-free skin.",
+      "fullDescription": "Our lower stomach waxing service effectively removes unwanted hair from the lower abdominal area, providing smooth, hair-free skin that lasts for weeks.",
+      "duration": "15 min",
+      "price": "$15",
+      "priceLabel": "Starting at $15",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24200816&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/stomach-wax.jpg",
+      "benefits": [
+        "Smooth, hair-free skin",
+        "Long-lasting results",
+        "Professional technique",
+        "Quick treatment"
+      ]
+    },
+    {
+      "id": "nose-wax",
+      "name": "Nose Wax",
+      "description": "Safe and effective nose hair removal for a clean, groomed look.",
+      "fullDescription": "Our professional nose waxing service safely removes unwanted nose hair using specialized techniques and products designed for this sensitive area. Experience immediate results with a clean, well-groomed appearance.",
+      "duration": "10 min",
+      "price": "$15",
+      "priceLabel": "Starting at $15",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24200768&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/nose-wax.jpg",
+      "benefits": [
+        "Safe, professional technique",
+        "Immediate results",
+        "Clean appearance",
+        "Quick service"
+      ]
+    },
+    {
+      "id": "underarm-wax",
+      "name": "Underarm Wax",
+      "description": "Smooth, hair-free underarms with our professional waxing service.",
+      "fullDescription": "Achieve smooth, hair-free underarms with our professional waxing service. Using premium wax that's gentle on sensitive skin, this treatment provides long-lasting results and leaves your underarms feeling silky smooth.",
+      "duration": "15 min",
+      "price": "$15",
+      "priceLabel": "Starting at $15",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24200745&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/underarm-wax.jpg",
+      "benefits": [
+        "Smooth, hair-free results",
+        "Gentle on sensitive skin",
+        "Long-lasting effect",
+        "Quick treatment"
+      ]
+    },
+    {
+      "id": "bikini-line-wax",
+      "name": "Bikini Line Wax",
+      "description": "Professional bikini line waxing for a clean, confident look.",
+      "fullDescription": "Our bikini line waxing service removes unwanted hair along the bikini line, leaving you feeling confident and beach-ready. Using premium wax designed for sensitive areas, this treatment provides smooth, long-lasting results.",
+      "duration": "20 min",
+      "price": "$15",
+      "priceLabel": "Starting at $15",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24200818&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/bikini-wax.jpg",
+      "benefits": [
+        "Clean, confident look",
+        "Gentle on sensitive skin",
+        "Beach-ready results",
+        "Professional application"
+      ]
+    },
+    {
+      "id": "deep-bikini-wax",
+      "name": "Deep Bikini Wax",
+      "description": "Extended bikini waxing for more comprehensive hair removal.",
+      "fullDescription": "Our deep bikini wax provides more extensive hair removal than a standard bikini line wax, removing hair from a larger area while maintaining a natural look. Perfect for those seeking more comprehensive coverage.",
+      "duration": "25 min",
+      "price": "$20",
+      "priceLabel": "Starting at $20",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24200824&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/deep-bikini-wax.jpg",
+      "benefits": [
+        "Comprehensive coverage",
+        "Smooth, clean results",
+        "Long-lasting effect",
+        "Professional technique"
+      ]
+    },
+    {
+      "id": "half-arm-waxing",
+      "name": "Half Arm Waxing",
+      "description": "Smooth, hair-free forearms or upper arms with professional waxing.",
+      "fullDescription": "Remove unwanted arm hair from either your forearms or upper arms with our half arm waxing service. This treatment provides smooth, hair-free skin that lasts for weeks, perfect for sleeveless outfits.",
+      "duration": "20 min",
+      "price": "$25",
+      "priceLabel": "Starting at $25",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24200830&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/arm-wax.jpg",
+      "benefits": [
+        "Smooth, hair-free arms",
+        "Long-lasting results",
+        "Perfect for sleeveless wear",
+        "Quick treatment"
+      ]
+    },
+    {
+      "id": "buttocks-wax",
+      "name": "Buttocks Wax",
+      "description": "Professional buttocks waxing for smooth, hair-free skin.",
+      "fullDescription": "Our professional buttocks waxing service provides smooth, hair-free skin using gentle techniques designed for this sensitive area. Experience comfortable, long-lasting results in a private, professional setting.",
+      "duration": "25 min",
+      "price": "$25",
+      "priceLabel": "Starting at $25",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24200828&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/buttocks-wax.jpg",
+      "benefits": [
+        "Smooth, clean results",
+        "Professional technique",
+        "Private setting",
+        "Long-lasting effect"
+      ]
+    },
+    {
+      "id": "half-leg-wax",
+      "name": "Half Leg Wax",
+      "description": "Smooth, silky lower or upper legs with our professional waxing service.",
+      "fullDescription": "Achieve smooth, silky legs with our half leg waxing service, covering either lower legs (knee to ankle) or upper legs (knee to thigh). Using premium wax, this treatment provides long-lasting, hair-free results.",
+      "duration": "25 min",
+      "price": "$25",
+      "priceLabel": "Starting at $25",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24200832&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/leg-wax.jpg",
+      "benefits": [
+        "Smooth, silky legs",
+        "Long-lasting results",
+        "Professional application",
+        "Perfect for any occasion"
+      ]
+    },
+    {
+      "id": "full-stomach-wax",
+      "name": "Full Stomach Wax",
+      "description": "Complete stomach waxing for smooth, hair-free abdominal area.",
+      "fullDescription": "Our full stomach waxing service removes unwanted hair from the entire abdominal area, from below the chest to the bikini line. Experience smooth, hair-free skin with long-lasting results.",
+      "duration": "25 min",
+      "price": "$30",
+      "priceLabel": "Starting at $30",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24200861&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/stomach-wax.jpg",
+      "benefits": [
+        "Complete coverage",
+        "Smooth, hair-free skin",
+        "Long-lasting effect",
+        "Professional technique"
+      ]
+    },
+    {
+      "id": "full-face-waxing-threading",
+      "name": "Full Face Waxing or Threading",
+      "description": "Complete facial hair removal with wax or threading for smooth, glowing skin.",
+      "fullDescription": "Our full face waxing or threading service removes unwanted facial hair from all areas including upper lip, chin, cheeks, forehead, and sideburns. Choose between waxing or threading for a smooth, hair-free complexion that glows.",
+      "duration": "30 min",
+      "price": "$35",
+      "priceLabel": "Starting at $35",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24200933&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/face-wax.jpg",
+      "benefits": [
+        "Complete facial hair removal",
+        "Choice of wax or threading",
+        "Smooth, glowing skin",
+        "Professional results"
+      ]
+    },
+    {
+      "id": "full-arm-waxing",
+      "name": "Full Arm Waxing",
+      "description": "Complete arm waxing from shoulders to wrists for silky smooth arms.",
+      "fullDescription": "Achieve perfectly smooth arms with our full arm waxing service, covering from shoulders to wrists. This comprehensive treatment removes all unwanted arm hair, leaving your skin silky smooth and hair-free for weeks.",
+      "duration": "30 min",
+      "price": "$35",
+      "priceLabel": "Starting at $35",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24200934&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/arm-wax.jpg",
+      "benefits": [
+        "Silky smooth arms",
+        "Complete coverage",
+        "Long-lasting results",
+        "Perfect for any outfit"
+      ]
+    },
+    {
+      "id": "honey-brazilian-wax",
+      "name": "Honey Brazilian Wax",
+      "description": "Complete Brazilian waxing with nourishing honey wax for smooth results.",
+      "fullDescription": "Our signature Honey Brazilian Wax uses premium honey-based wax that's gentle on sensitive skin while providing complete hair removal. This treatment removes all or most pubic hair, leaving you feeling confident and smooth.",
+      "duration": "40 min",
+      "price": "$35",
+      "priceLabel": "Starting at $35",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24200961&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/brazilian-wax.jpg",
+      "benefits": [
+        "Honey-based formula",
+        "Complete hair removal",
+        "Gentle on skin",
+        "Long-lasting smoothness"
+      ]
+    },
+    {
+      "id": "vanilla-brazilian-wax",
+      "name": "Vanilla Sensitive Brazilian Wax",
+      "description": "Gentle Brazilian wax with vanilla formula designed for sensitive skin.",
+      "fullDescription": "Our Vanilla Sensitive Brazilian Wax is specially formulated for those with sensitive skin. The vanilla-infused wax is extra gentle while providing effective, complete hair removal with minimal discomfort.",
+      "duration": "40 min",
+      "price": "$40",
+      "priceLabel": "Starting at $40",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24182014&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/brazilian-wax.jpg",
+      "benefits": [
+        "Extra gentle formula",
+        "Perfect for sensitive skin",
+        "Vanilla-infused",
+        "Complete hair removal"
+      ]
+    },
+    {
+      "id": "chocolate-brazilian-wax",
+      "name": "Chocolate Super Sensitive Brazilian Wax",
+      "description": "Ultimate gentle Brazilian wax with chocolate formula for the most sensitive skin.",
+      "fullDescription": "Our premium Chocolate Super Sensitive Brazilian Wax is the ultimate choice for extremely sensitive skin. The luxurious chocolate-infused formula provides complete hair removal with maximum comfort and minimal irritation.",
+      "duration": "45 min",
+      "price": "$45",
+      "priceLabel": "Starting at $45",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24200985&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/brazilian-wax.jpg",
+      "benefits": [
+        "Super sensitive formula",
+        "Chocolate-infused luxury",
+        "Maximum comfort",
+        "Complete hair removal"
+      ]
+    },
+    {
+      "id": "chest-waxing",
+      "name": "Chest Waxing",
+      "description": "Professional chest waxing for smooth, hair-free skin.",
+      "fullDescription": "Our professional chest waxing service removes unwanted chest hair, creating a smooth, clean appearance. Using quality wax and expert technique, this treatment provides long-lasting, hair-free results.",
+      "duration": "30 min",
+      "price": "$50",
+      "priceLabel": "Starting at $50",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24201173&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/chest-wax.jpg",
+      "benefits": [
+        "Smooth, clean chest",
+        "Professional technique",
+        "Long-lasting results",
+        "Groomed appearance"
+      ]
+    },
+    {
+      "id": "full-leg-wax",
+      "name": "Full Leg Wax",
+      "description": "Complete leg waxing from thighs to ankles for perfectly smooth legs.",
+      "fullDescription": "Achieve perfectly smooth legs with our full leg waxing service, covering from upper thighs to ankles. This comprehensive treatment removes all unwanted leg hair, leaving your legs silky smooth and hair-free for weeks.",
+      "duration": "45 min",
+      "price": "$45",
+      "priceLabel": "Starting at $45",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24201165&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/leg-wax.jpg",
+      "benefits": [
+        "Perfectly smooth legs",
+        "Complete coverage",
+        "Long-lasting results",
+        "Silky soft skin"
+      ]
+    },
+    {
+      "id": "chest-stomach-wax",
+      "name": "Chest and Stomach Wax",
+      "description": "Combined chest and stomach waxing for complete torso smoothness.",
+      "fullDescription": "Our comprehensive chest and stomach waxing service removes unwanted hair from the entire torso area. This combination treatment provides smooth, hair-free skin from chest to abdomen with long-lasting results.",
+      "duration": "45 min",
+      "price": "$55",
+      "priceLabel": "Starting at $55",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24200992&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/chest-stomach-wax.jpg",
+      "benefits": [
+        "Complete torso coverage",
+        "Smooth, clean appearance",
+        "Long-lasting effect",
+        "Professional results"
+      ]
+    },
+    {
+      "id": "back-shoulder-wax",
+      "name": "Back & Shoulder Wax",
+      "description": "Professional back and shoulder waxing for smooth, hair-free skin.",
+      "fullDescription": "Our back and shoulder waxing service removes unwanted hair from the entire back and shoulder area. Using professional techniques, this treatment provides smooth, hair-free skin with results that last for weeks.",
+      "duration": "45 min",
+      "price": "$55",
+      "priceLabel": "Starting at $55",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24201175&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/back-wax.jpg",
+      "benefits": [
+        "Complete back coverage",
+        "Smooth, clean results",
+        "Professional technique",
+        "Long-lasting effect"
+      ]
+    },
+    {
+      "id": "full-arm-wax-coarse",
+      "name": "Full Arm Wax (Coarse Hair)",
+      "description": "Specialized full arm waxing for coarse or thick hair.",
+      "fullDescription": "Our specialized full arm waxing service for coarse hair uses stronger wax and advanced techniques to effectively remove thick or coarse arm hair. Experience smooth, hair-free arms with long-lasting results.",
+      "duration": "35 min",
+      "price": "$65",
+      "priceLabel": "Starting at $65",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24200934&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/arm-wax.jpg",
+      "benefits": [
+        "Designed for coarse hair",
+        "Effective removal",
+        "Smooth, clean arms",
+        "Long-lasting results"
+      ]
+    },
+    {
+      "id": "full-leg-wax-coarse",
+      "name": "Full Leg Wax (Coarse Hair)",
+      "description": "Specialized full leg waxing for coarse or thick hair.",
+      "fullDescription": "Our specialized full leg waxing service for coarse hair uses professional-grade wax and expert techniques to effectively remove thick or coarse leg hair. Achieve perfectly smooth legs with results that last.",
+      "duration": "55 min",
+      "price": "$70",
+      "priceLabel": "Starting at $70",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24201165&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/leg-wax.jpg",
+      "benefits": [
+        "Designed for coarse hair",
+        "Complete leg coverage",
+        "Smooth, silky results",
+        "Long-lasting effect"
+      ]
+    },
+    {
+      "id": "full-body-waxing",
+      "name": "Full Body Waxing",
+      "description": "Complete head-to-toe waxing for total body smoothness.",
+      "fullDescription": "Our comprehensive full body waxing service provides complete hair removal from head to toe. This ultimate treatment includes all major areas for total body smoothness, leaving you feeling confident and hair-free for weeks.",
+      "duration": "120 min",
+      "price": "$155",
+      "priceLabel": "Starting at $155",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24201180&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/full-body-wax.jpg",
+      "benefits": [
+        "Complete body coverage",
+        "Head-to-toe smoothness",
+        "Ultimate hair removal",
+        "Long-lasting confidence"
+      ]
+    }
+  ]
+}
