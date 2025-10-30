@@ -1,0 +1,294 @@
+{
+  "category": "lashes",
+  "services": [
+    {
+      "id": "eyebrows-eyelash-tint",
+      "name": "Eyebrows Tint or Eyelash Tint",
+      "description": "Professional tinting service to enhance your brows or lashes with long-lasting color.",
+      "fullDescription": "Add definition and depth to your brows or lashes with our professional tinting service. Using premium, gentle dyes, we enhance your natural color for a fuller, more defined look that lasts for weeks without daily makeup.",
+      "duration": "30 min",
+      "price": "$25",
+      "priceLabel": "Starting at $25",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24191923&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/lash-tint.jpg",
+      "benefits": [
+        "Long-lasting color",
+        "Enhanced definition",
+        "No daily makeup needed",
+        "Gentle, safe formula"
+      ]
+    },
+    {
+      "id": "eyelash-removal",
+      "name": "Eyelash Removal",
+      "description": "Safe, professional removal of lash extensions without damaging your natural lashes.",
+      "fullDescription": "Our gentle lash extension removal service safely dissolves the adhesive and removes extensions without harming your natural lashes. Using professional-grade remover and expert technique, we ensure a comfortable, damage-free experience.",
+      "duration": "30 min",
+      "price": "$30",
+      "priceLabel": "Starting at $30",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24191927&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/lash-removal.jpg",
+      "benefits": [
+        "Safe removal process",
+        "Protects natural lashes",
+        "Professional technique",
+        "Comfortable experience"
+      ]
+    },
+    {
+      "id": "cluster-eyelash-extensions",
+      "name": "Cluster Eyelash Extensions",
+      "description": "Dramatic volume with cluster lash extensions for special occasions.",
+      "fullDescription": "Create instant drama with our cluster lash extensions, perfect for special events and occasions. These pre-made clusters provide immediate volume and length, giving you glamorous lashes for your big day.",
+      "duration": "45 min",
+      "price": "$50",
+      "priceLabel": "Starting at $50",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24191943&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/cluster-lashes.jpg",
+      "benefits": [
+        "Instant dramatic volume",
+        "Perfect for events",
+        "Quick application",
+        "Glamorous results"
+      ]
+    },
+    {
+      "id": "lash-lift-brow-lamination",
+      "name": "Lash Lift or Brow Lamination",
+      "description": "Natural enhancement with lash lift or brow lamination for beautifully lifted results.",
+      "fullDescription": "Enhance your natural beauty with a lash lift that curls and lifts your lashes, or brow lamination that creates fuller, more defined brows. Both treatments provide a low-maintenance, natural look that lasts for weeks.",
+      "duration": "60 min",
+      "price": "$99",
+      "priceLabel": "Starting at $99",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24192754&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/lash-lift.jpg",
+      "benefits": [
+        "Natural enhancement",
+        "Low maintenance",
+        "Lasts 6-8 weeks",
+        "No daily makeup needed"
+      ]
+    },
+    {
+      "id": "lash-lift-tint",
+      "name": "Lash Lift & Tint",
+      "description": "Complete lash transformation with lift and tint for maximum definition and curl.",
+      "fullDescription": "The ultimate lash enhancement combining a lifting treatment with professional tinting. Your natural lashes are lifted, curled, and darkened for a wide-eyed, defined look that lasts for weeks without mascara.",
+      "duration": "75 min",
+      "price": "$120",
+      "priceLabel": "Starting at $120",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24192750&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/lash-lift-tint.jpg",
+      "benefits": [
+        "Lifted and tinted",
+        "No mascara needed",
+        "Lasts 6-8 weeks",
+        "Wide-eyed look"
+      ]
+    },
+    {
+      "id": "2d-hybrid-eyelashes",
+      "name": "2D (Hybrid Set) Eyelashes",
+      "description": "Natural volume with 2D hybrid lash extensions for everyday beauty.",
+      "fullDescription": "Our 2D Hybrid Set combines classic and volume lash techniques for a natural yet fuller look. Perfect for everyday wear, these extensions add subtle volume and length while maintaining a natural appearance.",
+      "duration": "120 min",
+      "price": "$120+",
+      "priceLabel": "Starting at $120",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24192262&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/2d-lashes.jpg",
+      "benefits": [
+        "Natural volume",
+        "Hybrid technique",
+        "Perfect for daily wear",
+        "Customizable fullness"
+      ]
+    },
+    {
+      "id": "3d-volume-eyelashes",
+      "name": "3D (Volume Set) Eyelashes",
+      "description": "Fuller volume with 3D volume lash extensions for dramatic beauty.",
+      "fullDescription": "Experience luxurious volume with our 3D Volume Set. Multiple lightweight lashes are applied to each natural lash, creating a fuller, more dramatic look while remaining comfortable and natural-looking.",
+      "duration": "150 min",
+      "price": "$130+",
+      "priceLabel": "Starting at $130",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24192793&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/3d-lashes.jpg",
+      "benefits": [
+        "Luxurious volume",
+        "Dramatic yet natural",
+        "Lightweight feel",
+        "Long-lasting beauty"
+      ]
+    },
+    {
+      "id": "4d-mega-volume-eyelashes",
+      "name": "4D (Mega Volume) Eyelashes",
+      "description": "Maximum drama with 4D mega volume extensions for show-stopping lashes.",
+      "fullDescription": "Our 4D Mega Volume Set delivers the ultimate in lash drama. Using ultra-lightweight fans of lashes, we create maximum fullness and impact while maintaining comfort. Perfect for those who want the most dramatic, glamorous look.",
+      "duration": "180 min",
+      "price": "$140+",
+      "priceLabel": "Starting at $140",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24192806&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/4d-lashes.jpg",
+      "benefits": [
+        "Maximum volume",
+        "Show-stopping drama",
+        "Ultra-lightweight",
+        "Glamorous impact"
+      ]
+    },
+    {
+      "id": "professional-evening-makeup",
+      "name": "Professional Evening Makeup",
+      "description": "Glamorous evening makeup with lash extensions for special occasions.",
+      "fullDescription": "Complete your special event look with our professional evening makeup service, which includes stunning lash extensions. Our expert makeup artists create a flawless, long-lasting look perfect for weddings, galas, and special celebrations.",
+      "duration": "120 min",
+      "price": "$150",
+      "priceLabel": "Starting at $150",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&eid=4757257&oiid=sv%3A24202178&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/evening-makeup.jpg",
+      "benefits": [
+        "Complete glam look",
+        "Includes lash extensions",
+        "Long-lasting formula",
+        "Perfect for events"
+      ]
+    },
+    {
+      "id": "makeup-with-eyelash-extensions",
+      "name": "Make-Up With Extension Eyelashes",
+      "description": "Professional makeup application with beautiful lash extensions.",
+      "fullDescription": "Get camera-ready with our complete makeup and lash extension service. Our professional makeup artists create a flawless look complemented by gorgeous lash extensions for a stunning, cohesive appearance.",
+      "duration": "150 min",
+      "price": "$170",
+      "priceLabel": "Starting at $170",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&eid=4757257&oiid=sv%3A24202111&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/makeup-lashes.jpg",
+      "benefits": [
+        "Complete transformation",
+        "Professional makeup",
+        "Beautiful lash extensions",
+        "Camera-ready results"
+      ]
+    },
+    {
+      "id": "brow-lash-lamination-combo",
+      "name": "Brow Lamination & Lash Lamination",
+      "description": "Ultimate combo treatment for perfectly lifted brows and lashes.",
+      "fullDescription": "Transform both your brows and lashes with our comprehensive lamination combo. This treatment lifts and sets your brows while curling and lifting your lashes, creating a complete eye enhancement that lasts for weeks.",
+      "duration": "120 min",
+      "price": "$210",
+      "priceLabel": "Starting at $210",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24192813&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/brow-lash-combo.jpg",
+      "benefits": [
+        "Complete eye enhancement",
+        "Lifted brows and lashes",
+        "Low maintenance",
+        "Lasts 6-8 weeks"
+      ]
+    },
+    {
+      "id": "lip-pmu-touch-up",
+      "name": "Lip Permanent Make Up Touch Up",
+      "description": "Refresh and enhance your existing lip permanent makeup.",
+      "fullDescription": "Maintain the beautiful color and definition of your permanent lip makeup with our professional touch-up service. We refresh faded pigment and perfect the shape, ensuring your lips stay vibrant and perfectly defined.",
+      "duration": "90 min",
+      "price": "$200",
+      "priceLabel": "Starting at $200",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&eid=4757257&oiid=sv%3A24202429&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/lip-pmu-touchup.jpg",
+      "benefits": [
+        "Refreshes faded color",
+        "Perfects shape",
+        "Maintains definition",
+        "Long-lasting results"
+      ]
+    },
+    {
+      "id": "pmu-touch-up",
+      "name": "Permanent Make Up Touch Up",
+      "description": "Professional touch-up for any permanent makeup service.",
+      "fullDescription": "Keep your permanent makeup looking fresh and vibrant with our comprehensive touch-up service. Whether it's brows, eyeliner, or lips, we refresh the pigment and refine the shape for continued beautiful results.",
+      "duration": "90 min",
+      "price": "$250",
+      "priceLabel": "Starting at $250",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&eid=4757257&oiid=sv%3A24202457&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/pmu-touchup.jpg",
+      "benefits": [
+        "Refreshes any PMU",
+        "Maintains color",
+        "Refines shape",
+        "Professional results"
+      ]
+    },
+    {
+      "id": "eyebrow-microshading",
+      "name": "Eyebrow Microshading",
+      "description": "Soft, powdered brow look with microshading permanent makeup.",
+      "fullDescription": "Achieve beautiful, soft-shaded brows with our microshading technique. This permanent makeup method creates a powdered, filled-in look similar to makeup, perfect for those who want fuller-looking brows without the hair-stroke appearance.",
+      "duration": "180 min",
+      "price": "$450",
+      "priceLabel": "Starting at $450",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&eid=4757257&oiid=sv%3A24202484&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/microshading.jpg",
+      "benefits": [
+        "Soft, powdered look",
+        "Fuller brow appearance",
+        "Long-lasting results",
+        "No daily makeup needed"
+      ]
+    },
+    {
+      "id": "microblading-eyebrows",
+      "name": "Microblading Eyebrows",
+      "description": "Natural hair-stroke brows with expert microblading technique.",
+      "fullDescription": "Create natural-looking, hair-like strokes with our expert microblading service. This semi-permanent technique manually implants pigment to mimic individual brow hairs, resulting in beautifully defined, natural-looking eyebrows.",
+      "duration": "180 min",
+      "price": "$500",
+      "priceLabel": "Starting at $500",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&eid=4757257&oiid=sv%3A24202494&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/microblading.jpg",
+      "benefits": [
+        "Natural hair strokes",
+        "Semi-permanent results",
+        "Beautifully defined brows",
+        "Customized shape"
+      ]
+    },
+    {
+      "id": "powder-brows",
+      "name": "Powder Brows",
+      "description": "Soft, makeup-like brows with powder brow permanent makeup.",
+      "fullDescription": "Achieve the perfect soft, filled-in brow look with our powder brow technique. This permanent makeup method creates a soft, powdery appearance similar to brow makeup, providing natural-looking fullness and definition that lasts.",
+      "duration": "180 min",
+      "price": "$500",
+      "priceLabel": "Starting at $500",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&eid=4757257&oiid=sv%3A24202507&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/powder-brows.jpg",
+      "benefits": [
+        "Soft, makeup look",
+        "Natural fullness",
+        "Long-lasting definition",
+        "Perfect for all skin types"
+      ]
+    },
+    {
+      "id": "permanent-lip-makeup",
+      "name": "Permanent Lip Make Up",
+      "description": "Beautiful, long-lasting lip color and definition with permanent makeup.",
+      "fullDescription": "Wake up with perfectly colored and defined lips every day with our permanent lip makeup service. We enhance your natural lip shape and add beautiful, long-lasting color that eliminates the need for daily lipstick application.",
+      "duration": "180 min",
+      "price": "$500",
+      "priceLabel": "Starting at $500",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&eid=4757257&oiid=sv%3A24202429&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/lip-pmu.jpg",
+      "benefits": [
+        "Long-lasting color",
+        "Enhanced definition",
+        "No daily lipstick needed",
+        "Natural-looking results"
+      ]
+    }
+  ]
+}
