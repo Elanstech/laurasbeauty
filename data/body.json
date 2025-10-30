@@ -1,0 +1,107 @@
+{
+  "category": "body",
+  "services": [
+    {
+      "id": "vacuum-butt-lifting",
+      "name": "Vacuum Butt Lifting",
+      "description": "Advanced vacuum therapy for natural butt lifting and contouring. Enhances curves, improves skin texture, and provides a non-invasive lift.",
+      "fullDescription": "Experience the transformative power of Vacuum Butt Lifting technology. This innovative treatment uses controlled suction to lift and contour the buttocks, stimulate collagen production, and improve circulation for naturally enhanced curves without surgery or downtime.",
+      "duration": "30 min",
+      "price": "$75",
+      "priceLabel": "Starting at $75",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
+      "image": "https://www.aestheticjournalonline.com/media/ckeditor/butt-vacuum-therapy.jpg",
+      "benefits": [
+        "Natural butt lifting and contouring",
+        "Improves skin texture and tone",
+        "Stimulates collagen production",
+        "Non-invasive with no downtime"
+      ]
+    },
+    {
+      "id": "back-facial",
+      "name": "Back Facial",
+      "description": "Deep cleansing facial treatment for your back. Targets hard-to-reach areas, clears breakouts, and leaves skin smooth and refreshed.",
+      "fullDescription": "Give your back the same attention as your face with our specialized Back Facial. This comprehensive treatment includes deep cleansing, exfoliation, extractions, and a customized mask to clear congestion, reduce breakouts, and reveal smooth, glowing skin from shoulders to lower back.",
+      "duration": "60 min",
+      "price": "$85",
+      "priceLabel": "Starting at $85",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
+      "image": "https://www.skinspirit.com/wp-content/uploads/2023/06/back-facial-treatment.jpg",
+      "benefits": [
+        "Deep cleansing and exfoliation",
+        "Clears back acne and breakouts",
+        "Smooths rough texture",
+        "Relaxing therapeutic experience"
+      ]
+    },
+    {
+      "id": "slimming-detoxifying-body-wrap",
+      "name": "Slimming and Detoxifying Body Wrap",
+      "description": "Luxurious body wrap that detoxifies, slims, and tones. Draws out impurities while nourishing skin for a sleeker silhouette.",
+      "fullDescription": "Indulge in our Slimming and Detoxifying Body Wrap, a spa treatment that combines therapeutic heat with mineral-rich ingredients to draw out toxins, reduce water retention, and temporarily slim your contours. This deeply relaxing treatment leaves skin soft, smooth, and beautifully toned.",
+      "duration": "60 min",
+      "price": "$80",
+      "priceLabel": "Starting at $80",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
+      "image": "https://www.spalution.com/images/body-wrap-treatment.jpg",
+      "benefits": [
+        "Detoxifies and purifies skin",
+        "Reduces water retention",
+        "Smooths and tones body contours",
+        "Deeply hydrating and nourishing"
+      ]
+    },
+    {
+      "id": "vagacial",
+      "name": "Vagacial (Vaginal Facial)",
+      "description": "Specialized intimate area treatment that cleanses, brightens, and smooths. Professional care for this delicate area with maximum discretion.",
+      "fullDescription": "Our Vagacial is a gentle, professional treatment designed specifically for the intimate bikini area. This service includes cleansing, exfoliation, extractions (if needed), a brightening mask, and soothing serums to address ingrown hairs, hyperpigmentation, and uneven texture with complete privacy and care.",
+      "duration": "60 min",
+      "price": "$85",
+      "priceLabel": "Starting at $85",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
+      "image": "https://www.allure.com/wp-content/uploads/2022/08/vagacial-treatment-spa.jpg",
+      "benefits": [
+        "Prevents and treats ingrown hairs",
+        "Brightens dark spots",
+        "Smooths and refines texture",
+        "Professional intimate care"
+      ]
+    },
+    {
+      "id": "cellulite-treatment",
+      "name": "Cellulite Treatment",
+      "description": "Advanced therapy targeting stubborn cellulite. Smooths dimpled skin, improves circulation, and promotes firmer, more even texture.",
+      "fullDescription": "Combat cellulite with our comprehensive Cellulite Treatment. Using a combination of specialized massage techniques, suction therapy, and targeted products, this treatment breaks down fatty deposits, stimulates lymphatic drainage, and promotes smoother, firmer skin with visible results over time.",
+      "duration": "60 min",
+      "price": "$120",
+      "priceLabel": "Starting at $120",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
+      "image": "https://www.aestheticsadvisor.com/images/cellulite-treatment-therapy.jpg",
+      "benefits": [
+        "Reduces appearance of cellulite",
+        "Smooths dimpled texture",
+        "Improves circulation and lymphatic flow",
+        "Firms and tones skin"
+      ]
+    },
+    {
+      "id": "body-scrub",
+      "name": "Body Scrub",
+      "description": "Invigorating full-body exfoliation that buffs away dead skin. Reveals soft, smooth, glowing skin from head to toe.",
+      "fullDescription": "Reveal your softest skin with our luxurious Body Scrub. This invigorating treatment uses natural exfoliants to polish away dead skin cells, stimulate circulation, and leave your entire body silky smooth. Followed by rich moisturizer for lasting hydration and radiance.",
+      "duration": "30 min",
+      "price": "$75",
+      "priceLabel": "Starting at $75",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
+      "image": "https://www.spacharmed.com/wp-content/uploads/2021/04/body-scrub-exfoliation.jpg",
+      "benefits": [
+        "Exfoliates dead skin cells",
+        "Stimulates circulation",
+        "Softens and smooths texture",
+        "Prepares skin for deep hydration"
+      ]
+    }
+  ]
+}
