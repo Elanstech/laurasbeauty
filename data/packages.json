@@ -1,0 +1,226 @@
+{
+  "category": "packages",
+  "services": [
+    {
+      "id": "aroma-express-package",
+      "name": "Aroma Express Package",
+      "description": "Perfect self-care escape designed to revive you from head to toe. Express facial, massage, and hand treatment.",
+      "fullDescription": "Give yourself the perfect self-care escape with this indulgent package designed to revive you from head to toe. Enjoy a 30-Minute Express Aroma Facial to refresh and hydrate your skin, followed by a 30-Minute Express Massage to melt away tension. Complete your treatment with a soothing Hand Paraffin for silky-smooth hands and a rejuvenating Eye Treatment to brighten and renew your look.",
+      "duration": "60 min",
+      "price": "$140",
+      "priceLabel": "Starting at $140",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/spa-express-package.jpg",
+      "benefits": [
+        "30-minute aroma express massage with hot stones",
+        "30-minute aroma express facial",
+        "Eye treatment included",
+        "Hand paraffin treatment"
+      ]
+    },
+    {
+      "id": "luxurious-pampering-her",
+      "name": "Luxurious Pampering Package For Her",
+      "description": "Special package designed to help her relax and forget the stress of busy life. Perfect gift for Mom or a special woman.",
+      "fullDescription": "This Package is special for your Mom or a Woman you love. It will make her relax and forget the stress of her busy life. Includes aromatherapy body massage, luxurious facial, neck massage with aromatherapy steam, extraction and mask, plus hand and foot massage with hot mittens.",
+      "duration": "100 min",
+      "price": "$179",
+      "priceLabel": "Starting at $179",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/spa-pampering-package.jpg",
+      "benefits": [
+        "Aromatherapy body massage (30 min)",
+        "Luxurious facial with neck massage",
+        "Aromatherapy steam and extraction",
+        "Hand and foot massage with hot mittens"
+      ]
+    },
+    {
+      "id": "romantic-relaxation-two",
+      "name": "Romantic Relaxation for Two",
+      "description": "Perfect couple package for Valentine's Day, anniversaries, or anytime you need a refreshing getaway together.",
+      "fullDescription": "Reward yourself with this special couple package for you and your partner. Perfect for Valentine's Day, anniversaries or anytime you need a refreshing getaway. Retreat together into a world of relaxation with aromatherapy, body scrub, facials, manicure and pedicure, plus complimentary champagne and chocolate.",
+      "duration": "120 min",
+      "price": "$350",
+      "priceLabel": "Starting at $350",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/couples-spa-package.jpg",
+      "benefits": [
+        "European body scrub for two (30 min)",
+        "European facial for two (1 hr)",
+        "European manicure for her",
+        "Complimentary champagne and chocolate"
+      ]
+    },
+    {
+      "id": "lavender-spa-package",
+      "name": "Lavender Spa Package",
+      "description": "Ultimate relaxation with lavender spa manicure and pedicure, paired with rejuvenating express facial.",
+      "fullDescription": "Indulge in the ultimate relaxation with our luxurious Lavender Spa Manicure and Pedicure, paired with a rejuvenating Express Facial. This soothing combo includes a calming lavender soak, nail care, exfoliation, lavender-infused massage, and refreshing facial to cleanse and hydrate your skin.",
+      "duration": "90 min",
+      "price": "$110",
+      "priceLabel": "Starting at $110",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/lavender-spa.jpg",
+      "benefits": [
+        "Calming lavender soak for hands and feet",
+        "Nail shaping and cuticle care",
+        "Lavender-infused massage",
+        "Refreshing express facial"
+      ]
+    },
+    {
+      "id": "queen-for-day-package",
+      "name": "Queen For A Day Package",
+      "description": "Feel like royalty with massage, deep pore facial, spa manicure and pedicure, eye treatment, and hand paraffin.",
+      "fullDescription": "Enjoy the queen for a day special which includes 30-minute aroma express massage, 60-minute European deep pore facial, spa manicure and pedicure, eye treatment, and hand paraffin. Aromatherapy relieves stress, pressure and tension. This treatment is especially good for all the mothers out there!",
+      "duration": "210 min",
+      "price": "$200",
+      "priceLabel": "Starting at $200",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/queen-spa-day.jpg",
+      "benefits": [
+        "30-minute aroma express massage",
+        "60-minute European deep pore facial",
+        "Spa manicure and pedicure",
+        "Eye treatment and hand paraffin"
+      ]
+    },
+    {
+      "id": "full-relaxation-package",
+      "name": "Full Relaxation Package",
+      "description": "Relaxing express facial with aroma massage and your choice of massage or scrub for complete cleansing and relaxation.",
+      "fullDescription": "Relaxing express facial with aroma facial massage and your choice of massage or scrub for your complete cleansing and relaxation. Aromatherapy facials use essential oils to create positive effects on the skin, promoting healing and relaxation in your body.",
+      "duration": "60 min",
+      "price": "$130",
+      "priceLabel": "Starting at $130",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/relaxation-package.jpg",
+      "benefits": [
+        "Express aromatherapy facial",
+        "Aroma facial massage",
+        "Choice of massage or scrub",
+        "Complete relaxation experience"
+      ]
+    },
+    {
+      "id": "glowing-bride-package",
+      "name": "Glowing Bride Package",
+      "description": "Specially designed for brides-to-be. Prepare for your wedding with massage, luxurious facial, and nail care.",
+      "fullDescription": "We can help prepare for your wedding experience and enhance that special day with this specially designed package for bride-to-be. Includes aroma body massage (30 min), luxurious facial (75 min) with hot herb treatment, and French manicure with spa pedicure.",
+      "duration": "210 min",
+      "price": "$195",
+      "priceLabel": "Starting at $195",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/bridal-spa-package.jpg",
+      "benefits": [
+        "30-minute aroma body massage",
+        "75-minute luxurious facial",
+        "French manicure",
+        "Spa pedicure"
+      ]
+    },
+    {
+      "id": "anti-aging-package",
+      "name": "Anti-Aging Package",
+      "description": "Ultimate anti-aging facial with collagen masque that restores elasticity, plus hand paraffin, eye treatment, and pedicure.",
+      "fullDescription": "A renewing masque of collagen restores elasticity and firmness bestowing softness and uneven skin tone with exceptional luminosity. This facial is the ultimate anti-aging facial. This package takes care of your face, hands, and feet. The rejuvenation that every mom will appreciate and need.",
+      "duration": "105 min",
+      "price": "$175",
+      "priceLabel": "Starting at $175",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/anti-aging-package.jpg",
+      "benefits": [
+        "Anti-aging facial with collagen",
+        "Hand paraffin treatment",
+        "Eye treatment",
+        "Champagne spa pedicure"
+      ]
+    },
+    {
+      "id": "sweet-16-package",
+      "name": "Sweet 16 Spa Package",
+      "description": "Perfect celebration package for Sweet 16. Pamper yourself with facial, manicure, and pedicure treatments.",
+      "fullDescription": "Celebrate your Sweet 16 in style with this special spa package designed for young ladies. Includes express facial, spa manicure, and pedicure to make you feel beautiful and confident on your special day.",
+      "duration": "60 min",
+      "price": "$159",
+      "priceLabel": "Starting at $159",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/sweet-16-spa.jpg",
+      "benefits": [
+        "Express facial treatment",
+        "Spa manicure",
+        "Spa pedicure",
+        "Perfect for Sweet 16 celebrations"
+      ]
+    },
+    {
+      "id": "mom-to-be-package",
+      "name": "Mom-To-Be Package",
+      "description": "Special prenatal package designed for expecting mothers. Gentle treatments to help you relax and feel pampered.",
+      "fullDescription": "This special package is designed specifically for expecting mothers, using safe and gentle techniques. Enjoy relaxing treatments that help ease pregnancy discomfort while pampering you during this special time.",
+      "duration": "120 min",
+      "price": "$150",
+      "priceLabel": "Starting at $150",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/prenatal-spa.jpg",
+      "benefits": [
+        "Prenatal-safe treatments",
+        "Gentle relaxation techniques",
+        "Helps ease pregnancy discomfort",
+        "Complete pampering experience"
+      ]
+    },
+    {
+      "id": "king-for-day-package",
+      "name": "King For A Day Package",
+      "description": "Ultimate spa day for men. Massage, facial, grooming, and relaxation treatments designed specifically for him.",
+      "fullDescription": "Treat the special man in your life to a royal spa experience. This comprehensive package includes massage, facial, and grooming services tailored specifically for men's needs.",
+      "duration": "210 min",
+      "price": "$215",
+      "priceLabel": "Starting at $215",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/mens-spa-package.jpg",
+      "benefits": [
+        "Men's massage treatment",
+        "Men's facial",
+        "Grooming services",
+        "Complete relaxation"
+      ]
+    },
+    {
+      "id": "spa-escape-package",
+      "name": "Spa Escape Package",
+      "description": "Full-body renewal with aroma body scrub, shower, manicure, pedicure, and express facial. Perfect pick-me-up.",
+      "fullDescription": "Treat yourself to a full-body renewal. Begin with a soothing Aroma Body Scrub, gently exfoliating and leaving your skin silky smooth. Enjoy a refreshing shower, followed by a Manicure and Pedicure to perfect your look. Complete your escape with an Aroma Express Facial, delivering a quick boost of hydration and radiance.",
+      "duration": "120 min",
+      "price": "$200",
+      "priceLabel": "Starting at $200",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/spa-escape.jpg",
+      "benefits": [
+        "Aroma body scrub with shower",
+        "Professional manicure",
+        "Spa pedicure",
+        "Champagne facial"
+      ]
+    },
+    {
+      "id": "sweet-chocolate-champagne",
+      "name": "Sweet Chocolate and Champagne Package",
+      "description": "Indulgent package with chocolate-inspired treatments and champagne accents. Perfect for special occasions.",
+      "fullDescription": "Indulge in luxury with our Sweet Chocolate and Champagne Package. Experience decadent chocolate-inspired treatments paired with champagne accents for the ultimate pampering experience. Perfect for celebrations or treating yourself.",
+      "duration": "105 min",
+      "price": "$135",
+      "priceLabel": "Starting at $135",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/chocolate-champagne-spa.jpg",
+      "benefits": [
+        "Chocolate-inspired treatments",
+        "Champagne accents",
+        "Luxurious pampering",
+        "Perfect for celebrations"
+      ]
+    }
+  ]
+}
