@@ -10,7 +10,7 @@
       "price": "$25",
       "priceLabel": "Starting at $25",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24191923&share=true&pId=2609547",
-      "image": "https://images.squarespace-cdn.com/content/v1/lash-tint.jpg",
+      "image": "https://www.lashify.com/cdn/shop/articles/Brow_Tint.jpg?v=1693616126&width=1500",
       "benefits": [
         "Long-lasting color",
         "Enhanced definition",
@@ -27,7 +27,7 @@
       "price": "$30",
       "priceLabel": "Starting at $30",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24191927&share=true&pId=2609547",
-      "image": "https://images.squarespace-cdn.com/content/v1/lash-removal.jpg",
+      "image": "https://xxllashes.com/cdn/shop/articles/2_6d80b3a9-80ed-4b9c-b9f1-e48ea62df1ce.png?v=1718865268",
       "benefits": [
         "Safe removal process",
         "Protects natural lashes",
@@ -44,7 +44,7 @@
       "price": "$50",
       "priceLabel": "Starting at $50",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24191943&share=true&pId=2609547",
-      "image": "https://images.squarespace-cdn.com/content/v1/cluster-lashes.jpg",
+      "image": "https://darkswanofdenmark.com/cdn/shop/products/01.jpg?v=1669152108&width=3024",
       "benefits": [
         "Instant dramatic volume",
         "Perfect for events",
@@ -61,7 +61,7 @@
       "price": "$99",
       "priceLabel": "Starting at $99",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24192754&share=true&pId=2609547",
-      "image": "https://images.squarespace-cdn.com/content/v1/lash-lift.jpg",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFaSgzDROq_li9PvOhXC4TFWXHQT4qvifSAA&s",
       "benefits": [
         "Natural enhancement",
         "Low maintenance",
@@ -78,7 +78,7 @@
       "price": "$120",
       "priceLabel": "Starting at $120",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24192750&share=true&pId=2609547",
-      "image": "https://images.squarespace-cdn.com/content/v1/lash-lift-tint.jpg",
+      "image": "https://www.facettemedicalspa.com/wp-content/uploads/2023/07/what-is-a-lash-lift-and-ti-nt.png",
       "benefits": [
         "Lifted and tinted",
         "No mascara needed",
@@ -95,7 +95,7 @@
       "price": "$120+",
       "priceLabel": "Starting at $120",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24192262&share=true&pId=2609547",
-      "image": "https://images.squarespace-cdn.com/content/v1/2d-lashes.jpg",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTP-vFkNrCX7Hm6AIMIvHPkkGvyGD2mndS1xQ&s",
       "benefits": [
         "Natural volume",
         "Hybrid technique",
@@ -112,7 +112,7 @@
       "price": "$130+",
       "priceLabel": "Starting at $130",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24192793&share=true&pId=2609547",
-      "image": "https://images.squarespace-cdn.com/content/v1/3d-lashes.jpg",
+      "image": "https://mylashstore.com.au/cdn/shop/products/CREATEDWITHMyLashStore3DLONGSTEMFANS_dbf2073f-665f-41f4-bb1f-4e035d60f545.jpg?v=1659495735&width=1500",
       "benefits": [
         "Luxurious volume",
         "Dramatic yet natural",
@@ -129,46 +129,12 @@
       "price": "$140+",
       "priceLabel": "Starting at $140",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24192806&share=true&pId=2609547",
-      "image": "https://images.squarespace-cdn.com/content/v1/4d-lashes.jpg",
+      "image": "https://www.princesslashstudio.com/cdn/shop/products/IMG_6341_d039db3b-abcc-4fb7-af9c-4ca1d2207920_1200x.jpg?v=1583350709",
       "benefits": [
         "Maximum volume",
         "Show-stopping drama",
         "Ultra-lightweight",
         "Glamorous impact"
-      ]
-    },
-    {
-      "id": "professional-evening-makeup",
-      "name": "Professional Evening Makeup",
-      "description": "Glamorous evening makeup with lash extensions for special occasions.",
-      "fullDescription": "Complete your special event look with our professional evening makeup service, which includes stunning lash extensions. Our expert makeup artists create a flawless, long-lasting look perfect for weddings, galas, and special celebrations.",
-      "duration": "120 min",
-      "price": "$150",
-      "priceLabel": "Starting at $150",
-      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&eid=4757257&oiid=sv%3A24202178&share=true&pId=2609547",
-      "image": "https://images.squarespace-cdn.com/content/v1/evening-makeup.jpg",
-      "benefits": [
-        "Complete glam look",
-        "Includes lash extensions",
-        "Long-lasting formula",
-        "Perfect for events"
-      ]
-    },
-    {
-      "id": "makeup-with-eyelash-extensions",
-      "name": "Make-Up With Extension Eyelashes",
-      "description": "Professional makeup application with beautiful lash extensions.",
-      "fullDescription": "Get camera-ready with our complete makeup and lash extension service. Our professional makeup artists create a flawless look complemented by gorgeous lash extensions for a stunning, cohesive appearance.",
-      "duration": "150 min",
-      "price": "$170",
-      "priceLabel": "Starting at $170",
-      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&eid=4757257&oiid=sv%3A24202111&share=true&pId=2609547",
-      "image": "https://images.squarespace-cdn.com/content/v1/makeup-lashes.jpg",
-      "benefits": [
-        "Complete transformation",
-        "Professional makeup",
-        "Beautiful lash extensions",
-        "Camera-ready results"
       ]
     },
     {
@@ -180,7 +146,7 @@
       "price": "$210",
       "priceLabel": "Starting at $210",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24192813&share=true&pId=2609547",
-      "image": "https://images.squarespace-cdn.com/content/v1/brow-lash-combo.jpg",
+      "image": "https://quickliftau.com/cdn/shop/products/IMG_1280.jpg?v=1700020777&width=1500",
       "benefits": [
         "Complete eye enhancement",
         "Lifted brows and lashes",
@@ -197,7 +163,7 @@
       "price": "$200",
       "priceLabel": "Starting at $200",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&eid=4757257&oiid=sv%3A24202429&share=true&pId=2609547",
-      "image": "https://images.squarespace-cdn.com/content/v1/lip-pmu-touchup.jpg",
+      "image": "https://images.squarespace-cdn.com/content/v1/573f69677da24f40d74a58bb/1650478331616-62561INJSQE4KSFQ70SO/34524.png",
       "benefits": [
         "Refreshes faded color",
         "Perfects shape",
@@ -214,7 +180,7 @@
       "price": "$250",
       "priceLabel": "Starting at $250",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&eid=4757257&oiid=sv%3A24202457&share=true&pId=2609547",
-      "image": "https://images.squarespace-cdn.com/content/v1/pmu-touchup.jpg",
+      "image": "https://151034601.cdn6.editmysite.com/uploads/1/5/1/0/151034601/JJRAVCQLHWOGHYIGE47DCTS3.png?width=2400&optimize=medium",
       "benefits": [
         "Refreshes any PMU",
         "Maintains color",
@@ -231,7 +197,7 @@
       "price": "$450",
       "priceLabel": "Starting at $450",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&eid=4757257&oiid=sv%3A24202484&share=true&pId=2609547",
-      "image": "https://images.squarespace-cdn.com/content/v1/microshading.jpg",
+      "image": "https://hips.hearstapps.com/hmg-prod/images/hbz-microshading-1-1573835604.jpg",
       "benefits": [
         "Soft, powdered look",
         "Fuller brow appearance",
@@ -248,7 +214,7 @@
       "price": "$500",
       "priceLabel": "Starting at $500",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&eid=4757257&oiid=sv%3A24202494&share=true&pId=2609547",
-      "image": "https://images.squarespace-cdn.com/content/v1/microblading.jpg",
+      "image": "https://images.squarespace-cdn.com/content/v1/60edd85c3a20104c4ffd5507/1638650681518-Z90FH0EVIZ9WZ6UFCYFH/tempImagezcRpPz.gif",
       "benefits": [
         "Natural hair strokes",
         "Semi-permanent results",
@@ -265,7 +231,7 @@
       "price": "$500",
       "priceLabel": "Starting at $500",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&eid=4757257&oiid=sv%3A24202507&share=true&pId=2609547",
-      "image": "https://images.squarespace-cdn.com/content/v1/powder-brows.jpg",
+      "image": "https://cdn.sanity.io/images/y2j1m2ut/production/7d9e19c809919e56de4a1cccbddc831016d6ac95-1920x1080.webp?w=1920&h=1080&auto=format",
       "benefits": [
         "Soft, makeup look",
         "Natural fullness",
@@ -282,7 +248,7 @@
       "price": "$500",
       "priceLabel": "Starting at $500",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&eid=4757257&oiid=sv%3A24202429&share=true&pId=2609547",
-      "image": "https://images.squarespace-cdn.com/content/v1/lip-pmu.jpg",
+      "image": "https://cdn.sanity.io/images/y2j1m2ut/production/30427d0dfc5575313bc0c4ffb25a07c815e106fd-845x630.jpg?w=845&h=630&auto=format",
       "benefits": [
         "Long-lasting color",
         "Enhanced definition",
