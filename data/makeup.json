@@ -2,25 +2,8 @@
   "category": "makeup",
   "services": [
     {
-      "id": "professional-evening-makeup",
-      "name": "Professional Evening Makeup with Eyelash Extensions",
-      "description": "Glamorous evening makeup with lash extensions for your special occasion.",
-      "fullDescription": "Achieve a flawless finish with our antioxidant mineral makeup. Our talented makeup artist will enhance your natural beauty and transform you from glowing to glamorous look by adding Eyelash Extensions. Perfect for weddings, galas, photoshoots, and special celebrations.",
-      "duration": "60 min",
-      "price": "$100",
-      "priceLabel": "Starting at $100",
-      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&eid=4757257&oiid=sv%3A24202178&share=true&pId=2609547",
-      "image": "https://www.mbmmakeupstudio.com/wp-content/uploads/2021/05/professional-makeup-courses-in-delhi.jpg",
-      "benefits": [
-        "Flawless mineral makeup",
-        "Includes lash extensions",
-        "Long-lasting formula",
-        "Perfect for special events"
-      ]
-    },
-    {
       "id": "makeup-with-eyelash-extensions",
-      "name": "Make-Up With Extension Eyelashes",
+      "name": "Professional Evening Makeup with Eyelash Extensions",
       "description": "Professional makeup application with stunning lash extensions for a complete transformation.",
       "fullDescription": "Book a professional makeup at Laura's Beauty Touch and bring out one of a kind beauty. Achieve a flawless finish with our antioxidant mineral makeup. Our talented makeup artist will enhance your natural beauty and transform you from glowing to glamorous.",
       "duration": "40 min - 1 hr",
