@@ -1,0 +1,192 @@
+{
+  "category": "nails",
+  "services": [
+    {
+      "id": "champagne-spa-manicure",
+      "name": "Champagne Spa Manicure",
+      "description": "Luxurious spa manicure with champagne-infused treatments. Pamper your hands with this indulgent experience.",
+      "fullDescription": "Indulge in our signature Champagne Spa Manicure featuring champagne-infused products that nourish and rejuvenate your hands. This luxurious treatment includes nail shaping, cuticle care, exfoliation, massage, and polish application for perfectly manicured nails.",
+      "duration": "40 min",
+      "price": "$25",
+      "priceLabel": "Starting at $25",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&eid=4792785&oiid=sv%3A24203767&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/champagne-manicure.jpg",
+      "benefits": [
+        "Champagne-infused products",
+        "Complete nail shaping and care",
+        "Exfoliation and massage",
+        "Beautiful polish application"
+      ]
+    },
+    {
+      "id": "french-manicure",
+      "name": "French Manicure",
+      "description": "Classic French manicure with elegant white tips. Timeless sophistication for your hands.",
+      "fullDescription": "Achieve timeless elegance with our classic French Manicure. This sophisticated treatment features perfectly shaped nails, cuticle care, and the iconic white tips with natural pink base that never goes out of style.",
+      "duration": "40 min",
+      "price": "$25",
+      "priceLabel": "Starting at $25",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&eid=4792785&oiid=sv%3A24203768&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/french-manicure.jpg",
+      "benefits": [
+        "Classic white tips",
+        "Natural pink base",
+        "Professional nail shaping",
+        "Timeless elegance"
+      ]
+    },
+    {
+      "id": "paraffin-spa-manicure",
+      "name": "Paraffin Spa Manicure",
+      "description": "Spa manicure with paraffin wax treatment. Deep moisturizing therapy for soft, supple hands.",
+      "fullDescription": "Experience ultimate hand hydration with our Paraffin Spa Manicure. This treatment includes a warm paraffin wax dip that deeply moisturizes, softens rough skin, and leaves your hands feeling incredibly smooth and rejuvenated.",
+      "duration": "45 min",
+      "price": "$25",
+      "priceLabel": "Starting at $25",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&eid=4792785&oiid=sv%3A24203760&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/paraffin-manicure.jpg",
+      "benefits": [
+        "Warm paraffin wax treatment",
+        "Deep moisturizing",
+        "Softens rough skin",
+        "Complete nail care"
+      ]
+    },
+    {
+      "id": "regular-manicure",
+      "name": "Regular Manicure",
+      "description": "Essential manicure service with nail shaping, cuticle care, and polish. Perfect for maintaining beautiful nails.",
+      "fullDescription": "Our Regular Manicure provides essential nail care including shaping, cuticle treatment, buffing, and your choice of polish. A great way to keep your nails looking neat and polished.",
+      "duration": "50 min",
+      "price": "$15",
+      "priceLabel": "Starting at $15",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24971273&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/regular-manicure.jpg",
+      "benefits": [
+        "Nail shaping and filing",
+        "Cuticle care",
+        "Buffing and polish",
+        "Affordable maintenance"
+      ]
+    },
+    {
+      "id": "regular-pedicure",
+      "name": "Regular Pedicure",
+      "description": "Essential pedicure service for healthy, beautiful feet. Includes nail care, exfoliation, and massage.",
+      "fullDescription": "Our Regular Pedicure provides comprehensive foot care including nail trimming and shaping, cuticle treatment, exfoliation, massage, and polish application. Perfect for maintaining healthy, beautiful feet.",
+      "duration": "45 min",
+      "price": "$35",
+      "priceLabel": "Starting at $35",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24203774&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/regular-pedicure.jpg",
+      "benefits": [
+        "Complete nail care",
+        "Exfoliation treatment",
+        "Relaxing massage",
+        "Polish application"
+      ]
+    },
+    {
+      "id": "french-pedicure",
+      "name": "French Pedicure",
+      "description": "Classic French pedicure with elegant white tips. Sophisticated style for your toes.",
+      "fullDescription": "Elevate your pedicure with our French Pedicure featuring the timeless elegance of white tips and natural pink base. Includes complete foot care, exfoliation, massage, and the classic French polish application.",
+      "duration": "50 min",
+      "price": "$45",
+      "priceLabel": "Starting at $45",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24203805&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/french-pedicure.jpg",
+      "benefits": [
+        "Classic French style",
+        "Complete foot care",
+        "Exfoliation and massage",
+        "Elegant finish"
+      ]
+    },
+    {
+      "id": "gel-manicure",
+      "name": "Gel Manicure",
+      "description": "Long-lasting gel polish manicure. Chip-resistant shine that lasts up to 2-3 weeks.",
+      "fullDescription": "Experience the durability of our Gel Manicure with professional gel polish that provides a high-gloss, chip-resistant finish lasting up to 2-3 weeks. Includes nail prep, shaping, cuticle care, and gel application with UV/LED curing.",
+      "duration": "45 min",
+      "price": "$40",
+      "priceLabel": "Starting at $40",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24203794&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/gel-manicure.jpg",
+      "benefits": [
+        "Lasts 2-3 weeks",
+        "Chip-resistant finish",
+        "High-gloss shine",
+        "Quick drying"
+      ]
+    },
+    {
+      "id": "gel-pedicure",
+      "name": "Gel Pedicure",
+      "description": "Long-lasting gel polish pedicure. Durable, chip-free toes for weeks of perfection.",
+      "fullDescription": "Enjoy weeks of perfect toes with our Gel Pedicure. This treatment combines complete foot care with long-lasting gel polish that resists chipping and maintains its beautiful shine for 2-3 weeks.",
+      "duration": "55 min",
+      "price": "$45",
+      "priceLabel": "Starting at $45",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24203836&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/gel-pedicure.jpg",
+      "benefits": [
+        "Long-lasting results",
+        "Complete foot care",
+        "Chip-resistant gel",
+        "Beautiful shine"
+      ]
+    },
+    {
+      "id": "paraffin-spa-pedicure",
+      "name": "Paraffin Spa Pedicure",
+      "description": "Luxurious spa pedicure with paraffin wax treatment. Deep moisturizing for incredibly soft feet.",
+      "fullDescription": "Indulge in our Paraffin Spa Pedicure featuring a warm paraffin wax treatment that deeply moisturizes and softens your feet. This luxurious service includes complete foot care, exfoliation, massage, and polish for ultimate pampering.",
+      "duration": "55 min",
+      "price": "$45",
+      "priceLabel": "Starting at $45",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&eid=4792785&oiid=sv%3A24203800&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/paraffin-pedicure.jpg",
+      "benefits": [
+        "Paraffin wax treatment",
+        "Deep moisturizing",
+        "Exfoliation and massage",
+        "Incredibly soft feet"
+      ]
+    },
+    {
+      "id": "manicure-pedicure-combo",
+      "name": "Manicure + Pedicure",
+      "description": "Complete hand and foot care combo. Perfect pairing for head-to-toe beauty.",
+      "fullDescription": "Get the best of both worlds with our Manicure + Pedicure Combo. This comprehensive service provides complete care for both your hands and feet, including nail shaping, cuticle care, exfoliation, massage, and polish application.",
+      "duration": "90 min",
+      "price": "$45",
+      "priceLabel": "Starting at $45",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24203811&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/mani-pedi-combo.jpg",
+      "benefits": [
+        "Complete hand and foot care",
+        "Best value combo",
+        "Full pampering experience",
+        "Coordinated polish"
+      ]
+    },
+    {
+      "id": "russian-manicure",
+      "name": "Russian Manicure",
+      "description": "Precise Russian manicure technique with e-file. Meticulous cuticle work for perfectly clean nails.",
+      "fullDescription": "Experience the precision of our Russian Manicure, a meticulous technique using an e-file for detailed cuticle work. This advanced method provides perfectly clean nail beds, extended polish longevity, and an impeccably polished finish.",
+      "duration": "60 min",
+      "price": "$60",
+      "priceLabel": "Starting at $60",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24203843&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/russian-manicure.jpg",
+      "benefits": [
+        "Precise e-file technique",
+        "Meticulous cuticle work",
+        "Extended polish wear",
+        "Perfectly clean nail beds"
+      ]
+    }
+  ]
+}
