@@ -820,7 +820,7 @@ class BlogSection {
 
     async loadBlogPosts() {
         try {
-            const response = await fetch('blog-posts.json');
+            const response = await fetch('data/blog.json');
             const data = await response.json();
             this.posts = data.posts.sort((a, b) => new Date(b.date) - new Date(a.date));
             this.renderBlogPosts();
