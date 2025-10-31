@@ -797,47 +797,74 @@ class TeamSection {
 // ============================================
 // BLOG SECTION
 // ============================================
+
 class BlogSection {
     constructor() {
+        // DOM Elements
         this.blogGrid = document.getElementById('blogGrid');
         this.blogModal = document.getElementById('blogModal');
         this.blogModalBody = document.getElementById('blogModalBody');
         this.blogModalClose = document.getElementById('blogModalClose');
         this.blogModalOverlay = document.getElementById('blogModalOverlay');
         this.viewAllBtn = document.getElementById('viewAllBlogBtn');
+        this.carouselPrev = document.getElementById('carouselPrev');
+        this.carouselNext = document.getElementById('carouselNext');
+        this.carouselDots = document.getElementById('carouselDots');
         
+        // State
         this.posts = [];
         this.displayCount = 6;
         this.showingAll = false;
+        this.currentSlide = 0;
+        this.isMobile = window.innerWidth <= 768;
         
+        // Initialize
         this.init();
     }
 
+    /**
+     * Initialize the blog section
+     */
     init() {
         this.loadBlogPosts();
         this.setupEventListeners();
+        this.handleResize();
     }
 
+    /**
+     * Load blog posts from JSON file
+     */
     async loadBlogPosts() {
         try {
             const response = await fetch('data/blog.json');
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
             const data = await response.json();
             this.posts = data.posts.sort((a, b) => new Date(b.date) - new Date(a.date));
             this.renderBlogPosts();
+            
+            console.log('✅ Blog posts loaded successfully:', this.posts.length);
         } catch (error) {
-            console.error('Error loading blog posts:', error);
+            console.error('❌ Error loading blog posts:', error);
             this.showError();
         }
     }
 
+    /**
+     * Render blog posts (grid or carousel based on screen size)
+     */
     renderBlogPosts(showAll = false) {
         if (!this.blogGrid) return;
         
         const postsToShow = showAll ? this.posts : this.posts.slice(0, this.displayCount);
         
+        // Clear existing content
         this.blogGrid.innerHTML = postsToShow.map(post => this.createBlogCard(post)).join('');
         
-        // Update view all button
+        // Update view all button visibility
         if (this.viewAllBtn) {
             if (showAll || this.posts.length <= this.displayCount) {
                 this.viewAllBtn.style.display = 'none';
@@ -846,10 +873,22 @@ class BlogSection {
             }
         }
         
+        // Setup carousel for mobile
+        if (this.isMobile) {
+            this.setupCarousel(postsToShow.length);
+        } else {
+            this.hideCarouselControls();
+        }
+        
         // Attach click events to all blog cards
         this.attachCardEvents();
+        
+        console.log(`📝 Rendered ${postsToShow.length} blog posts`);
     }
 
+    /**
+     * Create a single blog card HTML
+     */
     createBlogCard(post) {
         const formattedDate = this.formatDate(post.date);
         
@@ -881,6 +920,109 @@ class BlogSection {
         `;
     }
 
+    /**
+     * Setup carousel functionality for mobile
+     */
+    setupCarousel(totalSlides) {
+        this.currentSlide = 0;
+        this.totalSlides = totalSlides;
+        
+        // Create carousel dots
+        if (this.carouselDots) {
+            this.carouselDots.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.classList.add('carousel-dot');
+                if (i === 0) dot.classList.add('active');
+                dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+                dot.addEventListener('click', () => this.goToSlide(i));
+                this.carouselDots.appendChild(dot);
+            }
+        }
+        
+        // Update navigation buttons
+        this.updateCarouselNav();
+        
+        console.log(`🎠 Carousel initialized with ${totalSlides} slides`);
+    }
+
+    /**
+     * Hide carousel controls on desktop
+     */
+    hideCarouselControls() {
+        if (this.carouselDots) {
+            this.carouselDots.style.display = 'none';
+        }
+    }
+
+    /**
+     * Go to specific slide
+     */
+    goToSlide(index) {
+        if (index < 0 || index >= this.totalSlides) return;
+        
+        this.currentSlide = index;
+        const offset = -index * 100;
+        this.blogGrid.style.transform = `translateX(${offset}%)`;
+        
+        // Update active dot
+        const dots = this.carouselDots.querySelectorAll('.carousel-dot');
+        dots.forEach((dot, i) => {
+            if (i === index) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+        
+        // Update navigation buttons
+        this.updateCarouselNav();
+        
+        console.log(`📍 Moved to slide ${index + 1}/${this.totalSlides}`);
+    }
+
+    /**
+     * Navigate to previous slide
+     */
+    prevSlide() {
+        if (this.currentSlide > 0) {
+            this.goToSlide(this.currentSlide - 1);
+        }
+    }
+
+    /**
+     * Navigate to next slide
+     */
+    nextSlide() {
+        if (this.currentSlide < this.totalSlides - 1) {
+            this.goToSlide(this.currentSlide + 1);
+        }
+    }
+
+    /**
+     * Update carousel navigation button states
+     */
+    updateCarouselNav() {
+        if (!this.carouselPrev || !this.carouselNext) return;
+        
+        // Disable/enable prev button
+        if (this.currentSlide === 0) {
+            this.carouselPrev.disabled = true;
+        } else {
+            this.carouselPrev.disabled = false;
+        }
+        
+        // Disable/enable next button
+        if (this.currentSlide === this.totalSlides - 1) {
+            this.carouselNext.disabled = true;
+        } else {
+            this.carouselNext.disabled = false;
+        }
+    }
+
+    /**
+     * Attach click events to blog cards
+     */
     attachCardEvents() {
         const blogLinks = document.querySelectorAll('.blog-card-link');
         blogLinks.forEach(link => {
@@ -890,8 +1032,23 @@ class BlogSection {
                 this.openModal(postId);
             });
         });
+        
+        // Also make entire card clickable
+        const blogCards = document.querySelectorAll('.blog-card');
+        blogCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                // Don't trigger if clicking the link directly
+                if (e.target.closest('.blog-card-link')) return;
+                
+                const postId = parseInt(card.getAttribute('data-post-id'));
+                this.openModal(postId);
+            });
+        });
     }
 
+    /**
+     * Open modal with blog post content
+     */
     openModal(postId) {
         const post = this.posts.find(p => p.id === postId);
         if (!post) return;
@@ -922,9 +1079,12 @@ class BlogSection {
         this.blogModal.classList.add('active');
         document.body.style.overflow = 'hidden';
         
-        console.log(`📖 Blog post opened: ${post.title}`);
+        console.log(`📖 Opened blog post: ${post.title}`);
     }
 
+    /**
+     * Close modal
+     */
     closeModal() {
         this.blogModal.classList.remove('active');
         document.body.style.overflow = '';
@@ -933,8 +1093,13 @@ class BlogSection {
         if (this.blogModalBody) {
             this.blogModalBody.scrollTop = 0;
         }
+        
+        console.log('✖️ Closed blog modal');
     }
 
+    /**
+     * Setup all event listeners
+     */
     setupEventListeners() {
         // Close modal events
         if (this.blogModalClose) {
@@ -961,14 +1126,86 @@ class BlogSection {
                 console.log('📚 Showing all blog posts');
             });
         }
+        
+        // Carousel navigation buttons
+        if (this.carouselPrev) {
+            this.carouselPrev.addEventListener('click', () => this.prevSlide());
+        }
+        
+        if (this.carouselNext) {
+            this.carouselNext.addEventListener('click', () => this.nextSlide());
+        }
+        
+        // Touch/swipe support for mobile carousel
+        this.setupTouchEvents();
+        
+        // Window resize handler
+        window.addEventListener('resize', () => this.handleResize());
     }
 
+    /**
+     * Setup touch/swipe events for mobile carousel
+     */
+    setupTouchEvents() {
+        if (!this.blogGrid) return;
+        
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        this.blogGrid.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        
+        this.blogGrid.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            this.handleSwipe(touchStartX, touchEndX);
+        }, { passive: true });
+    }
+
+    /**
+     * Handle swipe gesture
+     */
+    handleSwipe(startX, endX) {
+        const swipeThreshold = 50;
+        const difference = startX - endX;
+        
+        if (Math.abs(difference) > swipeThreshold) {
+            if (difference > 0) {
+                // Swiped left - go to next
+                this.nextSlide();
+            } else {
+                // Swiped right - go to previous
+                this.prevSlide();
+            }
+        }
+    }
+
+    /**
+     * Handle window resize
+     */
+    handleResize() {
+        const wasMobile = this.isMobile;
+        this.isMobile = window.innerWidth <= 768;
+        
+        // Re-render if switched between mobile and desktop
+        if (wasMobile !== this.isMobile) {
+            this.renderBlogPosts(this.showingAll);
+            console.log(`📱 Switched to ${this.isMobile ? 'mobile' : 'desktop'} view`);
+        }
+    }
+
+    /**
+     * Format date string
+     */
     formatDate(dateString) {
         const date = new Date(dateString);
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return date.toLocaleDateString('en-US', options);
     }
 
+    /**
+     * Show error message
+     */
     showError() {
         if (this.blogGrid) {
             this.blogGrid.innerHTML = `
@@ -983,9 +1220,9 @@ class BlogSection {
     }
 }
 
-// Initialize Blog Section when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    new BlogSection();
+    const blogSection = new BlogSection();
+    console.log('🚀 Blog Section initialized');
 });
 
 // ============================================
