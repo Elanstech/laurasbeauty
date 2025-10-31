@@ -972,66 +972,83 @@
   </div>
 </section>
 
-<!-- BLOG SECTION -->
-<section class="blog-section" id="blog">
-    <div class="blog-container">
-        
-        <!-- Section Header -->
-        <div class="blog-header" data-aos="fade-up">
-            <div class="section-eyebrow">Latest Updates</div>
-            <h2 class="section-title">Beauty Tips & News</h2>
-            <div class="title-divider"></div>
-            <p class="section-subtitle">
-                Stay informed with the latest beauty trends, seasonal specials, and expert skincare advice from Laura's Beauty Touch
-            </p>
-        </div>
+    <!-- BLOG SECTION -->
+    <section class="blog-section" id="blog">
+        <div class="blog-container">
+            
+            <!-- Section Header -->
+            <div class="blog-header">
+                <div class="section-eyebrow">Latest Updates</div>
+                <h2 class="section-title">Beauty Tips & News</h2>
+                <div class="title-divider"></div>
+                <p class="section-subtitle">
+                    Stay informed with the latest beauty trends, seasonal specials, and expert skincare advice from Laura's Beauty Touch
+                </p>
+            </div>
 
-        <!-- Blog Grid -->
-        <div class="blog-grid" id="blogGrid">
-            <!-- Blog posts will be dynamically loaded here -->
-        </div>
+            <!-- Blog Carousel Wrapper (for mobile navigation) -->
+            <div class="blog-carousel-wrapper">
+                <!-- Navigation Arrows (Mobile Only) -->
+                <button class="carousel-nav carousel-prev" aria-label="Previous blog post" id="carouselPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <button class="carousel-nav carousel-next" aria-label="Next blog post" id="carouselNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
 
-        <!-- Newsletter Widget in Blog -->
-        <div class="blog-newsletter-widget" data-aos="fade-up">
-            <div class="blog-newsletter-content">
-                <div class="blog-newsletter-icon">
-                    <i class="fas fa-envelope-open-text"></i>
-                </div>
-                <div class="blog-newsletter-text">
-                    <h3>Never Miss a Beauty Update</h3>
-                    <p>Subscribe to get exclusive tips, special offers, and the latest blog posts delivered to your inbox</p>
+                <!-- Blog Grid / Carousel Container -->
+                <div class="blog-grid" id="blogGrid">
+                    <!-- Blog posts will be dynamically loaded here from blog.json -->
                 </div>
             </div>
-            <div class="blog-newsletter-form">
-                <!-- Elfsight Subscription Form -->
-                <script src="https://elfsightcdn.com/platform.js" async></script>
-                <div class="elfsight-app-b8c33f12-c4c6-42c5-905b-356c4f523458" data-elfsight-app-lazy></div>
+
+            <!-- Carousel Dots (Mobile Only) -->
+            <div class="carousel-dots" id="carouselDots">
+                <!-- Dots will be dynamically generated -->
+            </div>
+
+            <!-- Newsletter Widget in Blog -->
+            <div class="blog-newsletter-widget">
+                <div class="blog-newsletter-content">
+                    <div class="blog-newsletter-icon">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <div class="blog-newsletter-text">
+                        <h3>Never Miss a Beauty Update</h3>
+                        <p>Subscribe to get exclusive tips, special offers, and the latest blog posts delivered to your inbox</p>
+                    </div>
+                </div>
+                <div class="blog-newsletter-form">
+                    <!-- Elfsight Subscription Form -->
+                    <script src="https://elfsightcdn.com/platform.js" async></script>
+                    <div class="elfsight-app-b8c33f12-c4c6-42c5-905b-356c4f523458" data-elfsight-app-lazy></div>
+                </div>
+            </div>
+
+            <!-- View All Button -->
+            <div class="blog-cta">
+                <a href="#blog" class="view-all-blog-btn" id="viewAllBlogBtn">
+                    View All Posts
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- BLOG POST MODAL -->
+    <div class="blog-modal" id="blogModal">
+        <div class="blog-modal-overlay" id="blogModalOverlay"></div>
+        <div class="blog-modal-content">
+            <button class="blog-modal-close" id="blogModalClose" aria-label="Close modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="blog-modal-body" id="blogModalBody">
+                <!-- Content will be dynamically loaded -->
             </div>
         </div>
-
-        <!-- View All Button -->
-        <div class="blog-cta" data-aos="fade-up" data-aos-delay="400">
-            <a href="#blog" class="view-all-blog-btn" id="viewAllBlogBtn">
-                View All Posts
-                <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-
     </div>
-</section>
-
-<!-- BLOG POST MODAL -->
-<div class="blog-modal" id="blogModal">
-    <div class="blog-modal-overlay" id="blogModalOverlay"></div>
-    <div class="blog-modal-content">
-        <button class="blog-modal-close" id="blogModalClose" aria-label="Close modal">
-            <i class="fas fa-times"></i>
-        </button>
-        <div class="blog-modal-body" id="blogModalBody">
-            <!-- Content will be dynamically loaded -->
-        </div>
-    </div>
-</div>
     
 <!-- GOOGLE REVIEWS SECTION -->
 <section id="google-reviews" class="google-reviews-section">
