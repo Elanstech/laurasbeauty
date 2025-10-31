@@ -795,6 +795,200 @@ class TeamSection {
 }
 
 // ============================================
+// BLOG SECTION
+// ============================================
+class BlogSection {
+    constructor() {
+        this.blogGrid = document.getElementById('blogGrid');
+        this.blogModal = document.getElementById('blogModal');
+        this.blogModalBody = document.getElementById('blogModalBody');
+        this.blogModalClose = document.getElementById('blogModalClose');
+        this.blogModalOverlay = document.getElementById('blogModalOverlay');
+        this.viewAllBtn = document.getElementById('viewAllBlogBtn');
+        
+        this.posts = [];
+        this.displayCount = 6;
+        this.showingAll = false;
+        
+        this.init();
+    }
+
+    init() {
+        this.loadBlogPosts();
+        this.setupEventListeners();
+    }
+
+    async loadBlogPosts() {
+        try {
+            const response = await fetch('blog-posts.json');
+            const data = await response.json();
+            this.posts = data.posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+            this.renderBlogPosts();
+        } catch (error) {
+            console.error('Error loading blog posts:', error);
+            this.showError();
+        }
+    }
+
+    renderBlogPosts(showAll = false) {
+        if (!this.blogGrid) return;
+        
+        const postsToShow = showAll ? this.posts : this.posts.slice(0, this.displayCount);
+        
+        this.blogGrid.innerHTML = postsToShow.map(post => this.createBlogCard(post)).join('');
+        
+        // Update view all button
+        if (this.viewAllBtn) {
+            if (showAll || this.posts.length <= this.displayCount) {
+                this.viewAllBtn.style.display = 'none';
+            } else {
+                this.viewAllBtn.style.display = 'inline-flex';
+            }
+        }
+        
+        // Attach click events to all blog cards
+        this.attachCardEvents();
+    }
+
+    createBlogCard(post) {
+        const formattedDate = this.formatDate(post.date);
+        
+        return `
+            <article class="blog-card" data-post-id="${post.id}">
+                <div class="blog-card-image">
+                    <img src="${post.image}" alt="${post.title}" loading="lazy">
+                    <div class="blog-card-category">${post.category}</div>
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-card-meta">
+                        <span class="blog-card-author">
+                            <i class="fas fa-spa"></i>
+                            Laura's Beauty Touch
+                        </span>
+                        <span class="blog-card-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            ${formattedDate}
+                        </span>
+                    </div>
+                    <h3 class="blog-card-title">${post.title}</h3>
+                    <p class="blog-card-excerpt">${post.excerpt}</p>
+                    <a href="#" class="blog-card-link" data-post-id="${post.id}">
+                        Read More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        `;
+    }
+
+    attachCardEvents() {
+        const blogLinks = document.querySelectorAll('.blog-card-link');
+        blogLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const postId = parseInt(link.getAttribute('data-post-id'));
+                this.openModal(postId);
+            });
+        });
+    }
+
+    openModal(postId) {
+        const post = this.posts.find(p => p.id === postId);
+        if (!post) return;
+        
+        const formattedDate = this.formatDate(post.date);
+        
+        this.blogModalBody.innerHTML = `
+            <img src="${post.image}" alt="${post.title}" class="blog-modal-image">
+            <div class="blog-modal-header">
+                <div class="blog-modal-meta">
+                    <span class="blog-modal-category">${post.category}</span>
+                    <span class="blog-modal-author">
+                        <i class="fas fa-spa"></i>
+                        Laura's Beauty Touch
+                    </span>
+                    <span class="blog-modal-date">
+                        <i class="fas fa-calendar-alt"></i>
+                        ${formattedDate}
+                    </span>
+                </div>
+                <h1 class="blog-modal-title">${post.title}</h1>
+            </div>
+            <div class="blog-modal-content-text">
+                ${post.content}
+            </div>
+        `;
+        
+        this.blogModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        console.log(`📖 Blog post opened: ${post.title}`);
+    }
+
+    closeModal() {
+        this.blogModal.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // Scroll modal body back to top
+        if (this.blogModalBody) {
+            this.blogModalBody.scrollTop = 0;
+        }
+    }
+
+    setupEventListeners() {
+        // Close modal events
+        if (this.blogModalClose) {
+            this.blogModalClose.addEventListener('click', () => this.closeModal());
+        }
+        
+        if (this.blogModalOverlay) {
+            this.blogModalOverlay.addEventListener('click', () => this.closeModal());
+        }
+        
+        // ESC key to close modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.blogModal.classList.contains('active')) {
+                this.closeModal();
+            }
+        });
+        
+        // View all button
+        if (this.viewAllBtn) {
+            this.viewAllBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.showingAll = true;
+                this.renderBlogPosts(true);
+                console.log('📚 Showing all blog posts');
+            });
+        }
+    }
+
+    formatDate(dateString) {
+        const date = new Date(dateString);
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return date.toLocaleDateString('en-US', options);
+    }
+
+    showError() {
+        if (this.blogGrid) {
+            this.blogGrid.innerHTML = `
+                <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
+                    <i class="fas fa-exclamation-circle" style="font-size: 3rem; color: var(--warm-taupe); margin-bottom: 20px;"></i>
+                    <p style="font-family: 'Lato', sans-serif; font-size: 1.1rem; color: var(--charcoal);">
+                        Unable to load blog posts. Please try again later.
+                    </p>
+                </div>
+            `;
+        }
+    }
+}
+
+// Initialize Blog Section when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    new BlogSection();
+});
+
+// ============================================
 // ELFSIGHT WIDGETS
 // ============================================
 class ElfsightWidgets {
@@ -1520,8 +1714,9 @@ function initWebsite() {
     // Interactive Elements
     new BackToTopButton();
     new FloatingActionButton();
-    
+ 
     // Content Sections
+    new BlogSection();
     new TeamSection();
     new ContactSection();
     new SuperFooter();
