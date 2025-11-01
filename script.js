@@ -817,7 +817,7 @@ class BlogSection {
         this.showingAll = false;
         this.currentSlide = 0;
         this.totalSlides = 0;
-        this.isCarouselMode = false;
+        this.isMobile = window.innerWidth <= 768;
         
         // Touch events
         this.touchStartX = 0;
@@ -838,10 +838,12 @@ class BlogSection {
         // Handle window resize
         window.addEventListener('resize', this.debounce(() => {
             this.checkViewportMode();
-            if (this.isCarouselMode) {
+            if (this.isMobile) {
                 this.updateCarousel();
             }
         }, 250));
+        
+        console.log('✅ Blog Section initialized');
     }
 
     /**
@@ -849,12 +851,13 @@ class BlogSection {
      */
     checkViewportMode() {
         const width = window.innerWidth;
-        const wasCarouselMode = this.isCarouselMode;
-        this.isCarouselMode = width <= 1024;
+        const wasCarouselMode = this.isMobile;
+        this.isMobile = width <= 768;
         
         // Re-render if mode changed
-        if (wasCarouselMode !== this.isCarouselMode) {
+        if (wasCarouselMode !== this.isMobile) {
             this.renderBlogPosts(this.showingAll);
+            console.log(`📱 Switched to ${this.isMobile ? 'mobile' : 'desktop'} view`);
         }
     }
 
@@ -873,7 +876,7 @@ class BlogSection {
             this.posts = data.posts.sort((a, b) => new Date(b.date) - new Date(a.date));
             this.renderBlogPosts();
             
-            console.log('✅ Blog posts loaded successfully:', this.posts.length);
+            console.log('✅ Blog posts loaded:', this.posts.length);
         } catch (error) {
             console.error('❌ Error loading blog posts:', error);
             this.showError();
@@ -901,7 +904,7 @@ class BlogSection {
         }
         
         // Setup carousel for mobile/tablet
-        if (this.isCarouselMode) {
+        if (this.isMobile) {
             this.totalSlides = postsToShow.length;
             this.setupCarousel();
         } else {
@@ -911,7 +914,7 @@ class BlogSection {
         // Attach click events to all blog cards
         this.attachCardEvents();
         
-        console.log(`📝 Rendered ${postsToShow.length} blog posts (Carousel: ${this.isCarouselMode})`);
+        console.log(`📝 Rendered ${postsToShow.length} blog posts (Carousel: ${this.isMobile})`);
     }
 
     /**
@@ -988,7 +991,7 @@ class BlogSection {
      * Go to specific slide
      */
     goToSlide(index) {
-        if (index < 0 || index >= this.totalSlides || !this.isCarouselMode) return;
+        if (index < 0 || index >= this.totalSlides || !this.isMobile) return;
         
         this.currentSlide = index;
         const offset = -index * 100;
@@ -1041,7 +1044,7 @@ class BlogSection {
      * Update carousel position (used on resize)
      */
     updateCarousel() {
-        if (!this.isCarouselMode) return;
+        if (!this.isMobile) return;
         
         const offset = -this.currentSlide * 100;
         this.blogGrid.style.transform = `translateX(${offset}%)`;
@@ -1068,7 +1071,7 @@ class BlogSection {
      * Handle swipe gesture
      */
     handleSwipe() {
-        if (!this.isCarouselMode) return;
+        if (!this.isMobile) return;
         
         const swipeThreshold = 50;
         const difference = this.touchStartX - this.touchEndX;
@@ -1187,7 +1190,7 @@ class BlogSection {
         
         // Keyboard navigation for carousel
         document.addEventListener('keydown', (e) => {
-            if (!this.isCarouselMode) return;
+            if (!this.isMobile) return;
             if (this.blogModal?.classList.contains('active')) return;
             
             if (e.key === 'ArrowLeft') {
