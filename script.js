@@ -817,11 +817,12 @@ class BlogSection {
         this.showingAll = false;
         this.currentSlide = 0;
         this.totalSlides = 0;
-        this.isMobile = window.innerWidth <= 768;
+        this.isMobile = window.innerWidth <= 1024; // Changed from 768 to 1024 to include tablets
         
         // Touch events
         this.touchStartX = 0;
         this.touchEndX = 0;
+        this.isDragging = false;
         
         // Initialize
         this.init();
@@ -852,12 +853,12 @@ class BlogSection {
     checkViewportMode() {
         const width = window.innerWidth;
         const wasCarouselMode = this.isMobile;
-        this.isMobile = width <= 768;
+        this.isMobile = width <= 1024; // Tablets and mobile
         
         // Re-render if mode changed
         if (wasCarouselMode !== this.isMobile) {
             this.renderBlogPosts(this.showingAll);
-            console.log(`📱 Switched to ${this.isMobile ? 'mobile' : 'desktop'} view`);
+            console.log(`📱 Switched to ${this.isMobile ? 'carousel' : 'desktop'} view`);
         }
     }
 
@@ -909,6 +910,10 @@ class BlogSection {
             this.setupCarousel();
         } else {
             this.hideCarouselControls();
+            // Reset grid for desktop
+            if (this.blogGrid) {
+                this.blogGrid.style.transform = '';
+            }
         }
         
         // Attach click events to all blog cards
@@ -957,6 +962,11 @@ class BlogSection {
     setupCarousel() {
         this.currentSlide = 0;
         
+        // Reset transform
+        if (this.blogGrid) {
+            this.blogGrid.style.transform = 'translateX(0%)';
+        }
+        
         // Create dots
         if (this.carouselDots) {
             this.carouselDots.innerHTML = '';
@@ -972,6 +982,10 @@ class BlogSection {
             }
         }
         
+        // Show navigation buttons
+        if (this.carouselPrev) this.carouselPrev.style.display = 'flex';
+        if (this.carouselNext) this.carouselNext.style.display = 'flex';
+        
         // Update navigation buttons
         this.updateCarouselNav();
         
@@ -985,6 +999,12 @@ class BlogSection {
         if (this.carouselDots) {
             this.carouselDots.style.display = 'none';
         }
+        if (this.carouselPrev) {
+            this.carouselPrev.style.display = 'none';
+        }
+        if (this.carouselNext) {
+            this.carouselNext.style.display = 'none';
+        }
     }
 
     /**
@@ -995,7 +1015,10 @@ class BlogSection {
         
         this.currentSlide = index;
         const offset = -index * 100;
-        this.blogGrid.style.transform = `translateX(${offset}%)`;
+        
+        if (this.blogGrid) {
+            this.blogGrid.style.transform = `translateX(${offset}%)`;
+        }
         
         // Update active dot
         const dots = this.carouselDots?.querySelectorAll('.carousel-dot');
@@ -1044,7 +1067,7 @@ class BlogSection {
      * Update carousel position (used on resize)
      */
     updateCarousel() {
-        if (!this.isMobile) return;
+        if (!this.isMobile || !this.blogGrid) return;
         
         const offset = -this.currentSlide * 100;
         this.blogGrid.style.transform = `translateX(${offset}%)`;
@@ -1059,11 +1082,19 @@ class BlogSection {
         
         this.blogGrid.addEventListener('touchstart', (e) => {
             this.touchStartX = e.changedTouches[0].screenX;
+            this.isDragging = true;
+        }, { passive: true });
+        
+        this.blogGrid.addEventListener('touchmove', (e) => {
+            if (!this.isDragging) return;
+            this.touchEndX = e.changedTouches[0].screenX;
         }, { passive: true });
         
         this.blogGrid.addEventListener('touchend', (e) => {
+            if (!this.isDragging) return;
             this.touchEndX = e.changedTouches[0].screenX;
             this.handleSwipe();
+            this.isDragging = false;
         }, { passive: true });
     }
 
@@ -1091,10 +1122,12 @@ class BlogSection {
      * Attach click events to blog cards
      */
     attachCardEvents() {
+        // Handle read more link clicks
         const blogLinks = document.querySelectorAll('.blog-card-link');
         blogLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
+                e.stopPropagation();
                 const postId = parseInt(link.getAttribute('data-post-id'));
                 this.openModal(postId);
             });
@@ -1227,7 +1260,7 @@ class BlogSection {
     }
 
     /**
-     * Debounce utility function
+     * Utility: Debounce function
      */
     debounce(func, wait) {
         let timeout;
