@@ -816,7 +816,12 @@ class BlogSection {
         this.displayCount = 6;
         this.showingAll = false;
         this.currentSlide = 0;
-        this.isMobile = window.innerWidth <= 768;
+        this.totalSlides = 0;
+        this.isCarouselMode = false;
+        
+        // Touch events
+        this.touchStartX = 0;
+        this.touchEndX = 0;
         
         // Initialize
         this.init();
@@ -828,7 +833,29 @@ class BlogSection {
     init() {
         this.loadBlogPosts();
         this.setupEventListeners();
-        this.handleResize();
+        this.checkViewportMode();
+        
+        // Handle window resize
+        window.addEventListener('resize', this.debounce(() => {
+            this.checkViewportMode();
+            if (this.isCarouselMode) {
+                this.updateCarousel();
+            }
+        }, 250));
+    }
+
+    /**
+     * Check if we should use carousel mode (mobile/tablet)
+     */
+    checkViewportMode() {
+        const width = window.innerWidth;
+        const wasCarouselMode = this.isCarouselMode;
+        this.isCarouselMode = width <= 1024;
+        
+        // Re-render if mode changed
+        if (wasCarouselMode !== this.isCarouselMode) {
+            this.renderBlogPosts(this.showingAll);
+        }
     }
 
     /**
@@ -873,9 +900,10 @@ class BlogSection {
             }
         }
         
-        // Setup carousel for mobile
-        if (this.isMobile) {
-            this.setupCarousel(postsToShow.length);
+        // Setup carousel for mobile/tablet
+        if (this.isCarouselMode) {
+            this.totalSlides = postsToShow.length;
+            this.setupCarousel();
         } else {
             this.hideCarouselControls();
         }
@@ -883,7 +911,7 @@ class BlogSection {
         // Attach click events to all blog cards
         this.attachCardEvents();
         
-        console.log(`📝 Rendered ${postsToShow.length} blog posts`);
+        console.log(`📝 Rendered ${postsToShow.length} blog posts (Carousel: ${this.isCarouselMode})`);
     }
 
     /**
@@ -921,16 +949,17 @@ class BlogSection {
     }
 
     /**
-     * Setup carousel functionality for mobile
+     * Setup carousel for mobile/tablet
      */
-    setupCarousel(totalSlides) {
+    setupCarousel() {
         this.currentSlide = 0;
-        this.totalSlides = totalSlides;
         
-        // Create carousel dots
+        // Create dots
         if (this.carouselDots) {
             this.carouselDots.innerHTML = '';
-            for (let i = 0; i < totalSlides; i++) {
+            this.carouselDots.style.display = 'flex';
+            
+            for (let i = 0; i < this.totalSlides; i++) {
                 const dot = document.createElement('button');
                 dot.classList.add('carousel-dot');
                 if (i === 0) dot.classList.add('active');
@@ -943,7 +972,7 @@ class BlogSection {
         // Update navigation buttons
         this.updateCarouselNav();
         
-        console.log(`🎠 Carousel initialized with ${totalSlides} slides`);
+        console.log(`🎠 Carousel setup with ${this.totalSlides} slides`);
     }
 
     /**
@@ -959,20 +988,16 @@ class BlogSection {
      * Go to specific slide
      */
     goToSlide(index) {
-        if (index < 0 || index >= this.totalSlides) return;
+        if (index < 0 || index >= this.totalSlides || !this.isCarouselMode) return;
         
         this.currentSlide = index;
         const offset = -index * 100;
         this.blogGrid.style.transform = `translateX(${offset}%)`;
         
         // Update active dot
-        const dots = this.carouselDots.querySelectorAll('.carousel-dot');
-        dots.forEach((dot, i) => {
-            if (i === index) {
-                dot.classList.add('active');
-            } else {
-                dot.classList.remove('active');
-            }
+        const dots = this.carouselDots?.querySelectorAll('.carousel-dot');
+        dots?.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
         });
         
         // Update navigation buttons
@@ -1006,17 +1031,56 @@ class BlogSection {
         if (!this.carouselPrev || !this.carouselNext) return;
         
         // Disable/enable prev button
-        if (this.currentSlide === 0) {
-            this.carouselPrev.disabled = true;
-        } else {
-            this.carouselPrev.disabled = false;
-        }
+        this.carouselPrev.disabled = (this.currentSlide === 0);
         
         // Disable/enable next button
-        if (this.currentSlide === this.totalSlides - 1) {
-            this.carouselNext.disabled = true;
-        } else {
-            this.carouselNext.disabled = false;
+        this.carouselNext.disabled = (this.currentSlide === this.totalSlides - 1);
+    }
+
+    /**
+     * Update carousel position (used on resize)
+     */
+    updateCarousel() {
+        if (!this.isCarouselMode) return;
+        
+        const offset = -this.currentSlide * 100;
+        this.blogGrid.style.transform = `translateX(${offset}%)`;
+        this.updateCarouselNav();
+    }
+
+    /**
+     * Setup touch/swipe events for mobile carousel
+     */
+    setupTouchEvents() {
+        if (!this.blogGrid) return;
+        
+        this.blogGrid.addEventListener('touchstart', (e) => {
+            this.touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        
+        this.blogGrid.addEventListener('touchend', (e) => {
+            this.touchEndX = e.changedTouches[0].screenX;
+            this.handleSwipe();
+        }, { passive: true });
+    }
+
+    /**
+     * Handle swipe gesture
+     */
+    handleSwipe() {
+        if (!this.isCarouselMode) return;
+        
+        const swipeThreshold = 50;
+        const difference = this.touchStartX - this.touchEndX;
+        
+        if (Math.abs(difference) > swipeThreshold) {
+            if (difference > 0) {
+                // Swiped left - go to next
+                this.nextSlide();
+            } else {
+                // Swiped right - go to previous
+                this.prevSlide();
+            }
         }
     }
 
@@ -1057,20 +1121,14 @@ class BlogSection {
         
         this.blogModalBody.innerHTML = `
             <img src="${post.image}" alt="${post.title}" class="blog-modal-image">
-            <div class="blog-modal-header">
-                <div class="blog-modal-meta">
-                    <span class="blog-modal-category">${post.category}</span>
-                    <span class="blog-modal-author">
-                        <i class="fas fa-spa"></i>
-                        Laura's Beauty Touch
-                    </span>
-                    <span class="blog-modal-date">
-                        <i class="fas fa-calendar-alt"></i>
-                        ${formattedDate}
-                    </span>
-                </div>
-                <h1 class="blog-modal-title">${post.title}</h1>
+            <div class="blog-modal-meta">
+                <span class="blog-modal-category">${post.category}</span>
+                <span class="blog-modal-date">
+                    <i class="fas fa-calendar-alt"></i>
+                    ${formattedDate}
+                </span>
             </div>
+            <h2 class="blog-modal-title">${post.title}</h2>
             <div class="blog-modal-content-text">
                 ${post.content}
             </div>
@@ -1079,6 +1137,9 @@ class BlogSection {
         this.blogModal.classList.add('active');
         document.body.style.overflow = 'hidden';
         
+        // Scroll modal to top
+        this.blogModalBody.scrollTop = 0;
+        
         console.log(`📖 Opened blog post: ${post.title}`);
     }
 
@@ -1086,112 +1147,55 @@ class BlogSection {
      * Close modal
      */
     closeModal() {
-        this.blogModal.classList.remove('active');
+        this.blogModal?.classList.remove('active');
         document.body.style.overflow = '';
-        
-        // Scroll modal body back to top
-        if (this.blogModalBody) {
-            this.blogModalBody.scrollTop = 0;
-        }
         
         console.log('✖️ Closed blog modal');
     }
 
     /**
-     * Setup all event listeners
+     * Setup event listeners
      */
     setupEventListeners() {
-        // Close modal events
-        if (this.blogModalClose) {
-            this.blogModalClose.addEventListener('click', () => this.closeModal());
-        }
+        // Modal close button
+        this.blogModalClose?.addEventListener('click', () => this.closeModal());
         
-        if (this.blogModalOverlay) {
-            this.blogModalOverlay.addEventListener('click', () => this.closeModal());
-        }
+        // Close modal on overlay click
+        this.blogModalOverlay?.addEventListener('click', () => this.closeModal());
         
-        // ESC key to close modal
+        // Close modal on ESC key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && this.blogModal.classList.contains('active')) {
+            if (e.key === 'Escape' && this.blogModal?.classList.contains('active')) {
                 this.closeModal();
             }
         });
         
         // View all button
-        if (this.viewAllBtn) {
-            this.viewAllBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                this.showingAll = true;
-                this.renderBlogPosts(true);
-                console.log('📚 Showing all blog posts');
-            });
-        }
+        this.viewAllBtn?.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.showingAll = true;
+            this.renderBlogPosts(true);
+            console.log('📚 Showing all blog posts');
+        });
         
         // Carousel navigation buttons
-        if (this.carouselPrev) {
-            this.carouselPrev.addEventListener('click', () => this.prevSlide());
-        }
-        
-        if (this.carouselNext) {
-            this.carouselNext.addEventListener('click', () => this.nextSlide());
-        }
+        this.carouselPrev?.addEventListener('click', () => this.prevSlide());
+        this.carouselNext?.addEventListener('click', () => this.nextSlide());
         
         // Touch/swipe support for mobile carousel
         this.setupTouchEvents();
         
-        // Window resize handler
-        window.addEventListener('resize', () => this.handleResize());
-    }
-
-    /**
-     * Setup touch/swipe events for mobile carousel
-     */
-    setupTouchEvents() {
-        if (!this.blogGrid) return;
-        
-        let touchStartX = 0;
-        let touchEndX = 0;
-        
-        this.blogGrid.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-        
-        this.blogGrid.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            this.handleSwipe(touchStartX, touchEndX);
-        }, { passive: true });
-    }
-
-    /**
-     * Handle swipe gesture
-     */
-    handleSwipe(startX, endX) {
-        const swipeThreshold = 50;
-        const difference = startX - endX;
-        
-        if (Math.abs(difference) > swipeThreshold) {
-            if (difference > 0) {
-                // Swiped left - go to next
-                this.nextSlide();
-            } else {
-                // Swiped right - go to previous
+        // Keyboard navigation for carousel
+        document.addEventListener('keydown', (e) => {
+            if (!this.isCarouselMode) return;
+            if (this.blogModal?.classList.contains('active')) return;
+            
+            if (e.key === 'ArrowLeft') {
                 this.prevSlide();
+            } else if (e.key === 'ArrowRight') {
+                this.nextSlide();
             }
-        }
-    }
-
-    /**
-     * Handle window resize
-     */
-    handleResize() {
-        const wasMobile = this.isMobile;
-        this.isMobile = window.innerWidth <= 768;
-        
-        // Re-render if switched between mobile and desktop
-        if (wasMobile !== this.isMobile) {
-            this.renderBlogPosts(this.showingAll);
-            console.log(`📱 Switched to ${this.isMobile ? 'mobile' : 'desktop'} view`);
-        }
+        });
     }
 
     /**
@@ -1218,12 +1222,22 @@ class BlogSection {
             `;
         }
     }
-}
 
-document.addEventListener('DOMContentLoaded', () => {
-    const blogSection = new BlogSection();
-    console.log('🚀 Blog Section initialized');
-});
+    /**
+     * Debounce utility function
+     */
+    debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+}
 
 // ============================================
 // ELFSIGHT WIDGETS
