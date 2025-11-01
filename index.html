@@ -991,80 +991,80 @@
   </div>
 </section>
 
-    <!-- BLOG SECTION -->
-    <section class="blog-section" id="blog">
+ <!-- Blog Section -->
+    <section class="blog-section">
         <div class="blog-container">
-            
             <!-- Section Header -->
-            <div class="blog-header">
-                <div class="section-eyebrow">Latest Updates</div>
-                <h2 class="section-title">Beauty Tips & News</h2>
-                <div class="title-divider"></div>
-                <p class="section-subtitle">
-                    Stay informed with the latest beauty trends, seasonal specials, and expert skincare advice from Laura's Beauty Touch
-                </p>
+            <div class="section-header">
+                <h2 class="section-title">Beauty & Wellness Journal</h2>
+                <p class="section-subtitle">Insights, tips, and inspiration from our beauty experts</p>
             </div>
 
-            <!-- Blog Carousel Wrapper (for mobile navigation) -->
-            <div class="blog-carousel-wrapper">
-                <!-- Navigation Arrows (Mobile Only) -->
-                <button class="carousel-nav carousel-prev" aria-label="Previous blog post" id="carouselPrev">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                
-                <button class="carousel-nav carousel-next" aria-label="Next blog post" id="carouselNext">
-                    <i class="fas fa-chevron-right"></i>
+            <!-- Blog Grid/Carousel Wrapper -->
+            <div class="blog-wrapper">
+                <!-- Carousel Navigation (Mobile/Tablet Only) -->
+                <button class="carousel-nav prev" aria-label="Previous blog post">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
                 </button>
 
-                <!-- Blog Grid / Carousel Container -->
+                <!-- Blog Cards Container -->
                 <div class="blog-grid" id="blogGrid">
-                    <!-- Blog posts will be dynamically loaded here from blog.json -->
+                    <!-- Blog cards will be dynamically inserted here via JavaScript -->
                 </div>
+
+                <!-- Carousel Navigation (Mobile/Tablet Only) -->
+                <button class="carousel-nav next" aria-label="Next blog post">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
             </div>
 
-            <!-- Carousel Dots (Mobile Only) -->
-            <div class="carousel-dots" id="carouselDots">
+            <!-- Carousel Indicators (Mobile/Tablet Only) -->
+            <div class="carousel-indicators" id="carouselIndicators">
                 <!-- Dots will be dynamically generated -->
             </div>
-
-            <!-- Newsletter Widget in Blog -->
-            <div class="blog-newsletter-widget">
-                <div class="blog-newsletter-content">
-                    <div class="blog-newsletter-icon">
-                        <i class="fas fa-envelope-open-text"></i>
-                    </div>
-                    <div class="blog-newsletter-text">
-                        <h3>Never Miss a Beauty Update</h3>
-                        <p>Subscribe to get exclusive tips, special offers, and the latest blog posts delivered to your inbox</p>
-                    </div>
-                </div>
-                <div class="blog-newsletter-form">
-                    <!-- Elfsight Subscription Form -->
-                    <script src="https://elfsightcdn.com/platform.js" async></script>
-                    <div class="elfsight-app-b8c33f12-c4c6-42c5-905b-356c4f523458" data-elfsight-app-lazy></div>
-                </div>
-            </div>
-
-            <!-- View All Button -->
-            <div class="blog-cta">
-                <a href="#blog" class="view-all-blog-btn" id="viewAllBlogBtn">
-                    View All Posts
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-
         </div>
     </section>
 
-    <!-- BLOG POST MODAL -->
+    <!-- Blog Modal -->
     <div class="blog-modal" id="blogModal">
-        <div class="blog-modal-overlay" id="blogModalOverlay"></div>
-        <div class="blog-modal-content">
-            <button class="blog-modal-close" id="blogModalClose" aria-label="Close modal">
-                <i class="fas fa-times"></i>
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
             </button>
-            <div class="blog-modal-body" id="blogModalBody">
-                <!-- Content will be dynamically loaded -->
+            
+            <div class="modal-body">
+                <div class="modal-image-container">
+                    <img src="" alt="" class="modal-image" id="modalImage">
+                </div>
+                
+                <div class="modal-text-content">
+                    <div class="modal-meta">
+                        <span class="modal-category" id="modalCategory"></span>
+                        <span class="modal-date" id="modalDate"></span>
+                    </div>
+                    
+                    <h2 class="modal-title" id="modalTitle"></h2>
+                    
+                    <div class="modal-excerpt" id="modalExcerpt"></div>
+                    
+                    <div class="modal-full-content" id="modalContent"></div>
+                    
+                    <div class="modal-author">
+                        <div class="author-avatar" id="modalAuthorAvatar"></div>
+                        <div class="author-info">
+                            <p class="author-name" id="modalAuthor"></p>
+                            <p class="author-title" id="modalAuthorTitle"></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
