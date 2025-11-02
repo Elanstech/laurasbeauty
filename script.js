@@ -793,6 +793,9 @@ class TeamSection {
 // ============================================
 // ENHANCED BLOG SECTION WITH MOBILE CAROUSEL
 // ============================================
+// ============================================
+// ENHANCED BLOG SECTION WITH MOBILE CAROUSEL
+// ============================================
 class BlogSection {
     constructor() {
         this.blogGrid = document.getElementById('blogGrid');
@@ -957,40 +960,48 @@ class BlogSection {
         }
     }
 
-updateCarousel() {
-    if (!this.isMobile || !this.blogGrid) return;
-    
-    const cards = this.blogGrid.querySelectorAll('.blog-card');
-    if (cards.length === 0) return;
-    
-    // Use viewport width for calculation since cards are sized relative to viewport
-    const viewportWidth = window.innerWidth;
-    const cardWidth = viewportWidth - 30; // 15px margin on each side
-    
-    // Calculate offset - each slide moves by the full card width
-    const offset = -(this.currentSlide * viewportWidth);
-    
-    this.blogGrid.style.transform = `translateX(${offset}px)`;
-    
-    // Update dots
-    const dots = this.carouselDots?.querySelectorAll('.carousel-dot');
-    dots?.forEach((dot, index) => {
-        dot.classList.toggle('active', index === this.currentSlide);
-    });
-    
-    // Update arrow states
-    if (this.carouselPrev) {
-        this.carouselPrev.disabled = this.currentSlide === 0;
-        this.carouselPrev.style.opacity = this.currentSlide === 0 ? '0.5' : '1';
-    }
-    
-    if (this.carouselNext) {
+    updateCarousel() {
+        if (!this.isMobile || !this.blogGrid) return;
+        
+        const cards = this.blogGrid.querySelectorAll('.blog-card');
+        if (cards.length === 0) return;
+        
+        // Get actual measurements
+        const viewportWidth = window.innerWidth;
+        const gap = viewportWidth <= 480 ? 15 : 20; // Match CSS gap
+        const padding = viewportWidth <= 480 ? 15 : 20; // Match CSS padding
+        
+        // Card width is viewport minus padding on both sides
+        const cardWidth = viewportWidth - (padding * 2);
+        
+        // Calculate offset: (card width + gap) * current slide index
+        const offset = -(this.currentSlide * (cardWidth + gap));
+        
+        this.blogGrid.style.transform = `translateX(${offset}px)`;
+        
+        // Update dots
+        const dots = this.carouselDots?.querySelectorAll('.carousel-dot');
+        dots?.forEach((dot, index) => {
+            dot.classList.toggle('active', index === this.currentSlide);
+        });
+        
+        // Update arrow states
         const postsToShow = this.showingAll ? this.posts : this.posts.slice(0, this.displayCount);
-        const isLast = this.currentSlide >= postsToShow.length - 1;
-        this.carouselNext.disabled = isLast;
-        this.carouselNext.style.opacity = isLast ? '0.5' : '1';
+        
+        if (this.carouselPrev) {
+            this.carouselPrev.disabled = this.currentSlide === 0;
+            this.carouselPrev.style.opacity = this.currentSlide === 0 ? '0.5' : '1';
+            this.carouselPrev.style.cursor = this.currentSlide === 0 ? 'not-allowed' : 'pointer';
+        }
+        
+        if (this.carouselNext) {
+            const isLast = this.currentSlide >= postsToShow.length - 1;
+            this.carouselNext.disabled = isLast;
+            this.carouselNext.style.opacity = isLast ? '0.5' : '1';
+            this.carouselNext.style.cursor = isLast ? 'not-allowed' : 'pointer';
+        }
     }
-}
+
     handleTouchStart(e) {
         this.touchStartX = e.touches[0].clientX;
     }
@@ -1049,7 +1060,6 @@ updateCarousel() {
         this.blogModal.classList.remove('active');
         document.body.style.overflow = '';
         
-        // Scroll modal body back to top
         if (this.blogModalBody) {
             this.blogModalBody.scrollTop = 0;
         }
@@ -1112,7 +1122,6 @@ updateCarousel() {
             }
         } else if (this.isMobile) {
             // Update carousel position on resize
-            // Use setTimeout to ensure DOM has updated
             setTimeout(() => {
                 this.updateCarousel();
             }, 100);
