@@ -3188,6 +3188,10 @@ body {
     margin: 0 auto;
 }
 
+/* ============================================
+   BLOG GRID - DESKTOP LAYOUT
+   ============================================ */
+
 .blog-carousel-wrapper {
     position: relative;
     margin-bottom: 60px;
@@ -3203,7 +3207,7 @@ body {
     background: white;
     border: 2px solid var(--mint-green);
     border-radius: 50%;
-    display: none;
+    display: none; /* Hidden by default on desktop */
     align-items: center;
     justify-content: center;
     cursor: pointer;
@@ -3241,6 +3245,7 @@ body {
     pointer-events: none;
 }
 
+/* Desktop Grid Layout */
 .blog-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -3248,6 +3253,7 @@ body {
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Blog Card */
 .blog-card {
     background: white;
     border-radius: 30px;
@@ -3387,8 +3393,12 @@ body {
     transform: translateX(4px);
 }
 
+/* ============================================
+   CAROUSEL DOTS - Hidden on Desktop
+   ============================================ */
+
 .carousel-dots {
-    display: none;
+    display: none; /* Hidden by default on desktop */
     justify-content: center;
     align-items: center;
     gap: 12px;
@@ -3418,6 +3428,10 @@ body {
     opacity: 0.6;
     transform: scale(1.2);
 }
+
+/* ============================================
+   NEWSLETTER WIDGET
+   ============================================ */
 
 .blog-newsletter-widget {
     background: white;
@@ -3474,6 +3488,10 @@ body {
     flex: 1;
 }
 
+/* ============================================
+   VIEW ALL BUTTON
+   ============================================ */
+
 .blog-cta {
     text-align: center;
     margin-top: 50px;
@@ -3524,6 +3542,10 @@ body {
 .view-all-blog-btn:hover i {
     transform: translateX(5px);
 }
+
+/* ============================================
+   BLOG MODAL
+   ============================================ */
 
 .blog-modal {
     position: fixed;
@@ -3722,6 +3744,10 @@ body {
     font-weight: 700;
 }
 
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE CAROUSEL
+   ============================================ */
+
 @media (max-width: 1024px) {
     .blog-section {
         padding: 80px 20px;
@@ -3773,13 +3799,17 @@ body {
         font-size: 1rem;
     }
 
-    /* MOBILE CAROUSEL MODE */
+    /* ==========================================
+       MOBILE CAROUSEL MODE ACTIVATED
+       ========================================== */
+    
     .blog-carousel-wrapper {
         overflow: hidden;
         position: relative;
         padding: 0 10px;
     }
 
+    /* Transform grid into carousel */
     .blog-grid {
         display: flex;
         flex-wrap: nowrap;
@@ -3906,6 +3936,7 @@ body {
     }
 }
 
+/* Scrollbar Styling for Modal */
 .blog-modal-content::-webkit-scrollbar {
     width: 8px;
 }
@@ -3923,6 +3954,7 @@ body {
 .blog-modal-content::-webkit-scrollbar-thumb:hover {
     background: var(--forest-green);
 }
+
 /* ============================================
    GOOGLE REVIEWS SECTION
    ============================================ */
