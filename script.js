@@ -957,39 +957,40 @@ class BlogSection {
         }
     }
 
-    updateCarousel() {
-        if (!this.isMobile || !this.blogGrid) return;
-        
-        const cards = this.blogGrid.querySelectorAll('.blog-card');
-        if (cards.length === 0) return;
-        
-        // Each card takes up full width minus container padding
-        // Container has 15px padding on each side
-        const containerWidth = this.blogGrid.parentElement.offsetWidth;
-        const cardWidth = containerWidth - 30; // Account for 15px padding on each side
-        
-        // Calculate offset - move by card width
-        const offset = -(this.currentSlide * cardWidth);
-        
-        this.blogGrid.style.transform = `translateX(${offset}px)`;
-        
-        // Update dots
-        const dots = this.carouselDots?.querySelectorAll('.carousel-dot');
-        dots?.forEach((dot, index) => {
-            dot.classList.toggle('active', index === this.currentSlide);
-        });
-        
-        // Update arrow states
-        if (this.carouselPrev) {
-            this.carouselPrev.disabled = this.currentSlide === 0;
-        }
-        
-        if (this.carouselNext) {
-            const postsToShow = this.showingAll ? this.posts : this.posts.slice(0, this.displayCount);
-            this.carouselNext.disabled = this.currentSlide >= postsToShow.length - 1;
-        }
+updateCarousel() {
+    if (!this.isMobile || !this.blogGrid) return;
+    
+    const cards = this.blogGrid.querySelectorAll('.blog-card');
+    if (cards.length === 0) return;
+    
+    // Use viewport width for calculation since cards are sized relative to viewport
+    const viewportWidth = window.innerWidth;
+    const cardWidth = viewportWidth - 30; // 15px margin on each side
+    
+    // Calculate offset - each slide moves by the full card width
+    const offset = -(this.currentSlide * viewportWidth);
+    
+    this.blogGrid.style.transform = `translateX(${offset}px)`;
+    
+    // Update dots
+    const dots = this.carouselDots?.querySelectorAll('.carousel-dot');
+    dots?.forEach((dot, index) => {
+        dot.classList.toggle('active', index === this.currentSlide);
+    });
+    
+    // Update arrow states
+    if (this.carouselPrev) {
+        this.carouselPrev.disabled = this.currentSlide === 0;
+        this.carouselPrev.style.opacity = this.currentSlide === 0 ? '0.5' : '1';
     }
-
+    
+    if (this.carouselNext) {
+        const postsToShow = this.showingAll ? this.posts : this.posts.slice(0, this.displayCount);
+        const isLast = this.currentSlide >= postsToShow.length - 1;
+        this.carouselNext.disabled = isLast;
+        this.carouselNext.style.opacity = isLast ? '0.5' : '1';
+    }
+}
     handleTouchStart(e) {
         this.touchStartX = e.touches[0].clientX;
     }
