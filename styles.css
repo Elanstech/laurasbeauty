@@ -3655,14 +3655,50 @@ body {
     background: var(--forest-green);
 }
 
+/* Blog Responsive */
+@media (max-width: 1024px) {
+    .blog-section {
+        padding: 80px 20px;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .blog-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+    }
+
+    .blog-newsletter-widget {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px;
+    }
+
+    .blog-newsletter-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .blog-modal-title {
+        font-size: 2rem;
+    }
+
+    .blog-modal-body {
+        padding: 40px;
+    }
+}
+
 @media (max-width: 768px) {
     .blog-section {
         padding: 60px 0;
+        overflow: hidden;
     }
 
     .blog-header {
         margin-bottom: 50px;
-        padding: 0 15px;
+        padding: 0 20px;
     }
 
     .section-title {
@@ -3674,58 +3710,40 @@ body {
     }
 
     /* ==========================================
-       MOBILE CAROUSEL MODE ACTIVATED
+       MOBILE CAROUSEL MODE
        ========================================== */
     
     .blog-carousel-wrapper {
-        overflow: visible;
         position: relative;
+        overflow: hidden;
         padding: 0;
-        margin: 0 0 60px 0;
+        margin: 0 0 40px 0;
     }
 
-    .blog-carousel-wrapper::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        pointer-events: none;
-    }
-
-    /* Transform grid into horizontal carousel */
+    /* Carousel track - horizontal scrolling */
     .blog-grid {
         display: flex;
         flex-wrap: nowrap;
-        overflow: visible;
-        gap: 0;
+        gap: 20px;
         transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        padding: 0;
-        margin: 0 15px;
+        padding: 0 20px;
     }
 
     .blog-card {
-        min-width: calc(100vw - 30px);
-        max-width: calc(100vw - 30px);
+        min-width: calc(100vw - 40px);
+        max-width: calc(100vw - 40px);
         flex-shrink: 0;
-        flex-grow: 0;
         margin: 0;
         box-sizing: border-box;
-        opacity: 1;
-        visibility: visible;
     }
 
-    /* Show Navigation Arrows on Mobile */
+    /* Navigation Arrows */
     .carousel-nav {
         display: flex;
-        position: fixed;
-        z-index: 100;
-    }
-
-    /* Show Carousel Dots on Mobile */
-    .carousel-dots {
-        display: flex;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
     }
 
     .carousel-prev {
@@ -3736,10 +3754,21 @@ body {
         right: 10px;
     }
 
+    /* Carousel Dots */
+    .carousel-dots {
+        display: flex;
+        margin-top: 30px;
+    }
+
+    /* CTA Section */
+    .blog-cta {
+        padding: 0 20px;
+    }
+
     .blog-newsletter-widget {
         padding: 30px 20px;
         gap: 25px;
-        margin: 60px 15px;
+        margin: 40px 20px;
     }
 
     .blog-newsletter-text h3 {
@@ -3755,6 +3784,7 @@ body {
         font-size: 1rem;
     }
 
+    /* Modal Styles */
     .blog-modal-body {
         padding: 30px 20px;
     }
@@ -3778,6 +3808,79 @@ body {
 
     .blog-modal-content-text h3 {
         font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-header {
+        padding: 0 15px;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .blog-grid {
+        padding: 0 15px;
+        gap: 15px;
+    }
+
+    .blog-card {
+        min-width: calc(100vw - 30px);
+        max-width: calc(100vw - 30px);
+    }
+
+    .blog-card-title {
+        font-size: 1.3rem;
+    }
+
+    .blog-card-content {
+        padding: 25px;
+    }
+
+    .blog-newsletter-widget {
+        margin: 40px 15px;
+    }
+
+    .blog-newsletter-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .blog-newsletter-icon i {
+        font-size: 1.6rem;
+    }
+
+    .blog-newsletter-text h3 {
+        font-size: 1.2rem;
+    }
+
+    .carousel-nav {
+        width: 45px;
+        height: 45px;
+    }
+
+    .carousel-nav i {
+        font-size: 1rem;
+    }
+
+    .carousel-prev {
+        left: 5px;
+    }
+
+    .carousel-next {
+        right: 5px;
+    }
+
+    .blog-modal-title {
+        font-size: 1.5rem;
+    }
+
+    .blog-modal-close {
+        width: 45px;
+        height: 45px;
+        top: 15px;
+        left: calc(100% - 60px);
     }
 }
 
