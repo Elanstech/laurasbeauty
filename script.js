@@ -856,6 +856,7 @@ class BlogSection {
         
         // Setup carousel if mobile
         if (this.isMobile) {
+            this.currentSlide = 0;
             this.setupCarousel();
         }
     }
@@ -962,9 +963,13 @@ class BlogSection {
         const cards = this.blogGrid.querySelectorAll('.blog-card');
         if (cards.length === 0) return;
         
-        const cardWidth = cards[0].offsetWidth;
-        const gap = 20; // margin on each side
-        const offset = -(this.currentSlide * (cardWidth + gap * 2));
+        // Each card takes up full width minus container padding
+        // Container has 15px padding on each side
+        const containerWidth = this.blogGrid.parentElement.offsetWidth;
+        const cardWidth = containerWidth - 30; // Account for 15px padding on each side
+        
+        // Calculate offset - move by card width
+        const offset = -(this.currentSlide * cardWidth);
         
         this.blogGrid.style.transform = `translateX(${offset}px)`;
         
@@ -1106,7 +1111,10 @@ class BlogSection {
             }
         } else if (this.isMobile) {
             // Update carousel position on resize
-            this.updateCarousel();
+            // Use setTimeout to ensure DOM has updated
+            setTimeout(() => {
+                this.updateCarousel();
+            }, 100);
         }
     }
 
