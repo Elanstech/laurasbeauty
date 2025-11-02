@@ -323,7 +323,7 @@ class HeroVideoCollage {
     constructor() {
         this.slides = document.querySelectorAll('.hero-slide');
         this.dots = document.querySelectorAll('.hero-navigation-dots .dot');
-        this.videos = document.querySelectorAll('.hero-video-item video');
+        this.videos = document.querySelectorAll('.hero-video');
         this.scrollIndicator = document.querySelector('.scroll-indicator');
         this.currentSlide = 0;
         this.slideInterval = null;
@@ -626,10 +626,6 @@ class ServicesCarousel {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const servicesCarousel = new ServicesCarousel();
-});
-
 // ============================================
 // TEAM SECTION
 // ============================================
@@ -795,7 +791,7 @@ class TeamSection {
 }
 
 // ============================================
-// BLOG SECTION
+// ENHANCED BLOG SECTION WITH MOBILE CAROUSEL
 // ============================================
 class BlogSection {
     constructor() {
@@ -805,10 +801,17 @@ class BlogSection {
         this.blogModalClose = document.getElementById('blogModalClose');
         this.blogModalOverlay = document.getElementById('blogModalOverlay');
         this.viewAllBtn = document.getElementById('viewAllBlogBtn');
+        this.carouselPrev = document.getElementById('carouselPrev');
+        this.carouselNext = document.getElementById('carouselNext');
+        this.carouselDots = document.getElementById('carouselDots');
         
         this.posts = [];
         this.displayCount = 6;
         this.showingAll = false;
+        this.currentSlide = 0;
+        this.isMobile = window.innerWidth <= 768;
+        this.touchStartX = 0;
+        this.touchEndX = 0;
         
         this.init();
     }
@@ -816,6 +819,7 @@ class BlogSection {
     init() {
         this.loadBlogPosts();
         this.setupEventListeners();
+        this.handleResize();
     }
 
     async loadBlogPosts() {
@@ -824,6 +828,7 @@ class BlogSection {
             const data = await response.json();
             this.posts = data.posts.sort((a, b) => new Date(b.date) - new Date(a.date));
             this.renderBlogPosts();
+            this.setupCarousel();
         } catch (error) {
             console.error('Error loading blog posts:', error);
             this.showError();
@@ -848,6 +853,11 @@ class BlogSection {
         
         // Attach click events to all blog cards
         this.attachCardEvents();
+        
+        // Setup carousel if mobile
+        if (this.isMobile) {
+            this.setupCarousel();
+        }
     }
 
     createBlogCard(post) {
@@ -890,6 +900,110 @@ class BlogSection {
                 this.openModal(postId);
             });
         });
+    }
+
+    setupCarousel() {
+        if (!this.isMobile) return;
+        
+        // Create dots for each post
+        if (this.carouselDots) {
+            const postsToShow = this.showingAll ? this.posts : this.posts.slice(0, this.displayCount);
+            this.carouselDots.innerHTML = postsToShow.map((_, index) => 
+                `<button class="carousel-dot ${index === 0 ? 'active' : ''}" data-slide="${index}"></button>`
+            ).join('');
+            
+            // Add click events to dots
+            const dots = this.carouselDots.querySelectorAll('.carousel-dot');
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const slideIndex = parseInt(dot.getAttribute('data-slide'));
+                    this.goToSlide(slideIndex);
+                });
+            });
+        }
+        
+        // Setup touch events
+        if (this.blogGrid) {
+            this.blogGrid.addEventListener('touchstart', (e) => this.handleTouchStart(e), { passive: true });
+            this.blogGrid.addEventListener('touchmove', (e) => this.handleTouchMove(e), { passive: true });
+            this.blogGrid.addEventListener('touchend', () => this.handleTouchEnd());
+        }
+        
+        // Update carousel position
+        this.updateCarousel();
+    }
+
+    goToSlide(index) {
+        const postsToShow = this.showingAll ? this.posts : this.posts.slice(0, this.displayCount);
+        if (index < 0 || index >= postsToShow.length) return;
+        
+        this.currentSlide = index;
+        this.updateCarousel();
+    }
+
+    nextSlide() {
+        const postsToShow = this.showingAll ? this.posts : this.posts.slice(0, this.displayCount);
+        if (this.currentSlide < postsToShow.length - 1) {
+            this.currentSlide++;
+            this.updateCarousel();
+        }
+    }
+
+    prevSlide() {
+        if (this.currentSlide > 0) {
+            this.currentSlide--;
+            this.updateCarousel();
+        }
+    }
+
+    updateCarousel() {
+        if (!this.isMobile || !this.blogGrid) return;
+        
+        const cards = this.blogGrid.querySelectorAll('.blog-card');
+        if (cards.length === 0) return;
+        
+        const cardWidth = cards[0].offsetWidth;
+        const gap = 20; // margin on each side
+        const offset = -(this.currentSlide * (cardWidth + gap * 2));
+        
+        this.blogGrid.style.transform = `translateX(${offset}px)`;
+        
+        // Update dots
+        const dots = this.carouselDots?.querySelectorAll('.carousel-dot');
+        dots?.forEach((dot, index) => {
+            dot.classList.toggle('active', index === this.currentSlide);
+        });
+        
+        // Update arrow states
+        if (this.carouselPrev) {
+            this.carouselPrev.disabled = this.currentSlide === 0;
+        }
+        
+        if (this.carouselNext) {
+            const postsToShow = this.showingAll ? this.posts : this.posts.slice(0, this.displayCount);
+            this.carouselNext.disabled = this.currentSlide >= postsToShow.length - 1;
+        }
+    }
+
+    handleTouchStart(e) {
+        this.touchStartX = e.touches[0].clientX;
+    }
+
+    handleTouchMove(e) {
+        this.touchEndX = e.touches[0].clientX;
+    }
+
+    handleTouchEnd() {
+        const swipeThreshold = 50;
+        const diff = this.touchStartX - this.touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                this.nextSlide();
+            } else {
+                this.prevSlide();
+            }
+        }
     }
 
     openModal(postId) {
@@ -961,6 +1075,39 @@ class BlogSection {
                 console.log('📚 Showing all blog posts');
             });
         }
+        
+        // Carousel navigation
+        if (this.carouselPrev) {
+            this.carouselPrev.addEventListener('click', () => this.prevSlide());
+        }
+        
+        if (this.carouselNext) {
+            this.carouselNext.addEventListener('click', () => this.nextSlide());
+        }
+        
+        // Handle window resize
+        window.addEventListener('resize', () => this.handleResize());
+    }
+
+    handleResize() {
+        const wasMobile = this.isMobile;
+        this.isMobile = window.innerWidth <= 768;
+        
+        // If switching between mobile and desktop
+        if (wasMobile !== this.isMobile) {
+            this.currentSlide = 0;
+            if (this.isMobile) {
+                this.setupCarousel();
+            } else {
+                // Reset transform when switching to desktop
+                if (this.blogGrid) {
+                    this.blogGrid.style.transform = '';
+                }
+            }
+        } else if (this.isMobile) {
+            // Update carousel position on resize
+            this.updateCarousel();
+        }
     }
 
     formatDate(dateString) {
@@ -982,11 +1129,6 @@ class BlogSection {
         }
     }
 }
-
-// Initialize Blog Section when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    new BlogSection();
-});
 
 // ============================================
 // ELFSIGHT WIDGETS
@@ -1605,7 +1747,6 @@ class AboutCarousel {
             }, 400);
         }
 
-        // Apply transform on ALL screen sizes
         const offset = -this.currentIndex * 100;
         this.track.style.transform = `translateX(${offset}%)`;
 
@@ -1723,10 +1864,9 @@ function initWebsite() {
     
     // Services Carousel
     const servicesCarousel = new ServicesCarousel();
-    servicesCarousel.init();
     window.servicesCarousel = servicesCarousel;
     
-    // About Section Carousels (NEW)
+    // About Section Carousels
     initAboutCarousels();
     
     // Third-Party Widgets
