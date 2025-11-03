@@ -4900,8 +4900,338 @@ body {
 }
 
 /* ========================================
- FOOTER
+   FOOTER - COMPLETE STYLES
 ======================================== */
+
+.super-footer {
+  position: relative;
+  background: linear-gradient(135deg, #3B4A2F 0%, #2d3823 100%);
+  color: #FAFAF7;
+  overflow: hidden;
+  margin-top: 0;
+}
+
+/* Newsletter Section */
+.footer-newsletter-section {
+  background: linear-gradient(135deg, rgba(169, 200, 156, 0.15) 0%, rgba(200, 213, 185, 0.1) 100%);
+  padding: 80px 20px;
+  border-bottom: 1px solid rgba(169, 200, 156, 0.2);
+  position: relative;
+}
+
+.footer-newsletter-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(169, 200, 156, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.footer-newsletter-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.footer-newsletter-content {
+  text-align: center;
+}
+
+.footer-newsletter-header {
+  margin-bottom: 40px;
+}
+
+.footer-newsletter-icon {
+  width: 80px;
+  height: 80px;
+  background: rgba(169, 200, 156, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  border: 3px solid rgba(169, 200, 156, 0.3);
+  box-shadow: 0 10px 30px rgba(169, 200, 156, 0.2);
+}
+
+.footer-newsletter-icon i {
+  font-size: 2rem;
+  color: var(--mint-green);
+}
+
+.footer-newsletter-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #FAFAF7;
+  margin-bottom: 15px;
+  line-height: 1.3;
+}
+
+.footer-newsletter-header p {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.1rem;
+  color: rgba(250, 250, 247, 0.85);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.footer-newsletter-form {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(169, 200, 156, 0.2);
+  border-radius: 25px;
+  padding: 40px;
+  margin-bottom: 35px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+}
+
+.footer-newsletter-benefits {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.footer-benefit {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
+  color: rgba(250, 250, 247, 0.8);
+}
+
+.footer-benefit i {
+  color: var(--mint-green);
+  font-size: 1.1rem;
+}
+
+/* Main Footer */
+.footer-main {
+  padding: 80px 20px 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 60px;
+}
+
+/* Footer Brand Column */
+.footer-brand {
+  max-width: 400px;
+}
+
+.footer-logo {
+  margin-bottom: 25px;
+}
+
+.footer-logo-image {
+  height: 100px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
+.footer-description {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(250, 250, 247, 0.85);
+  margin-bottom: 30px;
+}
+
+/* Social Media Links */
+.footer-social {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #A9C89C;
+  font-size: 1.1rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(169, 200, 156, 0.2);
+}
+
+.social-link:hover {
+  background: #A9C89C;
+  color: #3B4A2F;
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(169, 200, 156, 0.3);
+}
+
+/* Footer Columns */
+.footer-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #FAFAF7;
+  margin: 0 0 24px 0;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.footer-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: #A9C89C;
+  border-radius: 2px;
+}
+
+/* Footer Links */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-link {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
+  color: rgba(250, 250, 247, 0.8);
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-left: 20px;
+}
+
+.footer-link::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  transform: translateX(-5px);
+  transition: all 0.3s ease;
+  color: #A9C89C;
+}
+
+.footer-link:hover {
+  color: #A9C89C;
+  padding-left: 24px;
+}
+
+.footer-link:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Contact Items */
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.contact-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(169, 200, 156, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #A9C89C;
+}
+
+.contact-text {
+  flex: 1;
+}
+
+.contact-label {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #A9C89C;
+  margin: 0 0 6px 0;
+}
+
+.contact-value {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(250, 250, 247, 0.9);
+  text-decoration: none;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+a.contact-value:hover {
+  color: #A9C89C;
+}
+
+/* Footer CTA Button */
+.footer-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #3B4A2F;
+  background: linear-gradient(135deg, #A9C89C 0%, #96b587 100%);
+  padding: 14px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(169, 200, 156, 0.3);
+  margin-top: 8px;
+  align-self: flex-start;
+}
+
+.footer-cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(169, 200, 156, 0.4);
+  background: linear-gradient(135deg, #96b587 0%, #A9C89C 100%);
+}
+
+.footer-cta-btn i {
+  transition: transform 0.3s ease;
+}
+
+.footer-cta-btn:hover i {
+  transform: translateX(4px);
+}
 
 /* Footer Bottom */
 .footer-bottom {
@@ -4953,10 +5283,7 @@ body {
   color: rgba(250, 250, 247, 0.4);
 }
 
-/* ========================================
-   DESIGNER CREDIT SECTION - REFINED
-======================================== */
-
+/* Designer Credit Section */
 .designer-credit-section {
   background: rgba(0, 0, 0, 0.25);
   padding: 30px 20px;
@@ -5102,10 +5429,50 @@ body {
   transform: translateX(3px);
 }
 
-/* ========================================
-   RESPONSIVE DESIGN - FOOTER
-======================================== */
+/* Decorative Elements */
+.footer-decor {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 1;
+}
 
+.footer-decor-left {
+  top: -100px;
+  left: -150px;
+  background: radial-gradient(circle, #A9C89C 0%, transparent 70%);
+  animation: floatLeft 20s ease-in-out infinite;
+}
+
+.footer-decor-right {
+  bottom: -100px;
+  right: -150px;
+  background: radial-gradient(circle, #B6A98C 0%, transparent 70%);
+  animation: floatRight 25s ease-in-out infinite;
+}
+
+@keyframes floatLeft {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+}
+
+@keyframes floatRight {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-30px, 30px) scale(1.1);
+  }
+}
+
+/* Responsive Design */
 @media (max-width: 1200px) {
   .footer-container {
     grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
