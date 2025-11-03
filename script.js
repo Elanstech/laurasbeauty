@@ -1409,6 +1409,7 @@ class SuperFooter {
         this.footerLinks = document.querySelectorAll('.footer-link');
         this.socialLinks = document.querySelectorAll('.social-link');
         this.ctaButton = document.querySelector('.footer-cta-btn');
+        this.designerLink = document.querySelector('.designer-credit-link');
         
         if (!this.footer) return;
         
@@ -1420,6 +1421,7 @@ class SuperFooter {
         this.setupLinkAnimations();
         this.setupSocialTracking();
         this.setupCTATracking();
+        this.setupDesignerLink();
         this.setupScrollReveal();
         this.addFooterStyles();
     }
@@ -1463,6 +1465,18 @@ class SuperFooter {
         this.ctaButton.addEventListener('click', (e) => {
             console.log('Footer CTA clicked: Book Appointment');
             this.createRipple(e);
+        });
+    }
+
+    setupDesignerLink() {
+        if (!this.designerLink) return;
+
+        this.designerLink.addEventListener('click', () => {
+            console.log('Designer credit link clicked: Elan\'s Tech World');
+        });
+
+        this.designerLink.addEventListener('mouseenter', () => {
+            console.log('Designer credit hovered');
         });
     }
 
