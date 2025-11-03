@@ -5290,6 +5290,7 @@ a.contact-value:hover {
   border-top: 1px solid rgba(169, 200, 156, 0.15);
   position: relative;
   z-index: 2;
+  text-align: center; /* Add this */
 }
 
 .designer-credit-container {
@@ -5297,13 +5298,16 @@ a.contact-value:hover {
   margin: 0 auto;
   position: relative;
   z-index: 2;
+  text-align: center; /* Add this */
 }
 
 .designer-credit-content {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column; /* Make sure this is column */
+  align-items: center; /* Add this */
+  justify-content: center; /* Add this */
+  text-align: center; /* Add this */
+  gap: 15px; /* Add spacing between copyright and links */
 }
 
 .credit-badge {
