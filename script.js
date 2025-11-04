@@ -277,12 +277,13 @@ class PremiumHeaderWithMegaMenu {
 }
 
 // ============================================
-// SPECIALS BUTTON - ADVANCED CONTROL
+// FLOATING BUTTONS - SPECIALS & GIFT CARD
 // ============================================
 
-class SpecialsButton {
+class FloatingButtons {
     constructor() {
-        this.button = document.getElementById('specialsBtn');
+        this.specialsBtn = document.getElementById('specialsBtn');
+        this.giftcardBtn = document.getElementById('giftcardBtn');
         this.mobileToggle = document.querySelector('.mobile-toggle');
         this.mobileDrawer = document.querySelector('.mobile-drawer');
         this.mobileOverlay = document.querySelector('.mobile-overlay');
@@ -290,19 +291,15 @@ class SpecialsButton {
         
         this.isVisible = false;
         this.showDelay = 3000; // 3 seconds
-        
-        if (!this.button) {
-            console.warn('⚠️ Specials button not found');
-            return;
-        }
+        this.initTime = Date.now();
         
         this.init();
     }
 
     init() {
-        console.log('✨ Initializing Specials Button');
+        console.log('✨ Initializing Floating Buttons');
         
-        // Show button after delay
+        // Show buttons after delay
         this.scheduleShow();
         
         // Handle mobile menu
@@ -322,35 +319,46 @@ class SpecialsButton {
     }
 
     show() {
-        if (!this.button) return;
-        
         // Check if mobile menu is open
         const isMobileMenuOpen = this.mobileDrawer && 
                                  this.mobileDrawer.classList.contains('active');
         
         if (!isMobileMenuOpen) {
-            this.button.classList.add('visible');
+            if (this.specialsBtn) {
+                this.specialsBtn.classList.add('visible');
+            }
+            if (this.giftcardBtn) {
+                this.giftcardBtn.classList.add('visible');
+            }
             this.isVisible = true;
-            console.log('✅ Specials button visible');
+            console.log('✅ Floating buttons visible');
         }
     }
 
     hide() {
-        if (!this.button) return;
-        
-        this.button.classList.remove('visible');
-        this.button.classList.add('hidden-mobile');
+        if (this.specialsBtn) {
+            this.specialsBtn.classList.remove('visible');
+            this.specialsBtn.classList.add('hidden-mobile');
+        }
+        if (this.giftcardBtn) {
+            this.giftcardBtn.classList.remove('visible');
+            this.giftcardBtn.classList.add('hidden-mobile');
+        }
         this.isVisible = false;
-        console.log('👋 Specials button hidden');
+        console.log('👋 Floating buttons hidden');
     }
 
     reveal() {
-        if (!this.button) return;
-        
-        this.button.classList.remove('hidden-mobile');
-        this.button.classList.add('visible');
+        if (this.specialsBtn) {
+            this.specialsBtn.classList.remove('hidden-mobile');
+            this.specialsBtn.classList.add('visible');
+        }
+        if (this.giftcardBtn) {
+            this.giftcardBtn.classList.remove('hidden-mobile');
+            this.giftcardBtn.classList.add('visible');
+        }
         this.isVisible = true;
-        console.log('👀 Specials button revealed');
+        console.log('👀 Floating buttons revealed');
     }
 
     handleMobileMenu() {
@@ -431,18 +439,24 @@ class SpecialsButton {
     }
 
     trackClicks() {
-        if (!this.button) return;
+        // Track Specials button
+        if (this.specialsBtn) {
+            this.specialsBtn.addEventListener('click', (e) => {
+                console.log('🌟 Specials button clicked');
+                this.createRipple(e, this.specialsBtn, 'rgba(169, 200, 156, 0.6)');
+            });
+        }
 
-        this.button.addEventListener('click', (e) => {
-            console.log('🌟 Specials button clicked');
-            
-            // Add ripple effect
-            this.createRipple(e);
-        });
+        // Track Gift Card button
+        if (this.giftcardBtn) {
+            this.giftcardBtn.addEventListener('click', (e) => {
+                console.log('🎁 Gift Card button clicked');
+                this.createRipple(e, this.giftcardBtn, 'rgba(212, 175, 55, 0.6)');
+            });
+        }
     }
 
-    createRipple(e) {
-        const button = this.button;
+    createRipple(e, button, color) {
         const ripple = document.createElement('div');
         const rect = button.getBoundingClientRect();
         const size = Math.max(rect.width, rect.height);
@@ -455,7 +469,7 @@ class SpecialsButton {
             height: ${size}px;
             left: ${x}px;
             top: ${y}px;
-            background: radial-gradient(circle, rgba(169, 200, 156, 0.6) 0%, transparent 70%);
+            background: radial-gradient(circle, ${color} 0%, transparent 70%);
             border-radius: 50%;
             transform: scale(0);
             animation: ripple-expand 0.6s ease-out;
@@ -468,9 +482,6 @@ class SpecialsButton {
         
         setTimeout(() => ripple.remove(), 600);
     }
-
-    // Store init time for delay checking
-    initTime = Date.now();
 }
 
 // Ripple animation
@@ -488,14 +499,14 @@ document.head.appendChild(style);
 // Auto-initialize when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-        new SpecialsButton();
+        new FloatingButtons();
     });
 } else {
-    new SpecialsButton();
+    new FloatingButtons();
 }
 
 // Export for manual initialization if needed
-window.SpecialsButton = SpecialsButton;
+window.FloatingButtons = FloatingButtons;
 
 // ============================================
 // HERO VIDEO COLLAGE
