@@ -47,7 +47,6 @@ class PremiumHeaderWithMegaMenu {
         this.mobileDrawer = document.querySelector('.mobile-drawer');
         this.mobileOverlay = document.querySelector('.mobile-overlay');
         this.logoWrapper = document.querySelector('.header-logo-wrapper');
-        this.specialsFloatingBtn = document.getElementById('specialsFloatingBtn');
         
         // Mega Menu specific elements
         this.megamenuItem = document.querySelector('.has-megamenu');
@@ -66,9 +65,6 @@ class PremiumHeaderWithMegaMenu {
         this.handleMobileSubmenu();
     }
 
-    // ============================================
-    // SCROLL HANDLING
-    // ============================================
     handleScroll() {
         let ticking = false;
         
@@ -91,9 +87,6 @@ class PremiumHeaderWithMegaMenu {
         }, { passive: true });
     }
 
-    // ============================================
-    // MOBILE MENU
-    // ============================================
     handleMobileMenu() {
         if (!this.mobileToggle) return;
 
@@ -126,18 +119,8 @@ class PremiumHeaderWithMegaMenu {
         
         if (this.mobileDrawer.classList.contains('active')) {
             document.body.style.overflow = 'hidden';
-            if (this.specialsFloatingBtn) {
-                this.specialsFloatingBtn.style.opacity = '0';
-                this.specialsFloatingBtn.style.visibility = 'hidden';
-                this.specialsFloatingBtn.style.pointerEvents = 'none';
-            }
         } else {
             document.body.style.overflow = '';
-            if (this.specialsFloatingBtn) {
-                this.specialsFloatingBtn.style.opacity = '1';
-                this.specialsFloatingBtn.style.visibility = 'visible';
-                this.specialsFloatingBtn.style.pointerEvents = 'all';
-            }
         }
     }
 
@@ -146,16 +129,8 @@ class PremiumHeaderWithMegaMenu {
         this.mobileDrawer.classList.remove('active');
         this.mobileOverlay.classList.remove('active');
         document.body.style.overflow = '';
-        if (this.specialsFloatingBtn) {
-            this.specialsFloatingBtn.style.opacity = '1';
-            this.specialsFloatingBtn.style.visibility = 'visible';
-            this.specialsFloatingBtn.style.pointerEvents = 'all';
-        }
     }
 
-    // ============================================
-    // LOGO CLICK
-    // ============================================
     handleLogoClick() {
         if (this.logoWrapper) {
             this.logoWrapper.addEventListener('click', () => {
@@ -164,9 +139,6 @@ class PremiumHeaderWithMegaMenu {
         }
     }
 
-    // ============================================
-    // SMOOTH SCROLL
-    // ============================================
     handleSmoothScroll() {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -186,9 +158,6 @@ class PremiumHeaderWithMegaMenu {
         });
     }
 
-    // ============================================
-    // MEGA MENU
-    // ============================================
     handleMegaMenu() {
         if (!this.megamenuItem || !this.megamenuWrapper) return;
 
@@ -241,8 +210,6 @@ class PremiumHeaderWithMegaMenu {
                 item.style.transform = 'translateY(0)';
             }, index * 30);
         });
-
-        console.log('🎯 Mega menu opened');
     }
 
     closeMegaMenu(immediate = false) {
@@ -256,8 +223,6 @@ class PremiumHeaderWithMegaMenu {
         setTimeout(() => {
             this.megamenuWrapper.style.display = 'none';
         }, immediate ? 0 : 200);
-
-        console.log('🎯 Mega menu closed');
     }
 
     scheduleMegaMenuClose(delay = 200) {
@@ -288,9 +253,6 @@ class PremiumHeaderWithMegaMenu {
         });
     }
 
-    // ============================================
-    // MOBILE SUBMENU ACCORDION
-    // ============================================
     handleMobileSubmenu() {
         const mobileDropdownTriggers = document.querySelectorAll('.mobile-dropdown-trigger');
         
@@ -309,8 +271,6 @@ class PremiumHeaderWithMegaMenu {
                 });
                 
                 parentItem.classList.toggle('active');
-                
-                console.log(`📱 Mobile submenu ${isActive ? 'closed' : 'opened'}`);
             });
         });
     }
