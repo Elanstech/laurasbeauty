@@ -733,16 +733,16 @@ body {
 }
 
 /* ============================================
-   PREMIUM SPECIALS BUTTON - REFINED & ADVANCED
+   PREMIUM SPECIALS BUTTON - COMPLETE STYLES
    ============================================ */
 .specials-premium-link {
-    /* POSITIONING - Higher placement */
+    /* POSITIONING */
     position: fixed;
     top: 120px;
     right: 40px;
     z-index: 997;
     
-    /* INITIAL STATE - Hidden for 3s delay */
+    /* INITIAL STATE */
     opacity: 0;
     visibility: hidden;
     transform: translateX(100px) scale(0.9);
@@ -757,21 +757,19 @@ body {
     background: transparent;
     text-decoration: none;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    
-    /* REVEALED STATE */
-    &.visible {
-        opacity: 1;
-        visibility: visible;
-        transform: translateX(0) scale(1);
-        pointer-events: all;
-    }
-    
-    /* HIDDEN STATE (mobile menu) */
-    &.hidden-mobile {
-        opacity: 0 !important;
-        visibility: hidden !important;
-        pointer-events: none !important;
-    }
+}
+
+.specials-premium-link.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0) scale(1);
+    pointer-events: all;
+}
+
+.specials-premium-link.hidden-mobile {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
 }
 
 /* Inner Container */
@@ -871,7 +869,7 @@ body {
     }
 }
 
-/* Icon Wrapper with Advanced Design */
+/* Icon Wrapper */
 .specials-icon-wrap {
     position: relative;
     width: 40px;
@@ -1001,7 +999,7 @@ body.scrolled .specials-premium-link {
     top: 100px;
 }
 
-/* Responsive Design */
+/* SPECIALS BUTTON - RESPONSIVE */
 @media (max-width: 1200px) {
     .specials-premium-link {
         right: 30px;
@@ -1010,60 +1008,25 @@ body.scrolled .specials-premium-link {
 
 @media (max-width: 968px) {
     .specials-premium-link {
-        top: auto;
-        bottom: 110px;
-        right: 20px;
+        top: 90px;
+        right: 15px;
     }
     
     .premium-header.scrolled ~ .specials-premium-link,
     body.scrolled .specials-premium-link {
-        bottom: 110px;
-        top: auto;
+        top: 85px;
     }
 }
 
 @media (max-width: 768px) {
     .specials-premium-link {
-        bottom: 100px;
-        right: 20px;
-    }
-    
-    .specials-inner {
-        padding: 10px 18px 10px 10px;
-        gap: 8px;
-    }
-    
-    .specials-icon-wrap {
-        width: 36px;
-        height: 36px;
-    }
-    
-    .specials-icon {
-        font-size: 1rem;
-    }
-    
-    .specials-label {
-        font-size: 0.95rem;
-    }
-    
-    .specials-notification-badge {
-        width: 22px;
-        height: 22px;
-        font-size: 0.7rem;
-        top: -5px;
-        right: 6px;
-    }
-}
-
-@media (max-width: 480px) {
-    .specials-premium-link {
-        bottom: 95px;
+        top: 85px;
         right: 15px;
     }
     
     .specials-inner {
-        padding: 9px 16px 9px 9px;
-        gap: 7px;
+        padding: 8px 16px 8px 8px;
+        gap: 6px;
     }
     
     .specials-icon-wrap {
@@ -1076,31 +1039,66 @@ body.scrolled .specials-premium-link {
     }
     
     .specials-label {
-        font-size: 0.9rem;
-    }
-    
-    .specials-arrow {
-        font-size: 0.75rem;
+        font-size: 0.85rem;
     }
     
     .specials-notification-badge {
         width: 20px;
         height: 20px;
         font-size: 0.65rem;
+        top: -4px;
+        right: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .specials-premium-link {
+        top: 80px;
+        right: 12px;
+    }
+    
+    .specials-inner {
+        padding: 7px 14px 7px 7px;
+        gap: 5px;
+    }
+    
+    .specials-icon-wrap {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .specials-icon {
+        font-size: 0.8rem;
+    }
+    
+    .specials-label {
+        font-size: 0.8rem;
+    }
+    
+    .specials-arrow {
+        font-size: 0.7rem;
+    }
+    
+    .specials-notification-badge {
+        width: 18px;
+        height: 18px;
+        font-size: 0.6rem;
+        top: -3px;
+        right: 5px;
     }
 }
 
 /* ============================================
-   PREMIUM GIFT CARD BUTTON - LEFT SIDE
+   PREMIUM GIFT CARD BUTTON - COMPLETE STYLES
    ============================================ */
 .giftcard-premium-link {
-    /* POSITIONING - Left side mirror of specials button */
+    /* POSITIONING */
     position: fixed;
     top: 120px;
     left: 40px;
     z-index: 997;
     
-    /* INITIAL STATE - Hidden for 3s delay */
+    /* INITIAL STATE */
     opacity: 0;
     visibility: hidden;
     transform: translateX(-100px) scale(0.9);
@@ -1310,40 +1308,13 @@ body.scrolled .specials-premium-link {
     opacity: 1;
 }
 
-/* Shine Effect */
-.giftcard-shine {
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.4) 50%,
-        transparent 100%
-    );
-    transform: rotate(-45deg);
-    animation: shine-sweep 4s ease-in-out infinite;
-    pointer-events: none;
-}
-
-@keyframes shine-sweep {
-    0% {
-        transform: translateX(-100%) rotate(-45deg);
-    }
-    100% {
-        transform: translateX(100%) rotate(-45deg);
-    }
-}
-
 /* Scrolled Header Adjustment */
 .premium-header.scrolled ~ .giftcard-premium-link,
 body.scrolled .giftcard-premium-link {
     top: 100px;
 }
 
-/* Responsive Design */
+/* GIFT CARD BUTTON - RESPONSIVE */
 @media (max-width: 1200px) {
     .giftcard-premium-link {
         left: 30px;
@@ -1352,53 +1323,25 @@ body.scrolled .giftcard-premium-link {
 
 @media (max-width: 968px) {
     .giftcard-premium-link {
-        top: auto;
-        bottom: 170px;
-        left: 20px;
+        top: 90px;
+        left: 15px;
     }
     
     .premium-header.scrolled ~ .giftcard-premium-link,
     body.scrolled .giftcard-premium-link {
-        bottom: 170px;
-        top: auto;
+        top: 85px;
     }
 }
 
 @media (max-width: 768px) {
     .giftcard-premium-link {
-        bottom: 160px;
-        left: 20px;
-    }
-    
-    .giftcard-inner {
-        padding: 10px 10px 10px 18px;
-        gap: 8px;
-    }
-    
-    .giftcard-icon-wrap {
-        width: 36px;
-        height: 36px;
-    }
-    
-    .giftcard-icon {
-        width: 18px;
-        height: 18px;
-    }
-    
-    .giftcard-label {
-        font-size: 0.95rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .giftcard-premium-link {
-        bottom: 155px;
+        top: 85px;
         left: 15px;
     }
     
     .giftcard-inner {
-        padding: 9px 9px 9px 16px;
-        gap: 7px;
+        padding: 8px 8px 8px 16px;
+        gap: 6px;
     }
     
     .giftcard-icon-wrap {
@@ -1412,11 +1355,37 @@ body.scrolled .giftcard-premium-link {
     }
     
     .giftcard-label {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .giftcard-premium-link {
+        top: 80px;
+        left: 12px;
+    }
+    
+    .giftcard-inner {
+        padding: 7px 7px 7px 14px;
+        gap: 5px;
+    }
+    
+    .giftcard-icon-wrap {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .giftcard-icon {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .giftcard-label {
+        font-size: 0.8rem;
     }
     
     .giftcard-arrow-left {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
 }
 
