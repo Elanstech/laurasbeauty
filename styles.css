@@ -1091,6 +1091,336 @@ body.scrolled .specials-premium-link {
 }
 
 /* ============================================
+   PREMIUM GIFT CARD BUTTON - LEFT SIDE
+   ============================================ */
+.giftcard-premium-link {
+    /* POSITIONING - Left side mirror of specials button */
+    position: fixed;
+    top: 120px;
+    left: 40px;
+    z-index: 997;
+    
+    /* INITIAL STATE - Hidden for 3s delay */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-100px) scale(0.9);
+    pointer-events: none;
+    
+    /* LAYOUT */
+    display: flex;
+    align-items: center;
+    padding: 0;
+    
+    /* STYLING */
+    background: transparent;
+    text-decoration: none;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.giftcard-premium-link.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0) scale(1);
+    pointer-events: all;
+}
+
+.giftcard-premium-link.hidden-mobile {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* Inner Container */
+.giftcard-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 12px 12px 22px;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(250, 250, 247, 0.98) 100%);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 2px solid transparent;
+    border-radius: 50px;
+    box-shadow: 
+        0 8px 32px rgba(59, 74, 47, 0.12),
+        0 2px 8px rgba(59, 74, 47, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        inset 0 -1px 0 rgba(212, 175, 55, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.giftcard-inner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+        transparent 0%,
+        rgba(212, 175, 55, 0.08) 50%,
+        transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.giftcard-premium-link:hover .giftcard-inner {
+    transform: translateY(-4px);
+    border-color: var(--gold-accent);
+    box-shadow: 
+        0 12px 40px rgba(212, 175, 55, 0.25),
+        0 4px 12px rgba(212, 175, 55, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 1),
+        inset 0 -1px 0 rgba(212, 175, 55, 0.2);
+}
+
+.giftcard-premium-link:hover .giftcard-inner::before {
+    opacity: 1;
+}
+
+.giftcard-premium-link:active .giftcard-inner {
+    transform: translateY(-2px);
+}
+
+/* Icon Wrapper */
+.giftcard-icon-wrap {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    order: 3;
+}
+
+.giftcard-icon-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+        var(--gold-accent) 0%, 
+        #E6C347 100%);
+    border-radius: 50%;
+    box-shadow: 
+        0 4px 14px rgba(212, 175, 55, 0.35),
+        inset 0 1px 2px rgba(255, 255, 255, 0.6),
+        inset 0 -1px 2px rgba(212, 175, 55, 0.3);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.giftcard-icon {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    color: var(--forest-green);
+    z-index: 2;
+    animation: gift-float 3s ease-in-out infinite;
+}
+
+@keyframes gift-float {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    25% {
+        transform: translateY(-3px) scale(1.05);
+    }
+    50% {
+        transform: translateY(0) scale(1);
+    }
+    75% {
+        transform: translateY(-3px) scale(1.05);
+    }
+}
+
+.giftcard-premium-link:hover .giftcard-icon-bg {
+    transform: rotate(-180deg) scale(1.15);
+    background: linear-gradient(135deg, 
+        #FFD700 0%, 
+        var(--gold-accent) 100%);
+    box-shadow: 
+        0 6px 20px rgba(255, 215, 0, 0.5),
+        inset 0 1px 3px rgba(255, 255, 255, 0.7),
+        inset 0 -1px 3px rgba(212, 175, 55, 0.4);
+}
+
+.giftcard-premium-link:hover .giftcard-icon {
+    animation: gift-bounce 0.6s ease;
+    color: var(--deep-forest);
+}
+
+@keyframes gift-bounce {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2) rotate(-10deg);
+    }
+}
+
+/* Label Text */
+.giftcard-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--forest-green);
+    letter-spacing: 0.5px;
+    line-height: 1;
+    transition: all 0.3s ease;
+    position: relative;
+    order: 2;
+}
+
+.giftcard-premium-link:hover .giftcard-label {
+    color: var(--deep-forest);
+    letter-spacing: 0.8px;
+}
+
+/* Arrow - Left Side */
+.giftcard-arrow-left {
+    font-size: 0.85rem;
+    color: var(--gold-accent);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    opacity: 0.7;
+    order: 1;
+}
+
+.giftcard-premium-link:hover .giftcard-arrow-left {
+    transform: translateX(-5px);
+    color: var(--forest-green);
+    opacity: 1;
+}
+
+/* Glow Effect */
+.giftcard-glow {
+    position: absolute;
+    inset: -20px;
+    background: radial-gradient(
+        circle at center,
+        rgba(212, 175, 55, 0.3) 0%,
+        transparent 70%
+    );
+    opacity: 0;
+    filter: blur(15px);
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.giftcard-premium-link:hover .giftcard-glow {
+    opacity: 1;
+}
+
+/* Shine Effect */
+.giftcard-shine {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        transparent 100%
+    );
+    transform: rotate(-45deg);
+    animation: shine-sweep 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes shine-sweep {
+    0% {
+        transform: translateX(-100%) rotate(-45deg);
+    }
+    100% {
+        transform: translateX(100%) rotate(-45deg);
+    }
+}
+
+/* Scrolled Header Adjustment */
+.premium-header.scrolled ~ .giftcard-premium-link,
+body.scrolled .giftcard-premium-link {
+    top: 100px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .giftcard-premium-link {
+        left: 30px;
+    }
+}
+
+@media (max-width: 968px) {
+    .giftcard-premium-link {
+        top: auto;
+        bottom: 170px;
+        left: 20px;
+    }
+    
+    .premium-header.scrolled ~ .giftcard-premium-link,
+    body.scrolled .giftcard-premium-link {
+        bottom: 170px;
+        top: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .giftcard-premium-link {
+        bottom: 160px;
+        left: 20px;
+    }
+    
+    .giftcard-inner {
+        padding: 10px 10px 10px 18px;
+        gap: 8px;
+    }
+    
+    .giftcard-icon-wrap {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .giftcard-icon {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .giftcard-label {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .giftcard-premium-link {
+        bottom: 155px;
+        left: 15px;
+    }
+    
+    .giftcard-inner {
+        padding: 9px 9px 9px 16px;
+        gap: 7px;
+    }
+    
+    .giftcard-icon-wrap {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .giftcard-icon {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .giftcard-label {
+        font-size: 0.9rem;
+    }
+    
+    .giftcard-arrow-left {
+        font-size: 0.75rem;
+    }
+}
+
+/* ============================================
    HERO SECTION WITH VIDEO COLLAGE
    ============================================ */
 .hero-section {
