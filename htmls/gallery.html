@@ -3,433 +3,814 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Primary Meta Tags -->
-    <title>Gallery | Laura's Beauty Touch | Rego Park's Premier Day Spa</title>
-    <meta name="title" content="Gallery | Laura's Beauty Touch | Luxury Day Spa in Rego Park, NY">
-    <meta name="description" content="Explore our luxury spa gallery featuring our serene treatment rooms, professional services, and beautiful results. See why Laura's Beauty Touch is Rego Park's premier destination for beauty and wellness.">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://laurasbeautytouch.com/gallery.html">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://laurasbeautytouch.com/gallery.html">
-    <meta property="og:title" content="Gallery | Laura's Beauty Touch">
-    <meta property="og:description" content="Explore our luxury spa gallery - serene treatment rooms, professional services, and beautiful results.">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <title>Gallery | Laura's Beauty Touch</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome Icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
     <!-- Stylesheets -->
+    <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="gallery.css">
-    
 </head>
 <body>
     
-    <!-- HEADER SECTION - You'll add your header here -->
+  <!-- ELEGANT PRELOADER -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="loader-ring"></div>
+            <div class="loader-logo">
+                <img src="../images/logo1.png" alt="Laura's Beauty Touch">
+            </div>
+        </div>
+    </div>
+
+<!-- PREMIUM HEADER WITH MEGA MENU -->
     <header class="premium-header">
-        <!-- Your header content goes here -->
+        <div class="header-container">
+            <!-- Logo -->
+            <div class="header-logo-wrapper">
+                <img src="../images/logo1.png" alt="Laura's Beauty Touch Logo" class="header-logo">
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="desktop-navigation">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="../htmls/about.html" class="nav-link">About</a></li>
+                    
+                    <!-- Services with Mega Menu -->
+                    <li class="nav-item has-megamenu">
+                        <a href="../htmls/services.html" class="nav-link">
+                            Services
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </a>
+                        
+                        <!-- Mega Menu Dropdown -->
+                        <div class="megamenu-wrapper">
+                            <div class="megamenu-container">
+                                
+                                <!-- Mega Menu Header -->
+                                <div class="megamenu-header">
+                                    <h3 class="megamenu-title">Our Services</h3>
+                                    <p class="megamenu-subtitle">Discover our comprehensive range of luxury treatments</p>
+                                </div>
+
+                                <!-- Services Grid -->
+                                <div class="megamenu-grid">
+                                    
+                                    <!-- Face Treatments -->
+                                    <a href="../servicecategories/facials.html" class="megamenu-item">
+                                        <div class="megamenu-icon">
+                                            <i class="fas fa-spa"></i>
+                                        </div>
+                                        <div class="megamenu-content">
+                                            <h4 class="megamenu-item-title">Face Treatments</h4>
+                                            <p class="megamenu-item-desc">Rejuvenating facials & skincare</p>
+                                        </div>
+                                        <i class="fas fa-arrow-right megamenu-arrow"></i>
+                                    </a>
+
+                                    <!-- Add On's -->
+                                    <a href="../servicecategories/addons.html" class="megamenu-item">
+                                        <div class="megamenu-icon">
+                                            <i class="fas fa-plus-circle"></i>
+                                        </div>
+                                        <div class="megamenu-content">
+                                            <h4 class="megamenu-item-title">Add On's</h4>
+                                            <p class="megamenu-item-desc">Enhance your experience</p>
+                                        </div>
+                                        <i class="fas fa-arrow-right megamenu-arrow"></i>
+                                    </a>
+
+                                    <!-- Body Treatments -->
+                                    <a href="../servicecategories/body.html" class="megamenu-item">
+                                        <div class="megamenu-icon">
+                                            <i class="fas fa-leaf"></i>
+                                        </div>
+                                        <div class="megamenu-content">
+                                            <h4 class="megamenu-item-title">Body Treatments</h4>
+                                            <p class="megamenu-item-desc">Full body care & wellness</p>
+                                        </div>
+                                        <i class="fas fa-arrow-right megamenu-arrow"></i>
+                                    </a>
+
+                                    <!-- Specials -->
+                                    <a href="../servicecategories/specials.html" class="megamenu-item featured">
+                                        <div class="megamenu-icon">
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <div class="megamenu-content">
+                                            <h4 class="megamenu-item-title">Specials</h4>
+                                            <p class="megamenu-item-desc">Limited time offers</p>
+                                        </div>
+                                        <i class="fas fa-arrow-right megamenu-arrow"></i>
+                                    </a>
+
+                                    <!-- Nails -->
+                                    <a href="../servicecategories/nails.html" class="megamenu-item">
+                                        <div class="megamenu-icon">
+                                            <i class="fas fa-hand-sparkles"></i>
+                                        </div>
+                                        <div class="megamenu-content">
+                                            <h4 class="megamenu-item-title">Nails</h4>
+                                            <p class="megamenu-item-desc">Manicures & pedicures</p>
+                                        </div>
+                                        <i class="fas fa-arrow-right megamenu-arrow"></i>
+                                    </a>
+
+                                    <!-- Packages -->
+                                    <a href="../servicecategories/packages.html" class="megamenu-item">
+                                        <div class="megamenu-icon">
+                                            <i class="fas fa-gift"></i>
+                                        </div>
+                                        <div class="megamenu-content">
+                                            <h4 class="megamenu-item-title">Packages</h4>
+                                            <p class="megamenu-item-desc">Curated spa experiences</p>
+                                        </div>
+                                        <i class="fas fa-arrow-right megamenu-arrow"></i>
+                                    </a>
+
+                                    <!-- Laser -->
+                                    <a href="../servicecategories/laser.html" class="megamenu-item">
+                                        <div class="megamenu-icon">
+                                            <i class="fas fa-wand-magic-sparkles"></i>
+                                        </div>
+                                        <div class="megamenu-content">
+                                            <h4 class="megamenu-item-title">Laser</h4>
+                                            <p class="megamenu-item-desc">Advanced laser treatments</p>
+                                        </div>
+                                        <i class="fas fa-arrow-right megamenu-arrow"></i>
+                                    </a>
+
+                                    <!-- Wax -->
+                                    <a href="../servicecategories/wax.html" class="megamenu-item">
+                                        <div class="megamenu-icon">
+                                            <i class="fas fa-droplet"></i>
+                                        </div>
+                                        <div class="megamenu-content">
+                                            <h4 class="megamenu-item-title">Wax</h4>
+                                            <p class="megamenu-item-desc">Gentle hair removal</p>
+                                        </div>
+                                        <i class="fas fa-arrow-right megamenu-arrow"></i>
+                                    </a>
+
+                                    <!-- Brows, Lashes & PMU -->
+                                    <a href="../servicecategories/brows-lashes-pmu.html" class="megamenu-item">
+                                        <div class="megamenu-icon">
+                                            <i class="fas fa-eye"></i>
+                                        </div>
+                                        <div class="megamenu-content">
+                                            <h4 class="megamenu-item-title">Brows, Lashes & PMU</h4>
+                                            <p class="megamenu-item-desc">Complete eye enhancements</p>
+                                        </div>
+                                        <i class="fas fa-arrow-right megamenu-arrow"></i>
+                                    </a>
+
+                                    <!-- Make Up -->
+                                    <a href="../servicecategories/makeup.html" class="megamenu-item">
+                                        <div class="megamenu-icon">
+                                            <i class="fas fa-paint-brush"></i>
+                                        </div>
+                                        <div class="megamenu-content">
+                                            <h4 class="megamenu-item-title">Make Up</h4>
+                                            <p class="megamenu-item-desc">Professional artistry</p>
+                                        </div>
+                                        <i class="fas fa-arrow-right megamenu-arrow"></i>
+                                    </a>
+
+                                </div>
+
+                                <!-- Mega Menu Footer CTA -->
+                                <div class="megamenu-footer">
+                                    <a href="../htmls/services.html" class="megamenu-view-all">
+                                        View All Services
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item"><a href="../htmls/gallery.html" class="nav-link">Gallery</a></li>
+                    <li class="nav-item"><a href="../htmls/contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Book Now Button -->
+            <a href="https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/all-offer?venue=true" class="header-cta-btn">Book Now</a>
+
+            <!-- Mobile Toggle -->
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+            </button>
+        </div>
     </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-drawer">
+        <div class="drawer-content">
+            <div class="drawer-header">
+                <img src="../images/logo1.png" alt="Laura's Beauty Touch Logo" class="drawer-logo">
+            </div>
+            <nav class="mobile-navigation">
+                <ul class="mobile-menu">
+                    <li class="mobile-item"><a href="index.html" class="mobile-link">Home</a></li>
+                    <li class="mobile-item"><a href="../htmls/about.html" class="mobile-link">About</a></li>
+                    
+                    <!-- Mobile Services with Accordion -->
+                    <li class="mobile-item mobile-has-submenu">
+                        <button class="mobile-link mobile-dropdown-trigger">
+                            Services
+                            <i class="fas fa-chevron-down mobile-dropdown-icon"></i>
+                        </button>
+                        <ul class="mobile-submenu">
+                            <li><a href="../servicecategories/facials.html" class="mobile-submenu-link">Face Treatments</a></li>
+                            <li><a href="../servicecategories/addons.html" class="mobile-submenu-link">Add On's</a></li>
+                            <li><a href="../servicecategories/body.html" class="mobile-submenu-link">Body Treatments</a></li>
+                            <li><a href="specials.html" class="mobile-submenu-link">Specials</a></li>
+                            <li><a href="../servicecategories/nails.html" class="mobile-submenu-link">Nails</a></li>
+                            <li><a href="../servicecategories/packages.html" class="mobile-submenu-link">Packages</a></li>
+                            <li><a href="../servicecategories/laser.html" class="mobile-submenu-link">Laser</a></li>
+                            <li><a href="../servicecategories/wax.html" class="mobile-submenu-link">Wax</a></li>
+                            <li><a href="../servicecategories/brows-lashes-pmu.html" class="mobile-submenu-link">Brows, Lashes & PMU</a></li>
+                            <li><a href="../servicecategories/makeup.html" class="mobile-submenu-link">Make Up</a></li>
+                            <li><a href="../htmls/services.html" class="mobile-submenu-link view-all">View All Services</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="mobile-item"><a href="../htmls/gallery.html" class="mobile-link">Gallery</a></li>
+                    <li class="mobile-item"><a href="../htmls/contact.html" class="mobile-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay"></div>
 
     <!-- GALLERY HERO SECTION -->
     <section class="gallery-hero">
         <div class="gallery-hero-overlay"></div>
         <div class="gallery-hero-content">
-            <div class="gallery-hero-text" data-aos="fade-up">
-                <span class="gallery-eyebrow">Visual Journey</span>
-                <h1 class="gallery-hero-title">
-                    <span class="title-line">Our Gallery</span>
-                </h1>
-                <p class="gallery-hero-description">
-                    Step into our sanctuary of beauty and wellness. Explore our serene spaces, 
-                    professional treatments, and transformative results.
-                </p>
+            <div class="hero-badge" data-aos="fade-down">
+                <i class="fas fa-camera"></i>
+                <span>Our Work</span>
             </div>
+            <h1 class="gallery-hero-title" data-aos="fade-up" data-aos-delay="100">
+                <span class="title-line">Transformations</span>
+                <span class="title-line accent">& Moments</span>
+            </h1>
+            <p class="gallery-hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                Discover the artistry and care that goes into every treatment at Laura's Beauty Touch
+            </p>
         </div>
-        <div class="gallery-hero-pattern"></div>
+        <div class="scroll-indicator">
+            <span>Explore Gallery</span>
+            <div class="scroll-line"></div>
+        </div>
     </section>
 
     <!-- GALLERY FILTER & GRID SECTION -->
     <section class="gallery-section">
         <div class="gallery-container">
             
-            <!-- Filter Navigation -->
+            <!-- Filter Buttons -->
             <div class="gallery-filters" data-aos="fade-up">
                 <button class="filter-btn active" data-filter="all">
-                    <i class="fas fa-th"></i>
-                    <span>All</span>
-                </button>
-                <button class="filter-btn" data-filter="spa">
-                    <i class="fas fa-spa"></i>
-                    <span>Spa Spaces</span>
+                    <i class="fas fa-grip"></i>
+                    All Images
                 </button>
                 <button class="filter-btn" data-filter="treatments">
-                    <i class="fas fa-hand-sparkles"></i>
-                    <span>Treatments</span>
+                    <i class="fas fa-spa"></i>
+                    Treatments
                 </button>
-                <button class="filter-btn" data-filter="results">
-                    <i class="fas fa-star"></i>
-                    <span>Results</span>
+                <button class="filter-btn" data-filter="facility">
+                    <i class="fas fa-building"></i>
+                    Our Spa
+                </button>
+                <button class="filter-btn" data-filter="team">
+                    <i class="fas fa-users"></i>
+                    Our Team
                 </button>
                 <button class="filter-btn" data-filter="products">
-                    <i class="fas fa-leaf"></i>
-                    <span>Products</span>
+                    <i class="fas fa-shopping-bag"></i>
+                    Products
                 </button>
             </div>
 
             <!-- Gallery Grid -->
-            <div class="gallery-grid" id="galleryGrid">
+            <div class="gallery-grid" data-aos="fade-up" data-aos-delay="100">
                 
-                <!-- Gallery Item 1 - Treatment Room -->
-                <div class="gallery-item" data-category="spa" data-aos="fade-up">
-                    <div class="gallery-item-wrapper">
-                        <img src="../images/treatroom.jpeg" alt="Serene Treatment Room at Laura's Beauty Touch" loading="lazy">
-                        <div class="gallery-item-overlay">
-                            <div class="gallery-item-content">
-                                <h3 class="gallery-item-title">Treatment Room</h3>
-                                <p class="gallery-item-category">Spa Spaces</p>
-                                <button class="gallery-view-btn" data-image="../images/treatroom.jpeg" data-title="Treatment Room" data-description="Our peaceful treatment rooms are designed for your ultimate comfort and relaxation">
+                <!-- Gallery Item 1 - Laser -->
+                <div class="gallery-item" data-category="treatments">
+                    <div class="gallery-item-inner">
+                        <img src="../images/laser.jpeg" alt="Laser Treatment" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-content">
+                                <h3 class="gallery-title">Laser Treatment</h3>
+                                <p class="gallery-description">Advanced laser hair removal technology</p>
+                                <button class="gallery-view-btn" data-image="../images/laser.jpeg" data-title="Laser Treatment" data-desc="Advanced laser hair removal technology">
                                     <i class="fas fa-search-plus"></i>
-                                    <span>View</span>
+                                    View
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Gallery Item 2 - Waiting Area -->
-                <div class="gallery-item" data-category="spa" data-aos="fade-up" data-aos-delay="100">
-                    <div class="gallery-item-wrapper">
-                        <img src="../images/waiting.jpeg" alt="Elegant Waiting Lounge" loading="lazy">
-                        <div class="gallery-item-overlay">
-                            <div class="gallery-item-content">
-                                <h3 class="gallery-item-title">Waiting Lounge</h3>
-                                <p class="gallery-item-category">Spa Spaces</p>
-                                <button class="gallery-view-btn" data-image="../images/waiting.jpeg" data-title="Waiting Lounge" data-description="Relax in our elegantly appointed waiting area before your treatment">
+                <!-- Gallery Item 2 - Hydro Facial -->
+                <div class="gallery-item" data-category="treatments">
+                    <div class="gallery-item-inner">
+                        <img src="../images/hydro.jpeg" alt="Hydro Facial" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-content">
+                                <h3 class="gallery-title">Hydro Facial</h3>
+                                <p class="gallery-description">Deep cleansing hydration treatment</p>
+                                <button class="gallery-view-btn" data-image="../images/hydro.jpeg" data-title="Hydro Facial" data-desc="Deep cleansing hydration treatment">
                                     <i class="fas fa-search-plus"></i>
-                                    <span>View</span>
+                                    View
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Gallery Item 3 - Wall Art -->
-                <div class="gallery-item" data-category="spa" data-aos="fade-up" data-aos-delay="200">
-                    <div class="gallery-item-wrapper">
-                        <img src="../images/wallart.jpeg" alt="Spa Interior Design" loading="lazy">
-                        <div class="gallery-item-overlay">
-                            <div class="gallery-item-content">
-                                <h3 class="gallery-item-title">Spa Ambiance</h3>
-                                <p class="gallery-item-category">Spa Spaces</p>
-                                <button class="gallery-view-btn" data-image="../images/wallart.jpeg" data-title="Spa Ambiance" data-description="Every detail is curated to create a tranquil, luxurious environment">
+                <!-- Gallery Item 3 - Brows -->
+                <div class="gallery-item" data-category="treatments">
+                    <div class="gallery-item-inner">
+                        <img src="../images/brows.jpeg" alt="Eyebrow Treatment" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-content">
+                                <h3 class="gallery-title">Eyebrow Shaping</h3>
+                                <p class="gallery-description">Perfect brow shaping and tinting</p>
+                                <button class="gallery-view-btn" data-image="../images/brows.jpeg" data-title="Eyebrow Shaping" data-desc="Perfect brow shaping and tinting">
                                     <i class="fas fa-search-plus"></i>
-                                    <span>View</span>
+                                    View
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Gallery Item 4 - Laser Treatment -->
-                <div class="gallery-item" data-category="treatments" data-aos="fade-up">
-                    <div class="gallery-item-wrapper">
-                        <img src="../images/laser.jpeg" alt="Advanced Laser Treatment Services" loading="lazy">
-                        <div class="gallery-item-overlay">
-                            <div class="gallery-item-content">
-                                <h3 class="gallery-item-title">Laser Treatments</h3>
-                                <p class="gallery-item-category">Treatments</p>
-                                <button class="gallery-view-btn" data-image="../images/laser.jpeg" data-title="Laser Treatments" data-description="State-of-the-art laser technology for safe, effective hair removal and skin rejuvenation">
+                <!-- Gallery Item 4 - Nails -->
+                <div class="gallery-item" data-category="treatments">
+                    <div class="gallery-item-inner">
+                        <img src="../images/nails.jpeg" alt="Nail Services" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-content">
+                                <h3 class="gallery-title">Nail Services</h3>
+                                <p class="gallery-description">Luxurious manicure and pedicure</p>
+                                <button class="gallery-view-btn" data-image="../images/nails.jpeg" data-title="Nail Services" data-desc="Luxurious manicure and pedicure">
                                     <i class="fas fa-search-plus"></i>
-                                    <span>View</span>
+                                    View
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Gallery Item 5 - Hydro Facial -->
-                <div class="gallery-item" data-category="treatments" data-aos="fade-up" data-aos-delay="100">
-                    <div class="gallery-item-wrapper">
-                        <img src="../images/hydro.jpeg" alt="HydraFacial Treatment" loading="lazy">
-                        <div class="gallery-item-overlay">
-                            <div class="gallery-item-content">
-                                <h3 class="gallery-item-title">HydraFacial</h3>
-                                <p class="gallery-item-category">Treatments</p>
-                                <button class="gallery-view-btn" data-image="../images/hydro.jpeg" data-title="HydraFacial" data-description="Experience the ultimate in skin hydration and rejuvenation with our signature HydraFacial">
+                <!-- Gallery Item 5 - Treatment Room -->
+                <div class="gallery-item" data-category="facility">
+                    <div class="gallery-item-inner">
+                        <img src="../images/treatroom.jpeg" alt="Treatment Room" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-content">
+                                <h3 class="gallery-title">Treatment Room</h3>
+                                <p class="gallery-description">Serene and comfortable treatment space</p>
+                                <button class="gallery-view-btn" data-image="../images/treatroom.jpeg" data-title="Treatment Room" data-desc="Serene and comfortable treatment space">
                                     <i class="fas fa-search-plus"></i>
-                                    <span>View</span>
+                                    View
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Gallery Item 6 - Microroom -->
-                <div class="gallery-item" data-category="spa" data-aos="fade-up" data-aos-delay="200">
-                    <div class="gallery-item-wrapper">
-                        <img src="../images/microroom.jpeg" alt="Microdermabrasion Treatment Room" loading="lazy">
-                        <div class="gallery-item-overlay">
-                            <div class="gallery-item-content">
-                                <h3 class="gallery-item-title">Treatment Suite</h3>
-                                <p class="gallery-item-category">Spa Spaces</p>
-                                <button class="gallery-view-btn" data-image="../images/microroom.jpeg" data-title="Treatment Suite" data-description="Our specialized treatment suites equipped with advanced skincare technology">
+                <!-- Gallery Item 6 - Waiting Area -->
+                <div class="gallery-item" data-category="facility">
+                    <div class="gallery-item-inner">
+                        <img src="../images/waiting.jpeg" alt="Waiting Area" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-content">
+                                <h3 class="gallery-title">Waiting Lounge</h3>
+                                <p class="gallery-description">Relaxing reception area</p>
+                                <button class="gallery-view-btn" data-image="../images/waiting.jpeg" data-title="Waiting Lounge" data-desc="Relaxing reception area">
                                     <i class="fas fa-search-plus"></i>
-                                    <span>View</span>
+                                    View
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Gallery Item 7 - Nails -->
-                <div class="gallery-item" data-category="treatments" data-aos="fade-up">
-                    <div class="gallery-item-wrapper">
-                        <img src="../images/nails.jpeg" alt="Luxury Nail Services" loading="lazy">
-                        <div class="gallery-item-overlay">
-                            <div class="gallery-item-content">
-                                <h3 class="gallery-item-title">Nail Services</h3>
-                                <p class="gallery-item-category">Treatments</p>
-                                <button class="gallery-view-btn" data-image="../images/nails.jpeg" data-title="Nail Services" data-description="Pamper yourself with our professional manicure and pedicure services">
+                <!-- Gallery Item 7 - Micro Room -->
+                <div class="gallery-item" data-category="facility">
+                    <div class="gallery-item-inner">
+                        <img src="../images/microroom.jpeg" alt="Microdermabrasion Room" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-content">
+                                <h3 class="gallery-title">Microdermabrasion Suite</h3>
+                                <p class="gallery-description">State-of-the-art treatment room</p>
+                                <button class="gallery-view-btn" data-image="../images/microroom.jpeg" data-title="Microdermabrasion Suite" data-desc="State-of-the-art treatment room">
                                     <i class="fas fa-search-plus"></i>
-                                    <span>View</span>
+                                    View
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Gallery Item 8 - Brows -->
-                <div class="gallery-item" data-category="results" data-aos="fade-up" data-aos-delay="100">
-                    <div class="gallery-item-wrapper">
-                        <img src="../images/brows.jpeg" alt="Professional Eyebrow Services" loading="lazy">
-                        <div class="gallery-item-overlay">
-                            <div class="gallery-item-content">
-                                <h3 class="gallery-item-title">Brow Artistry</h3>
-                                <p class="gallery-item-category">Results</p>
-                                <button class="gallery-view-btn" data-image="../images/brows.jpeg" data-title="Brow Artistry" data-description="Perfectly shaped and defined brows that frame your face beautifully">
+                <!-- Gallery Item 8 - Wall Art -->
+                <div class="gallery-item" data-category="facility">
+                    <div class="gallery-item-inner">
+                        <img src="../images/wallart.jpeg" alt="Spa Decor" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-content">
+                                <h3 class="gallery-title">Spa Ambiance</h3>
+                                <p class="gallery-description">Thoughtfully designed interiors</p>
+                                <button class="gallery-view-btn" data-image="../images/wallart.jpeg" data-title="Spa Ambiance" data-desc="Thoughtfully designed interiors">
                                     <i class="fas fa-search-plus"></i>
-                                    <span>View</span>
+                                    View
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Gallery Item 9 - Spa Paint -->
-                <div class="gallery-item" data-category="results" data-aos="fade-up" data-aos-delay="200">
-                    <div class="gallery-item-wrapper">
-                        <img src="../images/spaint.jpeg" alt="Spa Treatment Results" loading="lazy">
-                        <div class="gallery-item-overlay">
-                            <div class="gallery-item-content">
-                                <h3 class="gallery-item-title">Spa Results</h3>
-                                <p class="gallery-item-category">Results</p>
-                                <button class="gallery-view-btn" data-image="../images/spaint.jpeg" data-title="Spa Results" data-description="See the transformative results of our professional treatments">
+                <!-- Gallery Item 9 - Laura -->
+                <div class="gallery-item" data-category="team">
+                    <div class="gallery-item-inner">
+                        <img src="../images/laura.jpeg" alt="Laura - Founder" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-content">
+                                <h3 class="gallery-title">Meet Laura</h3>
+                                <p class="gallery-description">Founder & Master Esthetician</p>
+                                <button class="gallery-view-btn" data-image="../images/laura.jpeg" data-title="Meet Laura" data-desc="Founder & Master Esthetician">
                                     <i class="fas fa-search-plus"></i>
-                                    <span>View</span>
+                                    View
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Gallery Item 10 - Products -->
-                <div class="gallery-item" data-category="products" data-aos="fade-up">
-                    <div class="gallery-item-wrapper">
-                        <img src="../images/products.jpeg" alt="Premium Organic Spa Products" loading="lazy">
-                        <div class="gallery-item-overlay">
-                            <div class="gallery-item-content">
-                                <h3 class="gallery-item-title">Premium Products</h3>
-                                <p class="gallery-item-category">Products</p>
-                                <button class="gallery-view-btn" data-image="../images/products.jpeg" data-title="Premium Products" data-description="We use only the finest organic and natural products for all our treatments">
+                <!-- Gallery Item 10 - Team -->
+                <div class="gallery-item" data-category="team">
+                    <div class="gallery-item-inner">
+                        <img src="../images/team.jpeg" alt="Our Team" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-content">
+                                <h3 class="gallery-title">Our Expert Team</h3>
+                                <p class="gallery-description">Dedicated beauty professionals</p>
+                                <button class="gallery-view-btn" data-image="../images/team.jpeg" data-title="Our Expert Team" data-desc="Dedicated beauty professionals">
                                     <i class="fas fa-search-plus"></i>
-                                    <span>View</span>
+                                    View
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Gallery Item 11 - Team -->
-                <div class="gallery-item" data-category="spa" data-aos="fade-up" data-aos-delay="100">
-                    <div class="gallery-item-wrapper">
-                        <img src="../images/team.jpeg" alt="Laura's Beauty Touch Professional Team" loading="lazy">
-                        <div class="gallery-item-overlay">
-                            <div class="gallery-item-content">
-                                <h3 class="gallery-item-title">Our Team</h3>
-                                <p class="gallery-item-category">Spa Spaces</p>
-                                <button class="gallery-view-btn" data-image="../images/team.jpeg" data-title="Our Team" data-description="Meet our passionate team of licensed professionals dedicated to your beauty and wellness">
+                <!-- Gallery Item 11 - Products -->
+                <div class="gallery-item" data-category="products">
+                    <div class="gallery-item-inner">
+                        <img src="../images/products.jpeg" alt="Beauty Products" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-content">
+                                <h3 class="gallery-title">Premium Products</h3>
+                                <p class="gallery-description">Organic skincare collection</p>
+                                <button class="gallery-view-btn" data-image="../images/products.jpeg" data-title="Premium Products" data-desc="Organic skincare collection">
                                     <i class="fas fa-search-plus"></i>
-                                    <span>View</span>
+                                    View
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Gallery Item 12 - Laura -->
-                <div class="gallery-item" data-category="spa" data-aos="fade-up" data-aos-delay="200">
-                    <div class="gallery-item-wrapper">
-                        <img src="../images/laura.jpeg" alt="Laura - Founder and Master Esthetician" loading="lazy">
-                        <div class="gallery-item-overlay">
-                            <div class="gallery-item-content">
-                                <h3 class="gallery-item-title">Meet Laura</h3>
-                                <p class="gallery-item-category">Spa Spaces</p>
-                                <button class="gallery-view-btn" data-image="../images/laura.jpeg" data-title="Meet Laura" data-description="Laura, founder and master esthetician with over 20 years of experience">
+                <!-- Gallery Item 12 - Spa Paint -->
+                <div class="gallery-item" data-category="treatments">
+                    <div class="gallery-item-inner">
+                        <img src="../images/spaint.jpeg" alt="Spa Treatment" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-content">
+                                <h3 class="gallery-title">Signature Treatments</h3>
+                                <p class="gallery-description">Customized beauty services</p>
+                                <button class="gallery-view-btn" data-image="../images/spaint.jpeg" data-title="Signature Treatments" data-desc="Customized beauty services">
                                     <i class="fas fa-search-plus"></i>
-                                    <span>View</span>
+                                    View
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-            </div>
-
-            <!-- Load More Button (optional) -->
-            <div class="gallery-load-more" data-aos="fade-up">
-                <button class="load-more-btn" id="loadMoreBtn" style="display: none;">
-                    <span>Load More</span>
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- GALLERY CTA SECTION -->
-    <section class="gallery-cta-section" data-aos="fade-up">
-        <div class="gallery-cta-container">
-            <div class="gallery-cta-content">
-                <div class="gallery-cta-icon">
-                    <i class="fas fa-calendar-check"></i>
-                </div>
-                <h2 class="gallery-cta-title">Ready to Experience Laura's Beauty Touch?</h2>
-                <p class="gallery-cta-description">
-                    Book your appointment today and discover why we're Rego Park's premier destination for beauty and wellness.
-                </p>
-                <div class="gallery-cta-buttons">
-                    <a href="https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/all-offer?venue=true" class="gallery-cta-primary" target="_blank">
-                        <i class="fas fa-calendar"></i>
-                        <span>Book Appointment</span>
-                    </a>
-                    <a href="tel:7188419919" class="gallery-cta-secondary">
-                        <i class="fas fa-phone"></i>
-                        <span>(718) 841-9919</span>
-                    </a>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- LIGHTBOX MODAL -->
-    <div class="gallery-lightbox" id="galleryLightbox">
+    <div class="lightbox" id="galleryLightbox">
         <div class="lightbox-overlay"></div>
-        <div class="lightbox-container">
-            <button class="lightbox-close" id="lightboxClose">
-                <i class="fas fa-times"></i>
-            </button>
-            <button class="lightbox-nav lightbox-prev" id="lightboxPrev">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="lightbox-nav lightbox-next" id="lightboxNext">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-            <div class="lightbox-content">
-                <img src="" alt="" id="lightboxImage">
-                <div class="lightbox-caption">
-                    <h3 class="lightbox-title" id="lightboxTitle"></h3>
-                    <p class="lightbox-description" id="lightboxDescription"></p>
+        <button class="lightbox-close" id="closeLightbox">
+            <i class="fas fa-times"></i>
+        </button>
+        <button class="lightbox-prev" id="prevImage">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="lightbox-next" id="nextImage">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightboxImage">
+            <div class="lightbox-caption">
+                <h3 id="lightboxTitle"></h3>
+                <p id="lightboxDesc"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA SECTION -->
+    <section class="gallery-cta-section">
+        <div class="gallery-cta-container">
+            <div class="cta-content" data-aos="fade-up">
+                <div class="cta-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h2 class="cta-title">Ready to Experience the Difference?</h2>
+                <p class="cta-description">Book your appointment today and discover why our clients love Laura's Beauty Touch</p>
+                <div class="cta-buttons">
+                    <a href="https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/all-offer?venue=true" class="cta-btn primary" target="_blank">
+                        <i class="fas fa-calendar-alt"></i>
+                        Book Now
+                    </a>
+                    <a href="tel:7188419919" class="cta-btn secondary">
+                        <i class="fas fa-phone"></i>
+                        (718) 841-9919
+                    </a>
                 </div>
             </div>
-            <div class="lightbox-counter" id="lightboxCounter">
-                <span id="currentImageNumber">1</span> / <span id="totalImages">12</span>
-            </div>
         </div>
+    </section>
+
+
+<!-- REDESIGNED SUPER FOOTER -->
+<footer class="super-footer">
+  
+  <!-- Newsletter Section in Footer -->
+  <div class="footer-newsletter-section">
+    <div class="footer-newsletter-container">
+      <div class="footer-newsletter-content" data-aos="fade-up">
+        <div class="footer-newsletter-header">
+          <div class="footer-newsletter-icon">
+            <i class="fas fa-paper-plane"></i>
+          </div>
+          <h3>Stay in the Glow</h3>
+          <p>Join our beauty community and receive exclusive offers, tips, and updates</p>
+        </div>
+        <div class="footer-newsletter-form">
+          <!-- Elfsight Subscription Form -->
+          <script src="https://elfsightcdn.com/platform.js" async></script>
+          <div class="elfsight-app-b8c33f12-c4c6-42c5-905b-356c4f523458" data-elfsight-app-lazy></div>
+        </div>
+        <div class="footer-newsletter-benefits">
+          <div class="footer-benefit">
+            <i class="fas fa-check-circle"></i>
+            <span>Exclusive Deals</span>
+          </div>
+          <div class="footer-benefit">
+            <i class="fas fa-check-circle"></i>
+            <span>Beauty Tips</span>
+          </div>
+          <div class="footer-benefit">
+            <i class="fas fa-check-circle"></i>
+            <span>Early Access</span>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- FOOTER SECTION - You'll add your footer here -->
-    <footer class="super-footer">
-        <!-- Your footer content goes here -->
-    </footer>
-
-    <!-- Back to Top Button -->
-    <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Premium Specials Button - Right Side -->
-    <a href="../servicecategories/specials.html" class="specials-premium-link" id="specialsBtn">
-        <div class="specials-notification-badge">4</div>
-        <div class="specials-inner">
-            <div class="specials-icon-wrap">
-                <div class="specials-icon-bg"></div>
-                <i class="fas fa-star specials-icon"></i>
-            </div>
-            <span class="specials-label">Specials</span>
-            <i class="fas fa-chevron-right specials-arrow"></i>
+  <!-- Main Footer Content -->
+  <div class="footer-main">
+    <div class="footer-container">
+      
+      <!-- Column 1: Brand & About -->
+      <div class="footer-column footer-brand">
+        <div class="footer-logo">
+          <img src="images/logo1.png" alt="Laura's Beauty Touch Logo" class="footer-logo-image">
         </div>
-        <div class="specials-glow"></div>
-    </a>
-
-    <!-- Premium Gift Card Button - Left Side -->
-    <a href="https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/gift-cards" target="_blank" class="giftcard-premium-link" id="giftcardBtn">
-        <div class="giftcard-inner">
-            <i class="fas fa-chevron-left giftcard-arrow-left"></i>
-            <span class="giftcard-label">Gift Cards</span>
-            <div class="giftcard-icon-wrap">
-                <div class="giftcard-icon-bg"></div>
-                <svg class="giftcard-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 12V22H4V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M22 7H2V12H22V7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M12 22V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M12 7H7.5C6.83696 7 6.20107 6.73661 5.73223 6.26777C5.26339 5.79893 5 5.16304 5 4.5C5 3.83696 5.26339 3.20107 5.73223 2.73223C6.20107 2.26339 6.83696 2 7.5 2C11 2 12 7 12 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M12 7H16.5C17.163 7 17.7989 6.73661 18.2678 6.26777C18.7366 5.79893 19 5.16304 19 4.5C19 3.83696 18.7366 3.20107 18.2678 2.73223C17.7989 2.26339 17.163 2 16.5 2C13 2 12 7 12 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
+        <p class="footer-description">
+          Your sanctuary for natural beauty and personalized care. Experience the difference of organic luxury treatments in the heart of New York City.
+        </p>
+        
+        <!-- Social Media Links -->
+        <div class="footer-social">
+          <a href="https://www.instagram.com/laurasbeautytouch" target="_blank" class="social-link" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/laurasbeautytouch" target="_blank" class="social-link" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.yelp.com/biz/lauras-beauty-touch-rego-park-8" target="_blank" class="social-link" aria-label="Yelp">
+            <i class="fab fa-yelp"></i>
+          </a>
         </div>
-        <div class="giftcard-glow"></div>
-    </a>
-
-    <!-- FAB Button -->
-    <div class="fab-container" id="fabContainer">
-        <div class="fab-options" id="fabOptions">
-            <a href="tel:7188419919" class="fab-option fab-phone" data-tooltip="Call Us">
-                <i class="fas fa-phone-alt"></i>
+      </div>
+      
+      <!-- Column 2: Quick Links -->
+      <div class="footer-column">
+        <h4 class="footer-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html" class="footer-link">Home</a></li>
+          <li><a href="htmls/about.html" class="footer-link">About Us</a></li>
+          <li><a href="htmls/services.html" class="footer-link">Services</a></li>
+          <li><a href="htmls/gallery.html" class="footer-link">Gallery</a></li>
+          <li><a href="htmls/contact.html" class="footer-link">Contact</a></li>
+        </ul>
+      </div>
+      
+      <!-- Column 3: Services -->
+      <div class="footer-column">
+        <h4 class="footer-title">Popular Services</h4>
+        <ul class="footer-links">
+          <li><a href="servicecategories/facials.html" class="footer-link">Luxury Facials</a></li>
+          <li><a href="servicecategories/laser.html" class="footer-link">Laser Treatments</a></li>
+          <li><a href="servicecategories/wax.html" class="footer-link">Expert Waxing</a></li>
+          <li><a href="servicecategories/brows-lashes-pmu.html" class="footer-link">Brows & Lashes</a></li>
+          <li><a href="servicecategories/makeup.html" class="footer-link">Makeup Services</a></li>
+          <li><a href="servicecategories/specials.html" class="footer-link">Special Packages</a></li>
+        </ul>
+      </div>
+      
+      <!-- Column 4: Contact & Hours -->
+      <div class="footer-column footer-contact">
+        <h4 class="footer-title">Visit Us</h4>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="contact-text">
+            <p class="contact-label">Address</p>
+            <a href="https://www.google.com/maps/place/Laura's+Beauty+Touch/@40.7274765,-73.85603,17z/data=!3m1!4b1!4m6!3m5!1s0x89c25e30248b56c5:0x4f12e26a1a5f013a!8m2!3d40.7274765!4d-73.85603!16s%2Fg%2F12hq6qy92?entry=ttu&g_ep=EgoyMDI1MTAyOS4yIKXMDSoASAFQAw%3D%3D" target="_blank" class="contact-value">
+              97-12 66th Ave<br>
+              Rego Park, NY 11374
             </a>
-            <a href="mailto:laurasbeautytouch@gmail.com" class="fab-option fab-email" data-tooltip="Email Us">
-                <i class="fas fa-envelope"></i>
-            </a>
-            <a href="https://www.instagram.com/laurasbeautytouch/?hl=en" target="_blank" rel="noopener noreferrer" class="fab-option fab-instagram" data-tooltip="Our Instagram">
-                <i class="fab fa-instagram"></i>
-            </a>
+          </div>
         </div>
-        <button class="fab-main" id="fabMain" aria-label="Contact options">
-            <i class="fas fa-comment-dots fab-icon-default"></i>
-            <i class="fas fa-times fab-icon-close"></i>
-        </button>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <div class="contact-text">
+            <p class="contact-label">Phone</p>
+            <a href="tel:7188419919" class="contact-value">(718) 841-9919</a>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="contact-text">
+            <p class="contact-label">Hours</p>
+            <p class="contact-value">
+              Mon - Sun: 10 AM - 7 PM<br>
+              Saturday: Closed
+            </p>
+          </div>
+        </div>
+        
+        <a href="https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/booking?menu=true&pId=2609547&dppub=true&cartId=7d4d1f1c-d28a-45c0-8a0a-767eeebb99ee" 
+           target="_blank" 
+           class="footer-cta-btn">
+          <i class="fas fa-calendar-check"></i>
+          <span>Book Now</span>
+        </a>
+      </div>
+      
     </div>
+  </div>
+  
+  <!-- Footer Bottom -->
+  <div class="footer-bottom">
+    <div class="footer-container">
+      <div class="footer-bottom-content">
+        <p class="footer-copyright">
+          © <span id="currentYear"></span> Laura's Beauty Touch. All rights reserved.
+        </p>
+        <div class="footer-legal">
+          <a href="htmls/privacy-policy.html" class="footer-legal-link">Privacy Policy</a>
+          <span class="footer-divider">•</span>
+          <a href="htmls/terms-of-service.html" class="footer-legal-link">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <!-- AOS Library -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Designer Credit Section -->
+  <div class="designer-credit-section">
+    <div class="designer-credit-container">
+      <div class="designer-credit-content">
+        <div class="credit-badge">
+          <i class="fas fa-award"></i>
+          <span>Designed & Developed By</span>
+        </div>
+        <a href="https://elanstechworld.com" target="_blank" rel="noopener noreferrer" class="designer-credit-link">
+          <div class="designer-logo-wrapper">
+            <img src="https://elanstechworld.com/assets/images/Elanslogo.jpeg" alt="Elan's Tech World Logo" class="designer-logo">
+          </div>
+          <div class="designer-info">
+            <h4 class="designer-name">Elan's Tech World</h4>
+          </div>
+          <div class="designer-arrow">
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Decorative Elements -->
+  <div class="footer-decor footer-decor-left"></div>
+  <div class="footer-decor footer-decor-right"></div>
+  
+</footer>
     
-    <!-- Custom JavaScript -->
-    <script src="gallery.js"></script>
+     <!-- BACK TO TOP BUTTON -->
+<button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+</button>
 
+    <!-- PREMIUM SPECIALS BUTTON - RIGHT SIDE -->
+<a href="servicecategories/specials.html" class="specials-premium-link" id="specialsBtn">
+    <div class="specials-notification-badge">4</div>
+    <div class="specials-inner">
+        <div class="specials-icon-wrap">
+            <div class="specials-icon-bg"></div>
+            <i class="fas fa-star specials-icon"></i>
+        </div>
+        <span class="specials-label">Specials</span>
+        <i class="fas fa-chevron-right specials-arrow"></i>
+    </div>
+    <div class="specials-glow"></div>
+</a>
+
+<!-- PREMIUM GIFT CARD BUTTON - LEFT SIDE -->
+<a href="https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/gift-cards" target="_blank" class="giftcard-premium-link" id="giftcardBtn">
+    <div class="giftcard-inner">
+        <i class="fas fa-chevron-left giftcard-arrow-left"></i>
+        <span class="giftcard-label">Gift Cards</span>
+        <div class="giftcard-icon-wrap">
+            <div class="giftcard-icon-bg"></div>
+            <svg class="giftcard-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 12V22H4V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M22 7H2V12H22V7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 22V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 7H7.5C6.83696 7 6.20107 6.73661 5.73223 6.26777C5.26339 5.79893 5 5.16304 5 4.5C5 3.83696 5.26339 3.20107 5.73223 2.73223C6.20107 2.26339 6.83696 2 7.5 2C11 2 12 7 12 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 7H16.5C17.163 7 17.7989 6.73661 18.2678 6.26777C18.7366 5.79893 19 5.16304 19 4.5C19 3.83696 18.7366 3.20107 18.2678 2.73223C17.7989 2.26339 17.163 2 16.5 2C13 2 12 7 12 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </div>
+    <div class="giftcard-glow"></div>
+</a>
+
+<!-- FLOATING ACTION BUTTON (FAB) -->
+<div class="fab-container" id="fabContainer">
+    <!-- Fan-out Options -->
+    <div class="fab-options" id="fabOptions">
+        <a href="tel:7188419919" class="fab-option fab-phone" data-tooltip="Call Us">
+            <i class="fas fa-phone-alt"></i>
+        </a>
+        <a href="mailto:laurasbeautytouch@gmail.com" class="fab-option fab-email" data-tooltip="Email Us">
+            <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://www.instagram.com/laurasbeautytouch/?hl=en" target="_blank" rel="noopener noreferrer" class="fab-option fab-instagram" data-tooltip=" Our Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+    
+    <!-- Main FAB Button -->
+    <button class="fab-main" id="fabMain" aria-label="Contact options">
+        <i class="fas fa-comment-dots fab-icon-default"></i>
+        <i class="fas fa-times fab-icon-close"></i>
+    </button>
+</div>
+    
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="../script.js"></script>
+    <script src="gallery.js"></script>
 </body>
 </html>
