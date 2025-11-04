@@ -277,6 +277,227 @@ class PremiumHeaderWithMegaMenu {
 }
 
 // ============================================
+// SPECIALS BUTTON - ADVANCED CONTROL
+// ============================================
+
+class SpecialsButton {
+    constructor() {
+        this.button = document.getElementById('specialsBtn');
+        this.mobileToggle = document.querySelector('.mobile-toggle');
+        this.mobileDrawer = document.querySelector('.mobile-drawer');
+        this.mobileOverlay = document.querySelector('.mobile-overlay');
+        this.header = document.querySelector('.premium-header');
+        
+        this.isVisible = false;
+        this.showDelay = 3000; // 3 seconds
+        
+        if (!this.button) {
+            console.warn('⚠️ Specials button not found');
+            return;
+        }
+        
+        this.init();
+    }
+
+    init() {
+        console.log('✨ Initializing Specials Button');
+        
+        // Show button after delay
+        this.scheduleShow();
+        
+        // Handle mobile menu
+        this.handleMobileMenu();
+        
+        // Handle scroll
+        this.handleScroll();
+        
+        // Track clicks
+        this.trackClicks();
+    }
+
+    scheduleShow() {
+        setTimeout(() => {
+            this.show();
+        }, this.showDelay);
+    }
+
+    show() {
+        if (!this.button) return;
+        
+        // Check if mobile menu is open
+        const isMobileMenuOpen = this.mobileDrawer && 
+                                 this.mobileDrawer.classList.contains('active');
+        
+        if (!isMobileMenuOpen) {
+            this.button.classList.add('visible');
+            this.isVisible = true;
+            console.log('✅ Specials button visible');
+        }
+    }
+
+    hide() {
+        if (!this.button) return;
+        
+        this.button.classList.remove('visible');
+        this.button.classList.add('hidden-mobile');
+        this.isVisible = false;
+        console.log('👋 Specials button hidden');
+    }
+
+    reveal() {
+        if (!this.button) return;
+        
+        this.button.classList.remove('hidden-mobile');
+        this.button.classList.add('visible');
+        this.isVisible = true;
+        console.log('👀 Specials button revealed');
+    }
+
+    handleMobileMenu() {
+        if (!this.mobileToggle || !this.mobileDrawer) return;
+
+        // Watch for mobile menu state changes
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'class') {
+                    const isActive = this.mobileDrawer.classList.contains('active');
+                    
+                    if (isActive) {
+                        this.hide();
+                    } else {
+                        // Only reveal if initial delay has passed
+                        setTimeout(() => {
+                            if (this.isVisible || Date.now() > this.initTime + this.showDelay) {
+                                this.reveal();
+                            }
+                        }, 100);
+                    }
+                }
+            });
+        });
+
+        observer.observe(this.mobileDrawer, {
+            attributes: true,
+            attributeFilter: ['class']
+        });
+
+        // Also listen to toggle button
+        if (this.mobileToggle) {
+            this.mobileToggle.addEventListener('click', () => {
+                setTimeout(() => {
+                    const isActive = this.mobileDrawer.classList.contains('active');
+                    if (isActive) {
+                        this.hide();
+                    } else {
+                        this.reveal();
+                    }
+                }, 50);
+            });
+        }
+
+        // Listen to overlay clicks
+        if (this.mobileOverlay) {
+            this.mobileOverlay.addEventListener('click', () => {
+                setTimeout(() => {
+                    this.reveal();
+                }, 100);
+            });
+        }
+
+        console.log('📱 Mobile menu handler attached');
+    }
+
+    handleScroll() {
+        let ticking = false;
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.pageYOffset;
+                    
+                    // Update body class for CSS
+                    if (scrolled > 80) {
+                        document.body.classList.add('scrolled');
+                    } else {
+                        document.body.classList.remove('scrolled');
+                    }
+                    
+                    ticking = false;
+                });
+                
+                ticking = true;
+            }
+        }, { passive: true });
+    }
+
+    trackClicks() {
+        if (!this.button) return;
+
+        this.button.addEventListener('click', (e) => {
+            console.log('🌟 Specials button clicked');
+            
+            // Add ripple effect
+            this.createRipple(e);
+        });
+    }
+
+    createRipple(e) {
+        const button = this.button;
+        const ripple = document.createElement('div');
+        const rect = button.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            left: ${x}px;
+            top: ${y}px;
+            background: radial-gradient(circle, rgba(169, 200, 156, 0.6) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple-expand 0.6s ease-out;
+            pointer-events: none;
+            z-index: 1;
+        `;
+        
+        button.style.position = 'relative';
+        button.appendChild(ripple);
+        
+        setTimeout(() => ripple.remove(), 600);
+    }
+
+    // Store init time for delay checking
+    initTime = Date.now();
+}
+
+// Ripple animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes ripple-expand {
+        to {
+            transform: scale(2.5);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+
+// Auto-initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        new SpecialsButton();
+    });
+} else {
+    new SpecialsButton();
+}
+
+// Export for manual initialization if needed
+window.SpecialsButton = SpecialsButton;
+
+// ============================================
 // HERO VIDEO COLLAGE
 // ============================================
 class HeroVideoCollage {
