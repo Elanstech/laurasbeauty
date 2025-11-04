@@ -1,11 +1,12 @@
 // ============================================
-// GALLERY PAGE FUNCTIONALITY
+// GALLERY PAGE FUNCTIONALITY - COMPLETE
 // ============================================
 
 class GalleryPage {
     constructor() {
         this.filterBtns = document.querySelectorAll('.filter-btn');
         this.galleryItems = document.querySelectorAll('.gallery-item');
+        this.resultCount = document.getElementById('resultCount');
         this.lightbox = document.getElementById('galleryLightbox');
         this.lightboxImage = document.getElementById('lightboxImage');
         this.lightboxTitle = document.getElementById('lightboxTitle');
@@ -13,9 +14,12 @@ class GalleryPage {
         this.closeLightboxBtn = document.getElementById('closeLightbox');
         this.prevBtn = document.getElementById('prevImage');
         this.nextBtn = document.getElementById('nextImage');
+        this.currentImageNum = document.getElementById('currentImageNum');
+        this.totalImages = document.getElementById('totalImages');
         
         this.currentImageIndex = 0;
         this.visibleImages = [];
+        this.isAnimating = false;
         
         this.init();
     }
@@ -26,6 +30,8 @@ class GalleryPage {
         this.setupScrollIndicator();
         this.initAOS();
         this.updateVisibleImages();
+        this.updateCounts();
+        console.log('✅ Gallery page initialized');
     }
 
     initAOS() {
@@ -36,14 +42,18 @@ class GalleryPage {
                 once: true,
                 offset: 100
             });
+            console.log('📱 AOS animations initialized');
         }
     }
 
     setupFilters() {
         this.filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
+                if (this.isAnimating) return;
+                
                 // Remove active class from all buttons
                 this.filterBtns.forEach(b => b.classList.remove('active'));
+                
                 // Add active class to clicked button
                 btn.classList.add('active');
                 
@@ -52,29 +62,120 @@ class GalleryPage {
                 
                 // Filter gallery items
                 this.filterGallery(filterValue);
+                
+                console.log(`🔍 Filter applied: ${filterValue}`);
             });
         });
     }
 
     filterGallery(filter) {
-        this.galleryItems.forEach((item, index) => {
+        this.isAnimating = true;
+        let visibleCount = 0;
+        let delay = 0;
+
+        // First, hide all items that don't match
+        this.galleryItems.forEach((item) => {
             const category = item.getAttribute('data-category');
             
-            if (filter === 'all' || category === filter) {
-                // Show item with animation delay
-                setTimeout(() => {
-                    item.classList.remove('hide');
-                }, index * 50);
-            } else {
-                // Hide item
+            if (filter !== 'all' && category !== filter) {
                 item.classList.add('hide');
+                item.classList.remove('show');
             }
         });
 
-        // Update visible images for lightbox navigation
+        // Wait a bit, then show matching items with staggered animation
         setTimeout(() => {
-            this.updateVisibleImages();
-        }, 500);
+            this.galleryItems.forEach((item, index) => {
+                const category = item.getAttribute('data-category');
+                
+                if (filter === 'all' || category === filter) {
+                    setTimeout(() => {
+                        item.classList.remove('hide');
+                        item.classList.add('show');
+                        visibleCount++;
+                        
+                        // Update count after last item
+                        if (index === this.galleryItems.length - 1) {
+                            this.updateResultCount(visibleCount);
+                        }
+                    }, delay);
+                    delay += 50; // Stagger by 50ms
+                }
+            });
+
+            // Update visible images for lightbox
+            setTimeout(() => {
+                this.updateVisibleImages();
+                this.isAnimating = false;
+            }, delay + 100);
+        }, 300);
+    }
+
+    updateResultCount(count) {
+        // Count visible items if count not provided
+        if (count === undefined) {
+            count = Array.from(this.galleryItems).filter(
+                item => !item.classList.contains('hide')
+            ).length;
+        }
+
+        // Animate the count
+        const current = parseInt(this.resultCount.textContent);
+        this.animateCount(current, count);
+    }
+
+    animateCount(from, to) {
+        const duration = 500;
+        const steps = 20;
+        const increment = (to - from) / steps;
+        let current = from;
+        let step = 0;
+
+        const timer = setInterval(() => {
+            step++;
+            current += increment;
+            
+            if (step >= steps) {
+                this.resultCount.textContent = to;
+                clearInterval(timer);
+            } else {
+                this.resultCount.textContent = Math.round(current);
+            }
+        }, duration / steps);
+    }
+
+    updateCounts() {
+        // Count items in each category
+        const counts = {
+            all: this.galleryItems.length,
+            treatments: 0,
+            facility: 0,
+            team: 0,
+            products: 0
+        };
+
+        this.galleryItems.forEach(item => {
+            const category = item.getAttribute('data-category');
+            if (counts[category] !== undefined) {
+                counts[category]++;
+            }
+        });
+
+        // Update filter button counts
+        this.filterBtns.forEach(btn => {
+            const filter = btn.getAttribute('data-filter');
+            const countElement = btn.querySelector('.filter-count');
+            if (countElement && counts[filter] !== undefined) {
+                countElement.textContent = counts[filter];
+            }
+        });
+
+        // Update total images in lightbox
+        if (this.totalImages) {
+            this.totalImages.textContent = counts.all;
+        }
+
+        console.log('📊 Category counts updated:', counts);
     }
 
     updateVisibleImages() {
@@ -88,15 +189,18 @@ class GalleryPage {
                     desc: btn.getAttribute('data-desc')
                 };
             });
+
+        console.log(`👁️ ${this.visibleImages.length} visible images updated`);
     }
 
     setupLightbox() {
         // Open lightbox on view button click
-        this.galleryItems.forEach((item, index) => {
+        this.galleryItems.forEach((item) => {
             const viewBtn = item.querySelector('.gallery-view-btn');
             const itemInner = item.querySelector('.gallery-item-inner');
             
-            const openLightbox = () => {
+            const openLightbox = (e) => {
+                e.stopPropagation();
                 const image = viewBtn.getAttribute('data-image');
                 const title = viewBtn.getAttribute('data-title');
                 const desc = viewBtn.getAttribute('data-desc');
@@ -133,6 +237,8 @@ class GalleryPage {
                 if (e.key === 'ArrowRight') this.navigateImage('next');
             }
         });
+
+        console.log('🖼️ Lightbox initialized');
     }
 
     openLightbox(image, title, desc) {
@@ -144,8 +250,13 @@ class GalleryPage {
 
         // Find current index
         this.currentImageIndex = this.visibleImages.findIndex(img => img.image === image);
+        
+        // Update counter
+        if (this.currentImageNum) {
+            this.currentImageNum.textContent = this.currentImageIndex + 1;
+        }
 
-        console.log('🖼️ Lightbox opened:', title);
+        console.log(`📸 Lightbox opened: ${title} (${this.currentImageIndex + 1}/${this.visibleImages.length})`);
     }
 
     closeLightbox() {
@@ -167,9 +278,23 @@ class GalleryPage {
         }
 
         const currentImage = this.visibleImages[this.currentImageIndex];
-        this.lightboxImage.src = currentImage.image;
-        this.lightboxTitle.textContent = currentImage.title;
-        this.lightboxDesc.textContent = currentImage.desc;
+        
+        // Add fade transition
+        this.lightboxImage.style.opacity = '0';
+        
+        setTimeout(() => {
+            this.lightboxImage.src = currentImage.image;
+            this.lightboxTitle.textContent = currentImage.title;
+            this.lightboxDesc.textContent = currentImage.desc;
+            
+            if (this.currentImageNum) {
+                this.currentImageNum.textContent = this.currentImageIndex + 1;
+            }
+            
+            this.lightboxImage.style.opacity = '1';
+        }, 200);
+
+        console.log(`⏭️ Navigated to image ${this.currentImageIndex + 1}/${this.visibleImages.length}`);
     }
 
     setupScrollIndicator() {
@@ -195,6 +320,8 @@ class GalleryPage {
                 ticking = true;
             }
         }, { passive: true });
+
+        console.log('⬇️ Scroll indicator initialized');
     }
 }
 
@@ -207,4 +334,4 @@ if (document.readyState === 'loading') {
     new GalleryPage();
 }
 
-console.log('✅ Gallery page initialized');
+console.log('🎨 Gallery script loaded');
