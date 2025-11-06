@@ -13,11 +13,33 @@
         setupSmoothScroll();
         setupScrollAnimations();
         setupMapInteractions();
+        optimizeScrollPerformance();
         console.log('Contact page initialized successfully');
     }
 
     // ================================================
-    // SMOOTH SCROLL FOR ANCHOR LINKS
+    // OPTIMIZE SCROLL PERFORMANCE
+    // ================================================
+    function optimizeScrollPerformance() {
+        // Enable GPU acceleration for animated elements
+        const animatedElements = document.querySelectorAll(
+            '.info-card, .map-info-card, .faq-item, .form-feature, .hero-content'
+        );
+        
+        animatedElements.forEach(el => {
+            el.style.willChange = 'transform, opacity';
+        });
+        
+        // Remove will-change after animations complete
+        setTimeout(() => {
+            animatedElements.forEach(el => {
+                el.style.willChange = 'auto';
+            });
+        }, 3000);
+    }
+
+    // ================================================
+    // SMOOTH SCROLL FOR ANCHOR LINKS - OPTIMIZED
     // ================================================
     function setupSmoothScroll() {
         const scrollLinks = document.querySelectorAll('a[href^="#"]');
@@ -40,25 +62,31 @@
                         behavior: 'smooth'
                     });
                 }
-            });
+            }, { passive: false });
         });
+        
+        // Add scroll behavior to html element
+        document.documentElement.style.scrollBehavior = 'smooth';
     }
 
     // ================================================
-    // SCROLL ANIMATIONS
+    // SCROLL ANIMATIONS - OPTIMIZED
     // ================================================
     function setupScrollAnimations() {
         const observerOptions = {
             root: null,
-            rootMargin: '0px',
-            threshold: 0.1
+            rootMargin: '50px', // Trigger earlier
+            threshold: 0.05 // More sensitive
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    // Use requestAnimationFrame for smoother animation
+                    requestAnimationFrame(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    });
                     observer.unobserve(entry.target);
                 }
             });
@@ -71,8 +99,8 @@
         
         animatedElements.forEach((el, index) => {
             el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            el.style.transform = 'translateY(20px)'; // Reduced distance
+            el.style.transition = `opacity 0.4s ease ${index * 0.05}s, transform 0.4s ease ${index * 0.05}s`; // Faster, shorter delays
             observer.observe(el);
         });
     }
@@ -101,24 +129,6 @@
             if (clicked) {
                 mapIframe.style.pointerEvents = 'none';
                 clicked = false;
-            }
-        });
-    }
-
-    // ================================================
-    // PARALLAX EFFECT FOR HERO
-    // ================================================
-    function setupParallaxEffect() {
-        const hero = document.querySelector('.contact-hero');
-        
-        if (!hero) return;
-
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const parallax = scrolled * 0.5;
-            
-            if (scrolled < window.innerHeight) {
-                hero.style.transform = `translateY(${parallax}px)`;
             }
         });
     }
