@@ -1,10 +1,11 @@
 {
   "category": "specials",
-  "promotions": [
+  "services": [
     {
       "id": "papaya-pumpkin-glow-special",
       "name": "🌿 Papaya Pumpkin Glow Facial",
       "description": "A nourishing facial combining papaya and pumpkin enzymes to deeply cleanse and brighten your skin.",
+      "price": "$69",
       "originalPrice": "$95",
       "specialPrice": "$69",
       "savings": "$26",
@@ -22,19 +23,21 @@
         "Pumpkin papaya brightening mask",
         "Hand massage with papaya cream"
       ],
-      "highlights": [
+      "benefits": [
         "Save $26 on this seasonal favorite",
         "Natural enzyme exfoliation",
         "Perfect for autumn glow"
       ],
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24190694&share=true&pId=2609547",
       "image": "https://sorellaapothecary.com/cdn/shop/files/Papaya-Pumpkin-Smear.jpg?v=1753928772&width=2000",
-      "badge": "Special"
+      "badge": "Special",
+      "priceLabel": "$69 (was $95)"
     },
     {
       "id": "pumpkin-renewal-package",
       "name": "🎃 Pumpkin Renewal Spa Package",
       "description": "Complete spa experience combining our papaya pumpkin facial with massage and body scrub for full-body rejuvenation.",
+      "price": "$169",
       "originalPrice": "$230",
       "specialPrice": "$169",
       "savings": "$61",
@@ -47,7 +50,7 @@
         "Pumpkin Body Scrub",
         "Shower facility access"
       ],
-      "highlights": [
+      "benefits": [
         "Save $61 on this luxurious package",
         "Head-to-toe pampering",
         "Perfect seasonal self-care",
@@ -55,12 +58,14 @@
       ],
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc",
       "image": "https://images.squarespace-cdn.com/content/v1/5c4f6ba1e2ccd1ee6075495d/1655419707450-FYAW4T2G57D503SWMHT7/oxygen-facial.jpg",
-      "badge": "Package Deal"
+      "badge": "Package Deal",
+      "priceLabel": "$169 (was $230)"
     },
     {
       "id": "autumn-radiance-deluxe",
       "name": "🍂 Autumn Radiance Deluxe Package",
       "description": "Our most comprehensive seasonal package featuring facial, body treatment, and spa pedicure for total autumn glow.",
+      "price": "$199",
       "originalPrice": "$290",
       "specialPrice": "$199",
       "savings": "$91",
@@ -73,7 +78,7 @@
         "Spa Pedicure",
         "Hand Paraffin Treatment"
       ],
-      "highlights": [
+      "benefits": [
         "Save $91 on ultimate pampering",
         "Complete seasonal transformation",
         "Over 2.5 hours of luxury",
@@ -81,12 +86,14 @@
       ],
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc",
       "image": "https://epiphanymedspaandwellness.com/wp-content/uploads/2023/08/Epiphany-Luxurious-Facials-in-Fullerton-CA1-scaled.jpg",
-      "badge": "Best Value"
+      "badge": "Best Value",
+      "priceLabel": "$199 (was $290)"
     },
     {
       "id": "laser-hair-removal-special",
       "name": "✨ Laser Hair Removal Special",
       "description": "Buy one treatment area and get your second area at 50% off. Smooth, hair-free skin made affordable.",
+      "price": "50% OFF 2nd Area",
       "originalPrice": "Varies by area",
       "specialPrice": "50% OFF 2nd Area",
       "savings": "Up to 50%",
@@ -99,24 +106,26 @@
         "Consultation included",
         "Medical-grade laser technology"
       ],
-      "highlights": [
+      "benefits": [
         "50% savings on second area",
         "Long-lasting results",
         "Safe for all skin types",
         "Professional treatment"
       ],
-      "termsAndConditions": "Second area must be of equal or lesser value. Cannot be combined with other offers.",
+      "fullDescription": "Second area must be of equal or lesser value. Cannot be combined with other offers.",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc",
       "image": "https://images.squarespace-cdn.com/content/v1/6447eeb38baf0c31deed937f/1682445506382-1NLA6RFT1DGWKP81ATL4/image-asset.jpeg",
-      "badge": "BOGO 50%"
+      "badge": "BOGO 50%",
+      "priceLabel": "50% OFF 2nd Area"
     },
     {
       "id": "brazilian-chocolate-wax-special",
       "name": "🍫 Brazilian Chocolate Wax Special",
       "description": "Indulge in our luxurious Brazilian chocolate wax and receive a complimentary underarm wax for ultra-smooth results.",
+      "price": "Brazilian Price Only",
       "originalPrice": "Regular Price + Underarm",
       "specialPrice": "Brazilian Price Only",
-      "savings": "Free underarm wax (value varies)",
+      "savings": "Free underarm wax",
       "duration": "45 min",
       "validUntil": "Ongoing Promotion",
       "includes": [
@@ -125,7 +134,7 @@
         "Pre-wax skin preparation",
         "Post-wax soothing treatment"
       ],
-      "highlights": [
+      "benefits": [
         "Free underarm wax included",
         "Gentle chocolate formula",
         "Less painful than traditional wax",
@@ -133,7 +142,8 @@
       ],
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc",
       "image": "https://cdn.shopify.com/s/files/1/0579/0213/7482/files/pexels-anna-shvets-5069494_600x600.jpg?v=1669949566",
-      "badge": "Free Add-On"
+      "badge": "Free Add-On",
+      "priceLabel": "Free Underarm Wax"
     }
   ],
   "generalTerms": [
