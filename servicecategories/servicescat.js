@@ -76,6 +76,14 @@ const categoryConfig = {
         description: 'Transform your look with our professional lash extensions and enhancement services.',
         badge: 'Lash Enhancement'
     },
+    specials: {
+        jsonFile: '../data/specials.json',
+        title: 'Spa Specials',
+        subtitle: 'Refresh, rejuvenate, and reveal your natural beauty',
+        description: 'Indulge in our seasonal spa specials designed to relax your body, renew your skin, and elevate your well-being. Enjoy exclusive treatments and luxurious experiences tailored just for you.',
+        badge: 'Limited-Time Offers'
+    },
+
     makeup: {
         jsonFile: '../data/makeup.json',
         title: 'Makeup Services',
