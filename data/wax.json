@@ -278,7 +278,7 @@
       "name": "Honey Brazilian Wax",
       "description": "Complete Brazilian waxing with nourishing honey wax for smooth results.",
       "fullDescription": "Our signature Honey Brazilian Wax uses premium honey-based wax that's gentle on sensitive skin while providing complete hair removal. This treatment removes all or most pubic hair, leaving you feeling confident and smooth.",
-      "duration": "40 min",
+      "duration": "15-30 min",
       "price": "$35",
       "priceLabel": "Starting at $35",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24200961&share=true&pId=2609547",
@@ -295,7 +295,7 @@
       "name": "Vanilla Sensitive Brazilian Wax",
       "description": "Gentle Brazilian wax with vanilla formula designed for sensitive skin.",
       "fullDescription": "Our Vanilla Sensitive Brazilian Wax is specially formulated for those with sensitive skin. The vanilla-infused wax is extra gentle while providing effective, complete hair removal with minimal discomfort.",
-      "duration": "40 min",
+      "duration": "15-30 min",
       "price": "$40",
       "priceLabel": "Starting at $40",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24182014&share=true&pId=2609547",
@@ -312,7 +312,7 @@
       "name": "Chocolate Super Sensitive Brazilian Wax",
       "description": "Ultimate gentle Brazilian wax with chocolate formula for the most sensitive skin.",
       "fullDescription": "Our premium Chocolate Super Sensitive Brazilian Wax is the ultimate choice for extremely sensitive skin. The luxurious chocolate-infused formula provides complete hair removal with maximum comfort and minimal irritation.",
-      "duration": "45 min",
+      "duration": "15-30 min",
       "price": "$50",
       "priceLabel": "Starting at $50",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24200985&share=true&pId=2609547",
@@ -407,23 +407,6 @@
         "Effective removal",
         "Smooth, clean arms",
         "Long-lasting results"
-      ]
-    },
-    {
-      "id": "full-leg-wax-coarse",
-      "name": "Full Leg Wax",
-      "description": "Specialized full leg waxing for coarse or thick hair.",
-      "fullDescription": "Our specialized full leg waxing service for coarse hair uses professional-grade wax and expert techniques to effectively remove thick or coarse leg hair. Achieve perfectly smooth legs with results that last.",
-      "duration": "30 min",
-      "price": "$55",
-      "priceLabel": "Starting at $70",
-      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24201165&share=true&pId=2609547",
-      "image": "https://balancedayspa.com/cdn/shop/files/legsss_14e9a313-d960-4e36-bbcf-9d445f3adda5.jpg?v=1739478213&width=1946",
-      "benefits": [
-        "Designed for coarse hair",
-        "Complete leg coverage",
-        "Smooth, silky results",
-        "Long-lasting effect"
       ]
     },
     {
