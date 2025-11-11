@@ -36,7 +36,7 @@
     {
       "id": "pumpkin-renewal-package",
       "name": "🎃 Pumpkin Renewal Spa Package",
-      "description": "Complete spa experience combining our papaya pumpkin facial with massage and body scrub for full-body rejuvenation.",
+      "description": "Complete spa experience combining our papaya pumpkin facial and body scrub for full-body rejuvenation.",
       "price": "$169",
       "originalPrice": "$230",
       "specialPrice": "$169",
@@ -54,7 +54,11 @@
         "Save $61 on this luxurious package",
         "Head-to-toe pampering",
         "Perfect seasonal self-care",
-        "2 hours of pure relaxation"
+        "2 hours of pure relaxation",
+        "Papaya Pumpkin Deep Pore Cleansing Facial (60 min)",
+        "30-Minute Aromatic Express Massage",
+        "Pumpkin Body Scrub",
+        "Shower facility access"
       ],
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A25310689&share=true&pId=2609547",
       "image": "https://images.squarespace-cdn.com/content/v1/5c4f6ba1e2ccd1ee6075495d/1655419707450-FYAW4T2G57D503SWMHT7/oxygen-facial.jpg",
