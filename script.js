@@ -278,7 +278,6 @@ class PremiumHeaderWithMegaMenu {
 
 // ============================================
 // CUTE PROMOTIONAL MODAL JAVASCRIPT
-// Add this to your script.js file
 // ============================================
 
 class CutePromoModal {
@@ -301,20 +300,83 @@ class CutePromoModal {
         // Storage key
         this.storageKey = 'cute_promo_modal_closed';
         
+        // Track if this is first page load
+        this.isFirstLoad = !sessionStorage.getItem('promo_modal_shown');
+        
         this.init();
     }
     
     init() {
         console.log('🎁 Initializing Cute Promo Modal');
         
-        // Check if modal was previously closed
-        if (!this.isModalClosed()) {
-            this.showModal();
-        } else {
-            this.showMinimizedButton();
-        }
+        // Position minimized button near gift card button
+        this.positionMinimizedButton();
+        
+        // Reposition on window resize
+        window.addEventListener('resize', () => this.positionMinimizedButton());
+        
+        // Wait for preloader to finish, then show modal after 3 seconds
+        this.waitForPreloaderThenShowModal();
         
         this.setupEventListeners();
+    }
+    
+    waitForPreloaderThenShowModal() {
+        // Check if modal was previously closed in last 24 hours
+        if (this.isModalClosed()) {
+            this.showMinimizedButton();
+            return;
+        }
+        
+        // Wait for preloader to finish
+        const preloader = document.getElementById('preloader');
+        
+        const checkPreloader = () => {
+            if (!preloader || preloader.style.display === 'none' || !preloader.classList.contains('active')) {
+                // Preloader is done, wait 3 more seconds
+                console.log('⏳ Waiting 3 seconds before showing modal...');
+                
+                setTimeout(() => {
+                    if (this.isFirstLoad) {
+                        this.showModal();
+                        sessionStorage.setItem('promo_modal_shown', 'true');
+                    }
+                }, 3000);
+            } else {
+                // Check again in 100ms
+                setTimeout(checkPreloader, 100);
+            }
+        };
+        
+        // Start checking after a short delay
+        setTimeout(checkPreloader, 500);
+    }
+    
+    positionMinimizedButton() {
+        if (!this.minimizedBtn) return;
+        
+        // Find the gift card button or a reference element
+        const giftCardBtn = document.querySelector('.gift-card-btn, .fixed-gift-card, [href*="gift"]');
+        
+        if (giftCardBtn) {
+            const rect = giftCardBtn.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Position the button below the gift card button
+            // Using absolute positioning relative to the page
+            this.minimizedBtn.style.position = 'absolute';
+            this.minimizedBtn.style.top = (rect.top + scrollTop + rect.height + 15) + 'px';
+            this.minimizedBtn.style.left = rect.left + 'px';
+            
+            console.log('📍 Positioned minimized button near gift card');
+        } else {
+            // Fallback: use fixed positioning if gift card button not found
+            this.minimizedBtn.style.position = 'fixed';
+            this.minimizedBtn.style.top = '200px';
+            this.minimizedBtn.style.left = '40px';
+            
+            console.log('⚠️ Gift card button not found, using fixed position');
+        }
     }
     
     setupEventListeners() {
@@ -360,15 +422,24 @@ class CutePromoModal {
                 }
             }
         });
+        
+        // Reposition button on scroll (to keep it aligned if needed)
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                if (this.minimizedBtn?.classList.contains('show')) {
+                    this.positionMinimizedButton();
+                }
+            }, 100);
+        });
     }
     
     showModal() {
         if (!this.modal) return;
         
-        setTimeout(() => {
-            this.modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }, 500);
+        this.modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
         
         console.log('✨ Modal opened');
     }
@@ -406,6 +477,9 @@ class CutePromoModal {
     
     showMinimizedButton() {
         if (!this.minimizedBtn) return;
+        
+        // Make sure it's positioned correctly
+        this.positionMinimizedButton();
         
         setTimeout(() => {
             this.minimizedBtn.classList.add('show');
