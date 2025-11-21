@@ -1390,6 +1390,1227 @@ body.scrolled .giftcard-premium-link {
 }
 
 /* ============================================
+   BLACK FRIDAY PROMO BUTTON - COMPLETE STYLES
+   ============================================ */
+
+.blackfriday-promo-link {
+    /* POSITIONING */
+    position: fixed;
+    top: 190px;
+    left: 40px;
+    z-index: 997;
+    
+    /* INITIAL STATE */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-100px) scale(0.9);
+    pointer-events: none;
+    
+    /* LAYOUT */
+    display: flex;
+    align-items: center;
+    padding: 0;
+    
+    /* STYLING */
+    background: transparent;
+    text-decoration: none;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.blackfriday-promo-link.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0) scale(1);
+    pointer-events: all;
+}
+
+.blackfriday-promo-link.hidden-mobile {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* Inner Container */
+.blackfriday-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 10px 10px 18px;
+    background: linear-gradient(135deg, 
+        rgba(28, 28, 28, 0.98) 0%, 
+        rgba(40, 40, 40, 0.96) 100%);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 2px solid transparent;
+    border-radius: 50px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 2px 8px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -1px 0 rgba(212, 175, 55, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.blackfriday-inner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+        transparent 0%,
+        rgba(212, 175, 55, 0.1) 50%,
+        transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.blackfriday-promo-link:hover .blackfriday-inner {
+    transform: translateY(-4px);
+    border-color: rgba(212, 175, 55, 0.5);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.4),
+        0 4px 12px rgba(212, 175, 55, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        inset 0 -1px 0 rgba(212, 175, 55, 0.3);
+}
+
+.blackfriday-promo-link:hover .blackfriday-inner::before {
+    opacity: 1;
+}
+
+.blackfriday-promo-link:active .blackfriday-inner {
+    transform: translateY(-2px);
+}
+
+/* Sparkle Effect */
+.blackfriday-sparkle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 50px;
+    pointer-events: none;
+}
+
+.blackfriday-sparkle::before,
+.blackfriday-sparkle::after {
+    content: '✨';
+    position: absolute;
+    font-size: 12px;
+    opacity: 0;
+    animation: sparkleFloat 3s ease-in-out infinite;
+}
+
+.blackfriday-sparkle::before {
+    top: 20%;
+    left: 15%;
+    animation-delay: 0s;
+}
+
+.blackfriday-sparkle::after {
+    bottom: 20%;
+    right: 15%;
+    animation-delay: 1.5s;
+}
+
+@keyframes sparkleFloat {
+    0%, 100% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-10px) scale(1);
+    }
+}
+
+/* Icon Wrapper */
+.blackfriday-icon-wrap {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    order: 3;
+}
+
+.blackfriday-icon-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+        #D4AF37 0%, 
+        #F0D55F 100%);
+    border-radius: 50%;
+    box-shadow: 
+        0 4px 14px rgba(212, 175, 55, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.6),
+        inset 0 -1px 2px rgba(212, 175, 55, 0.3);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.blackfriday-icon {
+    position: relative;
+    font-size: 1rem;
+    color: #1C1C1C;
+    z-index: 2;
+    animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.blackfriday-promo-link:hover .blackfriday-icon-bg {
+    transform: rotate(-180deg) scale(1.15);
+    background: linear-gradient(135deg, 
+        #FFD700 0%, 
+        #D4AF37 100%);
+    box-shadow: 
+        0 6px 20px rgba(255, 215, 0, 0.6),
+        inset 0 1px 3px rgba(255, 255, 255, 0.7),
+        inset 0 -1px 3px rgba(212, 175, 55, 0.4);
+}
+
+.blackfriday-promo-link:hover .blackfriday-icon {
+    animation: iconBounce 0.6s ease;
+    color: #000;
+}
+
+@keyframes iconBounce {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3) rotate(-10deg);
+    }
+}
+
+/* Content */
+.blackfriday-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    order: 2;
+}
+
+.blackfriday-tag {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.blackfriday-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #D4AF37;
+    letter-spacing: 0.5px;
+    line-height: 1;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.blackfriday-countdown {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.blackfriday-countdown i {
+    font-size: 0.65rem;
+    color: #D4AF37;
+    animation: clockTick 1s ease-in-out infinite;
+}
+
+@keyframes clockTick {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-10deg);
+    }
+    75% {
+        transform: rotate(10deg);
+    }
+}
+
+.blackfriday-promo-link:hover .blackfriday-label {
+    color: #FFD700;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+}
+
+/* Arrow - Left Side */
+.blackfriday-arrow-left {
+    font-size: 0.75rem;
+    color: #D4AF37;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    opacity: 0.8;
+    order: 1;
+}
+
+.blackfriday-promo-link:hover .blackfriday-arrow-left {
+    transform: translateX(-5px);
+    color: #FFD700;
+    opacity: 1;
+}
+
+/* Glow Effect */
+.blackfriday-glow {
+    position: absolute;
+    inset: -20px;
+    background: radial-gradient(
+        circle at center,
+        rgba(212, 175, 55, 0.3) 0%,
+        transparent 70%
+    );
+    opacity: 0;
+    filter: blur(15px);
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.blackfriday-promo-link:hover .blackfriday-glow {
+    opacity: 1;
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+/* Scrolled Header Adjustment */
+.premium-header.scrolled ~ .blackfriday-promo-link,
+body.scrolled .blackfriday-promo-link {
+    top: 170px;
+}
+
+/* ============================================
+   BLACK FRIDAY MODAL
+   ============================================ */
+
+.blackfriday-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.blackfriday-modal.active {
+    display: flex;
+}
+
+.blackfriday-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(8px);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.blackfriday-modal-content {
+    position: relative;
+    background: linear-gradient(135deg, 
+        rgba(28, 28, 28, 0.98) 0%, 
+        rgba(40, 40, 40, 0.96) 100%);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    border-radius: 30px;
+    max-width: 700px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 10;
+    animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 25px 80px rgba(0, 0, 0, 0.5),
+        0 0 100px rgba(212, 175, 55, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Custom Scrollbar */
+.blackfriday-modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.blackfriday-modal-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+}
+
+.blackfriday-modal-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #D4AF37 0%, #FFD700 100%);
+    border-radius: 30px;
+}
+
+.blackfriday-modal-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #FFD700 0%, #D4AF37 100%);
+}
+
+/* Close Button */
+.blackfriday-modal-close {
+    position: sticky;
+    top: 20px;
+    left: calc(100% - 70px);
+    width: 50px;
+    height: 50px;
+    background: rgba(212, 175, 55, 0.2);
+    border: 2px solid #D4AF37;
+    border-radius: 50%;
+    color: #FFD700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(212, 175, 55, 0.3);
+    margin-bottom: -50px;
+}
+
+.blackfriday-modal-close:hover {
+    background: #D4AF37;
+    color: #1C1C1C;
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 
+        0 6px 20px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(212, 175, 55, 0.6);
+}
+
+.blackfriday-modal-close i {
+    font-size: 1.3rem;
+}
+
+/* Modal Header */
+.blackfriday-modal-header {
+    text-align: center;
+    padding: 50px 40px 40px;
+    background: linear-gradient(180deg, 
+        rgba(212, 175, 55, 0.1) 0%, 
+        transparent 100%);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.blackfriday-modal-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle at center,
+        rgba(212, 175, 55, 0.1) 0%,
+        transparent 70%
+    );
+    animation: rotateGlow 15s linear infinite;
+}
+
+@keyframes rotateGlow {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.blackfriday-modal-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    box-shadow: 
+        0 10px 30px rgba(212, 175, 55, 0.4),
+        0 0 40px rgba(212, 175, 55, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.4);
+    animation: iconFloat 3s ease-in-out infinite;
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes iconFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.blackfriday-modal-icon i {
+    font-size: 2.5rem;
+    color: #1C1C1C;
+    animation: sparkleRotate 4s ease-in-out infinite;
+}
+
+@keyframes sparkleRotate {
+    0%, 100% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.1);
+    }
+}
+
+.blackfriday-modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #FFD700;
+    margin-bottom: 12px;
+    line-height: 1.2;
+    text-shadow: 
+        0 0 20px rgba(212, 175, 55, 0.6),
+        0 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 2;
+}
+
+.blackfriday-modal-subtitle {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Countdown Timer Display */
+.blackfriday-timer-display {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 20px;
+    padding: 25px;
+    margin-top: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.timer-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #D4AF37;
+    margin-bottom: 15px;
+}
+
+.timer-label i {
+    font-size: 1rem;
+    animation: timerPulse 2s ease-in-out infinite;
+}
+
+@keyframes timerPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+.timer-boxes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.timer-box {
+    background: linear-gradient(135deg, 
+        rgba(212, 175, 55, 0.15) 0%, 
+        rgba(212, 175, 55, 0.05) 100%);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    border-radius: 12px;
+    padding: 12px 16px;
+    min-width: 75px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.timer-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #FFD700;
+    line-height: 1;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.timer-unit {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.timer-separator {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #D4AF37;
+    margin: 0 4px;
+}
+
+.timer-end-date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 12px;
+}
+
+.timer-end-date i {
+    color: #D4AF37;
+    font-size: 0.9rem;
+}
+
+/* Modal Body */
+.blackfriday-modal-body {
+    padding: 40px;
+}
+
+/* Offer Card */
+.blackfriday-offer-card {
+    background: linear-gradient(135deg, 
+        rgba(212, 175, 55, 0.1) 0%, 
+        rgba(0, 0, 0, 0.3) 100%);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.blackfriday-offer-card::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: linear-gradient(
+        45deg,
+        transparent 40%,
+        rgba(212, 175, 55, 0.1) 50%,
+        transparent 60%
+    );
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%) translateY(-100%);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%);
+    }
+}
+
+.offer-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+    color: #1C1C1C;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+}
+
+.offer-badge i {
+    font-size: 0.9rem;
+}
+
+.offer-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #FFD700;
+    margin-bottom: 15px;
+    line-height: 1.3;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+.offer-description {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 20px;
+}
+
+.offer-highlight {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(212, 175, 55, 0.2);
+    border-left: 4px solid #D4AF37;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #FFD700;
+}
+
+.offer-highlight i {
+    font-size: 1.2rem;
+    color: #4CAF50;
+}
+
+/* Special Mention */
+.blackfriday-special-mention {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.special-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+}
+
+.special-icon i {
+    font-size: 1.3rem;
+    color: #1C1C1C;
+}
+
+.special-text h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #FFD700;
+    margin-bottom: 8px;
+}
+
+.special-text p {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.special-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #D4AF37;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.special-link:hover {
+    color: #FFD700;
+    gap: 12px;
+}
+
+.special-link i {
+    transition: transform 0.3s ease;
+}
+
+.special-link:hover i {
+    transform: translateX(3px);
+}
+
+/* Terms & Conditions */
+.blackfriday-terms {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.terms-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #FFD700;
+    margin-bottom: 20px;
+}
+
+.terms-title i {
+    font-size: 1.2rem;
+    color: #D4AF37;
+}
+
+.terms-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.terms-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.terms-list li i {
+    flex-shrink: 0;
+    font-size: 1rem;
+    margin-top: 2px;
+}
+
+.terms-list li i.fa-times-circle {
+    color: #FF6B6B;
+}
+
+.terms-list li i.fa-check-circle {
+    color: #4CAF50;
+}
+
+.terms-list strong {
+    color: #FFD700;
+    font-weight: 700;
+}
+
+/* CTA Button */
+.blackfriday-modal-cta {
+    text-align: center;
+}
+
+.blackfriday-book-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #1C1C1C;
+    background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+    padding: 18px 45px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 10px 30px rgba(212, 175, 55, 0.4),
+        0 0 40px rgba(212, 175, 55, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.blackfriday-book-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s ease;
+}
+
+.blackfriday-book-btn:hover::before {
+    left: 100%;
+}
+
+.blackfriday-book-btn:hover {
+    background: linear-gradient(135deg, #FFD700 0%, #F0E68C 100%);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 
+        0 15px 40px rgba(212, 175, 55, 0.6),
+        0 0 60px rgba(212, 175, 55, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.blackfriday-book-btn:active {
+    transform: translateY(-1px) scale(1);
+}
+
+.blackfriday-book-btn i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.blackfriday-book-btn i:last-child {
+    font-size: 1rem;
+}
+
+.blackfriday-book-btn:hover i:last-child {
+    transform: translateX(5px);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1200px) {
+    .blackfriday-promo-link {
+        left: 30px;
+    }
+}
+
+@media (max-width: 968px) {
+    .blackfriday-promo-link {
+        top: 160px;
+        left: 15px;
+    }
+    
+    .premium-header.scrolled ~ .blackfriday-promo-link,
+    body.scrolled .blackfriday-promo-link {
+        top: 155px;
+    }
+
+    .blackfriday-modal-content {
+        max-width: 90%;
+    }
+
+    .blackfriday-modal-body {
+        padding: 30px 25px;
+    }
+
+    .blackfriday-modal-title {
+        font-size: 2rem;
+    }
+
+    .timer-box {
+        min-width: 65px;
+        padding: 10px 12px;
+    }
+
+    .timer-value {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .blackfriday-promo-link {
+        top: 155px;
+        left: 15px;
+    }
+    
+    .blackfriday-inner {
+        padding: 8px 8px 8px 16px;
+        gap: 6px;
+    }
+    
+    .blackfriday-icon-wrap {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .blackfriday-icon {
+        font-size: 0.9rem;
+    }
+    
+    .blackfriday-label {
+        font-size: 0.95rem;
+    }
+
+    .blackfriday-countdown {
+        font-size: 0.65rem;
+    }
+
+    .blackfriday-modal-header {
+        padding: 40px 25px 30px;
+    }
+
+    .blackfriday-modal-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .blackfriday-modal-icon i {
+        font-size: 2rem;
+    }
+
+    .blackfriday-modal-title {
+        font-size: 1.8rem;
+    }
+
+    .blackfriday-modal-subtitle {
+        font-size: 1rem;
+    }
+
+    .blackfriday-timer-display {
+        padding: 20px;
+    }
+
+    .timer-boxes {
+        gap: 6px;
+    }
+
+    .timer-box {
+        min-width: 60px;
+        padding: 8px 10px;
+    }
+
+    .timer-value {
+        font-size: 1.4rem;
+    }
+
+    .timer-unit {
+        font-size: 0.65rem;
+    }
+
+    .timer-separator {
+        font-size: 1.5rem;
+        margin: 0 2px;
+    }
+
+    .offer-title {
+        font-size: 1.6rem;
+    }
+
+    .blackfriday-special-mention {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .blackfriday-book-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .blackfriday-promo-link {
+        top: 150px;
+        left: 12px;
+    }
+    
+    .blackfriday-inner {
+        padding: 7px 7px 7px 14px;
+        gap: 5px;
+    }
+    
+    .blackfriday-icon-wrap {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .blackfriday-icon {
+        font-size: 0.8rem;
+    }
+    
+    .blackfriday-label {
+        font-size: 0.9rem;
+    }
+
+    .blackfriday-tag {
+        font-size: 0.6rem;
+    }
+
+    .blackfriday-countdown {
+        font-size: 0.6rem;
+    }
+    
+    .blackfriday-arrow-left {
+        font-size: 0.7rem;
+    }
+
+    .blackfriday-modal-content {
+        border-radius: 25px;
+        max-width: 95%;
+    }
+
+    .blackfriday-modal-header {
+        padding: 35px 20px 25px;
+    }
+
+    .blackfriday-modal-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .blackfriday-modal-icon i {
+        font-size: 1.8rem;
+    }
+
+    .blackfriday-modal-title {
+        font-size: 1.6rem;
+    }
+
+    .blackfriday-modal-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .blackfriday-modal-body {
+        padding: 25px 20px;
+    }
+
+    .blackfriday-timer-display {
+        padding: 15px;
+        border-radius: 15px;
+    }
+
+    .timer-boxes {
+        gap: 4px;
+    }
+
+    .timer-box {
+        min-width: 50px;
+        padding: 6px 8px;
+        border-radius: 8px;
+    }
+
+    .timer-value {
+        font-size: 1.2rem;
+    }
+
+    .timer-unit {
+        font-size: 0.6rem;
+    }
+
+    .timer-separator {
+        font-size: 1.2rem;
+        margin: 0;
+    }
+
+    .timer-end-date {
+        font-size: 0.75rem;
+    }
+
+    .blackfriday-offer-card,
+    .blackfriday-special-mention,
+    .blackfriday-terms {
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .offer-title {
+        font-size: 1.4rem;
+    }
+
+    .offer-description {
+        font-size: 0.9rem;
+    }
+
+    .terms-list li {
+        font-size: 0.85rem;
+    }
+
+    .blackfriday-book-btn {
+        padding: 16px 35px;
+        font-size: 1rem;
+    }
+
+    .blackfriday-modal-close {
+        width: 45px;
+        height: 45px;
+        top: 15px;
+        left: calc(100% - 60px);
+    }
+
+    .blackfriday-modal-close i {
+        font-size: 1.1rem;
+    }
+}
+
+/* ============================================
    HERO SECTION WITH VIDEO COLLAGE
    ============================================ */
 .hero-section {
