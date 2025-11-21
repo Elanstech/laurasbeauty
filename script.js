@@ -509,6 +509,226 @@ if (document.readyState === 'loading') {
 window.FloatingButtons = FloatingButtons;
 
 // ============================================
+// BLACK FRIDAY PROMO BUTTON & MODAL
+// ============================================
+
+class BlackFridayPromo {
+    constructor() {
+        this.button = document.getElementById('blackfridayBtn');
+        this.modal = document.getElementById('blackfridayModal');
+        this.overlay = document.getElementById('blackfridayOverlay');
+        this.closeBtn = document.getElementById('blackfridayClose');
+        
+        // Countdown timer elements
+        this.buttonTimer = document.getElementById('buttonTimer');
+        this.daysEl = document.getElementById('days');
+        this.hoursEl = document.getElementById('hours');
+        this.minutesEl = document.getElementById('minutes');
+        this.secondsEl = document.getElementById('seconds');
+        
+        // End date: December 1st, 2025 at 3:00 PM
+        this.endDate = new Date('2025-12-01T15:00:00').getTime();
+        
+        this.init();
+    }
+
+    init() {
+        console.log('🎉 Initializing Black Friday Promo');
+        
+        // Show button after delay
+        this.scheduleShow();
+        
+        // Handle mobile menu
+        this.handleMobileMenu();
+        
+        // Setup modal events
+        this.setupModalEvents();
+        
+        // Start countdown timer
+        this.startCountdown();
+        
+        console.log('✅ Black Friday Promo initialized');
+    }
+
+    scheduleShow() {
+        setTimeout(() => {
+            this.show();
+        }, 3000); // Show after 3 seconds
+    }
+
+    show() {
+        const isMobileMenuOpen = document.querySelector('.mobile-drawer')?.classList.contains('active');
+        
+        if (!isMobileMenuOpen && this.button) {
+            this.button.classList.add('visible');
+            console.log('✅ Black Friday button visible');
+        }
+    }
+
+    hide() {
+        if (this.button) {
+            this.button.classList.remove('visible');
+            this.button.classList.add('hidden-mobile');
+        }
+    }
+
+    reveal() {
+        if (this.button) {
+            this.button.classList.remove('hidden-mobile');
+            this.button.classList.add('visible');
+        }
+    }
+
+    handleMobileMenu() {
+        const mobileDrawer = document.querySelector('.mobile-drawer');
+        if (!mobileDrawer) return;
+
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'class') {
+                    const isActive = mobileDrawer.classList.contains('active');
+                    
+                    if (isActive) {
+                        this.hide();
+                    } else {
+                        setTimeout(() => this.reveal(), 100);
+                    }
+                }
+            });
+        });
+
+        observer.observe(mobileDrawer, {
+            attributes: true,
+            attributeFilter: ['class']
+        });
+    }
+
+    setupModalEvents() {
+        // Open modal on button click
+        if (this.button) {
+            this.button.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.openModal();
+            });
+        }
+
+        // Close modal on overlay click
+        if (this.overlay) {
+            this.overlay.addEventListener('click', () => this.closeModal());
+        }
+
+        // Close modal on close button click
+        if (this.closeBtn) {
+            this.closeBtn.addEventListener('click', () => this.closeModal());
+        }
+
+        // Close modal on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.modal?.classList.contains('active')) {
+                this.closeModal();
+            }
+        });
+    }
+
+    openModal() {
+        if (this.modal) {
+            this.modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            console.log('🎉 Black Friday modal opened');
+        }
+    }
+
+    closeModal() {
+        if (this.modal) {
+            this.modal.classList.remove('active');
+            document.body.style.overflow = '';
+            console.log('👋 Black Friday modal closed');
+        }
+    }
+
+    startCountdown() {
+        // Update countdown immediately
+        this.updateCountdown();
+        
+        // Update countdown every second
+        this.countdownInterval = setInterval(() => {
+            this.updateCountdown();
+        }, 1000);
+    }
+
+    updateCountdown() {
+        const now = new Date().getTime();
+        const distance = this.endDate - now;
+
+        // If countdown is finished
+        if (distance < 0) {
+            clearInterval(this.countdownInterval);
+            this.displayExpired();
+            return;
+        }
+
+        // Calculate time units
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Update button timer (compact format)
+        if (this.buttonTimer) {
+            if (days > 0) {
+                this.buttonTimer.textContent = `${days}d ${this.pad(hours)}h`;
+            } else if (hours > 0) {
+                this.buttonTimer.textContent = `${hours}h ${this.pad(minutes)}m`;
+            } else {
+                this.buttonTimer.textContent = `${minutes}m ${this.pad(seconds)}s`;
+            }
+        }
+
+        // Update modal timer (full display)
+        if (this.daysEl) this.daysEl.textContent = this.pad(days);
+        if (this.hoursEl) this.hoursEl.textContent = this.pad(hours);
+        if (this.minutesEl) this.minutesEl.textContent = this.pad(minutes);
+        if (this.secondsEl) this.secondsEl.textContent = this.pad(seconds);
+    }
+
+    displayExpired() {
+        // Button timer
+        if (this.buttonTimer) {
+            this.buttonTimer.textContent = 'EXPIRED';
+        }
+
+        // Modal timer
+        if (this.daysEl) this.daysEl.textContent = '00';
+        if (this.hoursEl) this.hoursEl.textContent = '00';
+        if (this.minutesEl) this.minutesEl.textContent = '00';
+        if (this.secondsEl) this.secondsEl.textContent = '00';
+
+        console.log('⏰ Black Friday promotion has expired');
+        
+        // Optionally hide the button
+        // this.button?.classList.remove('visible');
+    }
+
+    pad(num) {
+        return num.toString().padStart(2, '0');
+    }
+}
+
+// Auto-initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        new BlackFridayPromo();
+    });
+} else {
+    new BlackFridayPromo();
+}
+
+// Export for manual initialization if needed
+window.BlackFridayPromo = BlackFridayPromo;
+
+console.log('🎉 Black Friday script loaded');
+
+// ============================================
 // HERO VIDEO COLLAGE
 // ============================================
 class HeroVideoCollage {
