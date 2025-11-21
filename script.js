@@ -277,31 +277,39 @@ class PremiumHeaderWithMegaMenu {
 }
 
 // ============================================
-// PROMOTIONAL BANNER JAVASCRIPT
+// ELEGANT PROMOTIONAL MODAL - JAVASCRIPT
+// Add to your script.js file
 // ============================================
 
-class PromotionalBanner {
+class ElegantPromoModal {
     constructor() {
-        this.banner = document.getElementById('promoBanner');
-        this.closeBtn = document.getElementById('promoClose');
-        this.modal = document.getElementById('promoModal');
-        this.modalOverlay = document.getElementById('promoModalOverlay');
-        this.modalClose = document.getElementById('promoModalClose');
-        this.modalCloseBtn = document.getElementById('modalCloseBtn');
-        this.viewTermsBtn = document.getElementById('viewTermsBtn');
+        // Main modal elements
+        this.modal = document.getElementById('elegantPromoModal');
+        this.modalCloseBtn = document.getElementById('promoModalCloseBtn');
+        this.minimizedBtn = document.getElementById('promoMinimizedBtn');
         
-        // Storage key for banner dismissal
-        this.storageKey = 'promo_banner_dismissed';
+        // Terms modal elements
+        this.termsModal = document.getElementById('promoTermsModal');
+        this.termsTrigger = document.getElementById('promoTermsTrigger');
+        this.termsCloseBtn = document.getElementById('promoTermsCloseBtn');
+        this.termsCloseBottomBtn = document.getElementById('promoTermsCloseBottomBtn');
+        this.termsOverlay = this.termsModal?.querySelector('.promo-terms-overlay');
+        
+        // Storage key
+        this.storageKey = 'elegant_promo_seen';
         
         this.init();
     }
     
     init() {
-        console.log('🎁 Initializing Promotional Banner');
+        console.log('✨ Initializing Elegant Promo Modal');
         
-        // Check if banner was previously dismissed
-        if (!this.isBannerDismissed()) {
-            this.showBanner();
+        // Check if user has seen the modal this session
+        if (!this.hasSeenPromo()) {
+            this.showModal();
+        } else {
+            // If they've seen it, show the minimized button
+            this.showMinimizedButton();
         }
         
         // Setup event listeners
@@ -309,79 +317,71 @@ class PromotionalBanner {
     }
     
     setupEventListeners() {
-        // Close banner button
-        if (this.closeBtn) {
-            this.closeBtn.addEventListener('click', () => this.closeBanner());
-        }
-        
-        // View terms button
-        if (this.viewTermsBtn) {
-            this.viewTermsBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                this.openModal();
-            });
-        }
-        
-        // Modal close buttons
-        if (this.modalClose) {
-            this.modalClose.addEventListener('click', () => this.closeModal());
-        }
-        
+        // Main modal close button
         if (this.modalCloseBtn) {
             this.modalCloseBtn.addEventListener('click', () => this.closeModal());
         }
         
-        if (this.modalOverlay) {
-            this.modalOverlay.addEventListener('click', () => this.closeModal());
+        // Close on overlay click
+        if (this.modal) {
+            const overlay = this.modal.querySelector('.promo-modal-overlay');
+            if (overlay) {
+                overlay.addEventListener('click', () => this.closeModal());
+            }
         }
         
-        // ESC key to close modal
+        // ESC key to close main modal
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && this.modal.classList.contains('active')) {
-                this.closeModal();
+            if (e.key === 'Escape') {
+                if (this.modal?.classList.contains('active')) {
+                    this.closeModal();
+                }
+                if (this.termsModal?.classList.contains('active')) {
+                    this.closeTermsModal();
+                }
             }
         });
+        
+        // Minimized button click - reopen modal
+        if (this.minimizedBtn) {
+            this.minimizedBtn.addEventListener('click', () => this.reopenModal());
+        }
+        
+        // Terms modal triggers
+        if (this.termsTrigger) {
+            this.termsTrigger.addEventListener('click', () => this.openTermsModal());
+        }
+        
+        if (this.termsCloseBtn) {
+            this.termsCloseBtn.addEventListener('click', () => this.closeTermsModal());
+        }
+        
+        if (this.termsCloseBottomBtn) {
+            this.termsCloseBottomBtn.addEventListener('click', () => this.closeTermsModal());
+        }
+        
+        if (this.termsOverlay) {
+            this.termsOverlay.addEventListener('click', () => this.closeTermsModal());
+        }
     }
     
-    showBanner() {
-        if (!this.banner) return;
-        
-        // Small delay for smooth entrance
-        setTimeout(() => {
-            this.banner.classList.add('show');
-            console.log('✅ Banner displayed');
-        }, 500);
-    }
-    
-    closeBanner() {
-        if (!this.banner) return;
-        
-        this.banner.classList.remove('show');
-        
-        // Store dismissal in sessionStorage (dismissed for current session only)
-        // Change to localStorage if you want it dismissed permanently
-        sessionStorage.setItem(this.storageKey, 'true');
-        
-        console.log('👋 Banner dismissed');
-        
-        // Optional: Remove from DOM after animation
-        setTimeout(() => {
-            this.banner.style.display = 'none';
-        }, 600);
-    }
-    
-    isBannerDismissed() {
-        // Check sessionStorage (change to localStorage for permanent dismissal)
+    hasSeenPromo() {
         return sessionStorage.getItem(this.storageKey) === 'true';
     }
     
-    openModal() {
+    markPromoAsSeen() {
+        sessionStorage.setItem(this.storageKey, 'true');
+    }
+    
+    showModal() {
         if (!this.modal) return;
         
-        this.modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        
-        console.log('📋 Terms modal opened');
+        // Small delay for smooth entrance
+        setTimeout(() => {
+            this.modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            console.log('🎉 Promo modal displayed');
+        }, 800);
     }
     
     closeModal() {
@@ -390,10 +390,58 @@ class PromotionalBanner {
         this.modal.classList.remove('active');
         document.body.style.overflow = '';
         
+        // Mark as seen
+        this.markPromoAsSeen();
+        
+        // Show minimized button after modal closes
+        setTimeout(() => {
+            this.showMinimizedButton();
+        }, 400);
+        
+        console.log('👋 Promo modal closed');
+    }
+    
+    reopenModal() {
+        if (!this.modal) return;
+        
+        // Hide minimized button
+        this.minimizedBtn.classList.remove('show');
+        
+        // Show modal again
+        setTimeout(() => {
+            this.modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            console.log('🔄 Promo modal reopened');
+        }, 100);
+    }
+    
+    showMinimizedButton() {
+        if (!this.minimizedBtn) return;
+        
+        setTimeout(() => {
+            this.minimizedBtn.classList.add('show');
+            console.log('⚫ Minimized button displayed');
+        }, 200);
+    }
+    
+    openTermsModal() {
+        if (!this.termsModal) return;
+        
+        this.termsModal.classList.add('active');
+        
+        // Don't hide main modal overflow since terms is on top
+        console.log('📋 Terms modal opened');
+    }
+    
+    closeTermsModal() {
+        if (!this.termsModal) return;
+        
+        this.termsModal.classList.remove('active');
+        
         // Reset scroll position
-        const modalContent = this.modal.querySelector('.promo-modal-content');
-        if (modalContent) {
-            modalContent.scrollTop = 0;
+        const termsContainer = this.termsModal.querySelector('.promo-terms-container');
+        if (termsContainer) {
+            termsContainer.scrollTop = 0;
         }
         
         console.log('📋 Terms modal closed');
@@ -401,22 +449,22 @@ class PromotionalBanner {
 }
 
 // ============================================
-// INITIALIZE BANNER
+// INITIALIZE MODAL
 // ============================================
 
 // Initialize when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-        new PromotionalBanner();
+        new ElegantPromoModal();
     });
 } else {
-    new PromotionalBanner();
+    new ElegantPromoModal();
 }
 
 // Export for manual initialization if needed
-window.PromotionalBanner = PromotionalBanner;
+window.ElegantPromoModal = ElegantPromoModal;
 
-console.log('🌟 Promotional banner script loaded');
+console.log('🌟 Elegant Promo Modal script loaded');
 
 // ============================================
 // FLOATING BUTTONS - SPECIALS & GIFT CARD
