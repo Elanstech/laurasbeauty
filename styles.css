@@ -1120,9 +1120,7 @@ body {
    ============================================ */
 
 .promo-minimized-btn-cute {
-    position: fixed;
-    left: 40px;
-    top: 200px;
+    position: absolute;
     width: 75px;
     height: 75px;
     background: linear-gradient(145deg, #1a1a1a 0%, #2a2a2a 100%);
@@ -1138,7 +1136,6 @@ body {
     box-shadow: 
         0 8px 30px rgba(0, 0, 0, 0.6),
         0 0 40px rgba(212, 175, 55, 0.3);
-    position: relative;
 }
 
 .promo-minimized-btn-cute.show {
