@@ -277,81 +277,67 @@ class PremiumHeaderWithMegaMenu {
 }
 
 // ============================================
-// ELEGANT PROMOTIONAL MODAL - JAVASCRIPT
-// Add to your script.js file
+// CUTE PROMOTIONAL MODAL JAVASCRIPT
+// Add this to your script.js file
 // ============================================
 
-class ElegantPromoModal {
+class CutePromoModal {
     constructor() {
-        // Main modal elements
-        this.modal = document.getElementById('elegantPromoModal');
+        // Main Modal Elements
+        this.modal = document.getElementById('cutePromoModal');
         this.modalCloseBtn = document.getElementById('promoModalCloseBtn');
+        this.modalOverlay = this.modal?.querySelector('.promo-modal-overlay');
+        
+        // Minimized Button
         this.minimizedBtn = document.getElementById('promoMinimizedBtn');
         
-        // Terms modal elements
+        // Terms Modal Elements
         this.termsModal = document.getElementById('promoTermsModal');
-        this.termsTrigger = document.getElementById('promoTermsTrigger');
+        this.termsOpenBtn = document.getElementById('promoTermsTrigger');
         this.termsCloseBtn = document.getElementById('promoTermsCloseBtn');
         this.termsCloseBottomBtn = document.getElementById('promoTermsCloseBottomBtn');
         this.termsOverlay = this.termsModal?.querySelector('.promo-terms-overlay');
         
         // Storage key
-        this.storageKey = 'elegant_promo_seen';
+        this.storageKey = 'cute_promo_modal_closed';
         
         this.init();
     }
     
     init() {
-        console.log('✨ Initializing Elegant Promo Modal');
+        console.log('🎁 Initializing Cute Promo Modal');
         
-        // Check if user has seen the modal this session
-        if (!this.hasSeenPromo()) {
+        // Check if modal was previously closed
+        if (!this.isModalClosed()) {
             this.showModal();
         } else {
-            // If they've seen it, show the minimized button
             this.showMinimizedButton();
         }
         
-        // Setup event listeners
         this.setupEventListeners();
     }
     
     setupEventListeners() {
-        // Main modal close button
+        // Main Modal Close
         if (this.modalCloseBtn) {
             this.modalCloseBtn.addEventListener('click', () => this.closeModal());
         }
         
-        // Close on overlay click
-        if (this.modal) {
-            const overlay = this.modal.querySelector('.promo-modal-overlay');
-            if (overlay) {
-                overlay.addEventListener('click', () => this.closeModal());
-            }
+        if (this.modalOverlay) {
+            this.modalOverlay.addEventListener('click', () => this.closeModal());
         }
         
-        // ESC key to close main modal
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                if (this.modal?.classList.contains('active')) {
-                    this.closeModal();
-                }
-                if (this.termsModal?.classList.contains('active')) {
-                    this.closeTermsModal();
-                }
-            }
-        });
-        
-        // Minimized button click - reopen modal
+        // Minimized Button - Reopen Modal
         if (this.minimizedBtn) {
             this.minimizedBtn.addEventListener('click', () => this.reopenModal());
         }
         
-        // Terms modal triggers
-        if (this.termsTrigger) {
-            this.termsTrigger.addEventListener('click', () => this.openTermsModal());
+        // Terms Modal Open
+        if (this.termsOpenBtn) {
+            this.termsOpenBtn.addEventListener('click', () => this.openTermsModal());
         }
         
+        // Terms Modal Close
         if (this.termsCloseBtn) {
             this.termsCloseBtn.addEventListener('click', () => this.closeTermsModal());
         }
@@ -363,25 +349,28 @@ class ElegantPromoModal {
         if (this.termsOverlay) {
             this.termsOverlay.addEventListener('click', () => this.closeTermsModal());
         }
-    }
-    
-    hasSeenPromo() {
-        return sessionStorage.getItem(this.storageKey) === 'true';
-    }
-    
-    markPromoAsSeen() {
-        sessionStorage.setItem(this.storageKey, 'true');
+        
+        // ESC key to close modals
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (this.termsModal?.classList.contains('active')) {
+                    this.closeTermsModal();
+                } else if (this.modal?.classList.contains('active')) {
+                    this.closeModal();
+                }
+            }
+        });
     }
     
     showModal() {
         if (!this.modal) return;
         
-        // Small delay for smooth entrance
         setTimeout(() => {
             this.modal.classList.add('active');
             document.body.style.overflow = 'hidden';
-            console.log('🎉 Promo modal displayed');
-        }, 800);
+        }, 500);
+        
+        console.log('✨ Modal opened');
     }
     
     closeModal() {
@@ -390,29 +379,29 @@ class ElegantPromoModal {
         this.modal.classList.remove('active');
         document.body.style.overflow = '';
         
-        // Mark as seen
-        this.markPromoAsSeen();
+        // Show minimized button
+        this.showMinimizedButton();
         
-        // Show minimized button after modal closes
-        setTimeout(() => {
-            this.showMinimizedButton();
-        }, 400);
+        // Save to localStorage
+        this.setModalClosed();
         
-        console.log('👋 Promo modal closed');
+        console.log('✅ Modal closed');
     }
     
     reopenModal() {
         if (!this.modal) return;
         
         // Hide minimized button
-        this.minimizedBtn.classList.remove('show');
+        this.minimizedBtn?.classList.remove('show');
         
-        // Show modal again
-        setTimeout(() => {
-            this.modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            console.log('🔄 Promo modal reopened');
-        }, 100);
+        // Show modal
+        this.modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Clear localStorage so it shows again on refresh
+        this.clearModalClosed();
+        
+        console.log('🔄 Modal reopened');
     }
     
     showMinimizedButton() {
@@ -420,17 +409,16 @@ class ElegantPromoModal {
         
         setTimeout(() => {
             this.minimizedBtn.classList.add('show');
-            console.log('⚫ Minimized button displayed');
-        }, 200);
+        }, 300);
     }
     
     openTermsModal() {
         if (!this.termsModal) return;
         
         this.termsModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
         
-        // Don't hide main modal overflow since terms is on top
-        console.log('📋 Terms modal opened');
+        console.log('📄 Terms modal opened');
     }
     
     closeTermsModal() {
@@ -438,33 +426,41 @@ class ElegantPromoModal {
         
         this.termsModal.classList.remove('active');
         
-        // Reset scroll position
-        const termsContainer = this.termsModal.querySelector('.promo-terms-container');
-        if (termsContainer) {
-            termsContainer.scrollTop = 0;
+        // Only restore scroll if main modal is also closed
+        if (!this.modal?.classList.contains('active')) {
+            document.body.style.overflow = '';
         }
         
-        console.log('📋 Terms modal closed');
+        console.log('✅ Terms modal closed');
+    }
+    
+    isModalClosed() {
+        // Check if modal was closed in the last 24 hours
+        const closedTime = localStorage.getItem(this.storageKey);
+        if (!closedTime) return false;
+        
+        const now = new Date().getTime();
+        const timeDiff = now - parseInt(closedTime);
+        const hoursDiff = timeDiff / (1000 * 60 * 60);
+        
+        // Show modal again after 24 hours
+        return hoursDiff < 24;
+    }
+    
+    setModalClosed() {
+        const now = new Date().getTime();
+        localStorage.setItem(this.storageKey, now.toString());
+    }
+    
+    clearModalClosed() {
+        localStorage.removeItem(this.storageKey);
     }
 }
 
-// ============================================
-// INITIALIZE MODAL
-// ============================================
-
 // Initialize when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        new ElegantPromoModal();
-    });
-} else {
-    new ElegantPromoModal();
-}
-
-// Export for manual initialization if needed
-window.ElegantPromoModal = ElegantPromoModal;
-
-console.log('🌟 Elegant Promo Modal script loaded');
+document.addEventListener('DOMContentLoaded', () => {
+    new CutePromoModal();
+});
 
 // ============================================
 // FLOATING BUTTONS - SPECIALS & GIFT CARD
