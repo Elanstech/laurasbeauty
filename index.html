@@ -221,6 +221,40 @@
 </head>
 <body>
     
+<!-- PROMOTIONAL BANNER - -->\
+    <div class="promo-banner" id="promoBanner">
+    <button class="promo-close" id="promoClose" aria-label="Close banner">
+        <i class="fas fa-times"></i>
+    </button>
+    
+    <div class="promo-content">
+        <div class="promo-left">
+            <div class="promo-icon">
+                <i class="fas fa-gift"></i>
+            </div>
+            <div class="promo-text">
+                <div class="promo-main">
+                    <span class="promo-highlight">30% OFF</span>
+                    <span class="promo-description">All Services</span>
+                    <span class="promo-badge">Auto-Applied!</span>
+                </div>
+                <div class="promo-sub">
+                    Plus Thanksgiving Specials Available! 
+                    <button class="promo-terms-link" id="viewTermsBtn">View Terms</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="promo-right">
+            <a href="servicecategories/specials.html" class="promo-cta-btn">
+                <i class="fas fa-star"></i>
+                <span>View Specials</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+    
   <!-- ELEGANT PRELOADER -->
     <div class="preloader" id="preloader">
         <div class="preloader-content">
@@ -1489,6 +1523,70 @@
     
     <!-- Custom JavaScript -->
     <script src="script.js"></script>
+
+    <!-- TERMS MODAL - Add this before closing </body> tag -->
+<div class="promo-modal" id="promoModal">
+    <div class="promo-modal-overlay" id="promoModalOverlay"></div>
+    <div class="promo-modal-content">
+        <button class="promo-modal-close" id="promoModalClose" aria-label="Close modal">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="promo-modal-header">
+            <div class="modal-icon">
+                <i class="fas fa-tags"></i>
+            </div>
+            <h2>Promotion Terms & Conditions</h2>
+        </div>
+        
+        <div class="promo-modal-body">
+            <div class="modal-highlight-box">
+                <div class="highlight-icon">
+                    <i class="fas fa-percent"></i>
+                </div>
+                <div class="highlight-text">
+                    <h3>30% Off All Services</h3>
+                    <p>Discount automatically applied at checkout</p>
+                </div>
+            </div>
+            
+            <div class="modal-section">
+                <h3><i class="fas fa-check-circle"></i> What's Included</h3>
+                <ul class="modal-list included">
+                    <li><i class="fas fa-check"></i> Face Treatments & Facials</li>
+                    <li><i class="fas fa-check"></i> Body Treatments</li>
+                    <li><i class="fas fa-check"></i> Laser Services</li>
+                    <li><i class="fas fa-check"></i> Waxing Services</li>
+                    <li><i class="fas fa-check"></i> Brows, Lashes & PMU</li>
+                    <li><i class="fas fa-check"></i> Makeup Services</li>
+                    <li><i class="fas fa-check"></i> Add-On Services</li>
+                </ul>
+            </div>
+            
+            <div class="modal-section excluded">
+                <h3><i class="fas fa-times-circle"></i> Exclusions Apply</h3>
+                <p class="exclusion-note">The 30% discount cannot be combined with or applied to:</p>
+                <ul class="modal-list">
+                    <li><i class="fas fa-times"></i> <strong>Service Packages</strong></li>
+                    <li><i class="fas fa-times"></i> <strong>Nail Services</strong> (Manicures & Pedicures)</li>
+                    <li><i class="fas fa-times"></i> <strong>Special Promotions</strong> (including Thanksgiving Specials)</li>
+                    <li><i class="fas fa-times"></i> Other promotional offers or discounts</li>
+                </ul>
+            </div>
+            
+            <div class="modal-footer-note">
+                <p><i class="fas fa-info-circle"></i> <strong>Questions?</strong> Call us at <a href="tel:7188419919">(718) 841-9919</a> or visit our <a href="htmls/contact.html">contact page</a>.</p>
+            </div>
+        </div>
+        
+        <div class="promo-modal-footer">
+            <button class="modal-close-btn" id="modalCloseBtn">
+                Got It
+                <i class="fas fa-check"></i>
+            </button>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
