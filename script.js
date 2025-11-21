@@ -277,6 +277,148 @@ class PremiumHeaderWithMegaMenu {
 }
 
 // ============================================
+// PROMOTIONAL BANNER JAVASCRIPT
+// ============================================
+
+class PromotionalBanner {
+    constructor() {
+        this.banner = document.getElementById('promoBanner');
+        this.closeBtn = document.getElementById('promoClose');
+        this.modal = document.getElementById('promoModal');
+        this.modalOverlay = document.getElementById('promoModalOverlay');
+        this.modalClose = document.getElementById('promoModalClose');
+        this.modalCloseBtn = document.getElementById('modalCloseBtn');
+        this.viewTermsBtn = document.getElementById('viewTermsBtn');
+        
+        // Storage key for banner dismissal
+        this.storageKey = 'promo_banner_dismissed';
+        
+        this.init();
+    }
+    
+    init() {
+        console.log('🎁 Initializing Promotional Banner');
+        
+        // Check if banner was previously dismissed
+        if (!this.isBannerDismissed()) {
+            this.showBanner();
+        }
+        
+        // Setup event listeners
+        this.setupEventListeners();
+    }
+    
+    setupEventListeners() {
+        // Close banner button
+        if (this.closeBtn) {
+            this.closeBtn.addEventListener('click', () => this.closeBanner());
+        }
+        
+        // View terms button
+        if (this.viewTermsBtn) {
+            this.viewTermsBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.openModal();
+            });
+        }
+        
+        // Modal close buttons
+        if (this.modalClose) {
+            this.modalClose.addEventListener('click', () => this.closeModal());
+        }
+        
+        if (this.modalCloseBtn) {
+            this.modalCloseBtn.addEventListener('click', () => this.closeModal());
+        }
+        
+        if (this.modalOverlay) {
+            this.modalOverlay.addEventListener('click', () => this.closeModal());
+        }
+        
+        // ESC key to close modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.modal.classList.contains('active')) {
+                this.closeModal();
+            }
+        });
+    }
+    
+    showBanner() {
+        if (!this.banner) return;
+        
+        // Small delay for smooth entrance
+        setTimeout(() => {
+            this.banner.classList.add('show');
+            console.log('✅ Banner displayed');
+        }, 500);
+    }
+    
+    closeBanner() {
+        if (!this.banner) return;
+        
+        this.banner.classList.remove('show');
+        
+        // Store dismissal in sessionStorage (dismissed for current session only)
+        // Change to localStorage if you want it dismissed permanently
+        sessionStorage.setItem(this.storageKey, 'true');
+        
+        console.log('👋 Banner dismissed');
+        
+        // Optional: Remove from DOM after animation
+        setTimeout(() => {
+            this.banner.style.display = 'none';
+        }, 600);
+    }
+    
+    isBannerDismissed() {
+        // Check sessionStorage (change to localStorage for permanent dismissal)
+        return sessionStorage.getItem(this.storageKey) === 'true';
+    }
+    
+    openModal() {
+        if (!this.modal) return;
+        
+        this.modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        console.log('📋 Terms modal opened');
+    }
+    
+    closeModal() {
+        if (!this.modal) return;
+        
+        this.modal.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // Reset scroll position
+        const modalContent = this.modal.querySelector('.promo-modal-content');
+        if (modalContent) {
+            modalContent.scrollTop = 0;
+        }
+        
+        console.log('📋 Terms modal closed');
+    }
+}
+
+// ============================================
+// INITIALIZE BANNER
+// ============================================
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        new PromotionalBanner();
+    });
+} else {
+    new PromotionalBanner();
+}
+
+// Export for manual initialization if needed
+window.PromotionalBanner = PromotionalBanner;
+
+console.log('🌟 Promotional banner script loaded');
+
+// ============================================
 // FLOATING BUTTONS - SPECIALS & GIFT CARD
 // ============================================
 
