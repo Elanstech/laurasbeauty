@@ -2,159 +2,118 @@
   "category": "specials",
   "services": [
     {
-      "id": "papaya-pumpkin-glow-special",
-      "name": "🌿 Papaya Pumpkin Glow Facial",
-      "description": "A nourishing facial combining papaya and pumpkin enzymes to deeply cleanse and brighten your skin.",
-      "price": "$69",
-      "originalPrice": "$95",
-      "specialPrice": "$69",
-      "savings": "$26",
-      "savingsPercent": "27%",
-      "duration": "60 min",
-      "validUntil": "Seasonal Offer",
-      "includes": [
-        "Cleanser and toner",
-        "Face, neck, and shoulder massage",
-        "Papaya pumpkin exfoliation scrub",
-        "Aroma steam",
-        "Clarisonic brush treatment",
-        "Extraction",
-        "Herbal eye treatment",
-        "Pumpkin papaya brightening mask",
-        "Hand massage with papaya cream"
-      ],
-      "benefits": [
-        "Save $26 on this seasonal favorite",
-        "Natural enzyme exfoliation",
-        "Perfect for autumn glow"
-      ],
-      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A25310685&share=true&pId=2609547",
-      "image": "https://sorellaapothecary.com/cdn/shop/files/Papaya-Pumpkin-Smear.jpg?v=1753928772&width=2000",
-      "badge": "Special",
-      "priceLabel": "$69 (was $95)"
-    },
-    {
-      "id": "pumpkin-renewal-package",
-      "name": "🎃 Pumpkin Renewal Spa Package",
-      "description": "Complete spa experience combining our papaya pumpkin facial and body scrub for full-body rejuvenation.",
-      "price": "$169",
-      "originalPrice": "$230",
-      "specialPrice": "$169",
-      "savings": "$61",
-      "savingsPercent": "27%",
-      "duration": "120 min",
-      "validUntil": "Seasonal Offer",
-      "includes": [
-        "Papaya Pumpkin Deep Pore Cleansing Facial (60 min)",
-        "30-Minute Aromatic Express Massage",
-        "Pumpkin Body Scrub",
-        "Shower facility access"
-      ],
-      "benefits": [
-        "Save $61 on this luxurious package",
-        "Head-to-toe pampering",
-        "Perfect seasonal self-care",
-        "2 hours of pure relaxation",
-        "Papaya Pumpkin Deep Pore Cleansing Facial (60 min)",
-        "30-Minute Aromatic Express Massage",
-        "Pumpkin Body Scrub",
-        "Shower facility access"
-      ],
-      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A25310689&share=true&pId=2609547",
-      "image": "https://images.squarespace-cdn.com/content/v1/5c4f6ba1e2ccd1ee6075495d/1655419707450-FYAW4T2G57D503SWMHT7/oxygen-facial.jpg",
-      "badge": "Package Deal",
-      "priceLabel": "$169 (was $230)"
-    },
-    {
-      "id": "autumn-radiance-deluxe",
-      "name": "🍂 Autumn Radiance Deluxe Package",
-      "description": "Our most comprehensive seasonal package featuring facial, body treatment, and spa pedicure for total autumn glow.",
-      "price": "$199",
-      "originalPrice": "$290",
-      "specialPrice": "$199",
-      "savings": "$91",
-      "savingsPercent": "31%",
-      "duration": "150 min",
-      "validUntil": "Seasonal Offer",
-      "includes": [
-        "Pumpkin Papaya Facial with 30-minute express treatment",
-        "Aromatic Body Scrub with shower",
-        "Spa Pedicure",
-        "Hand Paraffin Treatment"
-      ],
-      "benefits": [
-        "Save $91 on ultimate pampering",
-        "Complete seasonal transformation",
-        "Over 2.5 hours of luxury",
-        "Perfect for special occasions"
-      ],
-      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A25310692&share=true&pId=2609547",
-      "image": "https://epiphanymedspaandwellness.com/wp-content/uploads/2023/08/Epiphany-Luxurious-Facials-in-Fullerton-CA1-scaled.jpg",
-      "badge": "Best Value",
-      "priceLabel": "$199 (was $290)"
-    },
-    {
-      "id": "laser-hair-removal-special",
-      "name": "✨ Laser Hair Removal Special",
-      "description": "Buy one treatment area and get your second area at 50% off. Smooth, hair-free skin made affordable.",
-      "price": "50% OFF 2nd Area",
-      "originalPrice": "Varies by area",
-      "specialPrice": "50% OFF 2nd Area",
-      "savings": "Up to 50%",
-      "savingsPercent": "50%",
-      "duration": "Varies by area",
+      "id": "european-deep-pore-facial-special",
+      "name": "✨ European Deep Pore Facial",
+      "description": "Luxurious European facial with papaya enzyme peel and brightening papaya mask, complete with relaxing hand massage.",
+      "price": "$99",
+      "originalPrice": "$150",
+      "specialPrice": "$99",
+      "savings": "$51",
+      "savingsPercent": "34%",
+      "duration": "75 min",
       "validUntil": "Limited Time",
       "includes": [
-        "Professional laser hair removal on first area (full price)",
-        "Second area at 50% discount",
-        "Consultation included",
-        "Medical-grade laser technology"
+        "Deep pore cleansing",
+        "Papaya enzyme peel",
+        "Brightening papaya mask",
+        "Hand massage",
+        "Face, neck, and shoulder treatment",
+        "Extraction",
+        "Toner and moisturizer"
       ],
       "benefits": [
-        "50% savings on second area",
-        "Long-lasting results",
-        "Safe for all skin types",
-        "Professional treatment"
+        "Save $51 on this premium facial",
+        "Deep pore purification",
+        "Natural enzyme exfoliation",
+        "Brightening and rejuvenation"
       ],
-      "fullDescription": "Second area must be of equal or lesser value. Cannot be combined with other offers.",
-      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A25310693&share=true&pId=2609547",
-      "image": "https://images.squarespace-cdn.com/content/v1/6447eeb38baf0c31deed937f/1682445506382-1NLA6RFT1DGWKP81ATL4/image-asset.jpeg",
-      "badge": "BOGO 50%",
-      "priceLabel": "50% OFF 2nd Area"
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/5c4f6ba1e2ccd1ee6075495d/1655419707450-FYAW4T2G57D503SWMHT7/oxygen-facial.jpg",
+      "badge": "Special",
+      "priceLabel": "$99 (was $150)"
     },
     {
-      "id": "brazilian-chocolate-wax-special",
-      "name": "🍫 Brazilian Chocolate Wax Special",
-      "description": "Indulge in our luxurious Brazilian chocolate wax and receive a complimentary underarm wax for ultra-smooth results.",
-      "price": "Brazilian Price Only",
-      "originalPrice": "Regular Price + Underarm",
-      "specialPrice": "Brazilian Price Only",
-      "savings": "Free underarm wax",
+      "id": "lash-brow-lamination-special",
+      "name": "👁️ Lash or Brow Lamination with Tint",
+      "description": "Perfect your look with professional lamination and tinting for beautifully shaped, defined lashes or brows.",
+      "price": "$89",
+      "specialPrice": "$89",
+      "duration": "60 min",
+      "validUntil": "Ongoing Special",
+      "includes": [
+        "Choice of lash OR brow lamination",
+        "Professional tinting included",
+        "Consultation",
+        "Aftercare instructions"
+      ],
+      "benefits": [
+        "Long-lasting results (6-8 weeks)",
+        "No daily makeup needed",
+        "Natural, lifted appearance",
+        "Tint included at no extra cost"
+      ],
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
+      "image": "https://cdn.shopify.com/s/files/1/0579/0213/7482/files/lash-lamination_600x600.jpg?v=1669949566",
+      "badge": "Popular",
+      "priceLabel": "$89"
+    },
+    {
+      "id": "brazilian-wax-combo-special",
+      "name": "🌸 Brazilian Wax Combo Special",
+      "description": "Get smooth everywhere with our Brazilian wax plus your choice of complimentary underarm or eyebrow wax.",
+      "price": "$49",
+      "specialPrice": "$49",
       "duration": "45 min",
       "validUntil": "Ongoing Promotion",
       "includes": [
-        "Brazilian Chocolate Wax",
-        "FREE Underarm Wax (complimentary)",
+        "Brazilian wax",
+        "FREE underarm wax OR eyebrow wax",
         "Pre-wax skin preparation",
         "Post-wax soothing treatment"
       ],
       "benefits": [
-        "Free underarm wax included",
-        "Gentle chocolate formula",
-        "Less painful than traditional wax",
-        "Long-lasting smooth skin"
+        "Free add-on service included",
+        "Gentle wax formula",
+        "Long-lasting smooth skin",
+        "Professional application"
       ],
-      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A25310696&share=true&pId=2609547",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
       "image": "https://cdn.shopify.com/s/files/1/0579/0213/7482/files/pexels-anna-shvets-5069494_600x600.jpg?v=1669949566",
-      "badge": "Free Add-On",
-      "priceLabel": "Free Underarm Wax"
+      "badge": "Combo Deal",
+      "priceLabel": "$49"
+    },
+    {
+      "id": "lip-blush-microshading",
+      "name": "💋 Lip Blush or Micro Shading",
+      "description": "Semi-permanent makeup for naturally enhanced, perfectly tinted lips that last for years.",
+      "price": "$350",
+      "specialPrice": "$350",
+      "duration": "120 min",
+      "validUntil": "Regular Pricing",
+      "includes": [
+        "Consultation and color matching",
+        "Numbing cream application",
+        "Precise lip blush or micro shading technique",
+        "Aftercare kit and instructions",
+        "Touch-up appointment (if needed, additional fee may apply)"
+      ],
+      "benefits": [
+        "Long-lasting results (2-3 years)",
+        "Natural-looking enhancement",
+        "Waterproof and smudge-proof",
+        "Wake up with perfect lips daily"
+      ],
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/6447eeb38baf0c31deed937f/1682445506382-1NLA6RFT1DGWKP81ATL4/lip-blush.jpeg",
+      "badge": "PMU",
+      "priceLabel": "$350"
     }
   ],
   "generalTerms": [
     "Specials cannot be combined with other offers unless stated",
-    "Seasonal specials valid while supplies last",
     "Advance booking recommended",
     "Gratuity not included in special pricing",
-    "Prices subject to change without notice"
+    "Prices subject to change without notice",
+    "First-time clients may require patch test for certain services"
   ]
 }
