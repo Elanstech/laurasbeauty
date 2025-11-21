@@ -1,9 +1,10 @@
 // ============================================
 // LAURA'S BEAUTY TOUCH - MAIN SCRIPT
+// Organized & Optimized
 // ============================================
 
 // ============================================
-// ELEGANT PRELOADER
+// 1. ELEGANT PRELOADER
 // ============================================
 class ElegantPreloader {
     constructor() {
@@ -38,7 +39,7 @@ class ElegantPreloader {
 }
 
 // ============================================
-// PREMIUM HEADER
+// 2. PREMIUM HEADER WITH MEGA MENU
 // ============================================
 class PremiumHeaderWithMegaMenu {
     constructor() {
@@ -48,7 +49,6 @@ class PremiumHeaderWithMegaMenu {
         this.mobileOverlay = document.querySelector('.mobile-overlay');
         this.logoWrapper = document.querySelector('.header-logo-wrapper');
         
-        // Mega Menu specific elements
         this.megamenuItem = document.querySelector('.has-megamenu');
         this.megamenuWrapper = document.querySelector('.megamenu-wrapper');
         this.megamenuTimeout = null;
@@ -277,31 +277,23 @@ class PremiumHeaderWithMegaMenu {
 }
 
 // ============================================
-// CUTE PROMOTIONAL MODAL JAVASCRIPT
-// Add this to your script.js file
+// 3. CUTE PROMOTIONAL MODAL
 // ============================================
-
 class CutePromoModal {
     constructor() {
-        // Main Modal Elements
         this.modal = document.getElementById('cutePromoModal');
         this.modalCloseBtn = document.getElementById('promoModalCloseBtn');
         this.modalOverlay = this.modal?.querySelector('.promo-modal-overlay');
         
-        // Minimized Button
         this.minimizedBtn = document.getElementById('promoMinimizedBtn');
         
-        // Terms Modal Elements
         this.termsModal = document.getElementById('promoTermsModal');
         this.termsOpenBtn = document.getElementById('promoTermsTrigger');
         this.termsCloseBtn = document.getElementById('promoTermsCloseBtn');
         this.termsCloseBottomBtn = document.getElementById('promoTermsCloseBottomBtn');
         this.termsOverlay = this.termsModal?.querySelector('.promo-terms-overlay');
         
-        // Storage key
         this.storageKey = 'cute_promo_modal_closed';
-        
-        // Auto-open timer
         this.autoOpenTimer = null;
         
         this.init();
@@ -310,7 +302,7 @@ class CutePromoModal {
     init() {
         console.log('🎁 Initializing Cute Promo Modal');
         
-        // Show the minimized button immediately
+        // Always show the minimized button
         this.showMinimizedButton();
         
         // Wait for preloader to finish, then start 3-second countdown
@@ -329,9 +321,13 @@ class CutePromoModal {
         const preloader = document.getElementById('preloader');
         
         const checkPreloader = () => {
-            if (!preloader || preloader.style.display === 'none' || !preloader.classList.contains('active')) {
+            // Check if preloader is hidden or doesn't exist
+            if (!preloader || 
+                preloader.style.display === 'none' || 
+                preloader.classList.contains('hidden')) {
+                
                 // Preloader is done, start 3-second timer
-                console.log('⏳ Starting 3-second timer...');
+                console.log('⏳ Preloader finished, starting 3-second timer...');
                 
                 this.autoOpenTimer = setTimeout(() => {
                     this.openModal();
@@ -343,7 +339,7 @@ class CutePromoModal {
             }
         };
         
-        // Start checking
+        // Start checking after a small delay
         setTimeout(checkPreloader, 100);
     }
     
@@ -357,12 +353,13 @@ class CutePromoModal {
             this.modalOverlay.addEventListener('click', () => this.closeModal());
         }
         
-        // Minimized Button - Open Modal (and clear auto-open timer)
+        // Minimized Button - Open Modal
         if (this.minimizedBtn) {
             this.minimizedBtn.addEventListener('click', () => {
                 // Clear the auto-open timer if user clicks manually
                 if (this.autoOpenTimer) {
                     clearTimeout(this.autoOpenTimer);
+                    this.autoOpenTimer = null;
                     console.log('🖱️ User clicked button, cancelled auto-open');
                 }
                 this.openModal();
@@ -457,7 +454,6 @@ class CutePromoModal {
     }
     
     isModalClosed() {
-        // Check if modal was closed in the last 24 hours
         const closedTime = localStorage.getItem(this.storageKey);
         if (!closedTime) return false;
         
@@ -465,7 +461,6 @@ class CutePromoModal {
         const timeDiff = now - parseInt(closedTime);
         const hoursDiff = timeDiff / (1000 * 60 * 60);
         
-        // Show modal again after 24 hours
         return hoursDiff < 24;
     }
     
@@ -475,26 +470,21 @@ class CutePromoModal {
     }
 }
 
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    new CutePromoModal();
-});
-
 // ============================================
-// FLOATING BUTTONS - SPECIALS & GIFT CARD
+// 4. FLOATING BUTTONS - SPECIALS, GIFT CARD, & PROMO
 // ============================================
-
 class FloatingButtons {
     constructor() {
         this.specialsBtn = document.getElementById('specialsBtn');
         this.giftcardBtn = document.getElementById('giftcardBtn');
+        this.promoBtn = document.getElementById('promoMinimizedBtn');
         this.mobileToggle = document.querySelector('.mobile-toggle');
         this.mobileDrawer = document.querySelector('.mobile-drawer');
         this.mobileOverlay = document.querySelector('.mobile-overlay');
         this.header = document.querySelector('.premium-header');
         
         this.isVisible = false;
-        this.showDelay = 3000; // 3 seconds
+        this.showDelay = 3000;
         this.initTime = Date.now();
         
         this.init();
@@ -503,16 +493,9 @@ class FloatingButtons {
     init() {
         console.log('✨ Initializing Floating Buttons');
         
-        // Show buttons after delay
         this.scheduleShow();
-        
-        // Handle mobile menu
         this.handleMobileMenu();
-        
-        // Handle scroll
         this.handleScroll();
-        
-        // Track clicks
         this.trackClicks();
     }
 
@@ -523,7 +506,6 @@ class FloatingButtons {
     }
 
     show() {
-        // Check if mobile menu is open
         const isMobileMenuOpen = this.mobileDrawer && 
                                  this.mobileDrawer.classList.contains('active');
         
@@ -533,6 +515,9 @@ class FloatingButtons {
             }
             if (this.giftcardBtn) {
                 this.giftcardBtn.classList.add('visible');
+            }
+            if (this.promoBtn) {
+                this.promoBtn.classList.add('visible');
             }
             this.isVisible = true;
             console.log('✅ Floating buttons visible');
@@ -548,6 +533,10 @@ class FloatingButtons {
             this.giftcardBtn.classList.remove('visible');
             this.giftcardBtn.classList.add('hidden-mobile');
         }
+        if (this.promoBtn) {
+            this.promoBtn.classList.remove('visible');
+            this.promoBtn.classList.add('hidden-mobile');
+        }
         this.isVisible = false;
         console.log('👋 Floating buttons hidden');
     }
@@ -561,6 +550,10 @@ class FloatingButtons {
             this.giftcardBtn.classList.remove('hidden-mobile');
             this.giftcardBtn.classList.add('visible');
         }
+        if (this.promoBtn) {
+            this.promoBtn.classList.remove('hidden-mobile');
+            this.promoBtn.classList.add('visible');
+        }
         this.isVisible = true;
         console.log('👀 Floating buttons revealed');
     }
@@ -568,7 +561,6 @@ class FloatingButtons {
     handleMobileMenu() {
         if (!this.mobileToggle || !this.mobileDrawer) return;
 
-        // Watch for mobile menu state changes
         const observer = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
                 if (mutation.attributeName === 'class') {
@@ -577,7 +569,6 @@ class FloatingButtons {
                     if (isActive) {
                         this.hide();
                     } else {
-                        // Only reveal if initial delay has passed
                         setTimeout(() => {
                             if (this.isVisible || Date.now() > this.initTime + this.showDelay) {
                                 this.reveal();
@@ -593,7 +584,6 @@ class FloatingButtons {
             attributeFilter: ['class']
         });
 
-        // Also listen to toggle button
         if (this.mobileToggle) {
             this.mobileToggle.addEventListener('click', () => {
                 setTimeout(() => {
@@ -607,7 +597,6 @@ class FloatingButtons {
             });
         }
 
-        // Listen to overlay clicks
         if (this.mobileOverlay) {
             this.mobileOverlay.addEventListener('click', () => {
                 setTimeout(() => {
@@ -627,7 +616,6 @@ class FloatingButtons {
                 window.requestAnimationFrame(() => {
                     const scrolled = window.pageYOffset;
                     
-                    // Update body class for CSS
                     if (scrolled > 80) {
                         document.body.classList.add('scrolled');
                     } else {
@@ -643,7 +631,6 @@ class FloatingButtons {
     }
 
     trackClicks() {
-        // Track Specials button
         if (this.specialsBtn) {
             this.specialsBtn.addEventListener('click', (e) => {
                 console.log('🌟 Specials button clicked');
@@ -651,11 +638,17 @@ class FloatingButtons {
             });
         }
 
-        // Track Gift Card button
         if (this.giftcardBtn) {
             this.giftcardBtn.addEventListener('click', (e) => {
                 console.log('🎁 Gift Card button clicked');
                 this.createRipple(e, this.giftcardBtn, 'rgba(212, 175, 55, 0.6)');
+            });
+        }
+
+        if (this.promoBtn) {
+            this.promoBtn.addEventListener('click', (e) => {
+                console.log('💎 Promo button clicked');
+                this.createRipple(e, this.promoBtn, 'rgba(212, 175, 55, 0.6)');
             });
         }
     }
@@ -700,20 +693,8 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Auto-initialize when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        new FloatingButtons();
-    });
-} else {
-    new FloatingButtons();
-}
-
-// Export for manual initialization if needed
-window.FloatingButtons = FloatingButtons;
-
 // ============================================
-// HERO VIDEO COLLAGE
+// 5. HERO VIDEO COLLAGE
 // ============================================
 class HeroVideoCollage {
     constructor() {
@@ -833,7 +814,7 @@ class HeroVideoCollage {
 }
 
 // ============================================
-// SERVICES CAROUSEL
+// 6. SERVICES CAROUSEL
 // ============================================
 class ServicesCarousel {
     constructor() {
@@ -1023,7 +1004,7 @@ class ServicesCarousel {
 }
 
 // ============================================
-// TEAM SECTION
+// 7. TEAM SECTION
 // ============================================
 class TeamSection {
     constructor() {
@@ -1187,10 +1168,7 @@ class TeamSection {
 }
 
 // ============================================
-// ENHANCED BLOG SECTION WITH MOBILE CAROUSEL
-// ============================================
-// ============================================
-// ENHANCED BLOG SECTION WITH MOBILE CAROUSEL
+// 8. BLOG SECTION WITH MOBILE CAROUSEL
 // ============================================
 class BlogSection {
     constructor() {
@@ -1241,7 +1219,6 @@ class BlogSection {
         
         this.blogGrid.innerHTML = postsToShow.map(post => this.createBlogCard(post)).join('');
         
-        // Update view all button
         if (this.viewAllBtn) {
             if (showAll || this.posts.length <= this.displayCount) {
                 this.viewAllBtn.style.display = 'none';
@@ -1250,10 +1227,8 @@ class BlogSection {
             }
         }
         
-        // Attach click events to all blog cards
         this.attachCardEvents();
         
-        // Setup carousel if mobile
         if (this.isMobile) {
             this.currentSlide = 0;
             this.setupCarousel();
@@ -1305,14 +1280,12 @@ class BlogSection {
     setupCarousel() {
         if (!this.isMobile) return;
         
-        // Create dots for each post
         if (this.carouselDots) {
             const postsToShow = this.showingAll ? this.posts : this.posts.slice(0, this.displayCount);
             this.carouselDots.innerHTML = postsToShow.map((_, index) => 
                 `<button class="carousel-dot ${index === 0 ? 'active' : ''}" data-slide="${index}"></button>`
             ).join('');
             
-            // Add click events to dots
             const dots = this.carouselDots.querySelectorAll('.carousel-dot');
             dots.forEach(dot => {
                 dot.addEventListener('click', () => {
@@ -1322,14 +1295,12 @@ class BlogSection {
             });
         }
         
-        // Setup touch events
         if (this.blogGrid) {
             this.blogGrid.addEventListener('touchstart', (e) => this.handleTouchStart(e), { passive: true });
             this.blogGrid.addEventListener('touchmove', (e) => this.handleTouchMove(e), { passive: true });
             this.blogGrid.addEventListener('touchend', () => this.handleTouchEnd());
         }
         
-        // Update carousel position
         this.updateCarousel();
     }
 
@@ -1362,26 +1333,19 @@ class BlogSection {
         const cards = this.blogGrid.querySelectorAll('.blog-card');
         if (cards.length === 0) return;
         
-        // Get actual measurements
         const viewportWidth = window.innerWidth;
-        const gap = viewportWidth <= 480 ? 15 : 20; // Match CSS gap
-        const padding = viewportWidth <= 480 ? 15 : 20; // Match CSS padding
-        
-        // Card width is viewport minus padding on both sides
+        const gap = viewportWidth <= 480 ? 15 : 20;
+        const padding = viewportWidth <= 480 ? 15 : 20;
         const cardWidth = viewportWidth - (padding * 2);
-        
-        // Calculate offset: (card width + gap) * current slide index
         const offset = -(this.currentSlide * (cardWidth + gap));
         
         this.blogGrid.style.transform = `translateX(${offset}px)`;
         
-        // Update dots
         const dots = this.carouselDots?.querySelectorAll('.carousel-dot');
         dots?.forEach((dot, index) => {
             dot.classList.toggle('active', index === this.currentSlide);
         });
         
-        // Update arrow states
         const postsToShow = this.showingAll ? this.posts : this.posts.slice(0, this.displayCount);
         
         if (this.carouselPrev) {
@@ -1462,7 +1426,6 @@ class BlogSection {
     }
 
     setupEventListeners() {
-        // Close modal events
         if (this.blogModalClose) {
             this.blogModalClose.addEventListener('click', () => this.closeModal());
         }
@@ -1471,14 +1434,12 @@ class BlogSection {
             this.blogModalOverlay.addEventListener('click', () => this.closeModal());
         }
         
-        // ESC key to close modal
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.blogModal.classList.contains('active')) {
                 this.closeModal();
             }
         });
         
-        // View all button
         if (this.viewAllBtn) {
             this.viewAllBtn.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -1488,7 +1449,6 @@ class BlogSection {
             });
         }
         
-        // Carousel navigation
         if (this.carouselPrev) {
             this.carouselPrev.addEventListener('click', () => this.prevSlide());
         }
@@ -1497,7 +1457,6 @@ class BlogSection {
             this.carouselNext.addEventListener('click', () => this.nextSlide());
         }
         
-        // Handle window resize
         window.addEventListener('resize', () => this.handleResize());
     }
 
@@ -1505,19 +1464,16 @@ class BlogSection {
         const wasMobile = this.isMobile;
         this.isMobile = window.innerWidth <= 768;
         
-        // If switching between mobile and desktop
         if (wasMobile !== this.isMobile) {
             this.currentSlide = 0;
             if (this.isMobile) {
                 this.setupCarousel();
             } else {
-                // Reset transform when switching to desktop
                 if (this.blogGrid) {
                     this.blogGrid.style.transform = '';
                 }
             }
         } else if (this.isMobile) {
-            // Update carousel position on resize
             setTimeout(() => {
                 this.updateCarousel();
             }, 100);
@@ -1545,7 +1501,7 @@ class BlogSection {
 }
 
 // ============================================
-// ELFSIGHT WIDGETS
+// 9. ELFSIGHT WIDGETS
 // ============================================
 class ElfsightWidgets {
     constructor() {
@@ -1626,7 +1582,7 @@ class ElfsightWidgets {
 }
 
 // ============================================
-// FLOATING LEAVES ANIMATION
+// 10. FLOATING LEAVES & HASHTAGS
 // ============================================
 class FloatingLeaves {
     constructor() {
@@ -1647,9 +1603,6 @@ class FloatingLeaves {
     }
 }
 
-// ============================================
-// INSTAGRAM HASHTAG INTERACTION
-// ============================================
 class HashtagInteraction {
     constructor() {
         this.hashtags = document.querySelectorAll('.hashtag');
@@ -1672,7 +1625,7 @@ class HashtagInteraction {
 }
 
 // ============================================
-// CONTACT SECTION
+// 11. CONTACT SECTION
 // ============================================
 class ContactSection {
     constructor() {
@@ -1796,7 +1749,7 @@ class ContactSection {
 }
 
 // ============================================
-// SUPER FOOTER
+// 12. SUPER FOOTER
 // ============================================
 class SuperFooter {
     constructor() {
@@ -1972,7 +1925,7 @@ class SuperFooter {
 }
 
 // ============================================
-// BACK TO TOP BUTTON
+// 13. BACK TO TOP & FAB BUTTONS
 // ============================================
 class BackToTopButton {
     constructor() {
@@ -2024,9 +1977,6 @@ class BackToTopButton {
     }
 }
 
-// ============================================
-// FLOATING ACTION BUTTON (FAB)
-// ============================================
 class FloatingActionButton {
     constructor() {
         this.fabMain = document.getElementById('fabMain');
@@ -2088,7 +2038,7 @@ class FloatingActionButton {
 }
 
 // ============================================
-// ABOUT CAROUSEL
+// 14. ABOUT CAROUSEL
 // ============================================
 class AboutCarousel {
     constructor(section) {
@@ -2257,9 +2207,6 @@ class AboutCarousel {
     }
 }
 
-// ============================================
-// INITIALIZE ABOUT CAROUSELS
-// ============================================
 function initAboutCarousels() {
     const carouselSections = document.querySelectorAll('.about-carousel-section');
     
@@ -2269,7 +2216,7 @@ function initAboutCarousels() {
 }
 
 // ============================================
-// MAIN INITIALIZATION
+// 15. MAIN INITIALIZATION
 // ============================================
 function initWebsite() {
     console.log('🌿 Laura\'s Beauty Touch - Website Loading...');
@@ -2278,12 +2225,16 @@ function initWebsite() {
     // Core Components
     new ElegantPreloader();
     new PremiumHeaderWithMegaMenu();
+    new CutePromoModal();
     new HeroVideoCollage();
+    
+    // Floating Buttons (includes specials, gift card, and promo button)
+    new FloatingButtons();
     
     // Interactive Elements
     new BackToTopButton();
     new FloatingActionButton();
- 
+    
     // Content Sections
     new BlogSection();
     new TeamSection();
