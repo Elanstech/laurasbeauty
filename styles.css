@@ -1089,13 +1089,12 @@ body.scrolled .specials-premium-link {
 }
 
 /* ============================================
-   BLACK FRIDAY PROMO BUTTON - SPECTACULAR REDESIGN
+   PREMIUM GIFT CARD BUTTON - COMPLETE STYLES
    ============================================ */
-
-.blackfriday-promo-link {
+.giftcard-premium-link {
     /* POSITIONING */
     position: fixed;
-    top: 190px;
+    top: 120px;
     left: 40px;
     z-index: 997;
     
@@ -1116,279 +1115,76 @@ body.scrolled .specials-premium-link {
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.blackfriday-promo-link.visible {
+.giftcard-premium-link.visible {
     opacity: 1;
     visibility: visible;
     transform: translateX(0) scale(1);
     pointer-events: all;
 }
 
-.blackfriday-promo-link.hidden-mobile {
+.giftcard-premium-link.hidden-mobile {
     opacity: 0 !important;
     visibility: hidden !important;
     pointer-events: none !important;
 }
 
-/* Inner Container - SPECTACULAR REDESIGN */
-.blackfriday-inner {
+/* Inner Container */
+.giftcard-inner {
     position: relative;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
+    display: flex;
     align-items: center;
-    gap: 14px;
-    padding: 14px 16px 14px 20px;
+    gap: 10px;
+    padding: 12px 12px 12px 22px;
     background: linear-gradient(135deg, 
-        #1a1a1a 0%, 
-        #2d2d2d 50%,
-        #1a1a1a 100%);
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(250, 250, 247, 0.98) 100%);
     backdrop-filter: blur(20px) saturate(180%);
-    border: 3px solid transparent;
-    border-radius: 60px;
+    border: 2px solid transparent;
+    border-radius: 50px;
     box-shadow: 
-        0 12px 40px rgba(0, 0, 0, 0.6),
-        0 4px 12px rgba(0, 0, 0, 0.4),
-        inset 0 2px 4px rgba(255, 255, 255, 0.1),
-        inset 0 -2px 4px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(212, 175, 55, 0.3);
+        0 8px 32px rgba(59, 74, 47, 0.12),
+        0 2px 8px rgba(59, 74, 47, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        inset 0 -1px 0 rgba(212, 175, 55, 0.1);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
-    min-width: 240px;
 }
 
-/* Animated Border */
-.blackfriday-inner::before {
+.giftcard-inner::before {
     content: '';
     position: absolute;
-    inset: -3px;
-    background: linear-gradient(
-        135deg,
+    inset: 0;
+    background: linear-gradient(135deg, 
         transparent 0%,
-        #D4AF37 25%,
-        #FFD700 50%,
-        #D4AF37 75%,
-        transparent 100%
-    );
-    border-radius: 60px;
+        rgba(212, 175, 55, 0.08) 50%,
+        transparent 100%);
     opacity: 0;
     transition: opacity 0.4s ease;
-    z-index: -1;
-    animation: borderRotate 3s linear infinite;
 }
 
-@keyframes borderRotate {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+.giftcard-premium-link:hover .giftcard-inner {
+    transform: translateY(-4px);
+    border-color: var(--gold-accent);
+    box-shadow: 
+        0 12px 40px rgba(212, 175, 55, 0.25),
+        0 4px 12px rgba(212, 175, 55, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 1),
+        inset 0 -1px 0 rgba(212, 175, 55, 0.2);
 }
 
-.blackfriday-promo-link:hover .blackfriday-inner::before {
+.giftcard-premium-link:hover .giftcard-inner::before {
     opacity: 1;
 }
 
-/* Shimmer Effect */
-.blackfriday-inner::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -100%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(255, 215, 0, 0.3) 50%,
-        transparent 100%
-    );
-    animation: shimmerMove 3s ease-in-out infinite;
-}
-
-@keyframes shimmerMove {
-    0%, 100% {
-        transform: translateX(-100%);
-    }
-    50% {
-        transform: translateX(100%);
-    }
-}
-
-.blackfriday-promo-link:hover .blackfriday-inner {
-    transform: translateY(-4px);
-    box-shadow: 
-        0 20px 60px rgba(0, 0, 0, 0.7),
-        0 8px 20px rgba(212, 175, 55, 0.5),
-        inset 0 2px 6px rgba(255, 255, 255, 0.15),
-        inset 0 -2px 6px rgba(0, 0, 0, 0.6),
-        0 0 0 2px rgba(212, 175, 55, 0.6),
-        0 0 40px rgba(212, 175, 55, 0.4);
-}
-
-.blackfriday-promo-link:active .blackfriday-inner {
+.giftcard-premium-link:active .giftcard-inner {
     transform: translateY(-2px);
 }
 
-/* Sparkle Effect - ENHANCED */
-.blackfriday-sparkle {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    border-radius: 60px;
-    pointer-events: none;
-    z-index: 10;
-}
-
-.blackfriday-sparkle::before,
-.blackfriday-sparkle::after {
-    content: '✨';
-    position: absolute;
-    font-size: 16px;
-    opacity: 0;
-    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
-    animation: sparkleFloat 2.5s ease-in-out infinite;
-}
-
-.blackfriday-sparkle::before {
-    top: 15%;
-    left: 10%;
-    animation-delay: 0s;
-}
-
-.blackfriday-sparkle::after {
-    bottom: 15%;
-    right: 10%;
-    animation-delay: 1.25s;
-}
-
-@keyframes sparkleFloat {
-    0%, 100% {
-        opacity: 0;
-        transform: translateY(0) scale(0.5) rotate(0deg);
-    }
-    50% {
-        opacity: 1;
-        transform: translateY(-15px) scale(1.2) rotate(180deg);
-    }
-}
-
-/* Arrow - Left Side - ENHANCED */
-.blackfriday-arrow-left {
-    font-size: 1rem;
-    color: #D4AF37;
-    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    opacity: 0.9;
-    order: 1;
-    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
-    animation: arrowPulse 2s ease-in-out infinite;
+/* Icon Wrapper */
+.giftcard-icon-wrap {
     position: relative;
-    z-index: 2;
-}
-
-@keyframes arrowPulse {
-    0%, 100% {
-        transform: translateX(0);
-    }
-    50% {
-        transform: translateX(-4px);
-    }
-}
-
-.blackfriday-promo-link:hover .blackfriday-arrow-left {
-    transform: translateX(-8px);
-    color: #FFD700;
-    opacity: 1;
-    filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.8));
-}
-
-/* Content - ENHANCED */
-.blackfriday-content {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    order: 2;
-    position: relative;
-    z-index: 2;
-}
-
-.blackfriday-tag {
-    font-family: 'Lato', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.5);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.blackfriday-label {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 800;
-    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: 1px;
-    line-height: 1;
-    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
-    animation: textShine 3s ease-in-out infinite;
-    background-size: 200% auto;
-}
-
-@keyframes textShine {
-    0%, 100% {
-        background-position: 0% center;
-    }
-    50% {
-        background-position: 200% center;
-    }
-}
-
-.blackfriday-countdown {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-family: 'Lato', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.7);
-    background: rgba(0, 0, 0, 0.3);
-    padding: 3px 10px;
-    border-radius: 20px;
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
-    width: fit-content;
-}
-
-.blackfriday-countdown i {
-    font-size: 0.7rem;
-    color: #D4AF37;
-    animation: clockTick 1s ease-in-out infinite;
-}
-
-@keyframes clockTick {
-    0%, 100% {
-        transform: rotate(0deg);
-    }
-    25% {
-        transform: rotate(-15deg);
-    }
-    75% {
-        transform: rotate(15deg);
-    }
-}
-
-.blackfriday-promo-link:hover .blackfriday-label {
-    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.9));
-}
-
-/* Icon Wrapper - SPECTACULAR REDESIGN */
-.blackfriday-icon-wrap {
-    position: relative;
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
@@ -1396,1047 +1192,200 @@ body.scrolled .specials-premium-link {
     order: 3;
 }
 
-.blackfriday-icon-bg {
+.giftcard-icon-bg {
     position: absolute;
     inset: 0;
     background: linear-gradient(135deg, 
-        #D4AF37 0%, 
-        #FFD700 50%,
-        #FFA500 100%);
+        var(--gold-accent) 0%, 
+        #E6C347 100%);
     border-radius: 50%;
     box-shadow: 
-        0 6px 20px rgba(212, 175, 55, 0.6),
-        inset 0 2px 4px rgba(255, 255, 255, 0.5),
-        inset 0 -2px 4px rgba(212, 175, 55, 0.5),
-        0 0 0 2px rgba(0, 0, 0, 0.3),
-        0 0 20px rgba(255, 215, 0, 0.5);
+        0 4px 14px rgba(212, 175, 55, 0.35),
+        inset 0 1px 2px rgba(255, 255, 255, 0.6),
+        inset 0 -1px 2px rgba(212, 175, 55, 0.3);
     transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    animation: iconGlow 2s ease-in-out infinite;
 }
 
-@keyframes iconGlow {
-    0%, 100% {
-        box-shadow: 
-            0 6px 20px rgba(212, 175, 55, 0.6),
-            inset 0 2px 4px rgba(255, 255, 255, 0.5),
-            inset 0 -2px 4px rgba(212, 175, 55, 0.5),
-            0 0 0 2px rgba(0, 0, 0, 0.3),
-            0 0 20px rgba(255, 215, 0, 0.5);
-    }
-    50% {
-        box-shadow: 
-            0 6px 20px rgba(212, 175, 55, 0.8),
-            inset 0 2px 4px rgba(255, 255, 255, 0.6),
-            inset 0 -2px 4px rgba(212, 175, 55, 0.6),
-            0 0 0 2px rgba(0, 0, 0, 0.3),
-            0 0 30px rgba(255, 215, 0, 0.7);
-    }
-}
-
-.blackfriday-icon {
+.giftcard-icon {
     position: relative;
-    font-size: 1.3rem;
-    color: #1C1C1C;
+    width: 20px;
+    height: 20px;
+    color: var(--forest-green);
     z-index: 2;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-    animation: iconFloat 3s ease-in-out infinite;
+    animation: gift-float 3s ease-in-out infinite;
 }
 
-@keyframes iconFloat {
+@keyframes gift-float {
     0%, 100% {
-        transform: translateY(0) scale(1) rotate(0deg);
+        transform: translateY(0) scale(1);
+    }
+    25% {
+        transform: translateY(-3px) scale(1.05);
     }
     50% {
-        transform: translateY(-3px) scale(1.1) rotate(-10deg);
+        transform: translateY(0) scale(1);
+    }
+    75% {
+        transform: translateY(-3px) scale(1.05);
     }
 }
 
-.blackfriday-promo-link:hover .blackfriday-icon-bg {
-    transform: rotate(-180deg) scale(1.2);
+.giftcard-premium-link:hover .giftcard-icon-bg {
+    transform: rotate(-180deg) scale(1.15);
     background: linear-gradient(135deg, 
         #FFD700 0%, 
-        #FFA500 50%,
-        #FFD700 100%);
+        var(--gold-accent) 100%);
     box-shadow: 
-        0 8px 30px rgba(255, 215, 0, 0.8),
-        inset 0 2px 6px rgba(255, 255, 255, 0.7),
-        inset 0 -2px 6px rgba(255, 165, 0, 0.6),
-        0 0 0 3px rgba(0, 0, 0, 0.4),
-        0 0 40px rgba(255, 215, 0, 0.8);
+        0 6px 20px rgba(255, 215, 0, 0.5),
+        inset 0 1px 3px rgba(255, 255, 255, 0.7),
+        inset 0 -1px 3px rgba(212, 175, 55, 0.4);
 }
 
-.blackfriday-promo-link:hover .blackfriday-icon {
-    animation: iconExplode 0.6s ease;
-    color: #000;
-    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4));
+.giftcard-premium-link:hover .giftcard-icon {
+    animation: gift-bounce 0.6s ease;
+    color: var(--deep-forest);
 }
 
-@keyframes iconExplode {
+@keyframes gift-bounce {
     0%, 100% {
-        transform: scale(1) rotate(0deg);
+        transform: scale(1);
     }
     50% {
-        transform: scale(1.4) rotate(360deg);
+        transform: scale(1.2) rotate(-10deg);
     }
 }
 
-/* Glow Effect - ENHANCED */
-.blackfriday-glow {
+/* Label Text */
+.giftcard-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--forest-green);
+    letter-spacing: 0.5px;
+    line-height: 1;
+    transition: all 0.3s ease;
+    position: relative;
+    order: 2;
+}
+
+.giftcard-premium-link:hover .giftcard-label {
+    color: var(--deep-forest);
+    letter-spacing: 0.8px;
+}
+
+/* Arrow - Left Side */
+.giftcard-arrow-left {
+    font-size: 0.85rem;
+    color: var(--gold-accent);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    opacity: 0.7;
+    order: 1;
+}
+
+.giftcard-premium-link:hover .giftcard-arrow-left {
+    transform: translateX(-5px);
+    color: var(--forest-green);
+    opacity: 1;
+}
+
+/* Glow Effect */
+.giftcard-glow {
     position: absolute;
-    inset: -30px;
+    inset: -20px;
     background: radial-gradient(
         circle at center,
-        rgba(212, 175, 55, 0.4) 0%,
-        rgba(255, 215, 0, 0.2) 50%,
+        rgba(212, 175, 55, 0.3) 0%,
         transparent 70%
     );
     opacity: 0;
-    filter: blur(20px);
+    filter: blur(15px);
     transition: opacity 0.4s ease;
     pointer-events: none;
     z-index: -1;
 }
 
-.blackfriday-promo-link:hover .blackfriday-glow {
+.giftcard-premium-link:hover .giftcard-glow {
     opacity: 1;
-    animation: glowPulse 2s ease-in-out infinite;
-}
-
-@keyframes glowPulse {
-    0%, 100% {
-        transform: scale(1);
-        opacity: 0.8;
-    }
-    50% {
-        transform: scale(1.2);
-        opacity: 1;
-    }
 }
 
 /* Scrolled Header Adjustment */
-.premium-header.scrolled ~ .blackfriday-promo-link,
-body.scrolled .blackfriday-promo-link {
-    top: 170px;
+.premium-header.scrolled ~ .giftcard-premium-link,
+body.scrolled .giftcard-premium-link {
+    top: 100px;
 }
 
-/* ============================================
-   BLACK FRIDAY MODAL
-   ============================================ */
-
-.blackfriday-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10000;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
-
-.blackfriday-modal.active {
-    display: flex;
-}
-
-.blackfriday-modal-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.92);
-    backdrop-filter: blur(8px);
-    animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-.blackfriday-modal-content {
-    position: relative;
-    background: linear-gradient(135deg, 
-        rgba(28, 28, 28, 0.98) 0%, 
-        rgba(40, 40, 40, 0.96) 100%);
-    border: 2px solid rgba(212, 175, 55, 0.3);
-    border-radius: 30px;
-    max-width: 700px;
-    width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
-    z-index: 10;
-    animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 
-        0 25px 80px rgba(0, 0, 0, 0.5),
-        0 0 100px rgba(212, 175, 55, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px) scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-/* Custom Scrollbar */
-.blackfriday-modal-content::-webkit-scrollbar {
-    width: 8px;
-}
-
-.blackfriday-modal-content::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 30px;
-}
-
-.blackfriday-modal-content::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #D4AF37 0%, #FFD700 100%);
-    border-radius: 30px;
-}
-
-.blackfriday-modal-content::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #FFD700 0%, #D4AF37 100%);
-}
-
-/* Close Button */
-.blackfriday-modal-close {
-    position: sticky;
-    top: 20px;
-    left: calc(100% - 70px);
-    width: 50px;
-    height: 50px;
-    background: rgba(212, 175, 55, 0.2);
-    border: 2px solid #D4AF37;
-    border-radius: 50%;
-    color: #FFD700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 20;
-    transition: all 0.3s ease;
-    box-shadow: 
-        0 4px 15px rgba(0, 0, 0, 0.3),
-        0 0 20px rgba(212, 175, 55, 0.3);
-    margin-bottom: -50px;
-}
-
-.blackfriday-modal-close:hover {
-    background: #D4AF37;
-    color: #1C1C1C;
-    transform: rotate(90deg) scale(1.1);
-    box-shadow: 
-        0 6px 20px rgba(0, 0, 0, 0.4),
-        0 0 30px rgba(212, 175, 55, 0.6);
-}
-
-.blackfriday-modal-close i {
-    font-size: 1.3rem;
-}
-
-/* Modal Header */
-.blackfriday-modal-header {
-    text-align: center;
-    padding: 50px 40px 40px;
-    background: linear-gradient(180deg, 
-        rgba(212, 175, 55, 0.1) 0%, 
-        transparent 100%);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-    position: relative;
-    overflow: hidden;
-}
-
-.blackfriday-modal-header::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(
-        circle at center,
-        rgba(212, 175, 55, 0.1) 0%,
-        transparent 70%
-    );
-    animation: rotateGlow 15s linear infinite;
-}
-
-@keyframes rotateGlow {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.blackfriday-modal-icon {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 25px;
-    box-shadow: 
-        0 10px 30px rgba(212, 175, 55, 0.4),
-        0 0 40px rgba(212, 175, 55, 0.3),
-        inset 0 2px 4px rgba(255, 255, 255, 0.4);
-    animation: iconFloat 3s ease-in-out infinite;
-    position: relative;
-    z-index: 2;
-}
-
-@keyframes iconFloat {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-.blackfriday-modal-icon i {
-    font-size: 2.5rem;
-    color: #1C1C1C;
-    animation: sparkleRotate 4s ease-in-out infinite;
-}
-
-@keyframes sparkleRotate {
-    0%, 100% {
-        transform: rotate(0deg) scale(1);
-    }
-    50% {
-        transform: rotate(180deg) scale(1.1);
-    }
-}
-
-.blackfriday-modal-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #FFD700;
-    margin-bottom: 12px;
-    line-height: 1.2;
-    text-shadow: 
-        0 0 20px rgba(212, 175, 55, 0.6),
-        0 2px 4px rgba(0, 0, 0, 0.5);
-    position: relative;
-    z-index: 2;
-}
-
-.blackfriday-modal-subtitle {
-    font-family: 'Lato', sans-serif;
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.85);
-    margin-bottom: 30px;
-    position: relative;
-    z-index: 2;
-}
-
-/* Countdown Timer Display */
-.blackfriday-timer-display {
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    border-radius: 20px;
-    padding: 25px;
-    margin-top: 20px;
-    position: relative;
-    z-index: 2;
-}
-
-.timer-label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-family: 'Lato', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #D4AF37;
-    margin-bottom: 15px;
-}
-
-.timer-label i {
-    font-size: 1rem;
-    animation: timerPulse 2s ease-in-out infinite;
-}
-
-@keyframes timerPulse {
-    0%, 100% {
-        transform: scale(1);
-        opacity: 0.8;
-    }
-    50% {
-        transform: scale(1.2);
-        opacity: 1;
-    }
-}
-
-.timer-boxes {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.timer-box {
-    background: linear-gradient(135deg, 
-        rgba(212, 175, 55, 0.15) 0%, 
-        rgba(212, 175, 55, 0.05) 100%);
-    border: 2px solid rgba(212, 175, 55, 0.3);
-    border-radius: 12px;
-    padding: 12px 16px;
-    min-width: 75px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    box-shadow: 
-        0 4px 12px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-.timer-value {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #FFD700;
-    line-height: 1;
-    text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-}
-
-.timer-unit {
-    font-family: 'Lato', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.6);
-}
-
-.timer-separator {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #D4AF37;
-    margin: 0 4px;
-}
-
-.timer-end-date {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    font-family: 'Lato', sans-serif;
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.7);
-    margin-top: 12px;
-}
-
-.timer-end-date i {
-    color: #D4AF37;
-    font-size: 0.9rem;
-}
-
-/* Modal Body */
-.blackfriday-modal-body {
-    padding: 40px;
-}
-
-/* Offer Card */
-.blackfriday-offer-card {
-    background: linear-gradient(135deg, 
-        rgba(212, 175, 55, 0.1) 0%, 
-        rgba(0, 0, 0, 0.3) 100%);
-    border: 2px solid rgba(212, 175, 55, 0.3);
-    border-radius: 20px;
-    padding: 30px;
-    margin-bottom: 30px;
-    position: relative;
-    overflow: hidden;
-}
-
-.blackfriday-offer-card::before {
-    content: '';
-    position: absolute;
-    top: -100%;
-    left: -100%;
-    width: 300%;
-    height: 300%;
-    background: linear-gradient(
-        45deg,
-        transparent 40%,
-        rgba(212, 175, 55, 0.1) 50%,
-        transparent 60%
-    );
-    animation: shimmer 3s infinite;
-}
-
-@keyframes shimmer {
-    0% {
-        transform: translateX(-100%) translateY(-100%);
-    }
-    100% {
-        transform: translateX(100%) translateY(100%);
-    }
-}
-
-.offer-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
-    color: #1C1C1C;
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-family: 'Lato', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
-}
-
-.offer-badge i {
-    font-size: 0.9rem;
-}
-
-.offer-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #FFD700;
-    margin-bottom: 15px;
-    line-height: 1.3;
-    text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
-}
-
-.offer-description {
-    font-family: 'Lato', sans-serif;
-    font-size: 1rem;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.85);
-    margin-bottom: 20px;
-}
-
-.offer-highlight {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(212, 175, 55, 0.2);
-    border-left: 4px solid #D4AF37;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-family: 'Lato', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #FFD700;
-}
-
-.offer-highlight i {
-    font-size: 1.2rem;
-    color: #4CAF50;
-}
-
-/* Special Mention */
-.blackfriday-special-mention {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    border-radius: 20px;
-    padding: 25px;
-    margin-bottom: 30px;
-}
-
-.special-icon {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
-}
-
-.special-icon i {
-    font-size: 1.3rem;
-    color: #1C1C1C;
-}
-
-.special-text h4 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #FFD700;
-    margin-bottom: 8px;
-}
-
-.special-text p {
-    font-family: 'Lato', sans-serif;
-    font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.75);
-    margin-bottom: 12px;
-    line-height: 1.6;
-}
-
-.special-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: 'Lato', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #D4AF37;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.special-link:hover {
-    color: #FFD700;
-    gap: 12px;
-}
-
-.special-link i {
-    transition: transform 0.3s ease;
-}
-
-.special-link:hover i {
-    transform: translateX(3px);
-}
-
-/* Terms & Conditions */
-.blackfriday-terms {
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    border-radius: 20px;
-    padding: 30px;
-    margin-bottom: 30px;
-}
-
-.terms-title {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #FFD700;
-    margin-bottom: 20px;
-}
-
-.terms-title i {
-    font-size: 1.2rem;
-    color: #D4AF37;
-}
-
-.terms-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.terms-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    font-family: 'Lato', sans-serif;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.terms-list li i {
-    flex-shrink: 0;
-    font-size: 1rem;
-    margin-top: 2px;
-}
-
-.terms-list li i.fa-times-circle {
-    color: #FF6B6B;
-}
-
-.terms-list li i.fa-check-circle {
-    color: #4CAF50;
-}
-
-.terms-list strong {
-    color: #FFD700;
-    font-weight: 700;
-}
-
-/* CTA Button */
-.blackfriday-modal-cta {
-    text-align: center;
-}
-
-.blackfriday-book-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    font-family: 'Lato', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    color: #1C1C1C;
-    background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
-    padding: 18px 45px;
-    border-radius: 50px;
-    text-decoration: none;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 
-        0 10px 30px rgba(212, 175, 55, 0.4),
-        0 0 40px rgba(212, 175, 55, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    position: relative;
-    overflow: hidden;
-}
-
-.blackfriday-book-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    transition: left 0.6s ease;
-}
-
-.blackfriday-book-btn:hover::before {
-    left: 100%;
-}
-
-.blackfriday-book-btn:hover {
-    background: linear-gradient(135deg, #FFD700 0%, #F0E68C 100%);
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 
-        0 15px 40px rgba(212, 175, 55, 0.6),
-        0 0 60px rgba(212, 175, 55, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.4);
-}
-
-.blackfriday-book-btn:active {
-    transform: translateY(-1px) scale(1);
-}
-
-.blackfriday-book-btn i {
-    font-size: 1.2rem;
-    transition: transform 0.3s ease;
-}
-
-.blackfriday-book-btn i:last-child {
-    font-size: 1rem;
-}
-
-.blackfriday-book-btn:hover i:last-child {
-    transform: translateX(5px);
-}
-
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
-
+/* GIFT CARD BUTTON - RESPONSIVE */
 @media (max-width: 1200px) {
-    .blackfriday-promo-link {
+    .giftcard-premium-link {
         left: 30px;
     }
 }
 
 @media (max-width: 968px) {
-    .blackfriday-promo-link {
-        top: 160px;
+    .giftcard-premium-link {
+        top: 90px;
         left: 15px;
     }
     
-    .premium-header.scrolled ~ .blackfriday-promo-link,
-    body.scrolled .blackfriday-promo-link {
-        top: 155px;
-    }
-
-    .blackfriday-inner {
-        min-width: 220px;
-    }
-
-    .blackfriday-modal-content {
-        max-width: 90%;
-    }
-
-    .blackfriday-modal-body {
-        padding: 30px 25px;
-    }
-
-    .blackfriday-modal-title {
-        font-size: 2rem;
-    }
-
-    .timer-box {
-        min-width: 65px;
-        padding: 10px 12px;
-    }
-
-    .timer-value {
-        font-size: 1.6rem;
+    .premium-header.scrolled ~ .giftcard-premium-link,
+    body.scrolled .giftcard-premium-link {
+        top: 85px;
     }
 }
 
 @media (max-width: 768px) {
-    .blackfriday-promo-link {
-        top: 155px;
+    .giftcard-premium-link {
+        top: 85px;
         left: 15px;
     }
     
-    .blackfriday-inner {
-        padding: 10px 12px 10px 16px;
-        gap: 10px;
-        min-width: 200px;
-    }
-    
-    .blackfriday-icon-wrap {
-        width: 40px;
-        height: 40px;
-    }
-    
-    .blackfriday-icon {
-        font-size: 1.1rem;
-    }
-    
-    .blackfriday-label {
-        font-size: 1.3rem;
-    }
-
-    .blackfriday-tag {
-        font-size: 0.65rem;
-    }
-
-    .blackfriday-countdown {
-        font-size: 0.7rem;
-        padding: 2px 8px;
-    }
-
-    .blackfriday-arrow-left {
-        font-size: 0.9rem;
-    }
-
-    .blackfriday-modal-header {
-        padding: 40px 25px 30px;
-    }
-
-    .blackfriday-modal-icon {
-        width: 70px;
-        height: 70px;
-    }
-
-    .blackfriday-modal-icon i {
-        font-size: 2rem;
-    }
-
-    .blackfriday-modal-title {
-        font-size: 1.8rem;
-    }
-
-    .blackfriday-modal-subtitle {
-        font-size: 1rem;
-    }
-
-    .blackfriday-timer-display {
-        padding: 20px;
-    }
-
-    .timer-boxes {
+    .giftcard-inner {
+        padding: 8px 8px 8px 16px;
         gap: 6px;
     }
-
-    .timer-box {
-        min-width: 60px;
-        padding: 8px 10px;
+    
+    .giftcard-icon-wrap {
+        width: 32px;
+        height: 32px;
     }
-
-    .timer-value {
-        font-size: 1.4rem;
+    
+    .giftcard-icon {
+        width: 16px;
+        height: 16px;
     }
-
-    .timer-unit {
-        font-size: 0.65rem;
-    }
-
-    .timer-separator {
-        font-size: 1.5rem;
-        margin: 0 2px;
-    }
-
-    .offer-title {
-        font-size: 1.6rem;
-    }
-
-    .blackfriday-special-mention {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .blackfriday-book-btn {
-        width: 100%;
-        justify-content: center;
+    
+    .giftcard-label {
+        font-size: 0.85rem;
     }
 }
 
 @media (max-width: 480px) {
-    .blackfriday-promo-link {
-        top: 150px;
+    .giftcard-premium-link {
+        top: 80px;
         left: 12px;
     }
     
-    .blackfriday-inner {
-        padding: 8px 10px 8px 14px;
-        gap: 8px;
-        min-width: 180px;
+    .giftcard-inner {
+        padding: 7px 7px 7px 14px;
+        gap: 5px;
     }
     
-    .blackfriday-icon-wrap {
-        width: 36px;
-        height: 36px;
+    .giftcard-icon-wrap {
+        width: 28px;
+        height: 28px;
     }
     
-    .blackfriday-icon {
-        font-size: 1rem;
+    .giftcard-icon {
+        width: 14px;
+        height: 14px;
     }
     
-    .blackfriday-label {
-        font-size: 1.2rem;
-    }
-
-    .blackfriday-tag {
-        font-size: 0.6rem;
-    }
-
-    .blackfriday-countdown {
-        font-size: 0.65rem;
-        padding: 2px 6px;
-    }
-    
-    .blackfriday-arrow-left {
+    .giftcard-label {
         font-size: 0.8rem;
     }
-
-    .blackfriday-modal-content {
-        border-radius: 25px;
-        max-width: 95%;
-    }
-
-    .blackfriday-modal-header {
-        padding: 35px 20px 25px;
-    }
-
-    .blackfriday-modal-icon {
-        width: 60px;
-        height: 60px;
-    }
-
-    .blackfriday-modal-icon i {
-        font-size: 1.8rem;
-    }
-
-    .blackfriday-modal-title {
-        font-size: 1.6rem;
-    }
-
-    .blackfriday-modal-subtitle {
-        font-size: 0.95rem;
-    }
-
-    .blackfriday-modal-body {
-        padding: 25px 20px;
-    }
-
-    .blackfriday-timer-display {
-        padding: 15px;
-        border-radius: 15px;
-    }
-
-    .timer-boxes {
-        gap: 4px;
-    }
-
-    .timer-box {
-        min-width: 50px;
-        padding: 6px 8px;
-        border-radius: 8px;
-    }
-
-    .timer-value {
-        font-size: 1.2rem;
-    }
-
-    .timer-unit {
-        font-size: 0.6rem;
-    }
-
-    .timer-separator {
-        font-size: 1.2rem;
-        margin: 0;
-    }
-
-    .timer-end-date {
-        font-size: 0.75rem;
-    }
-
-    .blackfriday-offer-card,
-    .blackfriday-special-mention,
-    .blackfriday-terms {
-        padding: 20px;
-        border-radius: 15px;
-    }
-
-    .offer-title {
-        font-size: 1.4rem;
-    }
-
-    .offer-description {
-        font-size: 0.9rem;
-    }
-
-    .terms-list li {
-        font-size: 0.85rem;
-    }
-
-    .blackfriday-book-btn {
-        padding: 16px 35px;
-        font-size: 1rem;
-    }
-
-    .blackfriday-modal-close {
-        width: 45px;
-        height: 45px;
-        top: 15px;
-        left: calc(100% - 60px);
-    }
-
-    .blackfriday-modal-close i {
-        font-size: 1.1rem;
+    
+    .giftcard-arrow-left {
+        font-size: 0.7rem;
     }
 }
 
