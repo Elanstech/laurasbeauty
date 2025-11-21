@@ -221,8 +221,8 @@
 </head>
 <body>
 
-<!-- ELEGANT PROMOTIONAL MODAL - Add right after <body> tag -->
-<div class="elegant-promo-modal" id="elegantPromoModal">
+<!-- CUTE PROMOTIONAL MODAL - Add right after <body> tag -->
+<div class="cute-promo-modal" id="cutePromoModal">
     <div class="promo-modal-overlay"></div>
     
     <div class="promo-modal-container">
@@ -233,15 +233,21 @@
         
         <!-- Modal Content -->
         <div class="promo-modal-inner">
-            <!-- Gold Accent Lines -->
-            <div class="gold-accent-top"></div>
-            
-            <!-- Icon -->
+            <!-- Cute Icon with Animation -->
             <div class="promo-modal-icon">
-                <i class="fas fa-sparkles"></i>
+                <i class="fas fa-gift"></i>
+                <div class="sparkles">
+                    <span class="sparkle sparkle-1">✨</span>
+                    <span class="sparkle sparkle-2">✨</span>
+                    <span class="sparkle sparkle-3">✨</span>
+                </div>
             </div>
             
             <!-- Main Content -->
+            <div class="promo-badge-container">
+                <div class="promo-badge-cute">Special Offer</div>
+            </div>
+            
             <h1 class="promo-modal-title">
                 <span class="promo-number">30%</span>
                 <span class="promo-text">OFF</span>
@@ -250,19 +256,26 @@
             <p class="promo-modal-subtitle">All Services</p>
             
             <div class="promo-auto-badge">
-                <i class="fas fa-check-circle"></i>
-                <span>Automatically Applied at Checkout</span>
+                <i class="fas fa-magic"></i>
+                <span>Auto-Applied at Checkout</span>
             </div>
             
-            <!-- Divider -->
+            <!-- Cute Divider -->
             <div class="promo-divider">
-                <span class="divider-icon">✦</span>
+                <span class="heart-icon">♥</span>
             </div>
             
-            <!-- Secondary Message -->
-            <p class="promo-secondary-message">
-                Plus exclusive <strong>Thanksgiving Specials</strong> available
-            </p>
+            <!-- Black Friday & Thanksgiving -->
+            <div class="promo-events-container">
+                <div class="promo-event-badge black-friday">
+                    <i class="fas fa-tags"></i>
+                    <span>Black Friday Deals</span>
+                </div>
+                <div class="promo-event-badge thanksgiving">
+                    <i class="fas fa-star"></i>
+                    <span>Thanksgiving Specials</span>
+                </div>
+            </div>
             
             <!-- CTA Buttons -->
             <div class="promo-cta-buttons">
@@ -275,7 +288,7 @@
                 </a>
                 
                 <a href="servicecategories/specials.html" class="promo-btn promo-btn-secondary">
-                    <i class="fas fa-star"></i>
+                    <i class="fas fa-gift"></i>
                     <span>View Specials</span>
                 </a>
             </div>
@@ -283,21 +296,21 @@
             <!-- Terms Link -->
             <button class="promo-terms-trigger" id="promoTermsTrigger">
                 <i class="fas fa-info-circle"></i>
-                View Terms & Conditions
+                Terms & Conditions
             </button>
-            
-            <!-- Gold Accent Lines -->
-            <div class="gold-accent-bottom"></div>
         </div>
     </div>
 </div>
 
-<!-- MINIMIZED CIRCLE BUTTON (appears after closing modal) -->
-<button class="promo-minimized-btn" id="promoMinimizedBtn" aria-label="View promotion">
-    <span class="minimized-icon">
-        <i class="fas fa-percent"></i>
-    </span>
-    <span class="minimized-badge">30% OFF</span>
+<!-- CUTE MINIMIZED BUTTON (appears after closing modal) -->
+<button class="promo-minimized-btn-cute" id="promoMinimizedBtn" aria-label="View promotion">
+    <div class="minimized-content">
+        <span class="minimized-icon">
+            <i class="fas fa-percent"></i>
+        </span>
+        <span class="minimized-text">30% OFF</span>
+    </div>
+    <div class="minimized-pulse"></div>
 </button>
 
 <!-- TERMS MODAL (overlay) -->
@@ -327,7 +340,7 @@
                 </div>
                 
                 <div class="terms-section">
-                    <h4><i class="fas fa-check"></i> What's Included</h4>
+                    <h4><i class="fas fa-check-circle"></i> What's Included</h4>
                     <ul class="terms-list included">
                         <li>Face Treatments & Facials</li>
                         <li>Body Treatments</li>
@@ -340,12 +353,12 @@
                 </div>
                 
                 <div class="terms-section exclusions">
-                    <h4><i class="fas fa-times"></i> Exclusions</h4>
+                    <h4><i class="fas fa-times-circle"></i> Exclusions</h4>
                     <p class="terms-note">Cannot be combined with or applied to:</p>
                     <ul class="terms-list">
                         <li><strong>Service Packages</strong></li>
                         <li><strong>Nail Services</strong></li>
-                        <li><strong>Special Promotions</strong> (including Thanksgiving Specials)</li>
+                        <li><strong>Special Promotions</strong> (Black Friday & Thanksgiving Specials)</li>
                         <li>Other discounts or offers</li>
                     </ul>
                 </div>
@@ -357,7 +370,8 @@
             </div>
             
             <button class="terms-close-bottom-btn" id="promoTermsCloseBottomBtn">
-                Got It
+                <i class="fas fa-check"></i>
+                Got It!
             </button>
         </div>
     </div>
