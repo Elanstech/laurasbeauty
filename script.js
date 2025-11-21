@@ -1,10 +1,9 @@
 // ============================================
 // LAURA'S BEAUTY TOUCH - MAIN SCRIPT
-// Organized & Optimized
 // ============================================
 
 // ============================================
-// 1. ELEGANT PRELOADER
+// ELEGANT PRELOADER
 // ============================================
 class ElegantPreloader {
     constructor() {
@@ -39,7 +38,7 @@ class ElegantPreloader {
 }
 
 // ============================================
-// 2. PREMIUM HEADER WITH MEGA MENU
+// PREMIUM HEADER
 // ============================================
 class PremiumHeaderWithMegaMenu {
     constructor() {
@@ -49,6 +48,7 @@ class PremiumHeaderWithMegaMenu {
         this.mobileOverlay = document.querySelector('.mobile-overlay');
         this.logoWrapper = document.querySelector('.header-logo-wrapper');
         
+        // Mega Menu specific elements
         this.megamenuItem = document.querySelector('.has-megamenu');
         this.megamenuWrapper = document.querySelector('.megamenu-wrapper');
         this.megamenuTimeout = null;
@@ -277,214 +277,20 @@ class PremiumHeaderWithMegaMenu {
 }
 
 // ============================================
-// 3. CUTE PROMOTIONAL MODAL
+// FLOATING BUTTONS - SPECIALS & GIFT CARD
 // ============================================
-class CutePromoModal {
-    constructor() {
-        this.modal = document.getElementById('cutePromoModal');
-        this.modalCloseBtn = document.getElementById('promoModalCloseBtn');
-        this.modalOverlay = this.modal?.querySelector('.promo-modal-overlay');
-        
-        this.minimizedBtn = document.getElementById('promoMinimizedBtn');
-        
-        this.termsModal = document.getElementById('promoTermsModal');
-        this.termsOpenBtn = document.getElementById('promoTermsTrigger');
-        this.termsCloseBtn = document.getElementById('promoTermsCloseBtn');
-        this.termsCloseBottomBtn = document.getElementById('promoTermsCloseBottomBtn');
-        this.termsOverlay = this.termsModal?.querySelector('.promo-terms-overlay');
-        
-        this.storageKey = 'cute_promo_modal_closed';
-        this.autoOpenTimer = null;
-        
-        this.init();
-    }
-    
-    init() {
-        console.log('🎁 Initializing Cute Promo Modal');
-        
-        // Always show the minimized button
-        this.showMinimizedButton();
-        
-        // Wait for preloader to finish, then start 3-second countdown
-        this.waitForPreloaderThenStartTimer();
-        
-        this.setupEventListeners();
-    }
-    
-    waitForPreloaderThenStartTimer() {
-        // Check if modal was closed in last 24 hours
-        if (this.isModalClosed()) {
-            console.log('⏭️ Modal was closed recently, skipping auto-open');
-            return;
-        }
-        
-        const preloader = document.getElementById('preloader');
-        
-        const checkPreloader = () => {
-            // Check if preloader is hidden or doesn't exist
-            if (!preloader || 
-                preloader.style.display === 'none' || 
-                preloader.classList.contains('hidden')) {
-                
-                // Preloader is done, start 3-second timer
-                console.log('⏳ Preloader finished, starting 3-second timer...');
-                
-                this.autoOpenTimer = setTimeout(() => {
-                    this.openModal();
-                    console.log('✨ Auto-opened modal after 3 seconds');
-                }, 3000);
-            } else {
-                // Check again in 100ms
-                setTimeout(checkPreloader, 100);
-            }
-        };
-        
-        // Start checking after a small delay
-        setTimeout(checkPreloader, 100);
-    }
-    
-    setupEventListeners() {
-        // Main Modal Close
-        if (this.modalCloseBtn) {
-            this.modalCloseBtn.addEventListener('click', () => this.closeModal());
-        }
-        
-        if (this.modalOverlay) {
-            this.modalOverlay.addEventListener('click', () => this.closeModal());
-        }
-        
-        // Minimized Button - Open Modal
-        if (this.minimizedBtn) {
-            this.minimizedBtn.addEventListener('click', () => {
-                // Clear the auto-open timer if user clicks manually
-                if (this.autoOpenTimer) {
-                    clearTimeout(this.autoOpenTimer);
-                    this.autoOpenTimer = null;
-                    console.log('🖱️ User clicked button, cancelled auto-open');
-                }
-                this.openModal();
-            });
-        }
-        
-        // Terms Modal Open
-        if (this.termsOpenBtn) {
-            this.termsOpenBtn.addEventListener('click', () => this.openTermsModal());
-        }
-        
-        // Terms Modal Close
-        if (this.termsCloseBtn) {
-            this.termsCloseBtn.addEventListener('click', () => this.closeTermsModal());
-        }
-        
-        if (this.termsCloseBottomBtn) {
-            this.termsCloseBottomBtn.addEventListener('click', () => this.closeTermsModal());
-        }
-        
-        if (this.termsOverlay) {
-            this.termsOverlay.addEventListener('click', () => this.closeTermsModal());
-        }
-        
-        // ESC key to close modals
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                if (this.termsModal?.classList.contains('active')) {
-                    this.closeTermsModal();
-                } else if (this.modal?.classList.contains('active')) {
-                    this.closeModal();
-                }
-            }
-        });
-    }
-    
-    openModal() {
-        if (!this.modal) return;
-        
-        // Clear any pending auto-open timer
-        if (this.autoOpenTimer) {
-            clearTimeout(this.autoOpenTimer);
-            this.autoOpenTimer = null;
-        }
-        
-        this.modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        
-        console.log('✨ Modal opened');
-    }
-    
-    closeModal() {
-        if (!this.modal) return;
-        
-        this.modal.classList.remove('active');
-        document.body.style.overflow = '';
-        
-        // Save to localStorage (won't auto-open for 24 hours)
-        this.setModalClosed();
-        
-        console.log('✅ Modal closed');
-    }
-    
-    showMinimizedButton() {
-        if (!this.minimizedBtn) return;
-        
-        setTimeout(() => {
-            this.minimizedBtn.classList.add('show');
-        }, 300);
-    }
-    
-    openTermsModal() {
-        if (!this.termsModal) return;
-        
-        this.termsModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        
-        console.log('📄 Terms modal opened');
-    }
-    
-    closeTermsModal() {
-        if (!this.termsModal) return;
-        
-        this.termsModal.classList.remove('active');
-        
-        // Only restore scroll if main modal is also closed
-        if (!this.modal?.classList.contains('active')) {
-            document.body.style.overflow = '';
-        }
-        
-        console.log('✅ Terms modal closed');
-    }
-    
-    isModalClosed() {
-        const closedTime = localStorage.getItem(this.storageKey);
-        if (!closedTime) return false;
-        
-        const now = new Date().getTime();
-        const timeDiff = now - parseInt(closedTime);
-        const hoursDiff = timeDiff / (1000 * 60 * 60);
-        
-        return hoursDiff < 24;
-    }
-    
-    setModalClosed() {
-        const now = new Date().getTime();
-        localStorage.setItem(this.storageKey, now.toString());
-    }
-}
 
-// ============================================
-// 4. FLOATING BUTTONS - SPECIALS, GIFT CARD, & PROMO
-// ============================================
 class FloatingButtons {
     constructor() {
         this.specialsBtn = document.getElementById('specialsBtn');
         this.giftcardBtn = document.getElementById('giftcardBtn');
-        this.promoBtn = document.getElementById('promoMinimizedBtn');
         this.mobileToggle = document.querySelector('.mobile-toggle');
         this.mobileDrawer = document.querySelector('.mobile-drawer');
         this.mobileOverlay = document.querySelector('.mobile-overlay');
         this.header = document.querySelector('.premium-header');
         
         this.isVisible = false;
-        this.showDelay = 3000;
+        this.showDelay = 3000; // 3 seconds
         this.initTime = Date.now();
         
         this.init();
@@ -493,9 +299,16 @@ class FloatingButtons {
     init() {
         console.log('✨ Initializing Floating Buttons');
         
+        // Show buttons after delay
         this.scheduleShow();
+        
+        // Handle mobile menu
         this.handleMobileMenu();
+        
+        // Handle scroll
         this.handleScroll();
+        
+        // Track clicks
         this.trackClicks();
     }
 
@@ -506,6 +319,7 @@ class FloatingButtons {
     }
 
     show() {
+        // Check if mobile menu is open
         const isMobileMenuOpen = this.mobileDrawer && 
                                  this.mobileDrawer.classList.contains('active');
         
@@ -515,9 +329,6 @@ class FloatingButtons {
             }
             if (this.giftcardBtn) {
                 this.giftcardBtn.classList.add('visible');
-            }
-            if (this.promoBtn) {
-                this.promoBtn.classList.add('visible');
             }
             this.isVisible = true;
             console.log('✅ Floating buttons visible');
@@ -533,10 +344,6 @@ class FloatingButtons {
             this.giftcardBtn.classList.remove('visible');
             this.giftcardBtn.classList.add('hidden-mobile');
         }
-        if (this.promoBtn) {
-            this.promoBtn.classList.remove('visible');
-            this.promoBtn.classList.add('hidden-mobile');
-        }
         this.isVisible = false;
         console.log('👋 Floating buttons hidden');
     }
@@ -550,10 +357,6 @@ class FloatingButtons {
             this.giftcardBtn.classList.remove('hidden-mobile');
             this.giftcardBtn.classList.add('visible');
         }
-        if (this.promoBtn) {
-            this.promoBtn.classList.remove('hidden-mobile');
-            this.promoBtn.classList.add('visible');
-        }
         this.isVisible = true;
         console.log('👀 Floating buttons revealed');
     }
@@ -561,6 +364,7 @@ class FloatingButtons {
     handleMobileMenu() {
         if (!this.mobileToggle || !this.mobileDrawer) return;
 
+        // Watch for mobile menu state changes
         const observer = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
                 if (mutation.attributeName === 'class') {
@@ -569,6 +373,7 @@ class FloatingButtons {
                     if (isActive) {
                         this.hide();
                     } else {
+                        // Only reveal if initial delay has passed
                         setTimeout(() => {
                             if (this.isVisible || Date.now() > this.initTime + this.showDelay) {
                                 this.reveal();
@@ -584,6 +389,7 @@ class FloatingButtons {
             attributeFilter: ['class']
         });
 
+        // Also listen to toggle button
         if (this.mobileToggle) {
             this.mobileToggle.addEventListener('click', () => {
                 setTimeout(() => {
@@ -597,6 +403,7 @@ class FloatingButtons {
             });
         }
 
+        // Listen to overlay clicks
         if (this.mobileOverlay) {
             this.mobileOverlay.addEventListener('click', () => {
                 setTimeout(() => {
@@ -616,6 +423,7 @@ class FloatingButtons {
                 window.requestAnimationFrame(() => {
                     const scrolled = window.pageYOffset;
                     
+                    // Update body class for CSS
                     if (scrolled > 80) {
                         document.body.classList.add('scrolled');
                     } else {
@@ -631,6 +439,7 @@ class FloatingButtons {
     }
 
     trackClicks() {
+        // Track Specials button
         if (this.specialsBtn) {
             this.specialsBtn.addEventListener('click', (e) => {
                 console.log('🌟 Specials button clicked');
@@ -638,17 +447,11 @@ class FloatingButtons {
             });
         }
 
+        // Track Gift Card button
         if (this.giftcardBtn) {
             this.giftcardBtn.addEventListener('click', (e) => {
                 console.log('🎁 Gift Card button clicked');
                 this.createRipple(e, this.giftcardBtn, 'rgba(212, 175, 55, 0.6)');
-            });
-        }
-
-        if (this.promoBtn) {
-            this.promoBtn.addEventListener('click', (e) => {
-                console.log('💎 Promo button clicked');
-                this.createRipple(e, this.promoBtn, 'rgba(212, 175, 55, 0.6)');
             });
         }
     }
@@ -693,8 +496,20 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+// Auto-initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        new FloatingButtons();
+    });
+} else {
+    new FloatingButtons();
+}
+
+// Export for manual initialization if needed
+window.FloatingButtons = FloatingButtons;
+
 // ============================================
-// 5. HERO VIDEO COLLAGE
+// HERO VIDEO COLLAGE
 // ============================================
 class HeroVideoCollage {
     constructor() {
@@ -814,7 +629,7 @@ class HeroVideoCollage {
 }
 
 // ============================================
-// 6. SERVICES CAROUSEL
+// SERVICES CAROUSEL
 // ============================================
 class ServicesCarousel {
     constructor() {
@@ -1004,7 +819,7 @@ class ServicesCarousel {
 }
 
 // ============================================
-// 7. TEAM SECTION
+// TEAM SECTION
 // ============================================
 class TeamSection {
     constructor() {
@@ -1168,7 +983,10 @@ class TeamSection {
 }
 
 // ============================================
-// 8. BLOG SECTION WITH MOBILE CAROUSEL
+// ENHANCED BLOG SECTION WITH MOBILE CAROUSEL
+// ============================================
+// ============================================
+// ENHANCED BLOG SECTION WITH MOBILE CAROUSEL
 // ============================================
 class BlogSection {
     constructor() {
@@ -1219,6 +1037,7 @@ class BlogSection {
         
         this.blogGrid.innerHTML = postsToShow.map(post => this.createBlogCard(post)).join('');
         
+        // Update view all button
         if (this.viewAllBtn) {
             if (showAll || this.posts.length <= this.displayCount) {
                 this.viewAllBtn.style.display = 'none';
@@ -1227,8 +1046,10 @@ class BlogSection {
             }
         }
         
+        // Attach click events to all blog cards
         this.attachCardEvents();
         
+        // Setup carousel if mobile
         if (this.isMobile) {
             this.currentSlide = 0;
             this.setupCarousel();
@@ -1280,12 +1101,14 @@ class BlogSection {
     setupCarousel() {
         if (!this.isMobile) return;
         
+        // Create dots for each post
         if (this.carouselDots) {
             const postsToShow = this.showingAll ? this.posts : this.posts.slice(0, this.displayCount);
             this.carouselDots.innerHTML = postsToShow.map((_, index) => 
                 `<button class="carousel-dot ${index === 0 ? 'active' : ''}" data-slide="${index}"></button>`
             ).join('');
             
+            // Add click events to dots
             const dots = this.carouselDots.querySelectorAll('.carousel-dot');
             dots.forEach(dot => {
                 dot.addEventListener('click', () => {
@@ -1295,12 +1118,14 @@ class BlogSection {
             });
         }
         
+        // Setup touch events
         if (this.blogGrid) {
             this.blogGrid.addEventListener('touchstart', (e) => this.handleTouchStart(e), { passive: true });
             this.blogGrid.addEventListener('touchmove', (e) => this.handleTouchMove(e), { passive: true });
             this.blogGrid.addEventListener('touchend', () => this.handleTouchEnd());
         }
         
+        // Update carousel position
         this.updateCarousel();
     }
 
@@ -1333,19 +1158,26 @@ class BlogSection {
         const cards = this.blogGrid.querySelectorAll('.blog-card');
         if (cards.length === 0) return;
         
+        // Get actual measurements
         const viewportWidth = window.innerWidth;
-        const gap = viewportWidth <= 480 ? 15 : 20;
-        const padding = viewportWidth <= 480 ? 15 : 20;
+        const gap = viewportWidth <= 480 ? 15 : 20; // Match CSS gap
+        const padding = viewportWidth <= 480 ? 15 : 20; // Match CSS padding
+        
+        // Card width is viewport minus padding on both sides
         const cardWidth = viewportWidth - (padding * 2);
+        
+        // Calculate offset: (card width + gap) * current slide index
         const offset = -(this.currentSlide * (cardWidth + gap));
         
         this.blogGrid.style.transform = `translateX(${offset}px)`;
         
+        // Update dots
         const dots = this.carouselDots?.querySelectorAll('.carousel-dot');
         dots?.forEach((dot, index) => {
             dot.classList.toggle('active', index === this.currentSlide);
         });
         
+        // Update arrow states
         const postsToShow = this.showingAll ? this.posts : this.posts.slice(0, this.displayCount);
         
         if (this.carouselPrev) {
@@ -1426,6 +1258,7 @@ class BlogSection {
     }
 
     setupEventListeners() {
+        // Close modal events
         if (this.blogModalClose) {
             this.blogModalClose.addEventListener('click', () => this.closeModal());
         }
@@ -1434,12 +1267,14 @@ class BlogSection {
             this.blogModalOverlay.addEventListener('click', () => this.closeModal());
         }
         
+        // ESC key to close modal
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.blogModal.classList.contains('active')) {
                 this.closeModal();
             }
         });
         
+        // View all button
         if (this.viewAllBtn) {
             this.viewAllBtn.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -1449,6 +1284,7 @@ class BlogSection {
             });
         }
         
+        // Carousel navigation
         if (this.carouselPrev) {
             this.carouselPrev.addEventListener('click', () => this.prevSlide());
         }
@@ -1457,6 +1293,7 @@ class BlogSection {
             this.carouselNext.addEventListener('click', () => this.nextSlide());
         }
         
+        // Handle window resize
         window.addEventListener('resize', () => this.handleResize());
     }
 
@@ -1464,16 +1301,19 @@ class BlogSection {
         const wasMobile = this.isMobile;
         this.isMobile = window.innerWidth <= 768;
         
+        // If switching between mobile and desktop
         if (wasMobile !== this.isMobile) {
             this.currentSlide = 0;
             if (this.isMobile) {
                 this.setupCarousel();
             } else {
+                // Reset transform when switching to desktop
                 if (this.blogGrid) {
                     this.blogGrid.style.transform = '';
                 }
             }
         } else if (this.isMobile) {
+            // Update carousel position on resize
             setTimeout(() => {
                 this.updateCarousel();
             }, 100);
@@ -1501,7 +1341,7 @@ class BlogSection {
 }
 
 // ============================================
-// 9. ELFSIGHT WIDGETS
+// ELFSIGHT WIDGETS
 // ============================================
 class ElfsightWidgets {
     constructor() {
@@ -1582,7 +1422,7 @@ class ElfsightWidgets {
 }
 
 // ============================================
-// 10. FLOATING LEAVES & HASHTAGS
+// FLOATING LEAVES ANIMATION
 // ============================================
 class FloatingLeaves {
     constructor() {
@@ -1603,6 +1443,9 @@ class FloatingLeaves {
     }
 }
 
+// ============================================
+// INSTAGRAM HASHTAG INTERACTION
+// ============================================
 class HashtagInteraction {
     constructor() {
         this.hashtags = document.querySelectorAll('.hashtag');
@@ -1625,7 +1468,7 @@ class HashtagInteraction {
 }
 
 // ============================================
-// 11. CONTACT SECTION
+// CONTACT SECTION
 // ============================================
 class ContactSection {
     constructor() {
@@ -1749,7 +1592,7 @@ class ContactSection {
 }
 
 // ============================================
-// 12. SUPER FOOTER
+// SUPER FOOTER
 // ============================================
 class SuperFooter {
     constructor() {
@@ -1925,7 +1768,7 @@ class SuperFooter {
 }
 
 // ============================================
-// 13. BACK TO TOP & FAB BUTTONS
+// BACK TO TOP BUTTON
 // ============================================
 class BackToTopButton {
     constructor() {
@@ -1977,6 +1820,9 @@ class BackToTopButton {
     }
 }
 
+// ============================================
+// FLOATING ACTION BUTTON (FAB)
+// ============================================
 class FloatingActionButton {
     constructor() {
         this.fabMain = document.getElementById('fabMain');
@@ -2038,7 +1884,7 @@ class FloatingActionButton {
 }
 
 // ============================================
-// 14. ABOUT CAROUSEL
+// ABOUT CAROUSEL
 // ============================================
 class AboutCarousel {
     constructor(section) {
@@ -2207,6 +2053,9 @@ class AboutCarousel {
     }
 }
 
+// ============================================
+// INITIALIZE ABOUT CAROUSELS
+// ============================================
 function initAboutCarousels() {
     const carouselSections = document.querySelectorAll('.about-carousel-section');
     
@@ -2216,7 +2065,7 @@ function initAboutCarousels() {
 }
 
 // ============================================
-// 15. MAIN INITIALIZATION
+// MAIN INITIALIZATION
 // ============================================
 function initWebsite() {
     console.log('🌿 Laura\'s Beauty Touch - Website Loading...');
@@ -2225,16 +2074,12 @@ function initWebsite() {
     // Core Components
     new ElegantPreloader();
     new PremiumHeaderWithMegaMenu();
-    new CutePromoModal();
     new HeroVideoCollage();
-    
-    // Floating Buttons (includes specials, gift card, and promo button)
-    new FloatingButtons();
     
     // Interactive Elements
     new BackToTopButton();
     new FloatingActionButton();
-    
+ 
     // Content Sections
     new BlogSection();
     new TeamSection();
