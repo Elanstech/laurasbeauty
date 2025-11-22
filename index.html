@@ -1465,6 +1465,203 @@
     <div class="giftcard-glow"></div>
 </a>
 
+<!-- BLACK FRIDAY PROMO BUTTON - Positioned below Gift Card -->
+<a href="#" class="blackfriday-promo-link" id="blackfridayBtn">
+    <div class="blackfriday-inner">
+        <div class="blackfriday-badge">
+            <i class="fas fa-bolt"></i>
+        </div>
+        <div class="blackfriday-content">
+            <span class="blackfriday-tag">BLACK FRIDAY</span>
+            <span class="blackfriday-offer">30% OFF</span>
+            <span class="blackfriday-timer" id="buttonTimer">Loading...</span>
+        </div>
+        <i class="fas fa-chevron-right blackfriday-arrow"></i>
+    </div>
+    <div class="blackfriday-glow"></div>
+</a>
+
+<!-- BLACK FRIDAY MODAL -->
+<div class="blackfriday-modal" id="blackfridayModal">
+    <div class="blackfriday-modal-overlay" id="blackfridayOverlay"></div>
+    <div class="blackfriday-modal-container">
+        <!-- Close Button -->
+        <button class="blackfriday-modal-close" id="blackfridayClose" aria-label="Close">
+            <i class="fas fa-times"></i>
+        </button>
+
+        <!-- Modal Header -->
+        <div class="blackfriday-modal-header">
+            <div class="header-accent"></div>
+            <div class="header-icon">
+                <i class="fas fa-tag"></i>
+            </div>
+            <h2 class="modal-title">BLACK FRIDAY</h2>
+            <p class="modal-subtitle">Limited Time Spectacular</p>
+        </div>
+
+        <!-- Countdown Timer -->
+        <div class="blackfriday-countdown">
+            <p class="countdown-text">Offer Ends In</p>
+            <div class="countdown-display">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Offer Section -->
+        <div class="blackfriday-modal-body">
+            <!-- Primary Offer -->
+            <div class="offer-primary">
+                <div class="offer-percentage">
+                    <span class="percentage-number">30%</span>
+                    <span class="percentage-text">OFF</span>
+                </div>
+                <div class="offer-details">
+                    <h3 class="offer-title">All Services Included</h3>
+                    <p class="offer-description">
+                        Treat yourself to luxury this Black Friday! Enjoy an exclusive 30% discount 
+                        on all our premium spa services, treatments, and packages.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Benefits Grid -->
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="benefit-text">
+                        <h4>Auto-Applied</h4>
+                        <p>Discount automatically applies at checkout</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <div class="benefit-text">
+                        <h4>All Services</h4>
+                        <p>Valid on facials, waxing, laser & more</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="benefit-text">
+                        <h4>Book Anytime</h4>
+                        <p>Schedule now, visit later</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <div class="benefit-text">
+                        <h4>Perfect Gift</h4>
+                        <p>Ideal for yourself or loved ones</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Services -->
+            <div class="featured-services">
+                <h3 class="featured-title">Popular Services On Sale</h3>
+                <div class="services-list">
+                    <div class="service-chip">
+                        <i class="fas fa-spa"></i>
+                        <span>Organic Facials</span>
+                    </div>
+                    <div class="service-chip">
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                        <span>Laser Treatments</span>
+                    </div>
+                    <div class="service-chip">
+                        <i class="fas fa-leaf"></i>
+                        <span>Body Waxing</span>
+                    </div>
+                    <div class="service-chip">
+                        <i class="fas fa-eye"></i>
+                        <span>Lashes & Brows</span>
+                    </div>
+                    <div class="service-chip">
+                        <i class="fas fa-hand-sparkles"></i>
+                        <span>Nail Services</span>
+                    </div>
+                    <div class="service-chip">
+                        <i class="fas fa-paint-brush"></i>
+                        <span>Makeup Services</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thanksgiving Special Callout -->
+            <div class="special-callout">
+                <div class="callout-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="callout-content">
+                    <h4>Plus: Thanksgiving Specials!</h4>
+                    <p>Don't miss our exclusive Thanksgiving packages and seasonal treatments</p>
+                    <a href="servicecategories/specials.html" class="callout-link">
+                        View Thanksgiving Specials
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Terms & Conditions -->
+            <div class="terms-section">
+                <button class="terms-toggle" id="termsToggle">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Terms & Conditions</span>
+                    <i class="fas fa-chevron-down terms-arrow"></i>
+                </button>
+                <div class="terms-content" id="termsContent">
+                    <ul class="terms-list">
+                        <li>Valid from November 22, 2025 through December 1, 2025 at 3:00 PM EST</li>
+                        <li>30% discount automatically applied to all eligible services at checkout</li>
+                        <li>Cannot be combined with other offers, promotions, or discounts</li>
+                        <li>Appointments must be booked during the promotional period</li>
+                        <li>Discount applies to regular-priced services only</li>
+                        <li>Not valid on gift card purchases or previously booked appointments</li>
+                        <li>Some restrictions may apply to specific treatments - inquire at booking</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="modal-cta">
+                <a href="https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547" class="blackfriday-book-btn">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Book Now & Save 30%</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <p class="cta-footnote">Secure your appointment today • Limited availability</p>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- FLOATING ACTION BUTTON (FAB) -->
 <div class="fab-container" id="fabContainer">
     <!-- Fan-out Options -->
