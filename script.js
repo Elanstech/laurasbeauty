@@ -513,6 +513,10 @@ window.FloatingButtons = FloatingButtons;
 // BLACK FRIDAY PROMO BUTTON & MODAL
 // ============================================
 
+// ============================================
+// BLACK FRIDAY PROMO BUTTON & MODAL
+// ============================================
+
 class BlackFridayPromo {
     constructor() {
         this.button = document.getElementById('blackfridayBtn');
