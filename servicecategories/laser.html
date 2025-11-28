@@ -16,6 +16,550 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="servicescat.css">
+    
+    <style>
+        /* ============================================
+           LASER TECHNOLOGY SECTION - CUSTOM STYLES
+           ============================================ */
+        .laser-technology-section {
+            position: relative;
+            padding: 100px 40px;
+            background: linear-gradient(180deg, 
+                var(--ivory-white) 0%,
+                rgba(169, 200, 156, 0.05) 50%,
+                var(--ivory-white) 100%);
+            overflow: hidden;
+        }
+
+        .technology-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Section Header */
+        .technology-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .technology-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--mint-green), var(--soft-sage));
+            color: var(--forest-green);
+            font-family: 'Lato', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 12px 28px;
+            border-radius: 50px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(169, 200, 156, 0.3);
+        }
+
+        .technology-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--forest-green);
+            margin: 0 0 20px;
+            line-height: 1.2;
+        }
+
+        .technology-subtitle {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 300;
+            color: var(--warm-taupe);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Machine Showcase */
+        .machine-showcase {
+            background: white;
+            border-radius: 30px;
+            padding: 60px;
+            box-shadow: 0 20px 60px rgba(59, 74, 47, 0.1);
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .machine-showcase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--mint-green), var(--soft-sage), var(--mint-green));
+        }
+
+        .machine-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .machine-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--forest-green);
+            margin: 0 0 15px;
+        }
+
+        .machine-brand {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--mint-green);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .machine-brand i {
+            font-size: 1.3rem;
+        }
+
+        .machine-description {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--charcoal);
+            margin-bottom: 30px;
+        }
+
+        .machine-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 15px;
+            background: rgba(169, 200, 156, 0.08);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-item:hover {
+            background: rgba(169, 200, 156, 0.15);
+            transform: translateX(5px);
+        }
+
+        .highlight-icon {
+            width: 45px;
+            height: 45px;
+            min-width: 45px;
+            background: linear-gradient(135deg, var(--mint-green), var(--soft-sage));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--forest-green);
+            font-size: 1.1rem;
+        }
+
+        .highlight-text {
+            flex: 1;
+        }
+
+        .highlight-text strong {
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--forest-green);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .highlight-text span {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            color: var(--warm-taupe);
+            line-height: 1.6;
+        }
+
+        .machine-image-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(59, 74, 47, 0.15);
+        }
+
+        .machine-image {
+            width: 100%;
+            height: 500px;
+            background: var(--cream);
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+        }
+
+        .machine-showcase:hover .machine-image {
+            transform: scale(1.05);
+        }
+
+        .machine-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            color: var(--mint-green);
+            font-family: 'Lato', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            border-radius: 25px;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 25px;
+            padding: 40px 35px;
+            box-shadow: 0 10px 30px rgba(59, 74, 47, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--mint-green), var(--soft-sage));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(59, 74, 47, 0.15);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(169, 200, 156, 0.15), rgba(169, 200, 156, 0.05));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            transition: all 0.4s ease;
+        }
+
+        .feature-card:hover .feature-icon-wrapper {
+            background: linear-gradient(135deg, var(--mint-green), var(--soft-sage));
+            transform: rotateY(360deg);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--mint-green);
+            transition: color 0.4s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            color: var(--forest-green);
+        }
+
+        .feature-title {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--forest-green);
+            margin: 0 0 15px;
+        }
+
+        .feature-description {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--warm-taupe);
+            margin: 0;
+        }
+
+        /* Technology Stats */
+        .technology-stats {
+            background: linear-gradient(135deg, var(--forest-green), var(--deep-forest));
+            border-radius: 30px;
+            padding: 60px 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--mint-green);
+            margin: 0 0 10px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.5;
+        }
+
+        /* Wavelength Info */
+        .wavelength-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .wavelength-card {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(59, 74, 47, 0.08);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .wavelength-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .wavelength-card.alexandrite::before {
+            background: linear-gradient(180deg, #8B4789, #6B3568);
+        }
+
+        .wavelength-card.ndyag::before {
+            background: linear-gradient(180deg, #C41E3A, #8B1538);
+        }
+
+        .wavelength-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(59, 74, 47, 0.12);
+        }
+
+        .wavelength-card:hover::before {
+            width: 100%;
+            opacity: 0.05;
+        }
+
+        .wavelength-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .wavelength-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .wavelength-card.alexandrite .wavelength-icon {
+            background: linear-gradient(135deg, #8B4789, #6B3568);
+        }
+
+        .wavelength-card.ndyag .wavelength-icon {
+            background: linear-gradient(135deg, #C41E3A, #8B1538);
+        }
+
+        .wavelength-info h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--forest-green);
+            margin: 0 0 5px;
+        }
+
+        .wavelength-spec {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--mint-green);
+        }
+
+        .wavelength-description {
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+            margin-bottom: 25px;
+        }
+
+        .wavelength-benefits {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .wavelength-benefits li {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            color: var(--warm-taupe);
+            padding: 10px 0 10px 30px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .wavelength-benefits li::before {
+            content: '\f058';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--mint-green);
+            font-size: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .machine-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .machine-image {
+                height: 400px;
+            }
+
+            .technology-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-item:nth-child(2)::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .laser-technology-section {
+                padding: 80px 30px;
+            }
+
+            .machine-showcase {
+                padding: 40px 30px;
+            }
+
+            .technology-header {
+                margin-bottom: 50px;
+            }
+
+            .wavelength-section {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .technology-stats {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .stat-item::after {
+                display: none;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .laser-technology-section {
+                padding: 60px 20px;
+            }
+
+            .machine-showcase {
+                padding: 35px 25px;
+            }
+
+            .machine-info h3 {
+                font-size: 1.8rem;
+            }
+
+            .machine-image {
+                height: 300px;
+            }
+
+            .feature-card {
+                padding: 35px 25px;
+            }
+
+            .technology-stats {
+                padding: 40px 30px;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .wavelength-card {
+                padding: 30px 25px;
+            }
+        }
+    </style>
 </head>
 <body data-category="laser">
 
@@ -287,6 +831,196 @@
         <i class="fas fa-chevron-down"></i>
     </div>
 </section>
+
+    <!-- ============================================
+         LASER TECHNOLOGY SECTION - NEW
+         ============================================ -->
+    <section class="laser-technology-section">
+        <div class="technology-container">
+            
+            <!-- Section Header -->
+            <div class="technology-header">
+                <div class="technology-badge">
+                    <i class="fas fa-award"></i>
+                    <span>Industry-Leading Technology</span>
+                </div>
+                <h2 class="technology-title">Our Advanced Laser Equipment</h2>
+                <p class="technology-subtitle">
+                    Experience the gold standard in laser treatments with our state-of-the-art Candela GentleMax Pro Plus® system. 
+                    Trusted by dermatologists and aesthetic professionals worldwide for over 25 years.
+                </p>
+            </div>
+
+            <!-- Machine Showcase -->
+            <div class="machine-showcase">
+                <div class="machine-content">
+                    <div class="machine-info">
+                        <h3>Candela GentleMax Pro Plus®</h3>
+                        <div class="machine-brand">
+                            <i class="fas fa-certificate"></i>
+                            <span>Gentle Pro Series</span>
+                        </div>
+                        <p class="machine-description">
+                            The GentleMax Pro Plus represents decades of innovation, combining dual wavelength technology 
+                            with the revolutionary GLX™ Delivery System for the fastest, most powerful treatments available. 
+                            This FDA-cleared system delivers exceptional results across all skin types with maximum patient comfort.
+                        </p>
+                        <div class="machine-highlights">
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-wave-square"></i>
+                                </div>
+                                <div class="highlight-text">
+                                    <strong>Dual Wavelength Technology</strong>
+                                    <span>755nm Alexandrite + 1064nm Nd:YAG for all skin types</span>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div class="highlight-text">
+                                    <strong>GLX™ Delivery System</strong>
+                                    <span>Fastest treatment times with unprecedented power</span>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-snowflake"></i>
+                                </div>
+                                <div class="highlight-text">
+                                    <strong>Dynamic Cooling Device (DCD™)</strong>
+                                    <span>Patented cooling technology for maximum comfort</span>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-clock-rotate-left"></i>
+                                </div>
+                                <div class="highlight-text">
+                                    <strong>Ultra-Short Pulse Duration</strong>
+                                    <span>2ms pulses for fine hair and sensitive areas</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="machine-image-wrapper">
+                        <div class="machine-image" style="background-image: url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80');"></div>
+                        <div class="machine-badge">FDA Cleared</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technology Stats -->
+            <div class="technology-stats">
+                <div class="stat-item">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Years of Proven Excellence</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">20K+</div>
+                    <div class="stat-label">Systems Installed Worldwide</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">89+</div>
+                    <div class="stat-label">Countries Trust This Technology</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">#1</div>
+                    <div class="stat-label">World Leader in Laser Hair Removal</div>
+                </div>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-users feature-icon"></i>
+                    </div>
+                    <h4 class="feature-title">All Skin Types</h4>
+                    <p class="feature-description">
+                        Safely treats Fitzpatrick skin types I-VI with optimized settings for each individual.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-gauge-high feature-icon"></i>
+                    </div>
+                    <h4 class="feature-title">High Speed Performance</h4>
+                    <p class="feature-description">
+                        Large spot sizes (up to 26mm) and high repetition rates ensure quick, efficient treatments.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-shield-halved feature-icon"></i>
+                    </div>
+                    <h4 class="feature-title">Maximum Safety</h4>
+                    <p class="feature-description">
+                        Patented cooling technology protects skin while delivering powerful, effective energy.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-sparkles feature-icon"></i>
+                    </div>
+                    <h4 class="feature-title">Versatile Applications</h4>
+                    <p class="feature-description">
+                        Beyond hair removal: treats pigmented lesions, vascular concerns, and skin rejuvenation.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Wavelength Information -->
+            <div class="wavelength-section">
+                <div class="wavelength-card alexandrite">
+                    <div class="wavelength-header">
+                        <div class="wavelength-icon">
+                            <i class="fas fa-light-ceiling"></i>
+                        </div>
+                        <div class="wavelength-info">
+                            <h4>Alexandrite Laser</h4>
+                            <div class="wavelength-spec">755nm Wavelength</div>
+                        </div>
+                    </div>
+                    <p class="wavelength-description">
+                        The Alexandrite wavelength offers high melanin absorption, making it ideal for lighter skin tones 
+                        and delivering exceptional results for finer hair removal.
+                    </p>
+                    <ul class="wavelength-benefits">
+                        <li>Optimal for Fitzpatrick skin types I-III</li>
+                        <li>Perfect for facial hair and delicate areas</li>
+                        <li>Excellent for fine and light-colored hair</li>
+                        <li>Fast treatment times with large spot sizes</li>
+                        <li>Superior pigmented lesion treatment</li>
+                    </ul>
+                </div>
+                <div class="wavelength-card ndyag">
+                    <div class="wavelength-header">
+                        <div class="wavelength-icon">
+                            <i class="fas fa-wave-pulse"></i>
+                        </div>
+                        <div class="wavelength-info">
+                            <h4>Nd:YAG Laser</h4>
+                            <div class="wavelength-spec">1064nm Wavelength</div>
+                        </div>
+                    </div>
+                    <p class="wavelength-description">
+                        The longer Nd:YAG wavelength penetrates deeper into the skin, making it the gold standard for 
+                        darker skin tones and treating coarser, deeper hair follicles.
+                    </p>
+                    <ul class="wavelength-benefits">
+                        <li>Optimal for Fitzpatrick skin types IV-VI</li>
+                        <li>Ideal for coarse, deep-rooted hair</li>
+                        <li>Safe for tanned or darker skin tones</li>
+                        <li>Treats vascular lesions effectively</li>
+                        <li>Deeper penetration for stubborn areas</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
     
     <!-- ============================================
          SERVICES LIST SECTION
