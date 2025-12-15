@@ -1,48 +1,160 @@
-{
-  "category": "specials",
+"category": "specials",
   "services": [
     {
-      "id": "european-deep-pore-facial-special",
-      "name": "✨ European Deep Pore Facial",
-      "description": "Luxurious European facial with papaya enzyme peel and brightening papaya mask, complete with relaxing hand massage.",
-      "price": "$99",
-      "originalPrice": "$150",
-      "specialPrice": "$99",
-      "savings": "$51",
+      "id": "holiday-refresh-package",
+      "name": "🎄 Holiday Refresh Package",
+      "description": "Revitalize with our aroma body scrub and your choice of express facial or massage. Perfect holiday treat for yourself!",
+      "price": "$89",
+      "originalPrice": "$135",
+      "specialPrice": "$89",
+      "savings": "$46",
       "savingsPercent": "34%",
-      "duration": "75 min",
-      "validUntil": "Limited Time",
+      "duration": "60 min",
+      "validUntil": "Holiday Special",
       "includes": [
+        "Aroma body scrub with shower",
+        "Choice of 30-minute express facial OR 30-minute express massage",
+        "Aromatherapy benefits",
+        "Relaxation and rejuvenation"
+      ],
+      "benefits": [
+        "Save $46 this holiday season",
+        "Customize your relaxation",
+        "Full body exfoliation",
+        "Deep stress relief"
+      ],
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
+      "image": "https://www.jacalynjamesclinic.co.uk/wp-content/uploads/2022/04/aromatherapy-facial-4.jpg",
+      "badge": "Holiday Special",
+      "priceLabel": "$89 (was $135)"
+    },
+    {
+      "id": "ultimate-holiday-pamper",
+      "name": "❄️ Ultimate Holiday Pamper Package",
+      "description": "The complete holiday spa experience! Body scrub, facial or massage, plus gorgeous nails. Give yourself the gift of total relaxation.",
+      "price": "$135",
+      "originalPrice": "$185",
+      "specialPrice": "$135",
+      "savings": "$50",
+      "savingsPercent": "27%",
+      "duration": "120 min",
+      "validUntil": "Holiday Special",
+      "includes": [
+        "Aroma body scrub with shower",
+        "Choice of 30-minute express facial OR 30-minute express massage",
+        "Spa pedicure",
+        "Manicure",
+        "Complete head-to-toe pampering"
+      ],
+      "benefits": [
+        "Save $50 on complete spa day",
+        "Perfect holiday self-care",
+        "Beautiful nails for celebrations",
+        "Total body rejuvenation"
+      ],
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
+      "image": "https://www.silkandglowskincare.co.uk/wp-content/uploads/2019/04/AdobeStock_80841305-1024x683.jpeg",
+      "badge": "Best Value",
+      "priceLabel": "$135 (was $185)"
+    },
+    {
+      "id": "microdermabrasion-facial-special",
+      "name": "✨ Microdermabrasion Deep Pore Facial",
+      "description": "Advanced exfoliation meets deep cleansing! Diamond-tip microdermabrasion with complete facial treatment for glowing, renewed skin.",
+      "price": "$89",
+      "originalPrice": "$130",
+      "specialPrice": "$89",
+      "savings": "$41",
+      "savingsPercent": "32%",
+      "duration": "70 min",
+      "validUntil": "Holiday Special",
+      "includes": [
+        "Professional microdermabrasion",
         "Deep pore cleansing",
-        "Papaya enzyme peel",
-        "Brightening papaya mask",
-        "Hand massage",
-        "Face, neck, and shoulder treatment",
+        "Face, neck, and shoulder massage",
+        "Customized mask",
         "Extraction",
         "Toner and moisturizer"
       ],
       "benefits": [
-        "Save $51 on this premium facial",
-        "Deep pore purification",
-        "Natural enzyme exfoliation",
-        "Brightening and rejuvenation"
+        "Save $41 on advanced treatment",
+        "Resurfaces skin texture",
+        "Reduces fine lines and scars",
+        "Immediate visible results"
       ],
-      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A25462858&share=true&pId=2609547",
-      "image": "https://images.squarespace-cdn.com/content/v1/54ab19d1e4b01ff9ee6258e2/1427049649567-VH8QMIH21MOAQW726W1L/iStock_000003177737Medium.jpg?format=1000w",
-      "badge": "Special",
-      "priceLabel": "$99 (was $150)"
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24204011&share=true&pId=2609547",
+      "image": "https://www.verywellhealth.com/thmb/QOccWi_yydag-kOir_80xLrXMxE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/VWH-GettyImages-1488372356-fc9240a252244fc18a61a22c487018c9.jpg",
+      "badge": "Advanced Treatment",
+      "priceLabel": "$89 (was $130)"
+    },
+    {
+      "id": "lip-blush-microshading-special",
+      "name": "💋 Lip Blush or Microshading",
+      "description": "Semi-permanent makeup for naturally enhanced, perfectly tinted lips. Wake up beautiful every day!",
+      "price": "$349",
+      "originalPrice": "$500",
+      "specialPrice": "$349",
+      "savings": "$151",
+      "savingsPercent": "30%",
+      "duration": "120 min",
+      "validUntil": "Holiday Special",
+      "includes": [
+        "Consultation and color matching",
+        "Numbing cream application",
+        "Precise lip blush or microshading technique",
+        "Aftercare kit and instructions",
+        "Follow-up guidance"
+      ],
+      "benefits": [
+        "Save $151 on permanent makeup",
+        "Long-lasting results (2-3 years)",
+        "Natural-looking enhancement",
+        "Waterproof and smudge-proof"
+      ],
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A25462867&share=true&pId=2609547",
+      "image": "https://ashaquilina.com/wp-content/uploads/2024/05/Lip-blush-before-and-after-1-1024x1024.webp",
+      "badge": "PMU Special",
+      "priceLabel": "$349 (was $500)"
+    },
+    {
+      "id": "laser-combo-special",
+      "name": "⚡ Brazilian & Underarm Laser Combo",
+      "description": "Get silky smooth with our most popular laser combo! Brazilian and underarm laser hair removal in one convenient package.",
+      "price": "$199",
+      "originalPrice": "$240",
+      "specialPrice": "$199",
+      "savings": "$41",
+      "savingsPercent": "17%",
+      "duration": "45 min",
+      "validUntil": "Holiday Special",
+      "includes": [
+        "Brazilian laser hair removal",
+        "Underarm laser hair removal",
+        "Professional consultation",
+        "Post-treatment care instructions"
+      ],
+      "benefits": [
+        "Save $41 on combo package",
+        "Long-lasting hair reduction",
+        "Smooth, confident results",
+        "No more razor burn or ingrown hairs"
+      ],
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&share=true&pId=2609547",
+      "image": "https://www.harleylaserspecialists.com/wp-content/uploads/2020/01/Brazilian-laser-hair-removal-treatment.jpg",
+      "badge": "Combo Deal",
+      "priceLabel": "$199 (was $240)"
     },
     {
       "id": "lash-brow-lamination-special",
-      "name": "👁️ Lash or Brow Lamination with Tint",
-      "description": "Perfect your look with professional lamination and tinting for beautifully shaped, defined lashes or brows.",
-      "price": "$89",
-      "specialPrice": "$89",
+      "name": "👁️ Lash Lift or Brow Lamination",
+      "description": "Perfect your look with professional lamination for beautifully lifted, defined lashes or brows that last for weeks!",
+      "price": "$79",
+      "specialPrice": "$79",
       "duration": "60 min",
-      "validUntil": "Ongoing Special",
+      "validUntil": "Holiday Special",
       "includes": [
-        "Choice of lash OR brow lamination",
-        "Professional tinting included",
+        "Choice of lash lift OR brow lamination",
+        "Professional application",
         "Consultation",
         "Aftercare instructions"
       ],
@@ -50,70 +162,11 @@
         "Long-lasting results (6-8 weeks)",
         "No daily makeup needed",
         "Natural, lifted appearance",
-        "Tint included at no extra cost"
+        "Low-maintenance beauty"
       ],
-      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A25462861&share=true&pId=2609547",
-      "image": "https://candyrein.com/cdn/shop/products/IMG_1455_Facetune_22-09-2021-14-33-37.jpg?v=1632336585",
-      "badge": "Popular",
-      "priceLabel": "$89"
-    },
-    {
-      "id": "brazilian-wax-combo-special",
-      "name": "🌸 Brazilian Wax Combo Special",
-      "description": "Get smooth everywhere with our Brazilian wax plus your choice of complimentary underarm or eyebrow wax.",
-      "price": "$49",
-      "specialPrice": "$49",
-      "duration": "45 min",
-      "validUntil": "Ongoing Promotion",
-      "includes": [
-        "Brazilian wax",
-        "FREE underarm wax OR eyebrow wax",
-        "Pre-wax skin preparation",
-        "Post-wax soothing treatment"
-      ],
-      "benefits": [
-        "Free add-on service included",
-        "Gentle wax formula",
-        "Long-lasting smooth skin",
-        "Professional application"
-      ],
-      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A25462862&share=true&pId=2609547",
-      "image": "https://innovitalespa.com/cdn/shop/articles/4365527e-87fc-41a3-a90b-35e6632785bd_0d96ec61-366b-4d0b-b15c-fce63fa00eab.webp?v=1763051005",
-      "badge": "Combo Deal",
-      "priceLabel": "$49"
-    },
-    {
-      "id": "lip-blush-microshading",
-      "name": "💋 Lip Blush or Micro Shading",
-      "description": "Semi-permanent makeup for naturally enhanced, perfectly tinted lips that last for years.",
-      "price": "$350",
-      "specialPrice": "$350",
-      "duration": "120 min",
-      "validUntil": "Regular Pricing",
-      "includes": [
-        "Consultation and color matching",
-        "Numbing cream application",
-        "Precise lip blush or micro shading technique",
-        "Aftercare kit and instructions",
-        "Touch-up appointment (if needed, additional fee may apply)"
-      ],
-      "benefits": [
-        "Long-lasting results (2-3 years)",
-        "Natural-looking enhancement",
-        "Waterproof and smudge-proof",
-        "Wake up with perfect lips daily"
-      ],
-      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A25462867&share=true&pId=2609547",
-      "image": "https://ashaquilina.com/wp-content/uploads/2024/05/Lip-blush-before-and-after-1-1024x1024.webp",
-      "badge": "PMU",
-      "priceLabel": "$350"
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24192754&share=true&pId=2609547",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFaSgzDROq_li9PvOhXC4TFWXHQT4qvifSAA&s",
+      "badge": "Popular Choice",
+      "priceLabel": "$79"
     }
   ],
-  "generalTerms": [
-    "Specials cannot be combined with other offers unless stated",
-    "Advance booking recommended",
-    "Gratuity not included in special pricing",
-    "Prices subject to change without notice",
-    "First-time clients may require patch test for certain services"
-  ]
-}
