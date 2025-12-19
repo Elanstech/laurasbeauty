@@ -2321,9 +2321,6 @@ class AboutCarousel {
     }
 }
 
-// ============================================
-// INITIALIZE ABOUT CAROUSELS
-// ============================================
 function initAboutCarousels() {
     const carouselSections = document.querySelectorAll('.about-carousel-section');
     
@@ -2331,6 +2328,130 @@ function initAboutCarousels() {
         new AboutCarousel(section);
     });
 }
+
+// ============================================
+// HOLIDAY OVERLAY - INTERACTIVE FEATURES
+// TO REMOVE: Just delete or comment out this entire section
+// ============================================
+
+class HolidayOverlay {
+    constructor() {
+        this.badge = document.querySelector('.holiday-badge');
+        this.isEnabled = true;
+        
+        // Check if holiday overlay exists
+        if (!this.badge) {
+            console.log('Holiday overlay not found');
+            return;
+        }
+        
+        this.init();
+    }
+    
+    init() {
+        console.log('🎄 Holiday overlay initialized!');
+        
+        // Add interactive badge effects
+        this.setupBadgeInteraction();
+        
+        // Optional: Add click to toggle effect
+        this.setupToggle();
+        
+        // Performance: Pause animations when tab is hidden
+        this.setupVisibilityChange();
+    }
+    
+    setupBadgeInteraction() {
+        if (!this.badge) return;
+        
+        // Enhance hover effect
+        this.badge.addEventListener('mouseenter', () => {
+            this.badge.style.transform = 'translateY(-12px) scale(1.05)';
+            this.badge.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        });
+        
+        this.badge.addEventListener('mouseleave', () => {
+            this.badge.style.transform = '';
+            this.badge.style.transition = '';
+        });
+        
+        // Add subtle click feedback
+        this.badge.addEventListener('click', () => {
+            this.badge.style.transform = 'translateY(-8px) scale(0.98)';
+            setTimeout(() => {
+                this.badge.style.transform = 'translateY(-12px) scale(1.05)';
+            }, 100);
+        });
+    }
+    
+    setupToggle() {
+        // Optional: Double-click badge to toggle entire overlay
+        // Uncomment if you want this feature:
+        
+        /*
+        if (!this.badge) return;
+        
+        this.badge.addEventListener('dblclick', () => {
+            this.toggleOverlay();
+        });
+        */
+    }
+    
+    toggleOverlay() {
+        const overlay = document.querySelector('.holiday-overlay-wrapper');
+        if (!overlay) return;
+        
+        if (this.isEnabled) {
+            overlay.style.opacity = '0';
+            overlay.style.visibility = 'hidden';
+            this.isEnabled = false;
+            console.log('❄️ Holiday overlay hidden');
+        } else {
+            overlay.style.opacity = '1';
+            overlay.style.visibility = 'visible';
+            this.isEnabled = true;
+            console.log('🎄 Holiday overlay shown');
+        }
+    }
+    
+    setupVisibilityChange() {
+        // Pause animations when tab is not visible (performance)
+        document.addEventListener('visibilitychange', () => {
+            const overlay = document.querySelector('.holiday-overlay-wrapper');
+            if (!overlay) return;
+            
+            if (document.hidden) {
+                overlay.style.animationPlayState = 'paused';
+                const animatedElements = overlay.querySelectorAll('.snowflake, .sparkle, .holiday-badge, .badge-icon');
+                animatedElements.forEach(el => {
+                    el.style.animationPlayState = 'paused';
+                });
+            } else {
+                overlay.style.animationPlayState = 'running';
+                const animatedElements = overlay.querySelectorAll('.snowflake, .sparkle, .holiday-badge, .badge-icon');
+                animatedElements.forEach(el => {
+                    el.style.animationPlayState = 'running';
+                });
+            }
+        });
+    }
+}
+
+// ============================================
+// AUTO-INITIALIZE
+// ============================================
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        new HolidayOverlay();
+    });
+} else {
+    new HolidayOverlay();
+}
+
+// Export for manual control if needed
+window.HolidayOverlay = HolidayOverlay;
+
+console.log('🎄✨ Happy Holidays from Laura\'s Beauty Touch! ✨🎄');
 
 // ============================================
 // MAIN INITIALIZATION
