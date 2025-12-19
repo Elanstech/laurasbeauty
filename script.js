@@ -2336,11 +2336,11 @@ function initAboutCarousels() {
 
 class HolidayOverlay {
     constructor() {
-        this.badge = document.querySelector('.holiday-badge');
+        this.greetingBanner = document.querySelector('.holiday-greeting-banner');
         this.isEnabled = true;
         
         // Check if holiday overlay exists
-        if (!this.badge) {
+        if (!this.greetingBanner) {
             console.log('Holiday overlay not found');
             return;
         }
@@ -2351,67 +2351,76 @@ class HolidayOverlay {
     init() {
         console.log('🎄 Holiday overlay initialized!');
         
-        // Add interactive badge effects
-        this.setupBadgeInteraction();
-        
-        // Optional: Add click to toggle effect
-        this.setupToggle();
+        // Make greeting banner clickable to highlight specials button
+        this.setupGreetingInteraction();
         
         // Performance: Pause animations when tab is hidden
         this.setupVisibilityChange();
+        
+        // Optional: Auto-hide banner after user reads it
+        this.setupAutoHide();
     }
     
-    setupBadgeInteraction() {
-        if (!this.badge) return;
+    setupGreetingInteraction() {
+        if (!this.greetingBanner) return;
         
-        // Enhance hover effect
-        this.badge.addEventListener('mouseenter', () => {
-            this.badge.style.transform = 'translateY(-12px) scale(1.05)';
-            this.badge.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        // Make banner hoverable
+        this.greetingBanner.addEventListener('mouseenter', () => {
+            this.greetingBanner.style.transform = 'translateX(-50%) translateY(-3px) scale(1.02)';
+            this.greetingBanner.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
         });
         
-        this.badge.addEventListener('mouseleave', () => {
-            this.badge.style.transform = '';
-            this.badge.style.transition = '';
+        this.greetingBanner.addEventListener('mouseleave', () => {
+            this.greetingBanner.style.transform = 'translateX(-50%) translateY(0) scale(1)';
         });
         
-        // Add subtle click feedback
-        this.badge.addEventListener('click', () => {
-            this.badge.style.transform = 'translateY(-8px) scale(0.98)';
+        // Click on banner to pulse the specials button
+        this.greetingBanner.addEventListener('click', () => {
+            this.highlightSpecialsButton();
+        });
+    }
+    
+    highlightSpecialsButton() {
+        const specialsBtn = document.getElementById('specialsBtn');
+        
+        if (specialsBtn) {
+            // Scroll to make sure it's visible
+            specialsBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Add pulsing effect
+            specialsBtn.style.animation = 'specialsPulse 1s ease-in-out 3';
+            
+            // Add temporary glow
+            const originalBoxShadow = window.getComputedStyle(specialsBtn).boxShadow;
+            specialsBtn.style.boxShadow = '0 0 30px rgba(169, 200, 156, 0.8), 0 0 60px rgba(169, 200, 156, 0.4)';
+            
+            // Reset after animation
             setTimeout(() => {
-                this.badge.style.transform = 'translateY(-12px) scale(1.05)';
-            }, 100);
-        });
+                specialsBtn.style.animation = '';
+                specialsBtn.style.boxShadow = originalBoxShadow;
+            }, 3000);
+            
+            console.log('✨ Highlighted Specials button!');
+        } else {
+            console.log('⚠️ Specials button not found');
+        }
     }
     
-    setupToggle() {
-        // Optional: Double-click badge to toggle entire overlay
+    setupAutoHide() {
+        // Optional: Hide banner after 30 seconds
         // Uncomment if you want this feature:
         
         /*
-        if (!this.badge) return;
-        
-        this.badge.addEventListener('dblclick', () => {
-            this.toggleOverlay();
-        });
+        setTimeout(() => {
+            if (this.greetingBanner) {
+                this.greetingBanner.style.opacity = '0';
+                this.greetingBanner.style.transform = 'translateX(-50%) translateY(-30px)';
+                setTimeout(() => {
+                    this.greetingBanner.style.display = 'none';
+                }, 500);
+            }
+        }, 30000); // 30 seconds
         */
-    }
-    
-    toggleOverlay() {
-        const overlay = document.querySelector('.holiday-overlay-wrapper');
-        if (!overlay) return;
-        
-        if (this.isEnabled) {
-            overlay.style.opacity = '0';
-            overlay.style.visibility = 'hidden';
-            this.isEnabled = false;
-            console.log('❄️ Holiday overlay hidden');
-        } else {
-            overlay.style.opacity = '1';
-            overlay.style.visibility = 'visible';
-            this.isEnabled = true;
-            console.log('🎄 Holiday overlay shown');
-        }
     }
     
     setupVisibilityChange() {
@@ -2422,13 +2431,13 @@ class HolidayOverlay {
             
             if (document.hidden) {
                 overlay.style.animationPlayState = 'paused';
-                const animatedElements = overlay.querySelectorAll('.snowflake, .sparkle, .holiday-badge, .badge-icon');
+                const animatedElements = overlay.querySelectorAll('.snowflake, .light, .greeting-icon, .greeting-cta');
                 animatedElements.forEach(el => {
                     el.style.animationPlayState = 'paused';
                 });
             } else {
                 overlay.style.animationPlayState = 'running';
-                const animatedElements = overlay.querySelectorAll('.snowflake, .sparkle, .holiday-badge, .badge-icon');
+                const animatedElements = overlay.querySelectorAll('.snowflake, .light, .greeting-icon, .greeting-cta');
                 animatedElements.forEach(el => {
                     el.style.animationPlayState = 'running';
                 });
@@ -2436,6 +2445,20 @@ class HolidayOverlay {
         });
     }
 }
+
+// Add special pulse animation for the specials button
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes specialsPulse {
+        0%, 100% {
+            transform: translateY(0) scale(1);
+        }
+        50% {
+            transform: translateY(-5px) scale(1.1);
+        }
+    }
+`;
+document.head.appendChild(style);
 
 // ============================================
 // AUTO-INITIALIZE
