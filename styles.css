@@ -6930,7 +6930,6 @@ a:focus-visible {
     justify-content: center;
   }
 }
-
 /* ============================================
    HOLIDAY OVERLAY - ELEGANT WINTER THEME
    TO REMOVE: Just delete or comment out this entire section
@@ -7277,29 +7276,9 @@ a:focus-visible {
 }
 
 @media (max-width: 768px) {
+    /* HIDE GREETING BANNER ON MOBILE */
     .holiday-greeting-banner {
-        top: 95px;
-        width: 95%;
-    }
-    
-    .greeting-content {
-        padding: 16px 20px;
-        border-radius: 18px;
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .greeting-icon {
-        font-size: 1.3rem;
-    }
-    
-    .greeting-text {
-        font-size: 0.95rem;
-    }
-    
-    .greeting-cta {
-        font-size: 0.85rem;
-        margin-top: 5px;
+        display: none !important;
     }
     
     .snow-large {
@@ -7329,29 +7308,6 @@ a:focus-visible {
 }
 
 @media (max-width: 480px) {
-    .holiday-greeting-banner {
-        top: 90px;
-        width: 96%;
-    }
-    
-    .greeting-content {
-        padding: 14px 16px;
-        border-radius: 16px;
-    }
-    
-    .greeting-icon {
-        font-size: 1.2rem;
-    }
-    
-    .greeting-text {
-        font-size: 0.85rem;
-        line-height: 1.5;
-    }
-    
-    .greeting-cta {
-        font-size: 0.8rem;
-    }
-    
     /* Reduce snow particles on mobile for performance */
     .snowflake:nth-child(n+15) {
         display: none;
