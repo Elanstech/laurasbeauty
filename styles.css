@@ -6930,3 +6930,396 @@ a:focus-visible {
     justify-content: center;
   }
 }
+
+/* ============================================
+   HOLIDAY OVERLAY - ELEGANT WINTER THEME
+   TO REMOVE: Just delete or comment out this entire section
+   ============================================ */
+
+/* Main Overlay Wrapper */
+.holiday-overlay-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 15;
+    overflow: hidden;
+}
+
+/* ============================================
+   FALLING SNOW ANIMATION
+   ============================================ */
+.snow-container {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 110%;
+    pointer-events: none;
+}
+
+.snowflake {
+    position: absolute;
+    top: -30px;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.8),
+        0 0 20px rgba(169, 200, 156, 0.4);
+    animation: snowfall linear infinite, sway ease-in-out infinite alternate;
+    user-select: none;
+}
+
+.snow-large {
+    font-size: 1.8rem;
+    animation-duration: 15s, 3s;
+}
+
+.snow-medium {
+    font-size: 1.2rem;
+    animation-duration: 12s, 2.5s;
+    opacity: 0.85;
+}
+
+.snow-small {
+    font-size: 0.8rem;
+    animation-duration: 10s, 2s;
+    opacity: 0.7;
+}
+
+@keyframes snowfall {
+    0% {
+        transform: translateY(-30px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+@keyframes sway {
+    0% {
+        margin-left: -20px;
+    }
+    100% {
+        margin-left: 20px;
+    }
+}
+
+/* ============================================
+   GOLDEN SPARKLES
+   ============================================ */
+.sparkles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.sparkle {
+    position: absolute;
+    font-size: 1.5rem;
+    color: rgba(212, 175, 55, 0.8);
+    text-shadow: 
+        0 0 10px rgba(212, 175, 55, 0.8),
+        0 0 20px rgba(255, 215, 0, 0.6);
+    animation: twinkle 3s ease-in-out infinite, float 6s ease-in-out infinite;
+    user-select: none;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(0.8) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(180deg);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+    }
+    25% {
+        transform: translateY(-15px) translateX(10px);
+    }
+    50% {
+        transform: translateY(-25px) translateX(-5px);
+    }
+    75% {
+        transform: translateY(-15px) translateX(-10px);
+    }
+}
+
+/* ============================================
+   ELEGANT HOLIDAY BADGE
+   ============================================ */
+.holiday-badge {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(250, 250, 247, 0.1) 100%
+    );
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4),
+        0 0 40px rgba(169, 200, 156, 0.2);
+    pointer-events: all;
+    cursor: default;
+    animation: badgeFloat 6s ease-in-out infinite, badgeGlow 3s ease-in-out infinite;
+    overflow: hidden;
+    z-index: 20;
+}
+
+.badge-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, rgba(169, 200, 156, 0.9), rgba(200, 213, 185, 0.9));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+    animation: iconSpin 20s linear infinite;
+    box-shadow: 
+        0 4px 12px rgba(169, 200, 156, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.badge-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.badge-greeting {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.5px;
+}
+
+.badge-year {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: 1px;
+}
+
+.badge-shine {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 100%
+    );
+    transform: rotate(45deg);
+    animation: shine 3s ease-in-out infinite;
+}
+
+@keyframes badgeFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes badgeGlow {
+    0%, 100% {
+        box-shadow: 
+            0 8px 32px rgba(0, 0, 0, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4),
+            0 0 40px rgba(169, 200, 156, 0.2);
+    }
+    50% {
+        box-shadow: 
+            0 12px 40px rgba(0, 0, 0, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5),
+            0 0 60px rgba(169, 200, 156, 0.4);
+    }
+}
+
+@keyframes iconSpin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes shine {
+    0% {
+        left: -50%;
+    }
+    100% {
+        left: 150%;
+    }
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 968px) {
+    .holiday-badge {
+        top: 95px;
+        right: 20px;
+        padding: 10px 20px;
+        gap: 10px;
+    }
+    
+    .badge-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+    
+    .badge-greeting {
+        font-size: 0.9rem;
+    }
+    
+    .badge-year {
+        font-size: 0.7rem;
+    }
+    
+    .snow-large {
+        font-size: 1.5rem;
+    }
+    
+    .snow-medium {
+        font-size: 1rem;
+    }
+    
+    .sparkle {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .holiday-badge {
+        top: 90px;
+        right: 15px;
+        padding: 8px 18px;
+        gap: 8px;
+    }
+    
+    .badge-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+    
+    .badge-greeting {
+        font-size: 0.85rem;
+    }
+    
+    .badge-year {
+        font-size: 0.65rem;
+    }
+    
+    .snow-large {
+        font-size: 1.3rem;
+    }
+    
+    .snow-medium {
+        font-size: 0.9rem;
+    }
+    
+    .snow-small {
+        font-size: 0.6rem;
+    }
+    
+    .sparkle {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .holiday-badge {
+        top: 85px;
+        right: 12px;
+        padding: 7px 15px;
+        gap: 7px;
+    }
+    
+    .badge-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+    }
+    
+    .badge-greeting {
+        font-size: 0.8rem;
+    }
+    
+    .badge-year {
+        font-size: 0.6rem;
+    }
+    
+    /* Reduce snow particles on mobile for performance */
+    .snowflake:nth-child(n+15) {
+        display: none;
+    }
+    
+    .sparkle:nth-child(n+5) {
+        display: none;
+    }
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+.snowflake,
+.sparkle,
+.holiday-badge,
+.badge-icon {
+    will-change: transform;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    .snowflake,
+    .sparkle,
+    .holiday-badge,
+    .badge-icon,
+    .badge-shine {
+        animation: none !important;
+    }
+    
+    .holiday-badge {
+        transform: none !important;
+    }
+}
+
+/* Print: hide holiday overlay */
+@media print {
+    .holiday-overlay-wrapper {
+        display: none !important;
+    }
+}
