@@ -1,1 +1,24 @@
-
+{
+  "category": "specials",
+  "services": [
+    {
+      "id": "new-year-special-2026",
+      "name": "New Year Special — 15% Off All Services",
+      "description": "Start 2026 with radiant skin! Save 15% on all facial treatments, laser services, waxing, brows, lashes, PMU, body treatments, and more.",
+      "fullDescription": "Welcome the New Year with our exclusive promotion!\n\nEnjoy 15% OFF on:\n• All Facial Treatments (Express, Organic, Hydra Facial, Anti-Aging, and more)\n• Laser Hair Removal (All areas)\n• Waxing Services (Brazilian, Bikini, Full Body)\n• Brows & Lashes (Microblading, Tinting, Extensions, Lifts)\n• Permanent Makeup (Brows, Lips, Eyeliner)\n• Body Treatments (Scrubs, Wraps, Detox)\n• Chemical Peels & Advanced Treatments\n• Makeup Services\n\n**Promotion Details:**\n• Valid: January 12-26, 2026\n• Automatic discount applied at checkout\n• Book online or call (718) 841-9919\n\n**Exclusions:**\nThis promotion excludes nail services and massage treatments.\n\n**Terms & Conditions:**\n• Cannot be combined with other offers or promotions\n• Valid for new bookings only during promotional period\n• Services must be completed by January 26, 2026\n• Gift certificates excluded from this promotion\n• Management reserves the right to modify or cancel promotion at any time",
+      "duration": "Varies by service",
+      "price": "15% Off Regular Prices",
+      "priceLabel": "Save 15% on All Services",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/5c0c0ff3b105980c0b866252/1585340709626-7I3GXM8M0YBBXFQZM1R8/New+Year+New+You.jpg",
+      "badge": "Limited Time",
+      "benefits": [
+        "15% savings on all spa services",
+        "Valid January 12-26, 2026",
+        "No coupon code needed",
+        "Automatic discount at booking",
+        "Excludes only nails & massages"
+      ]
+    }
+  ]
+}
