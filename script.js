@@ -513,13 +513,13 @@ window.FloatingButtons = FloatingButtons;
 // 15% OFF
 // ============================================
 
-class PromotionalBanner {
+class SleekPromoBanner {
     constructor() {
-        this.banner = document.getElementById('promoBanner');
-        this.closeBtn = document.getElementById('closeBanner');
-        this.daysEl = document.getElementById('bannerDays');
-        this.hoursEl = document.getElementById('bannerHours');
-        this.minutesEl = document.getElementById('bannerMinutes');
+        this.banner = document.getElementById('sleekPromoBanner');
+        this.closeBtn = document.getElementById('sleekCloseBanner');
+        this.daysEl = document.getElementById('sleekDays');
+        this.hoursEl = document.getElementById('sleekHours');
+        this.minsEl = document.getElementById('sleekMins');
         
         // End date: January 26, 2026 at 11:59 PM EST
         this.endDate = new Date('2026-01-26T23:59:59-05:00').getTime();
@@ -528,40 +528,38 @@ class PromotionalBanner {
     }
 
     init() {
-        // Check if banner was previously dismissed
-        const dismissed = localStorage.getItem('promoBannerDismissed_Jan2026');
+        // Check if dismissed or expired
+        const dismissed = localStorage.getItem('sleekPromoDismissed_Jan2026');
         const currentTime = Date.now();
         
-        // If dismissed and hasn't expired, don't show
         if (dismissed && currentTime < this.endDate) {
             return;
         }
         
-        // If promotion has ended, don't show
         if (currentTime >= this.endDate) {
             return;
         }
         
-        // Show banner with delay for smooth appearance
+        // Show banner after slight delay
         setTimeout(() => {
             this.showBanner();
-        }, 1000);
+        }, 800);
         
         // Start countdown
         this.startCountdown();
         
-        // Setup close button
+        // Close button
         if (this.closeBtn) {
             this.closeBtn.addEventListener('click', () => this.closeBanner());
         }
         
-        console.log('✨ Promotional Banner initialized');
+        console.log('✨ Sleek promo banner active');
     }
 
     showBanner() {
         if (this.banner) {
             this.banner.classList.add('visible');
-            document.body.classList.add('banner-visible');
+            document.body.classList.add('sleek-banner-visible');
         }
     }
 
@@ -569,12 +567,8 @@ class PromotionalBanner {
         if (this.banner) {
             this.banner.classList.remove('visible');
             this.banner.classList.add('hidden');
-            document.body.classList.remove('banner-visible');
-            
-            // Remember dismissal
-            localStorage.setItem('promoBannerDismissed_Jan2026', 'true');
-            
-            console.log('👋 Banner dismissed');
+            document.body.classList.remove('sleek-banner-visible');
+            localStorage.setItem('sleekPromoDismissed_Jan2026', 'true');
         }
     }
 
@@ -589,22 +583,19 @@ class PromotionalBanner {
         const now = Date.now();
         const distance = this.endDate - now;
 
-        // If countdown finished
         if (distance < 0) {
             clearInterval(this.countdownInterval);
             this.closeBanner();
             return;
         }
 
-        // Calculate time units
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 
-        // Update display
         if (this.daysEl) this.daysEl.textContent = this.pad(days);
         if (this.hoursEl) this.hoursEl.textContent = this.pad(hours);
-        if (this.minutesEl) this.minutesEl.textContent = this.pad(minutes);
+        if (this.minsEl) this.minsEl.textContent = this.pad(minutes);
     }
 
     pad(num) {
@@ -612,13 +603,13 @@ class PromotionalBanner {
     }
 }
 
-// Initialize Promotional Banner when DOM is ready
+// Initialize
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-        new PromotionalBanner();
+        new SleekPromoBanner();
     });
 } else {
-    new PromotionalBanner();
+    new SleekPromoBanner();
 }
 
 // ============================================
@@ -2210,7 +2201,7 @@ function initWebsite() {
     new ElfsightWidgets();
     new FloatingLeaves();
     new HashtagInteraction();
-    new PromotionalBanner();
+    new SleekPromoBanner();
 
     // Initialize AOS (Animate On Scroll)
     if (typeof AOS !== 'undefined') {
