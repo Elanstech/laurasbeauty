@@ -8055,57 +8055,6 @@ a.contact-value:hover {
 }
 
 /* ============================================
-   ACCESSIBILITY
-   ============================================ */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-*:focus-visible {
-  outline: 3px solid var(--mint-green);
-  outline-offset: 3px;
-}
-
-button:focus-visible,
-a:focus-visible {
-  outline: 3px solid var(--mint-green);
-  outline-offset: 3px;
-}
-
-/* ============================================
-   PRINT STYLES
-   ============================================ */
-@media print {
-  .premium-header,
-  .mobile-drawer,
-  .mobile-overlay,
-  .fab-container,
-  #backToTopBtn,
-  .specials-floating-btn,
-  .footer-newsletter-section {
-    display: none !important;
-  }
-
-  body {
-    background: white;
-    color: black;
-  }
-
-  * {
-    box-shadow: none !important;
-    text-shadow: none !important;
-  }
-}
-
-/* ============================================
    LEGAL DOCUMENT PAGES
    ============================================ */
 
