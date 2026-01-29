@@ -40,240 +40,511 @@ class ElegantPreloader {
 // ============================================
 // PREMIUM HEADER
 // ============================================
-class PremiumHeaderWithMegaMenu {
+
+class GlobalSearch {
     constructor() {
-        this.header = document.querySelector('.premium-header');
-        this.mobileToggle = document.querySelector('.mobile-toggle');
-        this.mobileDrawer = document.querySelector('.mobile-drawer');
-        this.mobileOverlay = document.querySelector('.mobile-overlay');
-        this.logoWrapper = document.querySelector('.header-logo-wrapper');
+        // DOM Elements
+        this.modal = document.getElementById('searchModal');
+        this.overlay = document.getElementById('searchModalOverlay');
+        this.input = document.getElementById('globalSearchInput');
+        this.clearBtn = document.getElementById('searchClearBtn');
+        this.closeBtn = document.getElementById('searchCloseBtn');
+        this.headerSearchBtn = document.getElementById('headerSearchBtn');
+        this.mobileSearchBtn = document.getElementById('mobileSearchBtn');
         
-        // Mega Menu specific elements
-        this.megamenuItem = document.querySelector('.has-megamenu');
-        this.megamenuWrapper = document.querySelector('.megamenu-wrapper');
-        this.megamenuTimeout = null;
+        // Content Containers
+        this.quickLinks = document.getElementById('searchQuickLinks');
+        this.resultsContainer = document.getElementById('searchResults');
+        this.noResults = document.getElementById('searchNoResults');
+        this.loadingState = document.getElementById('searchLoading');
+        
+        // State
+        this.isOpen = false;
+        this.searchData = [];
+        this.dataLoaded = false;
+        this.searchTimeout = null;
+        this.selectedIndex = -1;
+        this.currentResults = [];
+        
+        // JSON files to load - update paths as needed
+        this.dataFiles = [
+            { file: 'data/facials.json', category: 'Facials', icon: 'fa-spa', page: 'servicecategories/facials.html' },
+            { file: 'data/laser.json', category: 'Laser', icon: 'fa-bolt', page: 'servicecategories/laser.html' },
+            { file: 'data/wax.json', category: 'Waxing', icon: 'fa-leaf', page: 'servicecategories/wax.html' },
+            { file: 'data/lashes.json', category: 'Lashes', icon: 'fa-eye', page: 'servicecategories/brows-lashes-pmu.html' },
+            { file: 'data/nails.json', category: 'Nails', icon: 'fa-hand-sparkles', page: 'servicecategories/nails.html' },
+            { file: 'data/body.json', category: 'Body', icon: 'fa-leaf', page: 'servicecategories/body.html' },
+            { file: 'data/packages.json', category: 'Packages', icon: 'fa-gift', page: 'servicecategories/packages.html' },
+            { file: 'data/makeup.json', category: 'Makeup', icon: 'fa-paint-brush', page: 'servicecategories/makeup.html' },
+            { file: 'data/addons.json', category: 'Add-Ons', icon: 'fa-plus-circle', page: 'servicecategories/addons.html' },
+            { file: 'data/specials.json', category: 'Specials', icon: 'fa-star', page: 'servicecategories/specials.html' },
+            { file: 'data/blog.json', category: 'Blog', icon: 'fa-newspaper', page: '#blog', isBlog: true }
+        ];
         
         this.init();
     }
     
     init() {
-        this.handleScroll();
-        this.handleMobileMenu();
-        this.handleLogoClick();
-        this.handleSmoothScroll();
-        this.handleMegaMenu();
-        this.handleMobileSubmenu();
-    }
-
-    handleScroll() {
-        let ticking = false;
+        if (!this.modal) return;
         
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const scrolled = window.pageYOffset;
-                    
-                    if (scrolled > 80) {
-                        this.header.classList.add('scrolled');
-                    } else {
-                        this.header.classList.remove('scrolled');
-                    }
-                    
-                    ticking = false;
-                });
-                
-                ticking = true;
-            }
-        }, { passive: true });
+        this.bindEvents();
+        this.loadAllData();
+        
+        console.log('🔍 Global Search initialized');
     }
-
-    handleMobileMenu() {
-        if (!this.mobileToggle) return;
-
-        this.mobileToggle.addEventListener('click', () => {
-            this.toggleMenu();
-        });
-
-        this.mobileOverlay.addEventListener('click', () => {
-            this.closeMenu();
-        });
-
-        const mobileLinks = document.querySelectorAll('.mobile-link:not(.mobile-dropdown-trigger)');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                this.closeMenu();
+    
+    // ============================================
+    // EVENT BINDINGS
+    // ============================================
+    bindEvents() {
+        // Open search
+        if (this.headerSearchBtn) {
+            this.headerSearchBtn.addEventListener('click', () => this.open());
+        }
+        if (this.mobileSearchBtn) {
+            this.mobileSearchBtn.addEventListener('click', () => {
+                this.closeMobileMenu();
+                this.open();
+            });
+        }
+        
+        // Close search
+        if (this.overlay) {
+            this.overlay.addEventListener('click', () => this.close());
+        }
+        if (this.closeBtn) {
+            this.closeBtn.addEventListener('click', () => this.close());
+        }
+        
+        // Input events
+        if (this.input) {
+            this.input.addEventListener('input', (e) => this.handleInput(e));
+            this.input.addEventListener('keydown', (e) => this.handleKeydown(e));
+        }
+        
+        // Clear button
+        if (this.clearBtn) {
+            this.clearBtn.addEventListener('click', () => this.clearSearch());
+        }
+        
+        // Quick link buttons
+        document.querySelectorAll('.quick-link-item[data-search]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const term = btn.getAttribute('data-search');
+                this.input.value = term;
+                this.performSearch(term);
             });
         });
-
+        
+        // Suggestion chips
+        document.querySelectorAll('.suggestion-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                const term = chip.getAttribute('data-search');
+                this.input.value = term;
+                this.performSearch(term);
+            });
+        });
+        
+        // Keyboard shortcut (Cmd/Ctrl + K)
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && this.mobileDrawer.classList.contains('active')) {
-                this.closeMenu();
+            if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                e.preventDefault();
+                this.toggle();
+            }
+            if (e.key === 'Escape' && this.isOpen) {
+                this.close();
             }
         });
     }
-
-    toggleMenu() {
-        this.mobileToggle.classList.toggle('active');
-        this.mobileDrawer.classList.toggle('active');
-        this.mobileOverlay.classList.toggle('active');
+    
+    // ============================================
+    // DATA LOADING
+    // ============================================
+    async loadAllData() {
+        this.showLoading();
         
-        if (this.mobileDrawer.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
+        try {
+            const promises = this.dataFiles.map(async (item) => {
+                try {
+                    const response = await fetch(item.file);
+                    if (!response.ok) throw new Error(`Failed to load ${item.file}`);
+                    const data = await response.json();
+                    return this.processData(data, item);
+                } catch (error) {
+                    console.warn(`⚠️ Could not load ${item.file}:`, error.message);
+                    return [];
+                }
+            });
+            
+            const results = await Promise.all(promises);
+            this.searchData = results.flat();
+            this.dataLoaded = true;
+            
+            console.log(`✅ Loaded ${this.searchData.length} searchable items`);
+        } catch (error) {
+            console.error('❌ Error loading search data:', error);
+        }
+        
+        this.hideLoading();
+        this.showQuickLinks();
+    }
+    
+    processData(data, config) {
+        const items = [];
+        
+        // Handle blog posts
+        if (config.isBlog && data.posts) {
+            data.posts.forEach(post => {
+                items.push({
+                    id: post.id,
+                    title: post.title,
+                    description: post.excerpt || post.description || '',
+                    category: 'Blog',
+                    icon: config.icon,
+                    image: post.image,
+                    url: `#blog-${post.id}`,
+                    type: 'blog',
+                    searchText: `${post.title} ${post.excerpt || ''} ${post.category || ''}`.toLowerCase()
+                });
+            });
+        }
+        // Handle services
+        else if (data.services) {
+            data.services.forEach(service => {
+                items.push({
+                    id: service.id,
+                    title: service.name,
+                    description: service.description || '',
+                    price: service.price || service.priceLabel || '',
+                    duration: service.duration || '',
+                    category: config.category,
+                    icon: config.icon,
+                    image: service.image,
+                    url: service.bookNowUrl || config.page,
+                    categoryPage: config.page,
+                    type: 'service',
+                    searchText: `${service.name} ${service.description || ''} ${config.category}`.toLowerCase()
+                });
+            });
+        }
+        
+        return items;
+    }
+    
+    // ============================================
+    // SEARCH FUNCTIONALITY
+    // ============================================
+    handleInput(e) {
+        const query = e.target.value.trim();
+        
+        // Toggle clear button
+        this.clearBtn.classList.toggle('visible', query.length > 0);
+        
+        // Debounce search
+        clearTimeout(this.searchTimeout);
+        this.searchTimeout = setTimeout(() => {
+            if (query.length >= 2) {
+                this.performSearch(query);
+            } else if (query.length === 0) {
+                this.showQuickLinks();
+            }
+        }, 200);
+    }
+    
+    performSearch(query) {
+        if (!this.dataLoaded) {
+            console.warn('Search data not loaded yet');
+            return;
+        }
+        
+        const searchTerm = query.toLowerCase().trim();
+        
+        // Filter results
+        const results = this.searchData.filter(item => {
+            return item.searchText.includes(searchTerm) ||
+                   item.title.toLowerCase().includes(searchTerm) ||
+                   item.category.toLowerCase().includes(searchTerm);
+        });
+        
+        // Sort by relevance (title matches first)
+        results.sort((a, b) => {
+            const aTitle = a.title.toLowerCase();
+            const bTitle = b.title.toLowerCase();
+            const aStartsWith = aTitle.startsWith(searchTerm);
+            const bStartsWith = bTitle.startsWith(searchTerm);
+            
+            if (aStartsWith && !bStartsWith) return -1;
+            if (!aStartsWith && bStartsWith) return 1;
+            return 0;
+        });
+        
+        this.currentResults = results;
+        this.selectedIndex = -1;
+        
+        if (results.length > 0) {
+            this.displayResults(results, searchTerm);
         } else {
-            document.body.style.overflow = '';
+            this.showNoResults();
         }
     }
-
-    closeMenu() {
-        this.mobileToggle.classList.remove('active');
-        this.mobileDrawer.classList.remove('active');
-        this.mobileOverlay.classList.remove('active');
+    
+    displayResults(results, searchTerm) {
+        this.hideAllStates();
+        this.resultsContainer.classList.add('active');
+        this.resultsContainer.style.display = 'block';
+        
+        // Group results by category
+        const grouped = {};
+        results.forEach(item => {
+            if (!grouped[item.category]) {
+                grouped[item.category] = [];
+            }
+            grouped[item.category].push(item);
+        });
+        
+        // Build HTML
+        let html = '';
+        
+        Object.entries(grouped).forEach(([category, items]) => {
+            html += `
+                <div class="results-group">
+                    <div class="results-group-header">
+                        <span class="results-group-title">${category}</span>
+                        <span class="results-count">${items.length} result${items.length > 1 ? 's' : ''}</span>
+                    </div>
+                    <div class="results-list">
+            `;
+            
+            items.slice(0, 5).forEach((item, index) => {
+                const highlightedTitle = this.highlightMatch(item.title, searchTerm);
+                const imageHtml = item.image 
+                    ? `<img src="${item.image}" alt="${item.title}">`
+                    : `<div class="result-image-placeholder"><i class="fas ${item.icon}"></i></div>`;
+                
+                html += `
+                    <a href="${item.url}" class="result-item" data-index="${index}" target="${item.type === 'service' ? '_blank' : '_self'}">
+                        <div class="result-image">
+                            ${imageHtml}
+                        </div>
+                        <div class="result-content">
+                            <div class="result-title">${highlightedTitle}</div>
+                            <div class="result-meta">
+                                <span class="result-category">${item.category}</span>
+                                ${item.price ? `<span class="result-price">${item.price}</span>` : ''}
+                                ${item.duration ? `<span class="result-duration">${item.duration}</span>` : ''}
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right result-arrow"></i>
+                    </a>
+                `;
+            });
+            
+            // Show "View all" if more than 5 items
+            if (items.length > 5) {
+                const firstItem = items[0];
+                html += `
+                    <a href="${firstItem.categoryPage || '#'}" class="result-item view-all-link">
+                        <div class="result-image">
+                            <div class="result-image-placeholder"><i class="fas fa-arrow-right"></i></div>
+                        </div>
+                        <div class="result-content">
+                            <div class="result-title">View all ${category}</div>
+                            <div class="result-meta">
+                                <span class="result-category">${items.length - 5} more results</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right result-arrow"></i>
+                    </a>
+                `;
+            }
+            
+            html += `
+                    </div>
+                </div>
+            `;
+        });
+        
+        this.resultsContainer.innerHTML = html;
+        
+        // Add click handlers to results
+        this.resultsContainer.querySelectorAll('.result-item').forEach(item => {
+            item.addEventListener('click', () => {
+                this.close();
+            });
+        });
+    }
+    
+    highlightMatch(text, term) {
+        if (!term) return text;
+        const regex = new RegExp(`(${this.escapeRegex(term)})`, 'gi');
+        return text.replace(regex, '<mark>$1</mark>');
+    }
+    
+    escapeRegex(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+    
+    // ============================================
+    // KEYBOARD NAVIGATION
+    // ============================================
+    handleKeydown(e) {
+        const results = this.resultsContainer.querySelectorAll('.result-item');
+        
+        switch (e.key) {
+            case 'ArrowDown':
+                e.preventDefault();
+                this.selectedIndex = Math.min(this.selectedIndex + 1, results.length - 1);
+                this.updateSelection(results);
+                break;
+                
+            case 'ArrowUp':
+                e.preventDefault();
+                this.selectedIndex = Math.max(this.selectedIndex - 1, -1);
+                this.updateSelection(results);
+                break;
+                
+            case 'Enter':
+                e.preventDefault();
+                if (this.selectedIndex >= 0 && results[this.selectedIndex]) {
+                    results[this.selectedIndex].click();
+                }
+                break;
+                
+            case 'Escape':
+                this.close();
+                break;
+        }
+    }
+    
+    updateSelection(results) {
+        results.forEach((item, index) => {
+            item.classList.toggle('selected', index === this.selectedIndex);
+            if (index === this.selectedIndex) {
+                item.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            }
+        });
+    }
+    
+    // ============================================
+    // UI STATE MANAGEMENT
+    // ============================================
+    showQuickLinks() {
+        this.hideAllStates();
+        if (this.quickLinks) {
+            this.quickLinks.style.display = 'block';
+        }
+    }
+    
+    showNoResults() {
+        this.hideAllStates();
+        if (this.noResults) {
+            this.noResults.classList.add('active');
+            this.noResults.style.display = 'block';
+        }
+    }
+    
+    showLoading() {
+        this.hideAllStates();
+        if (this.loadingState) {
+            this.loadingState.classList.add('active');
+            this.loadingState.style.display = 'block';
+        }
+    }
+    
+    hideLoading() {
+        if (this.loadingState) {
+            this.loadingState.classList.remove('active');
+            this.loadingState.style.display = 'none';
+        }
+    }
+    
+    hideAllStates() {
+        if (this.quickLinks) this.quickLinks.style.display = 'none';
+        if (this.resultsContainer) {
+            this.resultsContainer.classList.remove('active');
+            this.resultsContainer.style.display = 'none';
+        }
+        if (this.noResults) {
+            this.noResults.classList.remove('active');
+            this.noResults.style.display = 'none';
+        }
+        if (this.loadingState) {
+            this.loadingState.classList.remove('active');
+            this.loadingState.style.display = 'none';
+        }
+    }
+    
+    clearSearch() {
+        this.input.value = '';
+        this.clearBtn.classList.remove('visible');
+        this.selectedIndex = -1;
+        this.currentResults = [];
+        this.showQuickLinks();
+        this.input.focus();
+    }
+    
+    // ============================================
+    // MODAL OPEN/CLOSE
+    // ============================================
+    open() {
+        this.isOpen = true;
+        this.modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Focus input after animation
+        setTimeout(() => {
+            this.input.focus();
+        }, 100);
+        
+        // Show quick links by default
+        this.showQuickLinks();
+        
+        console.log('🔍 Search opened');
+    }
+    
+    close() {
+        this.isOpen = false;
+        this.modal.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // Clear search after close animation
+        setTimeout(() => {
+            this.clearSearch();
+        }, 300);
+        
+        console.log('🔍 Search closed');
+    }
+    
+    toggle() {
+        if (this.isOpen) {
+            this.close();
+        } else {
+            this.open();
+        }
+    }
+    
+    closeMobileMenu() {
+        const mobileDrawer = document.querySelector('.mobile-drawer');
+        const mobileOverlay = document.querySelector('.mobile-overlay');
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        
+        if (mobileDrawer) mobileDrawer.classList.remove('active');
+        if (mobileOverlay) mobileOverlay.classList.remove('active');
+        if (mobileToggle) mobileToggle.classList.remove('active');
         document.body.style.overflow = '';
     }
+}
 
-    handleLogoClick() {
-        if (this.logoWrapper) {
-            this.logoWrapper.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
-    }
+// ============================================
+// INITIALIZE ON DOM READY
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+    window.globalSearch = new GlobalSearch();
+});
 
-    handleSmoothScroll() {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href === '#') return;
-                
-                e.preventDefault();
-                const target = document.querySelector(href);
-                
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    }
-
-    handleMegaMenu() {
-        if (!this.megamenuItem || !this.megamenuWrapper) return;
-
-        this.megamenuItem.addEventListener('mouseenter', () => {
-            this.cancelMegaMenuClose();
-            this.openMegaMenu();
-        });
-
-        this.megamenuItem.addEventListener('mouseleave', () => {
-            this.scheduleMegaMenuClose(300);
-        });
-
-        this.megamenuWrapper.addEventListener('mouseenter', () => {
-            this.cancelMegaMenuClose();
-        });
-
-        this.megamenuWrapper.addEventListener('mouseleave', () => {
-            this.scheduleMegaMenuClose(200);
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!this.megamenuItem.contains(e.target)) {
-                this.closeMegaMenu(true);
-            }
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && this.megamenuWrapper.style.display === 'block') {
-                this.closeMegaMenu(true);
-            }
-        });
-
-        this.setupMegaMenuItems();
-    }
-
-    openMegaMenu() {
-        clearTimeout(this.megamenuTimeout);
-        this.megamenuWrapper.style.display = 'block';
-        
-        void this.megamenuWrapper.offsetWidth;
-        
-        const menuItems = this.megamenuWrapper.querySelectorAll('.megamenu-item');
-        menuItems.forEach((item, index) => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(10px)';
-            
-            setTimeout(() => {
-                item.style.transition = 'all 0.3s ease';
-                item.style.opacity = '1';
-                item.style.transform = 'translateY(0)';
-            }, index * 30);
-        });
-    }
-
-    closeMegaMenu(immediate = false) {
-        const menuItems = this.megamenuWrapper.querySelectorAll('.megamenu-item');
-        
-        menuItems.forEach(item => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(10px)';
-        });
-        
-        setTimeout(() => {
-            this.megamenuWrapper.style.display = 'none';
-        }, immediate ? 0 : 200);
-    }
-
-    scheduleMegaMenuClose(delay = 200) {
-        this.megamenuTimeout = setTimeout(() => {
-            this.closeMegaMenu();
-        }, delay);
-    }
-
-    cancelMegaMenuClose() {
-        clearTimeout(this.megamenuTimeout);
-    }
-
-    setupMegaMenuItems() {
-        const megamenuItems = this.megamenuWrapper.querySelectorAll('.megamenu-item');
-        
-        megamenuItems.forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                const icon = this.querySelector('.megamenu-icon');
-                if (icon) {
-                    icon.style.transition = 'all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
-                }
-            });
-
-            item.addEventListener('click', function() {
-                const title = this.querySelector('.megamenu-item-title')?.textContent;
-                console.log(`📍 Category clicked: ${title}`);
-            });
-        });
-    }
-
-    handleMobileSubmenu() {
-        const mobileDropdownTriggers = document.querySelectorAll('.mobile-dropdown-trigger');
-        
-        mobileDropdownTriggers.forEach(trigger => {
-            trigger.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const parentItem = trigger.closest('.mobile-has-submenu');
-                const isActive = parentItem.classList.contains('active');
-                
-                document.querySelectorAll('.mobile-has-submenu').forEach(item => {
-                    if (item !== parentItem) {
-                        item.classList.remove('active');
-                    }
-                });
-                
-                parentItem.classList.toggle('active');
-            });
-        });
-    }
+// Export for external use
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = GlobalSearch;
 }
 
 // ============================================
