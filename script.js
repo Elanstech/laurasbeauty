@@ -691,69 +691,6 @@ class FloatingButtons {
 }
 
 // ============================================
-// PROMO BANNER
-// ============================================
-class SleekPromoBanner {
-    constructor() {
-        this.banner = document.getElementById('sleekPromoBanner');
-        this.closeBtn = document.getElementById('sleekCloseBanner');
-        this.daysEl = document.getElementById('sleekDays');
-        this.hoursEl = document.getElementById('sleekHours');
-        this.minsEl = document.getElementById('sleekMins');
-        this.endDate = new Date('2026-01-26T23:59:59-05:00').getTime();
-        
-        if (this.banner) this.init();
-    }
-
-    init() {
-        const dismissed = localStorage.getItem('sleekPromoDismissed_Jan2026');
-        const currentTime = Date.now();
-        
-        if (dismissed || currentTime >= this.endDate) return;
-        
-        setTimeout(() => this.showBanner(), 800);
-        this.startCountdown();
-        this.closeBtn?.addEventListener('click', () => this.closeBanner());
-    }
-
-    showBanner() {
-        this.banner.classList.add('visible');
-        document.body.classList.add('sleek-banner-visible');
-    }
-
-    closeBanner() {
-        this.banner.classList.remove('visible');
-        this.banner.classList.add('hidden');
-        document.body.classList.remove('sleek-banner-visible');
-        localStorage.setItem('sleekPromoDismissed_Jan2026', 'true');
-        clearInterval(this.countdownInterval);
-    }
-
-    startCountdown() {
-        this.updateCountdown();
-        this.countdownInterval = setInterval(() => this.updateCountdown(), 1000);
-    }
-
-    updateCountdown() {
-        const distance = this.endDate - Date.now();
-
-        if (distance < 0) {
-            clearInterval(this.countdownInterval);
-            this.closeBanner();
-            return;
-        }
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-        if (this.daysEl) this.daysEl.textContent = String(days).padStart(2, '0');
-        if (this.hoursEl) this.hoursEl.textContent = String(hours).padStart(2, '0');
-        if (this.minsEl) this.minsEl.textContent = String(minutes).padStart(2, '0');
-    }
-}
-
-// ============================================
 // HERO VIDEO COLLAGE
 // ============================================
 class HeroVideoCollage {
@@ -1536,7 +1473,6 @@ function initWebsite() {
     
     // Interactive Elements
     new FloatingButtons();
-    new SleekPromoBanner();
     new HeroVideoCollage();
     
     // Content Sections
