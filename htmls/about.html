@@ -276,33 +276,34 @@
 <div class="search-modal" id="searchModal">
     <div class="search-modal-overlay" id="searchModalOverlay"></div>
     <div class="search-modal-container">
+        
+        <!-- Search Header -->
         <div class="search-modal-header">
             <div class="search-input-wrapper">
-                <i class="fas fa-search search-icon"></i>
+                <i class="fas fa-search search-input-icon"></i>
                 <input 
                     type="text" 
+                    id="globalSearchInput" 
                     class="search-input" 
-                    id="globalSearchInput"
-                    placeholder="Search services, treatments, or explore..." 
+                    placeholder="Search services, treatments, blog posts..."
                     autocomplete="off"
-                    aria-label="Search"
+                    spellcheck="false"
                 >
                 <button class="search-clear-btn" id="searchClearBtn" aria-label="Clear search">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <button class="search-close-btn" id="searchCloseBtn" aria-label="Close search">
-                <i class="fas fa-times"></i>
+                <span>ESC</span>
             </button>
         </div>
 
-        <div class="search-modal-body">
-            <!-- Quick Links (Default State) -->
+        <!-- Search Body -->
+        <div class="search-modal-body" id="searchModalBody">
+            
+            <!-- Quick Links (shown when no search) -->
             <div class="search-quick-links" id="searchQuickLinks">
-                <div class="quick-links-header">
-                    <h3>Popular Searches</h3>
-                    <p>Discover our most loved treatments</p>
-                </div>
+                <h3 class="search-section-title">Popular Searches</h3>
                 <div class="quick-links-grid">
                     <button class="quick-link-item" data-search="facial">
                         <i class="fas fa-spa"></i>
@@ -312,97 +313,85 @@
                         <i class="fas fa-bolt"></i>
                         <span>Laser</span>
                     </button>
-                    <button class="quick-link-item" data-search="waxing">
+                    <button class="quick-link-item" data-search="wax">
                         <i class="fas fa-leaf"></i>
                         <span>Waxing</span>
                     </button>
-                    <button class="quick-link-item" data-search="brows">
+                    <button class="quick-link-item" data-search="lash">
                         <i class="fas fa-eye"></i>
-                        <span>Brows & Lashes</span>
+                        <span>Lashes</span>
                     </button>
-                    <button class="quick-link-item" data-search="nails">
+                    <button class="quick-link-item" data-search="nail">
                         <i class="fas fa-hand-sparkles"></i>
                         <span>Nails</span>
                     </button>
-                    <button class="quick-link-item" data-search="packages">
+                    <button class="quick-link-item" data-search="package">
                         <i class="fas fa-gift"></i>
                         <span>Packages</span>
                     </button>
                 </div>
 
-                <div class="search-categories">
-                    <h4>Browse by Category</h4>
-                    <div class="category-links">
-                        <a href="../servicecategories/facials.html" class="category-link">
-                            <div class="category-icon">
-                                <i class="fas fa-spa"></i>
-                            </div>
-                            <div class="category-info">
-                                <span class="category-name">Face Treatments</span>
-                                <span class="category-count">12+ services</span>
-                            </div>
-                        </a>
-                        <a href="../servicecategories/laser.html" class="category-link">
-                            <div class="category-icon">
-                                <i class="fas fa-bolt"></i>
-                            </div>
-                            <div class="category-info">
-                                <span class="category-name">Laser Treatments</span>
-                                <span class="category-count">8+ services</span>
-                            </div>
-                        </a>
-                        <a href="../servicecategories/wax.html" class="category-link">
-                            <div class="category-icon">
-                                <i class="fas fa-leaf"></i>
-                            </div>
-                            <div class="category-info">
-                                <span class="category-name">Waxing</span>
-                                <span class="category-count">15+ services</span>
-                            </div>
-                        </a>
-                        <a href="../servicecategories/brows-lashes-pmu.html" class="category-link">
-                            <div class="category-icon">
-                                <i class="fas fa-eye"></i>
-                            </div>
-                            <div class="category-info">
-                                <span class="category-name">Brows & Lashes</span>
-                                <span class="category-count">10+ services</span>
-                            </div>
-                        </a>
-                    </div>
+                <h3 class="search-section-title">Browse Categories</h3>
+                <div class="category-links">
+                    <a href="htmls/services.html" class="category-link">
+                        <div class="category-icon"><i class="fas fa-concierge-bell"></i></div>
+                        <div class="category-info">
+                            <span class="category-name">All Services</span>
+                            <span class="category-count">View complete menu</span>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                    <a href="htmls/gallery.html" class="category-link">
+                        <div class="category-icon"><i class="fas fa-images"></i></div>
+                        <div class="category-info">
+                            <span class="category-name">Gallery</span>
+                            <span class="category-count">See our work</span>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                    <a href="htmls/about.html" class="category-link">
+                        <div class="category-icon"><i class="fas fa-heart"></i></div>
+                        <div class="category-info">
+                            <span class="category-name">About Us</span>
+                            <span class="category-count">Our story</span>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
                 </div>
             </div>
 
             <!-- Search Results -->
             <div class="search-results" id="searchResults"></div>
 
-            <!-- No Results State -->
+            <!-- No Results -->
             <div class="search-no-results" id="searchNoResults">
                 <div class="no-results-icon">
                     <i class="fas fa-search"></i>
                 </div>
                 <h3>No results found</h3>
-                <p>Try searching for something else or browse our categories</p>
-                <div class="search-suggestions">
-                    <span>Try searching:</span>
-                    <button class="suggestion-chip" data-search="hydrafacial">Hydrafacial</button>
-                    <button class="suggestion-chip" data-search="microneedling">Microneedling</button>
-                    <button class="suggestion-chip" data-search="brazilian">Brazilian Wax</button>
-                    <button class="suggestion-chip" data-search="lashes">Lash Extensions</button>
+                <p>Try different keywords or browse our categories</p>
+                <div class="no-results-suggestions">
+                    <button class="suggestion-chip" data-search="facial">Facial</button>
+                    <button class="suggestion-chip" data-search="wax">Waxing</button>
+                    <button class="suggestion-chip" data-search="laser">Laser</button>
+                    <button class="suggestion-chip" data-search="lash">Lashes</button>
+                    <button class="suggestion-chip" data-search="massage">Massage</button>
                 </div>
             </div>
 
             <!-- Loading State -->
             <div class="search-loading" id="searchLoading">
-                <div class="loading-spinner"></div>
-                <p>Loading search data...</p>
+                <div class="search-loading-spinner"></div>
+                <p>Searching...</p>
             </div>
         </div>
 
+        <!-- Search Footer -->
         <div class="search-modal-footer">
             <div class="search-tips">
-                <i class="fas fa-lightbulb"></i>
-                <span>Pro tip: Press <kbd>Esc</kbd> to close or <kbd>↑</kbd> <kbd>↓</kbd> to navigate</span>
+                <span><kbd>↑</kbd><kbd>↓</kbd> Navigate</span>
+                <span><kbd>Enter</kbd> Select</span>
+                <span><kbd>ESC</kbd> Close</span>
             </div>
         </div>
     </div>
