@@ -2448,7 +2448,6 @@ function initWebsite() {
     
     // Core Components
     new ElegantPreloader();
-    new PremiumHeaderWithMegaMenu();
     new HeroVideoCollage();
     
     // Interactive Elements
