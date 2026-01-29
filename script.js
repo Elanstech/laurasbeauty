@@ -275,17 +275,17 @@ class GlobalSearch {
         this.currentResults = [];
         
         this.dataFiles = [
-            { file: 'data/facials.json', category: 'Facials', icon: 'fa-spa', page: 'servicecategories/facials.html' },
-            { file: 'data/laser.json', category: 'Laser', icon: 'fa-bolt', page: 'servicecategories/laser.html' },
-            { file: 'data/wax.json', category: 'Waxing', icon: 'fa-leaf', page: 'servicecategories/wax.html' },
-            { file: 'data/lashes.json', category: 'Lashes', icon: 'fa-eye', page: 'servicecategories/brows-lashes-pmu.html' },
-            { file: 'data/nails.json', category: 'Nails', icon: 'fa-hand-sparkles', page: 'servicecategories/nails.html' },
-            { file: 'data/body.json', category: 'Body', icon: 'fa-leaf', page: 'servicecategories/body.html' },
-            { file: 'data/packages.json', category: 'Packages', icon: 'fa-gift', page: 'servicecategories/packages.html' },
-            { file: 'data/makeup.json', category: 'Makeup', icon: 'fa-paint-brush', page: 'servicecategories/makeup.html' },
-            { file: 'data/addons.json', category: 'Add-Ons', icon: 'fa-plus-circle', page: 'servicecategories/addons.html' },
-            { file: 'data/specials.json', category: 'Specials', icon: 'fa-star', page: 'servicecategories/specials.html' },
-            { file: 'data/blog.json', category: 'Blog', icon: 'fa-newspaper', page: '#blog', isBlog: true }
+    { file: '/data/facials.json', category: 'Facials', icon: 'fa-spa', page: '/servicecategories/facials.html' },
+    { file: '/data/laser.json', category: 'Laser', icon: 'fa-bolt', page: '/servicecategories/laser.html' },
+    { file: '/data/wax.json', category: 'Waxing', icon: 'fa-leaf', page: '/servicecategories/wax.html' },
+    { file: '/data/lashes.json', category: 'Lashes', icon: 'fa-eye', page: '/servicecategories/brows-lashes-pmu.html' },
+    { file: '/data/nails.json', category: 'Nails', icon: 'fa-hand-sparkles', page: '/servicecategories/nails.html' },
+    { file: '/data/body.json', category: 'Body', icon: 'fa-leaf', page: '/servicecategories/body.html' },
+    { file: '/data/packages.json', category: 'Packages', icon: 'fa-gift', page: '/servicecategories/packages.html' },
+    { file: '/data/makeup.json', category: 'Makeup', icon: 'fa-paint-brush', page: '/servicecategories/makeup.html' },
+    { file: '/data/addons.json', category: 'Add-Ons', icon: 'fa-plus-circle', page: '/servicecategories/addons.html' },
+    { file: '/data/specials.json', category: 'Specials', icon: 'fa-star', page: '/servicecategories/specials.html' },
+    { file: '/data/blog.json', category: 'Blog', icon: 'fa-newspaper', page: '#blog', isBlog: true }
         ];
         
         if (this.modal) this.init();
