@@ -85,7 +85,7 @@ class ElegantPreloader {
         document.body.style.overflow = 'hidden';
         
         const hidePreloader = () => {
-            setTimeout(() => this.hide(), 500);
+            setTimeout(() => this.hide(), 300);
         };
 
         if (document.readyState === 'complete') {
