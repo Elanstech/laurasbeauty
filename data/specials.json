@@ -2,6 +2,138 @@
   "category": "specials",
   "services": [
     {
+      "id": "king-for-a-day-valentines-2026",
+      "name": "King for a Day Package (For Him)",
+      "description": "Every king deserves royal treatment! Our exclusive men's Valentine's package with deep cleansing facial, massage, grooming, body scrub, and champagne.",
+      "fullDescription": "Treat the special man in your life (or yourself!) to the ultimate grooming and relaxation experience.\n\nThis comprehensive package includes:\n• Deep Cleansing \"Gentleman's Facial\" with steam, extractions if needed, and purifying mask\n• Relaxing scalp, neck, and shoulder massage\n• Brow & nose/ear cleanup (quick wax or trim)\n• Hydrating hand treatment (paraffin or mask + massage)\n• Aromatherapy body scrub with shower\n• Champagne and chocolate\n\nTotal treatment time: 1.5 hours\n\n**Just for Valentine's Day**\n\n**Promotion Details:**\n• Valid: February 1-16, 2026\n• Special Valentine's Day Hours: Saturday, February 14 - Open!\n• Book online or call (718) 841-9919\n• Advance booking recommended",
+      "duration": "1.5 hours",
+      "price": "$185",
+      "regularPrice": "$215",
+      "priceLabel": "Save $30",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
+      "image": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800",
+      "badge": "Valentine's Special",
+      "benefits": [
+        "Deep cleansing gentleman's facial with steam & mask",
+        "Scalp, neck & shoulder massage",
+        "Brow & nose/ear grooming",
+        "Hydrating hand treatment with paraffin",
+        "Aromatherapy body scrub with shower",
+        "Champagne and chocolate",
+        "Save $30 off regular price"
+      ]
+    },
+    {
+      "id": "luxurious-pampering-valentines-2026",
+      "name": "Luxurious Pampering Package (For Her)",
+      "description": "Treat the special woman in your life to pure indulgence! Signature facial, massage, manicure, rose treatment, and champagne with chocolates.",
+      "fullDescription": "Because she deserves to feel absolutely cherished!\n\nThis luxurious package includes:\n• Signature relaxing facial tailored to your skin type\n• Soothing neck and shoulder massage\n• Express manicure with polish of choice\n• Rose-infused hand treatment\n• Champagne and chocolate-covered strawberries\n• Complimentary rose to take home\n\nPerfect for:\n• Treating yourself to self-love\n• Gifting to someone special\n• Pre-Valentine's Day glow-up\n• Anyone who deserves pampering\n\n**Promotion Details:**\n• Valid: February 1-16, 2026\n• Special Valentine's Day Hours: Saturday, February 14 - Open!\n• Book online or call (718) 841-9919\n• Advance booking recommended",
+      "duration": "Approximately 2 hours",
+      "price": "$149",
+      "regularPrice": "$179",
+      "priceLabel": "Save $30",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
+      "image": "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=800",
+      "badge": "Valentine's Special",
+      "benefits": [
+        "Customized signature facial",
+        "Neck & shoulder massage",
+        "Express manicure with polish",
+        "Rose-infused hand treatment",
+        "Champagne & chocolate-covered strawberries",
+        "Complimentary rose to take home",
+        "Save $30 off regular price"
+      ]
+    },
+    {
+      "id": "romantic-relaxation-couples-valentines-2026",
+      "name": "Romantic Relaxation for 2 Package",
+      "description": "Share the love with our exclusive couples' experience! Side-by-side facials, massages, manicure & pedicure, champagne, and romantic ambiance.",
+      "fullDescription": "Celebrate your love together in a serene, intimate setting.\n\nThis romantic couples' package includes:\n• Side-by-side relaxing facials (customized for each person)\n• Dual neck and shoulder massages\n• Manicure for her\n• Spa pedicure for him\n• Champagne toast with gourmet chocolates\n• Rose petals and romantic ambiance\n• Complimentary couple's photo\n\nPerfect for:\n• Valentine's Day celebration\n• Anniversary gift\n• Date day experience\n• Quality time together\n\n**Important:**\n• Requires 48-hour advance booking\n• Side-by-side treatment rooms available\n• Intimate, romantic atmosphere\n\n**Promotion Details:**\n• Valid: February 1-16, 2026\n• Special Valentine's Day Hours: Saturday, February 14 - Open!\n• Book online or call (718) 841-9919",
+      "duration": "Approximately 2.5 hours",
+      "price": "$315",
+      "regularPrice": "$350",
+      "priceLabel": "Save $35",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
+      "image": "https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800",
+      "badge": "Valentine's Special",
+      "benefits": [
+        "Side-by-side customized facials",
+        "Dual neck & shoulder massages",
+        "Manicure for her",
+        "Spa pedicure for him",
+        "Champagne toast with gourmet chocolates",
+        "Romantic ambiance with rose petals",
+        "Complimentary couple's photo",
+        "Save $35 off regular price"
+      ]
+    },
+    {
+      "id": "hydra-facial-valentines-2026",
+      "name": "Hydra Facial — Valentine's Special",
+      "description": "Get glowing for your Valentine's plans! Advanced vortex technology deeply cleanses, exfoliates, and hydrates for instantly radiant skin.",
+      "fullDescription": "Look picture-perfect for all your Valentine's celebrations!\n\nOur signature Hydra Facial uses advanced vortex technology to:\n• Deeply cleanse and remove impurities\n• Exfoliate dead skin cells\n• Extract debris from pores\n• Hydrate with nourishing serums\n• Infuse antioxidants for protection\n\nResults:\n• Instantly radiant, glowing skin\n• Plump, hydrated complexion\n• Smoother texture\n• Reduced fine lines\n• Even skin tone\n• No downtime\n\nPerfect timing:\n• Book 2-3 days before Valentine's Day for maximum glow\n• Ideal for date nights and special events\n• Safe for all skin types\n\n**Promotion Details:**\n• Valid: February 1-16, 2026\n• Special Valentine's Day Hours: Saturday, February 14 - Open!\n• Book online or call (718) 841-9919",
+      "duration": "60 minutes",
+      "price": "$155",
+      "regularPrice": "$180",
+      "priceLabel": "Save $25",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
+      "image": "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800",
+      "badge": "Valentine's Special",
+      "benefits": [
+        "Deep cleansing with vortex technology",
+        "Exfoliation & pore extraction",
+        "Intensive hydration treatment",
+        "Antioxidant infusion",
+        "Instantly radiant, glowing skin",
+        "No downtime required",
+        "Save $25 off regular price"
+      ]
+    },
+    {
+      "id": "lash-lift-tint-valentines-2026",
+      "name": "Lash Lift and Tint — Valentine's Special",
+      "description": "Wake up with gorgeous, fluttery lashes! Natural lifting and darkening for perfectly framed eyes that last 6-8 weeks.",
+      "fullDescription": "The ideal enhancement for romantic date nights!\n\nOur Lash Lift and Tint service includes:\n• Professional lash lifting for natural curl\n• Dark tinting for definition\n• No extensions needed\n• Low maintenance beauty\n• Long-lasting results (6-8 weeks)\n\nPerfect for:\n• Valentine's Day date nights\n• Those who want effortless beauty\n• Anyone tired of mascara\n• Natural lash enhancement\n• Busy lifestyles\n\nWhat to expect:\n• Treatment takes 45-60 minutes\n• Relaxing, comfortable process\n• Immediate, dramatic results\n• Wake up looking polished\n• Waterproof & smudge-proof\n\n**Timing tip:**\nBook at least 1 week before Valentine's Day for best results!\n\n**Promotion Details:**\n• Valid: February 1-16, 2026\n• Special Valentine's Day Hours: Saturday, February 14 - Open!\n• Book online or call (718) 841-9919",
+      "duration": "45-60 minutes",
+      "price": "$89",
+      "regularPrice": "$120",
+      "priceLabel": "Save $31",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
+      "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800",
+      "badge": "Valentine's Special",
+      "benefits": [
+        "Natural lash lifting & curling",
+        "Dark tinting for definition",
+        "No extensions or mascara needed",
+        "Lasts 6-8 weeks",
+        "Waterproof & smudge-proof",
+        "Low maintenance beauty",
+        "Save $31 off regular price"
+      ]
+    },
+    {
+      "id": "valentines-gift-card-2026",
+      "name": "Be My Valentine Customized Gift Card",
+      "description": "Give the gift of choice! Beautifully presented Valentine's gift cards with personalized messages, available in any amount.",
+      "fullDescription": "Not sure which package to choose? Give the perfect gift with our special Valentine's presentation gift cards!\n\n**What's Included:**\n• Beautifully presented in romantic Valentine's packaging\n• Include your personalized love note or message\n• Available in any denomination\n• Never expire\n• Can be applied to any service or product\n• Elegant presentation perfect for gifting\n\n**Special Bonus Offer:**\nPurchase a $200+ gift card and receive a complimentary $25 bonus card for yourself or to share!\n\n**Perfect for:**\n• Romantic gifts for your partner\n• Treating friends to spa days\n• Last-minute Valentine's gifts\n• When you're not sure what to choose\n• Adding to other Valentine's gifts\n\n**How it works:**\n1. Choose your amount (any denomination)\n2. Add your personalized message\n3. Pick up or we can mail it\n4. Recipient books their preferred services\n5. Gift card never expires!\n\n**Purchase Options:**\n• Buy online\n• Call (718) 841-9919\n• Visit us in person at 97-12 66th Ave, Rego Park\n\n**Promotion Details:**\n• Available: February 1-16, 2026\n• Beautiful Valentine's packaging included\n• Can be used for any service year-round",
+      "duration": "Flexible",
+      "price": "Any Amount",
+      "priceLabel": "Your Choice + Bonus",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
+      "image": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=800",
+      "badge": "Valentine's Special",
+      "benefits": [
+        "Choose any dollar amount",
+        "Beautiful Valentine's presentation",
+        "Personalized message included",
+        "Never expires",
+        "Valid for all services & products",
+        "Bonus: Buy $200+ get $25 free card",
+        "Perfect last-minute gift option"
+      ]
+    },
+    {
       "id": "new-year-special-2026",
       "name": "New Year Special — 15% Off All Services",
       "description": "Start 2026 with radiant skin! Save 15% on all facial treatments, laser services, waxing, brows, lashes, PMU, body treatments, and more.",
