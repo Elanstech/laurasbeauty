@@ -6551,6 +6551,11 @@ a.contact-value:hover {
   border-top: 1px solid rgba(169, 200, 156, 0.1);
 }
 
+.footer-bottom .footer-container {
+  display: block;
+  grid-template-columns: unset;
+}
+
 .footer-bottom-content {
   max-width: 1400px;
   margin: 0 auto;
