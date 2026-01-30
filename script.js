@@ -790,120 +790,351 @@ class HeroVideoCollage {
 
 // ============================================
 // VALENTINE'S DAY DECORATIONS
+// Add this to your existing script.js file
 // ============================================
 
 class ValentinesDecorations {
     constructor() {
-        this.init();
+        this.badge = document.querySelector('.modern-valentine-badge');
+        this.decorations = document.querySelector('.valentines-decoration');
+        this.particles = document.querySelectorAll('.particle');
+        this.hearts = document.querySelectorAll('.heart-minimal');
+        
+        if (this.decorations) {
+            this.init();
+        }
     }
 
     init() {
-        this.animateConfetti();
-        this.enhanceBokeh();
-        this.addInteractivity();
-        console.log('💕 Valentine\'s Day decorations activated');
+        console.log('💕 Valentine\'s Day decorations initialized');
+        this.setupBadgeInteraction();
+        this.randomizeParticles();
+        this.randomizeHearts();
+        this.adjustForExistingElements();
     }
 
-    // Add random variations to confetti positions
-    animateConfetti() {
-        const confettiElements = document.querySelectorAll('.confetti');
-        confettiElements.forEach((confetti, index) => {
-            const randomX = Math.random() * 400 - 200;
-            const randomY = Math.random() * 400 - 200;
-            confetti.style.setProperty('--conf-x', randomX);
-            confetti.style.setProperty('--conf-y', randomY);
-        });
-    }
+    // Make badge clickable and navigate to specials
+    setupBadgeInteraction() {
+        if (!this.badge) return;
 
-    // Add random movement to bokeh lights
-    enhanceBokeh() {
-        const bokehElements = document.querySelectorAll('.bokeh');
-        bokehElements.forEach(bokeh => {
-            const randomX = Math.random() * 80 - 40;
-            const randomY = Math.random() * 100 - 50;
-            bokeh.style.setProperty('--bx', `${randomX}px`);
-            bokeh.style.setProperty('--by', `${randomY}px`);
-        });
-    }
+        this.badge.addEventListener('click', (e) => {
+            console.log('💝 Valentine\'s badge clicked - navigating to specials');
+            
+            // Add click animation
+            this.badge.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.badge.style.transform = '';
+            }, 150);
 
-    // Make badge interactive
-    addInteractivity() {
-        const badge = document.querySelector('.valentines-special-badge');
-        if (!badge) return;
-
-        badge.addEventListener('click', () => {
             // Navigate to specials page
             window.location.href = 'servicecategories/specials.html';
         });
 
-        badge.style.cursor = 'pointer';
-
-        // Add hover effect
-        badge.addEventListener('mouseenter', () => {
-            const badgeInner = badge.querySelector('.badge-inner');
-            if (badgeInner) {
-                badgeInner.style.transform = 'scale(1.05)';
-                badgeInner.style.transition = 'transform 0.3s ease';
+        // Add hover effects
+        this.badge.addEventListener('mouseenter', () => {
+            const badgeContent = this.badge.querySelector('.badge-content');
+            if (badgeContent) {
+                badgeContent.style.transform = 'translateX(-3px)';
             }
         });
 
-        badge.addEventListener('mouseleave', () => {
-            const badgeInner = badge.querySelector('.badge-inner');
-            if (badgeInner) {
-                badgeInner.style.transform = 'scale(1)';
+        this.badge.addEventListener('mouseleave', () => {
+            const badgeContent = this.badge.querySelector('.badge-content');
+            if (badgeContent) {
+                badgeContent.style.transform = 'translateX(0)';
+            }
+        });
+
+        // Add accessible keyboard support
+        this.badge.setAttribute('role', 'button');
+        this.badge.setAttribute('tabindex', '0');
+        this.badge.setAttribute('aria-label', 'View Valentine\'s Day Special Offers');
+
+        this.badge.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.badge.click();
             }
         });
     }
 
-    // Method to disable decorations (for after Valentine's Day)
-    disable() {
-        const decorations = document.querySelector('.valentines-decoration');
-        if (decorations) {
-            decorations.style.display = 'none';
+    // Randomize particle positions slightly for natural look
+    randomizeParticles() {
+        if (!this.particles || this.particles.length === 0) return;
+
+        this.particles.forEach(particle => {
+            const randomDelay = Math.random() * 3;
+            const randomDuration = 8 + Math.random() * 4; // 8-12 seconds
+            
+            particle.style.animationDelay = `${randomDelay}s`;
+            particle.style.animationDuration = `${randomDuration}s`;
+        });
+    }
+
+    // Randomize heart animations for more natural movement
+    randomizeHearts() {
+        if (!this.hearts || this.hearts.length === 0) return;
+
+        this.hearts.forEach(heart => {
+            const randomDuration = 20 + Math.random() * 10; // 20-30 seconds
+            heart.style.animationDuration = `${randomDuration}s`;
+        });
+    }
+
+    // Adjust decorations based on existing page elements
+    adjustForExistingElements() {
+        // Check if banner is visible and adjust badge position
+        const banner = document.querySelector('.sleek-promo-banner');
+        if (banner && banner.classList.contains('visible')) {
+            this.adjustBadgeForBanner(true);
         }
+
+        // Listen for banner changes
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.target.classList.contains('sleek-promo-banner')) {
+                    const isVisible = mutation.target.classList.contains('visible');
+                    this.adjustBadgeForBanner(isVisible);
+                }
+            });
+        });
+
+        if (banner) {
+            observer.observe(banner, { 
+                attributes: true, 
+                attributeFilter: ['class'] 
+            });
+        }
+
+        // Adjust for scrolled header
+        window.addEventListener('scroll', Utils.throttle(() => {
+            this.adjustBadgeForScroll();
+        }, 100), { passive: true });
+    }
+
+    adjustBadgeForBanner(isVisible) {
+        if (!this.badge) return;
+        
+        if (isVisible) {
+            this.badge.style.top = '170px';
+        } else {
+            this.badge.style.top = '100px';
+        }
+    }
+
+    adjustBadgeForScroll() {
+        if (!this.badge) return;
+        
+        const header = document.querySelector('.premium-header');
+        const banner = document.querySelector('.sleek-promo-banner');
+        const isScrolled = header && header.classList.contains('scrolled');
+        const isBannerVisible = banner && banner.classList.contains('visible');
+
+        if (isBannerVisible && isScrolled) {
+            this.badge.style.top = '150px';
+        } else if (isBannerVisible) {
+            this.badge.style.top = '170px';
+        } else if (isScrolled) {
+            this.badge.style.top = '90px';
+        } else {
+            this.badge.style.top = '100px';
+        }
+    }
+
+    // Method to disable decorations (useful for after Valentine's Day)
+    disable() {
+        if (this.decorations) {
+            this.decorations.style.opacity = '0';
+            setTimeout(() => {
+                this.decorations.style.display = 'none';
+            }, 500);
+        }
+        console.log('💔 Valentine\'s decorations disabled');
+    }
+
+    // Method to enable decorations
+    enable() {
+        if (this.decorations) {
+            this.decorations.style.display = 'block';
+            setTimeout(() => {
+                this.decorations.style.opacity = '1';
+            }, 10);
+        }
+        console.log('💕 Valentine\'s decorations enabled');
     }
 }
 
-// Initialize Valentine's decorations when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    // Only activate if it's Valentine's season (January 20 - February 20)
+// ============================================
+// AUTO-INITIALIZE VALENTINE'S DECORATIONS
+// Only show during Valentine's season
+// ============================================
+
+function initValentinesDecorations() {
     const currentDate = new Date();
     const month = currentDate.getMonth(); // 0 = January, 1 = February
     const day = currentDate.getDate();
     
+    // Valentine's season: January 20 - February 20
     const isValentinesSeason = (
-        (month === 0 && day >= 20) || // January 20+
+        (month === 0 && day >= 20) || // January 20-31
         (month === 1 && day <= 20)    // February 1-20
     );
 
+    // Check if decorations exist in DOM
+    const decorationsExist = document.querySelector('.valentines-decoration');
+    
+    if (!decorationsExist) {
+        console.log('💔 No Valentine\'s decorations found in HTML');
+        return null;
+    }
+
     if (isValentinesSeason) {
         const valentines = new ValentinesDecorations();
-        
-        // Store instance globally in case you need to disable it
-        window.valentinesDecorations = valentines;
+        console.log('💝 Valentine\'s season active!');
+        return valentines;
     } else {
         // Remove decorations if not Valentine's season
         const decorations = document.querySelector('.valentines-decoration');
         if (decorations) {
             decorations.remove();
+            console.log('💔 Valentine\'s season ended - decorations removed');
+        }
+        return null;
+    }
+}
+
+// ============================================
+// INTEGRATE WITH EXISTING INITIALIZATION
+// ============================================
+
+// Store Valentine's instance globally for manual control if needed
+let valentinesDecorations = null;
+
+// Add to existing DOMContentLoaded or initialize immediately
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        valentinesDecorations = initValentinesDecorations();
+    });
+} else {
+    valentinesDecorations = initValentinesDecorations();
+}
+
+// Optional: Manual control functions
+window.valentinesControl = {
+    enable: () => {
+        if (valentinesDecorations) {
+            valentinesDecorations.enable();
+        } else {
+            console.log('💔 Valentine\'s decorations not initialized');
+        }
+    },
+    disable: () => {
+        if (valentinesDecorations) {
+            valentinesDecorations.disable();
+        } else {
+            console.log('💔 Valentine\'s decorations not initialized');
+        }
+    },
+    // Force initialize regardless of date (for testing)
+    forceInit: () => {
+        const decorationsExist = document.querySelector('.valentines-decoration');
+        if (decorationsExist) {
+            valentinesDecorations = new ValentinesDecorations();
+            console.log('💕 Valentine\'s decorations force initialized');
+        } else {
+            console.log('💔 No Valentine\'s decorations in HTML to initialize');
         }
     }
-});
+};
 
-// Optional: Add this to your existing HeroVideoCollage class
-// to ensure decorations don't interfere with video performance
+// ============================================
+// COMPATIBILITY WITH EXISTING HERO CLASS
+// ============================================
+
+// If you have HeroVideoCollage class, ensure compatibility
 if (typeof HeroVideoCollage !== 'undefined') {
-    const originalInit = HeroVideoCollage.prototype.init;
+    const originalHeroInit = HeroVideoCollage.prototype.init;
+    
     HeroVideoCollage.prototype.init = function() {
+        // Call original init
         originalInit.call(this);
         
-        // Ensure decorations layer is above videos but below content
+        // Ensure decorations don't interfere with video performance
         const decorations = document.querySelector('.valentines-decoration');
         if (decorations) {
-            decorations.style.zIndex = '5';
+            // Force correct z-index
+            decorations.style.zIndex = '2';
+            decorations.style.pointerEvents = 'none';
+            
+            // Ensure badge is clickable
+            const badge = document.querySelector('.modern-valentine-badge');
+            if (badge) {
+                badge.style.pointerEvents = 'auto';
+                badge.style.zIndex = '15';
+            }
         }
+        
+        console.log('✅ Valentine\'s decorations compatible with hero videos');
     };
 }
+
+// ============================================
+// PERFORMANCE OPTIMIZATION
+// ============================================
+
+// Reduce animation complexity on low-performance devices
+function optimizeForPerformance() {
+    // Check if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (prefersReducedMotion) {
+        const decorations = document.querySelector('.valentines-decoration');
+        if (decorations) {
+            // Disable animations but keep static decorations
+            decorations.style.animation = 'none';
+            const animatedElements = decorations.querySelectorAll('*');
+            animatedElements.forEach(el => {
+                el.style.animation = 'none';
+            });
+            console.log('♿ Reduced motion: Valentine\'s animations disabled');
+        }
+    }
+
+    // Reduce decorations on mobile for performance
+    if (window.innerWidth <= 480) {
+        const hearts = document.querySelectorAll('.heart-minimal');
+        const particles = document.querySelectorAll('.particle');
+        
+        // Keep only first 2 hearts on mobile
+        hearts.forEach((heart, index) => {
+            if (index >= 2) heart.style.display = 'none';
+        });
+        
+        // Keep only first 3 particles on mobile
+        particles.forEach((particle, index) => {
+            if (index >= 3) particle.style.display = 'none';
+        });
+        
+        console.log('📱 Mobile optimization: Reduced decorations for performance');
+    }
+}
+
+// Run optimization on load and resize
+window.addEventListener('load', optimizeForPerformance);
+window.addEventListener('resize', Utils.debounce(optimizeForPerformance, 250));
+
+// ============================================
+// CONSOLE EASTER EGG
+// ============================================
+
+if (valentinesDecorations) {
+    console.log('%c💕 Happy Valentine\'s Day! 💕', 
+        'color: #FF69B4; font-size: 20px; font-weight: bold; text-shadow: 2px 2px 4px rgba(255,105,180,0.5);');
+    console.log('%cEnjoy our special Valentine\'s offers!', 
+        'color: #FF1493; font-size: 14px; font-style: italic;');
+}
+
+console.log('✨ Valentine\'s decorations script loaded');
 
 // ============================================
 // SERVICES CAROUSEL
