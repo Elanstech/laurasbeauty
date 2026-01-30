@@ -789,6 +789,123 @@ class HeroVideoCollage {
 }
 
 // ============================================
+// VALENTINE'S DAY DECORATIONS
+// ============================================
+
+class ValentinesDecorations {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        this.animateConfetti();
+        this.enhanceBokeh();
+        this.addInteractivity();
+        console.log('💕 Valentine\'s Day decorations activated');
+    }
+
+    // Add random variations to confetti positions
+    animateConfetti() {
+        const confettiElements = document.querySelectorAll('.confetti');
+        confettiElements.forEach((confetti, index) => {
+            const randomX = Math.random() * 400 - 200;
+            const randomY = Math.random() * 400 - 200;
+            confetti.style.setProperty('--conf-x', randomX);
+            confetti.style.setProperty('--conf-y', randomY);
+        });
+    }
+
+    // Add random movement to bokeh lights
+    enhanceBokeh() {
+        const bokehElements = document.querySelectorAll('.bokeh');
+        bokehElements.forEach(bokeh => {
+            const randomX = Math.random() * 80 - 40;
+            const randomY = Math.random() * 100 - 50;
+            bokeh.style.setProperty('--bx', `${randomX}px`);
+            bokeh.style.setProperty('--by', `${randomY}px`);
+        });
+    }
+
+    // Make badge interactive
+    addInteractivity() {
+        const badge = document.querySelector('.valentines-special-badge');
+        if (!badge) return;
+
+        badge.addEventListener('click', () => {
+            // Navigate to specials page
+            window.location.href = 'servicecategories/specials.html';
+        });
+
+        badge.style.cursor = 'pointer';
+
+        // Add hover effect
+        badge.addEventListener('mouseenter', () => {
+            const badgeInner = badge.querySelector('.badge-inner');
+            if (badgeInner) {
+                badgeInner.style.transform = 'scale(1.05)';
+                badgeInner.style.transition = 'transform 0.3s ease';
+            }
+        });
+
+        badge.addEventListener('mouseleave', () => {
+            const badgeInner = badge.querySelector('.badge-inner');
+            if (badgeInner) {
+                badgeInner.style.transform = 'scale(1)';
+            }
+        });
+    }
+
+    // Method to disable decorations (for after Valentine's Day)
+    disable() {
+        const decorations = document.querySelector('.valentines-decoration');
+        if (decorations) {
+            decorations.style.display = 'none';
+        }
+    }
+}
+
+// Initialize Valentine's decorations when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    // Only activate if it's Valentine's season (January 20 - February 20)
+    const currentDate = new Date();
+    const month = currentDate.getMonth(); // 0 = January, 1 = February
+    const day = currentDate.getDate();
+    
+    const isValentinesSeason = (
+        (month === 0 && day >= 20) || // January 20+
+        (month === 1 && day <= 20)    // February 1-20
+    );
+
+    if (isValentinesSeason) {
+        const valentines = new ValentinesDecorations();
+        
+        // Store instance globally in case you need to disable it
+        window.valentinesDecorations = valentines;
+    } else {
+        // Remove decorations if not Valentine's season
+        const decorations = document.querySelector('.valentines-decoration');
+        if (decorations) {
+            decorations.remove();
+        }
+    }
+});
+
+// Optional: Add this to your existing HeroVideoCollage class
+// to ensure decorations don't interfere with video performance
+if (typeof HeroVideoCollage !== 'undefined') {
+    const originalInit = HeroVideoCollage.prototype.init;
+    HeroVideoCollage.prototype.init = function() {
+        originalInit.call(this);
+        
+        // Ensure decorations layer is above videos but below content
+        const decorations = document.querySelector('.valentines-decoration');
+        if (decorations) {
+            decorations.style.zIndex = '5';
+        }
+    };
+}
+
+// ============================================
 // SERVICES CAROUSEL
 // ============================================
 class ServicesCarousel {
