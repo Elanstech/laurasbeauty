@@ -29,10 +29,10 @@ const categoryConfig = {
     },
     specials: {
         jsonFile: '../data/specials.json',
-        title: 'Special Offers',
-        subtitle: 'Exclusive deals on our premium treatments',
-        description: 'Take advantage of our limited-time special offers and seasonal packages.',
-        badge: 'Limited Time Offers'
+        title: 'Spa Specials',
+        subtitle: 'Refresh, rejuvenate, and reveal your natural beauty',
+        description: 'Indulge in our seasonal spa specials designed to relax your body, renew your skin, and elevate your well-being. Enjoy exclusive treatments and luxurious experiences tailored just for you.',
+        badge: 'Limited-Time Offers'
     },
     nails: {
         jsonFile: '../data/nails.json',
@@ -76,14 +76,6 @@ const categoryConfig = {
         description: 'Transform your look with our professional lash extensions and enhancement services.',
         badge: 'Lash Enhancement'
     },
-    specials: {
-        jsonFile: '../data/specials.json',
-        title: 'Spa Specials',
-        subtitle: 'Refresh, rejuvenate, and reveal your natural beauty',
-        description: 'Indulge in our seasonal spa specials designed to relax your body, renew your skin, and elevate your well-being. Enjoy exclusive treatments and luxurious experiences tailored just for you.',
-        badge: 'Limited-Time Offers'
-    },
-
     makeup: {
         jsonFile: '../data/makeup.json',
         title: 'Makeup Services',
@@ -97,7 +89,6 @@ const categoryConfig = {
  * Initialize the page
  */
 document.addEventListener('DOMContentLoaded', function() {
-    // Detect category from body data attribute
     const category = document.body.getAttribute('data-category');
     
     if (category && categoryConfig[category]) {
@@ -107,16 +98,9 @@ document.addEventListener('DOMContentLoaded', function() {
         showError('Unable to load category information');
     }
     
-    // Initialize header
     initializeHeader();
-    
-    // Initialize mobile menu
     initializeMobileMenu();
-    
-    // Initialize back to top button
     initializeBackToTop();
-    
-    // Initialize modal close handlers
     initializeModal();
 });
 
@@ -125,11 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
  */
 function initializePage(category) {
     const config = categoryConfig[category];
-    
-    // Update hero section
     updateHeroSection(config);
-    
-    // Load and render services
     loadServices(config.jsonFile);
 }
 
@@ -157,12 +137,10 @@ async function loadServices(jsonFile) {
     const noServicesMessage = document.getElementById('noServices');
     
     try {
-        // Show loading state
         if (loadingState) loadingState.style.display = 'flex';
         if (servicesList) servicesList.style.display = 'none';
         if (noServicesMessage) noServicesMessage.style.display = 'none';
         
-        // Fetch JSON data
         const response = await fetch(jsonFile);
         
         if (!response.ok) {
@@ -171,16 +149,13 @@ async function loadServices(jsonFile) {
         
         const data = await response.json();
         
-        // Hide loading state
         if (loadingState) loadingState.style.display = 'none';
         
-        // Check if services exist
         if (!data.services || data.services.length === 0) {
             if (noServicesMessage) noServicesMessage.style.display = 'block';
             return;
         }
         
-        // Render services
         renderServices(data.services);
         
     } catch (error) {
@@ -198,15 +173,29 @@ function renderServices(services) {
     
     if (!servicesList) return;
     
-    // Clear existing content
     servicesList.innerHTML = '';
     servicesList.style.display = 'flex';
     
-    // Create service items
     services.forEach((service, index) => {
         const serviceItem = createServiceItem(service, index);
         servicesList.appendChild(serviceItem);
     });
+}
+
+/**
+ * Build the price HTML for a service (used in cards and modal)
+ */
+function buildPriceHTML(service) {
+    let html = '';
+    if (service.regularPrice && service.price) {
+        html += `<span class="price-original">${service.regularPrice}</span> <span class="price-sale">${service.price}</span>`;
+    } else if (service.price) {
+        html += `<span>${service.price}</span>`;
+    }
+    if (service.priceLabel) {
+        html += ` <span class="price-save-badge">${service.priceLabel}</span>`;
+    }
+    return html;
 }
 
 /**
@@ -221,24 +210,18 @@ function createServiceItem(service, index) {
     const imageWrapper = document.createElement('div');
     imageWrapper.className = 'service-image-wrapper';
     
-    // Service Image
     const image = document.createElement('div');
     image.className = 'service-image';
-    if (service.image) {
-        image.style.backgroundImage = `url('${service.image}')`;
-    } else {
-        // Default placeholder image
-        image.style.backgroundImage = `url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800')`;
-    }
+    image.style.backgroundImage = service.image
+        ? `url('${service.image}')`
+        : `url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800')`;
     
-    // Image Overlay
     const imageOverlay = document.createElement('div');
     imageOverlay.className = 'service-image-overlay';
     
     imageWrapper.appendChild(image);
     imageWrapper.appendChild(imageOverlay);
     
-    // Optional Badge
     if (service.badge) {
         const badge = document.createElement('div');
         badge.className = 'service-badge';
@@ -285,10 +268,7 @@ function createServiceItem(service, index) {
         if (service.price || service.priceLabel) {
             const priceItem = document.createElement('div');
             priceItem.className = 'service-meta-item';
-            priceItem.innerHTML = `
-                <i class="fas fa-tag"></i>
-                <span>${service.priceLabel || service.price}</span>
-            `;
+            priceItem.innerHTML = `<i class="fas fa-tag"></i> ${buildPriceHTML(service)}`;
             meta.appendChild(priceItem);
         }
         
@@ -309,7 +289,6 @@ function createServiceItem(service, index) {
     const footer = document.createElement('div');
     footer.className = 'service-footer';
     
-    // Book Now Button - use bookNowUrl if available, otherwise use contact page
     const bookButton = document.createElement('a');
     bookButton.href = service.bookNowUrl || '../htmls/contact.html';
     bookButton.className = 'service-book-button';
@@ -323,7 +302,6 @@ function createServiceItem(service, index) {
     `;
     footer.appendChild(bookButton);
     
-    // View Details Button (opens modal)
     const detailsButton = document.createElement('button');
     detailsButton.className = 'service-details-button';
     detailsButton.innerHTML = `
@@ -396,9 +374,9 @@ function openModal(service) {
         modalDuration.textContent = service.duration;
     }
     
-    // Set price
+    // Set price (original + sale + save badge)
     if (modalPrice && (service.price || service.priceLabel)) {
-        modalPrice.textContent = service.priceLabel || service.price;
+        modalPrice.innerHTML = buildPriceHTML(service);
     }
     
     // Set description
@@ -441,9 +419,7 @@ function openModal(service) {
  */
 function closeModal() {
     const modal = document.getElementById('serviceModal');
-    
     if (!modal) return;
-    
     modal.classList.remove('active');
     document.body.style.overflow = '';
 }
@@ -456,17 +432,14 @@ function initializeModal() {
     const modalClose = document.querySelector('.modal-close');
     const modalOverlay = document.querySelector('.modal-overlay');
     
-    // Close button
     if (modalClose) {
         modalClose.addEventListener('click', closeModal);
     }
     
-    // Overlay click
     if (modalOverlay) {
         modalOverlay.addEventListener('click', closeModal);
     }
     
-    // Escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
             closeModal();
@@ -499,10 +472,8 @@ function showError(message) {
  */
 function initializeHeader() {
     const header = document.querySelector('.premium-header');
-    
     if (!header) return;
     
-    // Scroll effect
     window.addEventListener('scroll', function() {
         if (window.scrollY > 50) {
             header.classList.add('scrolled');
@@ -511,17 +482,13 @@ function initializeHeader() {
         }
     });
     
-    // Mega menu hover effect
     const megaMenuItems = document.querySelectorAll('.has-megamenu');
-    
     megaMenuItems.forEach(item => {
         let timeout;
-        
         item.addEventListener('mouseenter', function() {
             clearTimeout(timeout);
             this.classList.add('active');
         });
-        
         item.addEventListener('mouseleave', function() {
             timeout = setTimeout(() => {
                 this.classList.remove('active');
@@ -541,35 +508,21 @@ function initializeMobileMenu() {
     
     if (!menuToggle || !mobileMenu) return;
     
-    // Open menu
     menuToggle.addEventListener('click', function() {
         mobileMenu.classList.add('active');
-        if (mobileMenuOverlay) {
-            mobileMenuOverlay.classList.add('active');
-        }
+        if (mobileMenuOverlay) mobileMenuOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
     });
     
-    // Close menu function
     function closeMobileMenu() {
         mobileMenu.classList.remove('active');
-        if (mobileMenuOverlay) {
-            mobileMenuOverlay.classList.remove('active');
-        }
+        if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('active');
         document.body.style.overflow = '';
     }
     
-    // Close button
-    if (mobileMenuClose) {
-        mobileMenuClose.addEventListener('click', closeMobileMenu);
-    }
+    if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
+    if (mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', closeMobileMenu);
     
-    // Overlay click
-    if (mobileMenuOverlay) {
-        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
-    }
-    
-    // Close on link click
     const mobileLinks = mobileMenu.querySelectorAll('a');
     mobileLinks.forEach(link => {
         link.addEventListener('click', closeMobileMenu);
@@ -581,10 +534,8 @@ function initializeMobileMenu() {
  */
 function initializeBackToTop() {
     const backToTop = document.getElementById('backToTop');
-    
     if (!backToTop) return;
     
-    // Show/hide on scroll
     window.addEventListener('scroll', function() {
         if (window.scrollY > 500) {
             backToTop.classList.add('visible');
@@ -593,12 +544,8 @@ function initializeBackToTop() {
         }
     });
     
-    // Scroll to top on click
     backToTop.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
 
@@ -608,22 +555,13 @@ function initializeBackToTop() {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
-        
-        // Skip if it's just "#"
         if (href === '#') return;
-        
         e.preventDefault();
-        
         const target = document.querySelector(href);
-        
         if (target) {
             const headerHeight = document.querySelector('.premium-header')?.offsetHeight || 0;
             const targetPosition = target.offsetTop - headerHeight - 20;
-            
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
         }
     });
 });
@@ -633,22 +571,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
  */
 function initHeroScrollIndicator() {
     const scrollIndicator = document.querySelector('.hero-scroll-indicator');
-    
     if (scrollIndicator) {
         scrollIndicator.addEventListener('click', () => {
             const targetSection = document.querySelector('#services-section');
             if (targetSection) {
                 const headerHeight = document.querySelector('.premium-header')?.offsetHeight || 0;
                 const targetPosition = targetSection.offsetTop - headerHeight - 20;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
             }
         });
     }
 }
 
-// Initialize hero scroll indicator
 initHeroScrollIndicator();
