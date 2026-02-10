@@ -575,14 +575,88 @@
         <!-- Full Overlay for Better Text Contrast -->
         <div class="hero-master-overlay"></div>
 
-        <!-- Valentine's Floating Hearts (CSS-only decoration) -->
+        <!-- Valentine's Romantic Gradient Overlay -->
+        <div class="valentines-gradient-overlay" aria-hidden="true"></div>
+
+        <!-- Valentine's Floating Hearts -->
         <div class="valentines-hearts-overlay" aria-hidden="true">
-            <span class="floating-heart" style="--delay: 0s; --left: 5%; --size: 1.2rem;">♥</span>
-            <span class="floating-heart" style="--delay: 2s; --left: 15%; --size: 0.9rem;">♥</span>
-            <span class="floating-heart" style="--delay: 4s; --left: 25%; --size: 1rem;">♥</span>
-            <span class="floating-heart" style="--delay: 1s; --left: 75%; --size: 1.1rem;">♥</span>
-            <span class="floating-heart" style="--delay: 3s; --left: 85%; --size: 0.8rem;">♥</span>
-            <span class="floating-heart" style="--delay: 5s; --left: 92%; --size: 1rem;">♥</span>
+            <!-- Large soft hearts -->
+            <span class="floating-heart heart-lg" style="--delay: 0s; --left: 3%; --drift: 40px;">♥</span>
+            <span class="floating-heart heart-lg" style="--delay: 7s; --left: 70%; --drift: -30px;">♥</span>
+            <!-- Medium hearts -->
+            <span class="floating-heart heart-md" style="--delay: 1.5s; --left: 12%; --drift: 25px;">♥</span>
+            <span class="floating-heart heart-md" style="--delay: 4s; --left: 30%; --drift: -20px;">♥</span>
+            <span class="floating-heart heart-md" style="--delay: 6s; --left: 80%; --drift: 35px;">♥</span>
+            <span class="floating-heart heart-md" style="--delay: 9s; --left: 55%; --drift: -25px;">♥</span>
+            <!-- Small hearts -->
+            <span class="floating-heart heart-sm" style="--delay: 0.5s; --left: 20%; --drift: 15px;">♥</span>
+            <span class="floating-heart heart-sm" style="--delay: 2.5s; --left: 45%; --drift: -15px;">♥</span>
+            <span class="floating-heart heart-sm" style="--delay: 5s; --left: 65%; --drift: 20px;">♥</span>
+            <span class="floating-heart heart-sm" style="--delay: 8s; --left: 88%; --drift: -10px;">♥</span>
+            <span class="floating-heart heart-sm" style="--delay: 3s; --left: 95%; --drift: 12px;">♥</span>
+            <span class="floating-heart heart-sm" style="--delay: 10s; --left: 8%; --drift: -18px;">♥</span>
+        </div>
+
+        <!-- Valentine's Sparkle Particles -->
+        <div class="valentines-sparkles" aria-hidden="true">
+            <span class="sparkle" style="--s-left: 8%; --s-top: 20%; --s-delay: 0s;"></span>
+            <span class="sparkle" style="--s-left: 18%; --s-top: 60%; --s-delay: 1.2s;"></span>
+            <span class="sparkle" style="--s-left: 35%; --s-top: 15%; --s-delay: 2.5s;"></span>
+            <span class="sparkle" style="--s-left: 50%; --s-top: 75%; --s-delay: 0.8s;"></span>
+            <span class="sparkle" style="--s-left: 65%; --s-top: 30%; --s-delay: 3.2s;"></span>
+            <span class="sparkle" style="--s-left: 78%; --s-top: 65%; --s-delay: 1.8s;"></span>
+            <span class="sparkle" style="--s-left: 90%; --s-top: 25%; --s-delay: 4s;"></span>
+            <span class="sparkle" style="--s-left: 42%; --s-top: 45%; --s-delay: 2s;"></span>
+            <span class="sparkle" style="--s-left: 25%; --s-top: 85%; --s-delay: 3.5s;"></span>
+            <span class="sparkle" style="--s-left: 72%; --s-top: 80%; --s-delay: 0.5s;"></span>
+        </div>
+
+        <!-- Valentine's Corner Rose Vines -->
+        <div class="valentines-corner valentines-corner-tl" aria-hidden="true">
+            <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0 C40 10, 60 40, 70 80 C75 100, 65 120, 50 130" stroke="rgba(255,77,106,0.25)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                <path d="M0 30 C30 35, 45 55, 50 85 C53 100, 45 110, 35 115" stroke="rgba(255,141,161,0.2)" stroke-width="1" fill="none" stroke-linecap="round"/>
+                <circle cx="70" cy="80" r="8" fill="rgba(255,77,106,0.15)"/>
+                <circle cx="50" cy="130" r="6" fill="rgba(255,141,161,0.12)"/>
+                <circle cx="35" cy="115" r="5" fill="rgba(255,77,106,0.1)"/>
+                <!-- Small leaves -->
+                <ellipse cx="45" cy="55" rx="8" ry="4" transform="rotate(-30 45 55)" fill="rgba(169,200,156,0.15)"/>
+                <ellipse cx="60" cy="95" rx="7" ry="3.5" transform="rotate(20 60 95)" fill="rgba(169,200,156,0.12)"/>
+            </svg>
+        </div>
+        <div class="valentines-corner valentines-corner-tr" aria-hidden="true">
+            <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M200 0 C160 10, 140 40, 130 80 C125 100, 135 120, 150 130" stroke="rgba(255,77,106,0.25)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                <path d="M200 30 C170 35, 155 55, 150 85 C147 100, 155 110, 165 115" stroke="rgba(255,141,161,0.2)" stroke-width="1" fill="none" stroke-linecap="round"/>
+                <circle cx="130" cy="80" r="8" fill="rgba(255,77,106,0.15)"/>
+                <circle cx="150" cy="130" r="6" fill="rgba(255,141,161,0.12)"/>
+                <circle cx="165" cy="115" r="5" fill="rgba(255,77,106,0.1)"/>
+                <ellipse cx="155" cy="55" rx="8" ry="4" transform="rotate(30 155 55)" fill="rgba(169,200,156,0.15)"/>
+                <ellipse cx="140" cy="95" rx="7" ry="3.5" transform="rotate(-20 140 95)" fill="rgba(169,200,156,0.12)"/>
+            </svg>
+        </div>
+        <div class="valentines-corner valentines-corner-bl" aria-hidden="true">
+            <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 200 C40 190, 60 160, 70 120 C75 100, 65 80, 50 70" stroke="rgba(255,77,106,0.2)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                <circle cx="70" cy="120" r="7" fill="rgba(255,77,106,0.12)"/>
+                <circle cx="50" cy="70" r="5" fill="rgba(255,141,161,0.1)"/>
+                <ellipse cx="45" cy="145" rx="7" ry="3.5" transform="rotate(25 45 145)" fill="rgba(169,200,156,0.12)"/>
+            </svg>
+        </div>
+        <div class="valentines-corner valentines-corner-br" aria-hidden="true">
+            <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M200 200 C160 190, 140 160, 130 120 C125 100, 135 80, 150 70" stroke="rgba(255,77,106,0.2)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                <circle cx="130" cy="120" r="7" fill="rgba(255,77,106,0.12)"/>
+                <circle cx="150" cy="70" r="5" fill="rgba(255,141,161,0.1)"/>
+                <ellipse cx="155" cy="145" rx="7" ry="3.5" transform="rotate(-25 155 145)" fill="rgba(169,200,156,0.12)"/>
+            </svg>
+        </div>
+
+        <!-- Valentine's Glowing Orbs -->
+        <div class="valentines-orbs" aria-hidden="true">
+            <div class="v-orb v-orb-1"></div>
+            <div class="v-orb v-orb-2"></div>
+            <div class="v-orb v-orb-3"></div>
         </div>
 
         <!-- Hero Content -->
@@ -599,11 +673,23 @@
                         <span class="title-line title-accent valentines-accent">With Luxurious Pampering</span>
                     </h1>
                     <p class="hero-description">Couples packages, glowing facials, lash lifts & gift cards — treat yourself or someone special this Valentine's season. Save up to $35!</p>
-                    <a href="servicecategories/specials.html" class="hero-cta-btn valentines-cta">
-                        <span class="heart-icon">♥</span>
-                        <span>Explore Valentine's Specials</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <div class="valentines-cta-group">
+                        <a href="servicecategories/specials.html" class="hero-cta-btn valentines-cta">
+                            <span class="heart-icon">♥</span>
+                            <span>Explore Valentine's Specials</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="https://www.fresha.com/a/lauras-beauty-touch-rego-park-beauty-spa-97-12-66th-avenue-tf24l3iv/gift-cards" target="_blank" class="hero-cta-btn valentines-cta-secondary">
+                            <i class="fas fa-gift"></i>
+                            <span>Gift Cards</span>
+                        </a>
+                    </div>
+                    <!-- Valentine's Promo Ribbon -->
+                    <div class="valentines-promo-ribbon">
+                        <span class="ribbon-sparkle">✦</span>
+                        Feb 1–16 &nbsp;•&nbsp; Packages from $89 &nbsp;•&nbsp; Open Valentine's Day Saturday!
+                        <span class="ribbon-sparkle">✦</span>
+                    </div>
                 </div>
 
                 <!-- Slide 2 -->
@@ -650,7 +736,7 @@
             <div class="scroll-line"></div>
         </div>
     </section>
-    
+
     <!-- ABOUT LAURA & THE SPA SECTION -->
 <section id="about" class="about-laura-section">
     <div class="about-container">
