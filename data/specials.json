@@ -2,24 +2,23 @@
   "category": "specials",
   "services": [
     {
-      "id": "presidents-week-special-2026",
-      "name": "Presidents Week Special — 15% Off",
-      "description": "Celebrate Presidents Week with 15% off all spa services! Facials, massages, body treatments, lash services, and more. Excludes nail services.",
-      "fullDescription": "Treat yourself to luxury this Presidents Week with 15% off our full range of spa services!\n\n**Services Included:**\n• All Facial Treatments (Hydra Facial, Signature Facials, Deep Cleansing, etc.)\n• Massage Services (Swedish, Deep Tissue, Hot Stone, etc.)\n• Body Treatments (Scrubs, Wraps, etc.)\n• Lash Services (Lifts, Tints, Extensions)\n• Brow Services (Shaping, Tinting, Lamination)\n• Waxing Services (Full Body)\n• Specialized Skin Treatments\n\n**What's Excluded:**\n• Nail services (manicures, pedicures, nail enhancements)\n\n**Perfect For:**\n• Self-care during your time off\n• Midwinter skin rejuvenation\n• Relaxation and stress relief\n• Trying new treatments at a discount\n• Gift yourself some pampering\n\n**How to Book:**\n1. Book online or call (718) 841-9919\n2. Mention \"Presidents Week Special\" when booking\n3. Discount automatically applied at checkout\n4. Advance booking recommended for best availability\n\n**Promotion Details:**\n• Valid: February 15-23, 2026 (Presidents Week)\n• 15% discount applied to all qualifying services\n• Cannot be combined with other offers\n• Excludes nail services only\n• Book in advance for preferred time slots",
-      "duration": "Varies by service",
-      "price": "15% Off",
-      "priceLabel": "Save 15%",
-      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&pId=2609547",
-      "image": "https://www.usatoday.com/gcdn/presto/2023/02/14/USAT/d6c03f5b-6d19-4aa3-b979-6a7d05f69ecd-GettyImages-1246887628.jpg",
-      "badge": "Presidents Week",
+      "id": "spa-giveaway-2026",
+      "name": "✨ Spa Giveaway ✨ A Little Glow-Up on Us!",
+      "description": "Enter to win FREE spa services! 3 winners — Underarm Laser, European Facial, or Brazilian & Underarm Wax. Follow, tag, like & share to enter. Deadline: April 1st, 2026.",
+      "fullDescription": "✨ SPA GIVEAWAY ✨\nA little glow-up moment on us!\n\n**Win One of These:**\n• 🥇 1st Winner — Free Underarm Laser Session\n• 🥈 2nd Winner — Free European Facial\n• 🥉 3rd Winner — Free Brazilian & Underarm Wax\n\n**How to Enter:**\n1. Follow us on Instagram @laurasbeautytouch\n2. Tag 3 friends in the comments — they must follow us too (yes, we'll check!)\n3. Like the video\n4. Share to your Instagram Story and tag us\n\n**Giveaway Details:**\n• Deadline: April 1st, 2026\n• 3 winners will be selected\n• All entry steps must be completed to qualify\n• Tagged friends must also be following @laurasbeautytouch\n• Winners will be announced on our Instagram\n\nTHANK YOU FOR BEING A PART OF OUR JOURNEY! GOOD LUCK! 🍀",
+      "duration": "Varies by prize",
+      "price": "FREE",
+      "priceLabel": "Giveaway",
+      "bookNowUrl": "https://www.instagram.com/laurasbeautytouch",
+      "image": "",
+      "badge": "Giveaway",
       "benefits": [
-        "15% off all spa services",
-        "Valid on facials, massages & body treatments",
-        "Includes lash & brow services",
-        "Waxing services included",
-        "Book any service combination",
-        "Perfect midwinter self-care",
-        "Valid all Presidents Week (Feb 15-23)"
+        "3 chances to win free services",
+        "Free Underarm Laser Session (1st prize)",
+        "Free European Facial (2nd prize)",
+        "Free Brazilian & Underarm Wax (3rd prize)",
+        "Easy to enter via Instagram",
+        "Deadline: April 1st, 2026"
       ]
     }
   ]
