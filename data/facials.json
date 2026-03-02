@@ -362,6 +362,24 @@
         "Reduces acne scars",
         "Minimizes wrinkles",
         "Improves skin texture"
+        ]
+    },
+    {
+      "id": "rejuran-microneedling",
+      "name": "Rejuran Healing Essence with Microneedling",
+      "description": "A powerful skin-rejuvenation treatment combining collagen-inducing microneedling with advanced PDRN (salmon DNA) technology to repair and renew skin from within.",
+      "fullDescription": "Rejuran Healing Essence with Microneedling combines collagen-inducing microneedling with advanced PDRN (salmon DNA) technology to repair and renew the skin from within.\n\nMicroneedling creates micro-channels in the skin, allowing Rejuran Healing Essence to penetrate deeper and work more effectively. This combination accelerates skin healing, boosts collagen production, and improves overall skin quality.\n\nBenefits:\n• Enhances collagen and elastin production\n• Accelerates skin repair and recovery\n• Improves skin texture, tone, and firmness\n• Reduces fine lines, enlarged pores, and acne scars\n• Calms inflammation and strengthens the skin barrier\n\nIdeal for:\n• Aging or dull skin\n• Acne scars and uneven texture\n• Sensitive or damaged skin\n• Clients looking for skin repair with minimal downtime",
+      "duration": "60 min",
+      "price": "$380",
+      "priceLabel": "Starting at $380",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A26517253&share=true&pId=2609547",
+      "image": "https://images.everydayhealth.com/images/2025/what-is-a-salmon-sperm-facial-1440x810.jpg?sfvrsn=49372ece_3",
+      "badge": "Advanced",
+      "benefits": [
+        "PDRN salmon DNA technology",
+        "Accelerates skin repair and recovery",
+        "Reduces fine lines, pores, and acne scars",
+        "Strengthens skin barrier"
       ]
     }
   ]
