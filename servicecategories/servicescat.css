@@ -168,7 +168,7 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     cursor: pointer;
-    animation: fadeInUp 0.8s ease-out 1s both, bounceAnimation 2s ease-in-out 1.5s infinite;
+    animation: scrollFadeInUp 0.8s ease-out 1s both, scrollBounce 2s ease-in-out 1.5s infinite;
 }
 
 .hero-scroll-indicator span {
@@ -179,7 +179,18 @@
     font-size: 1.2rem;
 }
 
-@keyframes bounceAnimation {
+@keyframes scrollFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@keyframes scrollBounce {
     0%, 100% {
         transform: translateX(-50%) translateY(0);
     }
