@@ -7212,3 +7212,288 @@ a.contact-value:hover {
     justify-content: center;
   }
 }
+
+/* ============================================
+   HERO SPECIALS SLIDE — ADDITIONAL STYLES
+   Add to bottom of styles.css
+   ============================================ */
+
+/* Badge */
+.specials-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--gold-accent), #E6C347);
+    color: var(--deep-forest);
+    padding: 10px 28px;
+    border-radius: 50px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.45);
+    animation: fadeInDown 0.8s ease-out both;
+}
+
+.specials-hero-badge i {
+    font-size: 0.75rem;
+    animation: starSpin 3s linear infinite;
+}
+
+@keyframes starSpin {
+    0%   { transform: rotate(0deg) scale(1); }
+    50%  { transform: rotate(180deg) scale(1.3); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Deal Pills Row */
+.specials-hero-deals {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 38px;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.deal-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1.5px solid rgba(169, 200, 156, 0.5);
+    backdrop-filter: blur(12px);
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.88rem;
+    color: var(--ivory-white);
+    transition: all 0.35s ease;
+    cursor: default;
+    white-space: nowrap;
+}
+
+.deal-pill i {
+    font-size: 0.9rem;
+    color: var(--mint-green);
+}
+
+.deal-pill span {
+    opacity: 0.9;
+}
+
+.deal-pill strong {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--mint-green);
+    margin-left: 4px;
+}
+
+/* Gold pill variant */
+.deal-pill-gold {
+    background: rgba(212, 175, 55, 0.18);
+    border-color: var(--gold-accent);
+}
+
+.deal-pill-gold i {
+    color: var(--gold-accent);
+}
+
+.deal-pill-gold strong {
+    color: var(--gold-accent);
+}
+
+.deal-pill:hover,
+.deal-pill-gold:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Specials CTA override */
+.specials-cta-btn {
+    background: linear-gradient(135deg, var(--gold-accent), #c9a227) !important;
+    border-color: var(--gold-accent) !important;
+    color: var(--deep-forest) !important;
+    font-weight: 700 !important;
+    box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4) !important;
+}
+
+.specials-cta-btn:hover {
+    background: linear-gradient(135deg, #E6C347, var(--gold-accent)) !important;
+    box-shadow: 0 12px 40px rgba(212, 175, 55, 0.6) !important;
+}
+
+/* ============================================
+   DECORATIVE ELEMENTS
+   ============================================ */
+
+.specials-slide-decor {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* Glowing orbs */
+.decor-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0;
+    animation: orbFadeIn 1.2s ease forwards;
+}
+
+.decor-orb-1 {
+    width: 320px;
+    height: 320px;
+    top: -80px;
+    left: -60px;
+    background: radial-gradient(circle, rgba(169, 200, 156, 0.25) 0%, transparent 70%);
+    animation-delay: 0.2s;
+    animation: orbFadeIn 1.2s ease 0.2s forwards, orbFloat1 12s ease-in-out 1.4s infinite;
+}
+
+.decor-orb-2 {
+    width: 280px;
+    height: 280px;
+    bottom: -60px;
+    right: -40px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+    animation: orbFadeIn 1.2s ease 0.4s forwards, orbFloat2 14s ease-in-out 1.6s infinite;
+}
+
+.decor-orb-3 {
+    width: 200px;
+    height: 200px;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(169, 200, 156, 0.12) 0%, transparent 70%);
+    animation: orbFadeIn 1.2s ease 0.6s forwards, orbPulse 6s ease-in-out 1.8s infinite;
+}
+
+@keyframes orbFadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes orbFloat1 {
+    0%, 100% { transform: translate(0, 0); }
+    50%       { transform: translate(30px, 20px); }
+}
+
+@keyframes orbFloat2 {
+    0%, 100% { transform: translate(0, 0); }
+    50%       { transform: translate(-25px, -20px); }
+}
+
+@keyframes orbPulse {
+    0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+    50%       { opacity: 0.7; transform: translate(-50%, -50%) scale(1.15); }
+}
+
+/* Sparkle characters */
+.decor-sparkle {
+    position: absolute;
+    font-size: 1.4rem;
+    color: var(--gold-accent);
+    opacity: 0;
+    animation: sparkleFade 2s ease-in-out infinite alternate;
+    text-shadow: 0 0 12px rgba(212, 175, 55, 0.7);
+}
+
+.decor-sparkle-1 {
+    top: 18%;
+    left: 8%;
+    font-size: 1.6rem;
+    animation-delay: 0s;
+}
+
+.decor-sparkle-2 {
+    top: 65%;
+    left: 5%;
+    font-size: 1rem;
+    animation-delay: 0.6s;
+}
+
+.decor-sparkle-3 {
+    top: 22%;
+    right: 7%;
+    font-size: 1.2rem;
+    color: var(--mint-green);
+    text-shadow: 0 0 10px rgba(169, 200, 156, 0.7);
+    animation-delay: 1s;
+}
+
+.decor-sparkle-4 {
+    bottom: 20%;
+    right: 9%;
+    font-size: 1.5rem;
+    animation-delay: 0.4s;
+}
+
+@keyframes sparkleFade {
+    0%   { opacity: 0;   transform: scale(0.7) rotate(-10deg); }
+    50%  { opacity: 0.9; transform: scale(1.1) rotate(5deg); }
+    100% { opacity: 0.4; transform: scale(0.9) rotate(-5deg); }
+}
+
+/* Decorative accent lines */
+.decor-line {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, var(--mint-green), transparent);
+    opacity: 0;
+    animation: lineFadeIn 1s ease 0.8s forwards;
+}
+
+.decor-line-left  { left: 3%; }
+.decor-line-right { right: 3%; transform: translateY(-50%) scaleX(-1); }
+
+@keyframes lineFadeIn {
+    to { opacity: 0.6; }
+}
+
+/* Make sure slide content sits above decor */
+.specials-slide > *:not(.specials-slide-decor) {
+    position: relative;
+    z-index: 2;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .specials-hero-deals {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .deal-pill {
+        font-size: 0.82rem;
+        padding: 9px 16px;
+    }
+
+    .specials-hero-badge {
+        font-size: 0.78rem;
+        padding: 8px 20px;
+    }
+
+    .decor-orb-1 { width: 200px; height: 200px; }
+    .decor-orb-2 { width: 180px; height: 180px; }
+    .decor-sparkle { font-size: 1rem; }
+    .decor-line { width: 35px; }
+}
+
+@media (max-width: 480px) {
+    .deal-pill { font-size: 0.78rem; white-space: normal; text-align: center; }
+    .decor-sparkle-1, .decor-sparkle-2 { left: 2%; }
+    .decor-sparkle-3, .decor-sparkle-4 { right: 2%; }
+}
