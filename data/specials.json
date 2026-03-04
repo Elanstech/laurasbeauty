@@ -3,9 +3,9 @@
   "services": [
     {
       "id": "spa-giveaway-2026",
-      "name": "✨ Spa Giveaway ✨ A Little Glow-Up on Us!",
-      "description": "Enter to win FREE spa services! 3 winners — Underarm Laser, European Facial, or Brazilian & Underarm Wax. Follow, tag, like & share to enter. Deadline: April 1st, 2026.",
-      "fullDescription": "✨ SPA GIVEAWAY ✨\nA little glow-up moment on us!\n\n**Win One of These:**\n• 🥇 1st Winner — Free Underarm Laser Session\n• 🥈 2nd Winner — Free European Facial\n• 🥉 3rd Winner — Free Brazilian & Underarm Wax\n\n**How to Enter:**\n1. Follow us on Instagram @laurasbeautytouch\n2. Tag 3 friends in the comments — they must follow us too (yes, we'll check!)\n3. Like the video\n4. Share to your Instagram Story and tag us\n\n**Giveaway Details:**\n• Deadline: April 1st, 2026\n• 3 winners will be selected\n• All entry steps must be completed to qualify\n• Tagged friends must also be following @laurasbeautytouch\n• Winners will be announced on our Instagram\n\nTHANK YOU FOR BEING A PART OF OUR JOURNEY! GOOD LUCK! 🍀",
+      "name": "Spa Giveaway - A Little Glow-Up on Us!",
+      "description": "Enter to win FREE spa services! 3 winners - Underarm Laser, European Facial, or Brazilian & Underarm Wax. Follow, tag, like & share to enter. Deadline: April 1st, 2026.",
+      "fullDescription": "SPA GIVEAWAY\nA little glow-up moment on us!\n\nWin One of These:\n1st Winner - Free Underarm Laser Session\n2nd Winner - Free European Facial\n3rd Winner - Free Brazilian & Underarm Wax\n\nHow to Enter:\n1. Follow us on Instagram @laurasbeautytouch\n2. Tag 3 friends in the comments - they must follow us too (yes, we'll check!)\n3. Like the video\n4. Share to your Instagram Story and tag us\n\nGiveaway Details:\nDeadline: April 1st, 2026\n3 winners will be selected\nAll entry steps must be completed to qualify\nTagged friends must also be following @laurasbeautytouch\nWinners will be announced on our Instagram\n\nTHANK YOU FOR BEING A PART OF OUR JOURNEY! GOOD LUCK!",
       "duration": "Varies by prize",
       "price": "FREE",
       "priceLabel": "Giveaway",
@@ -25,7 +25,7 @@
       "id": "collagen-facial-special",
       "name": "Collagen Facial + FREE Eyebrow Wax or Hand Treatment",
       "description": "Indulge in a rejuvenating Collagen Facial paired with a complimentary Eyebrow Wax or Hand Treatment. Limited-time offer!",
-      "fullDescription": "✨ SPECIAL OFFER ✨\n\nTreat yourself to our luxurious Collagen Facial and choose a FREE add-on:\n\n• Free Eyebrow Wax — perfectly shaped brows to frame your glow\n• Free Hand Treatment — soft, nourished hands to match your radiant skin\n\nThis bundle is the ultimate skin-rejuvenating experience at an incredible value.",
+      "fullDescription": "SPECIAL OFFER\n\nTreat yourself to our luxurious Collagen Facial and choose a FREE add-on:\n\nFree Eyebrow Wax - perfectly shaped brows to frame your glow\nFree Hand Treatment - soft, nourished hands to match your radiant skin\n\nThis bundle is the ultimate skin-rejuvenating experience at an incredible value.",
       "duration": "Varies",
       "price": "$89",
       "regularPrice": "$120",
@@ -44,7 +44,7 @@
       "id": "oxygen-hydra-facial-special",
       "name": "Oxygen Hydra Facial + FREE Underarm or Chin Laser",
       "description": "Experience our premium Oxygen Hydra Facial and get a complimentary Underarm or Chin Laser session. Glow inside and out!",
-      "fullDescription": "✨ SPECIAL OFFER ✨\n\nOur most popular facial paired with a FREE laser session of your choice:\n\n• Free Underarm Laser Session\n• Free Chin Laser Session\n\nThe Oxygen Hydra Facial deeply hydrates, cleanses, and revitalizes your skin while you start your hair-free journey — all in one visit!",
+      "fullDescription": "SPECIAL OFFER\n\nOur most popular facial paired with a FREE laser session of your choice:\n\nFree Underarm Laser Session\nFree Chin Laser Session\n\nThe Oxygen Hydra Facial deeply hydrates, cleanses, and revitalizes your skin while you start your hair-free journey - all in one visit!",
       "duration": "Varies",
       "price": "$180",
       "regularPrice": "$265",
@@ -61,9 +61,9 @@
     },
     {
       "id": "permanent-makeup-special",
-      "name": "Permanent Makeup — Lips or Brows",
+      "name": "Permanent Makeup - Lips or Brows",
       "description": "Wake up flawless every day! Choose permanent makeup for your Lips or Brows. Long-lasting, natural-looking results.",
-      "fullDescription": "✨ PERMANENT MAKEUP ✨\n\nWake up beautiful every single day with our professional Permanent Makeup services:\n\n• Permanent Lip Color — natural or bold, your choice\n• Permanent Brow Design — full, defined, perfectly shaped brows\n\nOur expert technicians create natural-looking, long-lasting results tailored to your unique features.",
+      "fullDescription": "PERMANENT MAKEUP\n\nWake up beautiful every single day with our professional Permanent Makeup services:\n\nPermanent Lip Color - natural or bold, your choice\nPermanent Brow Design - full, defined, perfectly shaped brows\n\nOur expert technicians create natural-looking, long-lasting results tailored to your unique features.",
       "duration": "Varies",
       "price": "$385",
       "regularPrice": "$500",
@@ -83,7 +83,7 @@
       "id": "aroma-spa-pedicure-special",
       "name": "Aroma Express Facial + Body Scrub Spa & Spa Pedicure with Hand Treatment",
       "description": "A full-body pampering experience! Includes Aroma Express Facial, Aroma Body Scrub Spa with Shower, and Spa Pedicure with Hand Treatment.",
-      "fullDescription": "✨ SPA INDULGENCE SPECIAL ✨\n\nThe ultimate head-to-toe pampering package:\n\n• Aroma Express Facial — refresh and revitalize your skin\n• Aroma Body Scrub Spa with Shower — exfoliate and renew your entire body\n• Spa Pedicure — luxurious foot care and polish\n• Hand Treatment — soft, silky hands to complete your glow\n\nThe perfect escape for a full self-care day!",
+      "fullDescription": "SPA INDULGENCE SPECIAL\n\nThe ultimate head-to-toe pampering package:\n\nAroma Express Facial - refresh and revitalize your skin\nAroma Body Scrub Spa with Shower - exfoliate and renew your entire body\nSpa Pedicure - luxurious foot care and polish\nHand Treatment - soft, silky hands to complete your glow\n\nThe perfect escape for a full self-care day!",
       "duration": "Varies",
       "price": "$159",
       "regularPrice": "$190",
@@ -103,95 +103,10 @@
       "id": "lash-lift-tint-special",
       "name": "Lash Lift & Tint + FREE Eyebrow Wax",
       "description": "Get stunning lifted, tinted lashes plus a complimentary Eyebrow Wax. Look effortlessly polished every day!",
-      "fullDescription": "✨ SPECIAL OFFER ✨\n\nElevate your eye look with our Lash Lift & Tint bundle:\n\n• Lash Lift — curled, lifted lashes that open up your eyes\n• Lash Tint — rich, dark color for bold, mascara-free lashes\n• FREE Eyebrow Wax — perfectly groomed brows to complete the look\n\nWake up with effortlessly beautiful eyes — no mascara needed!",
+      "fullDescription": "SPECIAL OFFER\n\nElevate your eye look with our Lash Lift & Tint bundle:\n\nLash Lift - curled, lifted lashes that open up your eyes\nLash Tint - rich, dark color for bold, mascara-free lashes\nFREE Eyebrow Wax - perfectly groomed brows to complete the look\n\nWake up with effortlessly beautiful eyes - no mascara needed!",
       "duration": "Varies",
       "price": "$89",
       "regularPrice": "$155",
-      "priceLabel": "Special",
-      "bookNowUrl": "",
-      "image": "",
-      "badge": "Save $66",
-      "benefits": [
-        "Lash Lift for beautifully curled lashes",
-        "Lash Tint for bold, mascara-free color",
-        "Free Eyebrow Wax included",
-        "Save $66 off regular price"
-      ]
-    }
-  ]
-}        "Collagen Facial for deep skin rejuvenation",
-        "Choice of Free Eyebrow Wax or Hand Treatment",
-        "Limited-time pricing",
-        "Save $31 off regular price"
-      ]
-    },
-    {
-      "id": "oxygen-hydra-facial-special",
-      "name": "Oxygen Hydra Facial + FREE Underarm or Chin Laser",
-      "description": "Experience our premium Oxygen Hydra Facial and get a complimentary Underarm or Chin Laser session. Glow inside and out!",
-      "fullDescription": "✨ SPECIAL OFFER ✨\n\nOur most popular facial paired with a FREE laser session of your choice:\n\n• Free Underarm Laser Session\n• Free Chin Laser Session\n\nThe Oxygen Hydra Facial deeply hydrates, cleanses, and revitalizes your skin while you start your hair-free journey — all in one visit!",
-      "duration": "Varies",
-      "price": 180,
-      "originalPrice": 265,
-      "priceLabel": "Special",
-      "bookNowUrl": "",
-      "image": "",
-      "badge": "Save $85",
-      "benefits": [
-        "Oxygen Hydra Facial for deep hydration & glow",
-        "Choice of Free Underarm or Chin Laser Session",
-        "Premium combo at an unbeatable price",
-        "Save $85 off regular price"
-      ]
-    },
-    {
-      "id": "permanent-makeup-special",
-      "name": "Permanent Makeup — Lips or Brows",
-      "description": "Wake up flawless every day! Choose permanent makeup for your Lips or Brows. Long-lasting, natural-looking results.",
-      "fullDescription": "✨ PERMANENT MAKEUP ✨\n\nWake up beautiful every single day with our professional Permanent Makeup services:\n\n• Permanent Lip Color — natural or bold, your choice\n• Permanent Brow Design — full, defined, perfectly shaped brows\n\nOur expert technicians create natural-looking, long-lasting results tailored to your unique features.",
-      "duration": "Varies",
-      "price": 385,
-      "originalPrice": 500,
-      "priceLabel": "Special",
-      "bookNowUrl": "",
-      "image": "",
-      "badge": "Save $115",
-      "benefits": [
-        "Choice of Permanent Lip Color or Permanent Brows",
-        "Long-lasting, natural-looking results",
-        "Performed by expert technicians",
-        "Wake up flawless every day",
-        "Save $115 off regular price"
-      ]
-    },
-    {
-      "id": "aroma-spa-pedicure-special",
-      "name": "Aroma Express Facial + Body Scrub Spa & Spa Pedicure with Hand Treatment",
-      "description": "A full-body pampering experience! Includes Aroma Express Facial, Aroma Body Scrub Spa with Shower, and Spa Pedicure with Hand Treatment.",
-      "fullDescription": "✨ SPA INDULGENCE SPECIAL ✨\n\nThe ultimate head-to-toe pampering package:\n\n• Aroma Express Facial — refresh and revitalize your skin\n• Aroma Body Scrub Spa with Shower — exfoliate and renew your entire body\n• Spa Pedicure — luxurious foot care and polish\n• Hand Treatment — soft, silky hands to complete your glow\n\nThe perfect escape for a full self-care day!",
-      "duration": "Varies",
-      "price": 159,
-      "originalPrice": 190,
-      "priceLabel": "Special",
-      "bookNowUrl": "",
-      "image": "",
-      "badge": "Save $31",
-      "benefits": [
-        "Aroma Express Facial included",
-        "Aroma Body Scrub Spa with Shower",
-        "Spa Pedicure for beautiful feet",
-        "Hand Treatment for silky smooth hands",
-        "Save $31 off regular price"
-      ]
-    },
-    {
-      "id": "lash-lift-tint-special",
-      "name": "Lash Lift & Tint + FREE Eyebrow Wax",
-      "description": "Get stunning lifted, tinted lashes plus a complimentary Eyebrow Wax. Look effortlessly polished every day!",
-      "fullDescription": "✨ SPECIAL OFFER ✨\n\nElevate your eye look with our Lash Lift & Tint bundle:\n\n• Lash Lift — curled, lifted lashes that open up your eyes\n• Lash Tint — rich, dark color for bold, mascara-free lashes\n• FREE Eyebrow Wax — perfectly groomed brows to complete the look\n\nWake up with effortlessly beautiful eyes — no mascara needed!",
-      "duration": "Varies",
-      "price": 89,
-      "originalPrice": 155,
       "priceLabel": "Special",
       "bookNowUrl": "",
       "image": "",
