@@ -54,6 +54,40 @@
       ]
     },
     {
+      "id": "full-upper-body-her",
+      "name": "Full Upper Body Laser for Her",
+      "description": "Complete upper body laser hair removal for women. Includes arms, back, shoulders, and stomach for smooth, flawless skin.",
+      "fullDescription": "Our Full Upper Body Laser package for women provides comprehensive hair removal across the entire upper body, including arms, back, shoulders, and stomach. This all-in-one treatment delivers beautifully smooth results and excellent value for full upper body coverage.",
+      "duration": "60 min",
+      "price": "$250",
+      "priceLabel": "Starting at $250",
+      "bookNowUrl": "",
+      "badge": "Complete Package",
+      "benefits": [
+        "Comprehensive upper body coverage",
+        "Cost-effective package pricing",
+        "Smooth, flawless results",
+        "Long-lasting hair reduction"
+      ]
+    },
+    {
+      "id": "full-lower-body-her",
+      "name": "Full Lower Body Laser for Her",
+      "description": "Complete lower body laser hair removal for women. Includes full legs, bikini line, and buttocks for all-over smoothness.",
+      "fullDescription": "Our Full Lower Body Laser package for women offers thorough hair removal across the entire lower body, including full legs, bikini line, and buttocks. Enjoy silky smooth skin from waist to toes with this comprehensive, time-saving package.",
+      "duration": "60 min",
+      "price": "$250",
+      "priceLabel": "Starting at $250",
+      "bookNowUrl": "",
+      "badge": "Complete Package",
+      "benefits": [
+        "Comprehensive lower body coverage",
+        "Cost-effective package pricing",
+        "Silky smooth results",
+        "Long-lasting hair reduction"
+      ]
+    },
+    {
       "id": "chest-laser-him",
       "name": "Chest Laser For Him",
       "description": "Achieve a smooth, hair-free chest with professional laser treatments designed for men's skin and hair.",
@@ -139,6 +173,22 @@
       ]
     },
     {
+      "id": "full-back-shoulders-laser-him",
+      "name": "Full Back and Shoulders Laser for Him",
+      "description": "Complete back and shoulder hair removal for men. Comprehensive coverage for a clean, groomed upper body.",
+      "fullDescription": "Our Full Back and Shoulders Laser treatment for men combines complete back and shoulder hair removal into one convenient session. Using advanced laser technology, this comprehensive treatment delivers smooth, uniform results across the entire back and shoulder area.",
+      "duration": "60 min",
+      "price": "$250",
+      "priceLabel": "Starting at $250",
+      "bookNowUrl": "",
+      "benefits": [
+        "Complete back and shoulder coverage",
+        "Convenient combined treatment",
+        "Smooth, uniform results",
+        "Long-lasting hair reduction"
+      ]
+    },
+    {
       "id": "full-arm-laser",
       "name": "Full Arm Laser",
       "description": "Complete arm hair removal from shoulders to fingertips. Enjoy beautifully smooth arms year-round.",
@@ -187,6 +237,22 @@
         "Boosts confidence",
         "No more plucking or waxing",
         "Precise targeting"
+      ]
+    },
+    {
+      "id": "lip-laser",
+      "name": "Lip Laser",
+      "description": "Gentle and precise laser hair removal for the upper lip area. Quick treatment for smooth, hair-free skin.",
+      "fullDescription": "Our Lip Laser treatment gently and effectively removes unwanted upper lip hair using precise laser technology. This quick treatment is perfect for eliminating peach fuzz or darker hair growth, leaving you with smooth, confident skin.",
+      "duration": "10 min",
+      "price": "$45",
+      "priceLabel": "Starting at $45",
+      "bookNowUrl": "",
+      "benefits": [
+        "Quick and painless",
+        "Smooth, hair-free upper lip",
+        "No more waxing or threading",
+        "Precise, gentle treatment"
       ]
     },
     {
@@ -290,6 +356,102 @@
         "Ultimate convenience",
         "Best value package",
         "Long-lasting smoothness everywhere"
+      ]
+    },
+    {
+      "id": "back-of-neck-laser-her",
+      "name": "Back of Neck Laser for Her",
+      "description": "Gentle laser hair removal for the back of the neck. Perfect for a clean neckline and updo-ready smoothness.",
+      "fullDescription": "Our Back of Neck Laser treatment for women gently removes unwanted hair along the nape and back of the neck. Ideal for maintaining a clean, polished neckline that looks flawless with updos, ponytails, and short hairstyles.",
+      "duration": "10 min",
+      "price": "$85",
+      "priceLabel": "Starting at $85",
+      "bookNowUrl": "",
+      "benefits": [
+        "Clean, polished neckline",
+        "Perfect for updos and ponytails",
+        "Quick and gentle treatment",
+        "Long-lasting smoothness"
+      ]
+    },
+    {
+      "id": "back-of-neck-laser-him",
+      "name": "Back of Neck Laser for Him",
+      "description": "Precision laser hair removal for the back of the neck. Maintain a clean, groomed neckline between haircuts.",
+      "fullDescription": "Our Back of Neck Laser treatment for men targets unwanted hair along the nape and back of the neck. Keep a sharp, well-groomed neckline at all times without the need for constant touch-ups between barber visits.",
+      "duration": "10 min",
+      "price": "$95",
+      "priceLabel": "Starting at $95",
+      "bookNowUrl": "",
+      "benefits": [
+        "Sharp, groomed neckline",
+        "Reduces between-haircut maintenance",
+        "Quick and comfortable",
+        "Long-lasting results"
+      ]
+    },
+    {
+      "id": "half-stomach-laser-her",
+      "name": "Half Stomach Laser for Her",
+      "description": "Targeted laser hair removal for the upper or lower stomach area. Smooth, hair-free skin with quick treatment.",
+      "fullDescription": "Our Half Stomach Laser treatment for women targets either the upper or lower stomach area, removing unwanted hair with gentle precision. Perfect for achieving smooth, confident skin around the belly button or waistline.",
+      "duration": "15 min",
+      "price": "$50",
+      "priceLabel": "Starting at $50",
+      "bookNowUrl": "",
+      "benefits": [
+        "Targeted stomach coverage",
+        "Quick treatment time",
+        "Smooth, confident skin",
+        "Cost-effective option"
+      ]
+    },
+    {
+      "id": "full-stomach-laser-her",
+      "name": "Full Stomach Laser for Her",
+      "description": "Complete stomach laser hair removal for women. Achieve smooth, flawless skin across the entire abdominal area.",
+      "fullDescription": "Our Full Stomach Laser treatment for women provides comprehensive hair removal across the entire abdominal area, from below the chest to the waistline. Enjoy smooth, hair-free skin that looks great in any outfit or swimwear.",
+      "duration": "20 min",
+      "price": "$80",
+      "priceLabel": "Starting at $80",
+      "bookNowUrl": "",
+      "benefits": [
+        "Complete stomach coverage",
+        "Smooth, flawless results",
+        "Perfect for swimwear confidence",
+        "Long-lasting hair reduction"
+      ]
+    },
+    {
+      "id": "half-back-laser-her",
+      "name": "Half Back Laser for Her",
+      "description": "Laser hair removal for the upper or lower back. Smooth, flawless skin exactly where you need it.",
+      "fullDescription": "Our Half Back Laser treatment for women targets either the upper back (shoulders to mid-back) or lower back (mid-back to waistline), providing smooth, hair-free skin with gentle laser technology tailored for women's skin.",
+      "duration": "20 min",
+      "price": "$80",
+      "priceLabel": "Starting at $80",
+      "bookNowUrl": "",
+      "benefits": [
+        "Targeted back coverage",
+        "Smooth, flawless skin",
+        "Gentle on skin",
+        "Cost-effective option"
+      ]
+    },
+    {
+      "id": "full-front-laser-her",
+      "name": "Full Front Laser for Her",
+      "description": "Complete front body laser hair removal for women. Smooth, hair-free skin from chest to waistline.",
+      "fullDescription": "Our Full Front Laser treatment for women provides comprehensive hair removal across the entire front torso, including the chest, stomach, and waistline area. Achieve beautifully smooth skin with this convenient, all-in-one front body treatment.",
+      "duration": "30 min",
+      "price": "$120",
+      "priceLabel": "Starting at $120",
+      "bookNowUrl": "",
+      "benefits": [
+        "Complete front body coverage",
+        "Smooth, uniform results",
+        "Convenient single session",
+        "Long-lasting hair reduction"
       ]
     }
   ]
