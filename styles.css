@@ -7327,25 +7327,25 @@ a.contact-value:hover {
 }
 
 /* ============================================
-   INTERNATIONAL WOMEN'S DAY — HERO SLIDE
+   MOTHER'S DAY — HERO SLIDE
    ============================================ */
 
 :root {
-    --wd-rose: #E8A0BF;
-    --wd-blush: #FFD6E8;
-    --wd-plum: #9B4F76;
-    --wd-deep-plum: #6A2C50;
-    --wd-lavender: #C8A2D4;
-    --wd-warm-gold: #F5D5A0;
+    --md-rose: #E8A4B8;
+    --md-deep-rose: #B45F7A;
+    --md-blush: #FFD6E0;
+    --md-cream: #FFF0F3;
+    --md-warm-gold: #E8C770;
+    --md-soft-pink: #F4B6C2;
 }
 
 /* Badge */
-.womens-day-badge {
+.mothers-day-badge {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: linear-gradient(135deg, var(--wd-rose), var(--wd-lavender));
-    color: var(--wd-deep-plum);
+    background: linear-gradient(135deg, var(--md-rose), var(--md-warm-gold));
+    color: #fff;
     padding: 10px 28px;
     border-radius: 50px;
     font-family: 'Lato', sans-serif;
@@ -7354,38 +7354,34 @@ a.contact-value:hover {
     letter-spacing: 1.5px;
     text-transform: uppercase;
     margin-bottom: 22px;
-    box-shadow: 0 4px 25px rgba(232, 160, 191, 0.5);
+    box-shadow: 0 4px 25px rgba(232, 164, 184, 0.55);
     animation: fadeInDown 0.8s ease-out both;
 }
 
-.womens-day-badge i {
-    font-size: 0.75rem;
-    color: var(--wd-deep-plum);
+.mothers-day-badge i {
+    font-size: 0.85rem;
+    color: #fff;
     animation: heartBeat 1.8s ease-in-out infinite;
 }
 
-@keyframes heartBeat {
-    0%, 100% { transform: scale(1); }
-    15%      { transform: scale(1.3); }
-    30%      { transform: scale(1); }
-    45%      { transform: scale(1.2); }
-    60%      { transform: scale(1); }
-}
-
-/* Title accent override */
-.womens-day-accent {
-    color: var(--wd-rose) !important;
-    text-shadow: 0 4px 30px rgba(232, 160, 191, 0.6) !important;
+/* Title accent */
+.mothers-day-accent {
+    background: linear-gradient(135deg, var(--md-rose) 0%, var(--md-warm-gold) 50%, var(--md-soft-pink) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 4px 30px rgba(232, 164, 184, 0.5) !important;
+    color: var(--md-rose) !important;
 }
 
 /* Description */
-.womens-day-description {
-    color: rgba(255, 214, 232, 0.95) !important;
+.mothers-day-description {
+    color: rgba(255, 240, 243, 0.95) !important;
     font-style: italic;
 }
 
 /* Deal Pills */
-.womens-day-deals {
+.mothers-day-deals {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -7395,12 +7391,12 @@ a.contact-value:hover {
     animation: fadeInUp 0.8s ease-out 0.4s both;
 }
 
-.wd-deal-pill {
+.md-deal-pill {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: rgba(232, 160, 191, 0.12);
-    border: 1.5px solid rgba(232, 160, 191, 0.5);
+    background: rgba(232, 164, 184, 0.14);
+    border: 1.5px solid rgba(232, 164, 184, 0.5);
     backdrop-filter: blur(12px);
     padding: 10px 20px;
     border-radius: 50px;
@@ -7412,62 +7408,53 @@ a.contact-value:hover {
     white-space: nowrap;
 }
 
-.wd-deal-pill i {
+.md-deal-pill i {
     font-size: 0.9rem;
-    color: var(--wd-rose);
+    color: var(--md-rose);
 }
 
-.wd-deal-pill span {
-    opacity: 0.9;
-}
+.md-deal-pill span { opacity: 0.9; }
 
-.wd-deal-pill strong {
+.md-deal-pill strong {
     font-size: 1rem;
     font-weight: 700;
-    color: var(--wd-rose);
+    color: var(--md-rose);
     margin-left: 4px;
 }
 
-/* Featured pill */
-.wd-deal-pill-feature {
-    background: rgba(200, 162, 212, 0.18);
-    border-color: var(--wd-lavender);
+.md-deal-pill-feature {
+    background: rgba(232, 199, 112, 0.18);
+    border-color: var(--md-warm-gold);
 }
 
-.wd-deal-pill-feature i {
-    color: var(--wd-lavender);
+.md-deal-pill-feature i,
+.md-deal-pill-feature strong {
+    color: var(--md-warm-gold);
 }
 
-.wd-deal-pill-feature strong {
-    color: var(--wd-lavender);
-}
-
-.wd-deal-pill:hover,
-.wd-deal-pill-feature:hover {
+.md-deal-pill:hover,
+.md-deal-pill-feature:hover {
     transform: translateY(-4px) scale(1.03);
-    box-shadow: 0 8px 24px rgba(232, 160, 191, 0.3);
+    box-shadow: 0 8px 24px rgba(232, 164, 184, 0.35);
 }
 
 /* CTA Button */
-.womens-day-cta {
-    background: linear-gradient(135deg, var(--wd-rose), var(--wd-plum)) !important;
-    border-color: var(--wd-rose) !important;
-    color: white !important;
+.mothers-day-cta {
+    background: linear-gradient(135deg, var(--md-rose), var(--md-deep-rose)) !important;
+    border-color: var(--md-rose) !important;
+    color: #fff !important;
     font-weight: 700 !important;
-    box-shadow: 0 8px 30px rgba(232, 160, 191, 0.45) !important;
+    box-shadow: 0 8px 30px rgba(232, 164, 184, 0.5) !important;
 }
 
-.womens-day-cta:hover {
-    background: linear-gradient(135deg, var(--wd-blush), var(--wd-rose)) !important;
-    box-shadow: 0 12px 40px rgba(232, 160, 191, 0.65) !important;
-    color: var(--wd-deep-plum) !important;
+.mothers-day-cta:hover {
+    background: linear-gradient(135deg, var(--md-blush), var(--md-rose)) !important;
+    box-shadow: 0 12px 40px rgba(232, 164, 184, 0.7) !important;
+    color: var(--md-deep-rose) !important;
 }
 
-/* ============================================
-   DECORATIVE ELEMENTS
-   ============================================ */
-
-.womens-day-decor {
+/* Decorative orbs & sparkles */
+.mothers-day-decor {
     position: absolute;
     inset: 0;
     pointer-events: none;
@@ -7475,168 +7462,98 @@ a.contact-value:hover {
     overflow: hidden;
 }
 
-/* Glowing orbs — soft rose & lavender */
-.wd-orb {
+.md-orb {
     position: absolute;
     border-radius: 50%;
     filter: blur(60px);
     opacity: 0;
 }
 
-.wd-orb-1 {
-    width: 320px;
-    height: 320px;
-    top: -80px;
-    left: -60px;
-    background: radial-gradient(circle, rgba(232, 160, 191, 0.3) 0%, transparent 70%);
+.md-orb-1 {
+    width: 340px; height: 340px;
+    top: -80px; left: -60px;
+    background: radial-gradient(circle, rgba(232, 164, 184, 0.35) 0%, transparent 70%);
     animation: orbFadeIn 1.2s ease 0.2s forwards, orbFloat1 12s ease-in-out 1.4s infinite;
 }
 
-.wd-orb-2 {
-    width: 280px;
-    height: 280px;
-    bottom: -60px;
-    right: -40px;
-    background: radial-gradient(circle, rgba(200, 162, 212, 0.25) 0%, transparent 70%);
+.md-orb-2 {
+    width: 300px; height: 300px;
+    bottom: -60px; right: -40px;
+    background: radial-gradient(circle, rgba(232, 199, 112, 0.28) 0%, transparent 70%);
     animation: orbFadeIn 1.2s ease 0.4s forwards, orbFloat2 14s ease-in-out 1.6s infinite;
 }
 
-.wd-orb-3 {
-    width: 200px;
-    height: 200px;
-    top: 40%;
-    left: 50%;
+.md-orb-3 {
+    width: 220px; height: 220px;
+    top: 40%; left: 50%;
     transform: translate(-50%, -50%);
-    background: radial-gradient(circle, rgba(245, 213, 160, 0.12) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 214, 224, 0.18) 0%, transparent 70%);
     animation: orbFadeIn 1.2s ease 0.6s forwards, orbPulse 6s ease-in-out 1.8s infinite;
 }
 
-/* Flower sparkles */
-.wd-sparkle {
+.md-sparkle {
     position: absolute;
     font-size: 1.4rem;
-    color: var(--wd-rose);
+    color: var(--md-rose);
     opacity: 0;
     animation: wdSparkleFade 3s ease-in-out infinite alternate;
-    text-shadow: 0 0 12px rgba(232, 160, 191, 0.6);
+    text-shadow: 0 0 12px rgba(232, 164, 184, 0.7);
 }
 
-.wd-sparkle-1 {
-    top: 14%;
-    left: 7%;
-    font-size: 1.8rem;
-    animation-delay: 0s;
-}
+.md-sparkle-1 { top: 14%; left: 7%;  font-size: 1.8rem; animation-delay: 0s; }
+.md-sparkle-2 { top: 68%; left: 4%;  font-size: 1.2rem; color: var(--md-warm-gold); text-shadow: 0 0 10px rgba(232, 199, 112, 0.6); animation-delay: 0.8s; }
+.md-sparkle-3 { top: 20%; right: 6%; font-size: 1.4rem; color: var(--md-blush); text-shadow: 0 0 10px rgba(255, 214, 224, 0.6); animation-delay: 0.4s; }
+.md-sparkle-4 { bottom: 22%; right: 8%; font-size: 1.6rem; color: var(--md-warm-gold); text-shadow: 0 0 12px rgba(232, 199, 112, 0.6); animation-delay: 1.2s; }
+.md-sparkle-5 { bottom: 35%; left: 12%; font-size: 1rem; color: var(--md-soft-pink); text-shadow: 0 0 10px rgba(244, 182, 194, 0.6); animation-delay: 0.6s; }
 
-.wd-sparkle-2 {
-    top: 68%;
-    left: 4%;
-    font-size: 1.2rem;
-    color: var(--wd-lavender);
-    text-shadow: 0 0 10px rgba(200, 162, 212, 0.6);
-    animation-delay: 0.8s;
-}
-
-.wd-sparkle-3 {
-    top: 20%;
-    right: 6%;
-    font-size: 1.4rem;
-    color: var(--wd-blush);
-    text-shadow: 0 0 10px rgba(255, 214, 232, 0.5);
-    animation-delay: 0.4s;
-}
-
-.wd-sparkle-4 {
-    bottom: 22%;
-    right: 8%;
-    font-size: 1.6rem;
-    color: var(--wd-lavender);
-    text-shadow: 0 0 12px rgba(200, 162, 212, 0.6);
-    animation-delay: 1.2s;
-}
-
-.wd-sparkle-5 {
-    bottom: 35%;
-    left: 12%;
-    font-size: 1rem;
-    color: var(--wd-warm-gold);
-    text-shadow: 0 0 10px rgba(245, 213, 160, 0.5);
-    animation-delay: 0.6s;
-}
-
-@keyframes wdSparkleFade {
-    0%   { opacity: 0;   transform: scale(0.6) rotate(-15deg); }
-    50%  { opacity: 0.85; transform: scale(1.1) rotate(10deg); }
-    100% { opacity: 0.3; transform: scale(0.85) rotate(-8deg); }
-}
-
-/* Accent lines */
-.wd-line {
+.md-line {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     width: 60px;
     height: 1.5px;
-    background: linear-gradient(90deg, transparent, var(--wd-rose), transparent);
+    background: linear-gradient(90deg, transparent, var(--md-rose), transparent);
     opacity: 0;
     animation: lineFadeIn 1s ease 0.8s forwards;
 }
 
-.wd-line-left  { left: 3%; }
-.wd-line-right { right: 3%; transform: translateY(-50%) scaleX(-1); }
+.md-line-left  { left: 3%; }
+.md-line-right { right: 3%; transform: translateY(-50%) scaleX(-1); }
 
-/* Content above decor */
-.womens-day-slide > *:not(.womens-day-decor) {
+/* Orb keyframes (reuse if not present) */
+@keyframes orbFadeIn { to { opacity: 1; } }
+@keyframes orbFloat1 {
+    0%, 100% { transform: translate(0, 0); }
+    50%      { transform: translate(20px, -20px); }
+}
+@keyframes orbFloat2 {
+    0%, 100% { transform: translate(0, 0); }
+    50%      { transform: translate(-25px, 15px); }
+}
+@keyframes orbPulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
+    50%      { transform: translate(-50%, -50%) scale(1.15); opacity: 0.7; }
+}
+@keyframes lineFadeIn { to { opacity: 1; } }
+
+.mothers-day-slide > *:not(.mothers-day-decor) {
     position: relative;
     z-index: 2;
 }
 
-/* Navigation dot active color override for slide 1 */
-.hero-navigation-dots .dot.active {
-    background: var(--wd-rose);
-    border-color: var(--wd-rose);
-    box-shadow: 0 0 15px rgba(232, 160, 191, 0.6);
+/* Active dot color override on slide 1 */
+.hero-slide.mothers-day-slide.active ~ .hero-navigation-dots .dot.active {
+    background: var(--md-rose);
+    border-color: var(--md-rose);
+    box-shadow: 0 0 15px rgba(232, 164, 184, 0.7);
 }
 
-/* ============================================
-   RESPONSIVE
-   ============================================ */
 @media (max-width: 768px) {
-    .womens-day-deals {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .wd-deal-pill {
-        font-size: 0.82rem;
-        padding: 9px 16px;
-    }
-
-    .womens-day-badge {
-        font-size: 0.75rem;
-        padding: 8px 20px;
-    }
-
-    .wd-orb-1 { width: 200px; height: 200px; }
-    .wd-orb-2 { width: 180px; height: 180px; }
-    .wd-sparkle { font-size: 1rem; }
-    .wd-line { width: 35px; }
-}
-
-@media (max-width: 480px) {
-    .wd-deal-pill {
-        font-size: 0.78rem;
-        white-space: normal;
-        text-align: center;
-    }
-
-    .womens-day-badge {
-        font-size: 0.7rem;
-        padding: 7px 16px;
-        gap: 6px;
-    }
-
-    .wd-sparkle-1, .wd-sparkle-2, .wd-sparkle-5 { left: 2%; }
-    .wd-sparkle-3, .wd-sparkle-4 { right: 2%; }
+    .mothers-day-deals { flex-direction: column; align-items: center; gap: 10px; }
+    .md-deal-pill { font-size: 0.82rem; padding: 9px 16px; }
+    .mothers-day-badge { font-size: 0.75rem; padding: 8px 20px; }
+    .md-orb-1 { width: 220px; height: 220px; }
+    .md-orb-2 { width: 200px; height: 200px; }
+    .md-sparkle { font-size: 1rem; }
+    .md-line { width: 35px; }
 }
