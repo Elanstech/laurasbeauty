@@ -1,1 +1,104 @@
-
+{
+  "category": "specials",
+  "promoTitle": "Mother's Day Specials",
+  "promoSubtitle": "Celebrate Mom with luxurious treatments she'll love",
+  "promoStartDate": "2026-04-28",
+  "promoEndDate": "2026-05-11",
+  "services": [
+    {
+      "id": "mothers-day-microshading",
+      "name": "Microshading Eyebrows",
+      "description": "The perfect gift for Mom! Soft, powdered brow look with microshading permanent makeup. Wakes up beautiful for months to come.",
+      "fullDescription": "Give Mom the gift that lasts. Achieve beautiful, soft-shaded brows with our microshading technique. This permanent makeup method creates a powdered, filled-in look similar to makeup, perfect for Moms who want fuller-looking brows without the daily fuss. A truly thoughtful Mother's Day gift she'll thank you for every single morning.\n\nIncludes:\n• Custom brow shape consultation\n• Premium pigment selection\n• Soft, natural powdered finish\n• Aftercare kit\n• Complimentary touch-up included",
+      "duration": "180 min",
+      "regularPrice": "$450",
+      "price": "$350",
+      "priceLabel": "Save $100",
+      "badge": "Perfect Gift for Mom",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&eid=4757257&oiid=sv%3A24202484&share=true&pId=2609547",
+      "image": "https://hips.hearstapps.com/hmg-prod/images/hbz-microshading-1-1573835604.jpg",
+      "benefits": [
+        "Soft, powdered brow look",
+        "Lasts 1-3 years",
+        "No daily makeup needed",
+        "Perfect Mother's Day gift"
+      ]
+    },
+    {
+      "id": "mothers-day-anti-aging-facial",
+      "name": "Anti-Aging Facial",
+      "description": "Help Mom turn back the clock with our comprehensive anti-aging facial. Targets fine lines, wrinkles, and restores youthful glow.",
+      "fullDescription": "Give Mom the gift of radiant, youthful skin. Our Anti-Aging Facial targets fine lines, wrinkles, and loss of firmness with advanced techniques for visible rejuvenation.\n\nIncludes:\n• Cleanser\n• Toner\n• Exfoliation scrub with Alpha-hydroxy acids\n• Clarisonic Brush Cleanse\n• Steam\n• Extraction\n• Glycolic acid\n• Collagen infusing mask\n• Eye herbal treatment\n• Hand Paraffin treatment",
+      "duration": "75 min",
+      "regularPrice": "$120",
+      "price": "$99",
+      "priceLabel": "Save $21",
+      "badge": "Mother's Day Special",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24190915&share=true&pId=2609547",
+      "image": "https://riaskincareandspa.com/wp-content/uploads/2024/07/Anti-aging-Facial-1.webp",
+      "benefits": [
+        "Reduces fine lines and wrinkles",
+        "Improves skin firmness",
+        "Boosts collagen production",
+        "Visible rejuvenation"
+      ]
+    },
+    {
+      "id": "mothers-day-underarm-laser",
+      "name": "Underarm Laser Hair Removal",
+      "description": "Give Mom the gift of smooth, hair-free underarms. Gentle laser treatment with long-lasting results — no more daily shaving!",
+      "fullDescription": "The gift Mom deserves — freedom from daily shaving! Our Women's Underarm Laser treatment provides a gentle yet effective solution for permanent hair reduction. Designed specifically for women's delicate underarm skin, this treatment offers lasting smoothness and one less thing on Mom's busy to-do list.",
+      "duration": "15 min",
+      "regularPrice": "$70",
+      "price": "$49",
+      "priceLabel": "Save $21",
+      "badge": "30% Off — Best Value",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24201623&share=true&pId=2609547",
+      "image": "https://www.skintight.com.au/wp-content/uploads/2019/08/laser-hair-removal-underarm.jpg",
+      "benefits": [
+        "Gentle on sensitive skin",
+        "Long-lasting smoothness",
+        "No more razor burn",
+        "Quick 15-minute treatment"
+      ]
+    },
+    {
+      "id": "mothers-day-spa-escape",
+      "name": "Spa Escape Package",
+      "description": "The ultimate Mother's Day escape! Full-body renewal with body scrub, manicure, pedicure, and express facial. Pure indulgence.",
+      "fullDescription": "Treat Mom to a full-body renewal she'll never forget. Begin with a soothing Aroma Body Scrub, gently exfoliating and leaving her skin silky smooth. Followed by a refreshing shower, a perfect Manicure and Pedicure, and finished with an Aroma Express Facial for that extra glow. Two hours of pure pampering — exactly what Mom deserves.",
+      "duration": "120 min",
+      "regularPrice": "$200",
+      "price": "$169",
+      "priceLabel": "Save $31",
+      "badge": "Mother's Day Favorite",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24205005&share=true&pId=2609547",
+      "image": "https://theplacetoescape.com/wp-content/uploads/2025/10/Therapy05-1024x1024.webp",
+      "benefits": [
+        "Aroma body scrub with shower",
+        "Professional manicure",
+        "Spa pedicure",
+        "Express facial"
+      ]
+    },
+    {
+      "id": "mothers-day-luxurious-pampering",
+      "name": "Luxurious Pampering Package For Her",
+      "description": "Help Mom forget the stress of busy life. Aromatherapy massage, luxurious facial, and hot mitten hand & foot treatment.",
+      "fullDescription": "This package is special for the Mom you love. It will help her relax and forget the stress of her busy life — exactly what every Mom needs.\n\nIncludes:\n• 30-minute aromatherapy body massage\n• Luxurious facial with neck massage\n• Aromatherapy steam, extraction, and mask\n• Hand and foot massage with hot mittens\n\n100 minutes of pure bliss designed to make Mom feel like the queen she is.",
+      "duration": "100 min",
+      "regularPrice": "$179",
+      "price": "$149",
+      "priceLabel": "Save $30",
+      "badge": "Made For Mom",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24204355&share=true&pId=2609547",
+      "image": "https://www.silkandglowskincare.co.uk/wp-content/uploads/2019/04/AdobeStock_80841305-1024x683.jpeg",
+      "benefits": [
+        "30-minute aromatherapy body massage",
+        "Luxurious facial with neck massage",
+        "Hot mitten hand & foot treatment",
+        "Aromatherapy steam included"
+      ]
+    }
+  ]
+}
