@@ -1,1 +1,84 @@
-
+{
+  "category": "specials",
+  "promoTitle": "Memorial Day Specials",
+  "promoSubtitle": "Kick off summer with smooth, glowing skin — limited-time savings",
+  "promoStartDate": "2026-05-21",
+  "promoEndDate": "2026-05-31",
+  "services": [
+    {
+      "id": "memorial-day-aroma-facial-body-scrub",
+      "name": "Aroma Express Facial with Aroma Body Scrub & Shower",
+      "description": "Refresh from head to toe this Memorial Day! A hydrating aroma express facial paired with a soothing full-body aroma scrub and refreshing shower.",
+      "fullDescription": "Get summer-ready with a complete head-to-toe refresh. Begin with a soothing Aroma Body Scrub that gently exfoliates and leaves your skin silky smooth, followed by a refreshing shower. Finish with an Aroma Express Facial for a quick boost of hydration and radiance — the perfect reset to kick off the season.\n\nIncludes:\n• Full-body aroma body scrub\n• Refreshing shower\n• Aroma express facial\n• Light hydration and glow boost",
+      "duration": "60 min",
+      "price": "$99",
+      "priceLabel": "Memorial Day Special",
+      "badge": "Summer Glow",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24360555&share=true&pId=2609547",
+      "image": "https://theplacetoescape.com/wp-content/uploads/2025/10/Therapy05-1024x1024.webp",
+      "benefits": [
+        "Full-body aroma scrub",
+        "Refreshing shower",
+        "Hydrating express facial",
+        "Head-to-toe summer refresh"
+      ]
+    },
+    {
+      "id": "memorial-day-brazilian-laser",
+      "name": "Brazilian Laser Hair Removal",
+      "description": "Get beach-ready! Complete bikini area laser hair removal for smooth, confident, summer-ready skin — now just $149.",
+      "fullDescription": "Start your summer smooth with our Brazilian Laser treatment. This complete bikini area hair removal delivers long-lasting results, so you can enjoy the season without the hassle of shaving or waxing. Performed by experienced technicians in a private, comfortable setting.",
+      "duration": "30 min",
+      "regularPrice": "$170",
+      "price": "$149",
+      "priceLabel": "Save $21",
+      "badge": "Beach Ready",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24201285&share=true&pId=2609547",
+      "image": "https://www.harleylaserspecialists.com/wp-content/uploads/2020/01/Brazilian-laser-hair-removal-treatment.jpg",
+      "benefits": [
+        "Complete bikini area coverage",
+        "Long-lasting smoothness",
+        "Professional and discreet",
+        "Eliminates ingrown hairs"
+      ]
+    },
+    {
+      "id": "memorial-day-microdermabrasion",
+      "name": "Microdermabrasion Facial",
+      "description": "Reveal fresh, glowing summer skin! Professional microdermabrasion that polishes away dullness and refines texture — now just $99.",
+      "fullDescription": "Reveal your brightest summer skin with our Microdermabrasion Facial. This specialized exfoliating treatment buffs away layers of dead skin, smoothing texture and minimizing imperfections like discoloration and fine lines. Skin is left polished, refreshed, and radiant.\n\nGood for:\n• Hyperpigmentation\n• Enlarged or clogged pores\n• Dull skin\n• Rough texture",
+      "duration": "70 min",
+      "regularPrice": "$130",
+      "price": "$99",
+      "priceLabel": "Save $31",
+      "badge": "Best Value",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24204011&share=true&pId=2609547",
+      "image": "https://www.verywellhealth.com/thmb/QOccWi_yydag-kOir_80xLrXMxE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/VWH-GettyImages-1488372356-fc9240a252244fc18a61a22c487018c9.jpg",
+      "benefits": [
+        "Resurfaces skin texture",
+        "Reduces fine lines",
+        "Fades hyperpigmentation",
+        "Instant polished glow"
+      ]
+    },
+    {
+      "id": "memorial-day-mango-facial",
+      "name": "Sweet Mango Facial with Hand Treatment or Eyebrow Wax",
+      "description": "A tropical treat for summer! Vitamin-rich mango facial plus your choice of a hand treatment or eyebrow wax — now just $89.",
+      "fullDescription": "Glow into summer with our Sweet Mango Facial — a vitamin-rich, hydrating treatment that nourishes and brightens for a healthy, radiant complexion. As a Memorial Day bonus, choose a complimentary add-on: a soothing hand treatment or a clean-up eyebrow wax.\n\nIncludes:\n• Cleanser and toner\n• Face, neck, and shoulder massage\n• Mango exfoliation scrub\n• Aroma steam\n• Clarisonic brush cleanse\n• Extraction\n• Herbal eye treatment\n• Mango hydration mask\n• Your choice of hand treatment OR eyebrow wax",
+      "duration": "60 min",
+      "regularPrice": "$85",
+      "price": "$89",
+      "priceLabel": "Facial + Add-On",
+      "badge": "Tropical Treat",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24189206&share=true&pId=2609547",
+      "image": "https://scitechdaily.com/images/Eating-Mango.jpg",
+      "benefits": [
+        "Rich in vitamins A, C, and E",
+        "Deep hydration and brightening",
+        "Choice of hand treatment or brow wax",
+        "Delightful tropical aroma"
+      ]
+    }
+  ]
+}
