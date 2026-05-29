@@ -290,6 +290,22 @@
       ]
     },
     {
+      "id": "bikini-line-laser",
+      "name": "Bikini Line Laser",
+      "description": "Laser hair removal for the bikini line. Smooth, confident results just beyond the swimwear edge.",
+      "fullDescription": "Our Bikini Line Laser treatment targets unwanted hair along the bikini line — the area just outside your underwear or swimwear. Using gentle, advanced laser technology, this quick treatment leaves you with smooth, confident skin that's perfect for swimwear season.",
+      "duration": "20 min",
+      "price": "$100",
+      "priceLabel": "Starting at $100",
+      "bookNowUrl": "",
+      "benefits": [
+        "Smooth, hair-free bikini line",
+        "Perfect for swimwear confidence",
+        "Gentle, professional treatment",
+        "Long-lasting hair reduction"
+      ]
+    },
+    {
       "id": "half-arm-laser",
       "name": "Half Arm Laser",
       "description": "Laser hair removal for either upper or lower arms. Smooth, hair-free arms with targeted treatment.",
