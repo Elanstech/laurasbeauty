@@ -7213,3 +7213,107 @@ a.contact-value:hover {
   }
 }
 
+/* ============================================
+   FATHER'S DAY HERO SLIDE 1 — DECORATIVE STYLES
+   Scoped to [data-slide="1"] only. No JS required.
+   ============================================ */
+
+/* Soft gold glow behind slide 1 content */
+.hero-slide[data-slide="1"]::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 700px;
+    height: 700px;
+    max-width: 120vw;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(
+        circle,
+        rgba(212, 175, 55, 0.18) 0%,
+        rgba(169, 200, 156, 0.08) 40%,
+        transparent 70%
+    );
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+    animation: fathersDayGlow 6s ease-in-out infinite;
+}
+
+@keyframes fathersDayGlow {
+    0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+    50%      { opacity: 1;   transform: translate(-50%, -50%) scale(1.08); }
+}
+
+/* Eyebrow becomes a premium gold pill badge with a crown icon */
+.hero-slide[data-slide="1"] .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 26px;
+    color: var(--gold-accent);
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid rgba(212, 175, 55, 0.45);
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
+}
+
+.hero-slide[data-slide="1"] .hero-eyebrow::before {
+    content: '\f521'; /* Font Awesome crown — nods to "King For A Day" */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 0.95em;
+    color: var(--gold-accent);
+}
+
+/* Gold accent on the highlighted title line */
+.hero-slide[data-slide="1"] .title-accent {
+    color: var(--gold-accent);
+    text-shadow: 0 4px 30px rgba(212, 175, 55, 0.5);
+    position: relative;
+    display: inline-block;
+}
+
+/* Decorative underline flourish beneath the accent line */
+.hero-slide[data-slide="1"] .title-accent::after {
+    content: '';
+    position: absolute;
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    max-width: 60%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold-accent), transparent);
+    border-radius: 10px;
+}
+
+/* Re-theme the CTA button in gold for slide 1 */
+.hero-slide[data-slide="1"] .hero-cta-btn {
+    background: rgba(212, 175, 55, 0.15);
+    border-color: var(--gold-accent);
+    box-shadow: 0 8px 30px rgba(212, 175, 55, 0.25);
+}
+
+.hero-slide[data-slide="1"] .hero-cta-btn:hover {
+    background: linear-gradient(135deg, var(--gold-accent), #b8941f);
+    border-color: var(--gold-accent);
+    color: var(--ivory-white);
+    box-shadow: 0 12px 40px rgba(212, 175, 55, 0.45);
+}
+
+/* Mobile tuning for the flourish + badge */
+@media (max-width: 768px) {
+    .hero-slide[data-slide="1"] .hero-eyebrow {
+        padding: 8px 20px;
+    }
+    .hero-slide[data-slide="1"] .title-accent::after {
+        bottom: -10px;
+        width: 100px;
+    }
+    .hero-slide[data-slide="1"]::before {
+        width: 480px;
+        height: 480px;
+    }
+}
