@@ -765,7 +765,7 @@ class HeroVideoCollage {
         this.slideInterval = setInterval(() => {
             const nextSlide = (this.currentSlide + 1) % this.slides.length;
             this.goToSlide(nextSlide);
-        }, 6000);
+        }, 10000);
     }
 
     resetAutoPlay() {
