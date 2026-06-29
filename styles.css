@@ -7212,3 +7212,139 @@ a.contact-value:hover {
     justify-content: center;
   }
 }
+/* ============================================
+   JULY 4TH / INDEPENDENCE DAY HERO SLIDE
+   Scoped to .july4-slide — slides 2 & 3 stay untouched
+   ============================================ */
+
+:root {
+    --usa-red: #C8324B;       /* elegant cranberry red */
+    --usa-red-deep: #9E2740;
+    --usa-blue: #2B3A67;      /* deep navy */
+    --usa-blue-light: #3E5180;
+}
+
+/* Soft festive glow behind the slide content */
+.july4-slide::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 720px;
+    height: 480px;
+    max-width: 110%;
+    transform: translate(-50%, -50%);
+    background:
+        radial-gradient(ellipse at 30% 40%, rgba(200, 50, 75, 0.18) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 60%, rgba(43, 58, 103, 0.20) 0%, transparent 60%);
+    filter: blur(20px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Floating sparkles */
+.july4-sparkles {
+    position: absolute;
+    inset: -40px 0 0 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.july4-sparkles .spark {
+    position: absolute;
+    color: var(--gold-accent);
+    opacity: 0;
+    animation: july4-twinkle 3s ease-in-out infinite;
+    text-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+}
+
+.july4-sparkles .spark-1 { top: 8%;  left: 12%;  font-size: 0.9rem;  animation-delay: 0s;   }
+.july4-sparkles .spark-2 { top: 18%; right: 14%; font-size: 1.3rem;  color: var(--usa-red);        text-shadow: 0 0 12px rgba(200,50,75,0.6);   animation-delay: 0.6s; }
+.july4-sparkles .spark-3 { top: 60%; left: 8%;   font-size: 1.1rem;  color: #ffffff;               text-shadow: 0 0 12px rgba(255,255,255,0.7); animation-delay: 1.2s; }
+.july4-sparkles .spark-4 { bottom: 12%; right: 10%; font-size: 0.85rem; animation-delay: 1.8s; }
+.july4-sparkles .spark-5 { top: 40%; right: 22%; font-size: 0.7rem;  color: var(--usa-blue-light); text-shadow: 0 0 10px rgba(62,81,128,0.7);   animation-delay: 2.4s; }
+
+@keyframes july4-twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.6) rotate(0deg); }
+    50%      { opacity: 1; transform: scale(1) rotate(20deg); }
+}
+
+/* Eyebrow */
+.july4-slide .july4-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--ivory-white);
+    margin-bottom: 22px;
+}
+
+.july4-slide .july4-eyebrow i {
+    color: var(--usa-red);
+    font-size: 0.8rem;
+    text-shadow: 0 0 10px rgba(200, 50, 75, 0.5);
+}
+
+/* Title */
+.july4-slide .july4-line-1 {
+    color: var(--ivory-white);
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.july4-slide .july4-accent {
+    color: var(--gold-accent); /* fallback */
+    background: linear-gradient(100deg, #E7B84B 0%, var(--gold-accent) 45%, #F3D27A 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+    filter: drop-shadow(0 4px 24px rgba(212, 175, 55, 0.35));
+}
+
+/* Patriotic stripe divider */
+.july4-stripes {
+    width: 180px;
+    height: 5px;
+    margin: 0 auto 30px;
+    border-radius: 10px;
+    background: linear-gradient(
+        90deg,
+        var(--usa-red) 0%, var(--usa-red) 33.3%,
+        #ffffff 33.3%, #ffffff 66.6%,
+        var(--usa-blue) 66.6%, var(--usa-blue) 100%
+    );
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Description */
+.july4-slide .july4-desc {
+    color: rgba(250, 250, 247, 0.92);
+}
+
+/* CTA button — festive red → navy on hover */
+.july4-slide .july4-cta {
+    background: linear-gradient(135deg, var(--usa-red) 0%, var(--usa-red-deep) 100%);
+    border-color: rgba(255, 255, 255, 0.55);
+    color: #ffffff;
+    box-shadow: 0 8px 30px rgba(200, 50, 75, 0.35);
+}
+
+.july4-slide .july4-cta:hover {
+    background: linear-gradient(135deg, var(--usa-blue-light) 0%, var(--usa-blue) 100%);
+    border-color: var(--gold-accent);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(43, 58, 103, 0.45);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .july4-slide::before { width: 100%; height: 360px; }
+    .july4-stripes { width: 140px; height: 4px; margin-bottom: 24px; }
+    .july4-sparkles .spark   { font-size: 0.8rem !important; }
+    .july4-sparkles .spark-2 { font-size: 1rem   !important; }
+}
+
+@media (max-width: 480px) {
+    .july4-slide .july4-eyebrow { gap: 8px; }
+    .july4-sparkles .spark-1,
+    .july4-sparkles .spark-5 { display: none; }
+}
