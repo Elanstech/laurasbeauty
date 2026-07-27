@@ -1,1 +1,73 @@
-
+{
+  "category": "specials",
+  "promotion": {
+    "id": "august-wellness-month-2026",
+    "name": "National Wellness Month — 15% Off",
+    "startDate": "2026-08-01",
+    "endDate": "2026-08-31",
+    "discount": "15%",
+    "excludes": [
+      "Body Treatments",
+      "Massage & body work",
+      "Manicures",
+      "Pedicures"
+    ],
+    "terms": "Valid August 1–31, 2026. Discount applies at checkout on eligible services only. Cannot be combined with other offers, packages or gift card promotions. Excludes body treatments, massage and body work, manicures and pedicures."
+  },
+  "services": [
+    {
+      "id": "august-15-facials",
+      "name": "15% Off All Facials & Skincare",
+      "description": "Every facial, peel, dermaplaning and advanced skincare treatment is 15% off for National Wellness Month, August 1–31.",
+      "fullDescription": "August is National Wellness Month, and wellness starts with the skin you live in.\n\nFor the whole month, every facial on our menu is 15% off — from a 30-minute Express Facial to Hydra Facial, Micro-Needling and Rejuran. Same organic products, same personalized skin analysis from Laura, 15% less.\n\nA few favorites at the August price:\n• Express Facial — $60 → $51\n• Organic Facial — $85 → $72.25\n• Detox Facial — $95 → $80.75\n• 24 Karat Facial — $110 → $93.50\n• Anti-Aging Facial — $120 → $102\n• Hydra Facial — $180 → $153\n• Micro-Needling — $250 → $212.50\n\nDiscount is applied at checkout. Offer ends August 31.",
+      "duration": "Aug 1 – Aug 31",
+      "price": "15% OFF",
+      "priceLabel": "Save 15% all August",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
+      "image": "https://www.anushkaspa.com/wp-content/uploads/2024/04/hpqtkTKm_AVq2eaQcgSu3-J73EcfbuqfqqOsip_6RpRBpYJeEXGF0n21GEd7dgXcjXC8r3Tu7G3qltCi7tJ2lnxihCaOM_Aeue5LoHUwWF_YRWXW9R4X9abm5sGmxWqN7RB7RPGv.jpeg",
+      "badge": "National Wellness Month",
+      "benefits": [
+        "All facials, peels and dermaplaning included",
+        "Advanced treatments included — HydraFacial, Micro-Needling, Rejuran",
+        "Discount applied automatically at checkout",
+        "Valid August 1–31, 2026"
+      ]
+    },
+    {
+      "id": "august-15-laser",
+      "name": "15% Off Laser Hair Removal",
+      "description": "Start your laser package at 15% off through August 31 — the ideal time to begin before next summer.",
+      "fullDescription": "Laser hair removal works on a schedule, and August is the smart month to start. Sessions run 4–6 weeks apart, so beginning now means you're well ahead by the time next summer arrives.\n\nAll laser services are 15% off from August 1–31 for National Wellness Month — single sessions and areas alike, small or large.\n\nBook a consultation first if you've never had laser with us. Laura will check your skin and hair type and map out how many sessions your area needs before you commit to anything.\n\nDiscount is applied at checkout. Offer ends August 31.",
+      "duration": "Aug 1 – Aug 31",
+      "price": "15% OFF",
+      "priceLabel": "Save 15% all August",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
+      "image": "https://vitalityspabocaraton.com/wp-content/uploads/2018/09/vitality-spa-boca-raton-laser-hair-removal3.png",
+      "badge": "Best Time to Start",
+      "benefits": [
+        "All laser areas included, small and large",
+        "Free consultation before your first session",
+        "Start now, stay ahead for next summer",
+        "Valid August 1–31, 2026"
+      ]
+    },
+    {
+      "id": "august-15-wax-brows-lashes",
+      "name": "15% Off Waxing, Brows, Lashes & Makeup",
+      "description": "Waxing, brow shaping and tinting, lash extensions, lash lifts, permanent makeup and makeup application — all 15% off in August.",
+      "fullDescription": "The upkeep services you already book every few weeks, at 15% off for all of August.\n\nIncluded:\n• Full body and facial waxing — brows, lip, underarm, legs, bikini, Brazilian, back and chest\n• Brow shaping, threading and tinting\n• Lash extensions, lash lifts and lash tinting\n• Permanent makeup — brows, lips and eyes\n• Makeup application for events, weddings and photos\n\nIf you have a wedding, trip or event coming up in late summer, this is the month to book it.\n\nDiscount is applied at checkout. Offer ends August 31.",
+      "duration": "Aug 1 – Aug 31",
+      "price": "15% OFF",
+      "priceLabel": "Save 15% all August",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/52e7f434e4b079ae91b7831c/1600467222673-WFOI1SL0G8IIHOTTCN5A/AdobeStock_144248813.jpeg?format=2500w",
+      "badge": "Event Season",
+      "benefits": [
+        "All waxing services included",
+        "Brows, lashes and permanent makeup included",
+        "Event and bridal makeup included",
+        "Valid August 1–31, 2026"
+      ]
+    }
+  ]
+}
