@@ -7212,3 +7212,232 @@ a.contact-value:hover {
     justify-content: center;
   }
 }
+
+/* ============================================
+   AUGUST SPECIALS — HERO ADD-ON
+   Laura's Beauty Touch · National Wellness Month
+   Append to the END of styles.css
+   Remove this whole block after Aug 31 to revert
+   ============================================ */
+
+/* --- Offer pill: dates, sits above the eyebrow --- */
+.hero-offer-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 22px;
+    margin-bottom: 22px;
+    background: rgba(212, 175, 55, 0.16);
+    border: 1px solid rgba(212, 175, 55, 0.55);
+    border-radius: 50px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ivory-white);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    animation: fadeInDown 0.8s ease-out both;
+}
+
+.hero-offer-pill .pill-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--gold-accent);
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+    animation: pill-ping 2.4s ease-out infinite;
+    flex-shrink: 0;
+}
+
+@keyframes pill-ping {
+    0%   { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+    70%  { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+
+/* --- Gold treatment for the discount inside the H1 --- */
+.hero-title .title-offer {
+    display: block;
+    color: var(--gold-accent);
+    text-shadow: 0 4px 30px rgba(212, 175, 55, 0.55);
+}
+
+/* --- Two buttons side by side --- */
+.hero-cta-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* Gold-filled primary, used only during the promo */
+.hero-cta-btn.hero-cta-gold {
+    background: linear-gradient(135deg, var(--gold-accent) 0%, #E6C347 100%);
+    border-color: var(--gold-accent);
+    color: var(--deep-forest);
+    box-shadow: 0 8px 30px rgba(212, 175, 55, 0.35);
+}
+
+.hero-cta-btn.hero-cta-gold:hover {
+    background: linear-gradient(135deg, #FFD700 0%, var(--gold-accent) 100%);
+    border-color: #FFD700;
+    color: var(--deep-forest);
+    box-shadow: 0 12px 40px rgba(212, 175, 55, 0.55);
+}
+
+/* Quiet ghost button next to it */
+.hero-cta-btn.hero-cta-ghost {
+    background: rgba(250, 250, 247, 0.08);
+    border-color: rgba(250, 250, 247, 0.55);
+    animation-delay: 0.6s;
+}
+
+.hero-cta-btn.hero-cta-ghost:hover {
+    background: rgba(250, 250, 247, 0.18);
+    border-color: var(--ivory-white);
+}
+
+/* --- Exclusions line, small and honest --- */
+.hero-fineprint {
+    margin-top: 22px;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.4px;
+    color: rgba(250, 250, 247, 0.7);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    animation: fadeInUp 0.8s ease-out 0.8s both;
+}
+
+/* --- Signature element: rotating gold seal, bottom-left of hero --- */
+.hero-seal {
+    position: absolute;
+    bottom: 45px;
+    left: 45px;
+    width: 150px;
+    height: 150px;
+    z-index: 15;
+    pointer-events: none;
+    animation: fadeInUp 1s ease-out 1.1s both;
+}
+
+.hero-seal-ring {
+    position: absolute;
+    inset: 0;
+    animation: seal-spin 26s linear infinite;
+}
+
+@keyframes seal-spin {
+    to { transform: rotate(360deg); }
+}
+
+.hero-seal-ring text {
+    font-family: 'Lato', sans-serif;
+    font-size: 9.4px;
+    font-weight: 700;
+    letter-spacing: 3.1px;
+    fill: var(--gold-accent);
+    text-transform: uppercase;
+}
+
+.hero-seal-core {
+    position: absolute;
+    inset: 26px;
+    border-radius: 50%;
+    background: rgba(28, 28, 28, 0.42);
+    border: 1px solid rgba(212, 175, 55, 0.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+}
+
+.hero-seal-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.85rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--gold-accent);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+
+.hero-seal-word {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-indent: 3.5px;
+    color: var(--ivory-white);
+    text-transform: uppercase;
+}
+
+/* --- Responsive --- */
+@media (max-width: 968px) {
+    .hero-seal {
+        width: 118px;
+        height: 118px;
+        bottom: 30px;
+        left: 20px;
+    }
+
+    .hero-seal-core { inset: 21px; }
+    .hero-seal-number { font-size: 1.4rem; }
+    .hero-seal-word { font-size: 0.52rem; letter-spacing: 2.5px; text-indent: 2.5px; }
+    .hero-seal-ring text { font-size: 9.8px; letter-spacing: 2.6px; }
+}
+
+@media (max-width: 768px) {
+    .hero-offer-pill {
+        font-size: 10px;
+        letter-spacing: 1.4px;
+        padding: 8px 16px;
+        margin-bottom: 16px;
+    }
+
+    .hero-cta-group {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .hero-cta-group .hero-cta-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+
+    .hero-fineprint {
+        font-size: 11px;
+        padding: 0 10px;
+    }
+
+    /* Seal competes with the slide dots on small screens */
+    .hero-seal { display: none; }
+}
+
+/* --- Accessibility --- */
+@media (prefers-reduced-motion: reduce) {
+    .hero-offer-pill,
+    .hero-fineprint,
+    .hero-seal,
+    .hero-seal-ring,
+    .hero-offer-pill .pill-dot {
+        animation: none !important;
+    }
+}
+
+.hero-cta-btn:focus-visible {
+    outline: 3px solid var(--gold-accent);
+    outline-offset: 4px;
+}
