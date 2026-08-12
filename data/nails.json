@@ -199,10 +199,11 @@
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&eid=4757257&oiid=sv%3A26823116&share=true&pId=2609547",
       "image": "https://images.squarespace-cdn.com/content/v1/5f73c10c0b25f556e4d320d0/3677eea6-de4e-4197-9ee4-ab232a74a532/IMG_5471.jpg",
       "benefits": [
-     "Precise e-file technique",
-     "Meticulous cuticle work",
-     "Extended polish wear",
-     "Perfectly clean nail beds"
+        "Precise e-file technique",
+        "Meticulous cuticle work",
+        "Extended polish wear",
+        "Perfectly clean nail beds"
+      ]
     }
   ]
 }
