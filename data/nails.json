@@ -177,8 +177,8 @@
       "description": "Precise Russian manicure technique with e-file. Meticulous cuticle work for perfectly clean nails.",
       "fullDescription": "Experience the precision of our Russian Manicure, a meticulous technique using an e-file for detailed cuticle work. This advanced method provides perfectly clean nail beds, extended polish longevity, and an impeccably polished finish.",
       "duration": "60 min",
-      "price": "$60",
-      "priceLabel": "Starting at $60",
+      "price": "$75",
+      "priceLabel": "Starting at $75",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&oiid=sv%3A24203843&share=true&pId=2609547",
       "image": "https://maniology.com/cdn/shop/articles/what-is-a-russian-manicure.jpg?crop=center&height=1200&v=1718999938&width=1200",
       "benefits": [
@@ -187,6 +187,22 @@
         "Extended polish wear",
         "Perfectly clean nail beds"
       ]
+      },
+    {
+       "id": "russian-pedicure",
+       "name": "Russian Pedicure",
+      "description": "Precise Russian pedicure technique with e-file. Meticulous cuticle work for perfectly clean, polished toes.",
+      "fullDescription": "Experience the precision of our Russian Pedicure, a meticulous technique using an e-file for detailed cuticle and callus work. This advanced method provides perfectly clean nail beds, extended polish longevity, and an impeccably smooth, polished finish.",
+      "duration": "75 min",
+      "price": "$85",
+      "priceLabel": "Starting at $85",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/services?lid=2696397&eid=4757257&oiid=sv%3A26823116&share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/5f73c10c0b25f556e4d320d0/3677eea6-de4e-4197-9ee4-ab232a74a532/IMG_5471.jpg",
+      "benefits": [
+     "Precise e-file technique",
+     "Meticulous cuticle work",
+     "Extended polish wear",
+     "Perfectly clean nail beds"
     }
   ]
 }
