@@ -1,72 +1,107 @@
 {
   "category": "specials",
   "promotion": {
-    "id": "august-wellness-month-2026",
-    "name": "National Wellness Month — 15% Off",
-    "startDate": "2026-08-01",
-    "endDate": "2026-08-31",
-    "discount": "15%",
-    "excludes": [
-      "Body Treatments",
-      "Massage & body work",
-      "Manicures",
-      "Pedicures"
-    ],
-    "terms": "Valid August 1–31, 2026. Discount applies at checkout on eligible services only. Cannot be combined with other offers, packages or gift card promotions. Excludes body treatments, massage and body work, manicures and pedicures."
+    "id": "labor-day-weekend-2026",
+    "name": "Labor Day Weekend Specials",
+    "startDate": "2026-09-01",
+    "endDate": "2026-09-07",
+    "discount": "Fixed-price offers",
+    "excludes": [],
+    "terms": "Valid September 1–7, 2026. Labor Day pricing applies to the listed treatments only and is honored at checkout. Cannot be combined with other offers, packages or gift card promotions. Appointments subject to availability — holiday weekend slots fill quickly."
   },
   "services": [
     {
-      "id": "august-15-facials",
-      "name": "15% Off All Facials & Skincare",
-      "description": "Every facial, peel, dermaplaning and advanced skincare treatment is 15% off for National Wellness Month, August 1–31.",
-      "fullDescription": "August is National Wellness Month, and wellness starts with the skin you live in.\n\nFor the whole month, every facial on our menu is 15% off — from a 30-minute Express Facial to Hydra Facial, Micro-Needling and Rejuran. Same organic products, same personalized skin analysis from Laura, 15% less.\n\nA few favorites at the August price:\n• Express Facial — $60 → $51\n• Organic Facial — $85 → $72.25\n• Detox Facial — $95 → $80.75\n• 24 Karat Facial — $110 → $93.50\n• Anti-Aging Facial — $120 → $102\n• Hydra Facial — $180 → $153\n• Micro-Needling — $250 → $212.50\n\nDiscount is applied at checkout. Offer ends August 31.",
-      "duration": "Aug 1 – Aug 31",
-      "price": "15% OFF",
-      "priceLabel": "Save 15% all August",
+      "id": "labor-day-aroma-facial-massage-89",
+      "name": "Aroma Express Facial + Aroma Express Massage — $89",
+      "description": "A 30-minute aroma express facial and a 30-minute aroma express massage — one full hour of head-to-toe reset for $89.",
+      "fullDescription": "One hour, two treatments, one price.\n\nStart with a 30-Minute Aroma Express Facial — cleansing, aroma steam, light exfoliation and a hydrating mask to refresh and rebalance your skin. Then move straight into a 30-Minute Aroma Express Massage, working through the shoulders, neck and back to release everything the week put there.\n\nIt is the treatment to book when you have exactly one hour and want to leave feeling like a different person.\n\nLabor Day pricing — $89 for the full 60 minutes. Offer ends Monday, September 7.",
+      "duration": "60 min",
+      "price": "$89",
+      "priceLabel": "Two treatments, one hour",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
-      "image": "https://www.anushkaspa.com/wp-content/uploads/2024/04/hpqtkTKm_AVq2eaQcgSu3-J73EcfbuqfqqOsip_6RpRBpYJeEXGF0n21GEd7dgXcjXC8r3Tu7G3qltCi7tJ2lnxihCaOM_Aeue5LoHUwWF_YRWXW9R4X9abm5sGmxWqN7RB7RPGv.jpeg",
-      "badge": "National Wellness Month",
+      "image": "https://www.jacalynjamesclinic.co.uk/wp-content/uploads/2022/04/aromatherapy-facial-4.jpg",
+      "badge": "Labor Day Special",
       "benefits": [
-        "All facials, peels and dermaplaning included",
-        "Advanced treatments included — HydraFacial, Micro-Needling, Rejuran",
-        "Discount applied automatically at checkout",
-        "Valid August 1–31, 2026"
+        "30-minute aroma express facial",
+        "30-minute aroma express massage",
+        "Full 60 minutes for one flat price",
+        "Valid September 1–7, 2026"
       ]
     },
     {
-      "id": "august-15-laser",
-      "name": "15% Off Laser Hair Removal",
-      "description": "Start your laser package at 15% off through August 31 — the ideal time to begin before next summer.",
-      "fullDescription": "Laser hair removal works on a schedule, and August is the smart month to start. Sessions run 4–6 weeks apart, so beginning now means you're well ahead by the time next summer arrives.\n\nAll laser services are 15% off from August 1–31 for National Wellness Month — single sessions and areas alike, small or large.\n\nBook a consultation first if you've never had laser with us. Laura will check your skin and hair type and map out how many sessions your area needs before you commit to anything.\n\nDiscount is applied at checkout. Offer ends August 31.",
-      "duration": "Aug 1 – Aug 31",
-      "price": "15% OFF",
-      "priceLabel": "Save 15% all August",
+      "id": "labor-day-deep-facial-microdermabrasion-89",
+      "name": "60-Minute Deep Facial with Microdermabrasion — $89",
+      "description": "A full 60-minute deep cleansing facial with microdermabrasion resurfacing included — $89 instead of $120.",
+      "fullDescription": "Our deep pore cleansing facial with microdermabrasion added at no extra charge.\n\nThe facial covers a full cleanse, aroma steam, extractions, herbal eye treatment and a mask matched to your skin. Microdermabrasion then resurfaces the top layer, lifting away dull, dead skin and softening fine lines, texture and the look of pores.\n\nThis is the one to book if summer left your skin congested, uneven or just tired. Skin looks brighter and feels smoother immediately, with no downtime.\n\nNormally $85 for the facial plus $35 for the microdermabrasion add-on. For Labor Day weekend, $89 for both. Offer ends Monday, September 7.",
+      "duration": "60 min",
+      "price": "$89",
+      "regularPrice": "$120",
+      "priceLabel": "Save $31",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
-      "image": "https://vitalityspabocaraton.com/wp-content/uploads/2018/09/vitality-spa-boca-raton-laser-hair-removal3.png",
-      "badge": "Best Time to Start",
+      "image": "https://www.verywellhealth.com/thmb/QOccWi_yydag-kOir_80xLrXMxE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/VWH-GettyImages-1488372356-fc9240a252244fc18a61a22c487018c9.jpg",
+      "badge": "Save $31",
       "benefits": [
-        "All laser areas included, small and large",
-        "Free consultation before your first session",
-        "Start now, stay ahead for next summer",
-        "Valid August 1–31, 2026"
+        "Deep pore cleansing facial with extractions",
+        "Microdermabrasion resurfacing included",
+        "Smooths texture and softens fine lines",
+        "Valid September 1–7, 2026"
       ]
     },
     {
-      "id": "august-15-wax-brows-lashes",
-      "name": "15% Off Waxing, Brows, Lashes & Makeup",
-      "description": "Waxing, brow shaping and tinting, lash extensions, lash lifts, permanent makeup and makeup application — all 15% off in August.",
-      "fullDescription": "The upkeep services you already book every few weeks, at 15% off for all of August.\n\nIncluded:\n• Full body and facial waxing — brows, lip, underarm, legs, bikini, Brazilian, back and chest\n• Brow shaping, threading and tinting\n• Lash extensions, lash lifts and lash tinting\n• Permanent makeup — brows, lips and eyes\n• Makeup application for events, weddings and photos\n\nIf you have a wedding, trip or event coming up in late summer, this is the month to book it.\n\nDiscount is applied at checkout. Offer ends August 31.",
-      "duration": "Aug 1 – Aug 31",
-      "price": "15% OFF",
-      "priceLabel": "Save 15% all August",
+      "id": "labor-day-underarm-chin-laser-59",
+      "name": "Underarm or Chin Laser Hair Removal — $59",
+      "description": "Choose an underarm or chin laser hair removal session for $59 — normally $70 to $100 depending on the area.",
+      "fullDescription": "The two areas people ask about most, at one Labor Day price.\n\nPick either underarms or chin and book a full laser session for $59. Treatments take about 15 minutes and use the same medical-grade laser and the same technique as every other area on our menu.\n\nLaser works on a schedule — sessions run four to six weeks apart, so starting now means real results well before next summer. If you have never had laser with us, Laura will check your skin and hair type first and tell you honestly how many sessions your area will need.\n\nRegularly $70–$100 depending on the area. Offer ends Monday, September 7.",
+      "duration": "15 min",
+      "price": "$59",
+      "regularPrice": "$70–$100",
+      "priceLabel": "Save up to $41",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
-      "image": "https://images.squarespace-cdn.com/content/v1/52e7f434e4b079ae91b7831c/1600467222673-WFOI1SL0G8IIHOTTCN5A/AdobeStock_144248813.jpeg?format=2500w",
-      "badge": "Event Season",
+      "image": "https://www.skintight.com.au/wp-content/uploads/2019/08/laser-hair-removal-underarm.jpg",
+      "badge": "Weekend Only",
       "benefits": [
-        "All waxing services included",
-        "Brows, lashes and permanent makeup included",
-        "Event and bridal makeup included",
-        "Valid August 1–31, 2026"
+        "Your choice of underarm or chin",
+        "Quick 15-minute session",
+        "Consultation included for first-time clients",
+        "Valid September 1–7, 2026"
+      ]
+    },
+    {
+      "id": "labor-day-european-facial-plus-99",
+      "name": "60-Minute European Facial + Your Choice — $99",
+      "description": "A 60-minute European deep pore cleansing facial plus your choice of an aroma express massage or a body scrub with shower — $99.",
+      "fullDescription": "Our signature European Deep Pore Cleansing Facial, and then you choose how to finish.\n\nThe facial runs a full 60 minutes: cleanse, aroma steam, exfoliation, extractions, face and neck massage, herbal eye treatment and a mask selected for your skin.\n\nThen pick one:\n• Aroma Express Massage — targeted work on the neck, shoulders and back\n• Body Scrub with Shower — full-body exfoliation followed by a warm shower, leaving skin soft and polished head to toe\n\nLabor Day weekend price is $99 for both. Booked separately, the facial and body scrub alone run $160. Offer ends Monday, September 7.",
+      "duration": "90 min",
+      "price": "$99",
+      "regularPrice": "$160",
+      "priceLabel": "Save $61",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
+      "image": "https://images.squarespace-cdn.com/content/v1/6447eeb38baf0c31deed937f/1682445506382-1NLA6RFT1DGWKP81ATL4/image-asset.jpeg",
+      "badge": "Most Popular",
+      "benefits": [
+        "Full 60-minute European deep pore cleansing facial",
+        "Your choice of aroma express massage or body scrub",
+        "Body scrub option includes a warm shower",
+        "Valid September 1–7, 2026"
+      ]
+    },
+    {
+      "id": "labor-day-lash-lift-89",
+      "name": "Lash Lift — $89",
+      "description": "A lash lift that curls and lifts your natural lashes for six to eight weeks — $89 instead of $99.",
+      "fullDescription": "Wake up with lifted, wide-open eyes and skip the curler entirely.\n\nA lash lift reshapes your own natural lashes from the base up, giving a soft upward curl that holds for six to eight weeks. No extensions, no glue, no fills, and nothing to maintain between appointments. Mascara goes on beautifully afterward, but most clients find they need far less of it.\n\nThe treatment takes about an hour and is completely comfortable — you rest with your eyes closed the whole time.\n\nRegularly $99. Labor Day weekend price is $89. Offer ends Monday, September 7.",
+      "duration": "60 min",
+      "price": "$89",
+      "regularPrice": "$99",
+      "priceLabel": "Save $10",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFaSgzDROq_li9PvOhXC4TFWXHQT4qvifSAA&s",
+      "badge": "Low Maintenance",
+      "benefits": [
+        "Lifts and curls your own natural lashes",
+        "Lasts six to eight weeks",
+        "No extensions, glue or fills",
+        "Valid September 1–7, 2026"
       ]
     }
   ]
