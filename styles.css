@@ -7214,10 +7214,10 @@ a.contact-value:hover {
 }
 
 /* ============================================
-   AUGUST SPECIALS — HERO ADD-ON
-   Laura's Beauty Touch · National Wellness Month
-   Append to the END of styles.css
-   Remove this whole block after Aug 31 to revert
+   SEASONAL PROMO — HERO ADD-ON (structure)
+   Laura's Beauty Touch
+   Colour theming lives in the LABOR DAY block
+   at the very end of this file.
    ============================================ */
 
 /* --- Offer pill: dates, sits above the eyebrow --- */
@@ -7440,4 +7440,168 @@ a.contact-value:hover {
 .hero-cta-btn:focus-visible {
     outline: 3px solid var(--gold-accent);
     outline-offset: 4px;
+}
+
+
+/* ============================================
+   LABOR DAY WEEKEND — THEME LAYER
+   Laura's Beauty Touch · Sept 1 – 7, 2026
+   Sits on top of the seasonal promo block above.
+   Delete this whole block after Sept 7 to revert
+   the hero to the plain gold treatment.
+   ============================================ */
+
+:root {
+    --labor-navy: #1B2A4A;
+    --labor-red:  #9E3B3B;
+}
+
+/* --- Offer pill: navy glass, red pulse, gold rule --- */
+.hero-offer-pill.labor-pill {
+    background: linear-gradient(135deg,
+                rgba(27, 42, 74, 0.55) 0%,
+                rgba(27, 42, 74, 0.30) 100%);
+    border-color: rgba(212, 175, 55, 0.65);
+    box-shadow: 0 6px 26px rgba(27, 42, 74, 0.35);
+}
+
+.hero-offer-pill.labor-pill .pill-dot {
+    background: var(--labor-red);
+    box-shadow: 0 0 0 0 rgba(158, 59, 59, 0.75);
+    animation: labor-ping 2.4s ease-out infinite;
+}
+
+@keyframes labor-ping {
+    0%   { box-shadow: 0 0 0 0 rgba(158, 59, 59, 0.75); }
+    70%  { box-shadow: 0 0 0 10px rgba(158, 59, 59, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(158, 59, 59, 0); }
+}
+
+/* --- Three-bar accent under the pill --- */
+.labor-stripes {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin: 0 auto 20px;
+    animation: fadeInDown 0.8s ease-out 0.15s both;
+}
+
+.labor-stripes i {
+    display: block;
+    width: 34px;
+    height: 3px;
+    border-radius: 2px;
+}
+
+.labor-stripes i:nth-child(1) { background: var(--labor-navy); box-shadow: 0 0 12px rgba(27, 42, 74, 0.6); }
+.labor-stripes i:nth-child(2) { background: var(--ivory-white); opacity: 0.85; }
+.labor-stripes i:nth-child(3) { background: var(--labor-red); box-shadow: 0 0 12px rgba(158, 59, 59, 0.5); }
+
+/* --- Countdown to Monday night --- */
+.labor-countdown {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto 26px;
+    padding: 16px 30px;
+    border-radius: 16px;
+    background: rgba(27, 42, 74, 0.34);
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    animation: fadeInUp 0.8s ease-out 0.45s both;
+}
+
+.labor-countdown.expired { display: none; }
+
+.countdown-label {
+    font-family: 'Lato', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 2.6px;
+    text-transform: uppercase;
+    color: rgba(250, 250, 247, 0.82);
+}
+
+.countdown-units {
+    display: flex;
+    align-items: flex-start;
+    gap: 22px;
+}
+
+.countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    min-width: 44px;
+}
+
+.countdown-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--gold-accent);
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+    font-variant-numeric: tabular-nums;
+}
+
+.countdown-word {
+    font-family: 'Lato', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: rgba(250, 250, 247, 0.68);
+}
+
+/* --- Seal picks up the navy core --- */
+.hero-seal-core {
+    background: rgba(27, 42, 74, 0.52);
+    border-color: rgba(212, 175, 55, 0.55);
+}
+
+/* --- Floating Specials button: red badge for the weekend --- */
+.specials-notification-badge {
+    background: var(--labor-red) !important;
+}
+
+/* --- Responsive --- */
+@media (max-width: 968px) {
+    .countdown-units { gap: 16px; }
+    .countdown-num { font-size: 1.45rem; }
+}
+
+@media (max-width: 768px) {
+    .labor-stripes { margin-bottom: 14px; }
+    .labor-stripes i { width: 26px; height: 2.5px; }
+
+    .labor-countdown {
+        padding: 13px 20px;
+        margin-bottom: 20px;
+        width: auto;
+    }
+
+    .countdown-units { gap: 13px; }
+    .countdown-unit { min-width: 36px; }
+    .countdown-num { font-size: 1.25rem; }
+    .countdown-word { font-size: 8px; letter-spacing: 1.2px; }
+    .countdown-label { font-size: 9.5px; letter-spacing: 2px; }
+}
+
+@media (max-width: 380px) {
+    .countdown-units { gap: 9px; }
+    .countdown-unit { min-width: 30px; }
+    .countdown-num { font-size: 1.1rem; }
+}
+
+/* --- Accessibility --- */
+@media (prefers-reduced-motion: reduce) {
+    .labor-stripes,
+    .labor-countdown,
+    .hero-offer-pill.labor-pill .pill-dot {
+        animation: none !important;
+    }
 }
