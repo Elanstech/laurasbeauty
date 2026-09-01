@@ -1507,4 +1507,62 @@ if (document.readyState === 'loading') {
     initWebsite();
 }
 
+/* ============================================
+   LABOR DAY WEEKEND COUNTDOWN
+   Counts down to 11:59:59 PM on Mon Sept 7, 2026.
+   Hides itself once the offer has passed, so the
+   hero degrades gracefully if nobody swaps it out.
+   Delete this block after the promo ends.
+   ============================================ */
+class LaborDayCountdown {
+    constructor() {
+        this.el = document.getElementById('laborCountdown');
+        if (!this.el) return;
+
+        // End of Labor Day, Monday September 7, 2026 (local time)
+        this.deadline = new Date(2026, 8, 8, 0, 0, 0).getTime();
+
+        this.nums = {
+            days:    this.el.querySelector('[data-unit="days"]'),
+            hours:   this.el.querySelector('[data-unit="hours"]'),
+            minutes: this.el.querySelector('[data-unit="minutes"]'),
+            seconds: this.el.querySelector('[data-unit="seconds"]')
+        };
+
+        this.tick();
+        this.timer = setInterval(() => this.tick(), 1000);
+    }
+
+    pad(n) {
+        return String(n).padStart(2, '0');
+    }
+
+    tick() {
+        const remaining = this.deadline - Date.now();
+
+        if (remaining <= 0) {
+            this.el.classList.add('expired');
+            clearInterval(this.timer);
+            return;
+        }
+
+        const seconds = Math.floor(remaining / 1000);
+        const days    = Math.floor(seconds / 86400);
+        const hours   = Math.floor((seconds % 86400) / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        const secs    = seconds % 60;
+
+        this.nums.days.textContent    = days;
+        this.nums.hours.textContent   = this.pad(hours);
+        this.nums.minutes.textContent = this.pad(minutes);
+        this.nums.seconds.textContent = this.pad(secs);
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => new LaborDayCountdown());
+} else {
+    new LaborDayCountdown();
+}
+
 console.log('🌟 Script loaded')
