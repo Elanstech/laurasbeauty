@@ -29,10 +29,10 @@ const categoryConfig = {
     },
     specials: {
         jsonFile: '../data/specials.json',
-        title: 'Spa Specials',
-        subtitle: 'Refresh, rejuvenate, and reveal your natural beauty',
-        description: 'Indulge in our seasonal spa specials designed to relax your body, renew your skin, and elevate your well-being. Enjoy exclusive treatments and luxurious experiences tailored just for you.',
-        badge: 'Limited-Time Offers'
+        title: 'Labor Day Specials',
+        subtitle: 'Five treatments at holiday weekend pricing, September 1 – 7',
+        description: 'Close out the summer with something for yourself. Five of our most-booked treatments are at Labor Day pricing through Monday, September 7 \u2014 a full hour of facial and massage for $89, laser from $59, and a lash lift you will not have to think about again for two months.',
+        badge: 'Labor Day Weekend'
     },
     nails: {
         jsonFile: '../data/nails.json',
