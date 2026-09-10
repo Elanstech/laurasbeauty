@@ -1,107 +1,88 @@
 {
   "category": "specials",
   "promotion": {
-    "id": "labor-day-weekend-2026",
-    "name": "Labor Day Weekend Specials",
-    "startDate": "2026-09-01",
-    "endDate": "2026-09-07",
+    "id": "fall-specials-2026",
+    "name": "Fall Specials",
+    "startDate": "2026-09-10",
+    "endDate": "2026-10-26",
     "discount": "Fixed-price offers",
     "excludes": [],
-    "terms": "Valid September 1–7, 2026. Labor Day pricing applies to the listed treatments only and is honored at checkout. Cannot be combined with other offers, packages or gift card promotions. Appointments subject to availability — holiday weekend slots fill quickly."
+    "terms": "Valid through October 26, 2026. Fall pricing applies to the listed treatments only and is honored at checkout. Cannot be combined with other offers, packages or gift card promotions. Appointments subject to availability."
   },
   "services": [
     {
-      "id": "labor-day-aroma-facial-massage-89",
-      "name": "Aroma Express Facial + Aroma Express Massage — $89",
-      "description": "A 30-minute aroma express facial and a 30-minute aroma express massage — one full hour of head-to-toe reset for $89.",
-      "fullDescription": "One hour, two treatments, one price.\n\nStart with a 30-Minute Aroma Express Facial — cleansing, aroma steam, light exfoliation and a hydrating mask to refresh and rebalance your skin. Then move straight into a 30-Minute Aroma Express Massage, working through the shoulders, neck and back to release everything the week put there.\n\nIt is the treatment to book when you have exactly one hour and want to leave feeling like a different person.\n\nLabor Day pricing — $89 for the full 60 minutes. Offer ends Monday, September 7.",
+      "id": "fall-sweet-mango-facial-69",
+      "name": "Sweet Mango Facial — $69",
+      "description": "A brightening mango enzyme facial that lifts summer dullness and rehydrates — $69 instead of $85.",
+      "fullDescription": "A facial built around mango enzymes, which loosen dead surface skin without scrubbing.\n\nThe treatment runs a full cleanse, aroma steam, mango enzyme exfoliation, extractions where needed, a face and neck massage, and a hydrating mask. Skin comes out brighter, softer and noticeably more even in tone.\n\nThis is the one to book if summer left your face dull, dry or uneven. It suits nearly every skin type, including sensitive skin, and there is no downtime.\n\nRegularly $85. Fall price is $69 through Monday, October 26.",
       "duration": "60 min",
-      "price": "$89",
-      "priceLabel": "Two treatments, one hour",
+      "price": "$69",
+      "regularPrice": "$85",
+      "priceLabel": "Save $16",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
       "image": "https://www.jacalynjamesclinic.co.uk/wp-content/uploads/2022/04/aromatherapy-facial-4.jpg",
-      "badge": "Labor Day Special",
+      "badge": "Save $16",
       "benefits": [
-        "30-minute aroma express facial",
-        "30-minute aroma express massage",
-        "Full 60 minutes for one flat price",
-        "Valid September 1–7, 2026"
+        "Mango enzyme exfoliation — no harsh scrubbing",
+        "Brightens dull, sun-tired skin",
+        "Deeply rehydrating, no downtime",
+        "Valid through October 26, 2026"
       ]
     },
     {
-      "id": "labor-day-deep-facial-microdermabrasion-89",
-      "name": "60-Minute Deep Facial with Microdermabrasion — $89",
-      "description": "A full 60-minute deep cleansing facial with microdermabrasion resurfacing included — $89 instead of $120.",
-      "fullDescription": "Our deep pore cleansing facial with microdermabrasion added at no extra charge.\n\nThe facial covers a full cleanse, aroma steam, extractions, herbal eye treatment and a mask matched to your skin. Microdermabrasion then resurfaces the top layer, lifting away dull, dead skin and softening fine lines, texture and the look of pores.\n\nThis is the one to book if summer left your skin congested, uneven or just tired. Skin looks brighter and feels smoother immediately, with no downtime.\n\nNormally $85 for the facial plus $35 for the microdermabrasion add-on. For Labor Day weekend, $89 for both. Offer ends Monday, September 7.",
+      "id": "fall-microneedling-179",
+      "name": "Microneedling — $179",
+      "description": "Collagen-induction microneedling for firmer skin, softer lines and smoother texture — $179 instead of $250.",
+      "fullDescription": "Microneedling works by creating controlled micro-channels in the skin, which triggers your own collagen and elastin production over the following weeks.\n\nIt is the treatment people book for fine lines, acne scarring, enlarged pores and general loss of firmness. A numbing cream goes on first, so the session itself is comfortable, and a calming serum and mask finish the treatment.\n\nExpect mild redness for about 24 hours, then a steady improvement in tone and texture over the next four to six weeks. Most clients do a series of three sessions spaced a month apart, and fall is the right time to start — results land in time for the holidays.\n\nRegularly $250. Fall price is $179 through Monday, October 26.",
       "duration": "60 min",
-      "price": "$89",
-      "regularPrice": "$120",
-      "priceLabel": "Save $31",
+      "price": "$179",
+      "regularPrice": "$250",
+      "priceLabel": "Save $71",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
       "image": "https://www.verywellhealth.com/thmb/QOccWi_yydag-kOir_80xLrXMxE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/VWH-GettyImages-1488372356-fc9240a252244fc18a61a22c487018c9.jpg",
-      "badge": "Save $31",
+      "badge": "Save $71",
       "benefits": [
-        "Deep pore cleansing facial with extractions",
-        "Microdermabrasion resurfacing included",
-        "Smooths texture and softens fine lines",
-        "Valid September 1–7, 2026"
+        "Stimulates your own collagen and elastin",
+        "Softens fine lines, scarring and large pores",
+        "Numbing cream applied first for comfort",
+        "Valid through October 26, 2026"
       ]
     },
     {
-      "id": "labor-day-underarm-chin-laser-59",
-      "name": "Underarm or Chin Laser Hair Removal — $59",
-      "description": "Choose an underarm or chin laser hair removal session for $59 — normally $70 to $100 depending on the area.",
-      "fullDescription": "The two areas people ask about most, at one Labor Day price.\n\nPick either underarms or chin and book a full laser session for $59. Treatments take about 15 minutes and use the same medical-grade laser and the same technique as every other area on our menu.\n\nLaser works on a schedule — sessions run four to six weeks apart, so starting now means real results well before next summer. If you have never had laser with us, Laura will check your skin and hair type first and tell you honestly how many sessions your area will need.\n\nRegularly $70–$100 depending on the area. Offer ends Monday, September 7.",
+      "id": "fall-underarm-laser-59",
+      "name": "Underarm Laser Hair Removal — $59",
+      "description": "A full underarm laser hair removal session for $59 — normally $75.",
+      "fullDescription": "A complete underarm laser session at fall pricing.\n\nTreatments take about 15 minutes and use the same medical-grade laser and the same technique as every other area on our menu.\n\nLaser works on a schedule — sessions run four to six weeks apart, so starting now means real results well before next summer. If you have never had laser with us, Laura will check your skin and hair type first and tell you honestly how many sessions your area will need.\n\nRegularly $75. Fall price is $59 through Monday, October 26.",
       "duration": "15 min",
       "price": "$59",
-      "regularPrice": "$70–$100",
-      "priceLabel": "Save up to $41",
+      "regularPrice": "$75",
+      "priceLabel": "Save $16",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
       "image": "https://www.skintight.com.au/wp-content/uploads/2019/08/laser-hair-removal-underarm.jpg",
-      "badge": "Weekend Only",
+      "badge": "Save $16",
       "benefits": [
-        "Your choice of underarm or chin",
-        "Quick 15-minute session",
+        "Full underarm session, about 15 minutes",
+        "Medical-grade laser",
         "Consultation included for first-time clients",
-        "Valid September 1–7, 2026"
+        "Valid through October 26, 2026"
       ]
     },
     {
-      "id": "labor-day-european-facial-plus-99",
-      "name": "60-Minute European Facial + Your Choice — $99",
-      "description": "A 60-minute European deep pore cleansing facial plus your choice of an aroma express massage or a body scrub with shower — $99.",
-      "fullDescription": "Our signature European Deep Pore Cleansing Facial, and then you choose how to finish.\n\nThe facial runs a full 60 minutes: cleanse, aroma steam, exfoliation, extractions, face and neck massage, herbal eye treatment and a mask selected for your skin.\n\nThen pick one:\n• Aroma Express Massage — targeted work on the neck, shoulders and back\n• Body Scrub with Shower — full-body exfoliation followed by a warm shower, leaving skin soft and polished head to toe\n\nLabor Day weekend price is $99 for both. Booked separately, the facial and body scrub alone run $160. Offer ends Monday, September 7.",
+      "id": "fall-body-scrub-express-facial-99",
+      "name": "Body Scrub with Shower + Express Facial — $99",
+      "description": "Full-body exfoliation with a warm shower, followed by an express facial — both for $99.",
+      "fullDescription": "Head-to-toe in one appointment.\n\nStart with a full-body scrub — exfoliation from shoulders to feet, lifting away the dry, flaking skin summer leaves behind — followed by a warm shower and a hydrating finish. Skin feels polished and soft immediately.\n\nThen an express facial: cleanse, aroma steam, light exfoliation and a hydrating mask to bring the same freshness to your face.\n\nIt is the treatment to book when you want everything taken care of at once.\n\nFall price is $99 for both through Monday, October 26.",
       "duration": "90 min",
       "price": "$99",
-      "regularPrice": "$160",
-      "priceLabel": "Save $61",
+      "priceLabel": "Two treatments, one price",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
       "image": "https://images.squarespace-cdn.com/content/v1/6447eeb38baf0c31deed937f/1682445506382-1NLA6RFT1DGWKP81ATL4/image-asset.jpeg",
       "badge": "Most Popular",
       "benefits": [
-        "Full 60-minute European deep pore cleansing facial",
-        "Your choice of aroma express massage or body scrub",
-        "Body scrub option includes a warm shower",
-        "Valid September 1–7, 2026"
-      ]
-    },
-    {
-      "id": "labor-day-lash-lift-89",
-      "name": "Lash Lift — $89",
-      "description": "A lash lift that curls and lifts your natural lashes for six to eight weeks — $89 instead of $99.",
-      "fullDescription": "Wake up with lifted, wide-open eyes and skip the curler entirely.\n\nA lash lift reshapes your own natural lashes from the base up, giving a soft upward curl that holds for six to eight weeks. No extensions, no glue, no fills, and nothing to maintain between appointments. Mascara goes on beautifully afterward, but most clients find they need far less of it.\n\nThe treatment takes about an hour and is completely comfortable — you rest with your eyes closed the whole time.\n\nRegularly $99. Labor Day weekend price is $89. Offer ends Monday, September 7.",
-      "duration": "60 min",
-      "price": "$89",
-      "regularPrice": "$99",
-      "priceLabel": "Save $10",
-      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFaSgzDROq_li9PvOhXC4TFWXHQT4qvifSAA&s",
-      "badge": "Low Maintenance",
-      "benefits": [
-        "Lifts and curls your own natural lashes",
-        "Lasts six to eight weeks",
-        "No extensions, glue or fills",
-        "Valid September 1–7, 2026"
+        "Full-body scrub with warm shower",
+        "Express facial included",
+        "Leaves skin soft head to toe",
+        "Valid through October 26, 2026"
       ]
     }
   ]
