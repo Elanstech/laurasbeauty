@@ -29,10 +29,10 @@ const categoryConfig = {
     },
     specials: {
         jsonFile: '../data/specials.json',
-        title: 'Labor Day Specials',
-        subtitle: 'Five treatments at holiday weekend pricing, September 1 – 7',
-        description: 'Close out the summer with something for yourself. Five of our most-booked treatments are at Labor Day pricing through Monday, September 7 \u2014 a full hour of facial and massage for $89, laser from $59, and a lash lift you will not have to think about again for two months.',
-        badge: 'Labor Day Weekend'
+        title: 'Fall Specials',
+        subtitle: 'Four treatments at fall pricing, now through October 26',
+        description: 'Bring your skin back from the summer. Four of our most-booked treatments are at fall pricing through Monday, October 26 \u2014 a sweet mango facial for $69, microneedling for $179, underarm laser for $59, and a body scrub with shower plus an express facial for $99.',
+        badge: 'Fall Specials'
     },
     nails: {
         jsonFile: '../data/nails.json',
