@@ -1508,8 +1508,8 @@ if (document.readyState === 'loading') {
 }
 
 /* ============================================
-   LABOR DAY WEEKEND COUNTDOWN
-   Counts down to 11:59:59 PM on Mon Sept 7, 2026.
+   FALL SPECIALS COUNTDOWN
+   Counts down to 11:59:59 PM on Mon Oct 26, 2026.
    Hides itself once the offer has passed, so the
    hero degrades gracefully if nobody swaps it out.
    Delete this block after the promo ends.
@@ -1519,8 +1519,8 @@ class LaborDayCountdown {
         this.el = document.getElementById('laborCountdown');
         if (!this.el) return;
 
-        // End of Labor Day, Monday September 7, 2026 (local time)
-        this.deadline = new Date(2026, 8, 8, 0, 0, 0).getTime();
+        // End of the fall promo, Monday October 26, 2026 (local time)
+        this.deadline = new Date(2026, 9, 27, 0, 0, 0).getTime();
 
         this.nums = {
             days:    this.el.querySelector('[data-unit="days"]'),
