@@ -1514,9 +1514,9 @@ if (document.readyState === 'loading') {
    hero degrades gracefully if nobody swaps it out.
    Delete this block after the promo ends.
    ============================================ */
-class LaborDayCountdown {
+class FallSpecialsCountdown {
     constructor() {
-        this.el = document.getElementById('laborCountdown');
+        this.el = document.getElementById('fallCountdown');
         if (!this.el) return;
 
         // End of the fall promo, Monday October 26, 2026 (local time)
@@ -1560,9 +1560,9 @@ class LaborDayCountdown {
 }
 
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => new LaborDayCountdown());
+    document.addEventListener('DOMContentLoaded', () => new FallSpecialsCountdown());
 } else {
-    new LaborDayCountdown();
+    new FallSpecialsCountdown();
 }
 
 console.log('🌟 Script loaded')
