@@ -7216,7 +7216,7 @@ a.contact-value:hover {
 /* ============================================
    SEASONAL PROMO — HERO ADD-ON (structure)
    Laura's Beauty Touch
-   Colour theming lives in the LABOR DAY block
+   Colour theming lives in the FALL SPECIALS block
    at the very end of this file.
    ============================================ */
 
@@ -7444,76 +7444,106 @@ a.contact-value:hover {
 
 
 /* ============================================
-   LABOR DAY WEEKEND — THEME LAYER
-   Laura's Beauty Touch · Sept 1 – 7, 2026
+   FALL SPECIALS — THEME LAYER
+   Laura's Beauty Touch · now through Oct 26, 2026
    Sits on top of the seasonal promo block above.
-   Delete this whole block after Sept 7 to revert
+   Delete this whole block after Oct 26 to revert
    the hero to the plain gold treatment.
    ============================================ */
 
 :root {
-    --labor-navy: #3E2A1C;
-    --labor-red:  #B5651D;
+    --fall-espresso: #3E2A1C;
+    --fall-amber:    #C1762C;
+    --fall-rust:     #8C3B1E;
 }
 
-/* --- Offer pill: navy glass, red pulse, gold rule --- */
-.hero-offer-pill.labor-pill {
+/* --- Offer pill: warm espresso glass, amber pulse --- */
+.hero-offer-pill.fall-pill {
     background: linear-gradient(135deg,
-                rgba(27, 42, 74, 0.55) 0%,
-                rgba(27, 42, 74, 0.30) 100%);
+                rgba(62, 42, 28, 0.62) 0%,
+                rgba(140, 59, 30, 0.28) 100%);
     border-color: rgba(212, 175, 55, 0.65);
-    box-shadow: 0 6px 26px rgba(27, 42, 74, 0.35);
+    box-shadow: 0 6px 26px rgba(62, 42, 28, 0.42);
 }
 
-.hero-offer-pill.labor-pill .pill-dot {
-    background: var(--labor-red);
-    box-shadow: 0 0 0 0 rgba(158, 59, 59, 0.75);
-    animation: labor-ping 2.4s ease-out infinite;
+.hero-offer-pill.fall-pill .pill-dot {
+    background: var(--fall-amber);
+    box-shadow: 0 0 0 0 rgba(193, 118, 44, 0.8);
+    animation: fall-ping 2.8s ease-out infinite;
 }
 
-@keyframes labor-ping {
-    0%   { box-shadow: 0 0 0 0 rgba(158, 59, 59, 0.75); }
-    70%  { box-shadow: 0 0 0 10px rgba(158, 59, 59, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(158, 59, 59, 0); }
+@keyframes fall-ping {
+    0%   { box-shadow: 0 0 0 0 rgba(193, 118, 44, 0.8); }
+    70%  { box-shadow: 0 0 0 11px rgba(193, 118, 44, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(193, 118, 44, 0); }
 }
 
-/* --- Three-bar accent under the pill --- */
-.labor-stripes {
+/* --- Leaf rule under the pill (replaces the holiday stripes) --- */
+.fall-rule {
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 6px;
-    margin: 0 auto 20px;
+    gap: 14px;
+    margin: 0 auto 22px;
     animation: fadeInDown 0.8s ease-out 0.15s both;
 }
 
-.labor-stripes i {
+.fall-rule-line {
     display: block;
-    width: 34px;
-    height: 3px;
-    border-radius: 2px;
+    width: 56px;
+    height: 1px;
+    background: linear-gradient(90deg,
+                rgba(212, 175, 55, 0) 0%,
+                rgba(212, 175, 55, 0.85) 100%);
 }
 
-.labor-stripes i:nth-child(1) { background: var(--labor-navy); box-shadow: 0 0 12px rgba(27, 42, 74, 0.6); }
-.labor-stripes i:nth-child(2) { background: var(--ivory-white); opacity: 0.85; }
-.labor-stripes i:nth-child(3) { background: var(--labor-red); box-shadow: 0 0 12px rgba(158, 59, 59, 0.5); }
+.fall-rule-line:last-child {
+    background: linear-gradient(90deg,
+                rgba(212, 175, 55, 0.85) 0%,
+                rgba(212, 175, 55, 0) 100%);
+}
 
-/* --- Countdown to Monday night --- */
-.labor-countdown {
+.fall-rule-leaf {
+    font-size: 13px;
+    color: var(--fall-amber);
+    transform: rotate(-20deg);
+    text-shadow: 0 0 14px rgba(193, 118, 44, 0.55);
+}
+
+/* --- Countdown: open row, hairline top accent, amber dividers --- */
+.fall-countdown {
     display: inline-flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    position: relative;
     margin: 0 auto 26px;
-    padding: 16px 30px;
-    border-radius: 16px;
-    background: rgba(27, 42, 74, 0.34);
-    border: 1px solid rgba(212, 175, 55, 0.35);
+    padding: 20px 34px 16px;
+    border-radius: 4px;
+    background: linear-gradient(180deg,
+                rgba(62, 42, 28, 0.46) 0%,
+                rgba(62, 42, 28, 0.20) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.28);
+    border-top: none;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     animation: fadeInUp 0.8s ease-out 0.45s both;
 }
 
-.labor-countdown.expired { display: none; }
+.fall-countdown::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+                var(--fall-rust) 0%,
+                var(--gold-accent) 50%,
+                var(--fall-amber) 100%);
+}
+
+.fall-countdown.expired { display: none; }
 
 .countdown-label {
     font-family: 'Lato', sans-serif;
@@ -7521,26 +7551,30 @@ a.contact-value:hover {
     font-weight: 700;
     letter-spacing: 2.6px;
     text-transform: uppercase;
-    color: rgba(250, 250, 247, 0.82);
+    color: rgba(250, 250, 247, 0.86);
 }
 
 .countdown-units {
     display: flex;
     align-items: flex-start;
-    gap: 22px;
+    gap: 0;
 }
 
 .countdown-unit {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3px;
-    min-width: 44px;
+    gap: 4px;
+    min-width: 62px;
+    padding: 0 12px;
+    border-right: 1px solid rgba(212, 175, 55, 0.22);
 }
+
+.countdown-unit:last-child { border-right: none; }
 
 .countdown-num {
     font-family: 'Playfair Display', serif;
-    font-size: 1.75rem;
+    font-size: 1.85rem;
     font-weight: 700;
     line-height: 1;
     color: var(--gold-accent);
@@ -7554,54 +7588,54 @@ a.contact-value:hover {
     font-weight: 700;
     letter-spacing: 1.8px;
     text-transform: uppercase;
-    color: rgba(250, 250, 247, 0.68);
+    color: rgba(250, 250, 247, 0.66);
 }
 
-/* --- Seal picks up the navy core --- */
+/* --- Seal picks up the warm core --- */
 .hero-seal-core {
-    background: rgba(27, 42, 74, 0.52);
+    background: rgba(62, 42, 28, 0.58);
     border-color: rgba(212, 175, 55, 0.55);
 }
 
-/* --- Floating Specials button: red badge for the weekend --- */
+/* --- Floating Specials button: amber badge for the season --- */
 .specials-notification-badge {
-    background: var(--labor-red) !important;
+    background: var(--fall-amber) !important;
 }
 
 /* --- Responsive --- */
 @media (max-width: 968px) {
-    .countdown-units { gap: 16px; }
-    .countdown-num { font-size: 1.45rem; }
+    .countdown-unit { min-width: 54px; padding: 0 9px; }
+    .countdown-num { font-size: 1.5rem; }
 }
 
 @media (max-width: 768px) {
-    .labor-stripes { margin-bottom: 14px; }
-    .labor-stripes i { width: 26px; height: 2.5px; }
+    .fall-rule { margin-bottom: 16px; gap: 11px; }
+    .fall-rule-line { width: 40px; }
+    .fall-rule-leaf { font-size: 11px; }
 
-    .labor-countdown {
-        padding: 13px 20px;
+    .fall-countdown {
+        padding: 16px 18px 13px;
         margin-bottom: 20px;
         width: auto;
     }
 
-    .countdown-units { gap: 13px; }
-    .countdown-unit { min-width: 36px; }
-    .countdown-num { font-size: 1.25rem; }
+    .countdown-unit { min-width: 46px; padding: 0 7px; }
+    .countdown-num { font-size: 1.3rem; }
     .countdown-word { font-size: 8px; letter-spacing: 1.2px; }
     .countdown-label { font-size: 9.5px; letter-spacing: 2px; }
 }
 
 @media (max-width: 380px) {
-    .countdown-units { gap: 9px; }
-    .countdown-unit { min-width: 30px; }
+    .countdown-unit { min-width: 38px; padding: 0 5px; }
     .countdown-num { font-size: 1.1rem; }
+    .fall-rule-line { width: 28px; }
 }
 
 /* --- Accessibility --- */
 @media (prefers-reduced-motion: reduce) {
-    .labor-stripes,
-    .labor-countdown,
-    .hero-offer-pill.labor-pill .pill-dot {
+    .fall-rule,
+    .fall-countdown,
+    .hero-offer-pill.fall-pill .pill-dot {
         animation: none !important;
     }
 }
