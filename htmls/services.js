@@ -14,21 +14,6 @@
 /**
  * Initialize hero scroll indicator
  */
-function initHeroScrollIndicator() {
-    const scrollIndicator = document.querySelector('.services-page .hero-scroll-indicator');
-    
-    if (scrollIndicator) {
-        scrollIndicator.addEventListener('click', () => {
-            const servicesSection = document.querySelector('.services-page .services-section');
-            if (servicesSection) {
-                servicesSection.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    }
-}
 
 /**
  * Initialize services page specific scroll animations
@@ -275,7 +260,6 @@ function initServicesPage() {
     // Wait a bit to ensure global script.js has initialized
     setTimeout(() => {
         // Services-specific initializations
-        initHeroScrollIndicator();
         initServicesScrollAnimations();
         initServiceCardInteractions();
         initServicesPageSmoothScroll();

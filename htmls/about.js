@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const gallery = new PhotoGallery();
     
     // Initialize smooth scroll for hero indicator
-    initSmoothScroll();
     
     // Initialize parallax effect for hero
     initParallaxEffect();
@@ -202,24 +201,6 @@ class PhotoGallery {
     }
 }
 
-// ============================================
-// SMOOTH SCROLL FUNCTIONALITY
-// ============================================
-function initSmoothScroll() {
-    const scrollIndicator = document.querySelector('.hero-scroll-indicator');
-    
-    if (scrollIndicator) {
-        scrollIndicator.addEventListener('click', () => {
-            const targetSection = document.querySelector('.laura-story-section');
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    }
-}
 
 // ============================================
 // PARALLAX EFFECT FOR HERO

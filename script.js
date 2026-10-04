@@ -57,6 +57,13 @@ const Utils = {
     }
 };
 
+// Shared scroll lock so overlays never unlock each other's scroll
+const ScrollLock = {
+    owners: new Set(),
+    lock(owner) { this.owners.add(owner); document.body.style.overflow = 'hidden'; },
+    unlock(owner) { this.owners.delete(owner); if (this.owners.size === 0) document.body.style.overflow = ''; }
+};
+
 // Add global ripple animation style once
 if (!document.getElementById('global-ripple-style')) {
     const style = document.createElement('style');
@@ -82,7 +89,7 @@ class ElegantPreloader {
     }
 
     init() {
-        document.body.style.overflow = 'hidden';
+        ScrollLock.lock('preloader');
         
         const hidePreloader = () => {
             setTimeout(() => this.hide(), 300);
@@ -98,14 +105,14 @@ class ElegantPreloader {
             if (this.preloader && !this.preloader.classList.contains('hidden')) {
                 this.hide();
             }
-        }, 3000);
+        }, 1500);
     }
 
     hide() {
         this.preloader.classList.add('hidden');
+        ScrollLock.unlock('preloader');
         setTimeout(() => {
             this.preloader.style.display = 'none';
-            document.body.style.overflow = '';
         }, 800);
     }
 }
@@ -148,6 +155,17 @@ class PremiumHeaderWithMegaMenu {
         if (!this.mobileToggle) return;
 
         this.mobileToggle.addEventListener('click', () => this.toggleMenu());
+
+        const drawerHeader = this.mobileDrawer?.querySelector('.drawer-header');
+        if (drawerHeader && !drawerHeader.querySelector('.drawer-close-btn')) {
+            const closeBtn = document.createElement('button');
+            closeBtn.type = 'button';
+            closeBtn.className = 'drawer-close-btn';
+            closeBtn.setAttribute('aria-label', 'Close menu');
+            closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+            closeBtn.addEventListener('click', () => this.closeMenu());
+            drawerHeader.appendChild(closeBtn);
+        }
         this.mobileOverlay?.addEventListener('click', () => this.closeMenu());
 
         document.querySelectorAll('.mobile-link:not(.mobile-dropdown-trigger)').forEach(link => {
@@ -165,14 +183,14 @@ class PremiumHeaderWithMegaMenu {
         const isActive = this.mobileDrawer.classList.toggle('active');
         this.mobileToggle.classList.toggle('active', isActive);
         this.mobileOverlay?.classList.toggle('active', isActive);
-        document.body.style.overflow = isActive ? 'hidden' : '';
+        isActive ? ScrollLock.lock('menu') : ScrollLock.unlock('menu');
     }
 
     closeMenu() {
         this.mobileToggle?.classList.remove('active');
         this.mobileDrawer?.classList.remove('active');
         this.mobileOverlay?.classList.remove('active');
-        document.body.style.overflow = '';
+        ScrollLock.unlock('menu');
     }
 
     handleLogoClick() {
@@ -231,7 +249,6 @@ class PremiumHeaderWithMegaMenu {
     setupMegaMenuItems() {
         this.megamenuWrapper.querySelectorAll('.megamenu-item').forEach(item => {
             item.addEventListener('click', () => {
-                console.log(`📍 ${item.querySelector('.megamenu-item-title')?.textContent}`);
             });
         });
     }
@@ -294,7 +311,6 @@ class GlobalSearch {
     init() {
         this.bindEvents();
         this.loadAllData();
-        console.log('🔍 Global Search initialized');
     }
     
     bindEvents() {
@@ -350,7 +366,6 @@ class GlobalSearch {
             const results = await Promise.all(promises);
             this.searchData = results.flat();
             this.dataLoaded = true;
-            console.log(`✅ Loaded ${this.searchData.length} items`);
         } catch (error) {
             console.error('❌ Error loading search data:', error);
         }
@@ -589,18 +604,16 @@ class GlobalSearch {
     open() {
         this.isOpen = true;
         this.modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        ScrollLock.lock('search');
         setTimeout(() => this.input.focus(), 100);
         this.showQuickLinks();
-        console.log('🔍 Search opened');
     }
     
     close() {
         this.isOpen = false;
         this.modal.classList.remove('active');
-        document.body.style.overflow = '';
+        ScrollLock.unlock('search');
         setTimeout(() => this.clearSearch(), 300);
-        console.log('🔍 Search closed');
     }
     
     toggle() {
@@ -615,7 +628,7 @@ class GlobalSearch {
         drawer?.classList.remove('active');
         overlay?.classList.remove('active');
         toggle?.classList.remove('active');
-        document.body.style.overflow = '';
+        ScrollLock.unlock('menu');
     }
 }
 
@@ -679,12 +692,10 @@ class FloatingButtons {
 
     trackClicks() {
         this.specialsBtn?.addEventListener('click', (e) => {
-            console.log('🌟 Specials clicked');
             Utils.createRipple(e, this.specialsBtn, 'rgba(169, 200, 156, 0.6)');
         });
 
         this.giftcardBtn?.addEventListener('click', (e) => {
-            console.log('🎁 Gift Card clicked');
             Utils.createRipple(e, this.giftcardBtn, 'rgba(212, 175, 55, 0.6)');
         });
     }
@@ -967,7 +978,6 @@ class TeamSection {
     setupButtonEffects() {
         const btn = document.querySelector('.btn-meet-team');
         btn?.addEventListener('click', (e) => {
-            console.log('🤝 Meet Team clicked');
             Utils.createRipple(e, btn);
         });
     }
@@ -1188,13 +1198,12 @@ class BlogSection {
         `;
         
         this.modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        console.log(`📖 Blog post: ${post.title}`);
+        ScrollLock.lock('blog');
     }
 
     closeModal() {
         this.modal.classList.remove('active');
-        document.body.style.overflow = '';
+        ScrollLock.unlock('blog');
         if (this.modalBody) this.modalBody.scrollTop = 0;
     }
 
@@ -1432,12 +1441,10 @@ class SimpleComponents {
         const callBtn = document.querySelector('.btn-call-now');
 
         bookBtn?.addEventListener('click', (e) => {
-            console.log('📅 Book Appointment');
             Utils.createRipple(e, bookBtn);
         });
 
         callBtn?.addEventListener('click', (e) => {
-            console.log('📞 Call button');
             Utils.createRipple(e, callBtn);
         });
     }
@@ -1448,7 +1455,6 @@ class SimpleComponents {
 
         const ctaBtn = document.querySelector('.footer-cta-btn');
         ctaBtn?.addEventListener('click', (e) => {
-            console.log('Footer CTA clicked');
             Utils.createRipple(e, ctaBtn, 'rgba(59, 74, 47, 0.3)');
         });
     }
@@ -1464,7 +1470,6 @@ class SimpleComponents {
 // MAIN INITIALIZATION
 // ============================================
 function initWebsite() {
-    console.log('🌿 Laura\'s Beauty Touch - Initializing...');
     
     // Core Components
     new ElegantPreloader();
@@ -1497,7 +1502,6 @@ function initWebsite() {
         });
     }
     
-    console.log('✅ All components initialized');
 }
 
 // Start initialization
@@ -1565,4 +1569,21 @@ if (document.readyState === 'loading') {
     new FallSpecialsCountdown();
 }
 
-console.log('🌟 Script loaded')
+
+/* ============================================
+   CONVERSION TRACKING (Google Analytics)
+   Book Now, calls, emails, gift cards, directions
+   ============================================ */
+document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href]');
+    if (!link || typeof gtag !== 'function') return;
+    const href = link.getAttribute('href') || '';
+    const label = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 60);
+    let event = null;
+    if (href.includes('fresha.com') && href.includes('gift-cards')) event = 'gift_card_click';
+    else if (href.includes('fresha.com')) event = 'book_now_click';
+    else if (href.startsWith('tel:')) event = 'phone_call_click';
+    else if (href.startsWith('mailto:')) event = 'email_click';
+    else if (href.includes('google.com/maps')) event = 'directions_click';
+    if (event) gtag('event', event, { link_text: label, page_path: location.pathname });
+}, { capture: true });

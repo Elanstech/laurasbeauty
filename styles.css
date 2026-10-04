@@ -23,7 +23,6 @@
 
 html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
 }
 
 body {
@@ -620,6 +619,32 @@ body {
 }
 
 .mobile-search-btn:hover {
+    background: var(--mint-green);
+}
+
+/* Close button inside the mobile drawer (the hamburger sits under the drawer) */
+.drawer-header .mobile-search-btn {
+    margin-left: auto;
+}
+
+.drawer-close-btn {
+    width: 44px;
+    height: 44px;
+    margin-left: 10px;
+    border: none;
+    background: rgba(169, 200, 156, 0.15);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--forest-green);
+    font-size: 1.2rem;
+    transition: background 0.3s ease;
+}
+
+.drawer-close-btn:hover {
     background: var(--mint-green);
 }
 
@@ -2453,6 +2478,7 @@ body.scrolled .giftcard-premium-link {
     position: relative;
     width: 100%;
     height: 100vh;
+    height: 100svh;
     min-height: 700px;
     overflow: hidden;
     display: flex;
@@ -7042,6 +7068,11 @@ a.contact-value:hover {
 .legal-header {
   text-align: center;
   margin-bottom: 60px;
+}
+
+.legal-header .section-eyebrow {
+  display: inline-block;
+  position: relative;
 }
 
 .legal-date {

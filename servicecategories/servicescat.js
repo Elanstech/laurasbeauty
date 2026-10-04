@@ -566,21 +566,3 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-/**
- * Smooth scroll for hero scroll indicator
- */
-function initHeroScrollIndicator() {
-    const scrollIndicator = document.querySelector('.hero-scroll-indicator');
-    if (scrollIndicator) {
-        scrollIndicator.addEventListener('click', () => {
-            const targetSection = document.querySelector('#services-section');
-            if (targetSection) {
-                const headerHeight = document.querySelector('.premium-header')?.offsetHeight || 0;
-                const targetPosition = targetSection.offsetTop - headerHeight - 20;
-                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-            }
-        });
-    }
-}
-
-initHeroScrollIndicator();
