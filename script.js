@@ -57,6 +57,9 @@ const Utils = {
     }
 };
 
+// Enable CSS transitions only after the first render
+requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.add('is-ready')));
+
 // Shared scroll lock so overlays never unlock each other's scroll
 const ScrollLock = {
     owners: new Set(),
@@ -712,15 +715,17 @@ class HeroVideoCollage {
         this.scrollIndicator = document.querySelector('.scroll-indicator');
         this.currentSlide = 0;
         
-        if (this.slides.length === 0) return;
+        if (this.slides.length === 0 && this.videos.length === 0) return;
         this.init();
     }
 
     init() {
         this.setupVideos();
-        this.setupNavigation();
-        this.startAutoPlay();
         this.setupScrollIndicator();
+        if (this.slides.length > 1) {
+            this.setupNavigation();
+            this.startAutoPlay();
+        }
     }
 
     setupVideos() {
@@ -1556,10 +1561,10 @@ class FallSpecialsCountdown {
         const minutes = Math.floor((seconds % 3600) / 60);
         const secs    = seconds % 60;
 
-        this.nums.days.textContent    = days;
-        this.nums.hours.textContent   = this.pad(hours);
-        this.nums.minutes.textContent = this.pad(minutes);
-        this.nums.seconds.textContent = this.pad(secs);
+        if (this.nums.days)    this.nums.days.textContent    = days;
+        if (this.nums.hours)   this.nums.hours.textContent   = hours;
+        if (this.nums.minutes) this.nums.minutes.textContent = minutes;
+        if (this.nums.seconds) this.nums.seconds.textContent = this.pad(secs);
     }
 }
 

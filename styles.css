@@ -25,6 +25,13 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Skip transitions on first render so overlays never flash while the page loads */
+html:not(.is-ready) *,
+html:not(.is-ready) *::before,
+html:not(.is-ready) *::after {
+    transition: none !important;
+}
+
 body {
     font-family: 'Lato', sans-serif;
     color: var(--charcoal);
@@ -7245,428 +7252,259 @@ a.contact-value:hover {
 }
 
 /* ============================================
-   SEASONAL PROMO — HERO ADD-ON (structure)
-   Laura's Beauty Touch
-   Colour theming lives in the FALL SPECIALS block
-   at the very end of this file.
+   FALL SPECIALS — HOME HERO OFFER
+   Swap the copy and prices in index.html each season.
    ============================================ */
+.hero-section {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 130px 0 130px;
+}
 
-/* --- Offer pill: dates, sits above the eyebrow --- */
-.hero-offer-pill {
+.fall-offer {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--ivory-white);
+}
+
+.fall-offer-kicker {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 9px 22px;
-    margin-bottom: 22px;
-    background: rgba(212, 175, 55, 0.16);
-    border: 1px solid rgba(212, 175, 55, 0.55);
-    border-radius: 50px;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    margin: 0 0 18px;
     font-family: 'Lato', sans-serif;
-    font-size: 12px;
+    font-size: 1rem;
     font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--ivory-white);
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-    animation: fadeInDown 0.8s ease-out both;
+    color: var(--soft-sand);
 }
 
-.hero-offer-pill .pill-dot {
-    width: 7px;
-    height: 7px;
+.fall-offer-dot {
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background: var(--gold-accent);
-    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
-    animation: pill-ping 2.4s ease-out infinite;
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.25);
     flex-shrink: 0;
 }
 
-@keyframes pill-ping {
-    0%   { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
-    70%  { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+.fall-offer-title {
+    margin: 0 0 16px;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.3rem, 6vw, 4.6rem);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: #fff;
+    text-wrap: balance;
 }
 
-/* --- Gold treatment for the discount inside the H1 --- */
-.hero-title .title-offer {
-    display: block;
-    color: var(--gold-accent);
-    text-shadow: 0 4px 30px rgba(212, 175, 55, 0.55);
-}
-
-/* --- Two buttons side by side --- */
-.hero-cta-group {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
-}
-
-/* Gold-filled primary, used only during the promo */
-.hero-cta-btn.hero-cta-gold {
-    background: linear-gradient(135deg, var(--gold-accent) 0%, #E6C347 100%);
-    border-color: var(--gold-accent);
-    color: var(--deep-forest);
-    box-shadow: 0 8px 30px rgba(212, 175, 55, 0.35);
-}
-
-.hero-cta-btn.hero-cta-gold:hover {
-    background: linear-gradient(135deg, #FFD700 0%, var(--gold-accent) 100%);
-    border-color: #FFD700;
-    color: var(--deep-forest);
-    box-shadow: 0 12px 40px rgba(212, 175, 55, 0.55);
-}
-
-/* Quiet ghost button next to it */
-.hero-cta-btn.hero-cta-ghost {
-    background: rgba(250, 250, 247, 0.08);
-    border-color: rgba(250, 250, 247, 0.55);
-    animation-delay: 0.6s;
-}
-
-.hero-cta-btn.hero-cta-ghost:hover {
-    background: rgba(250, 250, 247, 0.18);
-    border-color: var(--ivory-white);
-}
-
-/* --- Exclusions line, small and honest --- */
-.hero-fineprint {
-    margin-top: 22px;
-    font-family: 'Lato', sans-serif;
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 0.4px;
-    color: rgba(250, 250, 247, 0.7);
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-    max-width: 560px;
-    margin-left: auto;
-    margin-right: auto;
+.fall-offer-lede {
+    max-width: 34em;
+    margin: 0 auto 34px;
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
     line-height: 1.6;
-    animation: fadeInUp 0.8s ease-out 0.8s both;
+    color: rgba(250, 250, 247, 0.88);
 }
 
-/* --- Signature element: rotating gold seal, bottom-left of hero --- */
-.hero-seal {
-    position: absolute;
-    bottom: 45px;
-    left: 45px;
-    width: 150px;
-    height: 150px;
-    z-index: 15;
-    pointer-events: none;
-    animation: fadeInUp 1s ease-out 1.1s both;
-}
-
-.hero-seal-ring {
-    position: absolute;
-    inset: 0;
-    animation: seal-spin 26s linear infinite;
-}
-
-@keyframes seal-spin {
-    to { transform: rotate(360deg); }
-}
-
-.hero-seal-ring text {
-    font-family: 'Lato', sans-serif;
-    font-size: 9.4px;
-    font-weight: 700;
-    letter-spacing: 3.1px;
-    fill: var(--gold-accent);
-    text-transform: uppercase;
-}
-
-.hero-seal-core {
-    position: absolute;
-    inset: 26px;
-    border-radius: 50%;
-    background: rgba(28, 28, 28, 0.42);
-    border: 1px solid rgba(212, 175, 55, 0.45);
-    backdrop-filter: blur(10px);
+.fall-offer-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0 0 34px;
+    padding: 0;
+    list-style: none;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 18px;
+    background: rgba(24, 30, 19, 0.62);
     -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+.fall-offer-list li + li {
+    border-left: 1px solid rgba(212, 175, 55, 0.22);
+}
+
+.fall-offer-item {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1px;
+    gap: 8px;
+    height: 100%;
+    padding: 22px 20px;
+    text-align: left;
+    color: inherit;
+    text-decoration: none;
+    transition: background 0.25s ease;
 }
 
-.hero-seal-number {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.85rem;
+.fall-offer-item:hover,
+.fall-offer-item:focus-visible {
+    background: rgba(212, 175, 55, 0.12);
+    outline: none;
+}
+
+.fall-offer-name {
+    font-size: 0.98rem;
     font-weight: 700;
+    line-height: 1.3;
+    color: var(--ivory-white);
+}
+
+.fall-offer-price {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.fall-offer-price strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
     line-height: 1;
     color: var(--gold-accent);
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
 }
 
-.hero-seal-word {
-    font-family: 'Lato', sans-serif;
-    font-size: 0.62rem;
+.fall-offer-price s {
+    font-size: 0.95rem;
+    color: rgba(250, 250, 247, 0.55);
+}
+
+.fall-offer-note {
+    font-size: 0.82rem;
     font-weight: 700;
-    letter-spacing: 3.5px;
-    text-indent: 3.5px;
-    color: var(--ivory-white);
-    text-transform: uppercase;
+    color: var(--mint-green);
 }
 
-/* --- Responsive --- */
-@media (max-width: 968px) {
-    .hero-seal {
-        width: 118px;
-        height: 118px;
-        bottom: 30px;
-        left: 20px;
-    }
-
-    .hero-seal-core { inset: 21px; }
-    .hero-seal-number { font-size: 1.4rem; }
-    .hero-seal-word { font-size: 0.52rem; letter-spacing: 2.5px; text-indent: 2.5px; }
-    .hero-seal-ring text { font-size: 9.8px; letter-spacing: 2.6px; }
-}
-
-@media (max-width: 768px) {
-    .hero-offer-pill {
-        font-size: 10px;
-        letter-spacing: 1.4px;
-        padding: 8px 16px;
-        margin-bottom: 16px;
-    }
-
-    .hero-cta-group {
-        flex-direction: column;
-        gap: 12px;
-        width: 100%;
-    }
-
-    .hero-cta-group .hero-cta-btn {
-        width: 100%;
-        max-width: 300px;
-        justify-content: center;
-    }
-
-    .hero-fineprint {
-        font-size: 11px;
-        padding: 0 10px;
-    }
-
-    /* Seal competes with the slide dots on small screens */
-    .hero-seal { display: none; }
-}
-
-/* --- Accessibility --- */
-@media (prefers-reduced-motion: reduce) {
-    .hero-offer-pill,
-    .hero-fineprint,
-    .hero-seal,
-    .hero-seal-ring,
-    .hero-offer-pill .pill-dot {
-        animation: none !important;
-    }
-}
-
-.hero-cta-btn:focus-visible {
-    outline: 3px solid var(--gold-accent);
-    outline-offset: 4px;
-}
-
-
-/* ============================================
-   FALL SPECIALS — THEME LAYER
-   Laura's Beauty Touch · now through Oct 26, 2026
-   Sits on top of the seasonal promo block above.
-   Delete this whole block after Oct 26 to revert
-   the hero to the plain gold treatment.
-   ============================================ */
-
-:root {
-    --fall-espresso: #3E2A1C;
-    --fall-amber:    #C1762C;
-    --fall-rust:     #8C3B1E;
-}
-
-/* --- Offer pill: warm espresso glass, amber pulse --- */
-.hero-offer-pill.fall-pill {
-    background: linear-gradient(135deg,
-                rgba(62, 42, 28, 0.62) 0%,
-                rgba(140, 59, 30, 0.28) 100%);
-    border-color: rgba(212, 175, 55, 0.65);
-    box-shadow: 0 6px 26px rgba(62, 42, 28, 0.42);
-}
-
-.hero-offer-pill.fall-pill .pill-dot {
-    background: var(--fall-amber);
-    box-shadow: 0 0 0 0 rgba(193, 118, 44, 0.8);
-    animation: fall-ping 2.8s ease-out infinite;
-}
-
-@keyframes fall-ping {
-    0%   { box-shadow: 0 0 0 0 rgba(193, 118, 44, 0.8); }
-    70%  { box-shadow: 0 0 0 11px rgba(193, 118, 44, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(193, 118, 44, 0); }
-}
-
-/* --- Leaf rule under the pill (replaces the holiday stripes) --- */
-.fall-rule {
+.fall-offer-actions {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 14px;
-    margin: 0 auto 22px;
-    animation: fadeInDown 0.8s ease-out 0.15s both;
+    margin-bottom: 22px;
 }
 
-.fall-rule-line {
-    display: block;
-    width: 56px;
-    height: 1px;
-    background: linear-gradient(90deg,
-                rgba(212, 175, 55, 0) 0%,
-                rgba(212, 175, 55, 0.85) 100%);
-}
-
-.fall-rule-line:last-child {
-    background: linear-gradient(90deg,
-                rgba(212, 175, 55, 0.85) 0%,
-                rgba(212, 175, 55, 0) 100%);
-}
-
-.fall-rule-leaf {
-    font-size: 13px;
-    color: var(--fall-amber);
-    transform: rotate(-20deg);
-    text-shadow: 0 0 14px rgba(193, 118, 44, 0.55);
-}
-
-/* --- Countdown: open row, hairline top accent, amber dividers --- */
-.fall-countdown {
+.fall-btn {
     display: inline-flex;
-    flex-direction: column;
     align-items: center;
-    gap: 12px;
-    position: relative;
-    margin: 0 auto 26px;
-    padding: 20px 34px 16px;
-    border-radius: 4px;
-    background: linear-gradient(180deg,
-                rgba(62, 42, 28, 0.46) 0%,
-                rgba(62, 42, 28, 0.20) 100%);
-    border: 1px solid rgba(212, 175, 55, 0.28);
-    border-top: none;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    animation: fadeInUp 0.8s ease-out 0.45s both;
-}
-
-.fall-countdown::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg,
-                var(--fall-rust) 0%,
-                var(--gold-accent) 50%,
-                var(--fall-amber) 100%);
-}
-
-.fall-countdown.expired { display: none; }
-
-.countdown-label {
+    justify-content: center;
+    min-height: 54px;
+    padding: 0 32px;
+    border-radius: 999px;
     font-family: 'Lato', sans-serif;
-    font-size: 10.5px;
+    font-size: 1rem;
     font-weight: 700;
-    letter-spacing: 2.6px;
-    text-transform: uppercase;
-    color: rgba(250, 250, 247, 0.86);
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s ease;
 }
 
-.countdown-units {
-    display: flex;
-    align-items: flex-start;
-    gap: 0;
+.fall-btn-primary {
+    background: var(--gold-accent);
+    color: var(--deep-forest);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.35);
 }
 
-.countdown-unit {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    min-width: 62px;
-    padding: 0 12px;
-    border-right: 1px solid rgba(212, 175, 55, 0.22);
+.fall-btn-primary:hover {
+    background: #e2c04d;
+    transform: translateY(-2px);
 }
 
-.countdown-unit:last-child { border-right: none; }
+.fall-btn-secondary {
+    border: 1.5px solid rgba(250, 250, 247, 0.6);
+    color: var(--ivory-white);
+}
 
-.countdown-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.85rem;
+.fall-btn-secondary:hover {
+    background: rgba(250, 250, 247, 0.12);
+}
+
+.fall-btn:focus-visible {
+    outline: 3px solid var(--mint-green);
+    outline-offset: 3px;
+}
+
+.fall-offer-timer {
+    margin: 0;
+    font-size: 0.92rem;
+    color: rgba(250, 250, 247, 0.75);
+}
+
+.fall-countdown {
     font-weight: 700;
-    line-height: 1;
-    color: var(--gold-accent);
-    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+    color: var(--soft-sand);
     font-variant-numeric: tabular-nums;
 }
 
-.countdown-word {
-    font-family: 'Lato', sans-serif;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 1.8px;
-    text-transform: uppercase;
-    color: rgba(250, 250, 247, 0.66);
+.fall-countdown.expired {
+    display: none;
 }
 
-/* --- Seal picks up the warm core --- */
-.hero-seal-core {
-    background: rgba(62, 42, 28, 0.58);
-    border-color: rgba(212, 175, 55, 0.55);
+.fall-offer-terms {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.8rem;
+    color: rgba(250, 250, 247, 0.6);
 }
 
-/* --- Floating Specials button: amber badge for the season --- */
-.specials-notification-badge {
-    background: var(--fall-amber) !important;
-}
-
-/* --- Responsive --- */
-@media (max-width: 968px) {
-    .countdown-unit { min-width: 54px; padding: 0 9px; }
-    .countdown-num { font-size: 1.5rem; }
-}
-
-@media (max-width: 768px) {
-    .fall-rule { margin-bottom: 16px; gap: 11px; }
-    .fall-rule-line { width: 40px; }
-    .fall-rule-leaf { font-size: 11px; }
-
-    .fall-countdown {
-        padding: 16px 18px 13px;
-        margin-bottom: 20px;
-        width: auto;
+@media (max-width: 900px) {
+    .fall-offer-list {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .countdown-unit { min-width: 46px; padding: 0 7px; }
-    .countdown-num { font-size: 1.3rem; }
-    .countdown-word { font-size: 8px; letter-spacing: 1.2px; }
-    .countdown-label { font-size: 9.5px; letter-spacing: 2px; }
+    .fall-offer-list li + li {
+        border-left: 0;
+    }
+
+    .fall-offer-list li:nth-child(even) {
+        border-left: 1px solid rgba(212, 175, 55, 0.22);
+    }
+
+    .fall-offer-list li:nth-child(n + 3) {
+        border-top: 1px solid rgba(212, 175, 55, 0.22);
+    }
 }
 
-@media (max-width: 380px) {
-    .countdown-unit { min-width: 38px; padding: 0 5px; }
-    .countdown-num { font-size: 1.1rem; }
-    .fall-rule-line { width: 28px; }
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 140px 0 120px;
+    }
+
+    .hero-content-wrapper {
+        padding: 0 16px;
+    }
+
+    .fall-offer-kicker {
+        font-size: 0.9rem;
+    }
+
+    .fall-offer-lede,
+    .fall-offer-list {
+        margin-bottom: 24px;
+    }
+
+    .fall-offer-item {
+        gap: 6px;
+        padding: 16px 14px;
+    }
+
+    .fall-offer-name {
+        font-size: 0.88rem;
+    }
+
+    .fall-offer-price strong {
+        font-size: 1.65rem;
+    }
+
+    .fall-btn {
+        width: 100%;
+    }
 }
 
-/* --- Accessibility --- */
 @media (prefers-reduced-motion: reduce) {
-    .fall-rule,
-    .fall-countdown,
-    .hero-offer-pill.fall-pill .pill-dot {
-        animation: none !important;
+    .fall-btn,
+    .fall-offer-item {
+        transition: none;
     }
 }
