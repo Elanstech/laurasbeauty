@@ -1576,6 +1576,28 @@ if (document.readyState === 'loading') {
 
 
 /* ============================================
+   LEGAL PAGES — table of contents
+   ============================================ */
+(function initLegalToc() {
+    const toc = document.querySelector('.legal-toc');
+    if (!toc) return;
+    if (window.matchMedia('(max-width: 900px)').matches) toc.open = false;
+
+    const links = [...toc.querySelectorAll('a[href^="#"]')];
+    links.forEach(link => link.addEventListener('click', () => {
+        if (window.matchMedia('(max-width: 900px)').matches) toc.open = false;
+    }));
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + entry.target.id));
+        });
+    }, { rootMargin: '-120px 0px -60% 0px' });
+    document.querySelectorAll('.legal-block[id]').forEach(block => observer.observe(block));
+})();
+
+/* ============================================
    CONVERSION TRACKING (Google Analytics)
    Book Now, calls, emails, gift cards, directions
    ============================================ */
