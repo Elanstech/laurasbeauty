@@ -29,10 +29,10 @@ const categoryConfig = {
     },
     specials: {
         jsonFile: '../data/specials.json',
-        title: 'Fall Specials',
-        subtitle: 'Four treatments at fall pricing, now through October 26',
-        description: 'Bring your skin back from the summer. Four of our most-booked treatments are at fall pricing through Monday, October 26 \u2014 a sweet mango facial for $69, microneedling for $179, underarm laser for $59, and a body scrub with shower plus an express facial for $99.',
-        badge: 'Fall Specials'
+        title: 'Columbus Day Sale',
+        subtitle: '15% off every service, now through Monday, October 12',
+        description: 'Facials, laser hair removal, waxing, brows, lashes, body treatments and nails are all 15% off through Columbus Day, Monday, October 12. Discount applied at checkout. Excludes packages and gift cards.',
+        badge: 'Columbus Day \u00b7 15% Off'
     },
     nails: {
         jsonFile: '../data/nails.json',
@@ -565,4 +565,3 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
-
