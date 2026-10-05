@@ -7,81 +7,27 @@
     "endDate": "2026-10-12",
     "discount": "15%",
     "excludes": [
-      "Spa packages",
-      "Gift cards"
+      "Nail services",
+      "Eyebrow services"
     ],
-    "terms": "Valid through Monday, October 12, 2026 (Columbus Day). 15% off regular-priced services, applied at checkout. Excludes spa packages and gift cards. Cannot be combined with other offers. Appointments subject to availability."
+    "terms": "Valid through Monday, October 12, 2026 (Columbus Day). 15% off all services, applied at checkout. Excludes nail and eyebrow services. Cannot be combined with other offers. Appointments subject to availability."
   },
   "services": [
     {
-      "id": "columbus-15-facials",
-      "name": "15% Off All Facials & Skincare",
-      "description": "Every facial on the menu is 15% off through Columbus Day — from a 30-minute Express Facial to HydraFacial, Micro-Needling and Rejuran.",
-      "fullDescription": "Every facial on our menu is 15% off through Monday, October 12 — same organic products, same personalized skin analysis from Laura.\n\nA few favorites at the sale price:\n• Express Facial — $60 → $51\n• Organic Facial — $85 → $72.25\n• 24 Karat Facial — $110 → $93.50\n• Anti-Aging Facial — $120 → $102\n• Hydra Facial — $180 → $153\n• Micro-Needling — $250 → $212.50\n\nDiscount is applied at checkout. Offer ends Columbus Day, Monday, October 12.",
+      "id": "columbus-15-all-services",
+      "name": "15% Off All Services",
+      "description": "Take 15% off all services through Columbus Day, Monday, October 12. Excludes nail and eyebrow services.",
+      "fullDescription": "For Columbus Day, all services at Laura's Beauty Touch are 15% off through Monday, October 12.\n\nThat includes facials, laser hair removal, waxing, lashes, body treatments and makeup.\n\nNot included: nail services and eyebrow services.\n\nDiscount is applied at checkout and cannot be combined with other offers. Holiday weekend slots go quickly, so book early.",
       "duration": "Through Oct 12",
       "price": "15% OFF",
-      "priceLabel": "Columbus Day Sale",
+      "priceLabel": "Excludes nails & eyebrows",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
-      "image": "../images/hydro.jpeg",
-      "badge": "Most Booked",
+      "image": "../images/treatroom.jpeg",
+      "badge": "Columbus Day",
       "benefits": [
-        "Every facial on the menu included",
-        "HydraFacial, Micro-Needling and Rejuran included",
+        "15% off all services",
         "Discount applied at checkout",
-        "Valid through Monday, October 12, 2026"
-      ]
-    },
-    {
-      "id": "columbus-15-laser",
-      "name": "15% Off Laser Hair Removal",
-      "description": "Every laser area, small or large, is 15% off through Columbus Day — a smart time to start before next summer.",
-      "fullDescription": "Laser hair removal works on a schedule — sessions run four to six weeks apart — so starting in October puts you well ahead of next summer.\n\nEvery laser area is 15% off through Monday, October 12:\n• Women's Underarm Laser — $70 → $59.50\n• Full Face Laser — $150 → $127.50\n• Brazilian Laser — $170 → $144.50\n• Full Leg Laser — $200 → $170\n\nNew to laser? Laura checks your skin and hair type first and tells you honestly how many sessions your area will need.\n\nDiscount is applied at checkout. Offer ends Columbus Day, Monday, October 12.",
-      "duration": "Through Oct 12",
-      "price": "15% OFF",
-      "priceLabel": "Columbus Day Sale",
-      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
-      "image": "../images/laser.jpeg",
-      "badge": "Best Time to Start",
-      "benefits": [
-        "All laser areas included, for her and for him",
-        "Medical-grade laser",
-        "Consultation for first-time clients",
-        "Valid through Monday, October 12, 2026"
-      ]
-    },
-    {
-      "id": "columbus-15-wax-brows-lashes",
-      "name": "15% Off Waxing, Brows, Lashes & Makeup",
-      "description": "Waxing, threading, brow lamination, lash lifts and extensions, permanent makeup and makeup application — all 15% off through Columbus Day.",
-      "fullDescription": "The upkeep services you already book every few weeks, plus the bigger ones you have been putting off — all 15% off through Monday, October 12.\n\nA few examples:\n• Honey Brazilian Wax — $40 → $34\n• Lash Lift & Tint — $120 → $102\n• Powder Brows — $500 → $425\n• Microblading Eyebrows — $500 → $425\n\nIncluded: all waxing and threading, brow and lash tinting, lash lifts, lash extensions, permanent makeup, and event makeup.\n\nDiscount is applied at checkout. Offer ends Columbus Day, Monday, October 12.",
-      "duration": "Through Oct 12",
-      "price": "15% OFF",
-      "priceLabel": "Columbus Day Sale",
-      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
-      "image": "../images/brows.jpeg",
-      "badge": "Brows & Lashes",
-      "benefits": [
-        "All waxing and threading included",
-        "Lash lifts, extensions and tinting included",
-        "Microblading and permanent makeup included",
-        "Valid through Monday, October 12, 2026"
-      ]
-    },
-    {
-      "id": "columbus-15-body-nails",
-      "name": "15% Off Body Treatments & Nails",
-      "description": "Body scrubs, wraps, back facials, cellulite treatments, manicures and pedicures — all 15% off through Columbus Day.",
-      "fullDescription": "Finish the long weekend head to toe, at 15% off through Monday, October 12.\n\nA few examples:\n• Body Scrub — $75 → $63.75\n• Cellulite Treatment — $120 → $102\n• Gel Manicure — $40 → $34\n• Russian Pedicure — $85 → $72.25\n\nIncluded: every body treatment and every manicure and pedicure on the menu.\n\nDiscount is applied at checkout. Offer ends Columbus Day, Monday, October 12.",
-      "duration": "Through Oct 12",
-      "price": "15% OFF",
-      "priceLabel": "Columbus Day Sale",
-      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
-      "image": "../images/nails.jpeg",
-      "badge": "Head to Toe",
-      "benefits": [
-        "All body treatments included",
-        "All manicures and pedicures included",
-        "Discount applied at checkout",
+        "Excludes nail and eyebrow services",
         "Valid through Monday, October 12, 2026"
       ]
     }
