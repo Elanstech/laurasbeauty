@@ -1517,19 +1517,19 @@ if (document.readyState === 'loading') {
 }
 
 /* ============================================
-   FALL SPECIALS COUNTDOWN
-   Counts down to 11:59:59 PM on Mon Oct 26, 2026.
+   COLUMBUS DAY SALE COUNTDOWN
+   Counts down to 11:59:59 PM on Mon Oct 12, 2026.
    Hides itself once the offer has passed, so the
    hero degrades gracefully if nobody swaps it out.
    Delete this block after the promo ends.
    ============================================ */
-class FallSpecialsCountdown {
+class ColumbusDayCountdown {
     constructor() {
         this.el = document.getElementById('fallCountdown');
         if (!this.el) return;
 
-        // End of the fall promo, Monday October 26, 2026 (local time)
-        this.deadline = new Date(2026, 9, 27, 0, 0, 0).getTime();
+        // End of the Columbus Day sale, Monday October 12, 2026 (local time)
+        this.deadline = new Date(2026, 9, 13, 0, 0, 0).getTime();
 
         this.nums = {
             days:    this.el.querySelector('[data-unit="days"]'),
@@ -1569,9 +1569,9 @@ class FallSpecialsCountdown {
 }
 
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => new FallSpecialsCountdown());
+    document.addEventListener('DOMContentLoaded', () => new ColumbusDayCountdown());
 } else {
-    new FallSpecialsCountdown();
+    new ColumbusDayCountdown();
 }
 
 
