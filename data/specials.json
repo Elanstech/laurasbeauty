@@ -1,88 +1,88 @@
 {
   "category": "specials",
   "promotion": {
-    "id": "fall-specials-2026",
-    "name": "Fall Specials",
-    "startDate": "2026-09-10",
-    "endDate": "2026-10-26",
-    "discount": "Fixed-price offers",
-    "excludes": [],
-    "terms": "Valid through October 26, 2026. Fall pricing applies to the listed treatments only and is honored at checkout. Cannot be combined with other offers, packages or gift card promotions. Appointments subject to availability."
+    "id": "columbus-day-2026",
+    "name": "Columbus Day Sale — 15% Off",
+    "startDate": "2026-10-04",
+    "endDate": "2026-10-12",
+    "discount": "15%",
+    "excludes": [
+      "Spa packages",
+      "Gift cards"
+    ],
+    "terms": "Valid through Monday, October 12, 2026 (Columbus Day). 15% off regular-priced services, applied at checkout. Excludes spa packages and gift cards. Cannot be combined with other offers. Appointments subject to availability."
   },
   "services": [
     {
-      "id": "fall-sweet-mango-facial-69",
-      "name": "Sweet Mango Facial — $69",
-      "description": "A brightening mango enzyme facial that lifts summer dullness and rehydrates — $69 instead of $85.",
-      "fullDescription": "A facial built around mango enzymes, which loosen dead surface skin without scrubbing.\n\nThe treatment runs a full cleanse, aroma steam, mango enzyme exfoliation, extractions where needed, a face and neck massage, and a hydrating mask. Skin comes out brighter, softer and noticeably more even in tone.\n\nThis is the one to book if summer left your face dull, dry or uneven. It suits nearly every skin type, including sensitive skin, and there is no downtime.\n\nRegularly $85. Fall price is $69 through Monday, October 26.",
-      "duration": "60 min",
-      "price": "$69",
-      "regularPrice": "$85",
-      "priceLabel": "Save $16",
+      "id": "columbus-15-facials",
+      "name": "15% Off All Facials & Skincare",
+      "description": "Every facial on the menu is 15% off through Columbus Day — from a 30-minute Express Facial to HydraFacial, Micro-Needling and Rejuran.",
+      "fullDescription": "Every facial on our menu is 15% off through Monday, October 12 — same organic products, same personalized skin analysis from Laura.\n\nA few favorites at the sale price:\n• Express Facial — $60 → $51\n• Organic Facial — $85 → $72.25\n• 24 Karat Facial — $110 → $93.50\n• Anti-Aging Facial — $120 → $102\n• Hydra Facial — $180 → $153\n• Micro-Needling — $250 → $212.50\n\nDiscount is applied at checkout. Offer ends Columbus Day, Monday, October 12.",
+      "duration": "Through Oct 12",
+      "price": "15% OFF",
+      "priceLabel": "Columbus Day Sale",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
-      "image": "https://www.jacalynjamesclinic.co.uk/wp-content/uploads/2022/04/aromatherapy-facial-4.jpg",
-      "badge": "Save $16",
+      "image": "../images/hydro.jpeg",
+      "badge": "Most Booked",
       "benefits": [
-        "Mango enzyme exfoliation — no harsh scrubbing",
-        "Brightens dull, sun-tired skin",
-        "Deeply rehydrating, no downtime",
-        "Valid through October 26, 2026"
+        "Every facial on the menu included",
+        "HydraFacial, Micro-Needling and Rejuran included",
+        "Discount applied at checkout",
+        "Valid through Monday, October 12, 2026"
       ]
     },
     {
-      "id": "fall-microneedling-179",
-      "name": "Microneedling — $179",
-      "description": "Collagen-induction microneedling for firmer skin, softer lines and smoother texture — $179 instead of $250.",
-      "fullDescription": "Microneedling works by creating controlled micro-channels in the skin, which triggers your own collagen and elastin production over the following weeks.\n\nIt is the treatment people book for fine lines, acne scarring, enlarged pores and general loss of firmness. A numbing cream goes on first, so the session itself is comfortable, and a calming serum and mask finish the treatment.\n\nExpect mild redness for about 24 hours, then a steady improvement in tone and texture over the next four to six weeks. Most clients do a series of three sessions spaced a month apart, and fall is the right time to start — results land in time for the holidays.\n\nRegularly $250. Fall price is $179 through Monday, October 26.",
-      "duration": "60 min",
-      "price": "$179",
-      "regularPrice": "$250",
-      "priceLabel": "Save $71",
+      "id": "columbus-15-laser",
+      "name": "15% Off Laser Hair Removal",
+      "description": "Every laser area, small or large, is 15% off through Columbus Day — a smart time to start before next summer.",
+      "fullDescription": "Laser hair removal works on a schedule — sessions run four to six weeks apart — so starting in October puts you well ahead of next summer.\n\nEvery laser area is 15% off through Monday, October 12:\n• Women's Underarm Laser — $70 → $59.50\n• Full Face Laser — $150 → $127.50\n• Brazilian Laser — $170 → $144.50\n• Full Leg Laser — $200 → $170\n\nNew to laser? Laura checks your skin and hair type first and tells you honestly how many sessions your area will need.\n\nDiscount is applied at checkout. Offer ends Columbus Day, Monday, October 12.",
+      "duration": "Through Oct 12",
+      "price": "15% OFF",
+      "priceLabel": "Columbus Day Sale",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
-      "image": "https://www.verywellhealth.com/thmb/QOccWi_yydag-kOir_80xLrXMxE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/VWH-GettyImages-1488372356-fc9240a252244fc18a61a22c487018c9.jpg",
-      "badge": "Save $71",
+      "image": "../images/laser.jpeg",
+      "badge": "Best Time to Start",
       "benefits": [
-        "Stimulates your own collagen and elastin",
-        "Softens fine lines, scarring and large pores",
-        "Numbing cream applied first for comfort",
-        "Valid through October 26, 2026"
-      ]
-    },
-    {
-      "id": "fall-underarm-laser-59",
-      "name": "Underarm Laser Hair Removal — $59",
-      "description": "A full underarm laser hair removal session for $59 — normally $75.",
-      "fullDescription": "A complete underarm laser session at fall pricing.\n\nTreatments take about 15 minutes and use the same medical-grade laser and the same technique as every other area on our menu.\n\nLaser works on a schedule — sessions run four to six weeks apart, so starting now means real results well before next summer. If you have never had laser with us, Laura will check your skin and hair type first and tell you honestly how many sessions your area will need.\n\nRegularly $75. Fall price is $59 through Monday, October 26.",
-      "duration": "15 min",
-      "price": "$59",
-      "regularPrice": "$75",
-      "priceLabel": "Save $16",
-      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
-      "image": "https://www.skintight.com.au/wp-content/uploads/2019/08/laser-hair-removal-underarm.jpg",
-      "badge": "Save $16",
-      "benefits": [
-        "Full underarm session, about 15 minutes",
+        "All laser areas included, for her and for him",
         "Medical-grade laser",
-        "Consultation included for first-time clients",
-        "Valid through October 26, 2026"
+        "Consultation for first-time clients",
+        "Valid through Monday, October 12, 2026"
       ]
     },
     {
-      "id": "fall-body-scrub-express-facial-99",
-      "name": "Body Scrub with Shower + Express Facial — $99",
-      "description": "Full-body exfoliation with a warm shower, followed by an express facial — both for $99.",
-      "fullDescription": "Head-to-toe in one appointment.\n\nStart with a full-body scrub — exfoliation from shoulders to feet, lifting away the dry, flaking skin summer leaves behind — followed by a warm shower and a hydrating finish. Skin feels polished and soft immediately.\n\nThen an express facial: cleanse, aroma steam, light exfoliation and a hydrating mask to bring the same freshness to your face.\n\nIt is the treatment to book when you want everything taken care of at once.\n\nFall price is $99 for both through Monday, October 26.",
-      "duration": "90 min",
-      "price": "$99",
-      "priceLabel": "Two treatments, one price",
+      "id": "columbus-15-wax-brows-lashes",
+      "name": "15% Off Waxing, Brows, Lashes & Makeup",
+      "description": "Waxing, threading, brow lamination, lash lifts and extensions, permanent makeup and makeup application — all 15% off through Columbus Day.",
+      "fullDescription": "The upkeep services you already book every few weeks, plus the bigger ones you have been putting off — all 15% off through Monday, October 12.\n\nA few examples:\n• Honey Brazilian Wax — $40 → $34\n• Lash Lift & Tint — $120 → $102\n• Powder Brows — $500 → $425\n• Microblading Eyebrows — $500 → $425\n\nIncluded: all waxing and threading, brow and lash tinting, lash lifts, lash extensions, permanent makeup, and event makeup.\n\nDiscount is applied at checkout. Offer ends Columbus Day, Monday, October 12.",
+      "duration": "Through Oct 12",
+      "price": "15% OFF",
+      "priceLabel": "Columbus Day Sale",
       "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
-      "image": "https://images.squarespace-cdn.com/content/v1/6447eeb38baf0c31deed937f/1682445506382-1NLA6RFT1DGWKP81ATL4/image-asset.jpeg",
-      "badge": "Most Popular",
+      "image": "../images/brows.jpeg",
+      "badge": "Brows & Lashes",
       "benefits": [
-        "Full-body scrub with warm shower",
-        "Express facial included",
-        "Leaves skin soft head to toe",
-        "Valid through October 26, 2026"
+        "All waxing and threading included",
+        "Lash lifts, extensions and tinting included",
+        "Microblading and permanent makeup included",
+        "Valid through Monday, October 12, 2026"
+      ]
+    },
+    {
+      "id": "columbus-15-body-nails",
+      "name": "15% Off Body Treatments & Nails",
+      "description": "Body scrubs, wraps, back facials, cellulite treatments, manicures and pedicures — all 15% off through Columbus Day.",
+      "fullDescription": "Finish the long weekend head to toe, at 15% off through Monday, October 12.\n\nA few examples:\n• Body Scrub — $75 → $63.75\n• Cellulite Treatment — $120 → $102\n• Gel Manicure — $40 → $34\n• Russian Pedicure — $85 → $72.25\n\nIncluded: every body treatment and every manicure and pedicure on the menu.\n\nDiscount is applied at checkout. Offer ends Columbus Day, Monday, October 12.",
+      "duration": "Through Oct 12",
+      "price": "15% OFF",
+      "priceLabel": "Columbus Day Sale",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
+      "image": "../images/nails.jpeg",
+      "badge": "Head to Toe",
+      "benefits": [
+        "All body treatments included",
+        "All manicures and pedicures included",
+        "Discount applied at checkout",
+        "Valid through Monday, October 12, 2026"
       ]
     }
   ]
