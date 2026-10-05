@@ -30,8 +30,8 @@ const categoryConfig = {
     specials: {
         jsonFile: '../data/specials.json',
         title: 'Columbus Day Sale',
-        subtitle: '15% off every service, now through Monday, October 12',
-        description: 'Facials, laser hair removal, waxing, brows, lashes, body treatments and nails are all 15% off through Columbus Day, Monday, October 12. Discount applied at checkout. Excludes packages and gift cards.',
+        subtitle: '15% off all services, now through Monday, October 12',
+        description: 'Take 15% off all services through Columbus Day, Monday, October 12. Excludes nail and eyebrow services.',
         badge: 'Columbus Day \u00b7 15% Off'
     },
     nails: {
