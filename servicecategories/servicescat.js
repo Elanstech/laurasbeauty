@@ -29,10 +29,10 @@ const categoryConfig = {
     },
     specials: {
         jsonFile: '../data/specials.json',
-        title: 'Columbus Day Sale',
-        subtitle: '15% off all services, now through Monday, October 12',
-        description: 'Take 15% off all services through Columbus Day, Monday, October 12. Excludes nail and eyebrow services.',
-        badge: 'Columbus Day \u00b7 15% Off'
+        title: 'Spa Specials',
+        subtitle: "Seasonal offers from Laura's Beauty Touch",
+        description: 'There are no specials running right now. New seasonal offers are posted here when they launch.',
+        badge: 'Seasonal Offers'
     },
     nails: {
         jsonFile: '../data/nails.json',

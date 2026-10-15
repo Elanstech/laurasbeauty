@@ -1517,65 +1517,6 @@ if (document.readyState === 'loading') {
 }
 
 /* ============================================
-   COLUMBUS DAY SALE COUNTDOWN
-   Counts down to 11:59:59 PM on Mon Oct 12, 2026.
-   Hides itself once the offer has passed, so the
-   hero degrades gracefully if nobody swaps it out.
-   Delete this block after the promo ends.
-   ============================================ */
-class ColumbusDayCountdown {
-    constructor() {
-        this.el = document.getElementById('fallCountdown');
-        if (!this.el) return;
-
-        // End of the Columbus Day sale, Monday October 12, 2026 (local time)
-        this.deadline = new Date(2026, 9, 13, 0, 0, 0).getTime();
-
-        this.nums = {
-            days:    this.el.querySelector('[data-unit="days"]'),
-            hours:   this.el.querySelector('[data-unit="hours"]'),
-            minutes: this.el.querySelector('[data-unit="minutes"]'),
-            seconds: this.el.querySelector('[data-unit="seconds"]')
-        };
-
-        this.tick();
-        this.timer = setInterval(() => this.tick(), 1000);
-    }
-
-    pad(n) {
-        return String(n).padStart(2, '0');
-    }
-
-    tick() {
-        const remaining = this.deadline - Date.now();
-
-        if (remaining <= 0) {
-            this.el.classList.add('expired');
-            clearInterval(this.timer);
-            return;
-        }
-
-        const seconds = Math.floor(remaining / 1000);
-        const days    = Math.floor(seconds / 86400);
-        const hours   = Math.floor((seconds % 86400) / 3600);
-        const minutes = Math.floor((seconds % 3600) / 60);
-        const secs    = seconds % 60;
-
-        if (this.nums.days)    this.nums.days.textContent    = days;
-        if (this.nums.hours)   this.nums.hours.textContent   = hours;
-        if (this.nums.minutes) this.nums.minutes.textContent = minutes;
-        if (this.nums.seconds) this.nums.seconds.textContent = this.pad(secs);
-    }
-}
-
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => new ColumbusDayCountdown());
-} else {
-    new ColumbusDayCountdown();
-}
-
-
-/* ============================================
    LEGAL PAGES — table of contents
    ============================================ */
 (function initLegalToc() {

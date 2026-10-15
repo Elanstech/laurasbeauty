@@ -1,35 +1,4 @@
 {
   "category": "specials",
-  "promotion": {
-    "id": "columbus-day-2026",
-    "name": "Columbus Day Sale — 15% Off",
-    "startDate": "2026-10-04",
-    "endDate": "2026-10-12",
-    "discount": "15%",
-    "excludes": [
-      "Nail services",
-      "Eyebrow services"
-    ],
-    "terms": "Valid through Monday, October 12, 2026 (Columbus Day). 15% off all services, applied at checkout. Excludes nail and eyebrow services. Cannot be combined with other offers. Appointments subject to availability."
-  },
-  "services": [
-    {
-      "id": "columbus-15-all-services",
-      "name": "15% Off All Services",
-      "description": "Take 15% off all services through Columbus Day, Monday, October 12. Excludes nail and eyebrow services.",
-      "fullDescription": "For Columbus Day, all services at Laura's Beauty Touch are 15% off through Monday, October 12.\n\nThat includes facials, laser hair removal, waxing, lashes, body treatments and makeup.\n\nNot included: nail services and eyebrow services.\n\nDiscount is applied at checkout and cannot be combined with other offers. Holiday weekend slots go quickly, so book early.",
-      "duration": "Through Oct 12",
-      "price": "15% OFF",
-      "priceLabel": "Excludes nails & eyebrows",
-      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
-      "image": "../images/treatroom.jpeg",
-      "badge": "Columbus Day",
-      "benefits": [
-        "15% off all services",
-        "Discount applied at checkout",
-        "Excludes nail and eyebrow services",
-        "Valid through Monday, October 12, 2026"
-      ]
-    }
-  ]
+  "services": []
 }
