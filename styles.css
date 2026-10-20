@@ -7965,3 +7965,14 @@ a.contact-value:hover {
 .blog-modal-content-text .hw-cta:hover { filter: brightness(1.08); }
 .hw-cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 22px 0; }
 .blog-modal-content-text .hw-cta-ghost { background: none; border: 1.5px solid #2A1838; color: #2A1838; }
+
+/* Google Rating (Elfsight) floating badge: keep its container out of the page flow
+   so the widget can never push white space below the footer */
+.elfsight-floating-badge {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 0;
+    z-index: 996;
+}
