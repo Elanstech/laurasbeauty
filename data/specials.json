@@ -1,4 +1,72 @@
 {
   "category": "specials",
-  "services": []
+  "promotion": {
+    "id": "halloween-2026",
+    "name": "Halloween Special — 20% Off Facials, Laser & Body",
+    "startDate": "2026-10-20",
+    "endDate": "2026-11-01",
+    "discount": "20%",
+    "includes": [
+      "Facials",
+      "Laser hair removal",
+      "Body treatments"
+    ],
+    "terms": "Valid through Sunday, November 1, 2026. 20% off all facials, laser hair removal and body treatments, applied at checkout. Cannot be combined with other offers. Appointments subject to availability."
+  },
+  "services": [
+    {
+      "id": "halloween-20-facials",
+      "name": "20% Off All Facials",
+      "description": "Every facial on the menu is 20% off through Sunday, November 1 — Hydra, Oxygen, Papaya Pumpkin, Anti-Aging and more.",
+      "fullDescription": "No tricks, just treats. All 22 of our facials are 20% off through Sunday, November 1.\n\nExpress Facial: $48 (regularly $60)\nPapaya Pumpkin Deep Pore Cleansing Facial: $76 (regularly $95)\nOxygen Facial: $80 (regularly $100)\nHydra Facial: $144 (regularly $180)\n\nDiscount is applied at checkout and cannot be combined with other offers.",
+      "duration": "Through Nov 1",
+      "price": "20% OFF",
+      "priceLabel": "Facials from $48",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
+      "image": "../images/halloween/pumpkin-facial-mask.jpg",
+      "badge": "Halloween",
+      "benefits": [
+        "20% off every facial",
+        "Facials from $48",
+        "Discount applied at checkout",
+        "Valid through Sunday, November 1, 2026"
+      ]
+    },
+    {
+      "id": "halloween-20-laser",
+      "name": "20% Off Laser Hair Removal",
+      "description": "Every laser hair removal area is 20% off through Sunday, November 1, for her and for him.",
+      "fullDescription": "Fall is the best time to start laser — less sun means safer, more effective sessions, and you'll be smooth by summer.\n\nLip Laser: $36 (regularly $45)\nWomen's Underarm Laser: $56 (regularly $70)\nBrazilian Laser: $136 (regularly $170)\nFull Leg Laser: $160 (regularly $200)\n\nDiscount is applied at checkout and cannot be combined with other offers.",
+      "duration": "Through Nov 1",
+      "price": "20% OFF",
+      "priceLabel": "Laser from $36",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
+      "image": "../images/laser.jpeg",
+      "badge": "Halloween",
+      "benefits": [
+        "20% off every laser area",
+        "For her and for him",
+        "Discount applied at checkout",
+        "Valid through Sunday, November 1, 2026"
+      ]
+    },
+    {
+      "id": "halloween-20-body",
+      "name": "20% Off Body Treatments",
+      "description": "Body scrubs, detox wraps, cellulite treatments and more are 20% off through Sunday, November 1.",
+      "fullDescription": "Shed your old skin this Halloween — no shapeshifting required.\n\nBody Scrub: $60 (regularly $75)\nSlimming and Detoxifying Body Wrap: $64 (regularly $80)\nCellulite Treatment: $96 (regularly $120)\n\nDiscount is applied at checkout and cannot be combined with other offers.",
+      "duration": "Through Nov 1",
+      "price": "20% OFF",
+      "priceLabel": "Body from $60",
+      "bookNowUrl": "https://www.fresha.com/book-now/lauras-beauty-touch-hyhbouyc/all-offer?share=true&pId=2609547",
+      "image": "../images/halloween/jack-o-lanterns-glow.jpg",
+      "badge": "Halloween",
+      "benefits": [
+        "20% off every body treatment",
+        "Body treatments from $60",
+        "Discount applied at checkout",
+        "Valid through Sunday, November 1, 2026"
+      ]
+    }
+  ]
 }

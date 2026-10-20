@@ -29,10 +29,10 @@ const categoryConfig = {
     },
     specials: {
         jsonFile: '../data/specials.json',
-        title: 'Spa Specials',
-        subtitle: "Seasonal offers from Laura's Beauty Touch",
-        description: 'There are no specials running right now. New seasonal offers are posted here when they launch.',
-        badge: 'Seasonal Offers'
+        title: 'Halloween Special',
+        subtitle: '20% off facials, laser & body treatments through Sunday, November 1',
+        description: 'No tricks, just treats. Every facial, laser hair removal area and body treatment is 20% off through Sunday, November 1.',
+        badge: 'Halloween \u00b7 20% Off'
     },
     nails: {
         jsonFile: '../data/nails.json',

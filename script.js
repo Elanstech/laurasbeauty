@@ -1027,6 +1027,7 @@ class BlogSection {
             this.posts = data.posts.sort((a, b) => new Date(b.date) - new Date(a.date));
             this.renderBlogPosts();
             this.setupCarousel();
+            this.openFromHash();
         } catch (error) {
             console.error('Error loading blog posts:', error);
             this.showError();
@@ -1177,6 +1178,16 @@ class BlogSection {
         }
     }
 
+    // Deep link: index.html#post-<slug> opens that post (handy for Instagram / email links)
+    openFromHash() {
+        const match = window.location.hash.match(/^#post-(.+)$/);
+        if (!match) return;
+        const post = this.posts.find(p => p.slug === decodeURIComponent(match[1]));
+        if (!post) return;
+        document.getElementById('blog')?.scrollIntoView();
+        this.openModal(post.id);
+    }
+
     openModal(postId) {
         const post = this.posts.find(p => p.id === postId);
         if (!post) return;
@@ -1245,7 +1256,9 @@ class BlogSection {
     }
 
     formatDate(dateString) {
-        return new Date(dateString).toLocaleDateString('en-US', { 
+        // Plain YYYY-MM-DD dates parse as UTC and show a day early in New York; read them as local
+        const d = /^\d{4}-\d{2}-\d{2}$/.test(dateString) ? new Date(dateString + 'T00:00:00') : new Date(dateString);
+        return d.toLocaleDateString('en-US', { 
             year: 'numeric', 
             month: 'long', 
             day: 'numeric' 
@@ -1515,6 +1528,113 @@ if (document.readyState === 'loading') {
 } else {
     initWebsite();
 }
+
+/* ============================================
+   HALLOWEEN SPECIAL 2026
+   Countdown to the end of Sun Nov 1, plus the
+   pick-a-pumpkin reveal in the homepage hero.
+   Delete this block after the promo ends.
+   ============================================ */
+class HalloweenCountdown {
+    constructor() {
+        this.el = document.getElementById('fallCountdown');
+        if (!this.el) return;
+
+        // Offer ends at midnight after Sunday November 1, 2026 (local time)
+        this.deadline = new Date(2026, 10, 2, 0, 0, 0).getTime();
+
+        this.nums = {
+            days:    this.el.querySelector('[data-unit="days"]'),
+            hours:   this.el.querySelector('[data-unit="hours"]'),
+            minutes: this.el.querySelector('[data-unit="minutes"]'),
+            seconds: this.el.querySelector('[data-unit="seconds"]')
+        };
+
+        this.tick();
+        this.timer = setInterval(() => this.tick(), 1000);
+    }
+
+    tick() {
+        const remaining = this.deadline - Date.now();
+
+        if (remaining <= 0) {
+            this.el.classList.add('expired');
+            clearInterval(this.timer);
+            return;
+        }
+
+        const seconds = Math.floor(remaining / 1000);
+        const set = (unit, val) => { if (this.nums[unit]) this.nums[unit].textContent = val; };
+        set('days', Math.floor(seconds / 86400));
+        set('hours', Math.floor((seconds % 86400) / 3600));
+        set('minutes', Math.floor((seconds % 3600) / 60));
+        set('seconds', String(seconds % 60).padStart(2, '0'));
+    }
+}
+
+class PumpkinPicker {
+    constructor() {
+        this.buttons = document.querySelectorAll('.hw-pumpkin');
+        this.reveal = document.getElementById('hwReveal');
+        if (!this.buttons.length || !this.reveal) return;
+
+        this.treats = {
+            facials: {
+                title: 'Your treat: 20% off every facial',
+                text: 'Hydra, Oxygen, Papaya Pumpkin, Anti-Aging and more. Facials from $48.',
+                href: 'servicecategories/facials.html',
+                link: 'Pick a facial'
+            },
+            laser: {
+                title: 'Your treat: 20% off laser hair removal',
+                text: 'Every area, for her and for him. Lip laser from $36.',
+                href: 'servicecategories/laser.html',
+                link: 'Pick an area'
+            },
+            body: {
+                title: 'Your treat: 20% off body treatments',
+                text: 'Body scrubs, detox wraps, cellulite treatments and more. From $60.',
+                href: 'servicecategories/body.html',
+                link: 'Pick a treatment'
+            }
+        };
+
+        this.buttons.forEach(btn => btn.addEventListener('click', () => this.pick(btn)));
+    }
+
+    pick(btn) {
+        const treat = this.treats[btn.dataset.treat];
+        if (!treat) return;
+
+        this.buttons.forEach(b => {
+            const on = b === btn;
+            b.classList.toggle('is-lit', on);
+            b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+
+        this.reveal.innerHTML = `
+            <div class="hw-treat">
+                <span class="hw-treat-pct">20%</span>
+                <span class="hw-treat-body">
+                    <span class="hw-treat-title">${treat.title}</span>
+                    <span class="hw-treat-text">${treat.text}</span>
+                </span>
+                <a class="hw-treat-link" href="${treat.href}">${treat.link} &rarr;</a>
+            </div>`;
+    }
+}
+
+function initHalloween() {
+    new HalloweenCountdown();
+    new PumpkinPicker();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHalloween);
+} else {
+    initHalloween();
+}
+
 
 /* ============================================
    LEGAL PAGES — table of contents
